@@ -29,10 +29,11 @@ else {
 </head>
 <body>
 
-	<h1>注册</h1>
 
+<h1>注册</h1>
 	
-		
+		<div class="container">
+			
 			<form action="RegisterServlet"  method="post">
 			<input type="text" Name="username" placeholder="用户名" required="">
 				<input type="email" Name="email" placeholder="邮箱" required="">
@@ -48,12 +49,13 @@ else {
 			
 
 </form>
-
-		
+<br>
+		<form action="LoginView">
+		<input  type="submit"   value="登录">
+			
+		</form>
 		</div>
 
-<a class="aa" href="Login.jsp">&nbsp;&nbsp;&nbsp;   登   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 录 &nbsp;&nbsp;&nbsp;  </a>
-	
 
 </body>
 </html>

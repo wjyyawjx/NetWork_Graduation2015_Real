@@ -7,11 +7,18 @@
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
 </head>
+
 <body>
+<h1>登录</h1>
+<div class="container">
 	<form action="Login" method="post">
-		<input type="text" name="username" >
-		<input type="password" name="pwd">
+		<input type="text" name="username" placeholder="用户名" required="" >
+		<input type="password" name="pwd" placeholder="密码" required="">
 		<input type="submit" value="登录">
 	</form>
+	<br>
+	<form action="RegisterView">
+		<input  type="submit"   value="注册">
+	</div>
 </body>
 </html>
