@@ -34,12 +34,12 @@ else {
 	
 		<div class="container">
 			
-			<form action="RegisterServlet"  method="post">
+			<form action="Register"  method="post">
 			<input type="text" Name="username" placeholder="用户名" required="">
 				<input type="email" Name="email" placeholder="邮箱" required="">
 				<input type="text" name="phone" placeholder="联系方式" required="">
 				<input type="password" id="pwd" Name="password" onkeyup="validate()" placeholder="密码" required="">
-				<input type="password" id="pwd1" Name="Password1" onkeyup="validate()" placeholder="确认密码" required="">
+				<input style="width: 250px" type="password" id="pwd1" Name="Password1" onkeyup="validate()" placeholder="确认密码" required="">
 			
 			<span id="tishi"></span>
 			
