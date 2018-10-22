@@ -4,13 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
 </head>
 <body>
-<form action="Login" method="post">
-<input type="text" name="username" >
-<input type="password" name="pwd">
-<input type="submit" value="登录">
-</form>
+	<form action="Login" method="post">
+		<input type="text" name="username" >
+		<input type="password" name="pwd">
+		<input type="submit" value="登录">
+	</form>
 </body>
 </html>
