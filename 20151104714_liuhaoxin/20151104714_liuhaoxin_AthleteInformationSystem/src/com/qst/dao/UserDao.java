@@ -44,4 +44,52 @@ public class UserDao {
 			return userbrean;
 		}
 
+		//查询用户名是否重复
+		public boolean query(String username) {
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+		
+			String sql = "select * from user where username=?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, username);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next())
+				{
+					return true;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally{
+				DBUtil.closeJDBC(rs, pstmt, conn);
+			}
+			return false;
+		}
+
+			//注册
+		public void save(String username, String pwd, String email, String phone) {
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement pstmt = null;
+			
+			String sql = "insert into user (username,pwd,email,phone)" +
+						"values(?,?,?,?)";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, username);
+				pstmt.setString(2, pwd);
+				pstmt.setString(3, email);
+				pstmt.setString(4, phone);
+				pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally{
+				DBUtil.closeJDBC(null, pstmt, conn);
+			}
+			
+		}
+		
 }
