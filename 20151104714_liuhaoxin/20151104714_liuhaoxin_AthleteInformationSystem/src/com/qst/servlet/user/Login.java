@@ -36,7 +36,6 @@ public class Login extends HttpServlet {
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
 
-
 		UserBean userbean = new UserBean();
 		userbean.setUsername(username);
 		userbean.setPwd(pwd);

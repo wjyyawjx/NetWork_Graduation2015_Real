@@ -4,13 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
 </head>
-<%
-	String name = (String) session.getAttribute("user");
 
-%>
-<body>
-ok欢迎用户<%=name %>登录
-</body>
+<frameset rows="18%,82%">
+
+<frame noresize="noresize" src="title.jsp">
+
+<frameset cols="200,*">
+<frame noresize="noresize" src="left.jsp">
+<frame noresize="noresize" src="right.jsp" name="rightframe" >
+</frameset>
+
+</frameset>
+
 </html>
