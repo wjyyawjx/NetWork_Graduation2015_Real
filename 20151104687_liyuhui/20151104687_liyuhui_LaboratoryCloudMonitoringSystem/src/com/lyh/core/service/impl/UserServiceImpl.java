@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lyh.core.service.UserService;
 import com.lyh.core.dao.UserDao;
 import com.lyh.core.po.User;
+import com.lyh.core.service.UserService;
 
 @Service("userService")
 @Transactional
@@ -15,8 +15,8 @@ public class UserServiceImpl implements UserService{
 	private UserDao userDao;
 	
 	@Override
-	public User login(String uname, String upwd) {
-		User user = this.userDao.login(uname, upwd);
+	public User login(String num, String pwd) {
+		User user = this.userDao.login(num, pwd);
 		return user;
 	}
 }
