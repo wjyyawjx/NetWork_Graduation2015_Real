@@ -31,7 +31,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 		//获取请求的url
 		String url = request.getRequestURI();
 		//URL:除了登录请求外，其他的url都进行拦截控制
-		if (url.indexOf("/findpwd.action") >= 0 || url.indexOf("/tofindpwd.action") >= 0 || url.indexOf("/customer.action") >= 0 || url.indexOf("/login.action") >= 0 || url.indexOf("/toregister.action") >= 0 || url.indexOf("/getVerify.action") >= 0 || url.indexOf("/register.action") >= 0) {
+		if (url.indexOf("/findpwd.action") >= 0 || url.indexOf("/tofindpwd.action") >= 0 || url.indexOf("/login.action") >= 0 || url.indexOf("/tologin.action") >= 0 || url.indexOf("/toregister.action") >= 0 || url.indexOf("/getVerify.action") >= 0 || url.indexOf("/register.action") >= 0) {
 			return true;
 		}
 		//获取session
