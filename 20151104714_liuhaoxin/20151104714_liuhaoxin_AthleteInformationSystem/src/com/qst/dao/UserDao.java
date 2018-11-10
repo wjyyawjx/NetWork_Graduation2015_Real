@@ -68,6 +68,33 @@ public class UserDao {
 			}
 			return false;
 		}
+		
+		
+		
+		//查询用户的权限
+		public String pmission(String username) {
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String qx="0";
+			String sql = "select * from user where username=?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, username);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next())
+				{
+					qx=rs.getString("permission");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally{
+				DBUtil.closeJDBC(rs, pstmt, conn);
+			}
+			return qx;
+		}
 
 			//注册
 		public void save(String username, String pwd, String email, String phone) {
@@ -82,6 +109,7 @@ public class UserDao {
 				pstmt.setString(2, pwd);
 				pstmt.setString(3, email);
 				pstmt.setString(4, phone);
+				System.err.println("123");
 				pstmt.executeUpdate();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

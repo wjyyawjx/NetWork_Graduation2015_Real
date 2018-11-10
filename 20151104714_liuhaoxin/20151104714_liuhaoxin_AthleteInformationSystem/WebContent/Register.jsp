@@ -51,7 +51,7 @@ else {
 </form>
 <br>
 		<form action="LoginView">
-		<input  type="submit"   value="登录">
+		<input  type="submit"   value="已有账户，去登录">
 			
 		</form>
 		</div>

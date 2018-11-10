@@ -8,17 +8,15 @@
 <title>Insert title here</title>
 </head>
 
-<body>
-<h1>登录</h1>
-<div class="container">
-	<form action="Login" method="post">
-		<input type="text" name="username" placeholder="用户名" required="" >
-		<input type="password" name="pwd" placeholder="密码" required="">
-		<input type="submit" value="登录">
-	</form>
-	<br>
-	<form action="RegisterView">
-		<input  type="submit"   value="没有账户，去注册一个">
-	</div>
-</body>
+<frameset rows="18%,82%">
+
+<frame noresize="noresize" src="recorder-title.jsp">
+
+<frameset cols="200,*">
+<frame noresize="noresize" src="recorder-left.jsp">
+<frame noresize="noresize" src="recorder-right.jsp" name="recorder-right" >
+</frameset>
+
+</frameset>
+
 </html>
