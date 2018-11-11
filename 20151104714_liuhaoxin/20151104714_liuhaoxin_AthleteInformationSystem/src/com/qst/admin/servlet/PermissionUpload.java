@@ -1,28 +1,24 @@
 package com.qst.admin.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.qst.bean.UserBean;
-import com.qst.dao.adminDao;
+import com.qst.dao.AdminDao;
 
 /**
- * Servlet implementation class userview
+ * Servlet implementation class PermissionUpload
  */
-@WebServlet("/userview")
-public class userview extends HttpServlet {
+@WebServlet("/PermissionUpload")
+public class PermissionUpload extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public userview() {
+    public PermissionUpload() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,15 +28,13 @@ public class userview extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		ArrayList<UserBean> userdata = new ArrayList<UserBean>();
-		
-
-		adminDao userdao = new adminDao();
-		userdata = (ArrayList<UserBean>)userdao.userList();
-  	   
-  	 request.setAttribute("userdata", userdata);
-	request.getRequestDispatcher("admin-user.jsp").forward(request, response);
+		//修改用户的权限
+		int uid =Integer.parseInt(request.getParameter("uid"));
+		String qx =request.getParameter("qx");
+		AdminDao userdao = new AdminDao();
+		userdao.permissionupload(uid,qx);
+		response.sendRedirect("UserView");	
+	
 	
 	}
 

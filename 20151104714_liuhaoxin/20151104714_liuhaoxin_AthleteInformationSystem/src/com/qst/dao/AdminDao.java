@@ -10,7 +10,7 @@ import com.qst.DBUtil.DBUtil;
 import com.qst.bean.UserBean;
 
 
-public class adminDao {
+public class AdminDao {
 
 	//查询所有用户
 	
@@ -43,6 +43,28 @@ public class adminDao {
 		}
 		return Array;
 	}
-	
+	//修改用户权限
+		public void permissionupload(int uid,String qx) {
+			// TODO Auto-generated method stub
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement pstmt = null;
+			
+			
+			String sql = "update user set permission=? where uid =?";
+			try {
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, qx);
+				pstmt.setInt(2, uid);
+				pstmt.executeUpdate();
+			
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally{
+				DBUtil.closeJDBC(null, pstmt, conn);
+			}
+		}
 	
 }

@@ -1,23 +1,28 @@
-package com.qst.servlet.user;
+package com.qst.admin.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.qst.bean.UserBean;
+import com.qst.dao.AdminDao;
+
 /**
- * Servlet implementation class RegisterView
+ * Servlet implementation class userview
  */
-@WebServlet("/RegisterView")
-public class RegisterView extends HttpServlet {
+@WebServlet("/UserView")
+public class UserView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegisterView() {
+    public UserView() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,9 +32,13 @@ public class RegisterView extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//显示注册页面
-		response.sendRedirect("Register.jsp");	
-		
+		//显示所有用户的信息
+		ArrayList<UserBean> userdata = new ArrayList<UserBean>();
+		AdminDao userdao = new AdminDao();
+		userdata = (ArrayList<UserBean>)userdao.userList();
+		request.setAttribute("userdata", userdata);
+		request.getRequestDispatcher("admin-user.jsp").forward(request, response);
+	
 	}
 
 	/**

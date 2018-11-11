@@ -30,6 +30,7 @@ public class Register extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//注册
 		String username = request.getParameter("username");
 		System.err.println(username);
 		String pwd = request.getParameter("password");

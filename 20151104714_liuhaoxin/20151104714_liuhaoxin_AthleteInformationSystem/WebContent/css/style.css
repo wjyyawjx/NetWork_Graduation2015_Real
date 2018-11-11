@@ -1,8 +1,10 @@
 @charset "UTF-8";
 body{
+		/* 设置页面的背景 */
 	   background: url("../img/beijing.jpg");
 }
 input[type="text"], input[type="password"] , input[type="email"]{
+	/* 设置输入框样式 */
     width: 90%;
     margin-bottom: 20px;
     background-color: transparent;
@@ -10,6 +12,7 @@ input[type="text"], input[type="password"] , input[type="email"]{
     color: #0000ff;
 }
 .container {
+	/* 美化登录注册页面，把输入框和按钮包在一个框里 */
     width: 40%;
     margin: 0 auto;
     padding: 40px;
@@ -17,11 +20,13 @@ input[type="text"], input[type="password"] , input[type="email"]{
     box-shadow: 0 -5px 10px 1px rgba(16, 16, 16, 0.57);	
 }
 h1{
-	 font-size: 45px;
+	/* 设置h1样式 */
+	font-size: 45px;
 	text-align:center;
     color: #0000ff;
 }
 input[type="submit"] {
+	/* 设置按钮样式 */
     width: 300px;
     padding: 10px 0;
     font-size: 20px;
@@ -31,6 +36,7 @@ input[type="submit"] {
   
 }
 input[type="submit"]:hover {
+	/* 设置按钮鼠标放在按钮上的样式 */
     background-color: #ff80ff;
     border: 1px solid #FFF;
     color: #ffff00;
@@ -38,6 +44,7 @@ input[type="submit"]:hover {
 }
 
 a{
+	/* 设置超链接样式 */
     width: 300px;
     padding: 10px 0;
     font-size: 20px;
@@ -48,6 +55,7 @@ a{
   
 }
 a:hover {
+	/* 设置按钮鼠标放在超链接上的样式 */
     background-color: #ff80ff;
     border: 1px solid #FFF;
     color: #ffff00;

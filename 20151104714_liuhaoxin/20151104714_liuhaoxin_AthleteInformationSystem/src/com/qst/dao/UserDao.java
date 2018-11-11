@@ -96,7 +96,7 @@ public class UserDao {
 			return qx;
 		}
 
-			//注册
+		//注册
 		public void save(String username, String pwd, String email, String phone) {
 			Connection conn = DBUtil.getConnection();
 			PreparedStatement pstmt = null;
