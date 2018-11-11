@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<a  href ="userview" target ="admin-right">显示所有用户</a><br />
 </body>
 </html>
