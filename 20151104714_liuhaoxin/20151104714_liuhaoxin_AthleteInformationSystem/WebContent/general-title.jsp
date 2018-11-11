@@ -17,6 +17,6 @@
 
 %>
 <body>
-ok欢迎用户<%=name %>登录
+欢迎用户<%=name %>登录
 </body>
 </html>
