@@ -1,4 +1,4 @@
-package com.qst.admin.servlet;
+package com.qst.servlet.toapplyfor;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.qst.dao.AdminDao;
 import com.qst.dao.GeneralDao;
 
 /**
@@ -32,15 +31,15 @@ public class PermissionUpload2 extends HttpServlet {
 		//修改用户的权限,用于普通用户通过审核，成为记录员
 		
 		String username =request.getParameter("username");
-		AdminDao userdao = new AdminDao();
+		GeneralDao geldao = new GeneralDao();
 		//修改用户权限
-		userdao.permissionupload(username);
+		geldao.permissionupload(username);
 		
 		//删除申请用户的所有申请
-		GeneralDao geldao =new GeneralDao();
+	
 		geldao.ToApplyFordelete(username);
 		
-		response.sendRedirect("UserView");
+		response.sendRedirect("AdminToApplyForView");
 	}
 
 	/**

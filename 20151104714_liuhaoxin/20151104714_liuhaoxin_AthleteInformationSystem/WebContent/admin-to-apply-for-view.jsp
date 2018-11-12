@@ -16,10 +16,11 @@
 <table border="2" cellpadding="0" cellspacing="0"  >
 				<thead>
 					<tr>
-						<th width="70%" >申请理由</th>
+						<th width="60%" >申请理由</th>
 						<th width="10%" >申请人</th>
 						<th width="10%" >状态</th>
 						<th width="10%" >通过审核</th>
+						<th width="10%" >拒绝通过</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -30,7 +31,12 @@
 					<td>${w.state}</td>
 					<td><form action="PermissionUpload2" method="post">
 					<input type="hidden" name="username" value=${w.username}>
-					<input type="submit" style="width: 150px" value="修改权限为1"></form></td>
+					<input type="submit" style="width: 150px" value="通过审核"></form></td>
+					<form action="PermissionUpload3" method="post">
+					<td><input type="text" name="liyou" placeholder="输入拒绝理由" required="">
+					<input type="hidden" name="aid" value=${w.aid}>
+					<input type="submit" style="width: 150px" value="拒绝申请"></form></td>
+					
 					<td>
 					</tr>
 					</c:forEach>

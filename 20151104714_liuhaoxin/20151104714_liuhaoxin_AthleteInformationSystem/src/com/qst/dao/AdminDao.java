@@ -9,11 +9,10 @@ import java.util.ArrayList;
 import com.qst.DBUtil.DBUtil;
 import com.qst.bean.UserBean;
 
-
 public class AdminDao {
 
-	//查询所有用户
-	
+	// 查询所有用户
+
 	public ArrayList<UserBean> userList() {
 		// TODO Auto-generated method stub
 		ArrayList<UserBean> Array = new ArrayList<UserBean>();
@@ -43,39 +42,8 @@ public class AdminDao {
 		}
 		return Array;
 	}
-	//修改用户权限，在记录员和普通用户之间切换
-		public void permissionupload(int uid,String qx) {
-			// TODO Auto-generated method stub
-			Connection conn = DBUtil.getConnection();
-			PreparedStatement pstmt = null;
-			String sql = "update user set permission=? where uid =?";
-			try {	
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, qx);
-				pstmt.setInt(2, uid);
-				pstmt.executeUpdate();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}finally{
-				DBUtil.closeJDBC(null, pstmt, conn);
-			}
-		}
-		//修改用户权限，用于普通用户通过审核。
-				public void permissionupload(String username) {
-					// TODO Auto-generated method stub
-					Connection conn = DBUtil.getConnection();
-					PreparedStatement pstmt = null;
-					String sql = "update user set permission='1' where username =?";
-					try {	
-						pstmt = conn.prepareStatement(sql);
-						pstmt.setString(1,username);
-						pstmt.executeUpdate();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}finally{
-						DBUtil.closeJDBC(null, pstmt, conn);
-					}
-				}
-}
+
+	
+	}
+
+	
