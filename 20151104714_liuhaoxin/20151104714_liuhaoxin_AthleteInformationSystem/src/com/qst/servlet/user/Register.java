@@ -30,7 +30,9 @@ public class Register extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//注册
 		String username = request.getParameter("username");
+		System.err.println(username);
 		String pwd = request.getParameter("password");
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
@@ -44,8 +46,7 @@ public class Register extends HttpServlet {
 		else{
 			
 			
-			JOptionPane.showMessageDialog(null, "注册成功！", null, JOptionPane.ERROR_MESSAGE);
-
+			//JOptionPane.showMessageDialog(null, "注册成功！", null, JOptionPane.ERROR_MESSAGE);
 			dao.save(username,pwd,email,phone);
 			response.sendRedirect("Login.jsp");
 			
