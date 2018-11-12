@@ -8,7 +8,11 @@
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
 </head>
-<body>
+<body><br><br>
+<div align="center">
+<a  href ="ToApplyForView" target ="general-right">申请成为记录员</a><br />
+
+</div>
 
 </body>
 </html>

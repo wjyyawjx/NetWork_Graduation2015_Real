@@ -40,7 +40,8 @@
 					<input type="hidden" name="uid" value=${w.uid}>
 					<input type="hidden" name="qx" value="0">
 					<input type="submit" style="width: 150px" value="修改权限为0"></form></td>
-					<td><form action="PermissionUpload" method="post">
+					<td>
+					<form action="PermissionUpload" method="post">
 					<input type="hidden" name="uid" value=${w.uid}>
 					<input type="hidden" name="qx" value="1">
 					<input type="submit" style="width: 150px" value="修改权限为1"></form></td>

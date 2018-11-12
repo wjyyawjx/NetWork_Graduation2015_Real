@@ -1,4 +1,4 @@
-package com.qst.servlet.user;
+package com.qst.admin.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,21 +6,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
-
-import com.qst.dao.UserDao;
+import com.qst.dao.AdminDao;
+import com.qst.dao.GeneralDao;
 
 /**
- * Servlet implementation class Register
+ * Servlet implementation class PermissionUpload
  */
-@WebServlet("/Register")
-public class Register extends HttpServlet {
+@WebServlet("/PermissionUpload2")
+public class PermissionUpload2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Register() {
+    public PermissionUpload2() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,28 +29,18 @@ public class Register extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//注册
-		String username = request.getParameter("username");
-		String pwd = request.getParameter("password");
-		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
-		UserDao dao = new UserDao();
-		boolean flag = dao.query(username);
-		if(flag){
-			
-			JOptionPane.showMessageDialog(null, "用户名已被注册，请重新注册", null, JOptionPane.ERROR_MESSAGE);
-			response.sendRedirect("Register.jsp");
-		}
-		else{
-			
-			
-			//JOptionPane.showMessageDialog(null, "注册成功！", null, JOptionPane.ERROR_MESSAGE);
-			dao.save(username,pwd,email,phone);
-			response.sendRedirect("Login.jsp");
-			
-		}
-
-	
+		//修改用户的权限,用于普通用户通过审核，成为记录员
+		
+		String username =request.getParameter("username");
+		AdminDao userdao = new AdminDao();
+		//修改用户权限
+		userdao.permissionupload(username);
+		
+		//删除申请用户的所有申请
+		GeneralDao geldao =new GeneralDao();
+		geldao.ToApplyFordelete(username);
+		
+		response.sendRedirect("UserView");
 	}
 
 	/**

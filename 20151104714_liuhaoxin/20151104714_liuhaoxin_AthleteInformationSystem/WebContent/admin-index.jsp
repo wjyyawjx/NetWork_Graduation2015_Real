@@ -9,13 +9,13 @@
 <title>Insert title here</title>
 </head>
 
-<frameset rows="18%,82%">
+<frameset rows="22%,78%">
 
 <frame noresize="noresize" src="admin-title.jsp">
 
 <frameset cols="200,*">
-<frame noresize="noresize" src="admin-left.jsp">
-<frame noresize="noresize" src="admin-right.jsp" name="admin-right" >
+<frame noresize="noresize" src="admin-left.jsp" noresize="noresize"  scrolling="no" >
+<frame noresize="noresize" src="admin-right.jsp" name="admin-right"   >
 </frameset>
 
 </frameset>
