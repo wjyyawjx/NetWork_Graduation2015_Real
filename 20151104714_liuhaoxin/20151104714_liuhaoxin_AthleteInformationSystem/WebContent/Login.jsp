@@ -1,3 +1,4 @@
+<%--  登录页面 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 
-<body>
+<body><br><br>
 <h1>登录</h1>
 <div class="container">
 	<form action="Login" method="post">
@@ -18,7 +19,7 @@
 	</form>
 	<br>
 	<form action="RegisterView">
-		<input  type="submit"   value="注册">
+		<input  type="submit"   value="没有账户，去注册一个">
 	</div>
 </body>
 </html>

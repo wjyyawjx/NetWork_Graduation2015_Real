@@ -2,8 +2,8 @@ package com.qst.bean;
 
 public class UserBean {
 
-	private String username,pwd,phone,email;
-
+	private String username,pwd,phone,email,permission;
+	private int uid;
 	public String getUsername() {
 		return username;
 	}
@@ -34,6 +34,22 @@ public class UserBean {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getPermission() {
+		return permission;
+	}
+
+	public void setPermission(String permission) {
+		this.permission = permission;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
 	}
 
 }

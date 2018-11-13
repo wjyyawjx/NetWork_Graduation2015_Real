@@ -62,7 +62,7 @@
 	<!-- 切面 -->
 	<aop:config>
 		<aop:advisor advice-ref="txAdvice"
-			 pointcut="execution(* com.itheima.core.service.*.*(..))" />
+			 pointcut="execution(* com.lyh.core.service.*.*(..))" />
 	</aop:config>
 	<!-- 配置 MyBatis的工厂 -->
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -72,11 +72,11 @@
 		<property name="configLocation" 
                      value="classpath:mybatis-config.xml" />
 	</bean>
-	<!-- 接口开发,扫描 com.itheima.core.dao包 ，写在此包下的接口即可被扫描到 -->
+	<!-- 接口开发,扫描 com.lyh.core.dao包 ，写在此包下的接口即可被扫描到 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.itheima.core.dao" />
+		<property name="basePackage" value="com.lyh.core.dao" />
 	</bean>
 	
 	<!-- 配置扫描@Service注解 -->
-	<context:component-scan base-package="com.itheima.core.service"/>	
+	<context:component-scan base-package="com.lyh.core.service"/>	
 </beans>
