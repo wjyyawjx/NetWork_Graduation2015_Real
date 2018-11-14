@@ -72,20 +72,22 @@ public class UserDao {
 		
 		
 		//查询用户的权限
-		public String pmission(String username) {
+		public String pmission(UserBean userbean) {
 			Connection conn = DBUtil.getConnection();
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			String qx="0";
-			String sql = "select * from user where username=?";
+			String sql = "select * from user where username=? && pwd=?";
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, username);
+				pstmt.setString(1, userbean.getUsername());
+				pstmt.setString(2, userbean.getPwd());
 				rs = pstmt.executeQuery();
 				
 				while(rs.next())
 				{
 					qx=rs.getString("permission");
+					return qx;
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -109,7 +111,6 @@ public class UserDao {
 				pstmt.setString(2, pwd);
 				pstmt.setString(3, email);
 				pstmt.setString(4, phone);
-				System.err.println("123");
 				pstmt.executeUpdate();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

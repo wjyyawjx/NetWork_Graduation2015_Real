@@ -51,7 +51,7 @@ public class Login extends HttpServlet {
 				session.setAttribute("user",username);
 				
 				//查看权限
-				String qx=sd.pmission(username);
+				String qx=sd.pmission(userbean);
 				
 				if(qx.equals("0")) 
 				{

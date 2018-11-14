@@ -1,4 +1,4 @@
-package com.qst.servlet.user;
+package com.qst.ceshi;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,19 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
-import com.qst.dao.UserDao;
-
 /**
- * Servlet implementation class Register
+ * Servlet implementation class ceshi
  */
-@WebServlet("/Register")
-public class Register extends HttpServlet {
+@WebServlet("/ceshi")
+public class ceshi extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Register() {
+    public ceshi() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,24 +28,14 @@ public class Register extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//注册
-		String username = request.getParameter("username");
-		String pwd = request.getParameter("password");
-		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
-		UserDao dao = new UserDao();
-		boolean flag = dao.query(username);
-		if(flag){
-			
-			response.sendRedirect("Register.jsp");
-		}
-		else{
-			dao.save(username,pwd,email,phone);
-			response.sendRedirect("Login.jsp");
-			
-		}
-
-	
+		//JOptionPane.showMessageDialog(null, this, "连接成功", 0, null);
+//		System.err.println("3qwe");
+//		String inputValue = JOptionPane.showInputDialog("Please input a value");
+//		JOptionPane.showMessageDialog(null, "在对话框内显示的描述性的文字", "标题条文字串", JOptionPane.ERROR_MESSAGE);	
+//		
+//	System.err.println("wqeqwe");
+//	response.sendRedirect("ceshi.jsp");
+//	System.err.println("123we");
 	}
 
 	/**
