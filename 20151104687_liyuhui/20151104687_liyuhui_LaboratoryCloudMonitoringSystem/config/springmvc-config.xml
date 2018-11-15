@@ -20,7 +20,7 @@
                location="classpath:resource.properties" />
     <!-- 配置扫描器 -->
     <context:component-scan 
-               base-package="com.itheima.core.web.controller" />
+               base-package="com.lyh.core.controller" />
     <!-- 注解驱动：配置处理器映射器和适配器 -->
     <mvc:annotation-driven />
     <!--配置静态资源的访问映射，此配置中的文件，将不被前端控制器拦截 -->
@@ -45,7 +45,7 @@
 	<mvc:interceptors>
     	<mvc:interceptor>
         	<mvc:mapping path="/**" />
-        	<bean class="com.itheima.core.interceptor.LoginInterceptor" />
+        	<bean class="com.lyh.core.interceptor.LoginInterceptor" />
     	</mvc:interceptor>
 	</mvc:interceptors>	
 </beans>

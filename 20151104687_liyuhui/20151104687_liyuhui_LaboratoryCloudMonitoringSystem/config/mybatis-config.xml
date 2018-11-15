@@ -4,6 +4,6 @@
 <configuration>
 	<!-- 别名定义 -->
 	<typeAliases>
-		<package name="com.itheima.core.po" />
+		<package name="com.lyh.core.po" />
 	</typeAliases>
 </configuration>

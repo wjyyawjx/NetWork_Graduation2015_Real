@@ -32,6 +32,7 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//用户登录
 		response.setContentType("text/html;charset=utf-8");
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
@@ -48,7 +49,28 @@ public class Login extends HttpServlet {
 				{
 				HttpSession session = request.getSession(); 
 				session.setAttribute("user",username);
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				
+				//查看权限
+				String qx=sd.pmission(userbean);
+				
+				if(qx.equals("0")) 
+				{
+					//普通用户
+					request.getRequestDispatcher("general-index.jsp").forward(request, response);
+				}
+				else if(qx.equals("1")) {
+					//记录员用户
+					request.getRequestDispatcher("recorder-index.jsp").forward(request, response);
+				}
+				else if(qx.equals("2")) {
+					//管理员用户
+					request.getRequestDispatcher("admin-index.jsp").forward(request, response);	
+				}
+				else {
+					// 受限制用户，或出错用户
+					request.getRequestDispatcher("error.jsp").forward(request, response);	
+						
+				}
 				}
 			else
 				{

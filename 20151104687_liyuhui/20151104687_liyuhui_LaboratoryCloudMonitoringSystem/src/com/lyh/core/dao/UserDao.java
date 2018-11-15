@@ -1,12 +1,11 @@
 package com.lyh.core.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.lyh.core.po.User;
 
-public class UserDao {
+public interface UserDao {
 
-	public User login(String uname, String upwd) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public User login(@Param("num") String num,@Param("pwd") String pwd);
 
 }
