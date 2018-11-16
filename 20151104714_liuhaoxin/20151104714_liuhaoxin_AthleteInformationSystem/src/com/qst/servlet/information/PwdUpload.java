@@ -1,25 +1,28 @@
-package com.qst.servlet.toapplyfor;
-
+package com.qst.servlet.information;
+//用户修改自己的密码
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.qst.dao.AdminDao;
-import com.qst.dao.GeneralDao;
+import javax.servlet.http.HttpSession;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
+import com.qst.dao.UserDao;
 
 /**
- * Servlet implementation class PermissionUpload
+ * Servlet implementation class PwdUpload
  */
-@WebServlet("/PermissionUpload3")
-public class PermissionUpload3 extends HttpServlet {
+@WebServlet("/PwdUpload")
+public class PwdUpload extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PermissionUpload3() {
+    public PwdUpload() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,16 +32,23 @@ public class PermissionUpload3 extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//修改用户的权限,用于拒绝通过用户的申请
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
-		String liyou ="已审核，\n未通过，理由如下：\n"+request.getParameter("liyou");
-		int aid =Integer.parseInt(request.getParameter("aid"));
-		GeneralDao geldao = new GeneralDao();
-		geldao.permissionupload(liyou,aid);
-		
-		response.sendRedirect("AdminToApplyForView");
-	}
+		// 获取用户名，密码
+		HttpSession session = request.getSession();
+		String username = (String) session.getAttribute("user");
+		String pwd = (String) session.getAttribute("pwd");
+		// 获取要修改的密码
+		String pwdupload = request.getParameter("password");
+		// 进行修改
+		UserDao uploaddao = new UserDao();
+		uploaddao.UploadPwd(username, pwd, pwdupload);
+		//获取我的头像图片地址
+		ImageIcon icon= new ImageIcon(request.getSession().getServletContext().getRealPath("/img/touxiang.png"));        
+		JOptionPane.showMessageDialog(null, "密码修改成功了，请重新登录","提示",JOptionPane.ERROR_MESSAGE,icon); 		
+		response.sendRedirect("LoginView");
+	
+	}	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

@@ -33,7 +33,7 @@ $(document).ready(function(){
 <td>
 <h1>添加申请</h1>
 <form action="AddToApplyFor" method="post">
-		<textarea name="reason" rows="10" cols="30">填写申请理由</textarea>
+		<textarea name="reason" rows="10" cols="30">填写申请理由,说明你的班级</textarea>
 		<input type="hidden" name="username" value=<%=name %>>
 		<br><br><br>
 		<input type="submit" value="提交">

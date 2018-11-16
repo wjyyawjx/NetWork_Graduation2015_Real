@@ -37,23 +37,20 @@ public class Login extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
-
-		UserBean userbean = new UserBean();
-		userbean.setUsername(username);
-		userbean.setPwd(pwd);
 		
 		UserDao sd = new UserDao();
-		UserBean rs = sd.login(userbean);
+		boolean rs = sd.login(username,pwd);
 		
-
-			if (rs != null) 
+		//获取我的头像图片地址
+		ImageIcon icon= new ImageIcon(request.getSession().getServletContext().getRealPath("/img/touxiang.png"));        
+		
+			if (rs) 
 				{
 				HttpSession session = request.getSession(); 
 				session.setAttribute("user",username);
-				//获取我的头像图片地址
-				ImageIcon icon= new ImageIcon(request.getSession().getServletContext().getRealPath("/img/touxiang.png"));        
+				session.setAttribute("pwd",pwd);
 				//查看权限
-				String qx=sd.pmission(userbean);
+				String qx=sd.pmission(username,pwd);
 				
 				if(qx.equals("0")) 
 				{
@@ -84,6 +81,7 @@ public class Login extends HttpServlet {
 				}
 			else
 				{
+				JOptionPane.showMessageDialog(null, "你的用户名密码有误，请重新输入","错误",JOptionPane.ERROR_MESSAGE,icon); 
 				response.sendRedirect("Login.jsp");
 				}
 		}

@@ -26,9 +26,15 @@ h1{
 	text-align:center;
     color: #0000ff;
 }
+h2{
+	/* 设置h2样式 */
+	font-size: 20px;
+	text-align:center;
+    color:fuchsia;
+}
 input[type="submit"] {
 	/* 设置按钮样式 */
-    width: 300px;
+    width: 90%;
     padding: 10px 0;
     font-size: 20px;
     text-align:center;

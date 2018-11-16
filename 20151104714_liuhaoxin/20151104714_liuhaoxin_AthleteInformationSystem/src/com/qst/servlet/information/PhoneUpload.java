@@ -1,25 +1,26 @@
-package com.qst.servlet.toapplyfor;
-
+package com.qst.servlet.information;
+//用户修改自己的联系方式
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.qst.dao.AdminDao;
-import com.qst.dao.GeneralDao;
+import javax.servlet.http.HttpSession;
+
+import com.qst.dao.UserDao;
 
 /**
- * Servlet implementation class PermissionUpload
+ * Servlet implementation class PhoneUpload
  */
-@WebServlet("/PermissionUpload3")
-public class PermissionUpload3 extends HttpServlet {
+@WebServlet("/PhoneUpload")
+public class PhoneUpload extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PermissionUpload3() {
+    public PhoneUpload() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,16 +30,24 @@ public class PermissionUpload3 extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//修改用户的权限,用于拒绝通过用户的申请
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
-		String liyou ="已审核，\n未通过，理由如下：\n"+request.getParameter("liyou");
-		int aid =Integer.parseInt(request.getParameter("aid"));
-		GeneralDao geldao = new GeneralDao();
-		geldao.permissionupload(liyou,aid);
 		
-		response.sendRedirect("AdminToApplyForView");
-	}
+		// 获取用户名，密码
+		HttpSession session = request.getSession();
+		String username = (String) session.getAttribute("user");
+		String pwd = (String) session.getAttribute("pwd");
+		//获取要修改的联系方式
+		String phone = request.getParameter("phone");
+		//进行修改
+		UserDao uploaddao = new UserDao();
+		uploaddao.UploadPhone(username,pwd,phone);
+		response.sendRedirect("InformationView");	
+				
+	
+	
+	}	
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

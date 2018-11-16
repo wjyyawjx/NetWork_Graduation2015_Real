@@ -15,7 +15,7 @@
 	<form action="Login" method="post">
 		<input type="text" name="username" placeholder="用户名" required="" >
 		<input type="password" name="pwd" placeholder="密码" required="">
-		<input type="submit" value="登录">
+				<input type="submit" value="登录">
 	</form>
 	<br>
 	<form action="RegisterView">

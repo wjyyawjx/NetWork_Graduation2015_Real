@@ -89,6 +89,7 @@ setInterval("clicke()",150);
 <body>
 
 <%
+	
 	String name = (String) session.getAttribute("user");
 
 %>
