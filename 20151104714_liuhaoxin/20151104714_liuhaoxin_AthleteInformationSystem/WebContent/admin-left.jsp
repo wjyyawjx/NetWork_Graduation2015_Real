@@ -15,5 +15,6 @@
 <br><br>
 <a  href ="AdminToApplyForView" target ="admin-right">查看申请理由</a><br />
 </div>
+
 </body>
 </html>

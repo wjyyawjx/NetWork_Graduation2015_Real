@@ -52,7 +52,6 @@ public class Login extends HttpServlet {
 				session.setAttribute("user",username);
 				//获取我的头像图片地址
 				ImageIcon icon= new ImageIcon(request.getSession().getServletContext().getRealPath("/img/touxiang.png"));        
-				System.err.println(icon);
 				//查看权限
 				String qx=sd.pmission(userbean);
 				
