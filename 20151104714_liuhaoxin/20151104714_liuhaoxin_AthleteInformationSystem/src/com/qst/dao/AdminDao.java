@@ -11,7 +11,7 @@ import com.qst.bean.UserBean;
 
 public class AdminDao {
 
-	// 查询所有用户
+	// 查询所有用户信息
 
 	public ArrayList<UserBean> userList() {
 		// TODO Auto-generated method stub

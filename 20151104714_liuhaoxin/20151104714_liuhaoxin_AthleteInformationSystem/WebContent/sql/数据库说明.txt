@@ -1,0 +1,22 @@
+表名：user   
+用途：记录用户信息
+字段：
+uid  ：uid自增
+username：记录用户名
+pwd：记录用户密码
+email：记录用户email
+phone：记录用户联系方式
+permission：记录用户权限
+
+表名：Sportsday
+用途：记录运动会创建信息
+字段：
+
+表名：toapplyfor
+用途：记录用户申请成为记录员
+字段：
+aid：id自增
+reason：记录用户申请理由
+username：记录申请者用户名
+state：记录申请的状态
+

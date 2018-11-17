@@ -38,7 +38,7 @@ public class Register extends HttpServlet {
 		UserDao dao = new UserDao();
 		boolean flag = dao.query(username);
 		if(flag){
-			
+			JOptionPane.showMessageDialog(null, "注册失败", "用户名已存在", JOptionPane.ERROR_MESSAGE); 
 			response.sendRedirect("Register.jsp");
 		}
 		else{

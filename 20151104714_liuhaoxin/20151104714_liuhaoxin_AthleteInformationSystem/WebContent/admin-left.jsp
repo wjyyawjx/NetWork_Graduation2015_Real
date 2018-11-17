@@ -11,9 +11,12 @@
 <body>
 <br>
 <div align="center">
+<a  href ="InformationView" target ="admin-right">查看自己的信息<br />
+<br><br>
 <a  href ="UserView" target ="admin-right">显示所有用户</a><br />
 <br><br>
 <a  href ="AdminToApplyForView" target ="admin-right">查看申请理由</a><br />
 </div>
+
 </body>
 </html>
