@@ -1,4 +1,4 @@
-<%--  登录页面 --%>
+<%--  联系管理员页面，用于忘记密码和权限受限时联系管理员  --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,23 +8,16 @@
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
 </head>
-
-<body><br><br>
-<h1>登录</h1>
+<body>
 <div class="container">
-	<form action="Login" method="post">
+<h1>联系管理员</h1>
+<h2>请认真填写自己的用户名密码，和情况说明，已方便管理员处理</h2>
+<form action="ContactManagement" method="post">
 		<input type="text" name="username" placeholder="用户名" required="" >
-		<input type="password" name="pwd" placeholder="密码" required="">
-				<input type="submit" value="提交">
-	</form>
-	<br>
-	<form action="RegisterView">
-		<input  type="submit"   value="没有账户，去注册一个">
-	</form>
-	<br>
-	<form action="ContactManagement.jsp">
-		<input  type="submit"   value="联系管理员">
-	</form>
-	</div>
+		<input type="text" name="phone" placeholder="联系方式" required="">
+		<input type="text" name="reason" placeholder="情况说明" required="">		
+		<input type="submit" value="登录">
+</form>
+</div>
 </body>
 </html>

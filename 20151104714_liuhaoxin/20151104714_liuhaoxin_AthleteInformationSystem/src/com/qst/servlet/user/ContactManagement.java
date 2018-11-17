@@ -6,21 +6,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import com.qst.dao.UserDao;
 
 /**
- * Servlet implementation class Register
+ * Servlet implementation class ContactManagement
  */
-@WebServlet("/Register")
-public class Register extends HttpServlet {
+@WebServlet("/ContactManagement")
+public class ContactManagement extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Register() {
+    public ContactManagement() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,26 +31,15 @@ public class Register extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//注册
+		//用于用户在忘记密码或账户受到限制时，联系管理员
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
 		String username = request.getParameter("username");
-		String pwd = request.getParameter("password");
-		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
-		UserDao dao = new UserDao();
-		boolean flag = dao.query(username);
-		if(flag){
-			JOptionPane.showMessageDialog(null, "注册失败", "用户名已存在", JOptionPane.ERROR_MESSAGE); 
-			response.sendRedirect("Register.jsp");
-		}
-		else{
-			dao.save(username,pwd,email,phone);
-			response.sendRedirect("Login.jsp");
-			
-		}
-
-	
+		String reason = request.getParameter("reason");
+		UserDao userdao = new UserDao();
+		userdao.ContactManagement(username,phone,reason);
+		
 	}
 
 	/**

@@ -51,7 +51,17 @@ input[type="submit"]:hover {
     color: #ffff00;
 
 }
+button {
+	/* 设置按钮鼠标放在按钮上的样式 */
+    width: 100px;
+    height:50px;
+    font-size: 20px;
+    text-align:center;
+    font-weight: 100;
+    background-color: #c0c0c0;
+    color: #000000;
 
+}
 a{
 	/* 设置超链接样式 */
     width: 300px;

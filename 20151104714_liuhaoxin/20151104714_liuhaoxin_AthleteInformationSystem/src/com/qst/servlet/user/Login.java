@@ -35,11 +35,12 @@ public class Login extends HttpServlet {
 		// TODO Auto-generated method stub
 		//用户登录
 		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("UTF-8");
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
 		
-		UserDao sd = new UserDao();
-		boolean rs = sd.login(username,pwd);
+		UserDao userdao = new UserDao();
+		boolean rs = userdao.login(username,pwd);
 		
 		//获取我的头像图片地址
 		ImageIcon icon= new ImageIcon(request.getSession().getServletContext().getRealPath("/img/touxiang.png"));        
@@ -50,8 +51,8 @@ public class Login extends HttpServlet {
 				session.setAttribute("user",username);
 				session.setAttribute("pwd",pwd);
 				//查看权限
-				String qx=sd.pmission(username,pwd);
-				
+				String qx=userdao.pmission(username,pwd);
+				System.err.println(qx);
 				if(qx.equals("0")) 
 				{
 					//普通用户
@@ -75,12 +76,14 @@ public class Login extends HttpServlet {
 				}
 				else {
 					// 受限制用户，或出错用户
-					request.getRequestDispatcher("error.jsp").forward(request, response);	
-						
+					JOptionPane.showMessageDialog(null, "你的账户被限制了，请联系管理员","出错了",JOptionPane.ERROR_MESSAGE,icon); 
+
+					response.sendRedirect("Login.jsp");						
 				}
 				}
 			else
 				{
+			
 				JOptionPane.showMessageDialog(null, "你的用户名密码有误，请重新输入","错误",JOptionPane.ERROR_MESSAGE,icon); 
 				response.sendRedirect("Login.jsp");
 				}
