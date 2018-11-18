@@ -52,7 +52,6 @@ public class Login extends HttpServlet {
 				session.setAttribute("pwd",pwd);
 				//查看权限
 				String qx=userdao.permission(username,pwd);
-				System.err.println(qx);
 				if(qx.equals("0")) 
 				{
 					//普通用户

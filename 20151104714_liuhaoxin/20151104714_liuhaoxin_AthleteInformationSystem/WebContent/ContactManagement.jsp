@@ -12,7 +12,7 @@
 <div class="container">
 <h1>联系管理员</h1>
 <h2>请认真填写自己的用户名密码，和情况说明，已方便管理员处理</h2>
-<form action="ContactManagement" method="post">
+<form action="ContactManagementAdd" method="post">
 		<input type="text" name="username" placeholder="用户名" required="" >
 		<input type="text" name="phone" placeholder="联系方式" required="">
 		<input type="text" name="reason" placeholder="情况说明" required="">		

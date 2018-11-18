@@ -9,7 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.qst.DBUtil.DBUtil;
+import com.qst.bean.ToapplyforBean;
 import com.qst.bean.UserBean;
+import com.qst.bean.contactmanagementBean;
 
 public class UserDao {
 
@@ -227,4 +229,33 @@ public class UserDao {
 		}
 
 	}
+	// 管理员查看管理   用户请求
+		public ArrayList<contactmanagementBean> ContactManagementView() {
+			// TODO Auto-generated method stub
+			ArrayList<contactmanagementBean> Array = new ArrayList<contactmanagementBean>();
+			Connection conn = DBUtil.getConnection();
+			String sql = "select * from contactmanagement";
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					contactmanagementBean tag = new contactmanagementBean();
+					tag.setCid(rs.getInt("cid"));
+					tag.setUsername(rs.getString("username"));
+					tag.setReason(rs.getString("reason"));
+					tag.setPhone(rs.getString("phone"));
+
+					Array.add(tag);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBUtil.closeJDBC(rs, pstmt, conn);
+			}
+			return Array;
+		}
 }

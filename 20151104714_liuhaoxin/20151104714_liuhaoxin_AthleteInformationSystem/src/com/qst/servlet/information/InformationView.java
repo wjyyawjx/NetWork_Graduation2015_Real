@@ -49,7 +49,7 @@ public class InformationView extends HttpServlet {
 		request.setAttribute("userdata", userdata);
 
 		//查看权限
-		String qx=userdao.pmission(username,pwd);
+		String qx=userdao.permission(username,pwd);
 		
 		if(qx.equals("0")) 
 		{

@@ -14,14 +14,14 @@ import com.qst.dao.UserDao;
 /**
  * Servlet implementation class ContactManagement
  */
-@WebServlet("/ContactManagement")
-public class ContactManagement extends HttpServlet {
+@WebServlet("/ContactManagementAdd")
+public class ContactManagementAdd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ContactManagement() {
+    public ContactManagementAdd() {
         super();
         // TODO Auto-generated constructor stub
     }

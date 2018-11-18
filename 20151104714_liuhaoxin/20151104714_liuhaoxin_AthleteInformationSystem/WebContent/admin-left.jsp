@@ -15,8 +15,9 @@
 <br><br>
 <a  href ="UserView" target ="admin-right">显示所有用户</a><br />
 <br><br>
-<a  href ="AdminToApplyForView" target ="admin-right">查看申请理由</a><br />
+<a  href ="AdminToApplyForView" target ="admin-right">查看申请管理员的申请</a><br />
+<br><br>
+<a  href ="ContactManagementView" target ="admin-right">查看用户的申请理由</a><br />
 </div>
-
 </body>
 </html>
