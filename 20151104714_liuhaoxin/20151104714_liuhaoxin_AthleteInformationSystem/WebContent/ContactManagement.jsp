@@ -16,7 +16,7 @@
 		<input type="text" name="username" placeholder="用户名" required="" >
 		<input type="text" name="phone" placeholder="联系方式" required="">
 		<input type="text" name="reason" placeholder="情况说明" required="">		
-		<input type="submit" value="登录">
+		<input type="submit" value="提交信息">
 </form>
 </div>
 </body>

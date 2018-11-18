@@ -67,7 +67,7 @@ public class UserDao {
 	}
 
 	// 查询用户的权限
-	public String pmission(String username, String pwd) {
+	public String permission(String username, String pwd) {
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

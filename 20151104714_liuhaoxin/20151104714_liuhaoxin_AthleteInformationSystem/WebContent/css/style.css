@@ -32,6 +32,11 @@ h2{
 	text-align:center;
     color:fuchsia;
 }
+h3{
+	/* 设置h3样式 */
+	font-size: 30px;
+    color:black;
+}
 input[type="submit"] {
 	/* 设置按钮样式 */
     width: 90%;
@@ -51,8 +56,17 @@ input[type="submit"]:hover {
     color: #ffff00;
 
 }
+select{
+	/* 设置复选框的样式 */
+    width: 120px;
+    height:50px;
+    font-size: 20px;
+    font-weight: 100;
+    background-color: #00ff80;
+    color: #ff0000;
+}
 button {
-	/* 设置按钮鼠标放在按钮上的样式 */
+	/* 设置按钮的样式 */
     width: 100px;
     height:50px;
     font-size: 20px;
