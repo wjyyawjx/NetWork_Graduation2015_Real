@@ -26,9 +26,20 @@ h1{
 	text-align:center;
     color: #0000ff;
 }
+h2{
+	/* 设置h2样式 */
+	font-size: 20px;
+	text-align:center;
+    color:fuchsia;
+}
+h3{
+	/* 设置h3样式 */
+	font-size: 30px;
+    color:black;
+}
 input[type="submit"] {
 	/* 设置按钮样式 */
-    width: 300px;
+    width: 90%;
     padding: 10px 0;
     font-size: 20px;
     text-align:center;
@@ -45,7 +56,26 @@ input[type="submit"]:hover {
     color: #ffff00;
 
 }
+select{
+	/* 设置复选框的样式 */
+    width: 120px;
+    height:50px;
+    font-size: 20px;
+    font-weight: 100;
+    background-color: #00ff80;
+    color: #ff0000;
+}
+button {
+	/* 设置按钮的样式 */
+    width: 100px;
+    height:50px;
+    font-size: 20px;
+    text-align:center;
+    font-weight: 100;
+    background-color: #c0c0c0;
+    color: #000000;
 
+}
 a{
 	/* 设置超链接样式 */
     width: 300px;

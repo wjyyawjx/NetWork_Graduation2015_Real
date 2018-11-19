@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import com.qst.bean.UserBean;
@@ -34,46 +35,55 @@ public class Login extends HttpServlet {
 		// TODO Auto-generated method stub
 		//用户登录
 		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("UTF-8");
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
-
-		UserBean userbean = new UserBean();
-		userbean.setUsername(username);
-		userbean.setPwd(pwd);
 		
-		UserDao sd = new UserDao();
-		UserBean rs = sd.login(userbean);
+		UserDao userdao = new UserDao();
+		boolean rs = userdao.login(username,pwd);
 		
-
-			if (rs != null) 
+		//获取我的头像图片地址
+		ImageIcon icon= new ImageIcon(request.getSession().getServletContext().getRealPath("/img/touxiang.png"));        
+		
+			if (rs) 
 				{
 				HttpSession session = request.getSession(); 
 				session.setAttribute("user",username);
-				
+				session.setAttribute("pwd",pwd);
 				//查看权限
-				String qx=sd.pmission(username);
-				
+				String qx=userdao.permission(username,pwd);
 				if(qx.equals("0")) 
 				{
 					//普通用户
+					
+					JOptionPane.showMessageDialog(null, "欢迎访问我设计的系统","欢迎访问",JOptionPane.ERROR_MESSAGE,icon); 
+					
 					request.getRequestDispatcher("general-index.jsp").forward(request, response);
 				}
 				else if(qx.equals("1")) {
 					//记录员用户
+					
+					JOptionPane.showMessageDialog(null, "欢迎访问我设计的系统","欢迎访问",JOptionPane.ERROR_MESSAGE,icon); 
+					
 					request.getRequestDispatcher("recorder-index.jsp").forward(request, response);
 				}
 				else if(qx.equals("2")) {
 					//管理员用户
+					JOptionPane.showMessageDialog(null, "欢迎访问我设计的系统","欢迎访问",JOptionPane.ERROR_MESSAGE,icon); 
+
 					request.getRequestDispatcher("admin-index.jsp").forward(request, response);	
 				}
 				else {
 					// 受限制用户，或出错用户
-					request.getRequestDispatcher("error.jsp").forward(request, response);	
-						
+					JOptionPane.showMessageDialog(null, "你的账户被限制了，请联系管理员","出错了",JOptionPane.ERROR_MESSAGE,icon); 
+
+					response.sendRedirect("Login.jsp");						
 				}
 				}
 			else
 				{
+			
+				JOptionPane.showMessageDialog(null, "你的用户名密码有误，请重新输入","错误",JOptionPane.ERROR_MESSAGE,icon); 
 				response.sendRedirect("Login.jsp");
 				}
 		}
