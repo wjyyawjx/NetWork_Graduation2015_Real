@@ -12,7 +12,7 @@
 <head>
 <title>Register</title>
 <!-- Custom Theme files -->
-<link href="<%=basePath%>css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="<%=basePath%>css/style1.css" rel="stylesheet" type="text/css" media="all"/>
 <!-- Custom Theme files -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
