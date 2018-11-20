@@ -20,3 +20,11 @@ reason：记录用户申请理由
 username：记录申请者用户名
 state：记录申请的状态
 
+
+表名：contactmanagement
+用途：记录用户在忘记密码和权限受限时联系管理员的信息
+字段：
+cid：id自增
+reason：记录用户的情况说明
+username：记录联系者用户名
+phone：记录联系者联系方式

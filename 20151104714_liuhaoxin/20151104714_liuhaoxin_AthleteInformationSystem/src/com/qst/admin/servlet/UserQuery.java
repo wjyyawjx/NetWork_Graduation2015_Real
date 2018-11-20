@@ -57,10 +57,8 @@ public class UserQuery extends HttpServlet {
 			userdata = (ArrayList<UserBean>)userdao.userList();
 		}
 		else if(username.equals("") && permission.equals("1")) {
-			System.err.println("1");
 			userdata = (ArrayList<UserBean>)userdao.usertypeList(permission);
 		}else if(username.equals("") && permission.equals("0")) {
-			System.err.println("2");
 			userdata = (ArrayList<UserBean>)userdao.usertypeList(permission);
 		}else if(username !="" && permission.equals("3")) {
 			userdata = (ArrayList<UserBean>)userdao.userList(username);
