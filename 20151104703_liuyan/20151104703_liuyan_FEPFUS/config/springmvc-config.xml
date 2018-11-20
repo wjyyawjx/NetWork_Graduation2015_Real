@@ -32,7 +32,7 @@
        <mvc:interceptors>
           <mvc:interceptor>
                  <mvc:mapping path="/**"/>
-                 <bean class="com.qst.interceptor.LoginInterceptor"/>
+                 <bean class="com.imnu.interceptor.LoginInterceptor"/>
           </mvc:interceptor>
        </mvc:interceptors>
 </beans>

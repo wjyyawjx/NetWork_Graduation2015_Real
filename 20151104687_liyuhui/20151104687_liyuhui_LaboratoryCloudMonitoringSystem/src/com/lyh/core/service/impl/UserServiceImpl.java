@@ -19,4 +19,19 @@ public class UserServiceImpl implements UserService{
 		User user = this.userDao.login(num, pwd);
 		return user;
 	}
+	
+	@Override
+	public void addUser(String username, String upwd, String usercode, Integer user_State) {
+		
+	}
+
+	@Override
+	public User findpwdUser(String username, String usercode){
+		
+	}
+
+	@Override
+	public void findpwd(String upwd, String usercode) {
+		
+	}
 }

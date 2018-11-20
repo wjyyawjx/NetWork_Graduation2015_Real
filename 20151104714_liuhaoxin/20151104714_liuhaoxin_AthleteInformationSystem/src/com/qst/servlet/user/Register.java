@@ -31,6 +31,8 @@ public class Register extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//注册
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("UTF-8");
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("password");
 		String email = request.getParameter("email");
