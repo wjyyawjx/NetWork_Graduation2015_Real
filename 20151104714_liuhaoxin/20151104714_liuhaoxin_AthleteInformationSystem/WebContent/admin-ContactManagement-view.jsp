@@ -11,20 +11,20 @@
 </head>
 <body><div align="center">
 
-<table border="2" cellpadding="0" cellspacing="0"  >
+	<table border="0" cellpadding="0" cellspacing="0" style="font-size: 20px" ; width="100%" height="31">
 				<thead>
 					<tr>
-						<th width="60%" >情况说明</th>
-						<th width="10%" >申请人</th>
-						<th width="10%" >联系方式</th>
+						<th align="left" valign="middle" >情况说明</th>
+						<th align="left" valign="middle" >申请人</th>
+						<th align="left" valign="middle" >联系方式</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${userdata}" var="w">
 					<tr>
-					<td>${w.reason} </td>
-					<td>${w.username} </td>
-					<td>${w.phone}</td>
+					<td align="left" valign="middle">${w.reason} </td>
+					<td align="left" valign="middle">${w.username} </td>
+					<td align="left" valign="middle">${w.phone}</td>
 					</tr>
 					</c:forEach>
 				</tbody>

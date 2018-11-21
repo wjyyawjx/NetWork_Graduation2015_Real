@@ -91,7 +91,7 @@ public class GeneralDao {
 		return Array;
 	}
 
-	// 删除申请
+	// 删除申请 在通过申请后，删除申请者的所有申请
 	public void ToApplyFordelete(String username) {
 		// TODO Auto-generated method stub
 		Connection conn = DBUtil.getConnection();
@@ -111,7 +111,30 @@ public class GeneralDao {
 			DBUtil.closeJDBC(rs, pstmt, conn);
 		}
 	}
+	
+	// 删除申请 在通过申请后，删除申请者的所有申请
+		public void ToApplyFordelete(int aid) {
+			// TODO Auto-generated method stub
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
 
+			String sql = "delete from toapplyfor where aid=?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, aid);
+				pstmt.executeUpdate();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBUtil.closeJDBC(rs, pstmt, conn);
+			}
+		}
+
+	
+	
 	// 修改用户权限，在记录员和普通用户之间切换
 	public void permissionupload(int uid, String qx) {
 		// TODO Auto-generated method stub
@@ -168,5 +191,8 @@ public class GeneralDao {
 			DBUtil.closeJDBC(null, pstmt, conn);
 		}
 	}
+	
+	
+	
 
 }
