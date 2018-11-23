@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<a  href ="InformationView" target ="recorder-right">查看自己的信息<br />
+<br><br>
 </body>
 </html>

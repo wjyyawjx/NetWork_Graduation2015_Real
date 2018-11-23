@@ -29,7 +29,7 @@ public class UserController {
 	
 	
 	@RequestMapping("/index")
-    public String toIndexPage() {
+    public String toIndexPage(HttpServletRequest request) {
         return "index";
     }
 	@RequestMapping(value="/login.action")
