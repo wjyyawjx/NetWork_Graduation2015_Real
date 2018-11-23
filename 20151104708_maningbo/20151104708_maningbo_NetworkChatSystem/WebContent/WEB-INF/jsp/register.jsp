@@ -12,7 +12,7 @@
 <head>
 <title>Register</title>
 <!-- Custom Theme files -->
-<link href="<%=basePath%>css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="<%=basePath%>css/style1.css" rel="stylesheet" type="text/css" media="all"/>
 <!-- Custom Theme files -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,18 +21,6 @@
 <!--Google Fonts-->
 <link href='http://fonts.useso.com/css?family=Roboto:500,900italic,900,400italic,100,700italic,300,700,500italic,100italic,300italic,400' rel='stylesheet' type='text/css'>
 <link href='http://fonts.useso.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-<!--Google Fonts-->
-	<script>
-		function check(){
-			var email = $("#email").val();
-			var userPass = $("#userPass").val();
-			if(email==""||userPass==""){
-				alert("账号密码为空");
-				return false;
-			}
-			return true;
-		}
-	</script>
 </head>
 <body>
 <div class="login">
@@ -42,8 +30,7 @@
 		<form action="${pageContext.request.contextPath}/register.action" method="post">
 			<input type="text" id="email" name="email" value="username"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
 			<input type="password" placeholder="Password" id="userPass" name="userPass"value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
-	    
-	    <div class="forgot">
+	    	  <div class="forgot">
 	    	<a href="#">forgot Password</a>
 	    	<input type="submit" value="submit" >
 	    </div>
