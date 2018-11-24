@@ -15,7 +15,7 @@
 <br><br>
 <a  href ="UserView" target ="admin-right">显示所有用户</a><br />
 <br><br>
-<a  href ="AdminToApplyForView" target ="admin-right">对记录员申请</a><br />
+<a  href ="AdminToApplyForView" target ="admin-right">对记录员申请管理</a><br />
 <br><br>
 <a  href ="ContactManagementView" target ="admin-right">联系管理</a><br />
 </div>

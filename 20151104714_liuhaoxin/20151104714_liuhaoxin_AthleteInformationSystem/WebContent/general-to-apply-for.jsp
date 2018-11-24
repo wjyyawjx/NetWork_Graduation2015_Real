@@ -53,6 +53,7 @@ $(document).ready(function(){
 					<tr>
 						<th >状态</th>
 						<th >申请理由</th>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -60,6 +61,7 @@ $(document).ready(function(){
 					<tr>
  					<td>${w.state}</td>
 					<td>${w.reason} </td>
+					
 					</form>
 					</tr>
 					</c:forEach>
