@@ -1,6 +1,5 @@
 package com.lyh.core.controller;
 
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -100,16 +99,16 @@ public class UserController {
     }
     
     @RequestMapping(value = "/findpwd.action", method = RequestMethod.POST)
-    public String findpwd(Model model, String username, String upwd,String randomjsp, String usercode, HttpSession session) {
+    public String findpwd(Model model, String num, String username,String randomjsp, String pwd, HttpSession session) {
         //从session中获取随机数
         String random = (String) session.getAttribute("RANDOMVALIDATECODEKEY");
         if(random.equals(randomjsp)) {
-        	User user = userService.findpwdUser(num, usercode);
+        	User user = userService.findpwdUser(num, username);
         	if(user == null) {
         		model.addAttribute("msg","用户不存在，请重新输入！");
     			return "findpwd";
     		}else {
-    			userService.findpwd(upwd,usercode);
+    			userService.findpwd(pwd,num);
     			model.addAttribute("msg","密码重置成功，请登录！");
     			return "login";
     		}
