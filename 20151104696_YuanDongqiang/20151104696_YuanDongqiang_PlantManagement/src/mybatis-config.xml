@@ -4,6 +4,6 @@
 <configuration>
 	<!-- 别名定义 -->
 	<typeAliases>
-		<package name="com.qst.core.po" />
+		<package name="cn.edu.imnu.po" />
 	</typeAliases>
 </configuration>
