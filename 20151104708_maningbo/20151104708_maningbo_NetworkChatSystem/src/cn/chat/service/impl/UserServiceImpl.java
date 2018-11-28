@@ -17,10 +17,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserDao userDao;
-	public UserBean findUserByEmail(String email,String userPass) {
-		UserBean userBean = this.userDao.findUserByEmail(email,userPass);
-		return userBean;
-	}
+
 	@Override
 	public UserBean findUserById(int id) {
 		UserBean userBean = this.userDao.findUserById(id);
@@ -35,6 +32,11 @@ public class UserServiceImpl implements UserService {
 	public boolean update(String userName, String userPass, String phoneNumber, String email,Integer id) {
 		// TODO Auto-generated method stub
 		return userDao.update(userName, userPass, phoneNumber, email,id);
+	}
+	@Override
+	public UserBean findUserByUserName(String userName, String userPass) {
+		UserBean userBean = this.userDao.findUserByUserName(userName,userPass);
+		return userBean;
 	}
 
 

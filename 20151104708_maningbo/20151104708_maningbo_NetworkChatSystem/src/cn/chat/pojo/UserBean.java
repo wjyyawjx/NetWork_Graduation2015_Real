@@ -4,8 +4,6 @@ public class UserBean {
 	private int id;
 	private String userName;
 	private String userPass;
-	private String phoneNumber;
-	private String email;
 	public int getId() {
 		return id;
 	}
@@ -24,17 +22,5 @@ public class UserBean {
 	public void setUserPass(String userPass) {
 		this.userPass = userPass;
 	}
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
+	
 }

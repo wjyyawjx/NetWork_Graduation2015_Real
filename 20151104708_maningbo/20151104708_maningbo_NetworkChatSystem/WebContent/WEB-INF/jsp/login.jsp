@@ -24,7 +24,7 @@
 <!--Google Fonts-->
 	<script>
 		function check(){
-			var email = $("#email").val();
+			var userName = $("#userName").val();
 			var userPass = $("#userPass").val();
 			if(email==""||userPass==""){
 				alert("账号密码为空");
@@ -40,11 +40,14 @@
 	<div class="login-top">
 		<h1>LOGIN FORM</h1>
 		<form  action="${pageContext.request.contextPath}/login.action" method="post" onsubmit="return check()">
-			<input type="text" id="email" name="email" value="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
+			<input type="text" id="userName" name="userName" value="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
 			<input type="password" placeholder="Password" id="userPass" name="userPass"value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
 	    
 	    <div class="forgot">
 	    	<a href="#">forgot Password</a>
+	    	<span>
+	    		<a>${msg}</a>
+	    	</span>
 	    	<input type="submit" value="submit" >
 	    </div>
 	</div>

@@ -8,7 +8,7 @@ import cn.chat.pojo.UserBean;
 
 public interface UserDao {
 	
-	public UserBean findUserByEmail(@Param("email") String email,
+	public UserBean findUserByUserName(@Param("userName") String userName,
 									@Param("userPass") String userPass);
 	public void addUser(UserBean userBean);
 	

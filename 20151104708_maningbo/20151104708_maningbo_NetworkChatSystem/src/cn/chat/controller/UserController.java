@@ -33,18 +33,21 @@ public class UserController {
         return "index";
     }
 	@RequestMapping(value="/login.action")
-	public String findUserByEmail(String email,String userPass,Model model,HttpSession session){
-		UserBean userBean = userService.findUserByEmail(email,userPass);
+	public String findUserByUserName(String userName,String userPass,Model model,HttpSession session){
+		UserBean userBean = userService.findUserByUserName(userName,userPass);
 		if(userBean!=null){
-			if(email.equals(userBean.getEmail())&&userPass.equals(userBean.getUserPass())){
+			if(userName.equals(userBean.getUserName())&&userPass.equals(userBean.getUserPass())){
 				session.setAttribute("userBean", userBean);
 				return "index";
 			}else{	
+				model.addAttribute("msg", "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯ï¼");
 			return "login";
-			}
+			}	
+		}else{
+			return "login";
+			
 		}
-		model.addAttribute("msg", "ÕËºÅ»òÃÜÂë´íÎó£¡");
-		return "login";
+		
 	}
 	
 	@RequestMapping(value="/index.action")
@@ -58,13 +61,12 @@ public class UserController {
 	@RequestMapping(value="/register.action")
 	public String addUser(UserBean userBean, BindingResult result,Model model,HttpServletRequest request){	
 		if(result.hasErrors()){
-			model.addAttribute("defeat", "×¢²áÊ§°Ü£¡");
+			model.addAttribute("defeat", "×¢ï¿½ï¿½Ê§ï¿½Ü£ï¿½");
 			return "register";
-		}else if(userBean.getEmail()==null){
+		}else if(userBean.getUserName()==null){
 			System.out.println(userBean);
 			return "register";
 		}else{
-			model.addAttribute("success", "×¢²á³É¹¦£¡");
 			userService.addUser(userBean);
 			return "login";
 		}

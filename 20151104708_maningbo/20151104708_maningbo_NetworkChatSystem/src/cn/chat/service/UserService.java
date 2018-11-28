@@ -6,7 +6,7 @@ import cn.chat.pojo.UserBean;
 
 public interface UserService {
 	
-	public UserBean findUserByEmail(String email,String userPass);
+	public UserBean findUserByUserName(String userName,String userPass);
 	public void addUser(UserBean userBean);
 	public boolean update(String userName,String userPass,String phoneNumber,String email,Integer id);
 	public UserBean findUserById(int id);

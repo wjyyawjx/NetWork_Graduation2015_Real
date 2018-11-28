@@ -45,6 +45,7 @@
 					<span class="menu-icon"><img src="images/menu-icon.png" alt=""/></span>	
 					<div class="nav1">
 						<ul class=" nav nav-sidebar">
+							<li style="color: blue;font-size: 20px; font-weight: 600">当前用户：${userBean.userName}</li>
 							<li class="active"><a href="${pageContext.request.contextPath}/index.action">首  页</a></li>
 							<li><a href="about.html">好友</a></li>
 							<li><a href="services.html">聊天室</a></li>
@@ -54,8 +55,8 @@
 						</ul> 
 						<div class="social-icons">
 							<ul>
-								<li><a href="${pageContext.request.contextPath}/login.action"></a>登陆</li>
-								<li><a href="${pageContext.request.contextPath}/register.action" class="be"></a>注册</li>
+								<li style="color: #d95459; font-size: 20px; font-weight: 600"><a href="${pageContext.request.contextPath}/login.action"></a>登陆</li>
+								<li style="color: #d95459; font-size: 20px; font-weight: 600"><a href="${pageContext.request.contextPath}/register.action" class="be"></a>注册</li>
 							</ul>	
 						</div>						
 					</div>	
@@ -68,6 +69,7 @@
 							 });
 						</script>
 						<!-- /script-for-menu -->
+				</div>
 				</div>
 			<!--//side-bar-->
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

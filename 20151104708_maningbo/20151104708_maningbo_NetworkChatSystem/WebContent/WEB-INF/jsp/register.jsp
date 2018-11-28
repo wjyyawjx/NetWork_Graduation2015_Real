@@ -40,11 +40,14 @@
 	<div class="login-top">
 		<h1>Register FORM</h1>
 		<form action="${pageContext.request.contextPath}/register.action" method="post">
-			<input type="text" id="email" name="email" value="username"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
+			<input type="text" id="userName" name="userName" value="username"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
 			<input type="password" placeholder="Password" id="userPass" name="userPass"value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
 	    
 	    <div class="forgot">
 	    	<a href="#">forgot Password</a>
+	    	<span>
+	    		<a>${msg}</a>
+	    	</span>
 	    	<input type="submit" value="submit" >
 	    </div>
 	</div>
