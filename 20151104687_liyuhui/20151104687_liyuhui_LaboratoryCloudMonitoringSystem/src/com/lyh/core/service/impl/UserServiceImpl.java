@@ -19,19 +19,24 @@ public class UserServiceImpl implements UserService{
 		User user = this.userDao.login(num, pwd);
 		return user;
 	}
+
+	@Override
+	public void addUser(String num, String pwd, String username, String usertype) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public User findpwdUser(String num, String pwd) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void findpwd(String pwd, String num) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-	@Override
-	public void addUser(String username, String upwd, String usercode, Integer user_State) {
-		
-	}
 
-	@Override
-	public User findpwdUser(String username, String usercode){
-		
-	}
-
-	@Override
-	public void findpwd(String upwd, String usercode) {
-		
-	}
 }

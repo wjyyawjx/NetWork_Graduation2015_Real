@@ -2,6 +2,7 @@ package com.qst.dao;
 
 //用于登录验证用户名密码，查询权限。注册，查询用户名是否重复
 //查询和修改自己的信息
+//用于在忘记密码和权限受限时联系管理员，以及管理员查看此类信息
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
