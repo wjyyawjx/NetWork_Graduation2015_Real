@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home</title>
+<title>Friend List</title>
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
 <!--web-font-->
@@ -72,63 +74,27 @@
 				</div>
 				</div>
 			<!--//side-bar-->
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<!--banner-->
-				<div class="banner">
-					<div class="jumbotron banner-text">
-						<h2>Lorem Ipsum</h2>
-						<p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-						<a class="btn btn-primary" href="#" role="button">Read more</a>
-					</div>
-				</div>
-				<!--//banner-->
-				<!--main-text-->
-				<div class="main-text">
-					<div class="welcome">
-						<h3>Welcome to our page</h3>
-						<div class="col-md-4 welcome-left">
-							<img src="images/img6.jpg" alt="">
+			
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">	
+					<div class="offer-grids">
+						<h3>我的好友列表</h3>
+						<c:forEach items="${list}" var="c">
+						<div class="col-md-4 offer-grids-info">
+							<img src="images/img2.jpg" alt=""/>	
+							<div class="offer-text">
+								<h5>${c.userName}</h5>
+								<br>
+							</div>
 						</div>
-						<div class="col-md-8 welcome-right">
-							<h4>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin established fact that a reader will be distracted Lorem Ipsum when looking at its layout.</h4>
-							<p>Lorem Ipsum was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions.
-								It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution is that it has a more of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose</p>
-						</div>
+						</c:forEach>
 						<div class="clearfix"> </div>
-					</div>				
-						<div class="clearfix"> </div>
-						<!-- script for tabs -->
-						<script type="text/javascript">
-							$(function() {
-							
-								var menu_ul = $('.menu > li > ul'),
-									   menu_a  = $('.menu > li > a');
-								
-								menu_ul.hide();
-							
-								menu_a.click(function(e) {
-									e.preventDefault();
-									if(!$(this).hasClass('active')) {
-										menu_a.removeClass('active');
-										menu_ul.filter(':visible').slideUp('normal');
-										$(this).addClass('active').next().stop(true,true).slideDown('normal');
-									} else {
-										$(this).removeClass('active');
-										$(this).next().stop(true,true).slideUp('normal');
-									}
-								});
-							
-							});
-						</script>
-						<!-- script for tabs -->
-					</div>
-					<!--features-->
+					</div>					
 				</div>
+				
 			</div>
 			<div class="clearfix"> </div>
 		</div>	
 	</div>	
-	
-    <script src="js/bootstrap.js"> </script>
+
 </body>
 </html>

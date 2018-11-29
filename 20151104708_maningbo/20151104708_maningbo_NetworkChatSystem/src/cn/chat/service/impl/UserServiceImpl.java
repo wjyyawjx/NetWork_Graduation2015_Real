@@ -40,6 +40,12 @@ public class UserServiceImpl implements UserService {
 		return userBean;
 	}
 
+	@Override
+	public List<UserBean> findAllUser() {
+		// TODO Auto-generated method stub
+		return userDao.findAllUser();
+	}
+
 
 	
 }

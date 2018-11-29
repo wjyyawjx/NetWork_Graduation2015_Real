@@ -21,7 +21,7 @@ public interface UserDao {
 	
 	public UserBean findUserById(int id);
 	
-	
+	public List<UserBean> findAllUser();
 
 }
 

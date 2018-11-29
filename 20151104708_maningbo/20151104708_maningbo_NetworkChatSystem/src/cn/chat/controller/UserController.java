@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import cn.chat.pojo.UserBean;
 import cn.chat.service.UserService;
@@ -38,6 +39,7 @@ public class UserController {
 		UserBean userBean = userService.findUserByUserName(userName,userPass);
 		if(userBean!=null){
 			if(userName.equals(userBean.getUserName())&&userPass.equals(userBean.getUserPass())){
+				System.out.println(userName+userPass);
 				session.setAttribute("userBean", userBean);
 				return "index";
 			}else{	
@@ -54,10 +56,6 @@ public class UserController {
 	@RequestMapping(value="/index.action")
 	public String goIndex(){
 		return "index";
-	}
-	@RequestMapping(value="/update.action")
-	public String t(){
-		return "update";
 	}
 	@RequestMapping(value="/register.action")
 	public String addUser(UserBean userBean, BindingResult result,Model model,HttpServletRequest request){	
@@ -85,9 +83,24 @@ public class UserController {
         }else{  
             return "index";  
         }  
-	
-		
-	
+	}
 
+	@RequestMapping(value="/friendlist.action")
+	public ModelAndView findAllUser(HttpSession session){
+		 ModelAndView view  = new ModelAndView();
+		 List<UserBean> list =  userService.findAllUser();
+		 if(list!=null){
+			 view.addObject("list", list);
+			 for(UserBean user : list){
+				 String userName = user.getUserName();
+				 String userPass = user.getUserPass();
+				 session.setAttribute("user", user);
+			 }
+			 view.setViewName("friendlist");
+		 }else{
+		 view.addObject("error","msg");
+	}
+		return view;
 }
 }
+
