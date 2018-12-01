@@ -17,6 +17,7 @@
 						<th align="left" valign="middle" >情况说明</th>
 						<th align="left" valign="middle" >申请人</th>
 						<th align="left" valign="middle" >联系方式</th>
+						<th align="left" valign="middle" >删除</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -25,6 +26,12 @@
 					<td align="left" valign="middle">${w.reason} </td>
 					<td align="left" valign="middle">${w.username} </td>
 					<td align="left" valign="middle">${w.phone}</td>
+					<td align="left" valign="middle">
+					<form action="ContactManagementDelete" method="post">
+					<input type="hidden" name="cid" value=${w.cid}> 
+					<input type="submit" value="删除">
+					
+					</form></td>
 					</tr>
 					</c:forEach>
 				</tbody>

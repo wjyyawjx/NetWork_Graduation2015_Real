@@ -18,6 +18,8 @@
 <a  href ="AdminToApplyForView" target ="admin-right">对记录员申请管理</a><br />
 <br><br>
 <a  href ="ContactManagementView" target ="admin-right">联系管理</a><br />
+<br><br>
+<a  href ="AdminMessageView" target ="admin-right">查看管理留言</a><br />
 </div>
 </body>
 </html>
