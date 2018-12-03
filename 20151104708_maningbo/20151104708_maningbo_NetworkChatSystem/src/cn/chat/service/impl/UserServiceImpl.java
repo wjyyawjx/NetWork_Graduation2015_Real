@@ -46,6 +46,12 @@ public class UserServiceImpl implements UserService {
 		return userDao.findAllUser();
 	}
 
+	@Override
+	public UserBean findUserByName(String userName) {
+		// TODO Auto-generated method stub
+		return userDao.findUserByName(userName);
+	}
+
 
 	
 }

@@ -51,7 +51,7 @@
 							<li class="active"><a href="${pageContext.request.contextPath}/index.action">首  页</a></li>
 							<li><a href="${pageContext.request.contextPath}/friendlist.action">好友</a></li>
 							<li><a href="services.html">聊天室</a></li>
-							<li><a href="gallery.html">个人信息</a></li>
+							<li><a href="${pageContext.request.contextPath}/personalinfo.action">个人信息</a></li>
 							<li><a href="testmonials.html">修改密码</a></li>
 							<li><a href="c${pageContext.request.contextPath}/login.action">退出登录</a></li>
 						</ul> 

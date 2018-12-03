@@ -40,9 +40,11 @@
 	<div class="login-top">
 		<h1>Register FORM</h1>
 		<form action="${pageContext.request.contextPath}/register.action" method="post">
-			<input type="text" id="userName" name="userName" value="username"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
-			<input type="password" placeholder="Password" id="userPass" name="userPass"value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
-	    
+			<input type="text" id="userName" name="userName" value="username"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'userName';}">
+	    	<input type="text" id="Gender" name="Gender" value="Gender"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Gender';}">
+	    	<input type="text" id="Phone" name="Phone" value="Phone"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}">
+	    	<input type="text" id="Email" name="Email" value="Email"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
+	    	<input type="password" placeholder="Password" id="userPass" name="userPass"value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
 	    <div class="forgot">
 	    	<a href="#">forgot Password</a>
 	    	<span>
@@ -53,7 +55,7 @@
 	</div>
 	</form>
 	<div class="login-bottom">
-		<h3>New User &nbsp;<a href="${pageContext.request.contextPath}/register.action">Login</a>&nbsp Here</h3>
+		<h3>New User &nbsp;<a href="${pageContext.request.contextPath}/login.action">Login</a>&nbsp Here</h3>
 	</div>
 </div>	
 <div class="copyright">

@@ -5,7 +5,7 @@
 		SELECT * FROM userinfo WHERE userName = #{userName} and userPass = #{userPass}
 	</select>
 	<insert id="addUser" parameterType="UserBean">
-		INSERT INTO userinfo(userName,userPass) VALUES(#{userName},#{userPass})
+		INSERT INTO userinfo(userName,Gender,Phone,Email,userPass) VALUES(#{userName},#{Gender},#{Phone},#{Email},#{userPass})
 	</insert>
 	<update id="update" parameterType="UserBean">
 		update userinfo SET userName=#{userName},userPass=#{userPass},phoneNumber=#{phoneNumber},email=#{email} WHERE id=#{id}
@@ -16,5 +16,7 @@
 	<select id="findAllUser" resultType="UserBean">
 		SELECT * FROM userinfo 
 	</select>
-
+	<select id="findUserByName" parameterType="String" resultType="UserBean">
+		SELECT * FROM userinfo WHERE userName = #{userName}	
+		</select>
 </mapper>

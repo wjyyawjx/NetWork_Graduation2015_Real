@@ -12,6 +12,6 @@ public interface UserService {
 	public boolean update(String userName,String userPass,String phoneNumber,String email,Integer id);
 	public UserBean findUserById(int id);
 	public List<UserBean> findAllUser();
-
+	public UserBean findUserByName(String userName);
 }
 
