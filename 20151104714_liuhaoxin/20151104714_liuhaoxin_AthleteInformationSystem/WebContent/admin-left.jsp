@@ -11,7 +11,7 @@
 <body>
 <br>
 <div align="center">
-<a  href ="InformationView" target ="admin-right">查看自己的信息<br />
+<a  href ="InformationView" target ="admin-right">查看自己的信息<br /></a>
 <br><br>
 <a  href ="UserView" target ="admin-right">显示所有用户</a><br />
 <br><br>
@@ -20,6 +20,9 @@
 <a  href ="ContactManagementView" target ="admin-right">联系管理</a><br />
 <br><br>
 <a  href ="AdminMessageView" target ="admin-right">查看管理留言</a><br />
+
+<br><br>
+<a  href ="admin-games.jsp" target ="admin-right">创建运动会</a><br />
 </div>
 </body>
 </html>

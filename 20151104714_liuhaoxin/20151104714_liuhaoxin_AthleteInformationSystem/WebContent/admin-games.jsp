@@ -11,9 +11,13 @@
 </head>
 <body>
 
-<form>
-
-
+<form action="GameAdd" method="post">
+ <input type="text" name=gamesname placeholder="运动会名字" required="" >
+ <input type="text" name=username placeholder="记录员" required="" >
+  <input type="date" name=date1 placeholder="开始时间" required="" >
+   <input type="date" name=date2 placeholder="结束时间" required="" >
+   
+  <input type="submit" value="创建">
 </form>
 
 

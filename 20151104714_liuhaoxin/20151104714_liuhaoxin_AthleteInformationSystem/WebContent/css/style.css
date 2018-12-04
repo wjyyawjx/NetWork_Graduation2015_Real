@@ -3,7 +3,7 @@ body{
 		/* 设置页面的背景 */
 	   background: url("../img/beijing.jpg");
 }
-input[type="text"], input[type="password"] , input[type="email"]{
+input[type="text"],[type="date"],input[type="password"] , input[type="email"]{
 	/* 设置输入框样式 */
     width: 90%;
     margin-bottom: 20px;
@@ -18,7 +18,7 @@ input[type="text"], input[type="password"] , input[type="email"]{
     margin: 0 auto;
     padding: 40px;
     background-color: rgba(0, 191, 240,0.1);
-    box-shadow: 0 -5px 10px 1px rgba(16, 16, 16, 0.57);	
+    box-shadow: 0 -5px 10px 1px rgba(16, 16, 16, 0.57);	/* 立体效果*/
 }
 h1{
 	/* 设置h1样式 */
