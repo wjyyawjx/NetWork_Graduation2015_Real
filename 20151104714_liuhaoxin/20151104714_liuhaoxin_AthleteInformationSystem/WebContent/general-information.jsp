@@ -56,12 +56,12 @@ else {
 	<br>
 	<br>
 	<table border="2" cellpadding="0" cellspacing="0"
-		style="font-size: 40px" ; width="100%" height="100%">
+		style="font-size: 40px"  width="100%" height="100%">
 		<tr>
 
 
 			<td><h2>修改密码</h2>
-					<form target="_parent" action="PwdUpload" method="post">
+					<form target="parent" action="PwdUpload" method="post">
 					<input type="password" id="pwd" Name="password"
 						onkeyup="validate()" placeholder="密码" required=""> 
 					<input  type="password" id="pwd1" Name="Password1"

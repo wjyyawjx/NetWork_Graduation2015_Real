@@ -12,7 +12,7 @@
 <body>
 
 	<table border="2" cellpadding="0" cellspacing="0"
-		style="font-size: 40px" ; width="100%" height="100%">
+		style="font-size: 40px" width="100%" height="100%">
 		<thead>
 			<tr>
 
@@ -27,11 +27,9 @@
 					<td>${w.username}</td>
 					<td>${w.message}</td>
 					<td><form action="AdminMessageDelete" method="post">
-							<input type="hidden" name="mid" value=${w.mid}> 
-							<input type="submit"
-								style="width: 150px" value="删除">
-						</form>
-					</td>
+							<input type="hidden" name="mid" value=${w.mid}\> <input
+								type="submit" style="width: 150px" value="删除">
+						</form></td>
 				</tr>
 			</c:forEach>
 		</tbody>

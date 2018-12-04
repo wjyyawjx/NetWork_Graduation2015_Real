@@ -10,8 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="0" cellpadding="0" cellspacing="0" style="font-size: 20px" ; width="100%" height="31">
-		<form action="UserQuery" method="post">
+<form action="UserQuery" method="post">
+	<table border="0" cellpadding="0" cellspacing="0" style="font-size: 20px"  width="100%" height="31">
+		
+		
 		<tr>
 		  <td width="17%" align="right" valign="middle">
 		  
@@ -31,12 +33,13 @@
 		  <option value="c">管理员</option>
 		  </select></td>
 		<td width="20%" align="center" valign="middle">
-		<input type="submit" style="width: 200px" value="搜索">	
-			 </form> </td>
+		<input type="submit" style="width: 200px" value="搜索">	 </td>
+		</tr>
+			 
     </table>
-
+</form>
 	<table border="2" cellpadding="0" cellspacing="0"
-		style="font-size: 40px" ; width="100%" height="100%">
+		style="font-size: 40px"  width="100%" height="100%">
 		<thead>
 			<tr>
 
@@ -61,20 +64,20 @@
 
 
 					<td><form action="PermissionUpload" method="post">
-							<input type="hidden" name="uid" value=${w.uid}> <input
+							<input type="hidden" name="uid" value=${w.uid}\> <input
 								type="hidden" name="qx" value="0"> <input type="submit"
 								style="width: 150px" value="修改权限为0">
 						</form></td>
 					<td>
 						<form action="PermissionUpload" method="post">
-							<input type="hidden" name="uid" value=${w.uid}> <input
+							<input type="hidden" name="uid" value=${w.uid}\> <input
 								type="hidden" name="qx" value="1"> <input type="submit"
 								style="width: 150px" value="修改权限为1">
 						</form>
 					</td>
 					<td>
 						<form action="PermissionUpload" method="post">
-							<input type="hidden" name="uid" value=${w.uid}> <input
+							<input type="hidden" name="uid" value=${w.uid}\> <input
 								type="hidden" name="qx" value="-1"> <input type="submit"
 								style="width: 150px" value="禁用此用户">
 						</form>
