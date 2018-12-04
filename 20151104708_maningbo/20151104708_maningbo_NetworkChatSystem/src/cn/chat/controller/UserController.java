@@ -36,9 +36,6 @@ public class UserController {
 			HttpServletRequest request, HttpServletResponse response) throws IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		String Gender = null;
-		String Phone = null;
-		String Email = null;
 		UserBean userBean = userService.findUserByUserName(userName, userPass);
 		if (userName == null && userPass == null) {
 			model.addAttribute("msg", "请输入账号密码:");
@@ -61,15 +58,14 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/register.action")
-	public String addUser(UserBean userBean, BindingResult result, Model model, HttpServletRequest request,HttpSession session) {
+	public String addUser(UserBean userBean, BindingResult result, Model model, HttpServletRequest request,
+			HttpSession session) {
 		UserBean user = userService.findUserByName(userBean.getUserName());
 		if (userBean.getUserName() != null) {
 			if (user == null) {
 				model.addAttribute("msg", "此用户名可以使用：");
 				userService.addUser(userBean);
-				
-				session.setAttribute("userBean", userBean);
-				return "index";
+				return "login";
 			} else {
 				model.addAttribute("msg", "已存在用户名，请重新输入");
 				return "register";
@@ -112,8 +108,47 @@ public class UserController {
 		}
 		return view;
 	}
+
 	@RequestMapping(value = "/personalinfo.action")
-	public String personalinfo() {
-		return "personalinfo";
+	public String personalinfo(HttpSession session, HttpServletRequest request, 
+			HttpServletResponse response) throws IOException {
+		UserBean user = (UserBean) session.getAttribute("userBean");
+		
+		if (user != null) {
+			//UserBean userinfo = userService.findUserById(user.getId());
+			request.setAttribute("userBean", user);
+			System.out.println("personalinfo:email=" + user.getEmail());
+			System.out.println("personalinfo:user=" + user.getUserName());
+			return "personalinfo";
+		} else {
+			String flag = "unlogin";
+			request.setAttribute("flag", flag);
+			return "index";
+		}
+	}
+	
+	@RequestMapping(value = "/logout.action")
+	public String logoutByUser(Model model, HttpSession session,
+			HttpServletRequest request, HttpServletResponse response) throws IOException {
+		UserBean user = (UserBean) session.getAttribute("userBean");
+		System.out.println("logout:start");
+		if (user != null) {	
+			if (user.getUserName() != null) {
+				System.out.println("logout:userName=" + user.getUserName());
+				session.removeAttribute("userBean");
+			}
+			else {
+				System.out.println("logout:userBean.getUserName() is null");
+			}
+			//session.removeAttribute("userBean");
+		} else {
+			System.out.println("logout:userBean is null");
+		}
+		
+		UserBean userChk = (UserBean) session.getAttribute("userBean");
+		if(userChk != null)
+			System.out.println("logout:remove failed");
+			
+		return "index";
 	}
 }

@@ -17,6 +17,6 @@
 		SELECT * FROM userinfo 
 	</select>
 	<select id="findUserByName" parameterType="String" resultType="UserBean">
-		SELECT * FROM userinfo WHERE userName = #{userName}	
+		SELECT * FROM userinfo WHERE userName = #{userName}
 		</select>
 </mapper>

@@ -51,7 +51,7 @@
 							<li><a href="${pageContext.request.contextPath}/personalinfo.action">聊天室</a></li>
 							<li><a href="${pageContext.request.contextPath}/personalinfo.action">个人信息</a></li>
 							<li><a href="testmonials.html">修改密码</a></li>
-							<li><a href="c${pageContext.request.contextPath}/login.action">退出登录</a></li>
+							<li><a href="${pageContext.request.contextPath}/logout.action">退出登录</a></li>
 						</ul> 
 						<div class="social-icons">
 							<ul>
@@ -95,13 +95,13 @@
 								<a style="font-size: 25px;float: left">${userBean.userName}</a>
 							<br>
 							<hr>
-							<a style="font-size: 25px;float: left">${userBean.userName}</a>
+							<a style="font-size: 25px;float: left">${userBean.gender}</a>
 							<br>
 							<hr>
-							<a style="font-size: 25px;float: left">${userBean.userName}</a>
+							<a style="font-size: 25px;float: left">${userBean.phone}</a>
 							<br>
 							<hr>
-							<a style="font-size: 25px;float: left">${userBean.userName}</a>
+							<a style="font-size: 25px;float: left">${userBean.email}</a>
 							<br>
 							<hr>
 						</div>

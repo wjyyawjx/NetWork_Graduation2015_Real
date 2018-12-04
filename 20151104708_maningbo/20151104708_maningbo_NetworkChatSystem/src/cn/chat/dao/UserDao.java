@@ -20,8 +20,7 @@ public interface UserDao {
 							@Param("id")Integer id);
 	
 	public UserBean findUserById(int id);
-	public UserBean findUserByName(String userName);
-	
+	public UserBean findUserByName(String userName);	
 	public List<UserBean> findAllUser();
 
 }

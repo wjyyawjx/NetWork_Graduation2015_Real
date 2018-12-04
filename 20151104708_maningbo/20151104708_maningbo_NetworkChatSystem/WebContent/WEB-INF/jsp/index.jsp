@@ -31,6 +31,15 @@
 			});
 		});
 </script>
+<script type="text/javascript">
+	var flag='<%=session.getAttribute("flag") %>';
+	if("unlogin".equals(flag)){
+		alert("1111");
+	}else{
+		alert("2222");
+	}
+
+</script>
 <!--//end-smoth-scrolling-->
 </head>
 <body>
@@ -51,7 +60,7 @@
 							<li><a href="${pageContext.request.contextPath}/personalinfo.action">聊天室</a></li>
 							<li><a href="${pageContext.request.contextPath}/personalinfo.action">个人信息</a></li>
 							<li><a href="testmonials.html">修改密码</a></li>
-							<li><a href="c${pageContext.request.contextPath}/login.action">退出登录</a></li>
+							<li><a href="${pageContext.request.contextPath}/logout.action">退出登录</a></li>
 						</ul> 
 						<div class="social-icons">
 							<ul>
