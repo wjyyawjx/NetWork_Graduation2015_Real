@@ -92,7 +92,48 @@ public class PictureCheckCode extends HttpServlet {
                 itmp=random.nextInt(26)+65;  
                 ctmp=String.valueOf((char)itmp);  
                 break;  
- 
+//            case 2:     //生成汉字  
+//                String[] rBase={"0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"};   
+//                //生成第一位区码  
+//                int r1=random.nextInt(3)+11;  
+//                String str_r1=rBase[r1];  
+//                //生成第二位区码  
+//                int r2;  
+//                if(r1==13){  
+//                    r2=random.nextInt(7);     
+//                }else{  
+//                    r2=random.nextInt(16);  
+//                }  
+//                String str_r2=rBase[r2];  
+//                //生成第一位位码  
+//                int r3=random.nextInt(6)+10;  
+//                String str_r3=rBase[r3];  
+//                //生成第二位位码  
+//                int r4;  
+//                if(r3==10){  
+//                    r4=random.nextInt(15)+1;  
+//                }else if(r3==15){  
+//                    r4=random.nextInt(15);  
+//                }else{  
+//                    r4=random.nextInt(16);  
+//                }  
+//                String str_r4=rBase[r4];  
+//                //将生成的机内码转换为汉字  
+//                byte[] bytes=new byte[2];  
+//                //将生成的区码保存到字节数组的第一个元素中  
+//                String str_12=str_r1+str_r2;  
+//                int tempLow=Integer.parseInt(str_12, 16);  
+//                bytes[0]=(byte) tempLow;  
+//                //将生成的位码保存到字节数组的第二个元素中  
+//                String str_34=str_r3+str_r4;  
+//                int tempHigh=Integer.parseInt(str_34, 16);  
+//                bytes[1]=(byte)tempHigh;
+//                /**
+//                 * 汉字显示
+//                 */
+//                //              ctmp=new String(bytes);  
+//                ctmp = new String(bytes,"gb2312");
+//                break;  
             default:  
                 itmp=random.nextInt(10)+48;  
                 ctmp=String.valueOf((char)itmp);  

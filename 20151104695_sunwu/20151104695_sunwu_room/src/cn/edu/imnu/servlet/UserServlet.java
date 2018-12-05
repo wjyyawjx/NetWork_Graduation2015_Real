@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import cn.edu.imnu.bean.UserBean;
 import cn.edu.imnu.service.UserService;
@@ -38,11 +39,15 @@ public class UserServlet extends HttpServlet {
 					response.sendRedirect("common.jsp");
 			} else {
 				System.out.println("用户名或密码错误！");
+				JOptionPane.showMessageDialog(null, "用户名或密码错误", null, JOptionPane.ERROR_MESSAGE);
 				response.sendRedirect("sign-in.jsp");
+				
 			}
 		} else {
 			System.out.println("验证码错误！");
+			JOptionPane.showMessageDialog(null, "验证码错误", null, JOptionPane.ERROR_MESSAGE);
 			response.sendRedirect("sign-in.jsp");
+			
 		}
 	
 	}

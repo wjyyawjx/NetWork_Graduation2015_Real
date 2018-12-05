@@ -42,6 +42,12 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+
+<script>
+function change() {
+	document.getElementById("Image").src="PictureCheckCode?"+Math.random();
+}
+</script>
   </head>
  <body class=""> 
   <!--<![endif]-->
@@ -65,14 +71,14 @@
         <div class="block">
             <p class="block-heading">Sign In</p>
             <div class="block-body">
-                <form  action=UserServlet method="post">
+                <form  action="UserServlet" method="post">
                     <label>用户名</label>
                     <input type="text" class="span12" name="username">
                     <label>密码</label>
                     <input type="password" class="span12" name="password">
                     
                  <input type="text" name="validateCode" id=validateCode />
-				<img src="PictureCheckCode" id="Image" onclick="change()" name="Image">
+				 <img src="PictureCheckCode" id="Image" onclick="change()" name="Image">
 				
 					 <button type="submit" class="btn btn-primary pull-right" >登录</button>                
                     <label class="remember-me"><input type="checkbox"> Remember me</label>
