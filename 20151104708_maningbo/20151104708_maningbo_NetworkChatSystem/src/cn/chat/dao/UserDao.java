@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import cn.chat.pojo.Friend;
 import cn.chat.pojo.UserBean;
 
 public interface UserDao {
@@ -22,6 +23,8 @@ public interface UserDao {
 	public UserBean findUserById(int id);
 	public UserBean findUserByName(String userName);	
 	public List<UserBean> findAllUser();
-
+	public List<Friend> myFriend(@Param("userName") String userName);
+	
+	
 }
 
