@@ -19,6 +19,65 @@
 
     <!-- Demo page code -->
 
+<script>
+function check() { //验证用户名字段是否为空
+    username= document.form1.username.value;
+     if (username==""){
+        alert("请输入用户名");
+      document.form1.username.focus();
+      return false;
+   }
+    //验证密码字段是否为空
+    password = document.form1.password.value;
+    if (password == "") {
+       alert("请输入登陆密码");
+       document.form1.password.focus();
+       return false;
+       }
+   }
+</script>
+
+
+<script type="text/javascript">
+	function check(temp){
+		var re = /^1\d{10}$/
+		if(!re.test(temp.value)){
+			alert("手机号码格式不正确，请重新输入!");
+			return;
+		}
+	}
+
+function disable()
+  {
+  document.getElementById("accept").disabled=true
+  alert("请先同意网站协议");
+  }
+function enable()
+  {
+  document.getElementById("accept").disabled=false
+  
+  }
+if(test!=null&&!test.equlas("")){
+}
+</script>
+
+<script type="text/javascript">  
+                function reg(form){  
+                    if(form.username.value == ""){  
+                        alert("用户不能为空！");  
+                        return false;  
+                    }  
+                    if(form.password.value == ""){  
+                        alert("密码不能为空！");  
+                        return false;  
+                    }  
+                    if(form.email.value == ""){  
+                        alert("电子邮箱不能为空！");  
+                        return false;  
+                    }  
+                }  
+            </script>  
+
     <style type="text/css">
         #line-chart {
             height:300px;
@@ -58,33 +117,30 @@
         </div>
     </div>
     
-
-
-    
-
-    
         <div class="row-fluid">
     <div class="dialog">
         <div class="block">
             <p class="block-heading">用户注册</p>
             <div class="block-body">
-                <form>
+                <form action="RegisterServlet" method="post" onsubmit="return reg(this);">
                     <label>用户名</label>
                     <input type="text" class="span12" name="username">
+                     <label>手机号</label>
+                     <input type="text" name="telephone" class="span12"  onblur="check(this)" >
                      <label>邮箱</label>
-                    <input type="email" class="span12" name="email">
+                    <input type="email" class="span12" name="email"> 
                     <label>密码</label>
                     <input type="password" class="span12"  name="password">
-                    <label>再次输入密码</label>
-                    <input type="password" class="span12" name="password1">
-                    <button type="submit" class="btn btn-primary pull-right" >注册</button>
-                     <label class="remember-me"><input type="checkbox"> I agree with the <a href="terms-and-conditions.html">Terms and Conditions</a></label>
+            
+                    <button type="submit"  id="accept"  disabled="true" class="btn btn-primary pull-right" >注册</button>
+                   <input type="checkBox" onclick="if (this.checked) {enable()} else {disable()}">I agree with the<a href="terms-and-conditions.html">Terms and Conditions</a></label>
+                  
                     <div class="clearfix"></div>
                 </form>
             </div>
         </div>
-        <p class="pull-right" style=""><a href="sign-in.jsp" >用户登录</a></p>
-        <p><a href="reset-password.html">Forgot your password?</a></p>
+        <p><a href="sign-in.jsp" >用户登录</a></p>
+    
     </div>
 </div>
 

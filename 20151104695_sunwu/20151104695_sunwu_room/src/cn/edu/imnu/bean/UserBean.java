@@ -1,10 +1,16 @@
 package cn.edu.imnu.bean;
 
 public class UserBean {
-	private String username,password,type,email;
+	private String username,password,type,email,number;
 	private int u_id;
 	public String getUsername() {
 		return username;
+	}
+	public String getNumber() {
+		return number;
+	}
+	public void setNumber(String number) {
+		this.number = number;
 	}
 	public void setUsername(String username) {
 		this.username = username;

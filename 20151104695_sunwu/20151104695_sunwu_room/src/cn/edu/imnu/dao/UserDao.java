@@ -43,4 +43,50 @@ public class UserDao {
 
 		return userbrean;
 	}
+
+	public boolean isExitEmail(String username) {
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from user where username=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, username);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.CloseDB(conn, pstmt, rs);
+		}
+		return false;
+	}
+
+	public void save(String username, String telephone, String email, String password) {
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+
+		String sql = "insert into user (username,number,email,password,type)" + "values(?,?,?,?,?)";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, username);
+			pstmt.setString(2, telephone);
+			pstmt.setString(3, email);
+			pstmt.setString(4, password);
+			pstmt.setString(5, "普通用户");
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.CloseDB(null, pstmt, null);
+
+		}
+		
+	}
 }

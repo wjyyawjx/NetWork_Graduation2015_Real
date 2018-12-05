@@ -69,14 +69,14 @@ function change() {
         <div class="row-fluid">
     <div class="dialog">
         <div class="block">
-            <p class="block-heading">Sign In</p>
+            <p class="block-heading">用户登录</p>
             <div class="block-body">
                 <form  action="UserServlet" method="post">
                     <label>用户名</label>
                     <input type="text" class="span12" name="username">
                     <label>密码</label>
                     <input type="password" class="span12" name="password">
-                    
+                    <label>验证码</label>
                  <input type="text" name="validateCode" id=validateCode />
 				 <img src="PictureCheckCode" id="Image" onclick="change()" name="Image">
 				
