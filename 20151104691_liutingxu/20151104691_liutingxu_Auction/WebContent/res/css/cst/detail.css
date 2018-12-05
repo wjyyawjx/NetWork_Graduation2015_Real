@@ -1,0 +1,386 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+#bodys{
+	width:1366px;
+	margin: 0 auto;
+}
+#body-header{
+	width:100%;
+	height:135px;
+	background: yellow;
+}
+#comIdli{
+	font-size: 10px;
+}
+#body-center{
+	width:80%;
+	margin: 0 auto;
+	margin-top: 20px;
+	border-top:2px solid black;
+}
+#body-center-header{
+	width:100%;
+	height:50px;
+	border:1px solid #f0f0f0;
+}
+#body-center-header-ul li{
+	list-style: none;
+	height:50px;
+	border:1px solid #f0f0f0;
+	float: left;
+	text-align: center;
+	font-size: 12px;
+	line-height: 23px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.fontColor{
+	color:gray;
+}
+#image-one{
+	width:30px;
+	height:30px;
+	margin-top: 10px;
+	border-radius:50px 50px 50px 50px;
+}
+#body-center-header-jb{
+	font-size: 13px;
+	text-decoration: none;
+	color:gray;
+	float: right;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+#body-center-body{
+	width:100%;
+	margin-top: 10px;
+}
+#body-center-body-left{
+	width:52%;
+	display:inline-block;
+}
+#body-center-body-left-image{
+	width:100%;
+	height:450px;
+}
+#body-center-body-left-ul{
+	width:430px;
+	height:50px;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+#body-center-body-left-ul li{
+	width:60px;
+	height:50px;
+	list-style: none;
+	float: left;
+	text-align: center;
+	line-height: 50px;
+}
+.body-center-body-left-ul-image{
+	width:50px;
+	height:50px;
+	border:1px solid white;
+}
+#body-center-body-right{
+	width:46%;
+	float: right;
+}
+#body-center-body-right-header{
+	width:100%;
+	height:100px;
+	border:1px solid #f0f0f0;
+}
+#body-center-body-right-header-ul li{
+	width:100%;
+	height:30px;
+	list-style: none;
+	line-height: 38px;
+}
+#body-center-body-right-header-ul-title{
+	font-size: 20px;
+	font-weight: bold;
+}
+#body-center-body-right-header-ul-money{
+	color:red;
+	font-size: 20px;
+	font-weight: bold;
+}
+#body-center-body-right-center{
+	width:100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#body-center-body-right-center-ul li{
+	width:100%;
+	height:25px;
+	font-size: 14px;
+	line-height: 25px;
+	list-style: none;
+	color:gray;
+}
+#shopp{
+	width:130px;
+	height:35px;
+	background: #1091de;
+	border:0px;
+	margin-left: 30px;
+	color:white;
+}
+#body-center-body-right-center-date{
+	width:100%;
+	height:55px;
+	background: #f0f0f0;
+	font-size: 13px;
+	color:gray;
+	padding-left: 5px;
+	padding-top: 5px;
+}
+
+.testBtn-a{display: inline-block;height:30px;line-height:30px;padding:0 10px; border:0; border-radius:5px;color:#fff;background:rgb(65,133,244);cursor: pointer;}
+.testBtn-a.on{background:#c9c9c9;color:#666;cursor: default;}
+.date-tiem-span,.date-s-span{display: inline-block;font-size:18px; width:36px; height:30px;line-height:30px; text-align: center; color:#fff; border-radius:5px;}
+.date-tiem-span{ background:#333;}
+.date-s-span{ background:#f00;}
+
+.auction{
+	width:150px;
+	height:40px;
+	background: #1091de;
+	border:0px;
+	color:white;
+	margin: 10px;
+}
+#body-center-body-right-center-ul2 li{
+	width:50%;
+	height:30px;
+	list-style: none;
+	float: left;
+	text-align: left;
+	font-size: 14px;
+	color:gray;
+	line-height: 30px;
+}
+#body-center-body-right-footers{
+	width:100%;
+	margin-top: 95px;
+}
+#body-center-body-right-table{
+	width:100%;
+}
+#body-center-body-right-table tr td{
+	width:30%;
+	height:30px;
+	background: #f0f0f0;
+	text-align: center;
+	line-height: 30px;
+	font-size: 12px;
+	color:gray;	
+}
+#body-center-body-right-footer{
+	width:100%;
+	margin-top: 20px;
+	border:1px solid #f0f0f0;
+}
+#body-center-body-right-footer-header{
+	width:100%;
+	height:40px;
+	background: #f0f0f0;
+	border-bottom:2px solid gray;
+}
+#body-center-body-right-footer-header-ul{
+	width:800px;
+	margin: 0 auto;
+}
+#body-center-body-right-footer-header-ul li{
+	width:200px;
+	height:40px;
+	list-style: none;
+	float: left;
+	text-align: center;
+	line-height: 40px;
+}
+#body-center-body-right-footer-header1,#body-center-body-right-footer-header2,#body-center-body-right-footer-header3,#body-center-body-right-footer-header4{
+	width:100%;
+	display: none;
+}
+#body-center-body-right-footer-header1-p{
+	font-size: 13px;
+	color:gray;
+	margin-top: 15px;
+}
+
+#body-center-body-right-footer-header2-table{
+	width:100%;
+	margin-top: 20px;
+}
+#body-center-body-right-footer-header2-table tr td{
+	height:30px;
+	font-size: 13px;
+	text-align: center;
+	line-height: 30px;
+}
+.table-header{
+	height:30px;
+	border:1px solid #f0f0f0;	
+	font-size: 16px;
+	text-align: center;
+	line-height: 30px;
+}
+#body-center-body-right-footer-header3-table{
+	width:100%;
+	margin-top: 20px;
+}
+#body-center-body-right-footer-header3-table tr td{
+	height:30px;
+	font-size: 13px;
+	text-align: center;
+	line-height: 30px;
+	border:1px solid #f0f0f0;
+}
+
+#content{
+	font-size: 14px;
+	margin-top: 20px;
+	font-weight: bold;
+	font-size: 20px;
+}
+#contentUl{
+	width:100%;
+	margin-top: 10px;
+}
+#contentUl li{
+	width:150px;
+	height:30px;
+	float: left;
+	list-style: none;
+	border:1px solid #f0f0f0;
+	line-height: 30px;
+	text-align: left;
+	padding-left: 10px;
+}
+#content-content{
+	width:98%;
+	border:1px solid  #f0f0f0;
+	margin-top: 50px;
+	padding:10px;
+	font-size: 13px;
+	color:gray;
+	padding-bottom:13px;
+	padding-top:13px;
+}
+#content-content-ul{
+	width:85%;
+	margin: 0 auto;
+}
+#content-content-ul li{
+	width:100%;
+	list-style: none;
+}
+#body-footer{
+	width:100%;
+	height:350px;
+	margin-top: 10px;
+}
+#backBody{
+	width:100%;
+	height:750px;
+	background: black;
+	opacity:0.5;
+	position: fixed;
+	top:0px;
+	display: none;
+}
+#addAuction{
+	width:500px;
+	background: #f0f0f0;
+	position: fixed;
+	top:180px;
+	left:500px;
+	display: none;
+}
+#addAuctionHeader{
+	width:100%;
+	height:45px;
+	text-align: center;
+	line-height: 45px;
+	font-weight: bold;
+	background: #d8d8d8;
+}
+#addAuctionDiv{
+	width:80%;
+	margin: 0 auto;
+	padding-bottom: 20px;
+	
+}
+#addAuctionOne{
+	width:100%;
+	height:40px;
+	border-bottom: 1px dashed  #b6b6b6;
+}
+#addAuctionOneP{
+	font-size: 13px;
+	color:#ea4d00;
+	line-height: 40px;
+}
+#addAuctionTwo{
+	width:100%;
+	padding-bottom: 10px;
+}
+#addAuctionTwoP{
+	font-size: 13px;
+}
+#addAuctionTwoP2{
+	margin-top:10px;
+	font-size: 13px;
+}
+#addAuctionInput{
+	width:70%;
+	height:33px;
+	margin: 0 auto
+}
+#addAuctionMoney{
+	width:100%;
+	height:33px;
+	text-align: center;
+}
+#bzMoney{
+	color:red;
+}
+#addAuctionThree{
+	width:100%;
+	height:90px;
+	background: #d3d3d3;
+	border-radius: 5px 5px 5px 5px;
+	line-height:43px;
+}
+#addAuctionThree ul li{
+	width:100%;
+	height:20px;
+	list-style: none;
+	font-size: 12px;
+	margin-left:5px;
+}
+#auctionInput{
+	width:100%;
+	height:40px;
+	background: #1091de;
+	border:none;
+	border-radius: 2px;
+	color:white;
+}
+#addAuctionFour{
+	width:200px;
+	margin:  0 auto;
+	margin-top: 20px;
+	text-align: center;
+}
+#addAuctionFourP{
+	font-size: 15px;
+}
+#fourMoney{
+	color:red;
+	font-size: 18px;
+}

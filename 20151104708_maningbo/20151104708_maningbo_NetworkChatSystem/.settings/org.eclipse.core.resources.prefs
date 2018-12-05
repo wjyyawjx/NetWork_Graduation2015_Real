@@ -1,8 +1,7 @@
-<<<<<<< HEAD
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=refs/remotes/origin/master
 eclipse.preferences.version=1
-encoding//WebContent/WEB-INF/jsp/login.jsp=UTF-8
-=======
-eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/jsp/frame.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/index.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/login.jsp=UTF-8
->>>>>>> refs/remotes/origin/master

@@ -17,6 +17,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import cn.chat.pojo.Friend;
 import cn.chat.pojo.UserBean;
 import cn.chat.service.UserService;
 
@@ -92,63 +94,84 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/friendlist.action")
-	public ModelAndView findAllUser(HttpSession session) {
+	public ModelAndView findAllUser(HttpSession session, String userName, Model model) {
 		ModelAndView view = new ModelAndView();
-		List<UserBean> list = userService.findAllUser();
-		if (list != null) {
-			view.addObject("list", list);
-			for (UserBean user : list) {
-				String userName = user.getUserName();
-				String userPass = user.getUserPass();
-				session.setAttribute("user", user);
+		UserBean user = (UserBean) session.getAttribute("userBean");
+		if (user != null) {
+			userName = user.getUserName();
+			System.out.println(userName);
+			List<Friend> friend = userService.myFriend(userName);
+			System.out.println(userName);
+			if (friend != null) {
+				view.addObject("friend", friend);
+				for (Friend myfriend : friend) {
+					String username = myfriend.getFriend_2();
+					session.setAttribute("friend", friend);
+				}
+				view.setViewName("friendlist");
+			} else {
+				view.addObject("error", "msg");
 			}
-			view.setViewName("friendlist");
 		} else {
-			view.addObject("error", "msg");
+			view.setViewName("login");
+			model.addAttribute("msg", "请先登录！");
+			System.out.println("请先登录！");
+			return view;
 		}
 		return view;
 	}
 
 	@RequestMapping(value = "/personalinfo.action")
-	public String personalinfo(HttpSession session, HttpServletRequest request, 
-			HttpServletResponse response) throws IOException {
+	public String personalinfo(HttpSession session, HttpServletRequest request, HttpServletResponse response,
+			Model model) throws IOException {
 		UserBean user = (UserBean) session.getAttribute("userBean");
-		
 		if (user != null) {
-			//UserBean userinfo = userService.findUserById(user.getId());
+			// UserBean userinfo = userService.findUserById(user.getId());
 			request.setAttribute("userBean", user);
 			System.out.println("personalinfo:email=" + user.getEmail());
 			System.out.println("personalinfo:user=" + user.getUserName());
 			return "personalinfo";
 		} else {
-			String flag = "unlogin";
-			request.setAttribute("flag", flag);
-			return "index";
+			// String flag = "unlogin";
+			// request.setAttribute("flag", flag);
+			model.addAttribute("msg", "请先登录！");
+			return "login";
 		}
 	}
-	
+
 	@RequestMapping(value = "/logout.action")
-	public String logoutByUser(Model model, HttpSession session,
-			HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String logoutByUser(Model model, HttpSession session, HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
 		UserBean user = (UserBean) session.getAttribute("userBean");
 		System.out.println("logout:start");
-		if (user != null) {	
+		if (user != null) {
 			if (user.getUserName() != null) {
 				System.out.println("logout:userName=" + user.getUserName());
 				session.removeAttribute("userBean");
-			}
-			else {
+			} else {
 				System.out.println("logout:userBean.getUserName() is null");
 			}
-			//session.removeAttribute("userBean");
+			// session.removeAttribute("userBean");
 		} else {
 			System.out.println("logout:userBean is null");
 		}
-		
+
 		UserBean userChk = (UserBean) session.getAttribute("userBean");
-		if(userChk != null)
+		if (userChk != null)
 			System.out.println("logout:remove failed");
-			
 		return "index";
+	}
+	@RequestMapping(value = "/addfriend.action")
+	public String addfriend() {
+		return "addfriend";
+	}
+	@RequestMapping(value = "/goframe.action")
+	public String goframe() {
+		return "frame";
+	}
+
+	@RequestMapping(value = "/golist.action")
+	public String golist() {
+		return "list";
 	}
 }

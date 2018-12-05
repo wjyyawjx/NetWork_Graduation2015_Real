@@ -19,4 +19,7 @@
 	<select id="findUserByName" parameterType="String" resultType="UserBean">
 		SELECT * FROM userinfo WHERE userName = #{userName}
 		</select>
+	<select id="myFriend" parameterType="String" resultType="Friend">
+		SELECT friend_2 FROM friend WHERE friend_1= #{userName}
+	</select>
 </mapper>

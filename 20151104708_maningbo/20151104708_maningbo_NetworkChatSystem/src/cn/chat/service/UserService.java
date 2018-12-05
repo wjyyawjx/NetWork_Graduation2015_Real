@@ -3,6 +3,7 @@ package cn.chat.service;
 
 import java.util.List;
 
+import cn.chat.pojo.Friend;
 import cn.chat.pojo.UserBean;
 
 public interface UserService {
@@ -13,5 +14,6 @@ public interface UserService {
 	public UserBean findUserById(int id);
 	public List<UserBean> findAllUser();
 	public UserBean findUserByName(String userName);
+	public List<Friend> myFriend(String userName);
 }
 

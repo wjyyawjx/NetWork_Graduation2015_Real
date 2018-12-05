@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.chat.dao.UserDao;
+import cn.chat.pojo.Friend;
 import cn.chat.pojo.UserBean;
 import cn.chat.service.UserService;
 
@@ -50,6 +51,12 @@ public class UserServiceImpl implements UserService {
 	public UserBean findUserByName(String userName) {
 		// TODO Auto-generated method stub
 		return userDao.findUserByName(userName);
+	}
+
+	@Override
+	public List<Friend> myFriend(String userName) {
+		// TODO Auto-generated method stub
+		return userDao.myFriend(userName);
 	}
 
 
