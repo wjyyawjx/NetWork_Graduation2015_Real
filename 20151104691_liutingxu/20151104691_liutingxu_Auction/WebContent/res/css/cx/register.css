@@ -1,0 +1,162 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+#big{
+	width:99.8%;
+	height:600px;
+	background:#f0f0f0;
+}
+#top{
+	width:80%;
+	height:100px;
+	margin-left:180px;
+}
+#logImg{
+	float:left;
+	margin-top:30px;
+}
+#frist1{
+	margin-left:250px;
+}
+.div_img{
+	float:left;
+	width:200px;
+	height:50px;
+	margin-top:30px;
+}
+.div_img img,.div_img p{
+	float:left;
+}
+.div_img p{
+	margin-top:12px;
+	color:#7A7A7A;
+	font-weight: bold;
+	font-size:13px;
+	margin-left:5px;
+}
+#loginDiv{
+	width:80%;
+	height:480px;
+	border:1px solid #dddddd;
+	margin:0 auto;
+	background:white;
+}
+#left{
+	width:600px;
+	height:400px;
+	float:left;
+}
+
+#right{
+	width:470px;
+	height:400px;
+	float:right;
+}
+#title{
+	margin-left:10px;
+	height: 42px;
+    line-height: 42px;
+    width: 450px;
+	padding-left:50px;
+    font-size: 19px;
+    font-weight: bold;
+	border-bottom:1px solid #ccc;
+	margin-bottom:20px;
+}
+table{
+	margin-left:70px;
+}
+tr{
+	height:50px;
+}
+.td{
+	width:100px;
+	height:30px;
+	font-weight:bold;
+}
+.td2{
+	width:400px;
+}
+.td2 input{
+	width:300px;
+	height:30px;
+	border-radius: 4px;
+	border:1px solid #aaa;
+	text-indent:10px;
+}
+span{
+	color:red;
+	
+}
+#xieyi{
+	font-size:13px;
+	margin-left:100px;
+}
+#sub{
+	margin-left:100px;
+	margin-top:20px;
+}
+#sub input{
+	width:100px;
+	height:30px;
+	color:white;
+	border-radius:3px;
+	background:#EE4900;
+	border:none;
+}
+#sub input:hover{
+	background-color:#ccc;
+	color:black;
+	cursor:pointer;
+}
+#loginbtn{
+	width:100px;
+	margin-top:50px;
+}
+#loginbtn p{
+	font-size:13px;
+}
+a{
+	text-decoration:none;
+	color:black;
+}
+#loginbtn input{
+	width:85px;
+	height:30px;
+	color:white;
+	border-radius:3px;
+	background:#EE4900;
+	border:none;
+}
+#loginbtn input:hover{
+	background-color:#ccc;
+	color:black;
+	cursor:pointer;
+}
+#msgDiv{
+	width:400px;
+	height:200px;
+	margin-top:70px;
+}
+#right_titpe{
+	font-size: 19px;
+    font-weight: bold;
+}
+.p{
+	font-size:14px;
+	font-weight:bold;
+	margin-top:10px;
+}
+.p a{
+	color:#337ab7;
+	text-decoration:none;
+}
+.p a:hover{
+	color:#A4D3EE;
+}
+#nameMsg,#pwdMsg,#pwdbMsg,#phoneMsg{
+	width:500px;
+	font-size: 11px;
+	color:red;
+}
