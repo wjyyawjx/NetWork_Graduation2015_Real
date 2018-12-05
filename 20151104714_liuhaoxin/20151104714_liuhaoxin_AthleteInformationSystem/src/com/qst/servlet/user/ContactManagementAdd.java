@@ -39,7 +39,7 @@ public class ContactManagementAdd extends HttpServlet {
 		String reason = request.getParameter("reason");
 		UserDao userdao = new UserDao();
 		userdao.ContactManagement(username,phone,reason);
-		
+		response.sendRedirect("Login.jsp");	
 	}
 
 	/**

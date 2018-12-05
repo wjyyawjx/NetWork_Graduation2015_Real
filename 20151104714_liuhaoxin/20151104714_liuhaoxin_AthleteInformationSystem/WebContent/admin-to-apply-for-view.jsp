@@ -41,7 +41,8 @@
 					
 					<form action="ToApplyForDelete" method="post">
 					<td><input type="hidden" name="aid" value=${w.aid}>
-					<input type="submit" style="width: 150px" value="删除此条申请"></form></td>
+					<input type="submit" style="width: 150px" value="删除此条申请"></form>
+					</td>
 					
 					</tr>
 					</c:forEach>

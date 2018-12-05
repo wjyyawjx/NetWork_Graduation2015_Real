@@ -61,7 +61,6 @@ $(document).ready(function(){
 					<tr>
  					<td>${w.state}</td>
 					<td>${w.reason} </td>
-					
 					</form>
 					</tr>
 					</c:forEach>

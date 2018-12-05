@@ -1,0 +1,181 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+#issFrom{
+	height:400px;
+}
+#issue{
+	width:95%;
+	margin-left:25px;
+	border:1px solid #ddd;
+	padding-bottom: 20px;
+	background: #f5f5f5;
+}
+#issue_title{
+	width:100%;
+	height:40px;
+	border-bottom:1px solid #ddd;
+	background:#f5f5f5;
+}
+#issue_title p{
+	float:left;
+	line-height:40px;
+	font-size:16px;
+	font-weight:bold;
+	margin-left:10px;
+}
+table{
+	margin-left:210px;
+}
+h3{
+	font-size: 24px;
+    line-height: 80px;
+	margin-left:300px;
+    font-family: "Microsoft yahei";
+}
+tr{
+	height:40px;
+	font-size:13px;
+}
+tr input{
+	width:250px;
+	height:25px;
+	border-radius: 4px;
+	border:1px solid #ccc;
+	text-indent:5px;
+}
+#td1{
+	width:80px;
+}
+#imgfile{
+	border:none;
+}
+#btns{
+	width:150px;
+	height:37px;
+	background:#a00438;
+	color:white;
+	font-weight: 700;
+	border:none;
+	border-radius: 4px;
+	margin-top:20px;
+	margin-left:270px;
+}
+#btns:hover{
+	cursor:pointer;
+}
+#addImageDiv{
+	width:500px;
+	background: #e3e3e3;
+	border-radius:3px 3px 3px 3px;
+	position: fixed;
+	top:100px;
+	left:200px;
+	padding-bottom: 50px;
+}
+#divHeader{
+	width:100%;
+	height:40px;
+	background: gray;
+	text-align: center;
+	line-height: 40px;
+	color:white;
+}
+#detailButton{
+	width:140px;
+	height:25px;
+	background: #bd0000;
+	color:white;
+	border:none;
+	margin-left: 170px;
+}
+
+
+
+*{
+				margin: 0;
+				padding: 0;
+			}
+			#upBox{
+				text-align: center;
+				width:500px;
+				padding: 20px;
+				border: 1px solid #666;
+				margin: auto;
+				margin-top: 150px;
+				margin-bottom: 200px;
+				position: relative;
+				border-radius: 10px;
+			}
+			#inputBox{
+				width: 100%;
+				height: 40px;
+				border: 1px solid cornflowerblue;
+				color: cornflowerblue;
+				border-radius: 20px;
+				position: relative;
+				text-align: center;
+				line-height: 40px;
+				overflow: hidden;
+				font-size: 16px;
+			}
+			#inputBox input{
+				width: 114%;
+				height: 40px;
+				opacity: 0;
+				cursor: pointer;
+				position: absolute;
+				top: 0;
+				left: -14%;
+				
+			}
+			#imgBox{
+				text-align: left;
+			}
+			.imgContainer{
+				display: inline-block;
+				width: 12%;
+				height: 20px;
+				margin-left: 1%;
+				border: 1px solid #666666;
+				position: relative;
+				margin-top: 30px;
+				box-sizing: border-box;
+			}
+			.imgContainer img{
+				width: 100%;
+				cursor: pointer;
+			}
+			.imgContainer p{
+				position: absolute;
+				bottom: -1px;
+				left: 0;
+				width: 100%;
+				height: 30px;
+				background: black;
+				text-align: center;
+				line-height: 30px;
+				color: white;
+				font-size: 16px;
+				font-weight: bold;
+				cursor: pointer;
+				display: none;
+			}
+			.imgContainer:hover p{
+				display: block;
+			}
+			#btn{
+				display: inline-block;
+				text-align: center;
+				line-height: 30px;
+				outline: none;
+				width: 100px;
+				height: 30px;
+				background: cornflowerblue;
+				border: 1px solid cornflowerblue;
+				color: white;
+				cursor: pointer;
+				margin-top: 30px;
+				border-radius: 5px;
+			}

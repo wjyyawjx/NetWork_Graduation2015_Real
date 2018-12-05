@@ -96,7 +96,7 @@
 		</tr>
 	</table>
 
-	<table align="center" width="100%" border="0">
+	<table align="center" width="100%"  border="0">
 		<tr>
 			<td width="25%"></td>
 			<td width="61%" rowspan="2"><span id="tishi"

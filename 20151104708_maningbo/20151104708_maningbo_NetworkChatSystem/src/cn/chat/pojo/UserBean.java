@@ -1,11 +1,20 @@
+
 package cn.chat.pojo;
 
 public class UserBean {
 	private int id;
 	private String userName;
 	private String userPass;
-	private String phoneNumber;
-	private String email;
+	private String Gender;
+	private String Phone;
+	private String Email;
+	private String image;
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public int getId() {
 		return id;
 	}
@@ -24,17 +33,23 @@ public class UserBean {
 	public void setUserPass(String userPass) {
 		this.userPass = userPass;
 	}
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getGender() {
+		return Gender;
 	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setGender(String gender) {
+		Gender = gender;
+	}
+	public String getPhone() {
+		return Phone;
+	}
+	public void setPhone(String phone) {
+		Phone = phone;
 	}
 	public String getEmail() {
-		return email;
+		return Email;
 	}
 	public void setEmail(String email) {
-		this.email = email;
+		Email = email;
 	}
-
+	
 }

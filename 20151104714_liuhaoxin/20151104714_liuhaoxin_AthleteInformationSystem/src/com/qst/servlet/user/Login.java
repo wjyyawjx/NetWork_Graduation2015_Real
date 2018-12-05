@@ -38,7 +38,7 @@ public class Login extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
-		
+		System.err.println();
 		UserDao userdao = new UserDao();
 		boolean rs = userdao.login(username,pwd);
 		

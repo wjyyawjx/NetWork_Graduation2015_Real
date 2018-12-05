@@ -32,7 +32,7 @@ public class PermissionUpload3 extends HttpServlet {
 		//修改用户的权限,用于拒绝通过用户的申请
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
-		String liyou ="已审核，\n未通过，理由如下：\n"+request.getParameter("liyou");
+		String liyou ="已审核，未通过，理由：\n"+request.getParameter("liyou");
 		int aid =Integer.parseInt(request.getParameter("aid"));
 		GeneralDao geldao = new GeneralDao();
 		geldao.permissionupload(liyou,aid);

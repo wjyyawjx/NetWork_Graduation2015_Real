@@ -259,4 +259,25 @@ public class UserDao {
 			}
 			return Array;
 		}
+		
+		// 管理员删除申请（忘记密码。。）
+		public void ContactManagementDelete(int cid) {
+			// TODO Auto-generated method stub
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			String sql = "delete from contactmanagement where cid=?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, cid);
+				pstmt.executeUpdate();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBUtil.closeJDBC(rs, pstmt, conn);
+			}
+		}
 }
