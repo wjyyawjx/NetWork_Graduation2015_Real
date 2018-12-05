@@ -27,7 +27,10 @@ public class RegisterView extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect("Register.jsp");		}
+		//显示注册页面
+		response.sendRedirect("Register.jsp");	
+		
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

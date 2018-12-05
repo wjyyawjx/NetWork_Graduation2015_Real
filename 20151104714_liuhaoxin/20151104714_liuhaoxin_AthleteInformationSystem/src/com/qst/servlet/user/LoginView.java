@@ -27,7 +27,9 @@ public class LoginView extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect("Login.jsp");	}
+		//显示登录页面
+		response.sendRedirect("Login.jsp");	
+		}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
