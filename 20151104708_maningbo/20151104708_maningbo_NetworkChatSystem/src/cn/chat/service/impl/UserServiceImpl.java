@@ -59,6 +59,12 @@ public class UserServiceImpl implements UserService {
 		return userDao.myFriend(userName);
 	}
 
+	@Override
+	public void addFriend(String userName, String friend_2) {
+		// TODO Auto-generated method stub
+		this.userDao.addFriend(userName, friend_2);
+	}
+
 
 	
 }

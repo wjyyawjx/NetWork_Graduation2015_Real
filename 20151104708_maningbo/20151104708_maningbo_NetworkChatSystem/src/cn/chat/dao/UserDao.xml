@@ -22,4 +22,7 @@
 	<select id="myFriend" parameterType="String" resultType="Friend">
 		SELECT friend_2 FROM friend WHERE friend_1= #{userName}
 	</select>
+	<insert id="addFriend" parameterType="Friend">
+		INSERT INTO friend(friend_1,friend_2) VALUES(#{userName},#{friend_2})
+	</insert>
 </mapper>

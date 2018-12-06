@@ -33,7 +33,8 @@
 							<li style="color: blue;font-size: 20px; font-weight: 600">当前用户：${userBean.userName}</li>
 							<li class="active"><a href="${pageContext.request.contextPath}/index.action">首  页</a></li>
 							<li><a href="${pageContext.request.contextPath}/friendlist.action">好友</a></li>
-							<li><a href="services.html">聊天室</a></li>
+							<li><a href="${pageContext.request.contextPath}/addfriend.action">添加好友</a></li>
+							<li><a href="${pageContext.request.contextPath}/chatroom.action">聊天室</a></li>
 							<li><a href="${pageContext.request.contextPath}/personalinfo.action">个人信息</a></li>
 							<li><a href="testmonials.html">修改密码</a></li>
 							<li><a href="${pageContext.request.contextPath}/login.action">退出登录</a></li>
