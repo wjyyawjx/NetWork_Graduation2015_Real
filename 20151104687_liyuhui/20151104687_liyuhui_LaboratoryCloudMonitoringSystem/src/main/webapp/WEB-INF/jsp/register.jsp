@@ -26,9 +26,14 @@
     			var num = $("#num").val();
     			var pwd = $("#pwd").val();
     			var pwd1 = $("#pwd1").val();
+    			var type = $("#type").val();
     			var randomjsp = $("#randomjsp").val();
     			if(num=="" || pwd==""){
     				alert("学号/工号或密码为空！");
+        			return false;
+   				} 
+    			if(type==""){
+    				alert("请选择用户类型！");
         			return false;
    				} 
     			if(pwd!=pwd1){
@@ -58,7 +63,7 @@
 				<label><input name="type" type="radio" value="0"  style="width:30px;height:30px"/>老师 </label> 
                 <input type="text" name="randomjsp" class="uname" placeholder="请输入验证码">
                 <img src="getVerify.action" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
-                <button type="submit">注册</button>
+                <button type="submit" onclick="return check()">注册</button>
                 <div class="error"><span>+</span></div>
             </form>
             <br>

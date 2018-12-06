@@ -57,7 +57,7 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/register.action", method = RequestMethod.POST)
-    public String register(Model model, String num, String pwd,String randomjsp, String type, HttpSession session) {
+    public String register(Model model, String num, String pwd,String randomjsp, int type, HttpSession session) {
         //从session中获取随机数
         String random = (String) session.getAttribute("RANDOMVALIDATECODEKEY");
         if(random.equals(randomjsp)) {
@@ -67,11 +67,36 @@ public class LoginController {
     			return "register";
     		}
         	loginMapper.addUser(num,pwd,type);
-    		model.addAttribute("msg","用户注册成功，请登录！");
-    		return "login";
+    		model.addAttribute("msg","用户注册成功，请完善信息！");
+    		session.setAttribute("NUM",num);
+    		if(type==0) {
+    			return "register_t";
+    		}
+    		else {
+    			return "register_s";
+    		}
         }
         model.addAttribute("msg","验证码错误，请重新输入！");
 		return "register";
+    }
+    
+    @RequestMapping(value = "/register_s.action", method = RequestMethod.POST)
+    public String register_s(Model model, String name, String tel, String sex, String email, String age, HttpSession session) {
+    	System.out.println("register_S");
+    	Login login = (Login)session.getAttribute("NUM");
+    	loginMapper.perfectInformation_s(name, tel, sex, email, age, login.getNum());
+    	model.addAttribute("msg","用户信息完善成功，请登录！");
+    	session.invalidate();
+		return "redirect:login.action";
+    }
+    
+    @RequestMapping(value = "/register_t.action", method = RequestMethod.POST)
+    public String register_t(Model model, String name, String tel, String email, HttpSession session) {
+    	System.out.println("register_T");
+    	Login login = (Login)session.getAttribute("USER_SESSION");   	
+    	loginMapper.perfectInformation_t(name, tel, email, login.getNum());
+    	model.addAttribute("msg","用户信息完善成功，请登录！");
+    	return "login";
     }
     
     @RequestMapping(value = "/findpwd.action", method = RequestMethod.POST)
@@ -109,5 +134,12 @@ public class LoginController {
 	public String tofindpwd() {
 		return "findpwd";
 	}
+	
+	@RequestMapping(value = "/logout.action")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:login.action";
+	}
+
 
 }
