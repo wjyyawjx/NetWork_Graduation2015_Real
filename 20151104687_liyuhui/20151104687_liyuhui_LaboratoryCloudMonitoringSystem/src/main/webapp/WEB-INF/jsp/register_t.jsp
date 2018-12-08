@@ -49,6 +49,7 @@
             <h1>尊敬的老师：请完善您的信息！</h1>
             <font color="red"><span id="message">${msg }</span></font>
             <form action="${pageContext.request.contextPath }/register_t.action" method="post" onsubmit="return check()">
+            	<input type="hidden" name="num" value="${NUM }"/>
                 <input type="text" name="name" class="uname" placeholder="姓名">
                 <input type="text" name="tel" class="uname" placeholder="联系方式">
                 <input type="text" name="email" class="uname" placeholder="电子邮箱">

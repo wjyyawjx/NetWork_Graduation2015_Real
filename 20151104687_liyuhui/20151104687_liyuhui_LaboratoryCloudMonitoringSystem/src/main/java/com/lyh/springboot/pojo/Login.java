@@ -4,7 +4,7 @@ public class Login {
 	private Integer id;
     private String  num;
     private String  pwd;
-    private Integer u_type ;
+    private Integer u_type;
     
 	public Integer getId() {
 		return id;

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lyh.springboot.common.utils.RandomValidateCode;
 import com.lyh.springboot.pojo.Login;
+import com.lyh.springboot.pojo.Student;
+import com.lyh.springboot.pojo.Teacher;
 import com.lyh.springboot.service.LoginService;
 
 @Controller
@@ -23,8 +25,14 @@ public class LoginController {
     public String login(String num,String pwd, Model model,HttpSession session){
     	System.out.println("login:"+num+","+pwd);
 		Login login = loginService.login(num, pwd);
-		if(login != null) {
-			session.setAttribute("USER_SESSION", login);
+		if(login.getU_type() == 1) {
+			Student studentLogin = loginService.findStudent(login.getNum());
+			session.setAttribute("USER_SESSION", studentLogin);
+			return "menu";
+		}
+		else if(login.getU_type() == 0)	{
+			Teacher teacherLogin = loginService.findTeacher(login.getNum());
+			session.setAttribute("USER_SESSION", teacherLogin);
 			return "menu";
 		}
 		model.addAttribute("msg","账号或密码错误请重新输入！");
@@ -69,7 +77,7 @@ public class LoginController {
     		}
         	loginService.addUser(num,pwd,type);
     		model.addAttribute("msg","用户注册成功，请完善信息！");
-    		session.setAttribute("NUM",num);
+    		model.addAttribute("NUM",num);
     		if(type==0) {
     			return "register_t";
     		}
@@ -82,22 +90,21 @@ public class LoginController {
     }
     
     @RequestMapping(value = "/register_s.action", method = RequestMethod.POST)
-    public String register_s(Model model, String name, String tel, String sex, String email, String age, HttpSession session) {
+    public String register_s(Model model, String name, String tel, String sex, String email, String age, String num, HttpSession session) {
     	System.out.println("register_S");
-    	Login login = (Login)session.getAttribute("NUM");
-    	loginService.perfectInformation_s(name, tel, sex, email, age, login.getNum());
+    	loginService.perfectInformation_s(name, tel, sex, email, age, num);
     	model.addAttribute("msg","用户信息完善成功，请登录！");
     	session.invalidate();
-		return "redirect:login.action";
+		return "redirect:tologin.action";
     }
     
     @RequestMapping(value = "/register_t.action", method = RequestMethod.POST)
-    public String register_t(Model model, String name, String tel, String email, HttpSession session) {
-    	System.out.println("register_T");
-    	Login login = (Login)session.getAttribute("USER_SESSION");   	
-    	loginService.perfectInformation_t(name, tel, email, login.getNum());
+    public String register_t(Model model, String name, String tel, String email, String num, HttpSession session) {
+    	System.out.println("register_T");	
+    	loginService.perfectInformation_t(name, tel, email, num);
     	model.addAttribute("msg","用户信息完善成功，请登录！");
-    	return "login";
+    	session.invalidate();
+		return "redirect:tologin.action";
     }
     
     @RequestMapping(value = "/findpwd.action", method = RequestMethod.POST)

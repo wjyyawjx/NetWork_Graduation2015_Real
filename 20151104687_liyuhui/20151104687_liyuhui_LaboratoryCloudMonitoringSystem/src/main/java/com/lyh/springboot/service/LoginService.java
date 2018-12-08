@@ -1,6 +1,8 @@
 package com.lyh.springboot.service;
 
 import com.lyh.springboot.pojo.Login;
+import com.lyh.springboot.pojo.Student;
+import com.lyh.springboot.pojo.Teacher;
 
 public interface LoginService {
 
@@ -15,6 +17,10 @@ public interface LoginService {
 	Login findpwdUser(String num);
 
 	void findpwd(String pwd, String num);
+
+	Student findStudent(String num);
+
+	Teacher findTeacher(String num);
 
 
 }

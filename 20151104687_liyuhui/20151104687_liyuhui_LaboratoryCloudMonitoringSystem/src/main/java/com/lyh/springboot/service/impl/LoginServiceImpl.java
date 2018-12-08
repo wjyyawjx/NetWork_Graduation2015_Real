@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import com.lyh.springboot.mapper.LoginMapper;
 import com.lyh.springboot.pojo.Login;
+import com.lyh.springboot.pojo.Student;
+import com.lyh.springboot.pojo.Teacher;
 import com.lyh.springboot.service.LoginService;
 
 @Service("LoginService")
@@ -48,6 +50,20 @@ public class LoginServiceImpl implements LoginService{
 	public void findpwd(String pwd, String num) {
 		// TODO Auto-generated method stub
 		loginMapper.findpwd(pwd, num);
+	}
+
+	@Override
+	public Student findStudent(String num) {
+		// TODO Auto-generated method stub
+		Student student = loginMapper.findStudent(num);
+		return student;
+	}
+
+	@Override
+	public Teacher findTeacher(String num) {
+		// TODO Auto-generated method stub
+		Teacher teacher = loginMapper.findTeacher(num);
+		return teacher;
 	}
 
 }
