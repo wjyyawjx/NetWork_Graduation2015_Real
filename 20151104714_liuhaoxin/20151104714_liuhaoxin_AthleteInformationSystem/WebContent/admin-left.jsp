@@ -20,7 +20,7 @@
 		<br> <a href="AdminMessageView" target="admin-right">查看管理留言</a><br />
 
 		<br>
-		<br> <a href="admin-games.jsp" target="admin-right">创建运动会</a><br />
+		<br> <a href="GameView" target="admin-right">创建运动会</a><br />
 	</div>
 </body>
 </html>

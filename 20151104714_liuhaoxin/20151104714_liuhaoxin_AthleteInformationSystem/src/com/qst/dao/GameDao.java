@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.qst.DBUtil.DBUtil;
 import com.qst.bean.GameBean;
 import com.qst.bean.MessageBean;
+import com.qst.bean.UserBean;
 
 //用于对管理员对运动会的操作
 public class GameDao {
@@ -35,7 +36,7 @@ public class GameDao {
 
 		}
 
-		// 查所有留言
+		// 查所有运动会
 			public ArrayList<GameBean>gameList() {
 				// TODO Auto-generated method stub
 				ArrayList<GameBean> Array = new ArrayList<GameBean>();
@@ -64,5 +65,34 @@ public class GameDao {
 				}
 				return Array;
 			}
+			
+			// 查所有记录员
+			public ArrayList<UserBean>usernameList() {
+				// TODO Auto-generated method stub
+				ArrayList<UserBean> Array = new ArrayList<UserBean>();
+				Connection conn = DBUtil.getConnection();
+				String sql = "select * from user where permission='1' ";
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				try {
 
-}
+					pstmt = conn.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					while (rs.next()) {
+						UserBean tag = new UserBean();
+						tag.setUid(rs.getInt("uid"));
+						tag.setUsername(rs.getString("username"));
+						
+						Array.add(tag);
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} finally {
+					DBUtil.closeJDBC(rs, pstmt, conn);
+				}
+				return Array;
+			}
+
+
+}				

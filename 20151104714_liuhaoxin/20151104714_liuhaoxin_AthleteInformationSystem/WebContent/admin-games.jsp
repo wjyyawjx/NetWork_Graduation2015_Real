@@ -1,7 +1,7 @@
 <%--  管理员创建新的运动会 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,16 +12,23 @@
 </head>
 <body>
 
-<form action="GameAdd" method="post">
- <input type="text" name=gamesname placeholder="运动会名字" required="">
- <input type="text" name=username placeholder="记录员" required="" >
-  <input type="date" name=date1 placeholder="开始时间" required="" >
-   <input type="date" name=date2 placeholder="结束时间" required="" >
-   
-  <input type="submit" value="创建">
-</form>
-<table border="2" cellpadding="0" cellspacing="0"
-		style="font-size: 40px"  width="100%" height="100%">
+	<form action="GameAdd" method="post">
+		<input type="text" name=gamesname placeholder="运动会名字" required=""><br>
+	<h4>	选择记录员<select name="username">
+			<c:forEach items="${userbean}" var="w">
+
+				<option value="${w.username}">${w.username}</option>
+
+
+			</c:forEach>
+		</select>
+		 开始时间<input type="date" name=date1 placeholder="开始时间" required="">
+		结束时间<input type="date" name=date2 placeholder="结束时间" required="">
+</h4>
+		<input type="submit" value="创建">
+	</form>
+	<table border="2" cellpadding="0" cellspacing="0"
+		style="font-size: 40px" width="100%" height="100%">
 		<thead>
 			<tr>
 
@@ -43,6 +50,6 @@
 		</tbody>
 	</table>
 
-	
+
 </body>
 </html>

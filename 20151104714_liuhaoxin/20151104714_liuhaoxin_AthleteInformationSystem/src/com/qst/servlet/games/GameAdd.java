@@ -42,6 +42,7 @@ public class GameAdd extends HttpServlet {
 		GameDao dao = new GameDao();
 	
 		dao.gameadd(username, gamesname, startTime, stopTime);
+		response.sendRedirect("GameView");
 		
 	}
 
