@@ -1,9 +1,16 @@
 package com.lyh.springboot.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Teacher {
-	private Integer t_id;
-	private String t_name;
-	private String t_num;
-	private String t_tel;
-	private String t_email;
+	private Integer id;
+	private String name;
+	private String num;
+	private String tel;
+	private String email;
 }

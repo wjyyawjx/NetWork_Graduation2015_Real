@@ -61,6 +61,8 @@
                     <div class="text-center s-widget m-b-25 dropdown" id="profile-menu">
                         <a href="" data-toggle="dropdown">
                             <img class="profile-pic animated" src="img/profile-pic.jpg" alt=""><!--头像-->
+                            <span>姓名： ${USER_SESSION.name }</span>
+                            <span>编号： ${USER_SESSION.num }</span>
                         </a>
                         <ul class="dropdown-menu profile-menu">
                             <li><a href="">我的信息</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
