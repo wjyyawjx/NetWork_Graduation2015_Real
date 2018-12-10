@@ -10,7 +10,7 @@
 </head>
 <body><br><br>
 <div align="center">
-<a  href ="InformationView" target ="general-right">查看自己的信息<br />
+<a  href ="InformationView" target ="general-right">查看自己的信息<br /></a>
 <br><br>
 <a  href ="ToApplyForView" target ="general-right">申请成为记录员</a><br />
 <br><br>

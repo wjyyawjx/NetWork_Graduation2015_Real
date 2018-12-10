@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+		<title>竞拍网</title>
+		<link rel="stylesheet" href="../../../res/css/cx/geren.css"/>
+		<link rel="stylesheet" href="../../../res/js/sweetalert.css"/>
+		
+		<script src="../../../res/js/jquery-1.11.2.min.js"></script>
+		<script src="../../../res/js/sweetalert.min.js"></script>
+		<script type="text/javascript" src="../../../res/js/cx/Myacount_ifm.js"></script>
+</head>
+<body>
+	<div id="center_rights">
+			<div id="memberMsg">
+				<div id="memberMsg_title">
+					<p>基本信息</p>
+				</div>
+				<div id="memberMsg_body1">
+					<p>账号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="userName">17670347120@gougoujp.com</span></p>
+					<p>编号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="userPwd">Ltx</span></p>
+					<p>会员类型：&nbsp;&nbsp;&nbsp;&nbsp;<span id="userLevel">普通会员 (0保证金/余额：0.0)</span></p>
+					<p>钱包金额:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="userMoney" style="font-size: 18px;color:red;"></span>元</p>
+				</div>
+				
+			</div>
+			
+			<div id="jibenMsg">
+				<div id="jibenMsg_title">
+					<p>修改基本信息</p>
+				</div>
+				<div id="jibenMsg_body">
+				<form id="userForm">
+					<table>
+						<tr>
+							<td>亲爱的 <span id="userName2">Ltx</span> 你的注册手机号是 <span id="userPhone">18847137614</span></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>姓&nbsp;&nbsp;名:</td>
+							<td><input type="text" id="userNameInput" name="userName"/><input type="hidden" id="userIdInput" name="userId"/></td>
+						</tr>
+						<tr>
+							<td>密&nbsp;&nbsp;码:</td>
+							<td><input type="password" id="userPwdInput" name="userPwd"/></td>
+						</tr>
+						<tr>
+							<td>性&nbsp;&nbsp;别:</td>
+							<td>
+								男<input type="radio" class="userSexInput" style="width:5px;height:5px;" value="2" name="userSex"/>
+								女<input type="radio" class="userSexInput" style="width:5px;height:5px;" value="1" name="userSex">
+							</td>
+						</tr>
+						<tr>
+							<td>电&nbsp;&nbsp;话:</td>
+							<td><input type="text" id="userPhoneInput" name="userPhone"/></td>
+						</tr>
+					</table>
+					</form>
+					<p><input id="btna" type="button" value="确认修改"/></p>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

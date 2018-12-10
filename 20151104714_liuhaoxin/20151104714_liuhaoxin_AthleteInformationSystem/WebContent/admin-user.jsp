@@ -10,8 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="0" cellpadding="0" cellspacing="0" style="font-size: 20px" ; width="100%" height="31">
-		<form action="UserQuery" method="post">
+<form action="UserQuery" method="post">
+	<table border="0" cellpadding="0" cellspacing="0" style="font-size: 20px"  width="100%" height="31">
+		
+		
 		<tr>
 		  <td width="17%" align="right" valign="middle">
 		  
@@ -26,17 +28,18 @@
 			
 		</td>
 		<td width="15%" align="left" valign="middle"><select  name="type">
-		  <option value="a">所有用户</option>
-		  <option value="b">普通用户</option>
-		  <option value="c">管理员</option>
+		  <option value="3">所有用户</option>
+		  <option value="0">普通用户</option>
+		  <option value="1">管理员</option>
 		  </select></td>
 		<td width="20%" align="center" valign="middle">
-		<input type="submit" style="width: 200px" value="搜索">	
-			 </form> </td>
+		<input type="submit" style="width: 200px" value="搜索">	 </td>
+		</tr>
+			 
     </table>
-
+</form>
 	<table border="2" cellpadding="0" cellspacing="0"
-		style="font-size: 40px" ; width="100%" height="100%">
+		style="font-size: 40px"  width="100%" height="100%">
 		<thead>
 			<tr>
 

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>【注册】</title>
+		<link rel="stylesheet" href="../../../res/css/cx/register.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../res/js/sweetalert.css">
+		<script src="../../../res/js/sweetalert.min.js"></script>
+		<script src="../../../res/js/jquery-1.11.2.min.js"></script>
+		<script src="../../../res/js/cx/register.js"></script>
+	</head>
+	<body>
+		<div id="big">
+			<div id="top">
+				<img id="logImg" src="../../../upload/cx/log.png"/>
+				<div class="div_img" id="frist1">
+					<img src="../../../upload/cx/02.png"/>
+					<p>费用透明随时可查</p>
+				</div>
+				<div class="div_img">
+					<img src="../../../upload/cx/03.png"/>
+					<p>商品丢失代理索赔</p>
+				</div>
+				<div class="div_img">
+					<img src="../../../upload/cx/04.png"/>
+					<p>超强包装安全可靠</p>
+				</div>
+			</div>
+			<div id="loginDiv">
+				<div id="left">
+					<p id="title">免费注册</p>
+					<form action="#" method="post" id="loginForm">
+						<table>
+							<tr id="tr">
+								<td class="td">账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:</td>
+								<td class="td2"><input id="uName" onblur="findUserName();" name="userName" maxlength="15" type="text" placeholder="请输入注册的账号"/></td>
+								<td id="nameMsg"></td>
+							</tr>
+							<tr>
+								<td class="td">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</td>
+								<td class="td2"><input id="pwda" name="userPwd" maxlength="15" type="password" placeholder="请输入密码"/></td>
+								<td id="pwdMsg"></td>
+							</tr>
+							<tr>
+								<td class="td">确认密码:</td>
+								<td  class="td2"><input id="pwdb" name="userPwds" type="password" placeholder="请输入确认密码"/></td>
+								<td id="pwdbMsg"></td>
+							</tr>
+							<tr>
+								<td class="td">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</td>
+								<td>
+								<input type="radio" value="1" name="userSex"/>男&nbsp;&nbsp;&nbsp;
+								<input type="radio" value="2" name="userSex"/>女
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td class="td">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话:</td>
+								<td  class="td2"><input id="phone" name="userPhone" type="text" placeholder="请输入电话"/></td>
+								<td id="phoneMsg"></td>
+							</tr>
+							<tr>
+								<td class="td">类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型:</td>
+								<td class="td2">
+									<select name="userType">
+										<option value="1">用户</option>
+										<option value="2">卖家</option>
+									</select>
+								</td>
+								<td></td>
+							</tr>
+						</table>
+						<p id="xieyi"><input id="ck" type="checkbox"/>我已阅读并接受<span>《购够网用户协议》</span></p>
+						<p id="sub"><input id="subBtn" type="button" value="同意协议并注册"/></p>
+					</form>
+				</div>
+				<div id="right">
+					<div id="loginbtn">
+						<p><a href="login.html">已有账号存在?<input type="button" value="立即登录"/></a></p>
+					</div>
+					<div id="msgDiv">
+						<p id="right_titpe">特惠活动</p>
+						<p class="p">1）注册并关注微信公众号，即送50元代金券！</p>
+						<p class="p">2）微信、QQ群分享，再送50元代金券！</p>
+						<p class="p">3）晒单有惊喜！轻轻一个晒单，代金券送！送！送！</p>
+						<p class="p">4）同一天中标同一卖家N件，代工费仅8元!<a href="#">《点击查看详情》</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
