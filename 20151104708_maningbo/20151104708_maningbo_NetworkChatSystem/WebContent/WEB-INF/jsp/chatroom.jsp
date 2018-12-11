@@ -105,11 +105,11 @@
 						</div>
 						<div class="col-md-8 contact-form">
 							<h3>聊天室</h3>
-							<div style="width: 400px; height: 260px; overflow: scroll; border: 1px solid;"id="output"></div>
+							<div style="width: 80%; height: 400px; overflow: scroll; border: 1px solid;"id="output"></div>
 							<br />
 							<div style="text-align: left;">
 								<form action="">
-									<input id="in" name="message" value="" type="text" style="width: 400px; height: 60px; border: 1px solid;">
+									<input id="in" name="message" value="" type="text" style="width: 80%; height: 60px; border: 1px solid;">
 									<br/><input onclick="button()" value="发送" type="button" />
 								</form>
 							</div>

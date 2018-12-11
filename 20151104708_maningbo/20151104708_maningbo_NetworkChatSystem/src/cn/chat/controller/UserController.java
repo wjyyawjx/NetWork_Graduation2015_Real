@@ -200,4 +200,9 @@ public class UserController {
 	public String chatroom() {
 		return "chatroom";
 	}
+	
+	@RequestMapping(value = "/index1.action")
+	public String index1() {
+		return "index1";
+	}
 }
