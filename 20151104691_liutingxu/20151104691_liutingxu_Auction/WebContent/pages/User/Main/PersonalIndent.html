@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+		<title>竞拍网</title>
+		<link rel="stylesheet" href="../../../res/css/cx/indent.css"/>
+		<link rel="stylesheet" href="../../../res/js/sweetalert.css"/>
+		
+		<script src="../../../res/js/jquery-1.11.2.min.js"></script>
+		<script src="../../../res/js/sweetalert.min.js"></script>
+		<script type="text/javascript" src="../../../res/js/cx/indent_ifm.js"></script>
+</head>
+	<style>
+		#indentinfm{
+		    width: 95%;
+		    margin-left: 25px;
+			padding-bottom: 10px;
+		}
+		#myTable tr th{
+			height:30px;
+			border:1px solid #f0f0f0;
+		}
+		#myTable tr td{
+			border:1px solid #f0f0f0;
+			text-align: center;
+			font-size: 13px;
+			padding: 3px;
+		}
+	</style>
+<body>
+<div id="indentinfm" >
+			<div id="indent_title">
+				<p>我的订单</p>
+			</div>
+			<div id="imga">
+				<div class="img">
+					<img src="../../../upload/cx/dd_zt_01.jpg"/>
+					<p>等待付款</p>
+				</div>
+				<div class="img">
+					<img src="../../../upload/cx/dd_zt_04.jpg"/>
+					<p>等待发货</p>
+				</div>
+				<div class="img">
+					<img src="../../../upload/cx/dd_zt_05.jpg"/>
+					<p>等待收货</p>
+				</div>
+				<div class="img">
+					<img src="../../../upload/cx/dd_zt_06.jpg"/>
+					<p>收货完毕</p>
+				</div>
+			</div>
+			<div id="status">
+				<p id="frist">订单状态:</p>
+				<p><a href="#">所有订单</a></p>
+				<p><a href="#">等待付款</a></p>
+				<p><a href="#">等待发货</a></p>
+				<p><a href="#">等待收货</a></p>
+				<p><a href="#">收货完毕</a></p>
+			</div>
+			<table id="myTable">
+				<tr>
+					<th id="statusMsg1">订单编号</th>
+					<th id="statusMsg2">商品名称</th>
+					<th id="statusMsg3">订单用户</th>
+					<th id="statusMsg4">成交时间</th>
+					<th id="statusMsg4">订单状态</th>
+					<th id="statusMsg5" style="width:200px;">操作按钮</th>
+				</tr>
+				<tbody id="bodys"></tbody>
+			</table>
+		</div>
+</body>
+</html>

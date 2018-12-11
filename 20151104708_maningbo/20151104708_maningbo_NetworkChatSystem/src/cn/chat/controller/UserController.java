@@ -44,7 +44,7 @@ public class UserController {
 			return "login";
 		} else {
 			if (userBean != null) {
-				System.out.println(userName + userPass);
+				// System.out.println(userName + userPass);
 				session.setAttribute("userBean", userBean);
 				return "index";
 			} else {
@@ -99,9 +99,9 @@ public class UserController {
 		UserBean user = (UserBean) session.getAttribute("userBean");
 		if (user != null) {
 			userName = user.getUserName();
-			System.out.println(userName);
+			// System.out.println(userName);
 			List<Friend> friend = userService.myFriend(userName);
-			System.out.println(userName);
+			System.out.println("查询好友的用户为：" + userName);
 			if (friend != null) {
 				view.addObject("friend", friend);
 				for (Friend myfriend : friend) {
@@ -161,10 +161,7 @@ public class UserController {
 			System.out.println("logout:remove failed");
 		return "index";
 	}
-	@RequestMapping(value = "/addfriend.action")
-	public String addfriend() {
-		return "addfriend";
-	}
+
 	@RequestMapping(value = "/goframe.action")
 	public String goframe() {
 		return "frame";
@@ -173,5 +170,34 @@ public class UserController {
 	@RequestMapping(value = "/golist.action")
 	public String golist() {
 		return "list";
+	}
+
+	@RequestMapping(value = "/addfriend.action")
+	public String addfriend(String friend_2, HttpSession session, Model model) {
+		UserBean user = (UserBean) session.getAttribute("userBean");
+		if (user == null) {
+			model.addAttribute("msg", "请先登录！");
+			return "login";
+		} else {
+			String userName = user.getUserName();
+			System.out.println(userName);
+			if (friend_2 == null) {
+				model.addAttribute("msg", "用户名不存在！");
+				return "addfriend";
+			} else {
+				userService.addFriend(userName, friend_2);
+				// System.out.println(userName+friend_2);
+				return "friendlist";
+			}
+		}
+	}
+	@RequestMapping(value = "/gochat.action")
+	public String gochat() {
+		return "chat";
+	}
+	
+	@RequestMapping(value = "/chatroom.action")
+	public String chatroom() {
+		return "chatroom";
 	}
 }

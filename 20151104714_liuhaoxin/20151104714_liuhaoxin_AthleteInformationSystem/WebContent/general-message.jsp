@@ -18,7 +18,7 @@
 	</form>
 
 	<table border="2" cellpadding="0" cellspacing="0"
-		style="font-size: 40px" ; width="100%" height="100%">
+		style="font-size: 40px"  width="100%" height="100%">
 		<thead>
 			<tr>
 

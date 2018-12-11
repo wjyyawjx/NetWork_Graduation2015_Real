@@ -36,22 +36,13 @@ public class UserQuery extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
 		String username="";
-		String permission="";
+		
 		username= request.getParameter("username");
-		String type = request.getParameter("type");
+		String permission = request.getParameter("type");
 		
 		ArrayList<UserBean> userdata = new ArrayList<UserBean>();
 		AdminDao userdao = new AdminDao();
 		
-		if(type.equals("a")) {
-			permission="3";
-		}
-		else if(type.equals("b")) {
-			permission="0";
-		}
-		else if(type.equals("c")) {
-			permission="1";
-		}
 		
 		if(username.equals("") && permission.equals("3")) {
 			userdata = (ArrayList<UserBean>)userdao.userList();

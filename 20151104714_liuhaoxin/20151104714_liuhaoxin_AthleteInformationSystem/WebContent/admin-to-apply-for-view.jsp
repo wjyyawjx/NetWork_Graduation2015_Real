@@ -11,7 +11,8 @@
 
 
 </head>
-<body><div align="center">
+<body>
+<div align="center">
 
 <table border="2" cellpadding="0" cellspacing="0"  >
 				<thead>
@@ -37,16 +38,18 @@
 					<form action="PermissionUpload3" method="post">
 					<td><input type="text" name="liyou" placeholder="输入拒绝理由" required="">
 					<input type="hidden" name="aid" value=${w.aid}>
-					<input type="submit" style="width: 150px" value="拒绝申请"></form></td>
+					<input type="submit" style="width: 150px" value="拒绝申请"></td>
+					</form></td>
 					
 					<form action="ToApplyForDelete" method="post">
-					<td><input type="hidden" name="aid" value=${w.aid}>
-					<input type="submit" style="width: 150px" value="删除此条申请"></form>
-					</td>
+					<input type="hidden" name="aid" value=${w.aid}>
+					<td><input type="submit" style="width: 150px" value="删除此条申请"></td>
+					</form>
+					
 					
 					</tr>
 					</c:forEach>
 				</tbody>
-				
+		</table>	
 </body>
 </html>

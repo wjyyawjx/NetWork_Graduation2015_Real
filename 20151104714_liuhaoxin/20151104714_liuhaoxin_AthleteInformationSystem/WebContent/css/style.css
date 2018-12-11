@@ -3,6 +3,15 @@ body{
 		/* 设置页面的背景 */
 	   background: url("../img/beijing.jpg");
 }
+
+option,select{
+	width: 90%;
+    margin-bottom: 20px;
+    background-color: transparent;
+    text-align:center;
+    font-size: 50px;
+    color: #0000ff;
+}
 input[type="text"],[type="date"],input[type="password"] , input[type="email"]{
 	/* 设置输入框样式 */
     width: 90%;
@@ -35,6 +44,11 @@ h2{
 h3{
 	/* 设置h3样式 */
 	font-size: 30px;
+    color:black;
+}
+h4{
+	/* 设置h4样式 */
+	font-size: 40px;
     color:black;
 }
 input[type="submit"] {

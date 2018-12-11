@@ -115,7 +115,7 @@
 				</p>
 <form target="_parent" action="Exit" method="post">
 		<button  type="submit" >退出</button></form>
-				</div></td>
+				</td>
 
 		</tr>
 	</table>

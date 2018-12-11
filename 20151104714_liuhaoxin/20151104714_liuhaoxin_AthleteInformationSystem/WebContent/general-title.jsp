@@ -96,7 +96,7 @@
 		</tr>
 	</table>
 
-	<table align="center" width="100%"  border="0">
+	<table align="center" width="100%" border="0">
 		<tr>
 			<td width="25%"></td>
 			<td width="61%" rowspan="2"><span id="tishi"
@@ -110,12 +110,12 @@
 		</tr>
 		<tr>
 			<td style=""><p>
-					
+
 					<%=name%>用户你好
 				</p>
-<form target="_parent" action="Exit" method="post">
-		<button  type="submit" >退出</button></form>
-				</div></td>
+				<form target="_parent" action="Exit" method="post">
+					<button type="submit">退出</button>
+				</form></td>
 
 		</tr>
 	</table>
