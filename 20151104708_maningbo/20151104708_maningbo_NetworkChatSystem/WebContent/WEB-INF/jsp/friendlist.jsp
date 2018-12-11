@@ -22,7 +22,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<!--//side-bar-->
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">	
+			<div >	
 					<div class="offer-grids">
 						<h3>我的好友列表</h3>
 						<c:forEach items="${friend}" var="c">
