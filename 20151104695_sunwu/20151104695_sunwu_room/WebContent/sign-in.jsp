@@ -48,7 +48,11 @@ function change() {
 	document.getElementById("Image").src="PictureCheckCode?"+Math.random();
 }
 </script>
+
+
   </head>
+  
+  
  <body class=""> 
   <!--<![endif]-->
     
@@ -60,11 +64,6 @@ function change() {
                 <a class="brand" href="sign-in.jsp"><span class="first"></span> <span class="second">用户登录</span></a>
         </div>
     </div>
-    
-
-
-    
-
     
         <div class="row-fluid">
     <div class="dialog">
@@ -82,12 +81,12 @@ function change() {
 				
 					 <button type="submit" class="btn btn-primary pull-right" >登录</button>                
                     <label class="remember-me"><input type="checkbox"> Remember me</label>
-                    <div class="clearfix"></div>
+                          
                 </form>
             </div>
         </div>
          <p class="pull-right" style=""><a href="sign-up.jsp" >注册用户</a></p>
-        <p><a href="reset-password.html">Forgot your password?</a></p>
+        <p><a href="forget-password.jsp">Forgot your password?</a></p>
     </div>
 </div>
 

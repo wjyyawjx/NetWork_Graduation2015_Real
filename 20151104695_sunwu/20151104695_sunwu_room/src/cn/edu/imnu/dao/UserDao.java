@@ -89,4 +89,73 @@ public class UserDao {
 		}
 		
 	}
+
+
+	public boolean forgetusername(String forget_username) {
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+	
+		String sql = "select * from user where username=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, forget_username);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next())
+			{
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBUtil.CloseDB(conn, pstmt, rs);
+		}
+		return false;
+	}
+
+	public boolean forgetemail(String forget_email) {
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+	
+		String sql = "select * from user where email=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, forget_email);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next())
+			{
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBUtil.CloseDB(conn, pstmt, rs);
+		}
+		return false;
+	}
+
+	public void amend(String forget_username, String forget_email, String forget_password) {
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "UPDATE user SET password = ? WHERE email = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, forget_password);
+			pstmt.setString(2, forget_email);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBUtil.CloseDB(null, pstmt, null);
+		
+	}
+	
+   }
 }
