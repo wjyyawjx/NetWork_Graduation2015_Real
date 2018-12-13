@@ -47,18 +47,18 @@ public class ForgetServlet extends HttpServlet {
 			boolean flaag = dao.forgetemail(forget_email);
 			if(flaag) {
 				dao.amend(forget_username,forget_email,forget_password);
-				JOptionPane.showMessageDialog(null, "修改密码成功！", null, JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "修改密码成功！");
 				response.sendRedirect("sign-in.jsp");
 				System.out.println("修改密码成功！");
 			}
-			else {
-				JOptionPane.showMessageDialog(null, "邮箱输入错误！", null, JOptionPane.ERROR_MESSAGE);
+			else {				
+				JOptionPane.showMessageDialog(null, "邮箱输入错误！");
 				response.sendRedirect("forget-password.jsp");
 				System.out.println("邮箱输入错误！");
 			}
 		}
 		else {
-			JOptionPane.showMessageDialog(null, "用户名输入错误！", null, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "用户名输入错误！");
 			response.sendRedirect("forget-password.jsp");
 			System.out.println("用户名输入错误！");
 		}

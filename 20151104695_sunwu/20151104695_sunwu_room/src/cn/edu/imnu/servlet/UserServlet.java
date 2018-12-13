@@ -34,18 +34,19 @@ public class UserServlet extends HttpServlet {
 		UserBean user = userservice.LoginValidate(username, password, type);
 		session.setAttribute("user", user);
 		
+		
 		if (checkcode.equalsIgnoreCase((String) session.getAttribute("randCheckCode")) && checkcode != "") {
 			if (user != null) {
 					response.sendRedirect("common.jsp");
 			} else {
 				System.out.println("用户名或密码错误！");
-				JOptionPane.showMessageDialog(null, "用户名或密码错误", null, JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "用户名或密码错误");
 				response.sendRedirect("sign-in.jsp");
 				
 			}
 		} else {
 			System.out.println("验证码错误！");
-			JOptionPane.showMessageDialog(null, "验证码错误", null, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "验证码错误");
 			response.sendRedirect("sign-in.jsp");
 			
 		}

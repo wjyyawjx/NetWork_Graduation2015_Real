@@ -49,32 +49,10 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
  
-<link rel="stylesheet" href="css/jquery.slider.css"/>
 
-    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="js/jquery.slider.min.js"></script>
     <script>
 
-    var ok1=false;
-            $("#slider1").slider({
-                width: 340, // width
-                height: 40, // height
-                sliderBg: "rgb(134, 134, 131)", // 滑块背景颜色
-                color: "#fff", // 文字颜色
-                fontSize: 14, // 文字大小
-                bgColor: "#33CC00", // 背景颜色
-                textMsg: "按住滑块，拖拽验证", // 提示文字
-                successMsg: "验证通过了哦", // 验证成功提示文字
-                successColor: "red", // 滑块验证成功提示文字颜色
-                time: 400, // 返回时间
-                callback: function (result) { // 回调函数，true(成功),false(失败)
-                	 if(result && ok1){		 
- 		 
-                		   $("#validateSubmit").html('<input type="submit" name="submit" class="regsub" value="下一步" " id="submit" >');
-                          
-                	   }
-                }
-            });
+    
 
             $(function(){	                    
             	//邮箱验证
