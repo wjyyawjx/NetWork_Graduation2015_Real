@@ -24,14 +24,6 @@
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>	
 <script type="text/javascript">
-		jQuery(document).ready(function($) {
-			$(".scroll").click(function(event){		
-				event.preventDefault();
-				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-			});
-		});
-</script>
-<script type="text/javascript">
 	var flag='<%=session.getAttribute("flag") %>';
 	if("unlogin".equals(flag)){
 		alert("1111");
@@ -43,47 +35,35 @@
 <!--//end-smoth-scrolling-->
 </head>
 <body>
-	<div class="container-fluid">
+	<div class="container-fluid" style="height: 100%;width: 100%">
 		<div class="row">
 			<!--side-bar-->
-			<div class="col-sm-3 col-md-2 sidebar">
+			<div align="center">
 				<div class="logo">
-					<a href="${pageContext.request.contextPath}/index.action"><img src="images/logo.png" alt="logo"/></a>
+					<a href="${pageContext.request.contextPath}/index.action" target="main"><img src="images/logo.png" alt="logo"/></a>
 				</div>
 				<div class="top-nav">
 					<span class="menu-icon"><img src="images/menu-icon.png" alt=""/></span>	
 					<div class="nav1">
 						<ul class=" nav nav-sidebar">
 							<li style="color: blue;font-size: 20px; font-weight: 600">当前用户：${userBean.userName}</li>
-							<li class="active"><a href="${pageContext.request.contextPath}/index.action">首  页</a></li>
-						 <li><a href="${pageContext.request.contextPath}/friendlist.action">好友</a></li>
-							<li><a href="${pageContext.request.contextPath}/personalinfo.action">聊天室</a></li>
-							<li><a href="${pageContext.request.contextPath}/personalinfo.action">个人信息</a></li>
-							<li><a href="testmonials.html">修改密码</a></li>
-							<li><a href="${pageContext.request.contextPath}/logout.action">退出登录</a></li>
+							<li id="li_index" class="active"><a href="${pageContext.request.contextPath}/index.action" target="main">首  页</a></li>
+						 <li id="li_friendlist"><a href="${pageContext.request.contextPath}/friendlist.action" target="main">好友</a></li>
+							<li id="li_chatroom"><a href="${pageContext.request.contextPath}/personalinfo.action" target="main">聊天室</a></li>
+							<li id="li_personalinfo"><a href="${pageContext.request.contextPath}/personalinfo.action" target="main">个人信息</a></li>
+							<li id="li_changepwd"><a href="testmonials.html">修改密码</a></li>
+							<li id="li_logout"><a href="${pageContext.request.contextPath}/logout.action" target="frame">退出登录</a></li>
 						</ul> 
 						<div class="social-icons">
 							<ul>
-								<li style="color: #d95459; font-size: 20px; font-weight: 600"><a href="${pageContext.request.contextPath}/login.action"></a>登陆</li>
-								<li style="color: #d95459; font-size: 20px; font-weight: 600"><a href="${pageContext.request.contextPath}/register.action" class="be"></a>注册</li>
+								<li style="color: #d95459; font-size: 20px; font-weight: 600"><a href="${pageContext.request.contextPath}/login.action" target="frame"></a>登陆</li>
+								<li style="color: #d95459; font-size: 20px; font-weight: 600"><a href="${pageContext.request.contextPath}/register.action" class="be" target="frame"></a>注册</li>
 							</ul>	
 						</div>						
 					</div>	
-					<!-- script-for-menu -->
-						 <script>
-						   $( "span.menu-icon" ).click(function() {
-							 $( ".nav1" ).slideToggle( 300, function() {
-							 // Animation complete.
-							  });
-							 });
-						</script>
-						<!-- /script-for-menu -->
 				</div>
 				</div>
 				</div>
 			</div>
-			<div class="clearfix"> </div>
-	
-    <script src="js/bootstrap.js"> </script>
 </body>
 </html>

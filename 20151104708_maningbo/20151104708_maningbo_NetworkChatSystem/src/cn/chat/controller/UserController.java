@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -28,9 +30,9 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/index")
+	@RequestMapping("/frame")
 	public String toIndexPage(HttpServletRequest request) {
-		return "index";
+		return "frame";
 	}
 
 	@RequestMapping(value = "/login.action")
@@ -46,7 +48,7 @@ public class UserController {
 			if (userBean != null) {
 				// System.out.println(userName + userPass);
 				session.setAttribute("userBean", userBean);
-				return "index";
+				return "frame";
 			} else {
 				model.addAttribute("msg", "账号或密码错误");
 				return "login";
@@ -159,16 +161,16 @@ public class UserController {
 		UserBean userChk = (UserBean) session.getAttribute("userBean");
 		if (userChk != null)
 			System.out.println("logout:remove failed");
-		return "index";
+		return "frame";
 	}
 
-	@RequestMapping(value = "/goframe.action")
+	@RequestMapping(value = "/frame.action")
 	public String goframe() {
 		return "frame";
 	}
 
 	@RequestMapping(value = "/golist.action")
-	public String golist() {
+	public String golist(HttpSession session) {
 		return "list";
 	}
 
