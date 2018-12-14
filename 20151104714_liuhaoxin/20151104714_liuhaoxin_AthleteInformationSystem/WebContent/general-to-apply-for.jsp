@@ -8,52 +8,42 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
-
-<%
-	String name = (String) session.getAttribute("user");
-
-%>
+<% String name = (String) session.getAttribute("user"); %>
 <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
   $("#hide").click(function(){
   $("div#a").hide();
-  
   });
   $("#show").click(function(){
   $("div#a").show();
-
   });
 });
 </script>
 </head>
-<body><div align="center">
+<body>
+<div align="center">
 <table>
 <tr>
-<td>
-<h1>添加申请</h1>
-<form action="AddToApplyFor" method="post">
-		<textarea name="reason" rows="10" cols="30">填写申请理由,说明你的班级</textarea>
-		<input type="hidden" name="username" value=<%=name %>>
-		<br><br><br>
-		<input type="submit" value="提交">
+<td><h1>添加申请</h1>
+	<form action="AddToApplyFor" method="post">
+	<textarea name="reason" rows="10" cols="30">填写申请理由,说明你的班级</textarea>
+	<input type="hidden" name="username" value=<%=name %>>
+	<br><br><br>
+	<input type="submit" value="提交">
 	</form>
 </td>
 <td style="width: 100px"></td>
 <td>
 <button id="show" type="button">查看我的申请</button>
 <button id="hide"  type="button" >隐藏我的申请</button>
-
-
-<div id="a" style="display:none;">
-<h1 >我的申请</h1>
-
-<table  border="2" cellpadding="0" cellspacing="0" style="widows: 300px">
+		<div id="a" style="display:none;">
+		<h1 >我的申请</h1>
+		<table  border="2" cellpadding="0" cellspacing="0" style="widows: 300px">
 				<thead>
 					<tr>
 						<th >状态</th>
 						<th >申请理由</th>
-						
 					</tr>
 				</thead>
 				<tbody>
@@ -61,12 +51,11 @@ $(document).ready(function(){
 					<tr>
  					<td>${w.state}</td>
 					<td>${w.reason} </td>
-					
 					</tr>
 					</c:forEach>
 				</tbody>
-
-<tr>
+		</table>
+		</div>
 </table>
 </div>
 

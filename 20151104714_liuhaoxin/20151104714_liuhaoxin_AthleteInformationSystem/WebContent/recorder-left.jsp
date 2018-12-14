@@ -11,8 +11,8 @@
 <body>
 	<br>
 	<div align="center">
-<a  href ="InformationView" target ="recorder-right">查看自己的信息<br /></a>
-
+<a  href ="InformationView" target ="recorder-right">查看自己的信息</a><br><br><br>
+<a  href ="ViewGames" target ="recorder-right">查看我管理的运动会</a><br>
 </div>
 <br><br>
 </body>

@@ -8,8 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
-
-
 </head>
 <body>
 <div align="center">
@@ -31,25 +29,25 @@
 					<td>${w.reason} </td>
 					<td>${w.username} </td>
 					<td>${w.state}</td>
-					<td><form action="PermissionUpload2" method="post">
+					<td>
+					<form action="PermissionUpload2" method="post">
 					<input type="hidden" name="username" value=${w.username}>
-					<input type="submit" style="width: 150px" value="通过审核"></form></td>
-					
-					<form action="PermissionUpload3" method="post">
-					<td><input type="text" name="liyou" placeholder="输入拒绝理由" required="">
-					<input type="hidden" name="aid" value=${w.aid}>
-					<input type="submit" style="width: 150px" value="拒绝申请"></td>
+					<input type="submit" style="width: 150px" value="通过审核">
 					</form></td>
-					
-					<form action="ToApplyForDelete" method="post">
+					<td>
+					<form action="PermissionUpload3" method="post">
+					<input type="text" name="liyou" placeholder="输入拒绝理由" required="">
 					<input type="hidden" name="aid" value=${w.aid}>
-					<td><input type="submit" style="width: 150px" value="删除此条申请"></td>
-					</form>
-					
-					
+					<input type="submit" style="width: 150px" value="拒绝申请">
+					</form></td>
+					<td><form action="ToApplyForDelete" method="post">
+					<input type="hidden" name="aid" value=${w.aid}>
+					<input type="submit" style="width: 150px" value="删除此条申请">
+					</form></td>
 					</tr>
 					</c:forEach>
 				</tbody>
 		</table>	
+		</div>
 </body>
 </html>

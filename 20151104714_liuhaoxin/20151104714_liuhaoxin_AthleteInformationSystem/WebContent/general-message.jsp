@@ -12,16 +12,12 @@
 <body>
 	<form action="MessageAdd" method="post">
 		<input style="width: 500px" type="text" name="message" placeholder="留言" required="">
-		
 		 <input style="width: 300px"  type="submit" value="添加留言">
-
 	</form>
-
 	<table border="2" cellpadding="0" cellspacing="0"
 		style="font-size: 40px"  width="100%" height="100%">
 		<thead>
 			<tr>
-
 				<th>用户</th>
 				<th>留言</th>
 			</tr>
@@ -31,7 +27,6 @@
 				<tr align="center">
 					<td>${w.username}</td>
 					<td>${w.message}</td>
-
 				</tr>
 			</c:forEach>
 		</tbody>
