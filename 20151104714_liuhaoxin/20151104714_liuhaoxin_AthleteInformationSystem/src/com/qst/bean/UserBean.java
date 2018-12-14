@@ -4,6 +4,7 @@ public class UserBean {
 
 	private String username,pwd,phone,email,permission;
 	private int uid;
+	
 	public String getUsername() {
 		return username;
 	}

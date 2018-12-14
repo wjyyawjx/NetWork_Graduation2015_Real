@@ -18,9 +18,11 @@
 		<br> <a href="ContactManagementView" target="admin-right">联系管理</a><br />
 		<br>
 		<br> <a href="AdminMessageView" target="admin-right">查看管理留言</a><br />
-
+<br>
+		<br> <a href="admin-newgames" target="admin-right">创建运动会</a><br />
 		<br>
-		<br> <a href="GameView" target="admin-right">创建运动会</a><br />
+		<br> <a href="GameView" target="admin-right">管理运动会</a><br />
+		
 	</div>
 </body>
 </html>

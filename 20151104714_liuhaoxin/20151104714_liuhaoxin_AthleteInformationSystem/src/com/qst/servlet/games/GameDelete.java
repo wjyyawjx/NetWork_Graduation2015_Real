@@ -1,30 +1,25 @@
 package com.qst.servlet.games;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.qst.bean.GameBean;
-import com.qst.bean.UserBean;
-import com.qst.dao.AdminDao;
 import com.qst.dao.GameDao;
 
 /**
- * Servlet implementation class GameView
+ * Servlet implementation class GameDelete
  */
-@WebServlet("/GameView")
-public class GameView extends HttpServlet {
+@WebServlet("/GameDelete")
+public class GameDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GameView() {
+    public GameDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,16 +29,14 @@ public class GameView extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//查看所有运动会
-		ArrayList<GameBean> gambean = new ArrayList<GameBean>();
-		GameDao gamdao = new GameDao();
-		gambean = (ArrayList<GameBean>)gamdao.gameList();
-		request.setAttribute("gambean", gambean);
-		//查看所有的记录员
-		ArrayList<UserBean> userbean = new ArrayList<UserBean>();
-		userbean = (ArrayList<UserBean>)gamdao.usernameList();
-		request.setAttribute("userbean", userbean);
-		request.getRequestDispatcher("admin-games.jsp").forward(request, response);
+		//管理员删除运动会
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("UTF-8");
+		int sid =Integer.parseInt( request.getParameter("sid"));
+		GameDao dao = new GameDao();
+		dao.GameDelete(sid);
+		response.sendRedirect("GameView");
+
 	}
 
 	/**
