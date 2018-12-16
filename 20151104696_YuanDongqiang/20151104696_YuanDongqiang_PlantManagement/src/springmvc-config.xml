@@ -39,4 +39,6 @@
 	<!--  <mvc:interceptor>   -->	
 	<!--  <mvc:mapping path="/**" />  -->
 	<!--  		<bean class="cn.edu.imnu.interceptor.LoginInterceptor" />  -->
+	<!--  	</mvc:interceptor>   -->
+	<!--  </mvc:interceptors>    -->
 </beans>
