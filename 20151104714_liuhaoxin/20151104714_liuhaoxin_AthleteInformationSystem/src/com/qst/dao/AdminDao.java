@@ -20,7 +20,6 @@ public class AdminDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -50,7 +49,6 @@ public class AdminDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, username);
 			rs = pstmt.executeQuery();

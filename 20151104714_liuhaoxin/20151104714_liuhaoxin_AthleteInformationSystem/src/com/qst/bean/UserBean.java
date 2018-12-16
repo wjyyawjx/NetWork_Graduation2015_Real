@@ -1,5 +1,5 @@
 package com.qst.bean;
-
+//用户表
 public class UserBean {
 
 	private String username,pwd,phone,email,permission;

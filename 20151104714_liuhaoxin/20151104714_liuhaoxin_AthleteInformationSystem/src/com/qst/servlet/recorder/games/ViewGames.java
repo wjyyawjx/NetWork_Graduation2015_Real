@@ -40,7 +40,6 @@ public class ViewGames extends HttpServlet {
 		// 记录员查看自己可以管理运动会
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("user");
-		System.err.println(username);
 		ArrayList<GameBean> gambean = new ArrayList<GameBean>();
 		RecorderGameDao rgdao = new RecorderGameDao();
 		gambean = (ArrayList<GameBean>) rgdao.recordergameList(username);
