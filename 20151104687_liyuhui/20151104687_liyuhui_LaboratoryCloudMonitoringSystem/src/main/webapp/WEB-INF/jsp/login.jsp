@@ -35,16 +35,16 @@
         <div class="page-container">
             <h1>登录</h1>
             <font color="red"><span id="message">${msg }</span></font>
-            <form action="${pageContext.request.contextPath }/login.action" method="post" onsubmit="return check()">
+            <form action="${pageContext.request.contextPath }/login" method="post" onsubmit="return check()">
                 <input type="text" name="num" class="uname" placeholder="学号/工号" >
                 <input type="password" name="pwd" class="upwd" placeholder="密码" >
                 <button type="submit">登 录</button>
                 <div class="error"><span>+</span></div>
             </form>
             <br>
-            <a href="${pageContext.request.contextPath }/toregister.action">新用户注册</a> 
+            <a href="${pageContext.request.contextPath }/toregister">新用户注册</a> 
             <br> 
-            <a href="${pageContext.request.contextPath }/tofindpwd.action">忘记密码</a>  
+            <a href="${pageContext.request.contextPath }/tofindpwd">忘记密码</a>  
             <div class="connect">
                 <p></p>
                 <p>
