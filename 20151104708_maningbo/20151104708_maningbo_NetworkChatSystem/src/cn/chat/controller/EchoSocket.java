@@ -15,6 +15,11 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import org.springframework.stereotype.Component;
+
+import cn.chat.pojo.UserBean;
+import cn.chat.service.UserService;
+
 @ServerEndpoint("/websocket")
 public class EchoSocket {
 	public static Map<String, Session> conns = new HashMap<String, Session>();// session的map

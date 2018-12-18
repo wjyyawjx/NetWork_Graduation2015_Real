@@ -20,5 +20,5 @@
  			<!-- 后缀 -->
  			<property name="suffix" value=".jsp"></property>
  		</bean>
- 		
+
     </beans>
