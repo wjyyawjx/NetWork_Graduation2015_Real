@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -28,9 +30,9 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/index")
+	@RequestMapping("/frame")
 	public String toIndexPage(HttpServletRequest request) {
-		return "index";
+		return "frame";
 	}
 
 	@RequestMapping(value = "/login.action")
@@ -159,17 +161,26 @@ public class UserController {
 		UserBean userChk = (UserBean) session.getAttribute("userBean");
 		if (userChk != null)
 			System.out.println("logout:remove failed");
-		return "index";
+		return "frame";
 	}
 
-	@RequestMapping(value = "/goframe.action")
+	@RequestMapping(value = "/frame.action")
 	public String goframe() {
 		return "frame";
 	}
 
 	@RequestMapping(value = "/golist.action")
-	public String golist() {
-		return "list";
+	public String golist(HttpSession session) {
+		UserBean user = null;
+		if(user==null){
+			System.out.println("列表获取的内容为空");
+			return "list";
+		}
+			user = (UserBean) session.getAttribute("userBean");
+			System.out.println("列表获取的用户名："+user.getUserName());
+			return "list";
+		
+		
 	}
 
 	@RequestMapping(value = "/addfriend.action")
@@ -200,4 +211,8 @@ public class UserController {
 	public String chatroom() {
 		return "chatroom";
 	}
+    @RequestMapping("forgetpwd.action")
+    public String forgetpwd(){
+    	return "forgetpwd";
+    }
 }

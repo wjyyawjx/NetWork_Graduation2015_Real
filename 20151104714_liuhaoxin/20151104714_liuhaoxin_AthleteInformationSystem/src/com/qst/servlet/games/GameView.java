@@ -39,18 +39,7 @@ public class GameView extends HttpServlet {
 		GameDao gamdao = new GameDao();
 		gambean = (ArrayList<GameBean>)gamdao.gameList();
 		request.setAttribute("gambean", gambean);
-		
-		//查看所有的记录员
-		ArrayList<UserBean> userbean = new ArrayList<UserBean>();
-	
-		userbean = (ArrayList<UserBean>)gamdao.usernameList();
-		request.setAttribute("userbean", userbean);
-		
 		request.getRequestDispatcher("admin-games.jsp").forward(request, response);
-		
-		
-		
-		
 	}
 
 	/**

@@ -1,5 +1,5 @@
 package com.qst.bean;
-
+//申请
 public class ToapplyforBean {
 	private String reason,username,state;
 					//申请理由，用户名，状态

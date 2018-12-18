@@ -37,7 +37,7 @@
 			<input type="text" id="userName" name="userName" value="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
 			<input type="password" placeholder="Password" id="userPass" name="userPass"value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
 	    <div class="forgot">
-	    	<a href="#">forgot Password</a>
+	    	<a href="${pageContext.request.contextPath}/forgetpwd.action">forgot Password</a>
 	    	<span>
 	    		<a>${msg}</a>
 	    	</span>

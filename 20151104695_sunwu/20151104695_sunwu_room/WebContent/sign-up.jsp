@@ -47,16 +47,19 @@ function check() { //验证用户名字段是否为空
 		}
 	}
 
-function disable()
+ function disable()
   {
   document.getElementById("accept").disabled=true
-  alert("请先同意网站协议");
+  alert("确定要取消网站协议吗？");
   }
 function enable()
   {
   document.getElementById("accept").disabled=false
   
-  }
+  } 
+  
+  
+  
 if(test!=null&&!test.equlas("")){
 }
 </script>
@@ -132,9 +135,9 @@ if(test!=null&&!test.equlas("")){
                     <label>密码</label>
                     <input type="password" class="span12"  name="password">
             
-                    <button type="submit"  id="accept"  disabled="true" class="btn btn-primary pull-right" >注册</button>
-                   <input type="checkBox" onclick="if (this.checked) {enable()} else {disable()}">I agree with the<a href="terms-and-conditions.html">Terms and Conditions</a></label>
-                  
+                   <button type="submit"  id="accept"  disabled="true" class="btn btn-primary pull-right" >注册</button> 
+                  <input type="checkBox" onclick="if (this.checked) {enable()} else {disable()}">I agree with the<a href="terms-and-conditions.html">Terms and Conditions</a></label>
+                        
                     <div class="clearfix"></div>
                 </form>
             </div>

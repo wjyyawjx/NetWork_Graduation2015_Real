@@ -8,16 +8,12 @@
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
 </head>
-
 <frameset rows="22%,78%">
-
 <frame noresize="noresize" src="admin-title.jsp">
-
 <frameset cols="200,*">
-<frame noresize="noresize" src="admin-left.jsp" noresize="noresize"  scrolling="no" >
+<frame noresize="noresize" src="admin-left.jsp"  noresize="noresize"  scrolling="no" >
 <frame noresize="noresize" src="admin-right.jsp" name="admin-right"   >
 </frameset>
-
 </frameset>
 
 </html>

@@ -36,7 +36,6 @@ public class ToApplyForDelete extends HttpServlet {
 		int aid =Integer.parseInt(request.getParameter("aid"));
 		GeneralDao geldao = new GeneralDao();
 		geldao.ToApplyFordelete(aid);
-		
 		response.sendRedirect("AdminToApplyForView");
 
 	}

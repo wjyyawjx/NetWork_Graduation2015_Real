@@ -36,13 +36,13 @@ public class RegisterServlet extends HttpServlet {
 		boolean flag = dao.isExitEmail(username);
 
 		if(flag ){
-			JOptionPane.showMessageDialog(null, "账号已被注册，请重新输入！", null, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "账号已被注册，请重新输入！");
 			response.sendRedirect("sign-up.jsp");
 			System.out.println("账号已被注册，请重新输入！");	
 		}
 		else{
 			dao.save(username,telephone,email,password);
-			JOptionPane.showMessageDialog(null, "注册成功！请登录！", null, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "注册成功！请登录！");
 			response.sendRedirect("sign-in.jsp");
 			System.out.println("注册成功！");
 		}

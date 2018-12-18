@@ -54,7 +54,7 @@
         <div class="page-container">
             <h1>注册新账户</h1>
             <font color="red"><span id="message">${msg }</span></font>
-            <form action="${pageContext.request.contextPath }/register.action" method="post" onsubmit="return check()">
+            <form action="${pageContext.request.contextPath }/register" method="post" onsubmit="return check()">
                 <input type="text" name="num" class="uname" placeholder="请输入学号/工号">
                 <input type="password" name="pwd1" class="upwd" placeholder="请输入密码">
                 <input type="password" name="pwd" class="upwd" placeholder="请确认密码">
@@ -67,7 +67,7 @@
                 <div class="error"><span>+</span></div>
             </form>
             <br>
-            <a href="${pageContext.request.contextPath }/tologin.action">返回登录</a>
+            <a href="${pageContext.request.contextPath }/tologin">返回登录</a>
         </div>
         <br><br><br><br><br>
         <div align="center">李宇辉——毕业设计——实验室云端监管系统</div>

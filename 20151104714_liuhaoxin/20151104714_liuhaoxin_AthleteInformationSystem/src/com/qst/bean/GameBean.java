@@ -1,5 +1,5 @@
 package com.qst.bean;
-
+//创建运动会
 public class GameBean {
 	private int sid;
 	private String username,gamesname,startTime,stopTime;

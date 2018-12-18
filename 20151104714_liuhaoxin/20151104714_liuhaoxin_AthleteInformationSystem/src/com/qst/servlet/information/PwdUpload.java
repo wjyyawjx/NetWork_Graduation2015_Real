@@ -43,9 +43,8 @@ public class PwdUpload extends HttpServlet {
 		// 进行修改
 		UserDao uploaddao = new UserDao();
 		uploaddao.UploadPwd(username, pwd, pwdupload);
-		//获取我的头像图片地址
-		ImageIcon icon= new ImageIcon(request.getSession().getServletContext().getRealPath("/img/touxiang.png"));        
-		JOptionPane.showMessageDialog(null, "密码修改成功了，请重新登录","提示",JOptionPane.ERROR_MESSAGE,icon); 		
+		JOptionPane.showMessageDialog(null, "你的密码修改成功了，需要重新登录","ok!!",JOptionPane.ERROR_MESSAGE); 
+
 		response.sendRedirect("LoginView");
 	
 	}	
