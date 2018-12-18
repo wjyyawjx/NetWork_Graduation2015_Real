@@ -26,4 +26,5 @@ public interface UserDao {
 	public List<Friend> myFriend(@Param("userName") String userName);
 
 	public void addFriend(@Param("userName") String userName, @Param("friend_2") String friend_2);
+
 }

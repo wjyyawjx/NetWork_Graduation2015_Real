@@ -48,7 +48,7 @@ public class UserController {
 			if (userBean != null) {
 				// System.out.println(userName + userPass);
 				session.setAttribute("userBean", userBean);
-				return "frame";
+				return "index";
 			} else {
 				model.addAttribute("msg", "账号或密码错误");
 				return "login";
@@ -171,7 +171,16 @@ public class UserController {
 
 	@RequestMapping(value = "/golist.action")
 	public String golist(HttpSession session) {
-		return "list";
+		UserBean user = null;
+		if(user==null){
+			System.out.println("列表获取的内容为空");
+			return "list";
+		}
+			user = (UserBean) session.getAttribute("userBean");
+			System.out.println("列表获取的用户名："+user.getUserName());
+			return "list";
+		
+		
 	}
 
 	@RequestMapping(value = "/addfriend.action")
@@ -202,4 +211,8 @@ public class UserController {
 	public String chatroom() {
 		return "chatroom";
 	}
+    @RequestMapping("forgetpwd.action")
+    public String forgetpwd(){
+    	return "forgetpwd";
+    }
 }

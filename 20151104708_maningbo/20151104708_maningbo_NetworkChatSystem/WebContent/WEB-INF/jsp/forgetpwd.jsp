@@ -34,13 +34,9 @@
 	<div class="login-top">
 		<h1>LOGIN FORM</h1>
 		<form  action="${pageContext.request.contextPath}/login.action" method="post" onsubmit="return check()">
-			<input type="text" id="userName" name="userName" value="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
-			<input type="password" placeholder="Password" id="userPass" name="userPass"value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
+			<input type="text" id="email" name="email" value="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'email';}">
 	    <div class="forgot">
-	    	<a href="${pageContext.request.contextPath}/forgetpwd.action">forgot Password</a>
-	    	<span>
-	    		<a>${msg}</a>
-	    	</span>
+	    	<a href="${pageContext.request.contextPath}/send.action">获取验证码</a>
 	    	<input type="submit" value="submit" >
 	    </div>
 	</form>
