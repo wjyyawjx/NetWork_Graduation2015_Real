@@ -10,13 +10,23 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form action="RecorderAdd" method="post">
+		<input type="text" name="athletusername" placeholder="运动员名字" required="" >
+		<input type="text" name="ranking" placeholder="排名" required="">
+		<input type="text" name="results" placeholder="成绩" required="">
+		<input type="text" name="events" placeholder="项目" required="">
+		<input type="submit" value="添加">
+</form>
+
+<%-- 
 	<table border="2" cellpadding="0" cellspacing="0"
 		style="font-size: 40px" width="100%" height="100%">
 		<thead>
-			<tr>
-				<th>运动会名称</th>
-				<th>开始时间</th>
-				<th>结束时间</th>
+			<tr>          
+				<th>名字</th>
+				<th>项目</th>
+				<th>排名</th>
+				<th>成绩</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,6 +38,6 @@
 				</tr>
 			</c:forEach>
 		</tbody>
-	</table>
+	</table>--%>
 </body>
 </html>

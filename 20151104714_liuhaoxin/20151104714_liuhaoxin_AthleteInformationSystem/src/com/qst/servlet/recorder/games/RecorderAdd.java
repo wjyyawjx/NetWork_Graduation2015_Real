@@ -1,4 +1,4 @@
-package com.qst.servlet.toapplyfor;
+package com.qst.servlet.recorder.games;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.qst.dao.GeneralDao;
+import com.qst.dao.RecorderGameDao;
 
 /**
- * Servlet implementation class ToApplyForDelete
+ * Servlet implementation class RecorderAdd
  */
-@WebServlet("/ToApplyForDelete")
-public class ToApplyForDelete extends HttpServlet {
+@WebServlet("/RecorderAdd")
+public class RecorderAdd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ToApplyForDelete() {
+    public RecorderAdd() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,14 +29,15 @@ public class ToApplyForDelete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//管理员删除用户对管理员的一条申请
-		
+		//记录员添加运动员信息
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
-		int aid =Integer.parseInt(request.getParameter("aid"));
-		GeneralDao geldao = new GeneralDao();
-		geldao.ToApplyFordelete(aid);
-		response.sendRedirect("AdminToApplyForView");
+		String athletusername = request.getParameter("athletusername");
+		String ranking = request.getParameter("ranking");
+		String results = request.getParameter("results");
+		String events = request.getParameter("events");
+		RecorderGameDao redao = new RecorderGameDao();
+		redao.recorderAdd(athletusername,ranking,results,events);
 
 	}
 
