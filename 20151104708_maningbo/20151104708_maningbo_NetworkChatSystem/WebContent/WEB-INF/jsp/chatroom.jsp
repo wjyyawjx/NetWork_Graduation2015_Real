@@ -24,7 +24,10 @@
 	//发送按钮监听，点击按钮后，向后台发送信息，由后台OnMessage接收
 	function button() {
 		message = document.getElementById('in').value;
-		ws.send(message);
+		username = document.getElementById('username').value;
+		//message += message + username;
+		ws.send(username+"说："+message);
+		
 	}
 	//发生错误时
 	ws.onerror = function(msg) {
@@ -57,7 +60,7 @@
 							<h3>Contact Info</h3>
 							<p class="cnt-p">Lorem ipsum dolor sit amet, consectetur
 								adipisicing elit,sheets containing Lorem Ipsum passages sed do</p>
-							<p>Eiusmod Tempor inc</p>
+							<p>${userBean.userName}</p>
 							<p>9560 St Dolor,London</p>
 							<p>Telephone : +2 800 544 6035</p>
 							<p>FAX : +1 800 889 4444</p>
@@ -71,6 +74,7 @@
 							<br />
 							<div style="text-align: left;">
 								<form action="">
+									<input id="username" name="username" type="hidden" value="${userBean.userName}">
 									<input id="in" name="message" value="" type="text" style="width: 80%; height: 60px; border: 1px solid;">
 									<br/><input onclick="button()" value="发送" type="button" />
 								</form>

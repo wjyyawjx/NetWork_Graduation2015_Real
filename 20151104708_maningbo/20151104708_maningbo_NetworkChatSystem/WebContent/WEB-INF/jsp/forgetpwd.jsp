@@ -16,28 +16,19 @@
 <!-- Custom Theme files -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<script>
-		function check(){
-			var userName = $("#userName").val();
-			var userPass = $("#userPass").val();
-			if(email==""||userPass==""){
-				alert("账号密码为空");
-				return false;
-			}
-			return true;
-		}
-	</script>
 </head>
 <body>
 <div class="login">
 	<h2>Login Form</h2>
 	<div class="login-top">
 		<h1>LOGIN FORM</h1>
-		<form  action="${pageContext.request.contextPath}/login.action" method="post" onsubmit="return check()">
+		<form  action="${pageContext.request.contextPath}/send.action" method="post" onsubmit="return check()">
 			<input type="text" id="email" name="email" value="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'email';}">
 	    <div class="forgot">
-	    	<a href="${pageContext.request.contextPath}/send.action">获取验证码</a>
-	    	<input type="submit" value="submit" >
+	    	<span>
+	    		<a>${msg}</a>
+	    	</span>
+	    	<input type="submit" value="获取验证码" >
 	    </div>
 	</form>
 	</div>

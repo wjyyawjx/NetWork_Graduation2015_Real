@@ -48,7 +48,7 @@ public class UserController {
 			if (userBean != null) {
 				// System.out.println(userName + userPass);
 				session.setAttribute("userBean", userBean);
-				return "index";
+				return "frame";
 			} else {
 				model.addAttribute("msg", "账号或密码错误");
 				return "login";
@@ -208,8 +208,17 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/chatroom.action")
-	public String chatroom() {
-		return "chatroom";
+	public String chatroom(HttpSession session,HttpServletRequest request,Model model) {
+		UserBean user = (UserBean) session.getAttribute("userBean");
+		if (user != null) {
+			// UserBean userinfo = userService.findUserById(user.getId());
+			request.setAttribute("userBean", user);
+			System.out.println("chatroom:email=" + user.getEmail());
+			return "chatroom";
+		} else {
+			model.addAttribute("msg", "请先登录！");
+			return "login";
+		}
 	}
     @RequestMapping("forgetpwd.action")
     public String forgetpwd(){

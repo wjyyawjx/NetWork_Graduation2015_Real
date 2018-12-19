@@ -23,4 +23,6 @@ public interface UserService {
 	public List<Friend> myFriend(String userName);
 
 	public void addFriend(String userName, String friend_2);
+	
+	public UserBean findUserByEmail(String email);
 }
