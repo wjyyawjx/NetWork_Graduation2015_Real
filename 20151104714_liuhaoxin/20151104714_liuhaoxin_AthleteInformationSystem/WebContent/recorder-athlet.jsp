@@ -12,32 +12,33 @@
 <body>
 <form action="RecorderAdd" method="post">
 		<input type="text" name="athletusername" placeholder="运动员名字" required="" >
-		<input type="text" name="ranking" placeholder="排名" required="">
-		<input type="text" name="results" placeholder="成绩" required="">
 		<input type="text" name="events" placeholder="项目" required="">
+		<input type="text" name="results" placeholder="成绩" required="">
+		<input type="text" name="ranking" placeholder="排名" required="">
 		<input type="submit" value="添加">
 </form>
 
-<%-- 
+
 	<table border="2" cellpadding="0" cellspacing="0"
 		style="font-size: 40px" width="100%" height="100%">
 		<thead>
 			<tr>          
-				<th>名字</th>
+				<th>运动员名字</th>
 				<th>项目</th>
-				<th>排名</th>
 				<th>成绩</th>
+				<th>排名</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${gambean}" var="w">
+			<c:forEach items="${mea}" var="w">
 				<tr align="center">
-					<td>${w.gamesname}</td>
-					<td>${w.startTime}</td>
-					<td>${w.stopTime}</td>
+					<td>${w.athletusername}</td>
+					<td>${w.events}</td>
+					<td>${w.results}</td>
+					<td>${w.ranking}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
-	</table>--%>
+	</table>
 </body>
 </html>

@@ -13,17 +13,18 @@ import javax.servlet.http.HttpSession;
 import com.qst.bean.AthletBean;
 import com.qst.dao.RecorderGameDao;
 
+
 /**
- * Servlet implementation class RecorderAdd
+ * Servlet implementation class RecorderView
  */
-@WebServlet("/RecorderAdd")
-public class RecorderAdd extends HttpServlet {
+@WebServlet("/RecorderJump")
+public class RecorderJump extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RecorderAdd() {
+    public RecorderJump() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,19 +34,18 @@ public class RecorderAdd extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//记录员添加运动员信息
+		//用于记录员管理运动员学生信息的跳转，保存运动会id
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
+		int sid =Integer.parseInt(request.getParameter("sid"));
 		HttpSession session = request.getSession();
-		int tsid = (int) session.getAttribute("sid");
-		String athletusername = request.getParameter("athletusername");
-		String ranking = request.getParameter("ranking");
-		String results = request.getParameter("results");
-		String events = request.getParameter("events");
-		RecorderGameDao redao = new RecorderGameDao();
-		redao.recorderAdd(tsid,athletusername,ranking,results,events);
-		response.sendRedirect("RecorderJView");	
-
+		session.setAttribute("sid",sid);
+		RecorderGameDao rgdao = new RecorderGameDao();
+		ArrayList<AthletBean> abean = new ArrayList<AthletBean>();
+		abean = (ArrayList<AthletBean>)rgdao.athletList(sid);
+		request.setAttribute("mea", abean);
+		request.getRequestDispatcher("recorder-athlet.jsp").forward(request, response);
+		
 	}
 
 	/**
