@@ -3,8 +3,8 @@ package com.qst.bean;
 public class AthletBean {
 	private int tid,tsid;
 	           //id 运动会id
-	private String ranking ,results,events;
-					//排名    成绩     项目
+	private String athletusername, ranking ,results,events;
+					//名字  排名    成绩     项目
 	public String getRanking() {
 		return ranking;
 	}
@@ -34,5 +34,11 @@ public class AthletBean {
 	}
 	public void setTsid(int tsid) {
 		this.tsid = tsid;
+	}
+	public String getAthletusername() {
+		return athletusername;
+	}
+	public void setAthletusername(String athletusername) {
+		this.athletusername = athletusername;
 	}
 }

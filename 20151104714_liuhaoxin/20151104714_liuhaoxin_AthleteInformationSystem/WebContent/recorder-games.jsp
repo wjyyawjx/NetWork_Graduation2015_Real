@@ -17,6 +17,7 @@
 				<th>运动会名称</th>
 				<th>开始时间</th>
 				<th>结束时间</th>
+				<th>信息管理</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,6 +26,11 @@
 					<td>${w.gamesname}</td>
 					<td>${w.startTime}</td>
 					<td>${w.stopTime}</td>
+					<td>
+					<form action="RecorderJump" method="post">
+					<input type="hidden" name="sid" value=${w.sid}>
+					<input type="submit" value="管理信息">
+				</form></td>
 				</tr>
 			</c:forEach>
 		</tbody>

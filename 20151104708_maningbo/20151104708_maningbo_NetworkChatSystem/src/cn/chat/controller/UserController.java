@@ -171,7 +171,16 @@ public class UserController {
 
 	@RequestMapping(value = "/golist.action")
 	public String golist(HttpSession session) {
-		return "list";
+		UserBean user = null;
+		if(user==null){
+			System.out.println("列表获取的内容为空");
+			return "list";
+		}
+			user = (UserBean) session.getAttribute("userBean");
+			System.out.println("列表获取的用户名："+user.getUserName());
+			return "list";
+		
+		
 	}
 
 	@RequestMapping(value = "/addfriend.action")
@@ -199,7 +208,20 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/chatroom.action")
-	public String chatroom() {
-		return "chatroom";
+	public String chatroom(HttpSession session,HttpServletRequest request,Model model) {
+		UserBean user = (UserBean) session.getAttribute("userBean");
+		if (user != null) {
+			// UserBean userinfo = userService.findUserById(user.getId());
+			request.setAttribute("userBean", user);
+			System.out.println("chatroom:email=" + user.getEmail());
+			return "chatroom";
+		} else {
+			model.addAttribute("msg", "请先登录！");
+			return "login";
+		}
 	}
+    @RequestMapping("forgetpwd.action")
+    public String forgetpwd(){
+    	return "forgetpwd";
+    }
 }

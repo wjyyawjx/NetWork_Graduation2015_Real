@@ -1,25 +1,29 @@
-package com.qst.servlet.toapplyfor;
+package com.qst.servlet.recorder.games;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.qst.dao.GeneralDao;
+import com.qst.bean.AthletBean;
+import com.qst.dao.RecorderGameDao;
 
 /**
- * Servlet implementation class ToApplyForDelete
+ * Servlet implementation class RecorderJView
  */
-@WebServlet("/ToApplyForDelete")
-public class ToApplyForDelete extends HttpServlet {
+@WebServlet("/RecorderJView")
+public class RecorderJView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ToApplyForDelete() {
+    public RecorderJView() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,14 +33,14 @@ public class ToApplyForDelete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//管理员删除用户对管理员的一条申请
-		
-		response.setContentType("text/html;charset=utf-8");
-		request.setCharacterEncoding("UTF-8");
-		int aid =Integer.parseInt(request.getParameter("aid"));
-		GeneralDao geldao = new GeneralDao();
-		geldao.ToApplyFordelete(aid);
-		response.sendRedirect("AdminToApplyForView");
+		//记录员查看运动员信息
+		HttpSession session = request.getSession();
+		int tsid = (int) session.getAttribute("sid");
+		RecorderGameDao rgdao = new RecorderGameDao();
+		ArrayList<AthletBean> abean = new ArrayList<AthletBean>();
+		abean = (ArrayList<AthletBean>)rgdao.athletList(tsid);
+		request.setAttribute("mea", abean);
+		request.getRequestDispatcher("recorder-athlet.jsp").forward(request, response);
 
 	}
 

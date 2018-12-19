@@ -49,7 +49,7 @@
 							<li style="color: blue;font-size: 20px; font-weight: 600">当前用户：${userBean.userName}</li>
 							<li id="li_index" class="active"><a href="${pageContext.request.contextPath}/index.action" target="main">首  页</a></li>
 						 <li id="li_friendlist"><a href="${pageContext.request.contextPath}/friendlist.action" target="main">好友</a></li>
-							<li id="li_chatroom"><a href="${pageContext.request.contextPath}/personalinfo.action" target="main">聊天室</a></li>
+							<li id="li_chatroom"><a href="${pageContext.request.contextPath}/chatroom.action" target="main">聊天室</a></li>
 							<li id="li_personalinfo"><a href="${pageContext.request.contextPath}/personalinfo.action" target="main">个人信息</a></li>
 							<li id="li_changepwd"><a href="testmonials.html">修改密码</a></li>
 							<li id="li_logout"><a href="${pageContext.request.contextPath}/logout.action" target="frame">退出登录</a></li>

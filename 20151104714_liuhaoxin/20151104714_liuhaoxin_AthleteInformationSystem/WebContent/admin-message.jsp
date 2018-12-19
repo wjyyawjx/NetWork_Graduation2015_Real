@@ -25,7 +25,7 @@
 					<td>${w.username}</td>
 					<td>${w.message}</td>
 					<td><form action="AdminMessageDelete" method="post">
-							<input type="hidden" name="mid" value=${w.mid}>
+							<input type="hidden" name="mid" value=$w.mid}>
 							 <input type="submit" style="width: 150px" value="删除">
 						</form></td>
 				</tr>
