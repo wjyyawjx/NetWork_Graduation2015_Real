@@ -19,7 +19,7 @@
 		location="classpath:resource.properties" />
 	<!-- 配置扫描器 -->
 	<context:component-scan
-		base-package="com.qst.core.web.controller" />
+		base-package="cn.edu.imnu.web.controller" />
 	<!-- 注解驱动：配置处理器映射器和适配器 -->
 	<mvc:annotation-driven />
 	<!--配置静态资源的访问映射，此配置中的文件，将不被前端控制器拦截 -->
@@ -35,10 +35,10 @@
 	</bean>
 
 	<!-- 配置拦截器 -->
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<bean class="com.qst.core.interceptor.LoginInterceptor" />
-		</mvc:interceptor>
-	</mvc:interceptors>
+	<!--  <mvc:interceptors>  -->
+	<!--  <mvc:interceptor>   -->	
+	<!--  <mvc:mapping path="/**" />  -->
+	<!--  		<bean class="cn.edu.imnu.interceptor.LoginInterceptor" />  -->
+	<!--  	</mvc:interceptor>   -->
+	<!--  </mvc:interceptors>    -->
 </beans>

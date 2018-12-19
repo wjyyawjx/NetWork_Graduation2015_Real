@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imnu.dao.AuCommodityMapper">
+  <resultMap id="BaseResultMap" type="com.imnu.model.AuCommodity">
+    <id column="com_id" jdbcType="VARCHAR" property="comId" />
+    <result column="type_id" jdbcType="VARCHAR" property="typeId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="com_name" jdbcType="VARCHAR" property="comName" />
+    <result column="com_comment" jdbcType="VARCHAR" property="comComment" />
+    <result column="com_money" jdbcType="DECIMAL" property="comMoney" />
+    <result column="com_date" jdbcType="VARCHAR" property="comDate" />
+    <result column="com_time" jdbcType="VARCHAR" property="comTime" />
+    <result column="com_image" jdbcType="VARCHAR" property="comImage" />
+    <result column="com_state" jdbcType="DECIMAL" property="comState" />
+    <result column="type_name" jdbcType="DECIMAL" property="typeName" />
+    <result column="user_name" jdbcType="DECIMAL" property="userName" />
+    <result column="com_starting" jdbcType="VARCHAR" property="comStarting"/>
+    <result column="com_au_commodity" jdbcType="DECIMAL" property="comAuCommodity"/>
+    
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    com_id, type_id, user_id, com_name, com_comment, com_money, com_date, com_time, com_image, 
+    com_state, com_au_commodity
+  </sql>
+  
+  <!-- 用户表,商品类型表,商品表 字段-->
+  <sql id="Base_Column_List2">
+    com_id, com_name, com_comment, com_money, com_date, com_time, com_image, 
+    com_state, com_au_commodity,type_name,user_name
+  </sql>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    *
+    from au_commodity
+    where com_id = #{comId,jdbcType=VARCHAR}
+   </select>
+   
+   <select id="queryCom" resultMap="BaseResultMap">
+    select 
+    *
+    from au_commodity
+   
+   </select>
+   
+   <!-- 根据类型查询商品A -->
+   <select id="queryTypeId" parameterType="string" resultMap="BaseResultMap">
+    select 
+    *
+    from au_commodity where type_id = #{comId,jdbcType=VARCHAR}
+   
+   </select>
+   
+   <!-- 查询总行数 -->
+   <select id="findCount" resultType="java.lang.Long">
+   		SELECT  
+  		count(*) FROM au_commodity com,au_type ty,au_user u WHERE com.type_id = ty.type_id AND com.user_id = u.user_id 
+  		<if test="comName != null and comName !='' ">
+  			AND com.com_name LIKE  concat('%',#{comName,jdbcType=VARCHAR},'%')
+  		</if>
+  		<if test="comDate !=null and comDate != '' ">
+	  		and com.com_date &gt;= #{comDate }
+	  	</if>
+	  	<if test="comTime !=null and comTime !='' ">
+	  		and com.com_time &lt;= #{comTime }
+	  	</if>
+   </select>
+   
+   <!-- 用户表,商品类型表,商品表关联查询 -->
+  <select id="queryAll" parameterType="map" resultMap="BaseResultMap">
+  	SELECT  
+  		<include refid="Base_Column_List2" /> 
+  	FROM au_commodity com,au_type ty,au_user u WHERE com.type_id = ty.type_id AND com.user_id = u.user_id 
+  		<if test="comName != null and comName !='' ">
+  			AND com.com_name LIKE  concat('%',#{comName,jdbcType=VARCHAR},'%')
+  		</if>
+  		<if test="comDate !=null and comDate != '' ">
+	  		and com.com_date &gt;= #{comDate }
+	  	</if>
+	  	<if test="comTime !=null and comTime !='' ">
+	  		and com.com_time &lt;= #{comTime }
+	  	</if>
+	  	limit #{startRows},#{rows}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from au_commodity
+    where com_id = #{comId,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insert" parameterType="com.imnu.model.AuCommodity">
+ 	 <selectKey keyProperty="comId" resultType="string" order="BEFORE">
+	    SELECT REPLACE(UUID(),'-','') AS id;
+	  </selectKey>
+    insert into au_commodity (com_id,type_id, user_id, 
+      com_name, com_comment, com_money, 
+      com_date, com_time, com_image, 
+      com_state, com_au_commodity,com_starting)
+    values (#{comId,jdbcType=VARCHAR},#{typeId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{comName,jdbcType=VARCHAR}, #{comComment,jdbcType=VARCHAR}, #{comMoney,jdbcType=DECIMAL}, 
+      #{comDate,jdbcType=DATE}, #{comTime,jdbcType=DATE}, #{comImage,jdbcType=VARCHAR}, 
+      #{comState,jdbcType=DECIMAL}, #{comAuCommodity,jdbcType=DECIMAL}, #{comStarting,jdbcType=DECIMAL})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.imnu.model.AuCommodity">
+  <selectKey keyProperty="comId" resultType="string" order="BEFORE">
+	    SELECT REPLACE(UUID(),'-','') AS id;
+	  </selectKey>
+    insert into au_commodity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="comId != null">
+        com_id,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="comName != null">
+        com_name,
+      </if>
+      <if test="comComment != null">
+        com_comment,
+      </if>
+      <if test="comMoney != null">
+        com_money,
+      </if>
+      <if test="comDate != null">
+        com_date,
+      </if>
+      <if test="comTime != null">
+        com_time,
+      </if>
+      <if test="comImage != null">
+        com_image,
+      </if>
+      <if test="comState != null">
+        com_state,
+      </if>
+      <if test="comMargin != null">
+        com_au_commodity,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="comId != null">
+        #{comId,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="comName != null">
+        #{comName,jdbcType=VARCHAR},
+      </if>
+      <if test="comComment != null">
+        #{comComment,jdbcType=VARCHAR},
+      </if>
+      <if test="comMoney != null">
+        #{comMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="comDate != null">
+        #{comDate,jdbcType=DATE},
+      </if>
+      <if test="comTime != null">
+        #{comTime,jdbcType=DATE},
+      </if>
+      <if test="comImage != null">
+        #{comImage,jdbcType=VARCHAR},
+      </if>
+      <if test="comState != null">
+        #{comState,jdbcType=DECIMAL},
+      </if>
+      <if test="comMargin != null">
+        #{comMargin,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.imnu.model.AuCommodity">
+    update au_commodity
+    <set>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="comName != null">
+        com_name = #{comName,jdbcType=VARCHAR},
+      </if>
+      <if test="comComment != null">
+        com_comment = #{comComment,jdbcType=VARCHAR},
+      </if>
+      <if test="comMoney != null">
+        com_money = #{comMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="comDate != null">
+        com_date = #{comDate,jdbcType=DATE},
+      </if>
+      <if test="comTime != null">
+        com_time = #{comTime,jdbcType=DATE},
+      </if>
+      <if test="comImage != null">
+        com_image = #{comImage,jdbcType=VARCHAR},
+      </if>
+      <if test="comState != null">
+        com_state = #{comState,jdbcType=DECIMAL},
+      </if>
+      <if test="comMargin != null">
+        com_au_commodity = #{comMargin,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where com_id = #{comId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.imnu.model.AuCommodity">
+    update au_commodity
+    set type_id = #{typeId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      com_name = #{comName,jdbcType=VARCHAR},
+      com_comment = #{comComment,jdbcType=VARCHAR},
+      com_money = #{comMoney,jdbcType=DECIMAL},
+      com_date = #{comDate,jdbcType=DATE},
+      com_time = #{comTime,jdbcType=DATE},
+      com_image = #{comImage,jdbcType=VARCHAR},
+      com_state = #{comState,jdbcType=DECIMAL},
+      com_au_commodity = #{comMargin,jdbcType=DECIMAL}
+    where com_id = #{comId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="findById" parameterType="string" resultMap="BaseResultMap">
+  	select co.*,co.com_name,ty.type_name,us.user_name 
+  	from au_commodity co,au_type ty,au_user us 
+  	where co.user_id=us.user_id 
+  	and co.type_id=ty.type_id 
+  	and co.com_id=#{comId}
+  </select>
+  
+  <select id="findAlls"  resultMap="BaseResultMap">
+  	SELECT * FROM au_commodity 
+  </select>
+</mapper>
