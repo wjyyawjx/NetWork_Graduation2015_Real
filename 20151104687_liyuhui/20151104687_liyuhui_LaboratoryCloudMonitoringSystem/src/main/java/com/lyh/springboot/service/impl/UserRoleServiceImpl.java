@@ -19,24 +19,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 	@Autowired
 	UserRoleMapper userRoleMapper;
 
-	@Override
-	public void setRoles(User user, Integer[] roleIds) {
-		// 删除当前用户所有的角色
-		UserRoleExample example = new UserRoleExample();
-		example.createCriteria().andUidEqualTo(user.getId());
-		List<UserRole> urs = userRoleMapper.selectByExample(example);
-		for (UserRole userRole : urs)
-			userRoleMapper.deleteByPrimaryKey(userRole.getId());
 
-		// 设置新的角色关系
-		if (null != roleIds)
-			for (Integer rid : roleIds) {
-				UserRole userRole = new UserRole();
-				userRole.setRid(rid);
-				userRole.setUid(user.getId());
-				userRoleMapper.insert(userRole);
-			}
-	}
 
 	@Override
 	public void deleteByUser(long userId) {
@@ -60,7 +43,21 @@ public class UserRoleServiceImpl implements UserRoleService {
 
 	@Override
 	public void setRoles(User user, long[] roleIds) {
-		// TODO Auto-generated method stub
+			// 删除当前用户所有的角色
+			UserRoleExample example = new UserRoleExample();
+			example.createCriteria().andUidEqualTo(user.getId());
+			List<UserRole> urs = userRoleMapper.selectByExample(example);
+			for (UserRole userRole : urs)
+				userRoleMapper.deleteByPrimaryKey(userRole.getId());
+
+			// 设置新的角色关系
+			if (null != roleIds)
+				for (Long rid : roleIds) {
+					UserRole userRole = new UserRole();
+					userRole.setRid(rid);
+					userRole.setUid(user.getId());
+					userRoleMapper.insert(userRole);
+				}
 		
 	}
 

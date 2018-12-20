@@ -66,7 +66,7 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public Role get(Integer id) {
+	public Role get(Long id) {
 		return roleMapper.selectByPrimaryKey(id);
 	}
 
@@ -92,12 +92,6 @@ public class RoleServiceImpl implements RoleService {
 			roles.add(role);
 		}
 		return roles;
-	}
-
-	@Override
-	public Role get(Long id) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

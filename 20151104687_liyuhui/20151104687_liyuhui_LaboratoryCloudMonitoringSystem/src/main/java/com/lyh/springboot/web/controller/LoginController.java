@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lyh.springboot.common.utils.RandomValidateCode;
 import com.lyh.springboot.pojo.Login;
-import com.lyh.springboot.pojo.Student;
-import com.lyh.springboot.pojo.Teacher;
 import com.lyh.springboot.service.LoginService;
 
 @Controller

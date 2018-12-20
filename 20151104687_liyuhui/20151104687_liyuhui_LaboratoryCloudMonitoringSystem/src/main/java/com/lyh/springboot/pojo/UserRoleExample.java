@@ -174,8 +174,8 @@ public class UserRoleExample {
             return (Criteria) this;
         }
 
-        public Criteria andUidEqualTo(long userId) {
-            addCriterion("uid =", userId, "uid");
+        public Criteria andUidEqualTo(Long value) {
+            addCriterion("uid =", value, "uid");
             return (Criteria) this;
         }
 

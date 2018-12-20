@@ -23,7 +23,4 @@ public interface RoleService {
 	public Role get(Long id);
 
 	public void update(Role role);
-
-	Role get(Integer id);
-
 }
