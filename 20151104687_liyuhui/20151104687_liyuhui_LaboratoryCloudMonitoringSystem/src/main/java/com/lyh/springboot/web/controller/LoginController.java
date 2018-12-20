@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.crypto.SecureRandomNumberGenerator;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,30 +18,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lyh.springboot.common.utils.RandomValidateCode;
-import com.lyh.springboot.pojo.Login;
-import com.lyh.springboot.service.LoginService;
+import com.lyh.springboot.pojo.User;
+import com.lyh.springboot.service.UserService;
 
 @Controller
 public class LoginController {
 	@Autowired
-	private LoginService loginService;
+	private UserService userService;
     
     @RequestMapping(value="/login",method= RequestMethod.POST)
     public String login(String num,String pwd, Model model){
     	System.out.println("login:"+num+","+pwd);
-//		Login login = loginService.login(num, pwd);
-//		if(login.getU_type() == 1) {
-//			Student studentLogin = loginService.findStudent(login.getNum());
-//			session.setAttribute("USER_SESSION", studentLogin);
-//			return "menu";
-//		}
-//		else if(login.getU_type() == 0)	{
-//			Teacher teacherLogin = loginService.findTeacher(login.getNum());
-//			session.setAttribute("USER_SESSION", teacherLogin);
-//			return "menu";
-//		}
-//		model.addAttribute("msg","账号或密码错误请重新输入！");
-//		return "login";
 		Subject subject = SecurityUtils.getSubject();
 		UsernamePasswordToken token = new UsernamePasswordToken(num, pwd);
 		System.out.println(token);
@@ -82,96 +71,95 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(Model model, String num, String pwd,String randomjsp, int type, HttpSession session) {
+    public String register(Model model, String num, String pwd,String randomjsp, int type,  String name, String tel, String sex, String email, Integer age, HttpSession session) {
         //从session中获取随机数
         String random = (String) session.getAttribute("RANDOMVALIDATECODEKEY");
         if(random.equals(randomjsp)) {
-        	Login login = loginService.login(num, pwd);
-        	if(login != null) {
+        	User user = userService.findUserName(num);
+        	if(user != null) {
         		model.addAttribute("msg","用户已存在，请重新输入！");
     			return "register";
+    		}else {
+    			String salt = new SecureRandomNumberGenerator().nextBytes().toString();
+        		int times = 2;
+        		String algorithmName = "md5";
+        		String encodedPassword = new SimpleHash(algorithmName, pwd, salt, times).toString();
+        		User u = new User();
+        		u.setNum(num);
+        		u.setPassword(encodedPassword);
+        		u.setSalt(salt);
+        		u.setAge(age);
+        		u.setEmail(email);
+        		u.setSex(sex);
+        		u.setTel(tel);
+        		userService.add(u);
+        		model.addAttribute("msg","用户注册成功，请登录！");
+        		return "redirect:tologin.action";
     		}
-        	loginService.addUser(num,pwd,type);
-    		model.addAttribute("msg","用户注册成功，请完善信息！");
-    		model.addAttribute("NUM",num);
-    		if(type==0) {
-    			return "register_t";
-    		}
-    		else {
-    			return "register_s";
-    		}
+        	
         }
         model.addAttribute("msg","验证码错误，请重新输入！");
 		return "register";
     }
     
-    @RequestMapping(value = "/register_s", method = RequestMethod.POST)
-    public String register_s(Model model, String name, String tel, String sex, String email, String age, String num, HttpSession session) {
-    	System.out.println("register_S");
-    	loginService.perfectInformation_s(name, tel, sex, email, age, num);
-    	model.addAttribute("msg","用户信息完善成功，请登录！");
-    	session.invalidate();
-		return "redirect:tologin.action";
-    }
-    
-    @RequestMapping(value = "/register_t", method = RequestMethod.POST)
-    public String register_t(Model model, String name, String tel, String email, String num, HttpSession session) {
-    	System.out.println("register_T");	
-    	loginService.perfectInformation_t(name, tel, email, num);
-    	model.addAttribute("msg","用户信息完善成功，请登录！");
-    	session.invalidate();
-		return "redirect:tologin.action";
-    }
     
     @RequestMapping(value = "/findpwd", method = RequestMethod.POST)
     public String findpwd(Model model, String num, String pwd, String randomjsp, HttpSession session) {
         //从session中获取随机数
         String random = (String) session.getAttribute("RANDOMVALIDATECODEKEY");
         if(random.equals(randomjsp)) {
-        	Login login = loginService.findpwdUser(num);
-        	if(login == null) {
-        		model.addAttribute("msg","用户不存在，请重新输入！");
-    			return "findpwd";
+        	System.out.println(num);
+        	User user = userService.findUserName(num);
+        	System.out.println(user);
+        	if(user != null) {	
+        		if (pwd.length() != 0) {
+    				String salt = new SecureRandomNumberGenerator().nextBytes().toString();
+    				int times = 2;
+    				String algorithmName = "md5";
+    				String encodedPassword = new SimpleHash(algorithmName, pwd, salt, times).toString();
+    				user.setSalt(salt);
+    				user.setPassword(encodedPassword);
+    				userService.update(user);
+    				model.addAttribute("msg","密码重置成功，请登录！");
+        			return "login";
+        		}
     		}else {
-    			loginService.findpwd(pwd,num);
-    			model.addAttribute("msg","密码重置成功，请登录！");
-    			return "login";
+    			model.addAttribute("msg","用户不存在，请重新输入！");
+    			return "findpwd";
     		}
         }
         model.addAttribute("msg","验证码错误，请重新输入！");
 		return "findpwd";
     }
     
+
 	@RequestMapping("/tologin")
 	public String toLogin() {
 		return "login";
 	}
 	@RequestMapping("/login")
-	public String toLogin3() {
+	public String toLogin2() {
 		return "login";
 	}
 	@RequestMapping("/menu")
 	public String toMenu() {
 		return "menu";
 	}
-	@RequestMapping(value = "/tologin.action",  method = RequestMethod.GET)
-	public String toLogin2() {
-		return "login";
-	}
-	@RequestMapping(value = "/toregister.action",method= RequestMethod.GET)
+	@RequestMapping("/toregister")
 	public String toRegister() {
+		return "/register";
+	}
+	@RequestMapping("/register")
+	public String toRegister2() {
 		return "register";
 	}
-	@RequestMapping(value = "/tofindpwd.action",method= RequestMethod.GET)
+	@RequestMapping("/tofindpwd")
 	public String tofindpwd() {
 		return "findpwd";
 	}
-	
-	@RequestMapping(value = "/logout.action")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:login.action";
+	@RequestMapping("/findpwd")
+	public String tofindpwd2() {
+		return "findpwd";
 	}
-
 
 }
