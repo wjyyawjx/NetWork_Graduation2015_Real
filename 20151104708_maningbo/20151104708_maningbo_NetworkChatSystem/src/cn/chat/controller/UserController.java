@@ -224,4 +224,8 @@ public class UserController {
     public String forgetpwd(){
     	return "forgetpwd";
     }
+    @RequestMapping("websockettest.action")
+    public String websockettest(){
+    	return "websocketTest";
+    }
 }
