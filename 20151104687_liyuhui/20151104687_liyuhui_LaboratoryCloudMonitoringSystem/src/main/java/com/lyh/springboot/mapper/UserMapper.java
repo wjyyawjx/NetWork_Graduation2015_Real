@@ -28,7 +28,5 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-	void perfectInformation(String name, String tel, String sex, String email, String age, String num);
-
 	User selectByName(String num);
 }

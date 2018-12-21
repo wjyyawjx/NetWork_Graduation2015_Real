@@ -63,37 +63,26 @@
 		<!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->
 		<!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample 
 			是否生成 example类 -->
-		<table tableName="user_role"
-			domainObjectName="UserRole"
-			schema="laboratorycloudmonitoringsystem" enableCountByExample="true"
-			enableUpdateByExample="true" enableDeleteByExample="true"
-			enableSelectByExample="true" selectByExampleQueryId="true">
-			<!-- 忽略列，不生成bean 字段 <ignoreColumn column="FRED" /> -->
-			<!-- 指定列的java数据类型 <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" 
-				/> -->
-			<!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格 -->
-			<property name="useActualColumnNames" value="false" />
-		</table>
+
 		<table tableName="user"
 			domainObjectName="User"
 			schema="laboratorycloudmonitoringsystem" enableCountByExample="true"
 			enableUpdateByExample="true" enableDeleteByExample="true"
 			enableSelectByExample="true" selectByExampleQueryId="true">
-			<!-- 忽略列，不生成bean 字段 <ignoreColumn column="FRED" /> -->
-			<!-- 指定列的java数据类型 <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" 
-				/> -->
-			<!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格 -->
 			<property name="useActualColumnNames" value="false" />
 		</table>
-		<table tableName="role"
+<!-- 	<table tableName="role"
 			domainObjectName="Role"
 			schema="laboratorycloudmonitoringsystem" enableCountByExample="true"
 			enableUpdateByExample="true" enableDeleteByExample="true"
 			enableSelectByExample="true" selectByExampleQueryId="true">
-			<!-- 忽略列，不生成bean 字段 <ignoreColumn column="FRED" /> -->
-			<!-- 指定列的java数据类型 <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" 
-				/> -->
-			<!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格 -->
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		<table tableName="user_role"
+			domainObjectName="UserRole"
+			schema="laboratorycloudmonitoringsystem" enableCountByExample="true"
+			enableUpdateByExample="true" enableDeleteByExample="true"
+			enableSelectByExample="true" selectByExampleQueryId="true">
 			<property name="useActualColumnNames" value="false" />
 		</table>
 		<table tableName="role_permission"
@@ -101,10 +90,6 @@
 			schema="laboratorycloudmonitoringsystem" enableCountByExample="true"
 			enableUpdateByExample="true" enableDeleteByExample="true"
 			enableSelectByExample="true" selectByExampleQueryId="true">
-			<!-- 忽略列，不生成bean 字段 <ignoreColumn column="FRED" /> -->
-			<!-- 指定列的java数据类型 <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" 
-				/> -->
-			<!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格 -->
 			<property name="useActualColumnNames" value="false" />
 		</table>
 		<table tableName="permission"
@@ -112,13 +97,9 @@
 			schema="laboratorycloudmonitoringsystem" enableCountByExample="true"
 			enableUpdateByExample="true" enableDeleteByExample="true"
 			enableSelectByExample="true" selectByExampleQueryId="true">
-			<!-- 忽略列，不生成bean 字段 <ignoreColumn column="FRED" /> -->
-			<!-- 指定列的java数据类型 <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" 
-				/> -->
-			<!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格 -->
 			<property name="useActualColumnNames" value="false" />
 		</table>
-
+ -->	
 
 	</context>
 </generatorConfiguration>    
