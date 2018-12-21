@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;20151104702_sunxuedong__BS-SSM-Old goods auction and leasing system&apos; to &apos;20151104702_sunxuedong__BS-SSM-Secondhand goods auction system for College Students&apos;" description="Rename resource &apos;20151104702_sunxuedong__BS-SSM-Old goods auction and leasing system&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/20151104702_sunxuedong__BS-SSM-Old goods auction and leasing system" name="20151104702_sunxuedong__BS-SSM-Secondhand goods auction system for College Students" stamp="1541554463016" updateReferences="true"/>
+</session>

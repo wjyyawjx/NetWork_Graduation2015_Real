@@ -1,0 +1,13 @@
+#userIds{
+		width:200px;
+		height:28px;
+		text-align: center;
+	}
+	#myTable tr th{
+		text-align: center;
+	}
+	#myTable tr td{
+		text-align: center;
+		line-height:30px;
+		font-size: 13px;
+	}

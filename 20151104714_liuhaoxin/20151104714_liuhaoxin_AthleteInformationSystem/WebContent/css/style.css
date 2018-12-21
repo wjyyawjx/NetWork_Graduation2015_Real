@@ -1,0 +1,122 @@
+@charset "UTF-8";
+body{
+		/* 设置页面的背景 */
+	   background: url("../img/beijing.jpg");
+}
+
+option,select{
+	width: 90%;
+    margin-bottom: 20px;
+    background-color: transparent;
+    text-align:center;
+    font-size: 50px;
+    color: #0000ff;
+}
+input[type="text"],[type="date"],input[type="password"] , input[type="email"]{
+	/* 设置输入框样式 */
+    width: 90%;
+    margin-bottom: 20px;
+    background-color: transparent;
+    text-align:center;
+    font-size: 25px;
+    color: #0000ff;
+}
+.container {
+	/* 美化登录注册页面，把输入框和按钮包在一个框里 */
+    width: 400px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: rgba(0, 191, 240,0.1);
+    box-shadow: 0 -5px 10px 1px rgba(16, 16, 16, 0.57);	/* 立体效果*/
+}
+.yongdonghui {
+	/* 美化添加运动会 */
+    width: 400px;
+    height:600px;
+    margin: 0 auto;
+  /*   background-color: rgba(0, 191, 240,0.1);
+    box-shadow: 0 -5px 10px 1px rgba(16, 16, 16, 0.57);	立体效果*/
+}
+h1{
+	/* 设置h1样式 */
+	font-size: 45px;
+	text-align:center;
+    color: #0000ff;
+}
+h2{
+	/* 设置h2样式 */
+	font-size: 20px;
+	text-align:center;
+    color:fuchsia;
+}
+h3{
+	/* 设置h3样式 */
+	font-size: 30px;
+    color:black;
+}
+h4{
+	/* 设置h4样式 */
+	font-size: 40px;
+    color:black;
+}
+
+input[type="submit"] {
+	/* 设置按钮样式 */
+    width: 90%;
+    padding: 10px 0;
+    font-size: 20px;
+    text-align:center;
+    font-weight: 100;
+    background-color: #80ffff;
+    color: #0000ff;
+  
+}
+input[type="submit"]:hover {
+	/* 设置按钮鼠标放在按钮上的样式 */
+    background-color: #ff80ff;
+    text-align:center;
+    border: 1px solid #FFF;
+    color: #ffff00;
+
+}
+select{
+	/* 设置复选框的样式 */
+    width: 120px;
+    height:50px;
+    font-size: 20px;
+    font-weight: 100;
+    background-color: #00ff80;
+    color: #ff0000;
+}
+button {
+	/* 设置按钮的样式 */
+    width: 100px;
+    height:50px;
+    font-size: 20px;
+    text-align:center;
+    font-weight: 100;
+    background-color: #c0c0c0;
+    color: #000000;
+
+}
+a{
+	/* 设置超链接样式 */
+    width: 300px;
+    padding: 10px 0;
+    font-size: 20px;
+    text-align:center;
+    font-weight: 100;
+    background-color: #80ffff;
+    color: #0000ff;
+    text-decoration:none;
+  
+}
+a:hover {
+	/* 设置按钮鼠标放在超链接上的样式 */
+    background-color: #ff80ff;
+    border: 1px solid #FFF;
+    text-align:center;
+    color: #ffff00;
+    text-decoration:none;
+
+}
