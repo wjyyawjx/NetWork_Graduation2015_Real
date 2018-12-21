@@ -61,8 +61,15 @@
                 <label><input name="type" type="radio" value="1"  style="width:30px;height:30px"/>学生</label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<label><input name="type" type="radio" value="0"  style="width:30px;height:30px"/>老师 </label> 
+				<input type="text" name="name" class="uname" placeholder="姓名">
+                <input type="text" name="tel" class="uname" placeholder="联系方式">
+                <input type="text" name="email" class="uname" placeholder="电子邮箱">
+                <label><input name="sex" type="radio" value="男"  style="width:30px;height:30px"/>男</label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label><input name="sex" type="radio" value="女"  style="width:30px;height:30px"/>女 </label> 
+				<input type="text" name="age" class="uname" placeholder="年龄">
                 <input type="text" name="randomjsp" class="uname" placeholder="请输入验证码">
-                <img src="getVerify.action" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
+                <img src="getVerify" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
                 <button type="submit" onclick="return check()">注册</button>
                 <div class="error"><span>+</span></div>
             </form>

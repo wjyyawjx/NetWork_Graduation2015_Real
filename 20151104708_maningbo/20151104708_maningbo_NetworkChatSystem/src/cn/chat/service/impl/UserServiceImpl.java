@@ -66,6 +66,12 @@ public class UserServiceImpl implements UserService {
 		this.userDao.addFriend(userName, friend_2);
 	}
 
+	@Override
+	public UserBean findUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		return userDao.findUserByEmail(email);
+	}
+
 
 
 	

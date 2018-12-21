@@ -54,7 +54,7 @@
                 <input type="password" name="pwd1" class="upwd" placeholder="请输入密码">
                 <input type="password" name="pwd" class="upwd" placeholder="请确认密码">
                 <input type="text" name="randomjsp" class="uname" placeholder="请输入验证码">
-                <img src="getVerify.action" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
+                <img src="getVerify" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
                 <button type="submit">密码重置</button>
                 <div class="error"><span>+</span></div>
             </form>

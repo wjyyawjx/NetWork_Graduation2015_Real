@@ -8,13 +8,16 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 import javax.websocket.CloseReason;
 import javax.websocket.EndpointConfig;
+import javax.websocket.HandshakeResponse;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
-
+import javax.websocket.server.HandshakeRequest;
+import javax.websocket.server.ServerEndpointConfig;
+ 
 import org.springframework.stereotype.Component;
 
 import cn.chat.pojo.UserBean;
@@ -71,21 +74,23 @@ public class EchoSocket {
 	 */
 	@OnMessage
 	public void message(Session session, String message) {
-	
 		 Session s = null;
 	        for (String conn : conns.keySet()) {
 	            s = conns.get(conn);
 	            synchronized (s) {
 	                try {
 	                    s.getBasicRemote()
-	                            .sendText((session.getId() == s.getId() ? "我" : session.getId()) + " 说:" + message);
+	                            .sendText(message);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
 	            }
 	        }
 	}
-
+/*	@OnMessage
+	public void message(Session session, String message,String userName) {
+		System.out.println("页面传值："+message+"页面传的名字："+userName);
+	}*/
 	/**
 	 * 错误监听（当没有关闭socket连接就关闭浏览器会异常）
 	 */

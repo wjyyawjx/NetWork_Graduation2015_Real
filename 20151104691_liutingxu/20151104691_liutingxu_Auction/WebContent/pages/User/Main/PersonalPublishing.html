@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+		<title>竞拍网</title>
+		<link rel="stylesheet" href="../../../res/css/cx/issue.css"/>
+		<link rel="stylesheet" href="../../../res/js/sweetalert.css"/>
+		
+		<link href="../../../res/css/cx/common.css" type="text/css" rel="stylesheet" />
+		<link href="../../../res/css/cx/indexs.css" type="text/css" rel="stylesheet" />
+		<script src="../../../res/js/jquery-1.11.2.min.js"></script>
+		<script src="../../../res/js/sweetalert.min.js"></script>
+		<script type="text/javascript" src="../../../res/js/cx/issue.js"></script>
+		<script src="../../../res/js/jquery-1.11.2.min.js"></script>
+<script src="../../../res/js/cx/imgUp.js"></script>
+<script type="text/javascript" src="../../../res/js/cx/laydate.js"></script>
+  <script>
+    lay('#version').html('-v'+ laydate.v);
+    //时间选择器
+    laydate.render({
+      elem: '#comDate'
+      ,type: 'datetime'
+    });
+    
+    laydate.render({
+        elem: '#comTime'
+        ,type: 'datetime'
+      });
+    </script>
+</head>
+<body>
+<form action="../../../commodity/addCom.action" id="issFrom" method="post">
+		<div id="issue">
+			<div id="issue_title">
+				<p>发布竞拍</p>
+			</div>
+			
+				<table cellspacing="0" cellpadding="0">
+					<tr>
+						<td id="td1">*标的名称:</td>
+						<td id="td2"><input type="text" placeholder="请输入标的名称" id="comName" onblur="findName()"/></td>
+						<td id="comNameTd" style="position: relative;left:-220px;"></td>
+					</tr>
+					<tr>
+						<td>*标的类型:</td>
+						<td>
+							<select id="auType" onblur="findTypes()">
+								<option>a类型</option>
+								<option>ab类型</option>
+							</select>
+						</td>
+						<td id="auTypeTd" style="position: relative;left:-220px;"></td>
+					</tr>
+					<tr>
+						<td>*开拍时间:</td>
+						<td>
+							<input type="text" class="demo-input" placeholder="开拍时间" id="comDate" onblur="findDate()">
+						</td>
+						<td id="dateTd" style="position: relative;left:-220px;"></td>
+					</tr>
+					<tr>
+						<td>*截至时间:</td>
+						<td>
+							<input type="text" class="demo-input" placeholder="截至时间" id="comTime" onblur="findTime()">
+						</td>
+						<td id="timeTd" style="position: relative;left:-220px;"></td>
+					</tr>
+					<tr>
+						<td>*起拍价:</td>
+						<td>
+						<input type="text"  placeholder="请输入标的起拍价" id="comStarting" onblur="findStart()"/>
+						</td>
+						<td id="startTd" style="position: relative;left:-220px;"></td>
+					</tr>
+					<tr>
+						<td>*一口价:</td>
+						<td><input type="text"  placeholder="请输入标的一口价" id="comMoney" onblur="findMoney()"/></td>
+						<td id="moneyTd" style="position: relative;left:-220px;"></td>
+					</tr>
+					<tr>
+						<td>*保证金:</td>
+						<td><input type="text"  placeholder="请输入标的保证金" id="comAuCommodity" onblur="findCommod()"/></td>
+						<td id="commodityTd" style="position: relative;left:-220px;"></td>
+					</tr>
+					<tr>
+						<td>*标的备注:</td>
+						<td><input type="text"  placeholder="请输入标的备注" id="comComment" onblur="findComment()"/></td>
+						<td id="commentTd" style="position: relative;left:-220px;"></td>
+					</tr>
+					<tr>
+						<td>*标的图片:</td>
+						<td>
+						<div style="width:500px;  position: relative;">
+							<form id="upBox">
+								<div id="inputBox"  style="width:30%;height:25px;line-height: 25px;font-size: 12px;color:gray;border:1px solid black;">
+									<input type="file"  title="请选择图片" id="file" multiple
+										accept="image/png,image/jpg,image/gif,image/JPEG" / onblur="findFile()">点击选择图片
+								</div>
+								<div id="imgBox" style="width:;"></div>
+							</form>
+						</div>
+					</td>
+						<td id="fileTd" style="position: relative;left:-220px;"></td>
+					</tr>
+				</table>
+				<input type="button" id="btns" value="增加" >
+		</div>
+	</form>
+</body>
+<script src="../../../res/js/uploadImg.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+			imgUpload({
+				inputId:'file', //input框id
+				imgBox:'imgBox', //图片容器id
+				buttonId:'btn', //提交按钮id
+				upUrl:'php/imgFile.php',  //提交地址
+				data:'file1', //参数名
+				num:"5"//上传个数
+			})
+		</script>
+</html>

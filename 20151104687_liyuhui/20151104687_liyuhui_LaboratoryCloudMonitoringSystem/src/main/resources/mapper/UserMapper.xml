@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lyh.springboot.mapper.UserMapper">
   <resultMap id="BaseResultMap" type="com.lyh.springboot.pojo.User">
-    <id column="u_id" jdbcType="INTEGER" property="uId" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="num" jdbcType="VARCHAR" property="num" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="salt" jdbcType="VARCHAR" property="salt" />
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    u_id, num, password, salt, sex, age, tel, email
+    id, name, num, password, salt, sex, age, tel, email
   </sql>
   <select id="selectByExample" parameterType="com.lyh.springboot.pojo.UserExample" resultMap="BaseResultMap">
     select
@@ -87,15 +88,20 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
-    where u_id = #{uId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <select id="selectByName" parameterType="java.lang.String" resultType="com.lyh.springboot.pojo.User">
+    select name, num, sex, age, tel, email
+    from user
+    where num = #{num,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from user
-    where u_id = #{uId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.lyh.springboot.pojo.UserExample">
     delete from user
@@ -104,18 +110,21 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.lyh.springboot.pojo.User">
-    insert into user (u_id, num, password, 
-      salt, sex, age, tel, 
-      email)
-    values (#{uId,jdbcType=INTEGER}, #{num,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{salt,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR})
+    insert into user (id, name, num, 
+      password, salt, sex, 
+      age, tel, email)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{num,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{age,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lyh.springboot.pojo.User">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="uId != null">
-        u_id,
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
       </if>
       <if test="num != null">
         num,
@@ -140,8 +149,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="uId != null">
-        #{uId,jdbcType=INTEGER},
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
       </if>
       <if test="num != null">
         #{num,jdbcType=VARCHAR},
@@ -175,8 +187,11 @@
   <update id="updateByExampleSelective" parameterType="map">
     update user
     <set>
-      <if test="record.uId != null">
-        u_id = #{record.uId,jdbcType=INTEGER},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.num != null">
         num = #{record.num,jdbcType=VARCHAR},
@@ -206,7 +221,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update user
-    set u_id = #{record.uId,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
       num = #{record.num,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       salt = #{record.salt,jdbcType=VARCHAR},
@@ -221,6 +237,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.lyh.springboot.pojo.User">
     update user
     <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
       <if test="num != null">
         num = #{num,jdbcType=VARCHAR},
       </if>
@@ -243,17 +262,18 @@
         email = #{email,jdbcType=VARCHAR},
       </if>
     </set>
-    where u_id = #{uId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lyh.springboot.pojo.User">
     update user
-    set num = #{num,jdbcType=VARCHAR},
+    set name = #{name,jdbcType=VARCHAR},
+      num = #{num,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       salt = #{salt,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},
       tel = #{tel,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR}
-    where u_id = #{uId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

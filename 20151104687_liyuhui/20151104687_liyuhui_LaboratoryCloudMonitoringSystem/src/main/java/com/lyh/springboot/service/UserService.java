@@ -19,4 +19,6 @@ public interface UserService {
 	public User get(Long id);
 
 	public void update(User user);
+
+	public User findUserName(String num);
 }

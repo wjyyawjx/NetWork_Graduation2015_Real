@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.qst.DBUtil.DBUtil;
+import com.qst.bean.AthletBean;
 import com.qst.bean.GameBean;
 
 public class RecorderGameDao {
@@ -42,17 +43,18 @@ public class RecorderGameDao {
 	}
 	
 	// 添加运动员信息
-	public void recorderAdd(String athletusername, String ranking, String results, String events) {
+	public void recorderAdd(int tsid,String athletusername, String ranking, String results, String events) {
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 
-		String sql = "insert into athlet (athletusername,ranking,results,events)" + "values(?,?,?,?)";
+		String sql = "insert into athlet (tsid,athletusername,ranking,results,events)" + "values(?,?,?,?,?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, athletusername);
-			pstmt.setString(2, ranking);
-			pstmt.setString(3, results);
-			pstmt.setString(4, events);
+			pstmt.setInt(1, tsid);
+			pstmt.setString(2, athletusername);
+			pstmt.setString(3, ranking);
+			pstmt.setString(4, results);
+			pstmt.setString(5, events);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -62,4 +64,34 @@ public class RecorderGameDao {
 		}
 
 	}
+	
+	// 记录员查看运动员信息
+		public ArrayList<AthletBean> athletList(int tsid) {
+			// TODO Auto-generated method stub
+			ArrayList<AthletBean> Array = new ArrayList<AthletBean>();
+			Connection conn = DBUtil.getConnection();
+			String sql = "select * from athlet where tsid=?";
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, tsid);
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					AthletBean tag = new AthletBean();
+					tag.setTid(rs.getInt("tid"));
+					tag.setAthletusername(rs.getString("athletusername"));
+					tag.setRanking(rs.getString("ranking"));
+					tag.setResults(rs.getString("results"));
+					tag.setEvents(rs.getString("events"));
+					Array.add(tag);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBUtil.closeJDBC(rs, pstmt, conn);
+			}
+			return Array;
+		}
 }

@@ -10,6 +10,4 @@ public interface UserRoleService {
 
 	public void deleteByRole(long roleId);
 
-	void setRoles(User user, Integer[] roleIds);
-
 }

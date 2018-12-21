@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
 </head>
-<frameset rows="18%,82%">
+<frameset rows="15%,*">
 <frame noresize="noresize" src="general-title.jsp">
 <frameset cols="200,*">
 <frame noresize="noresize" src="general-left.jsp">

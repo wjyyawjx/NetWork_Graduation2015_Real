@@ -8,11 +8,11 @@
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
 </head>
-<frameset rows="18%,82%">
-<frame noresize="noresize" src="recorder-title.jsp">
+<frameset rows="15%,*">
+<frame noresize="noresize"  frameborder="0" src="recorder-title.jsp">
 <frameset cols="200,*">
-<frame noresize="noresize" src="recorder-left.jsp">
-<frame noresize="noresize" src="recorder-right.jsp" name="recorder-right" >
+<frame noresize="noresize" frameborder="0"  src="recorder-left.jsp">
+<frame noresize="noresize" frameborder="0"  src="recorder-right.jsp" name="recorder-right" >
 </frameset>
 </frameset>
 </html>

@@ -58,9 +58,15 @@ public class ShiroConfiguration {
 
         //配置映射关系
         filterChainDefinitionMap.put("/login", "anon");
-        filterChainDefinitionMap.put("/menu", "anon");
+        filterChainDefinitionMap.put("/register", "anon");
+        filterChainDefinitionMap.put("/findpwd", "anon");
+        filterChainDefinitionMap.put("/toregister", "anon");
+        filterChainDefinitionMap.put("/tofindpwd", "anon");
+        //filterChainDefinitionMap.put("/menu", "anon");
+        filterChainDefinitionMap.put("/getVerify", "anon");
         filterChainDefinitionMap.put("/static/**", "anon");
-        filterChainDefinitionMap.put("/config/**", "anon");
+        filterChainDefinitionMap.put("/assets/**", "anon");
+        //filterChainDefinitionMap.put("/config/**", "url");
         filterChainDefinitionMap.put("/doLogout", "logout");;
         filterChainDefinitionMap.put("/**", "url");
         shiroFilterFactoryBean.setFilters(customisedFilter);

@@ -27,7 +27,7 @@
 						<td align="left" valign="middle">${w.phone}</td>
 						<td align="left" valign="middle">
 							<form action="ContactManagementDelete" method="post">
-								<input type="hidden" name="cid" value=${w.cid}>
+								<input type="hidden" value = ${w.cid} name="cid" >
 								 <input type="submit" value="删除">
 							</form>
 						</td>
