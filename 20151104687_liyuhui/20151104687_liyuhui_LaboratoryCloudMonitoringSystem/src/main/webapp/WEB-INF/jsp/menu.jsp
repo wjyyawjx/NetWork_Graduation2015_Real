@@ -36,8 +36,8 @@
                             <span>通知</span>
                         </a>
                     </div>
-
                     <div id="time" class="pull-right">
+   
                         <span id="hours"></span>
                         :
                         <span id="min"></span>
@@ -59,18 +59,21 @@
                 <div class="side-widgets overflow">
                     <!-- Profile Menu -->
                     <div class="text-center s-widget m-b-25 dropdown" id="profile-menu">
-                        <a href="" data-toggle="dropdown">
                             <img class="profile-pic animated" src="img/profile-pic.jpg" alt=""><!--头像-->
-                            <span>姓名： ${USER_SESSION.name }</span>
-                            <span>编号： ${USER_SESSION.num }</span>
-                        </a>
-                        <ul class="dropdown-menu profile-menu">
-                            <li><a href="">我的信息</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li><br>
-                            <li><a href="">通知</a> <br>
-                            <li><a href="doLogout">登出</a> 
-                        </ul>
+                            <table>
+                            	<tr>
+                            		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            		<td>姓名：</td>
+                            		<td>${User.name}</td>
+                            	</tr>
+                            	<tr>
+                            		<td></td>
+                            		<td>编号： </td>
+                            		<td>${User.num }</td>
+                            	</tr>
+                            </table>
+                            <a href="doLogout">登出</a>  
                     </div>
-                    
                     <!-- Calendar -->
                     <div class="s-widget m-b-25">
                         <div id="sidebar-calendar"></div>
@@ -89,76 +92,34 @@
                 <!-- Side Menu -->
                 <ul class="list-unstyled side-menu">
                     <li class="active">
-                        <a class="sa-side-home" href="index.html">
+                        <a class="sa-side-home" href="${pageContext.request.contextPath }/menu">
                             <span class="menu-item">主页</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sa-side-typography" href="typography.html">
-                            <span class="menu-item">Typography</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sa-side-widget" href="content-widgets.html">
-                            <span class="menu-item">Widgets</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sa-side-table" href="tables.html">
-                            <span class="menu-item">Tables</span>
                         </a>
                     </li>
                     <li class="dropdown">
                         <a class="sa-side-form" href="">
-                            <span class="menu-item">Form</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="form-elements.html">Basic Form Elements</a></li>
-                            <li><a href="form-components.html">Form Components</a></li>
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="sa-side-ui" href="">
-                            <span class="menu-item">User Interface</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="buttons.html">Buttons</a></li>
-                            <li><a href="labels.html">Labels</a></li>
-                            <li><a href="images-icons.html">Images &amp; Icons</a></li>
-                            <li><a href="alerts.html">Alerts</a></li>
-                            <li><a href="media.html">Media</a></li>
-                            <li><a href="components.html">Components</a></li>
-                            <li><a href="other-components.html">Others</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="sa-side-chart" href="charts.html">
-                            <span class="menu-item">Charts</span>
+                            <span class="menu-item">我的信息</span>
                         </a>
                     </li>
                     <li>
-                        <a class="sa-side-folder" href="file-manager.html">
-                            <span class="menu-item">File Manager</span>
+                        <a class="sa-side-ui" href="${pageContext.request.contextPath }/config/listUser">
+                            <span class="menu-item">用户管理</span>
                         </a>
                     </li>
                     <li>
-                        <a class="sa-side-calendar" href="calendar.html">
-                            <span class="menu-item">Calendar</span>
+                        <a class="sa-side-ui" href="${pageContext.request.contextPath }/config/listRole">
+                            <span class="menu-item">角色管理</span>
                         </a>
                     </li>
-                    <li class="dropdown">
-                        <a class="sa-side-page" href="">
-                            <span class="menu-item">Pages</span>
+                    <li>
+                        <a class="sa-side-folder" href="${pageContext.request.contextPath }/config/listPermission">
+                            <span class="menu-item">权限管理</span>
                         </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="list-view.html">List View</a></li>
-                            <li><a href="profile-page.html">Profile Page</a></li>
-                            <li><a href="messages.html">Messages</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="404.html">404 Error</a></li>
-                        </ul>
+                    </li>
+                    <li>
+                        <a class="sa-side-calendar" href="">
+                            <span class="menu-item">我的日程</span>
+                        </a>
                     </li>
                 </ul>
 

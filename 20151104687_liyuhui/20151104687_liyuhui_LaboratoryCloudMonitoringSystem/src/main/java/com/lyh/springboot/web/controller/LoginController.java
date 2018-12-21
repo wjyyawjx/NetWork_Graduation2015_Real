@@ -27,7 +27,7 @@ public class LoginController {
 	private UserService userService;
     
     @RequestMapping(value="/login",method= RequestMethod.POST)
-    public String login(String num,String pwd, Model model){
+    public String login(String num,String pwd, Model model, HttpSession httpSession){
     	System.out.println("login:"+num+","+pwd);
 		Subject subject = SecurityUtils.getSubject();
 		UsernamePasswordToken token = new UsernamePasswordToken(num, pwd);
@@ -36,6 +36,8 @@ public class LoginController {
 			subject.login(token);
 			Session session = subject.getSession();
 			session.setAttribute("subject", subject);
+			User user = userService.findUserName(num);
+			httpSession.setAttribute("User", user);
 			return "redirect:menu";
 
 		} catch (AuthenticationException e) {
