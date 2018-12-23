@@ -16,7 +16,7 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 		<!-- 生成模型的包名和路径 -->
-		<javaModelGenerator targetPackage="com.yidu.model"
+		<javaModelGenerator targetPackage="com.imnu.model"
 			targetProject="AuctionServletWeb/src/main/java">
 			<property name="enableSubPackages" value="true" />
 			<!-- 从数据库返回的值被清理前后的空格 -->
@@ -29,7 +29,7 @@
 		</sqlMapGenerator>
 		<!-- 生成DAO接口的包名和位置 -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.yidu.dao" targetProject="AuctionServletWeb/src/main/java">
+			targetPackage="com.imnu.dao" targetProject="AuctionServletWeb/src/main/java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 

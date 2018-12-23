@@ -8,7 +8,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:annotation-config></context:annotation-config>
-	<context:component-scan base-package="com.yidu">
+	<context:component-scan base-package="com.imnu">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
@@ -34,7 +34,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 
 	<!-- mapper扫描器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.yidu.dao"></property>
+		<property name="basePackage" value="com.imnu.dao"></property>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
 
@@ -67,7 +67,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<!-- 那些类那些方法使用事务 -->
 	<aop:config>
 		<!-- 只对业务逻辑层实施事务 -->
-		<aop:pointcut id="allManagerMethod" expression="execution(* com.yidu.service.*.*(..))" />
+		<aop:pointcut id="allManagerMethod" expression="execution(* com.imnu.service.*.*(..))" />
 		<aop:advisor pointcut-ref="allManagerMethod" advice-ref="txAdvice" />
 	</aop:config>
 	
