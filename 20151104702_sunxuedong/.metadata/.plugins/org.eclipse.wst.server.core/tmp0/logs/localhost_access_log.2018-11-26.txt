@@ -1,3 +1,0 @@
-127.0.0.1 - - [26/Nov/2018:16:31:04 +0800] "GET / HTTP/1.1" 404 994
-127.0.0.1 - - [26/Nov/2018:16:31:38 +0800] "GET / HTTP/1.1" 404 994
-0:0:0:0:0:0:0:1 - - [26/Nov/2018:16:31:42 +0800] "GET /20151104702_sunxuedong__BS-SSM-Old_goods_auction_and_leasing_system/WEB-INF/jsp/login.jsp HTTP/1.1" 404 992
