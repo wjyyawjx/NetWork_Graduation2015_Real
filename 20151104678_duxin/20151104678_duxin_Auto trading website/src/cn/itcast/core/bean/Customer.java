@@ -1,9 +1,9 @@
-package cn.itheima.pojo;
+package cn.itcast.core.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Customer {
-
+public class Customer implements Serializable {
 	private Long cust_id;
 	private String cust_name;
 	private Long cust_user_id;
@@ -17,8 +17,32 @@ public class Customer {
 	private String cust_zipcode;
 	private String cust_address;
 	private Date cust_createtime;
-
-
+	private Integer start;
+	private Integer rows;
+	public String getCust_zipcode() {
+		return cust_zipcode;
+	}
+	public void setCust_zipcode(String cust_zipcode) {
+		this.cust_zipcode = cust_zipcode;
+	}
+	public String getCust_address() {
+		return cust_address;
+	}
+	public void setCust_address(String cust_address) {
+		this.cust_address = cust_address;
+	}
+	public Integer getStart() {
+		return start;
+	}
+	public void setStart(Integer start) {
+		this.start = start;
+	}
+	public Integer getRows() {
+		return rows;
+	}
+	public void setRows(Integer rows) {
+		this.rows = rows;
+	}
 	public Long getCust_id() {
 		return cust_id;
 	}
@@ -78,18 +102,6 @@ public class Customer {
 	}
 	public void setCust_mobile(String cust_mobile) {
 		this.cust_mobile = cust_mobile;
-	}
-	public String getCust_zipcode() {
-		return cust_zipcode;
-	}
-	public void setCust_zipcode(String cust_zipcode) {
-		this.cust_zipcode = cust_zipcode;
-	}
-	public String getCust_address() {
-		return cust_address;
-	}
-	public void setCust_address(String cust_address) {
-		this.cust_address = cust_address;
 	}
 	public Date getCust_createtime() {
 		return cust_createtime;

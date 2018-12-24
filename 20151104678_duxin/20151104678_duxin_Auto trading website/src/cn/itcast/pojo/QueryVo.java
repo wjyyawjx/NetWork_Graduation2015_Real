@@ -1,4 +1,4 @@
-package cn.itheima.pojo;
+package cn.itcast.pojo;
 
 public class QueryVo {
 
