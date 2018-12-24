@@ -5,6 +5,7 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,13 +23,13 @@ import java.util.Properties;
  * created by viking on 2018/07/17
  * 测试邮件发送controller
  */
-@RestController
+@Controller
 public class SendMailController {
     @Autowired
-    private JavaMailSender javaMailSender;//在spring中配置的邮件发送的bean
+ //   private JavaMailSender javaMailSender;//在spring中配置的邮件发送的bean
     private UserService userService;
     
-    @RequestMapping("send.action")
+   /* @RequestMapping("send.action")
     public String sendMail(String email,Model model){
         System.out.println("获取网页输入的email:"+email);
         UserBean user = null;
@@ -60,6 +61,6 @@ public class SendMailController {
 		}
 		model.addAttribute("msg", "验证码发送失败");
 		return "forgetpwd"; 
-        }
+        }*/
         
 }

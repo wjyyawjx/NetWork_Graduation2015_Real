@@ -27,6 +27,6 @@ public interface UserDao {
 
 	public void addFriend(@Param("userName") String userName, @Param("friend_2") String friend_2);
 	
-	public UserBean findUserByEmail(@Param("Email") String email);
+	public UserBean findUserByEmail(String email);
 
 }
