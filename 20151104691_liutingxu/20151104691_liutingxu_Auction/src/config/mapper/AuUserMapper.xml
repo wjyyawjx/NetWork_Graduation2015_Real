@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imnu.dao.AuUserMapper">
+  <resultMap id="BaseResultMap" type="com.imnu.model.AuUser">
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <result column="user_sex" jdbcType="DECIMAL" property="userSex" />
+    <result column="user_phone" jdbcType="DECIMAL" property="userPhone" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_name, user_pwd, user_sex, user_phone, user_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from au_user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <select id="queryAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from au_user
+  </select>
+  <select id="findUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from au_user where user_name = #{userName,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="login" parameterType="com.imnu.model.AuUser" resultMap="BaseResultMap">
+  	SELECT 
+	<include refid="Base_Column_List" />
+	 FROM au_user WHERE user_name = #{userName,jdbcType=VARCHAR} AND user_pwd = #{userPwd,jdbcType=VARCHAR}
+  </select>
+  
+    <select id="htLogin" parameterType="com.imnu.model.AuUser" resultMap="BaseResultMap">
+  	SELECT 
+	<include refid="Base_Column_List" />
+	 FROM au_user WHERE user_name = #{userName,jdbcType=VARCHAR} AND user_pwd = #{userPwd,jdbcType=VARCHAR}
+	 and user_type=#{userType}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from au_user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.imnu.model.AuUser">
+    insert into au_user (user_id, user_name, user_pwd, 
+      user_sex, user_phone, user_type
+      )
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR}, 
+      #{userSex,jdbcType=DECIMAL}, #{userPhone,jdbcType=DECIMAL}, #{userType,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.imnu.model.AuUser">
+  	 <selectKey keyProperty="userId" resultType="string" order="BEFORE">
+	    SELECT REPLACE(UUID(),'-','') AS id;
+	  </selectKey>
+    insert into au_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userPwd != null">
+        user_pwd,
+      </if>
+      <if test="userSex != null">
+        user_sex,
+      </if>
+      <if test="userPhone != null">
+        user_phone,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null">
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        #{userSex,jdbcType=DECIMAL},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=DECIMAL},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.imnu.model.AuUser">
+    update au_user
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null">
+        user_pwd = #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        user_sex = #{userSex,jdbcType=DECIMAL},
+      </if>
+      <if test="userPhone != null">
+        user_phone = #{userPhone,jdbcType=DECIMAL},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.imnu.model.AuUser">
+    update au_user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_pwd = #{userPwd,jdbcType=VARCHAR},
+      user_sex = #{userSex,jdbcType=DECIMAL},
+      user_phone = #{userPhone,jdbcType=DECIMAL},
+      user_type = #{userType,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="findAlls" resultMap="BaseResultMap">
+    select * from au_user
+  </select>
+  
+</mapper>

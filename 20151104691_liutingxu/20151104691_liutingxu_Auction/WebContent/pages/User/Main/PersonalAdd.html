@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>竞拍网</title>
+<link rel="stylesheet" href="../../../res/css/cx/site.css" />
+<link rel="stylesheet" href="../../../res/js/sweetalert.css"/>
+<script src="../../../res/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="../../../res/js/cx/site_ifm.js"></script>
+
+<script src="../../../res/js/sweetalert.min.js"></script>
+<style>
+#tab1 {
+	width: 95%;
+}
+
+#tab1 tr td {
+	border: 1px solid #f0f0f0;
+	font-size: 12px;
+}
+</style>
+</head>
+<body>
+<div id="site">
+		<div id="site_title">
+			<p>收货地址</p>
+		</div>
+		<table id="tab1">
+			<tr>
+				<th id="email">地址编号</th>
+				<th id="name">姓名</th>
+				<th id="addres">地址</th>
+				<th id="delete">操作</th>
+			</tr>
+
+			<tbody id="tbody"></tbody>
+		</table>
+		<form id="siteFrom" method="post">
+			<table id="tab2">
+				<tr>
+					<th id="title">新增收货地址</th>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr>
+					<td class="w">姓名:</td>
+					<td><input type="text" name="siName" id="siName" onblur="findName()"/></td>
+					<td id="nameTd"><span style="color:red;">请确保填写的名字与收货人身份证一致！</span></td>
+				</tr>
+				<tr>
+					<td class="w">电话:</td>
+					<td><input type="text" name="siPhone" id="siPhone" onblur="findPhone()"/></td>
+					<td id="phoneTd"></td>
+				</tr>
+				<tr>
+					<td class="w">地址:</td>
+					<td id="siteTd"><select id="s_province" name="s_province"></select>  
+
+						<select id="s_city" name="s_city"></select>   <select
+						id="s_county" name="s_county"></select></td>
+					<script class="resources library" src="../../../res/js/area.js"
+						type="text/javascript"></script>
+					<script type="text/javascript">_init_area();</script>
+					<script type="text/javascript">
+						var Gid = document.getElementById;
+
+						var showArea = function() {
+
+							Gid('show').innerHTML = "<h3>省"
+									+ Gid('s_province').value + " - 市" +
+
+									Gid('s_city').value + " - 县/区" +
+
+									Gid('s_county').value + "</h3>"
+
+						}
+
+						Gid('s_county').setAttribute('onchange', 'showArea()');
+					</script>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="w"></td>
+					<td><input type="text" name="siContent" id="content" onblur="findContent()"/></td>
+					<td id="contentTd"></td>
+				</tr>
+			</table>
+			<input id="btn" type="button" value="添加新地址" />
+		</form>
+	</div>
+</body>
+</html>
