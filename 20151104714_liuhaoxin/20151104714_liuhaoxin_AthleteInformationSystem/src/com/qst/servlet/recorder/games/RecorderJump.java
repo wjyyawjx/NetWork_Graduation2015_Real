@@ -40,11 +40,7 @@ public class RecorderJump extends HttpServlet {
 		int sid =Integer.parseInt(request.getParameter("sid"));
 		HttpSession session = request.getSession();
 		session.setAttribute("sid",sid);
-		RecorderGameDao rgdao = new RecorderGameDao();
-		ArrayList<AthletBean> abean = new ArrayList<AthletBean>();
-		abean = (ArrayList<AthletBean>)rgdao.athletList(sid);
-		request.setAttribute("mea", abean);
-		request.getRequestDispatcher("recorder-athlet.jsp").forward(request, response);
+		response.sendRedirect("RecorderJView");	
 		
 	}
 

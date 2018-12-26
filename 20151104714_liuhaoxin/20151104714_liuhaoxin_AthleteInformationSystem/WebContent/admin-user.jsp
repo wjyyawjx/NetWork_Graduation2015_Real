@@ -11,7 +11,7 @@
 </head>
 <body>
 <form action="UserQuery" method="post">
-	<table border="0" cellpadding="0" cellspacing="0" style="font-size: 20px"  width="100%" height="31">
+	<table border="0" cellpadding="0" cellspacing="0" style="font-size: 20px"  width="100%" height="31" background:#b5cfd2 url('img/a.jpeg');>
 		  <tr>
 		  <td width="17%" align="right" valign="middle">
 		  <h3>用户名：</h3>
