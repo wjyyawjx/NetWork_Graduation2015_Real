@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>后台首页</title><meta name="keywords" content="inspinia admin 下载,inspinia admin,inspinia admin 最新版,inspinia admin v2.7,inspinia admin 2.7,inspinia admin theme,inspinia admin中文,inspinia bootstrap" /><meta name="description" content="inspinia admin一个非常优秀的响应式Bootstrap管理模板本站拥有inspinia admin,inspinia admin 最新版,inspinia admin v2.7,inspinia admin 2.7,inspinia admin theme,inspinia admin中文,inspinia bootstrap等等" />
+	<link rel="stylesheet" type="text/css" href="../../res/js/sweetalert.css">
+    <link href="http://cn.inspinia.cn/html/inspiniaen/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Morris -->
+    <link href="http://lib.baomitu.com/morris.js/0.5.1/morris.min.js" rel="stylesheet">
+
+    <link href="http://lib.baomitu.com/animate.css/3.7.0/animate.css" rel="stylesheet">
+    <link href="http://cn.inspinia.cn/html/inspiniaen/css/style.css" rel="stylesheet">
+	
+	<script src="https://lib.baomitu.com/echarts/4.2.0-rc.2/echarts.min.js"></script>
+	<script src="https://lib.baomitu.com/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../res/js/index.js"></script>
+	<script src="../../res/js/sweetalert.min.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="http://cn.inspinia.cn/html/inspiniaen/img/profile_small.jpg" />
+                             </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">admin</strong>
+                             </span> <span class="text-muted text-xs block">管理员 <b class="caret"></b></span> </span> </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="profile.html">个人信息</a></li>
+                                <li><a href="contacts.html">好友</a></li>
+                                <li><a href="mailbox.html">信箱</a></li>
+                                <li class="divider"></li>
+                                <li><a href="javascript:findExit();">退出</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            图标
+                        </div>
+                    </li>
+                    <li class="active">
+                        <a href="javascript:void(0);" onclick="leftTable('cst/home.html');"><i class="fa fa-th-large"></i> <span class="nav-label">主页</span></a>
+                       
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">商品管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="javascript:void(0);" onclick="leftTable('cx/AuCommodity.html');">商品表管理</a></li>
+                            <li><a href="javascript:void(0);" onclick="leftTable('cx/AuType.html');">商品类型管理</a></li>
+                            <li><a href="javascript:void(0);" onclick="leftTable('lj/AuImage.html');">商品图片管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-envelope"></i> <span class="nav-label">销售管理 </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="javascript:void(0);" onclick="leftTable('cst/auindent.html');">订单管理</a></li>
+                            <li><a href="javascript:void(0);" onclick="leftTable('cx/AuMreload.html');">保证金管理</a></li>
+                            <li><a href="javascript:void(0);" onclick="leftTable('cst/auRecord.html');">出价记录管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">公告管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="javascript:void(0);" onclick="leftTable('lj/AuNotice.html');">公告表管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">用户及支出管理</span>  <span class="pull-right label label-primary">特别</span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="javascript:void(0);" onclick="leftTable('cyz/AuUser.html');">用户管理</a></li>
+                            <li><a href="javascript:void(0);" onclick="leftTable('cx/AuWallet.html');">钱包管理</a></li>
+                            <li><a href="javascript:void(0);" onclick="leftTable('cx/AuWareload.html');">钱包记录管理</a></li>
+                        </ul>
+                    </li>
+                   
+                   <li>
+                        <a href="#"><i class="fa fa-envelope"></i> <span class="nav-label">地址管理 </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="javascript:void(0);" onclick="leftTable('cx/AuSite.html');">地址管理</a></li>
+                        </ul>
+                    </li>
+            </ul>
+
+        </div>
+    </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" action="search_results.html">
+                <div class="form-group">
+                    <input type="text" placeholder="" class="form-control" name="top-search" id="top-search">
+                </div>
+            </form>
+        </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message">欢迎来到竞拍网后台管理系统</span>
+                </li>
+                
+                <li>
+                    <a href="javascript:findExit();">
+                        <i class="fa fa-sign-out"></i> 退出
+                    </a>
+                </li>
+                
+            </ul>
+
+        </nav>
+        </div>
+
+
+        <div class="wrapper wrapper-content" style="height:100%;" id="bodys">
+        
+        
+        <div class="footer">
+            <div class="pull-right">
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1271199127'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1271199127%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+            </div>
+            <div>
+                <strong>竞拍网</strong> 后台管理系统 &copy; 2017-2018
+            </div>
+        </div>
+        </div>
+       
+    </div>
+
+    <!-- Mainly scripts -->
+    
+    <script src="https://lib.baomitu.com/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Flot -->
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/plugins/flot/jquery.flot.js"></script>
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/plugins/flot/jquery.flot.pie.js"></script>
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/plugins/flot/jquery.flot.symbol.js"></script>
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/plugins/flot/curvedLines.js"></script>
+
+    <!-- Peity -->
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/demo/peity-demo.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/inspinia.js"></script>
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/plugins/pace/pace.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- Jvectormap -->
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- Sparkline -->
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Sparkline demo data  -->
+    <script src="http://cn.inspinia.cn/html/inspiniaen/js/demo/sparkline-demo.js"></script>
+	    
+</body>
+</html>
