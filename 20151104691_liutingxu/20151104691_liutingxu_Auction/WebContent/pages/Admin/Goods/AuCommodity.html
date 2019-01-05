@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>商品表管理</title>
+<link rel="stylesheet" type="text/css" href="../../res/js/sweetalert.css">
+<!-- <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="../../res/js/cx/AuCommodity.js"></script>
+<script src="../../res/js/sweetalert.min.js"></script>
+<script src="../../res/js/base.js"></script> 
+<link href="../../res/css/cst/auindent.css" rel="stylesheet">
+<!-- <style>
+	thead tr th,#body tr td{
+		text-align: center;
+	}
+	
+	ul{
+		list-style: none ;
+	}
+	
+	ul li{
+		float:left ;
+		margin-left:10px;
+		margin-bottom: 30px;
+		margin-top: 20px;
+	}
+	ul li input{
+		height:35px;
+		text-indent: 5px;
+	}
+	
+	.input-xlarge{
+		text-indent: 5px;
+	}
+	#typeId,#userId{
+		width: 100px;
+	}
+	#page{
+		width:400px;
+		height:100px;
+		margin-left:500px;
+	}
+	.active{
+		 -webkit-user-select:none;
+	     -moz-user-select:none;
+	     -ms-user-select:none;
+	     user-select:none;
+	}
+</style> -->
+</head>
+<body>
+	<div class="table-responsive">
+	<form id="queryForm">
+			商品名称:<input type="text" name="comName" placeholder="请输入商品名称模糊查询">
+			调查时间:
+			<input type="date" name="comDate" placeholder="请输入开始日期">-
+			<input type="date" name="comTime" placeholder="请输入结束日期">
+			<button type="button" id="query" class="btn btn-success">查询</button>
+			<button type="button" class="btn btn-primary" id="insertBtn" >增加</button>
+		</form>
+		<table id="myTable" class="table table-hover table-bordered table-striped">
+			<thead>
+				<tr>
+					  <th>商品id</th>
+				      <th>商品类型</th>
+				      <th>用户</th>
+				      <th>商品名称</th>
+				      <th>商品备注</th>
+				      <th>商品价格</th>
+				      <th>开始时间</th>
+				      <th>截止时间</th>
+				      <th>商品图片</th>
+				      <th>商品状态</th>
+				      <th>保证金</th>
+				      <th>操作</th>
+				</tr>
+			</thead>
+			<tbody id="body">
+			</tbody>
+		</table>
+	</div>
+	<div id="divBody"></div>
+		<form id="myFrom" class="form-horizontal" action="../../commodity/addOrUpdate.action" enctype="multipart/form-data" method="post" >
+			<fieldset>
+				<div id="legend" class="">
+					<legend class="">商品操作</legend>
+				</div>
+				<div class="control-group">
+					<input type="hidden" name="comId" id="comIds"/>
+					<span class="control-label" for="input01">商品名称:</span>
+					<input type="text" name="comName" id="comNames" placeholder="请输入商品名称" class="input-xlarge"/>
+				</div>
+				<div class="control-group">
+					<span class="control-label">商品类型:</span>
+					<select class="input-xlarge" name="typeId" id="typeIds">
+					</select>
+				</div>
+				<div class="control-group">
+					<span class="control-label">用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;户:</span>
+					<select class="input-xlarge" name="userId" id="userIds"></select>
+				</div>
+				<div class="control-group">
+					<span class="control-label" for="input01">商品备注:</span>
+					<input type="text" name="comComment" id="comComments" placeholder="请输入商品备注" class="input-xlarge"/>
+				</div>
+				<div class="control-group">
+					<span class="control-label" for="input01">商品价格:</span>
+					<input type="text" name="comMoney" id="comMoneys" placeholder="请输入商品价格" class="input-xlarge"/>
+				</div>
+				<div class="control-group">
+					<span class="control-label" for="input01">开始时间:</span>
+				   <input type="date" name="comDate" id="comDates" class="input-xlarge"/>
+				</div>
+				<div class="control-group">
+					<span class="control-label" for="input01">截止时间:</span>
+				   <input type="date" name="comTime" id="comTimes" class="input-xlarge"/>
+				</div>
+				<div class="control-group">
+					<span class="control-label" for="input01">商品图片:</span>
+				  <input type="file" name="comPhoto"/>
+				</div>
+				<div class="control-group">
+					<span class="control-label">商品状态:</span>
+					<select class="input-xlarge" name="comState" id="comStates">
+						<option value="0">审核通过</option>
+						<option value="1">商品正在竞拍</option>
+						<option value="2">商品已经下架</option>
+					</select>
+				</div>
+				<div class="control-group">
+					<span class="control-label" for="input01">保&nbsp;&nbsp;证&nbsp;&nbsp;金:</span>
+					<input type="text" name="comMargin" id="comMargins" placeholder="请输入保证金" class="input-xlarge"/>
+				</div>
+				<div class="control-group" id="groupInput"> 
+					<label class="control-label"></label>
+					<!-- Button -->
+					<div class="controls">
+						<input type="submit" class="btn btn-success" value="确认"/>&nbsp;&nbsp;&nbsp;
+						<input type="button" class="btn btn-danger" id="exit" value="取消"/>
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+	
+	
+	
+	
+	
+<!-- 模态框（Modal） 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"onclick="hideFrom();">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					商品操作
+				</h4>
+			</div>
+			<form class="form-horizontal" action="../../../commodity/addOrUpdate.action" enctype="multipart/form-data" method="post" id="myForm">
+				<div class="modal-body">
+				<input type="hidden" name="comId" id="comIds"/>
+				<p><label class="control-label" >商品名称:</label><input type="text" name="comName" placeholder="请输入商品名称" class="input-xlarge"/></p>
+				<p><label class="control-label">商品类型:</label>
+					<select class="input-xlarge" name="typeId" id="typeId">
+						<option>请选择商品类型</option>
+					</select>
+				</p>
+				<p><label class="control-label">用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;户:</label>
+					<select class="input-xlarge" name="userId" id="userId">
+						<option>请选择用户</option>
+					</select>
+				</p>
+				<p><label class="control-label">商品备注:</label><input type="text" name="comComment" placeholder="请输入商品备注" class="input-xlarge"/></p>
+				<p><label class="control-label">商品价格:</label><input type="text" name="comMoney" placeholder="请输入商品价格" class="input-xlarge"/></p>
+				<p><label class="control-label">开始时间:</label><input type="date" name="comDate" class="input-xlarge"/></p>
+				<p><label class="control-label">截止时间:</label><input type="date" name="comTime" class="input-xlarge"/></p>
+				<p><label class="control-label">商品图片:</label><input type="file" name="comPhoto"/></p>
+				<p><label class="control-label">商品状态:</label><input type="text" name="comState" placeholder="请输入商品状态" class="input-xlarge"/></p>
+				<p><label class="control-label">保&nbsp;&nbsp;证&nbsp;&nbsp;金:</label><input type="text" name="comMargin" placeholder="请输入保证金" class="input-xlarge"/></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"onclick="hideFrom();" >关闭
+					</button>
+					<input type="submit" class="btn btn-primary" value="提交"/>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>-->
+	<div id="page">
+		<ul class="pagination">
+			
+		</ul>
+	</div>
+</body>
+</html>
