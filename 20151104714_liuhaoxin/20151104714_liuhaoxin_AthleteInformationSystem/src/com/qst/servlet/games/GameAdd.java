@@ -44,7 +44,7 @@ public class GameAdd extends HttpServlet {
 		//获取我的头像图片地址
 		ImageIcon icon= new ImageIcon(request.getSession().getServletContext().getRealPath("/img/touxiang.png"));        	
 		JOptionPane.showMessageDialog(null, "创建成功，在管理页面查看","成功",JOptionPane.ERROR_MESSAGE,icon); 
-		response.sendRedirect("admin-newgames.jsp");
+		response.sendRedirect("admin-jsp/newgames.jsp");
 		
 	}
 

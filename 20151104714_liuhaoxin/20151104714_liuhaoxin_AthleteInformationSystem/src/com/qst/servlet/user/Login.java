@@ -63,20 +63,20 @@ public class Login extends HttpServlet {
 					//普通用户
 					
 					JOptionPane.showMessageDialog(null, location+"\n"+tmp+"\n"+cond_txt+"\n"+loc, "欢迎访问", JOptionPane.DEFAULT_OPTION); 
-					request.getRequestDispatcher("general-index.jsp").forward(request, response);
+					request.getRequestDispatcher("general-jsp/general-index.jsp").forward(request, response);
 				}
 				else if(qx.equals("1")) {
 					//记录员用户
 					
 					JOptionPane.showMessageDialog(null, location+"\n"+tmp+"\n"+cond_txt+"\n"+loc, "欢迎访问", JOptionPane.DEFAULT_OPTION); 
 					
-					request.getRequestDispatcher("recorder-index.jsp").forward(request, response);
+					request.getRequestDispatcher("recorder-jsp/recorder-index.jsp").forward(request, response);
 				}
 				else if(qx.equals("2")) {
 					//管理员用户
 					JOptionPane.showMessageDialog(null, location+"\n"+tmp+"\n"+cond_txt+"\n"+loc, "欢迎访问", JOptionPane.DEFAULT_OPTION); 
 
-					request.getRequestDispatcher("admin-index.jsp").forward(request, response);	
+					request.getRequestDispatcher("admin-jsp/admin-index.jsp").forward(request, response);	
 				}
 				else {
 					// 受限制用户，或出错用户
