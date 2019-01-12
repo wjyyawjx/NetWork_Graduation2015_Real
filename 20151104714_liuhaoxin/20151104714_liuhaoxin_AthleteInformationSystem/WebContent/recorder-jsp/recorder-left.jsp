@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
 </head>
 <body>
 	<br>
 	<div align="center">
-<a  href ="InformationView" target ="recorder-right">查看自己的信息</a><br><br><br>
-<a  href ="ViewGames" target ="recorder-right">查看我管理的运动会</a><br>
+<a  href ="../InformationView" target ="recorder-right">查看自己的信息</a><br><br><br>
+<a  href ="../ViewGames" target ="recorder-right">查看我管理的运动会</a><br>
 </div>
 <br><br>
 </body>

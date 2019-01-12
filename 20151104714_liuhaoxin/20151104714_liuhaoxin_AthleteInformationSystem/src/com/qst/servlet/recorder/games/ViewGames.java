@@ -44,7 +44,7 @@ public class ViewGames extends HttpServlet {
 		RecorderGameDao rgdao = new RecorderGameDao();
 		gambean = (ArrayList<GameBean>) rgdao.recordergameList(username);
 		request.setAttribute("gambean", gambean);
-		request.getRequestDispatcher("recorder-jsp/games.jsp").forward(request, response);
+		request.getRequestDispatcher("recorder-jsp/recorder-games.jsp").forward(request, response);
 	}
 
 	/**

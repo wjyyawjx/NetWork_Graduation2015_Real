@@ -5,16 +5,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
 </head>
 <body><br><br>
 <div align="center">
-<a  href ="InformationView"  target ="general-right">查看自己的信息        </a>
+<a  href ="../InformationView"  target ="general-right">查看自己的信息        </a>
 <br><br><br>
-<a  href ="ToApplyForView"   target ="general-right">申请成为记录员        </a>
+<a  href ="../ToApplyForView"   target ="general-right">申请成为记录员        </a>
 <br><br><br>
-<a  href ="MessageView"      target ="general-right">查看留言                   </a>
+<a  href ="../MessageView"      target ="general-right">查看留言                   </a>
 <br><br><br>
 </div>
 </body>
