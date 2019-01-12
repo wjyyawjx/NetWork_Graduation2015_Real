@@ -31,7 +31,6 @@ public interface AuUserService {
     
     /**
      * 增加或者修改的方法
-     * @param vo
      * @return
      */
     int addOrUpdate(AuUser user);

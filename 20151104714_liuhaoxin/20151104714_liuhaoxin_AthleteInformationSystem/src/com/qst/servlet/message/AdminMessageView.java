@@ -39,7 +39,7 @@ public class AdminMessageView extends HttpServlet {
 		MessageDao mesdao = new MessageDao();
 		mesdata = (ArrayList<MessageBean>) mesdao.messageList();
 		request.setAttribute("mes", mesdata);
-		request.getRequestDispatcher("admin-message.jsp").forward(request, response);
+		request.getRequestDispatcher("admin-jsp/message.jsp").forward(request, response);
 	}
 
 	/**

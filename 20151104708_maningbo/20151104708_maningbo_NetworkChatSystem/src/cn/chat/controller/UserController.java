@@ -5,7 +5,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Properties;
+import java.util.Random;
 
+import javax.annotation.Resource;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,11 +18,15 @@ import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.chat.pojo.Friend;
@@ -29,7 +38,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-
+	@Resource(name="javaMailSender")
+	private JavaMailSender javaMailSender;//在spring中配置的邮件发送的bean
+	  
 	@RequestMapping("/frame")
 	public String toIndexPage(HttpServletRequest request) {
 		return "frame";
@@ -228,4 +239,42 @@ public class UserController {
     public String websockettest(){
     	return "websocketTest";
     }
+    
+    @RequestMapping("send.action")
+    public String sendMail(String email,Model model){
+        System.out.println("获取网页输入的email:"+email);
+        UserBean user = userService.findUserByEmail(email);
+        System.out.println("获取数据库的email:"+user.getEmail());
+        if(user.getEmail().equals(email)){
+		    MimeMessage mMessage=javaMailSender.createMimeMessage();//创建邮件对象
+		    MimeMessageHelper mMessageHelper;
+		    Properties prop = new Properties();
+		    String from;
+		    Random random = new Random();
+		    String validate="";
+		    for (int i=0;i<6;i++)
+		    {
+		    	validate+=random.nextInt(10);
+		    }
+		    System.out.println(validate);
+		    try {
+		        mMessageHelper=new MimeMessageHelper(mMessage,true);
+		        mMessageHelper.setFrom("912987977@qq.com");//发件人邮箱
+		        mMessageHelper.setTo(user.getEmail());//收件人邮箱
+		        mMessageHelper.setSubject("马宁博发送给您的验证码");//邮件的主题
+		        mMessageHelper.setText("<p>您好，欢迎使用马宁博的聊天工具，您正在进行邮箱验证，本次验证码为：</p><br/>" +validate,true);//邮件的文本内容，true表示文本以html格式打开
+//                    File file=new File("F:/img/枫叶.png");//在邮件中添加一张图片
+//                    FileSystemResource resource=new FileSystemResource(file);
+//                    mMessageHelper.addInline("fengye", resource);//这里指定一个id,在上面引用
+//                    mMessageHelper.addAttachment("枫叶.png", resource);//在邮件中添加一个附件
+		        javaMailSender.send(mMessage);//发送邮件
+		        model.addAttribute("msg", "验证码发送成功");
+		        return "forgetpwd";
+		    } catch (MessagingException e) {
+		        e.printStackTrace();
+		    }
+		}
+		model.addAttribute("msg", "验证码发送失败");
+		return "forgetpwd"; 
+        }
 }

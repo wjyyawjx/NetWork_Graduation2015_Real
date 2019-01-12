@@ -41,7 +41,7 @@ public class ToApplyForView extends HttpServlet {
 		GeneralDao geldao = new GeneralDao();
 		gelbean = (ArrayList<ToapplyforBean>)geldao.ToApplyForView(username);
 		request.setAttribute("gel", gelbean);
-		request.getRequestDispatcher("general-to-apply-for.jsp").forward(request, response);
+		request.getRequestDispatcher("general-jsp/general-to-apply-for.jsp").forward(request, response);
 	}
 
 	/**

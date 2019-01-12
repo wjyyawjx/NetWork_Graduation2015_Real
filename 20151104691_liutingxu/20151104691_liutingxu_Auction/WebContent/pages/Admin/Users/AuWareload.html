@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>钱包记录管理</title>
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+<script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="../../res/js/cx/AuWareload.js"></script>
+<script src="../../res/js/sweetalert.min.js"></script> 
+<script src="../../res/js/base.js"></script> 
+<link href="../../res/css/cst/auindent.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../../res/js/sweetalert.css">
+<!-- <style type="text/css">
+	.table-responsive{
+		width: 1000px;
+	}
+	thead tr th,#body tr td{
+		text-align: center;
+	}
+	#big{
+		width: 400px;
+		height:350px;
+		position: absolute;
+		top:100px;
+		left:300px;
+		background:#ddd;
+		display: none;
+	}
+	ul{
+		list-style: none ;
+	}
+	
+	ul li{
+		float:left ;
+		margin-left:10px;
+		margin-bottom: 30px;
+		margin-top: 20px;
+	}
+	ul li input{
+		height:35px;
+		text-indent: 5px;
+	}
+	.form-horizontal{
+		margin-left: 50px;
+	}
+	.form-horizontal p{
+		margin-top: 30px;
+		margin-left: 30px;
+	}
+	.form-horizontal p button {
+		margin-left: 50px;
+	}
+	#close{
+		border-radius: 10px;
+		border: 1px solid black;
+		float: right;
+		margin-right: 10px;
+		margin-top: 10px;
+	}
+	.input-xlarge{
+		text-indent: 5px;
+	}
+	#queryForm{
+		width: 500px;
+		margin-left: 200px;
+	}
+	#waId{
+		width: 100px;
+		text-align: center;
+	}
+	#sub{
+		margin-left: 20px;
+	}
+	#page{
+		width:400px;
+		height:100px;
+		margin-left:500px;
+	}
+</style> -->
+</head>
+<body>
+	<div class="table-responsive">
+	<form id="queryForm">
+		<ul>
+			<li><input type="date" name="wrDate2" placeholder="请输入开始日期"></li>
+			<li><input type="date" name="wrDate2" placeholder="请输入结束日期"></li>
+			<li><button type="button" id="query" class="btn btn-success">查询</button></li>
+			<li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="showFrom();">增加</button></li>
+		</ul>
+	</form>
+	
+		
+	<table id="myTable" class="table table-hover table-bordered table-striped">
+		<thead>
+			<tr>
+				  <th>钱包支出记录id</th>
+			      <th>钱包Id</th>
+			      <th>金额</th>
+			      <th>时间</th>
+			      <th>记录内容</th>
+			      <th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="body">
+		</tbody>
+	</table>
+	</div>
+	<div id="page">
+		<ul class="pagination">
+			
+		</ul>
+	</div>
+	
+	
+	
+<!-- 模态框（Modal） 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideFrom();">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					钱包支出信息操作
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" action="" method="post" id="myForm">
+					<input type="hidden" name="wrId"/>
+					<p><label class="control-label">钱&nbsp;包&nbsp;&nbsp;ID:</label>
+						<select class="input-xlarge" name="waId" id="waId">
+						</select>
+					</p>
+					<p><label class="control-label" >金&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;额:</label><input type="text" name="wrMoney"  placeholder="请输入余额" class="input-xlarge"/></p>
+					<p><label class="control-label" >时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;间:</label><input type="date" name="wrDate2" class="input-xlarge"/></p>
+					<p><label class="control-label" >记录内容:</label><input type="text" name="wrContent"  placeholder="请输入记录内容" class="input-xlarge"/></p>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideFrom();" >关闭
+				</button>
+				<button type="button" class="btn btn-primary" onclick="addOrUpdate();">
+					提交更改
+				</button>
+			</div>
+		</div>
+	</div>
+</div>-->
+</body>
+</html>
