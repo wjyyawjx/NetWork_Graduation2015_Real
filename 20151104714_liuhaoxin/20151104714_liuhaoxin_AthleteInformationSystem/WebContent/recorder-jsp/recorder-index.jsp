@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
 </head>
 <frameset rows="15%,*">
-<frame noresize="noresize"  frameborder="0" src="recorder-title.jsp">
+<frame noresize="noresize"  frameborder="0" src="recorder-jsp/recorder-title.jsp">
 <frameset cols="200,*">
-<frame noresize="noresize" frameborder="0"  src="recorder-left.jsp">
-<frame noresize="noresize" frameborder="0"  src="recorder-right.jsp" name="recorder-right" >
+<frame noresize="noresize" frameborder="0"  src="recorder-jsp/recorder-left.jsp">
+<frame noresize="noresize" frameborder="0"  src="recorder-jsp/recorder-right.jsp" name="recorder-right" >
 </frameset>
 </frameset>
 </html>

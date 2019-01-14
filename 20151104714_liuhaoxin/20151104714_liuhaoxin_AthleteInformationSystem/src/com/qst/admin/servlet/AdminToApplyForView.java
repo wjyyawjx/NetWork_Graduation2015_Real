@@ -38,7 +38,7 @@ public class AdminToApplyForView extends HttpServlet {
 		GeneralDao geldao = new GeneralDao();
 		gelbean = (ArrayList<ToapplyforBean>)geldao.ToApplyForView();
 		request.setAttribute("gel", gelbean);
-		request.getRequestDispatcher("admin-jsp/to-apply-for-view.jsp").forward(request, response);
+		request.getRequestDispatcher("admin-jsp/admin-to-apply-for-view.jsp").forward(request, response);
 	}
 
 	/**

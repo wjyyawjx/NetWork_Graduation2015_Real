@@ -9,10 +9,10 @@
 <title>Insert title here</title>
 </head>
 <frameset rows="15%,*">
-<frame noresize="noresize" src="general-title.jsp">
+<frame noresize="noresize" src="general-jsp/general-title.jsp">
 <frameset cols="200,*">
-<frame noresize="noresize" src="general-left.jsp">
-<frame noresize="noresize" src="general-right.jsp" name="general-right" >
+<frame noresize="noresize" src="general-jsp/general-left.jsp">
+<frame noresize="noresize" src="general-jsp/general-right.jsp" name="general-right" >
 </frameset>
 </frameset>
 </html>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
 <% String name = (String) session.getAttribute("user"); %>
 </head>
@@ -15,7 +15,7 @@
 		<td style="width: 40%"></td>
 		<td style="height: 40px;font-size: 40px;">运动会记录员后台</td>
 		<td> <%=name%>记录员你好 
-		<form target="_top" action="Exit" method="post">
+		<form target="_top" action="../Exit" method="post">
 		<button  type="submit" >退出</button></form></td>
 		</tr>
 	</table>
