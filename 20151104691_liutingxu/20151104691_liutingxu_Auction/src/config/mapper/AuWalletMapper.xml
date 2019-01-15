@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imnu.dao.AuWalletMapper">
+  <resultMap id="BaseResultMap" type="com.imnu.model.AuWallet">
+    <id column="wa_id" jdbcType="VARCHAR" property="waId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="wa_balance" jdbcType="DECIMAL" property="waBalance" />
+    <result column="user_name" jdbcType="DECIMAL" property="userName" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    wa_id, user_id, wa_balance
+  </sql>
+  <sql id="Base_Column_List2">
+    wa_id, wa_balance,user_name
+  </sql>
+  
+  <!-- 查询总行数 -->
+   <select id="findCount" resultType="java.lang.Long">
+   		select count(*) FROM au_wallet wa,au_user u WHERE wa.user_id = u.user_id 
+   	<if test="userId != null and userId !='' ">
+   		and u.user_id = #{userId,jdbcType=VARCHAR}
+   	</if>
+   </select>
+   
+   <!-- 根据条件查询 -->
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from au_wallet
+    where wa_id = #{waId,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 查询所有 条件查询 -->
+   <select id="queryAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List2" />
+   	FROM au_wallet wa,au_user u WHERE wa.user_id = u.user_id 
+   	<if test="userId != null and userId !='' ">
+   		and u.user_id = #{userId,jdbcType=VARCHAR}
+   	</if>
+   	limit #{startRows},#{rows}
+  </select>
+  
+  <!-- 根据id删除 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from au_wallet
+    where wa_id = #{waId,jdbcType=VARCHAR}
+  </delete>
+  <!-- 增加 -->
+  <insert id="insert" parameterType="com.imnu.model.AuWallet">
+  	<selectKey keyProperty="waId" resultType="string" order="BEFORE">
+	    SELECT REPLACE(UUID(),'-','') AS id;
+	  </selectKey>
+    insert into au_wallet (wa_id, user_id, wa_balance
+      )
+    values (#{waId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{waBalance,jdbcType=DECIMAL}
+      )
+  </insert>
+  
+  <!-- 增加 -->
+  <insert id="insertSelective" parameterType="com.imnu.model.AuWallet">
+  	<selectKey keyProperty="waId" resultType="string" order="BEFORE">
+	    SELECT REPLACE(UUID(),'-','') AS id;
+	  </selectKey>
+    insert into au_wallet
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="waId != null">
+        wa_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="waBalance != null">
+        wa_balance,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="waId != null">
+        #{waId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="waBalance != null">
+        #{waBalance,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <!-- 修改 -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.imnu.model.AuWallet">
+    update au_wallet
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="waBalance != null">
+        wa_balance = #{waBalance,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where wa_id = #{waId,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 修改 -->
+  <update id="updateByPrimaryKey" parameterType="com.imnu.model.AuWallet">
+    update au_wallet
+    set user_id = #{userId,jdbcType=VARCHAR},
+      wa_balance = #{waBalance,jdbcType=DECIMAL}
+    where wa_id = #{waId,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 根据用户id查询订单 -->
+  <select id="selectWallet" parameterType="com.imnu.model.AuWallet" resultMap="BaseResultMap">
+  	select * from au_wallet where user_id=#{userId} 
+  </select>
+  
+  <!-- 根据用户id查询 和钱包记录的内容模糊查询 钱包表 钱包记录表  -->
+ <select id="selectUserId" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	SELECT wa.*,re.wr_money as wrMoney FROM au_wallet wa,au_wareload re WHERE wa.wa_id=re.wa_id AND wa.user_id=#{userId} and re.wr_content like concat('%',#{bzj},'%')
+  </select>
+  
+  <select id="findWallet" parameterType="string" resultMap="BaseResultMap">
+  	select * from au_wallet where user_id=#{userId}
+  </select>
+  <select id="findState" resultMap="BaseResultMap">
+  	select * from au_wallet where wa_state='2'
+  </select>
+</mapper>
