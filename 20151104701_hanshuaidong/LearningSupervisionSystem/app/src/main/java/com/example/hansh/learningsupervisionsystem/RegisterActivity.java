@@ -85,18 +85,14 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * 获取控件中的字符串
-     */
+
     private void getEditString() {
         userName = et_user_name.getText().toString().trim();
         psw = et_psw.getText().toString().trim();
         pswAgain = et_psw_again.getText().toString().trim();
     }
 
-    /**
-     * 从SharedPreferences中读取输入的用户名，判断SharedPreferences中是否有此用户名
-     */
+
     private boolean isExistUserName(String userName) {
         boolean has_userName = false;
         //mode_private SharedPreferences sp = getSharedPreferences( );
@@ -109,9 +105,7 @@ public class RegisterActivity extends AppCompatActivity {
         return has_userName;
     }
 
-    /**
-     * 保存账号和密码到SharedPreferences中SharedPreferences
-     */
+
     private void saveRegisterInfo(String userName, String psw) {
         String md5Psw = MD5Utils.md5(psw);
         SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
