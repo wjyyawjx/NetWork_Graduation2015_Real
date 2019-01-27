@@ -2,12 +2,12 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper //EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qst.dao.UserDao">
+<mapper namespace="com.imnu.dao.UserDao">
   <select id="LoginUser" parameterType="String" resultType="user">
     select * from user where u_name = #{u_name} and u_pwd=#{u_pwd}
   </select>
   <insert id="registerUser" parameterType="String">
-    insert into user (u_name,u_pwd,u_email,u_phone) values (#{u_name},#{u_pwd},#{u_email},#{u_phone})
+    insert into user (u_name,u_pwd,u_email,u_phone,u_type) values (#{u_name},#{u_pwd},#{u_email},#{u_phone},#{u_type})
   </insert>
   <select id="findUser" parameterType="String" resultType="user">
     select * from user where u_name = #{u_name}

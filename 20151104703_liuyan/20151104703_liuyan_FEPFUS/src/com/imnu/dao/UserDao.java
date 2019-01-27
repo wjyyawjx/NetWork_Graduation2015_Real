@@ -7,7 +7,7 @@ import com.imnu.po.User;
 public interface UserDao {
     public User LoginUser(@Param("u_name") String u_name,@Param("u_pwd") String u_pwd);
 
-	public void registerUser(@Param("u_name")String u_name,@Param("u_pwd") String u_pwd,@Param("u_email") String u_email,@Param("u_phone") String u_phone);
+	public void registerUser(@Param("u_name")String u_name,@Param("u_pwd") String u_pwd,@Param("u_email") String u_email,@Param("u_phone") String u_phone,@Param("u_type") String u_type);
 	
 	public User  findUser(@Param("u_name")String u_name);
 

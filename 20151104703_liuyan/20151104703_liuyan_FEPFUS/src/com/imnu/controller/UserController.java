@@ -1,8 +1,5 @@
 package com.imnu.controller;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +17,22 @@ public class UserController {
      @Autowired
      private UserService userService;
      
-     @RequestMapping(value = "/login.action" ,method = RequestMethod.GET)
-     public String toLogin() {
-    	 return "login";
+     @RequestMapping(value = "/login.action" ,method = RequestMethod.POST)
+     public String Login(String u_name, String u_pwd,Model model,HttpSession session) {
+    	 User user = userService.LoginUser(u_name, u_pwd);
+    	 if(user != null) {
+    		 return "index";
+    	 }else {
+    		 model.addAttribute("msg","用户名或密码错误!");
+    		 return "login";
+    	 }
      }
-    
+     @RequestMapping(value = "/register.action" ,method = RequestMethod.GET)
+     public String toregister() {
+    	 return "register";
+     }
      @RequestMapping(value = "/register.action" ,method = RequestMethod.POST)
-     public String register(String u_name, String u_pwd,String u_email,String u_phone,Model model,HttpSession session) {
+     public String register(String u_name, String u_pwd,String u_email,String u_phone,String u_type,Model model,HttpSession session) {
     	 User email = userService.findEmail(u_email);
     	 User user = userService.findUser(u_name);
          if(email != null) {
@@ -36,10 +42,9 @@ public class UserController {
 	    	 model.addAttribute("msg","用户名已存在，请重新输入!");
 	   		 return "register";
 	   	 }else {
-	    	 userService.registerUser(u_name, u_pwd,u_email,u_phone);
+	    	 userService.registerUser(u_name, u_pwd,u_email,u_phone,u_type);
 	       	 return "login"; 
 	   	 }
-         
          
      }
 }

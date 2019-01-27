@@ -57,7 +57,12 @@ function check() {
  用户名:<input id="u_name" type="text" name="u_name" /><br> 
     密&nbsp;&nbsp;&nbsp;&nbsp;码:<input id="u_pwd" type="password" name="u_pwd" /><br>
     邮&nbsp;&nbsp;&nbsp;&nbsp;箱:<input id="u_email" type="email" name="u_email" /><br>
-    电&nbsp;&nbsp;&nbsp;&nbsp;话   <input id="u_phone" type="text" name="u_phone" /><br> 
+    电&nbsp;&nbsp;&nbsp;&nbsp;话:<input id="u_phone" type="text" name="u_phone" /><br>
+    职&nbsp;&nbsp;&nbsp;&nbsp;业:<select name="u_type" id="u_type">
+						         <option value="家长">家长</option>
+						         <option value="教员">教员</option>
+						         <option value="家长" selected="selected">家长</option>
+		                       </select> <br>
     <input type="submit" value="注册" />
 </form>
 <a href="${pageContext.request.contextPath}/login.action" >返回登陆界面</a>
