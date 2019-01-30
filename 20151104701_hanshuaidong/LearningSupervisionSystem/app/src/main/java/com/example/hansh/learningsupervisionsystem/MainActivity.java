@@ -14,14 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView title, item_shouye, item_tianjiarenwu, item_me;
+    private TextView title, item_shouye, item_tianjiarenwu, item_me, item_shezhi;
     private ViewPager vp;
     private OneFragment oneFragment;
     private TwoFragment twoFragment;
     private ThreeFragment threeFragment;
+    private FourFragment fourFragment;
     private List<Fragment> mFragmentList = new ArrayList<Fragment>();
     private FragmentAdapter mFragmentAdapter;
-    String[] titles = new String[]{"首页", "添加任务", "我"};
+    String[] titles = new String[]{"首页", "添加任务", "我", "设置"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initViews();
 
         mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
-        vp.setOffscreenPageLimit(3);
+        vp.setOffscreenPageLimit(4);
         vp.setAdapter(mFragmentAdapter);
         vp.setCurrentItem(0);
         item_shouye.setTextColor(Color.parseColor("#66CDAA"));
@@ -52,28 +54,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
+
     private void initViews() {
         title = (TextView) findViewById(R.id.title);
         item_shouye = (TextView) findViewById(R.id.item_shouye);
         item_tianjiarenwu = (TextView) findViewById(R.id.item_tianjiarenwu);
         item_me = (TextView) findViewById(R.id.item_me);
+        item_shezhi = (TextView) findViewById(R.id.item_shezhi);
 
         item_shouye.setOnClickListener(this);
         item_tianjiarenwu.setOnClickListener(this);
         item_me.setOnClickListener(this);
+        item_shezhi.setOnClickListener(this);
 
 
         vp = (ViewPager) findViewById(R.id.mainViewPager);
         oneFragment = new OneFragment();
         twoFragment = new TwoFragment();
         threeFragment = new ThreeFragment();
+        fourFragment = new FourFragment();
 
-        //给FragmentList添加数据
+
         mFragmentList.add(oneFragment);
         mFragmentList.add(twoFragment);
         mFragmentList.add(threeFragment);
+        mFragmentList.add(fourFragment);
 
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -84,10 +92,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 vp.setCurrentItem(1, true);
                 break;
             case R.id.item_me:
+                vp.setCurrentItem(2, true);
+                break;
+            case R.id.item_shezhi:
                 vp.setCurrentItem(3, true);
                 break;
         }
     }
+
     public class FragmentAdapter extends FragmentPagerAdapter {
 
         List<Fragment> fragmentList = new ArrayList<Fragment>();
@@ -108,24 +120,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+
     private void changeTextColor(int position) {
         if (position == 0) {
             item_shouye.setTextColor(Color.parseColor("#66CDAA"));
             item_tianjiarenwu.setTextColor(Color.parseColor("#000000"));
             item_me.setTextColor(Color.parseColor("#000000"));
+            item_shezhi.setTextColor(Color.parseColor("#000000"));
+
         } else if (position == 1) {
             item_tianjiarenwu.setTextColor(Color.parseColor("#66CDAA"));
             item_shouye.setTextColor(Color.parseColor("#000000"));
             item_me.setTextColor(Color.parseColor("#000000"));
+            item_shezhi.setTextColor(Color.parseColor("#000000"));
         } else if (position == 2) {
             item_shouye.setTextColor(Color.parseColor("#000000"));
             item_tianjiarenwu.setTextColor(Color.parseColor("#000000"));
             item_me.setTextColor(Color.parseColor("#000000"));
+            item_shezhi.setTextColor(Color.parseColor("#000000"));
         } else if (position == 3) {
             item_me.setTextColor(Color.parseColor("#66CDAA"));
             item_shouye.setTextColor(Color.parseColor("#000000"));
             item_tianjiarenwu.setTextColor(Color.parseColor("#000000"));
-
+            item_shezhi.setTextColor(Color.parseColor("#000000"));
         }
     }
 

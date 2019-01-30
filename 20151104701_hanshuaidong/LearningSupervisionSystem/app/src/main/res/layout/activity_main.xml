@@ -64,6 +64,14 @@
             android:gravity="center_horizontal|center_vertical"
             android:text="我的任务"
             android:textSize="15dp" />
+        <TextView
+            android:id="@+id/item_shezhi"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="设置"
+            android:textSize="15dp" />
     </LinearLayout>
 
 </LinearLayout>

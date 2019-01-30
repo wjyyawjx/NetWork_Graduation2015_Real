@@ -84,14 +84,11 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-
-
     private void getEditString() {
         userName = et_user_name.getText().toString().trim();
         psw = et_psw.getText().toString().trim();
         pswAgain = et_psw_again.getText().toString().trim();
     }
-
 
     private boolean isExistUserName(String userName) {
         boolean has_userName = false;
@@ -104,8 +101,6 @@ public class RegisterActivity extends AppCompatActivity {
         }
         return has_userName;
     }
-
-
     private void saveRegisterInfo(String userName, String psw) {
         String md5Psw = MD5Utils.md5(psw);
         SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
