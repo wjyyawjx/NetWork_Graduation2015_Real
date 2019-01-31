@@ -1,5 +1,5 @@
 package com.qst.bean;
-
+//消息
 public class MessageBean {
 	private  int mid;
 	private  String username,message;

@@ -35,8 +35,6 @@ public class PermissionUpload extends HttpServlet {
 		GeneralDao userdao = new GeneralDao();
 		userdao.permissionupload(uid,qx);
 		response.sendRedirect("UserView");	
-	
-	
 	}
 
 	/**

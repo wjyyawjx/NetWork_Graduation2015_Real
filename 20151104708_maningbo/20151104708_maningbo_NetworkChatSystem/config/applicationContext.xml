@@ -9,7 +9,7 @@
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
 	<!-- 加载配置文件 -->
-	<context:property-placeholder location="classpath:db.properties" />
+	<context:property-placeholder location="classpath:db.properties"  ignore-unresolvable="true"/>
 	<!-- 数据库连接池 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -19,6 +19,21 @@
 		<property name="password" value="${jdbc.password}" />
 		<property name="maxActive" value="10" />
 		<property name="maxIdle" value="5" />
+	</bean>
+	 <!--邮件配置-->
+    <context:property-placeholder location="classpath:mail.properties" ignore-unresolvable="true"/>
+     <!--配置邮件接口-->
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	     <property name="host" value="${mail.smtp.host}"/>
+	     <property name="username" value="${mail.smtp.username}"/>
+	     <property name="password" value="${mail.smtp.password}"/>
+	     <property name="defaultEncoding" value="${mail.smtp.defaultEncoding}"/>
+	     <property name="javaMailProperties">
+	         <props>
+	             <prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+	             <prop key="mail.smtp.timeout">${mail.smtp.timeout}</prop>
+	         </props>
+	     </property>
 	</bean>
 		<!-- 事务管理器 -->
 	<bean id="transactionManager"
@@ -42,4 +57,6 @@
 	</bean>
 	<!-- 扫描service -->
 	<context:component-scan base-package="cn.chat.service"></context:component-scan>
+	
+	
 </beans>

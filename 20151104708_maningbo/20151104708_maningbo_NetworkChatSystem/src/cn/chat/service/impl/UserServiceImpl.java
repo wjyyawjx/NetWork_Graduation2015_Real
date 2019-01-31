@@ -2,6 +2,7 @@
 package cn.chat.service.impl;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,6 +65,13 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		this.userDao.addFriend(userName, friend_2);
 	}
+
+	@Override
+	public UserBean findUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		return userDao.findUserByEmail(email);
+	}
+
 
 
 	

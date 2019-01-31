@@ -41,7 +41,7 @@ public class MessageView extends HttpServlet {
 		MessageDao mesdao = new MessageDao();
 		mesdata = (ArrayList<MessageBean>)mesdao.messageList();
 		request.setAttribute("mes", mesdata);
-		request.getRequestDispatcher("general-message.jsp").forward(request, response);
+		request.getRequestDispatcher("general-jsp/general-message.jsp").forward(request, response);
 
 	}
 

@@ -49,17 +49,17 @@
         <div class="page-container">
             <h1>密码重置</h1>
             <font color="red"><span id="message">${msg }</span></font>
-            <form action="${pageContext.request.contextPath }/findpwd.action" method="post" onsubmit="return check()">
+            <form action="${pageContext.request.contextPath }/findpwd" method="post" onsubmit="return check()">
                 <input type="text" name="num" class="uname" placeholder="请输入学号/工号">
                 <input type="password" name="pwd1" class="upwd" placeholder="请输入密码">
                 <input type="password" name="pwd" class="upwd" placeholder="请确认密码">
                 <input type="text" name="randomjsp" class="uname" placeholder="请输入验证码">
-                <img src="getVerify.action" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
+                <img src="getVerify" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
                 <button type="submit">密码重置</button>
                 <div class="error"><span>+</span></div>
             </form>
             <br>
-            <a href="${pageContext.request.contextPath }/tologin.action">返回登录</a>
+            <a href="${pageContext.request.contextPath }/tologin">返回登录</a>
         </div>
         <br><br><br><br><br>
         <div align="center">李宇辉——毕业设计——实验室云端监管系统</div>

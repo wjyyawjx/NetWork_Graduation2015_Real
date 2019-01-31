@@ -12,8 +12,6 @@
 function validate() {
     var pwd = document.getElementById("pwd").value;
     var pwd1 = document.getElementById("pwd1").value;
- 
-
     if(pwd1 == pwd)
      {
         document.getElementById("tishi").innerHTML="<font color='green'>两次密码相同</font>";
@@ -26,37 +24,23 @@ else {
      }
 }
 </script>
-
 </head>
 <body>
-
-
 <h1>注册</h1>
-	
 		<div class="container">
-			
 			<form action="Register"  method="post">
-			<input type="text" Name="username" placeholder="用户名" required="">
+				<input type="text" Name="username" placeholder="用户名" required="">
 				<input type="email" Name="email" placeholder="邮箱" required="">
 				<input type="text" name="phone" placeholder="联系方式" required="">
 				<input type="password" id="pwd" Name="password" onkeyup="validate()" placeholder="密码" required="">
 				<input style="width: 250px" type="password" id="pwd1" Name="Password1" onkeyup="validate()" placeholder="确认密码" required="">
-			
-			<span id="tishi"></span>
-			
-				
-					<input id="sub" type="submit"  disabled="value"  value="注册">
-			
-			
-
-</form>
-<br>
+				<span id="tishi"></span>
+				<input id="sub" type="submit"  disabled="value"  value="注册">
+			</form>
+				<br>
 		<form action="LoginView">
 		<input  type="submit"   value="已有账户，去登录">
-			
 		</form>
 		</div>
-
-
 </body>
 </html>

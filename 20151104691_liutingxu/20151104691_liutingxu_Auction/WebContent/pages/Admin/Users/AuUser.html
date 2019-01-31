@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>用户管理</title>
+
+<link href="../../res/css/cst/auindent.css" rel="stylesheet">
+<script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<style>
+	.table-responsive{
+		width: 800px;
+	}
+	thead tr th,#body tr td{
+		text-align: center;
+	}
+	#sex{
+	margin-left: 100px;
+	}
+</style>
+
+</head>
+<body>
+	<div class="table-responsive"> 
+	<form id="queryForm">
+			<input type="text" class="textCss" id="titleName" placeholder="请输入姓名">
+			
+			<input type="button"  value="查询" class="btn btn-success btn-sm" id="queryBtn" onclick="queryStu()">
+			<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal " id="insertBtn">增加</button>
+	</form>
+	
+	
+	<div id="divBody"></div>
+		<form id="myFrom"  enctype="multipart/form-data" method="post" class="form-horizontal">
+			<fieldset>
+				<div id="legend" class="">
+					<legend class="">用户操作</legend>
+				</div>
+				<fieldset>
+					      
+					    <div class="control-group">
+					
+					          <div class="controls">
+					            <input placeholder=""  id="userIds" name="userId"  type="hidden">
+					            <p class="help-block"></p>
+					          </div>
+					        </div>
+					
+					    <div class="control-group">
+					
+					          
+					          <label class="control-label" for="input01">姓名</label>
+					          <div class="controls">
+					            <input placeholder=""  id="userNames" name="userName"  type="text">
+					            <p class="help-block"></p>
+					          </div>
+					        </div><div class="control-group">
+					
+					          
+					          <label class="control-label">密码</label>
+					          <div class="controls">
+					            <input placeholder=""  id="userPwds" name="userPwd" type="text">
+					            <p class="help-block"></p>
+					          </div>
+					        </div>
+					          <div class="controls">
+					      
+					       <label class="control-label" style="margin-left:50px;">性别</label>
+          				<div class="controls" id="sex">
+				      
+				      <label class="radio inline"   id="userSex">
+				      	<input value="1"  name="userSex"   type="radio">女
+				      	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				      	<input value="0" name="userSex" type="radio">男
+				      </label>
+					  </div>
+					
+					        </div>
+					
+					    <div class="control-group">
+					
+					          
+					          <label class="control-label" for="input01">电话</label>
+					          <div class="controls">
+					            <input placeholder="" name="userPhone"  id="userPhones"class="input-xlarge" type="text">
+					            <p class="help-block"></p>
+					          </div>
+					        </div>
+					
+					    <div class="control-group">
+					
+					         
+					          <label class="control-label">类型</label>
+					          <div class="controls">
+					      <select class="input-xlarge" name="userType" id="typeIds">
+					      <option>用户类型</option>      
+					      <option value="1">1.用户</option>
+					      <option value="2">2.卖家</option>
+					      <option value="3">3.管理员</option></select>
+					          </div>
+					
+					        </div>
+					
+					    </fieldset>
+				<div class="control-group" id="groupInput"> 
+					<label class="control-label"></label>
+					<!-- Button -->
+					<div class="controls">
+						<input type="button" class="btn btn-success" onclick="submitForm();" value="确认"/>&nbsp;&nbsp;&nbsp;
+						<input type="button" class="btn btn-danger" id="exit" value="取消"/>
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+<!-- 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" onclick="closeForm();" class="close" data-dismiss="modal" 
+						aria-hidden="true">×
+				</button>
+					操作
+			</div>
+			<div class="modal-body">
+					 <form class="form-horizontal" id="myFrom">
+					    <fieldset>
+					      
+					    <div class="control-group">
+					
+					          <div class="controls">
+					            <input placeholder=""  id="userIds" name="userId"  type="hidden">
+					            <p class="help-block"></p>
+					          </div>
+					        </div>
+					
+					    <div class="control-group">
+					
+					          Text input
+					          <label class="control-label" for="input01">姓名</label>
+					          <div class="controls">
+					            <input placeholder=""  id="userNames" name="userName"  type="text">
+					            <p class="help-block"></p>
+					          </div>
+					        </div><div class="control-group">
+					
+					          Search input
+					          <label class="control-label">密码</label>
+					          <div class="controls">
+					            <input placeholder=""  id="userPwds" name="userPwd" type="text">
+					            <p class="help-block"></p>
+					          </div>
+					        </div>
+					          <div class="controls">
+					      Multiple Checkboxes
+					       <label class="control-label">性别</label>
+          				<div class="controls" id="sex">
+				      Inline Radios   
+				      <label class="radio inline"   id="userSex">
+				      	<input value="1"  name="userSex"   type="radio">女
+				      	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				      	<input value="0" name="userSex" type="radio">男
+				      </label>
+					  </div>
+					
+					        </div>
+					
+					    <div class="control-group">
+					
+					          Text input
+					          <label class="control-label" for="input01">电话</label>
+					          <div class="controls">
+					            <input placeholder="" name="userPhone"  id="userPhones"class="input-xlarge" type="text">
+					            <p class="help-block"></p>
+					          </div>
+					        </div>
+					
+					    <div class="control-group">
+					
+					          Select Basic
+					          <label class="control-label">类型</label>
+					          <div class="controls">
+					      <select class="input-xlarge" name="userType" id="typeIds">
+					      <option>用户类型</option>      
+					      <option value="1">1.用户</option>
+					      <option value="2">2.卖家</option>
+					      <option value="3">3.管理员</option></select>
+					          </div>
+					
+					        </div>
+					
+					    </fieldset>
+					</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" onclick="closeForm();" class="btn btn-default" 
+						data-dismiss="modal">关闭
+				</button>
+				<button type="button" onclick="submitForm();" class="btn btn-primary">
+					提交更改
+				</button>
+			</div>
+		</div>/.modal-content
+	</div>/.modal-dialog
+</div>/.modal 
+
+	-->
+		
+	
+	<table id="myTable" class="table table-hover table-bordered table-striped">
+		<thead>
+			<tr>
+				  <th>id</th>
+			      <th>名字</th>
+			      <th>密码</th>
+			      <th>性别</th>
+			      <th>电话</th>
+			      <th>类型</th>
+			      <th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="body">
+			
+		</tbody>
+</table>
+<ul class="pagination"></ul>
+
+</div>  	
+	
+</body>
+<script src="../../res/js/cyz/AuUser.js"></script>
+</html>

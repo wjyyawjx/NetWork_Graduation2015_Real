@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-
 import com.qst.bean.UserBean;
 import com.qst.dao.UserDao;
 
@@ -36,18 +35,25 @@ public class Login extends HttpServlet {
 		//用户登录
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
+		//******************************************
+		//获取天气信息
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("UTF-8");
+		Weather weather=new Weather();
+		weather.doGet(request, response);
+		HttpSession session = request.getSession();
+		String tmp = (String) session.getAttribute("tmp");
+		String cond_txt = (String) session.getAttribute("cond_txt");
+		String loc = (String) session.getAttribute("loc");
+		String location = (String) session.getAttribute("location");
+		//******************************************
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
-		System.err.println();
 		UserDao userdao = new UserDao();
 		boolean rs = userdao.login(username,pwd);
-		
-		//获取我的头像图片地址
-		ImageIcon icon= new ImageIcon(request.getSession().getServletContext().getRealPath("/img/touxiang.png"));        
-		
 			if (rs) 
 				{
-				HttpSession session = request.getSession(); 
+				
 				session.setAttribute("user",username);
 				session.setAttribute("pwd",pwd);
 				//查看权限
@@ -56,26 +62,25 @@ public class Login extends HttpServlet {
 				{
 					//普通用户
 					
-					JOptionPane.showMessageDialog(null, "欢迎访问我设计的系统","欢迎访问",JOptionPane.ERROR_MESSAGE,icon); 
-					
-					request.getRequestDispatcher("general-index.jsp").forward(request, response);
+					JOptionPane.showMessageDialog(null, location+"\n"+tmp+"\n"+cond_txt+"\n"+loc, "欢迎访问", JOptionPane.DEFAULT_OPTION); 
+					request.getRequestDispatcher("general-jsp/general-index.jsp").forward(request, response);
 				}
 				else if(qx.equals("1")) {
 					//记录员用户
 					
-					JOptionPane.showMessageDialog(null, "欢迎访问我设计的系统","欢迎访问",JOptionPane.ERROR_MESSAGE,icon); 
+					JOptionPane.showMessageDialog(null, location+"\n"+tmp+"\n"+cond_txt+"\n"+loc, "欢迎访问", JOptionPane.DEFAULT_OPTION); 
 					
-					request.getRequestDispatcher("recorder-index.jsp").forward(request, response);
+					request.getRequestDispatcher("recorder-jsp/recorder-index.jsp").forward(request, response);
 				}
 				else if(qx.equals("2")) {
 					//管理员用户
-					JOptionPane.showMessageDialog(null, "欢迎访问我设计的系统","欢迎访问",JOptionPane.ERROR_MESSAGE,icon); 
+					JOptionPane.showMessageDialog(null, location+"\n"+tmp+"\n"+cond_txt+"\n"+loc, "欢迎访问", JOptionPane.DEFAULT_OPTION); 
 
-					request.getRequestDispatcher("admin-index.jsp").forward(request, response);	
+					request.getRequestDispatcher("admin-jsp/admin-index.jsp").forward(request, response);	
 				}
 				else {
 					// 受限制用户，或出错用户
-					JOptionPane.showMessageDialog(null, "你的账户被限制了，请联系管理员","出错了",JOptionPane.ERROR_MESSAGE,icon); 
+					JOptionPane.showMessageDialog(null, "你的账户被限制了，请联系管理员","出错了",JOptionPane.ERROR_MESSAGE); 
 
 					response.sendRedirect("Login.jsp");						
 				}
@@ -83,7 +88,7 @@ public class Login extends HttpServlet {
 			else
 				{
 			
-				JOptionPane.showMessageDialog(null, "你的用户名密码有误，请重新输入","错误",JOptionPane.ERROR_MESSAGE,icon); 
+				JOptionPane.showMessageDialog(null, "你的用户名密码有误，请重新输入","错误",JOptionPane.ERROR_MESSAGE); 
 				response.sendRedirect("Login.jsp");
 				}
 		}

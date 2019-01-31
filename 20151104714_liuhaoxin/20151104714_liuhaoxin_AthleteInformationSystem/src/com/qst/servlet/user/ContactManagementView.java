@@ -39,7 +39,7 @@ public class ContactManagementView extends HttpServlet {
 		UserDao userdao = new UserDao();
 		userdata = (ArrayList<contactmanagementBean>) userdao.ContactManagementView();
 		request.setAttribute("userdata", userdata);
-		request.getRequestDispatcher("admin-ContactManagement-view.jsp").forward(request, response);
+		request.getRequestDispatcher("admin-jsp/admin-ContactManagement-view.jsp").forward(request, response);
 	}
 
 	/**

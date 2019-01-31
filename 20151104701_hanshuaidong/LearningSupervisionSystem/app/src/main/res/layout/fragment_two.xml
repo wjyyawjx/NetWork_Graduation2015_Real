@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.hansh.learningsupervisionsystem.OneFragment">
+
+    <include layout="@layout/main_title_bar"></include>
+
+
+    <EditText
+        android:id="@+id/et_task_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="输入你的任务内容"
+        android:inputType="textPhonetic" />
+
+    <DatePicker
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        />
+    <TimePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner"
+        />
+
+</LinearLayout>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>商品类型管理</title>
+<!-- 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+<script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="../../res/js/cx/AuType.js"></script>
+<link href="../../res/css/cst/auindent.css" rel="stylesheet">
+<script src="../../res/js/sweetalert.min.js"></script> 
+<script src="../../res/js/base.js"></script> 
+<link rel="stylesheet" type="text/css" href="../../res/js/sweetalert.css">
+
+</head>
+<body>
+	<div class="table-responsive">
+	<form id="queryForm">
+			商品名称:<input type="text" name="typeName" id="typeNames" placeholder="请输入商品名称模糊查询">
+			<button type="button" id="query" class="btn btn-success">查询</button>
+			<button type="button" class="btn btn-primary" id="insertBtn" >增加</button>
+		</form>
+	<div id="divBody"></div>
+		<form id="myFrom" action="../../type/addOrUpdate.action" enctype="multipart/form-data" method="post" class="form-horizontal">
+			<fieldset>
+				<div id="legend" class="">
+					<legend class="">商品类型操作</legend>
+				</div>
+				<div class="control-group">
+					<input type="hidden" name="typeId" id="typeIds"/>
+					<span class="control-label" for="input01">商品类型名称:</span>
+					<input type="text" name="typeName" id="typeNamea" placeholder="请输入商品类型" class="input-xlarge"/>
+				</div>
+				<div class="control-group">
+					<span class="control-label" for="input01">商品类型图片:</span>
+					<input type="file" name="typeImg"/>
+				</div>
+				<div class="control-group" id="groupInput"> 
+					<label class="control-label"></label>
+					<!-- Button -->
+					<div class="controls">
+						<input type="button" class="btn btn-success" id="submitf" value="确认"/>&nbsp;&nbsp;&nbsp;
+						<input type="button" class="btn btn-danger" id="exit" value="取消"/>
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+	
+	
+<!-- 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" onclick="hideFrom();" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					商品类型操作
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" action="../../type/addOrUpdate.action" enctype="multipart/form-data" method="post" id="myForm">
+					<input type="hidden" name="typeId" id="typeIds"/>
+					<p><label class="control-label" >商品类型名称:</label><input type="text" name="typeName" id="typeNamea" placeholder="请输入商品类型" class="input-xlarge"/></p>
+					<p><label class="control-label"> 商品类型图片:</label><input type="file" name="typeImg"/></p>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" onclick="hideFrom();" data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary" id="submitf">
+					提交
+				</button>
+			</div>
+		</div>
+	</div>-->
+</div>
+	<table id="myTable" class="table table-hover table-bordered table-striped">
+		<thead>
+			<tr>
+				  <th>类型id</th>
+			      <th>类型名称</th>
+			      <th>图片</th>
+			      <th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="body">
+		</tbody>
+	</table>
+	</div>
+	<ul class="pagination">
+	</ul>
+</body>
+</html>

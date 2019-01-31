@@ -93,6 +93,27 @@ public class GameDao {
 				}
 				return Array;
 			}
+			
+			// 删除运动会
+			public void GameDelete(int sid) {
+				// TODO Auto-generated method stub
+				Connection conn = DBUtil.getConnection();
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+
+				String sql = "delete from game where sid=?";
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, sid);
+					pstmt.executeUpdate();
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} finally {
+					DBUtil.closeJDBC(rs, pstmt, conn);
+				}
+			}
 
 
 }				

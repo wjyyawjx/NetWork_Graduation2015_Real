@@ -59,7 +59,7 @@ public class UserQuery extends HttpServlet {
 		}
 		
 		request.setAttribute("userdata", userdata);
-		request.getRequestDispatcher("admin-user.jsp").forward(request, response);
+		request.getRequestDispatcher("admin-jsp/admin-user.jsp").forward(request, response);
 
 
 	

@@ -25,4 +25,7 @@
 	<insert id="addFriend" parameterType="Friend">
 		INSERT INTO friend(friend_1,friend_2) VALUES(#{userName},#{friend_2})
 	</insert>
+	<select id="findUserByEmail" parameterType="String" resultType="UserBean">
+		SELECT * FROM userinfo WHERE email = #{email}
+		</select>
 </mapper>

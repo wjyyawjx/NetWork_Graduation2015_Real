@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import com.qst.dao.GameDao;
@@ -38,11 +39,12 @@ public class GameAdd extends HttpServlet {
 		String username = request.getParameter("username");
 		String startTime = request.getParameter("date1");
 		String stopTime = request.getParameter("date2");
-	
 		GameDao dao = new GameDao();
-	
 		dao.gameadd(username, gamesname, startTime, stopTime);
-		response.sendRedirect("GameView");
+		//获取我的头像图片地址
+		ImageIcon icon= new ImageIcon(request.getSession().getServletContext().getRealPath("/img/touxiang.png"));        	
+		JOptionPane.showMessageDialog(null, "创建成功，在管理页面查看","成功",JOptionPane.ERROR_MESSAGE,icon); 
+		response.sendRedirect("admin-jsp/newgames.jsp");
 		
 	}
 

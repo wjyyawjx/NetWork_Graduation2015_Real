@@ -1,6 +1,7 @@
 @charset "UTF-8";
 body{
 		/* 设置页面的背景 */
+	 
 	   background: url("../img/beijing.jpg");
 }
 
@@ -29,6 +30,14 @@ input[type="text"],[type="date"],input[type="password"] , input[type="email"]{
     background-color: rgba(0, 191, 240,0.1);
     box-shadow: 0 -5px 10px 1px rgba(16, 16, 16, 0.57);	/* 立体效果*/
 }
+.yongdonghui {
+	/* 美化添加运动会 */
+    width: 400px;
+    height:600px;
+    margin: 0 auto;
+  /*   background-color: rgba(0, 191, 240,0.1);
+    box-shadow: 0 -5px 10px 1px rgba(16, 16, 16, 0.57);	立体效果*/
+}
 h1{
 	/* 设置h1样式 */
 	font-size: 45px;
@@ -51,6 +60,7 @@ h4{
 	font-size: 40px;
     color:black;
 }
+
 input[type="submit"] {
 	/* 设置按钮样式 */
     width: 90%;
