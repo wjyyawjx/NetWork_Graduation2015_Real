@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FourFragment fourFragment;
     private List<Fragment> mFragmentList = new ArrayList<Fragment>();
     private FragmentAdapter mFragmentAdapter;
+
     String[] titles = new String[]{"首页", "添加任务", "我", "设置"};
 
     @Override
@@ -36,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         vp.setAdapter(mFragmentAdapter);
         vp.setCurrentItem(0);
         item_shouye.setTextColor(Color.parseColor("#66CDAA"));
-
         vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -134,15 +134,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             item_me.setTextColor(Color.parseColor("#000000"));
             item_shezhi.setTextColor(Color.parseColor("#000000"));
         } else if (position == 2) {
-            item_shouye.setTextColor(Color.parseColor("#000000"));
-            item_tianjiarenwu.setTextColor(Color.parseColor("#000000"));
-            item_me.setTextColor(Color.parseColor("#000000"));
-            item_shezhi.setTextColor(Color.parseColor("#000000"));
-        } else if (position == 3) {
             item_me.setTextColor(Color.parseColor("#66CDAA"));
             item_shouye.setTextColor(Color.parseColor("#000000"));
             item_tianjiarenwu.setTextColor(Color.parseColor("#000000"));
             item_shezhi.setTextColor(Color.parseColor("#000000"));
+        } else if (position == 3) {
+            item_shezhi.setTextColor(Color.parseColor("#66CDAA"));
+            item_me.setTextColor(Color.parseColor("#000000"));
+            item_shouye.setTextColor(Color.parseColor("#000000"));
+            item_tianjiarenwu.setTextColor(Color.parseColor("#000000"));
+
         }
     }
 
