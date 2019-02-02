@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
+    <include layout="@layout/main_title_bar"></include>
     <EditText
         android:id="@+id/et_task_content"
         android:layout_width="match_parent"
@@ -15,6 +15,7 @@
         android:textSize="14dp" />
 
     <TextView
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

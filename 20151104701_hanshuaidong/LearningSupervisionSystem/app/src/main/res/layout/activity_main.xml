@@ -33,7 +33,7 @@
         >
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_taskboard"
             android:layout_width="fill_parent"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
@@ -47,7 +47,7 @@
             android:background="@color/white"/>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_addtask"
             android:layout_width="fill_parent"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
@@ -61,6 +61,7 @@
             android:background="@color/white"/>
 
         <TextView
+            android:id="@+id/tv_mytask"
             android:layout_width="fill_parent"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
@@ -74,6 +75,7 @@
             android:background="@color/white"/>
 
         <TextView
+            android:id="@+id/tv_setting"
             android:layout_width="fill_parent"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
