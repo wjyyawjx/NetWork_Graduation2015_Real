@@ -18,6 +18,7 @@ public class AddActivity extends Activity {
     int day = 8;
     int houre = 15;
     int minute = 20;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class AddActivity extends Activity {
     private void initView() {
         tv_main_title = findViewById(R.id.tv_main_title);
         tv_main_title.setText("添加任务");
+        tv_back = findViewById(R.id.tv_back);
         tv_main_title.setTextColor(this.getResources().getColor(R.color.colorPrimary));
         tv_date = (TextView) findViewById(R.id.dialog_tv_date);
         tv_time = (TextView) findViewById(R.id.dialog_tv_time);
@@ -50,6 +52,7 @@ public class AddActivity extends Activity {
                 AddActivity.this.year = year;
                 month = monthOfYear;
                 day = dayOfMonth;
+
             }
         }, 2016, 10, 8).show();
         showDate();
@@ -66,7 +69,6 @@ public class AddActivity extends Activity {
         }, 15, 20, true).show();
         showTime();
     }
-
     private void showDate() {
         tv_date.setText("你选择的日期是：" + year + "年" + month + "月" + day + "日");
     }
@@ -76,4 +78,3 @@ public class AddActivity extends Activity {
     }
 
 }
-
