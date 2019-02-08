@@ -5,9 +5,12 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import org.litepal.LitePal;
 
 public class AddActivity extends Activity {
     TextView tv_main_title,tv_back;
@@ -33,6 +36,17 @@ public class AddActivity extends Activity {
         tv_main_title.setTextColor(this.getResources().getColor(R.color.colorPrimary));
         tv_date = (TextView) findViewById(R.id.dialog_tv_date);
         tv_time = (TextView) findViewById(R.id.dialog_tv_time);
+        Button createtask = (Button)findViewById(R.id.btn_add);
+        createtask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LitePal.getDatabase();
+            }
+        });
+
+
+
+
         tv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

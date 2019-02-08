@@ -60,6 +60,19 @@
             android:layout_marginRight="35dp"
             android:onClick="getTime"
             android:text="设置时间" />
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginBottom="230dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            android:text="提 交"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
     </RelativeLayout>
 
 </LinearLayout>
