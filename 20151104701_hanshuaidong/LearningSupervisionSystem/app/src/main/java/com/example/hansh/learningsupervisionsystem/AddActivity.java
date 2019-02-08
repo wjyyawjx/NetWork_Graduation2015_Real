@@ -47,12 +47,7 @@ public class AddActivity extends Activity {
 
 
 
-        tv_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AddActivity.this.finish();
-            }
-        });
+
     }
 
 
