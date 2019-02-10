@@ -1,36 +1,51 @@
 package com.example.hansh.learningsupervisionsystem;
 
+
+import org.litepal.crud.LitePalSupport;
+
 /**
  * Created by SwithunHan on 2019/2/8.
  */
 
-public class Renwu {
-        private int id;
-        private char task_content;
-        private String time;
+public class Renwu extends LitePalSupport {
+    private int id;
+    private String task_content;
+    private String date;
+    private String time;
 
-        public int getId() {
-            return id;
-        }
+    public int getId() {
+        return id;
+    }
 
-        public void setId(int id) {
-            this.id = id;
-        }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-        public char getTask_content() {
-            return task_content;
-        }
+    public String getTask_content() {
+        return task_content;
+    }
 
-        public void setTask_content(char task_content) {
-            this.task_content = task_content;
-        }
+    public void setTask_content(String task_content) {
+        this.task_content = task_content;
+    }
 
-        public String getTime() {
-            return time;
-        }
+    public String getDate() {
+        return date;
+    }
 
-        public void setTime(String time) {
-            this.time = time;
-        }
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+
+
 
 }

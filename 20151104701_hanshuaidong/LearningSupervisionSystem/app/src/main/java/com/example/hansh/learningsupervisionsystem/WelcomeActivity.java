@@ -28,9 +28,6 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_welcome);
         initView();
         timer.schedule(task, 1000, 1000);
-        /**
-         * 正常情况下不点击跳过
-         */
         handler = new Handler();
         handler.postDelayed(runnable = new Runnable() {
             @Override
@@ -65,9 +62,6 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         }
     };
 
-    /**
-     * 点击跳过
-     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
