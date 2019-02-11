@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -9,7 +10,7 @@
         <meta name="description" content="Violate Responsive Admin Template">
         <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
 
-        <title>Super Admin Responsive Template</title>
+        <title>实验室云端监管系统</title>
             
         <!-- CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -96,23 +97,23 @@
                             <span class="menu-item">主页</span>
                         </a>
                     </li>
-                    <li class="dropdown">
-                        <a class="sa-side-form" href="">
+                    <li>
+                        <a class="sa-side-form" href="${pageContext.request.contextPath }/mine">
                             <span class="menu-item">我的信息</span>
                         </a>
                     </li>
                     <li>
-                        <a class="sa-side-ui" href="${pageContext.request.contextPath }/config/listUser">
+                        <a class="sa-side-table" href="${pageContext.request.contextPath }/config/listUser">
                             <span class="menu-item">用户管理</span>
                         </a>
                     </li>
                     <li>
-                        <a class="sa-side-ui" href="${pageContext.request.contextPath }/config/listRole">
+                        <a class="sa-side-folder" href="${pageContext.request.contextPath }/config/listRole">
                             <span class="menu-item">角色管理</span>
                         </a>
                     </li>
                     <li>
-                        <a class="sa-side-folder" href="${pageContext.request.contextPath }/config/listPermission">
+                        <a class="sa-side-chart" href="${pageContext.request.contextPath }/config/listPermission">
                             <span class="menu-item">权限管理</span>
                         </a>
                     </li>
@@ -154,8 +155,12 @@
                 </div>
                 
                 <hr class="whiter" />
+				<!--<c:forEach items="${Lab}" var="lab">
+					${lab.id}
+					${lab.name}
 
-
+				</c:forEach>-->
+				${Lab.name}
             </section>
 
         </section>
