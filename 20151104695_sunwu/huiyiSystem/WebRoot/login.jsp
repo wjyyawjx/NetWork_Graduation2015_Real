@@ -92,10 +92,10 @@ $(document).ready(function() {
     <dd class="pwd_icon">
       <input type="password" id="userPw" name="userPw"  placeholder="请输入密码" class="login_txtbx"/>
     </dd>		
-						 <select name="userType">
-	                                 <option value="0">管理员</option>
-	                                 <option value="1">员工</option>
-								 </select>
+			 <select name="userType">
+	                          <option value="0">管理员</option>
+	                          <option value="1">员工</option>
+			 </select>
     <dd>
         <button name="button" type="button" class="submit_btn"  onClick="check1()">登录</button>
     </dd>
