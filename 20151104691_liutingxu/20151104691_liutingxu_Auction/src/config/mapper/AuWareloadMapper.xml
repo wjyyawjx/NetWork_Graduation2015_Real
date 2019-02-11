@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imnu.dao.AuWareloadMapper">
+  <resultMap id="BaseResultMap" type="com.imnu.model.AuWareload">
+    <id column="wr_id" jdbcType="VARCHAR" property="wrId" />
+    <result column="wa_id" jdbcType="VARCHAR" property="waId" />
+    <result column="wr_money" jdbcType="DECIMAL" property="wrMoney" />
+    <result column="wr_date" jdbcType="VARCHAR" property="wrDate" />
+    <result column="wr_content" jdbcType="VARCHAR" property="wrContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    wr_id, wa_id, wr_money, wr_date, wr_content
+  </sql>
+  
+  <!-- 查询总行数 -->
+   <select id="findCount" resultType="java.lang.Long">
+   		select count(*) from au_wareload
+   </select>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from au_wareload
+    where wr_id = #{wrId,jdbcType=VARCHAR}
+  </select>
+  
+   <select id="queryAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from au_wareload
+     limit #{startRows},#{rows}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from au_wareload
+    where wr_id = #{wrId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.imnu.model.AuWareload">
+  	<selectKey keyProperty="wrId" resultType="string" order="BEFORE">
+	    SELECT REPLACE(UUID(),'-','') AS id;
+	  </selectKey>
+    insert into au_wareload (wr_id, wa_id, wr_money, 
+      wr_date, wr_content)
+    values (#{wrId,jdbcType=VARCHAR}, #{waId,jdbcType=VARCHAR}, #{wrMoney,jdbcType=DECIMAL}, 
+      #{wrDate,jdbcType=DATE}, #{wrContent,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  <insert id="insertSelective" parameterType="com.imnu.model.AuWareload">
+ 	 <selectKey keyProperty="wrId" resultType="string" order="BEFORE">
+	    SELECT REPLACE(UUID(),'-','') AS id;
+	  </selectKey>
+    insert into au_wareload
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wrId != null">
+        wr_id,
+      </if>
+      <if test="waId != null">
+        wa_id,
+      </if>
+      <if test="wrMoney != null">
+        wr_money,
+      </if>
+      <if test="wrDate != null">
+        wr_date,
+      </if>
+      <if test="wrContent != null">
+        wr_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wrId != null">
+        #{wrId,jdbcType=VARCHAR},
+      </if>
+      <if test="waId != null">
+        #{waId,jdbcType=VARCHAR},
+      </if>
+      <if test="wrMoney != null">
+        #{wrMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="wrDate != null">
+        #{wrDate,jdbcType=DATE},
+      </if>
+      <if test="wrContent != null">
+        #{wrContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.imnu.model.AuWareload">
+    update au_wareload
+    <set>
+      <if test="waId != null">
+        wa_id = #{waId,jdbcType=VARCHAR},
+      </if>
+      <if test="wrMoney != null">
+        wr_money = #{wrMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="wrDate != null">
+        wr_date = #{wrDate,jdbcType=DATE},
+      </if>
+      <if test="wrContent != null">
+        wr_content = #{wrContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where wr_id = #{wrId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.imnu.model.AuWareload">
+    update au_wareload
+    set wa_id = #{waId,jdbcType=VARCHAR},
+      wr_money = #{wrMoney,jdbcType=DECIMAL},
+      wr_date = #{wrDate,jdbcType=DATE},
+      wr_content = #{wrContent,jdbcType=VARCHAR}
+    where wr_id = #{wrId,jdbcType=VARCHAR}
+  </update>
+</mapper>

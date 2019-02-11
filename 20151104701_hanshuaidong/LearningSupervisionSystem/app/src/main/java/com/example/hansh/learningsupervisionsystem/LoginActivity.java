@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
     private TextView tv_main_title;
-    private TextView tv_back, tv_register, tv_find_psw;
-    private Button btn_login;
+    private TextView tv_back, tv_register;
+    private TextView tv_login;
     private String userName, psw, spPsw;
     private EditText et_user_name, et_psw;
 
@@ -32,10 +32,10 @@ public class LoginActivity extends AppCompatActivity {
         tv_main_title.setText("登录");
         tv_back = findViewById(R.id.tv_back);
         tv_register = findViewById(R.id.tv_register);
-        tv_find_psw = findViewById(R.id.tv_find_psw);
-        btn_login = findViewById(R.id.btn_login);
+        tv_login = findViewById(R.id.tv_login);
         et_user_name = findViewById(R.id.et_user_name);
         et_psw = findViewById(R.id.et_psw);
+
         tv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,12 +50,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(intent, 1);
             }
         });
-        tv_find_psw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-        btn_login.setOnClickListener(new View.OnClickListener() {
+
+        tv_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 userName = et_user_name.getText().toString().trim();

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imnu.dao.AuRecordMapper">
+  <resultMap id="BaseResultMap" type="com.imnu.model.AuRecord">
+    <id column="re_id" jdbcType="VARCHAR" property="reId" />
+    <result column="com_id" jdbcType="VARCHAR" property="comId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="re_date" jdbcType="VARCHAR" property="reDate" />
+    <result column="re_state" jdbcType="DECIMAL" property="reState" />
+    <result column="re_money" jdbcType="DECIMAL" property="reMoney" />
+    <result column="com_name" jdbcType="VARCHAR" property="comName" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    re_id, com_id, user_id, re_date, re_state, re_money
+  </sql>
+  <!-- 根据id查询 -->
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from au_record
+    where re_id = #{reId,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 根据id删除 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from au_record
+    where re_id = #{reId,jdbcType=VARCHAR}
+  </delete>
+  
+  <!-- 增加 -->
+  <insert id="insert" parameterType="com.imnu.model.AuRecord">
+  	 <selectKey keyProperty="reId" resultType="string" order="BEFORE">
+	    SELECT REPLACE(UUID(),'-','') AS id;
+	  </selectKey>
+   
+    insert into au_record (re_id, com_id, user_id, 
+      re_date, re_state, re_money
+      )
+    values (#{reId,jdbcType=VARCHAR}, #{comId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{reDate,jdbcType=DATE}, #{reState,jdbcType=DECIMAL}, #{reMoney,jdbcType=DECIMAL}
+      )
+  </insert>
+  <!-- 增加 -->
+  <insert id="insertSelective" parameterType="com.imnu.model.AuRecord">
+    insert into au_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="reId != null">
+        re_id,
+      </if>
+      <if test="comId != null">
+        com_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="reDate != null">
+        re_date,
+      </if>
+      <if test="reState != null">
+        re_state,
+      </if>
+      <if test="reMoney != null">
+        re_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="reId != null">
+        #{reId,jdbcType=VARCHAR},
+      </if>
+      <if test="comId != null">
+        #{comId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="reDate != null">
+        #{reDate,jdbcType=DATE},
+      </if>
+      <if test="reState != null">
+        #{reState,jdbcType=DECIMAL},
+      </if>
+      <if test="reMoney != null">
+        #{reMoney,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <!-- 修改 -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.imnu.model.AuRecord">
+    update au_record
+    <set>
+      <if test="comId != null">
+        com_id = #{comId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="reDate != null">
+        re_date = #{reDate,jdbcType=DATE},
+      </if>
+      <if test="reState != null">
+        re_state = #{reState,jdbcType=DECIMAL},
+      </if>
+      <if test="reMoney != null">
+        re_money = #{reMoney,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where re_id = #{reId,jdbcType=VARCHAR}
+  </update>
+  <!-- 修改 -->
+  <update id="updateByPrimaryKey" parameterType="com.imnu.model.AuRecord">
+    update au_record
+    set com_id = #{comId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      re_date = #{reDate,jdbcType=DATE},
+      re_state = #{reState,jdbcType=DECIMAL},
+      re_money = #{reMoney,jdbcType=DECIMAL}
+    where re_id = #{reId,jdbcType=VARCHAR}
+  </update>
+  <!-- 根据商品id查询订单查询 用户表 商品表 -->
+  <select id="findRecord" parameterType="string" resultType="java.util.Map">
+  	SELECT * FROM au_record re, au_user us,au_commodity co WHERE re.com_id=co.com_id AND re.user_id=us.user_id
+	and  re.com_id=#{comId} order by re.re_date desc
+  </select>
+  
+  <!-- 根据商品id查询 订单查询 用户表 商品表  根据订单金额逆序 -->
+  <select id="RecordOrder" parameterType="string" resultType="java.util.Map">
+  	SELECT * FROM au_record re, au_user us,au_commodity co WHERE re.com_id=co.com_id AND re.user_id=us.user_id
+	and  re.com_id=#{comId} order by re.re_money desc
+  </select>
+  
+  <!-- 查询出订单的总行数 -->
+  <select id="findRecordCount" parameterType="string" resultType="Integer">
+  	SELECT count(*) FROM au_record where com_id=#{comId}
+  </select>
+  
+  <!-- 根据商品id查询 订单查询 用户表 商品表  根据订单时间逆序 -->
+  <select id="findUserRecord" parameterType="string" resultType="java.util.Map">
+  	SELECT * FROM au_record re, au_user us,au_commodity co WHERE re.com_id=co.com_id AND re.user_id=us.user_id
+	and  us.user_id=#{userId} order by re.re_date desc
+  </select>
+  
+  <!-- 查询所有 -->
+  <select id="query" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	SELECT * FROM au_record re, au_user us,au_commodity co 
+  	WHERE re.com_id=co.com_id 
+  	AND re.user_id=us.user_id
+  	
+  	<if test="comName!=null and  comName!=''">
+  		and co.com_name like concat('%',#{comName},'%')
+  	</if>
+  	<if test="userName!=null and userName!=''">
+  		and us.user_name like concat('%',#{userName},'%')
+  	</if>
+  	<if test="reDate!=null and reDate!=''">
+  		and re.re_date  &gt;= #{reDate}
+  	</if>
+  	<if test="reTime!=null and reTime!=''">
+  		and re.re_date &lt;= #{reTime}
+  	</if>
+  	
+	order by re.re_date desc
+	limit #{page.startRows},#{page.rows}
+  </select>
+  
+  <!--  条件查询行数 -->
+  <select id="reCount" parameterType="java.util.Map" resultType="Integer">
+  	SELECT count(*) FROM au_record re, au_user us,au_commodity co 
+  	WHERE re.com_id=co.com_id 
+  	AND re.user_id=us.user_id
+  	
+  	<if test="comName!=null and  comName!=''">
+  		and co.com_name like concat('%',#{comName},'%')
+  	</if>
+  	<if test="userName!=null and userName!=''">
+  		and us.user_name like concat('%',#{userName},'%')
+  	</if>
+  	<if test="reDate!=null and reDate!=''">
+  		and re.re_date  &gt;= #{reDate}
+  	</if>
+  	<if test="reTime!=null and reTime!=''">
+  		and re.re_date &lt;= #{reTime}
+  	</if>
+  </select>
+  <!-- 根据商品id查询订单表 根据订单金额逆序 -->
+  <select id="findMaxComId" parameterType="string" resultMap="BaseResultMap">
+  	SELECT * FROM au_record WHERE com_id=#{comId} ORDER BY re_money DESC
+  </select>
+  <!--  根据商品id 和用户id 查询 订单表 根据订单金额逆序 -->
+  <select id="findComUser" parameterType="com.imnu.model.AuRecord" resultMap="BaseResultMap">
+  	select * from au_record where com_id=#{comId} and user_id=#{userId} group by re_money desc
+  </select>
+</mapper> 

@@ -27,4 +27,6 @@ public interface LaboratoryMapper {
     int updateByPrimaryKeySelective(Laboratory record);
 
     int updateByPrimaryKey(Laboratory record);
+
+	Laboratory selectLab();
 }
