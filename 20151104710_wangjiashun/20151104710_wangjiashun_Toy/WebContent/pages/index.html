@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>智鼎亲玩  后台管理系统</title>
+    <link rel="stylesheet" href="../res/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../res/css/app.css" media="all">
+    <link rel="stylesheet" href="../res/js/css/modules/code.css" media="all">
+</head>
+<body>
+    <div class="layui-layout layui-layout-admin kit-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">智鼎亲玩  后台管理系统</div>
+            <div class="layui-logo kit-logo-mobile">K</div>
+            <ul class="layui-nav layui-layout-right kit-nav">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="http://m.zhengjinfan.cn/images/0.jpg" class="layui-nav-img"> Van
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">基本资料</a></dd>
+                        <dd><a href="javascript:;">安全设置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;"><i class="fa fa-sign-out" aria-hidden="true"></i> 注销</a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black kit-side">
+            <div class="layui-side-scroll">
+                <div class="kit-side-fold"><i class="fa fa-navicon" aria-hidden="true"></i></div>
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="kitNavbar" kit-navbar>
+                	<li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span> 用户管理</span></a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;" kit-target data-options="{url:'../pages/houtai/lw/user.html',icon:'&#xe658;',title:'用户管理',id:'3'}" ><i class="layui-icon" >&#xe658;</i><span> 用户管理</span></a></dd>
+                            <dd><a href="javascript:;" kit-target data-options="{url:'../pages/houtai/lw/address.html',icon:'&#xe658;',title:'地址管理',id:'4'}" ><i class="layui-icon" >&#xe658;</i><span> 地址管理</span></a></dd>
+                            <dd><a href="javascript:;" kit-target data-options="{url:'<%=basePath %>pages/houtai/zwm/member.jsp',icon:'&#xe658;',title:'用户收藏管理',id:'11'}" ><i class="layui-icon" >&#xe658;</i><span> 用户收藏管理</span></a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a class="" href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span> 玩具管理</span></a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" kit-target data-options="{url:'../pages/houtai/zyh/toy.html',icon:'&#xe6c6;',title:'玩具列表',id:'1'}">
+                                    <i class="layui-icon">&#xe6c6;</i><span> 玩具列表</span></a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" kit-target data-options="{url:'../pages/houtai/dyl/Toytype.html',icon:'&#xe6c6;',title:'玩具类型',id:'2'}">
+                                    <i class="layui-icon">&#xe6c6;</i><span> 玩具类型</span></a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" kit-target data-options="{url:'../pages/houtai/zyh/comment.html',icon:'&#xe6c6;',title:'评论管理',id:'5'}">
+                                    <i class="layui-icon">&#xe6c6;</i><span> 评论管理</span></a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" kit-target data-options="{url:'../pages/houtai/lwx/photo.html',icon:'&#xe6c6;',title:'图片管理',id:'18'}">
+                                    <i class="layui-icon">&#xe6c6;</i><span> 图片管理</span></a>
+                            </dd>
+                            
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" data-url="/components/table/table.html" data-name="table" kit-loader><i class="fa fa-plug" aria-hidden="true"></i><span> 记录管理</span></a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" kit-target data-options="{url:'../pages/houtai/wj/record.html',icon:'&#xe6c6;',title:'租借记录管理',id:'6'}">
+                                    <i class="layui-icon">&#xe6c6;</i><span> 租借记录管理</span></a>
+                            </dd>
+                            
+                        </dl>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="layui-body" id="container">
+            <!-- 内容主体区域 -->
+        </div>
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            2017 &copy;
+            <a href="http://kit.zhengjinfan.cn/">kit.zhengjinfan.cn/</a> MIT license
+        </div>
+    </div>
+    <script src="../res/js/layui.js"></script>
+    <script>
+        var message;
+        layui.config({
+            base: '../res/js/'
+        }).use(['app', 'message'], function() {
+            var app = layui.app,
+                $ = layui.jquery,
+                layer = layui.layer;
+            //将message设置为全局以便子页面调用
+            message = layui.message;
+            //主入口
+            app.set({
+                type: 'iframe'
+            }).init();
+            $('#pay').on('click', function() {
+                layer.open({
+                    title: false,
+                    type: 1,
+                    content: '<img src="/build/images/pay.png" />',
+                    area: ['500px', '250px'],
+                    shadeClose: true
+                });
+            });
+            var message = layui.message;
+        });
+    </script>
+</body>
+
+</html>

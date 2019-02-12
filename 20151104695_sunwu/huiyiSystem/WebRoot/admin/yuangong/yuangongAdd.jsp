@@ -102,7 +102,7 @@ String path = request.getContextPath();
 						         密码：
 						    </td>
 						    <td width="75%" bgcolor="#FFFFFF" align="left">
-						        <input type="text" name="loginpw" size="22" value="000000"/>
+						        <input type="text" name="loginpw" size="22" value="123"/>
 						    </td>
 						</tr>
 						<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">

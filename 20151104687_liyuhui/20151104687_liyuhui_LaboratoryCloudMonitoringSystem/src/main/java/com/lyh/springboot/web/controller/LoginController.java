@@ -1,5 +1,7 @@
 package com.lyh.springboot.web.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,13 +20,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lyh.springboot.common.utils.RandomValidateCode;
+import com.lyh.springboot.pojo.Laboratory;
 import com.lyh.springboot.pojo.User;
+import com.lyh.springboot.service.LaboratoryService;
 import com.lyh.springboot.service.UserService;
 
 @Controller
 public class LoginController {
 	@Autowired
 	private UserService userService;
+	private LaboratoryService laboratoryService;
     
     @RequestMapping(value="/login",method= RequestMethod.POST)
     public String login(String num,String pwd, Model model, HttpSession httpSession){
@@ -38,6 +43,9 @@ public class LoginController {
 			session.setAttribute("subject", subject);
 			User user = userService.findUserName(num);
 			httpSession.setAttribute("User", user);
+			//List<Laboratory> lab = laboratoryService.findLab();
+			//Laboratory lab = laboratoryService.findLab1();
+			//model.addAttribute("Lab", lab);
 			return "redirect:menu";
 
 		} catch (AuthenticationException e) {
@@ -139,13 +147,13 @@ public class LoginController {
 	public String toLogin() {
 		return "login";
 	}
-	@RequestMapping("/login")
-	public String toLogin2() {
-		return "login";
-	}
 	@RequestMapping("/menu")
 	public String toMenu() {
 		return "menu";
+	}
+	@RequestMapping("/mine")
+	public String toMine() {
+		return "mine";
 	}
 	@RequestMapping("/toregister")
 	public String toRegister() {
