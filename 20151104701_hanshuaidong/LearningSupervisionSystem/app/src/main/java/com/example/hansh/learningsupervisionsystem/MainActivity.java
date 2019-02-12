@@ -22,10 +22,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        tv_taskboard = (TextView)findViewById(R.id.tv_taskboard);
-        tv_addtask = (TextView)findViewById(R.id.tv_addtask);
-        tv_mytask = (TextView)findViewById(R.id.tv_mytask);
-        tv_setting = (TextView)findViewById(R.id.tv_setting);
+        tv_taskboard = (TextView) findViewById(R.id.tv_taskboard);
+        tv_addtask = (TextView) findViewById(R.id.tv_addtask);
+        tv_mytask = (TextView) findViewById(R.id.tv_mytask);
+        tv_setting = (TextView) findViewById(R.id.tv_setting);
+
+        tv_taskboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TaskBoardActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         tv_addtask.setOnClickListener(new View.OnClickListener() {
             @Override
