@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>我的订单</title>
+<style>
+* {
+	padding: 0px;
+	margin: 0px;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="../res/css/center.css" />
+<script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="../../res/js/wj/order.js"></script>
+<link rel="stylesheet" type="text/css" href="../res/css/iframe.css" />
+<script type="text/javascript">
+	$(function() {
+		show();
+	})
+	function show() {
+		var url = "../../user/getUser.action";
+		var data = null;
+		$
+				.post(
+						url,
+						data,
+						function(mes) {
+							if (mes != null) {
+								$(".topleft")
+										.html(
+												"<a href='#'>收藏</a> | 您好，<font color='red'>"
+														+ mes.userName
+														+ "</font>, 欢迎光临本店<a href='../user/member.html' target='_top'>&nbsp&nbsp&nbsp<font color='gray'>用户中心</font></a>"
+														+ " | <a href='javascript:exit();'><font color='gray'>退出</font></a>&nbsp&nbsp&nbsp<a href='order.html'><font color='gray'>我的订单</font></a>");
+							}
+						}, "json");
+	}
+	/*退出*/
+	function exit() {
+		var url = "../../user/exit.action";
+		var data = null;
+		$.post(url, data, function(mes) {
+			if (mes.state == 1) {
+				location.href = "../qiantai/zyh/toyIndex.html";
+			}
+		}, "json");
+	}
+</script>
+</head>
+<body>
+	<div>
+
+		<div class="topDiv">
+			<div class="topDiv_nr">
+				<span class="topleft"> <a href="#">收藏</a> | 您好，欢迎光临本店 <span
+					id="user_head_tip"><a href="../user/login.html"
+						target="_top"><font color="red">登录</font></a> | <a
+						href="../user/register.html" target="_top"><font color="red">免费注册</font></a>
+				</span>
+				</span> <span class="topright"> <img src="../../upload/gwc.png" />
+					<a href="flow.php">租赁车<b id="cart_count"> <a
+							href="flow.php" title="查看租赁车"><font>有 0 件商品，总计金额
+									￥0.00元。</font></a>
+					</b> ▼
+				</a> |<a href="flow.php"> 去结算 ▼ </a>
+				</span>
+
+
+			</div>
+		</div>
+
+		<div class="headerDiv">
+			<div class="logo">
+				<img id="logimage" src="../../upload/logo.png" />
+			</div>
+			<div class="headeright">
+				<div class="tell">
+					<img src="../../upload/tell.png" width="255" height="65" />
+				</div>
+				<div class="sousuo">
+					<form id="searchForm" name="searchForm" method="get" action=""
+						onSubmit="return checkSearchForm()" class="f_r"
+						style="_position: relative; top: 5px;">
+						<input name="category" value="0" type="hidden" /> <input
+							class="sousuo_nr" name="keywords" type="text" value="" /> <input
+							class="btn" name="imageField" type="submit" value="搜索" />
+					</form>
+
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+	<div class="menuDiv">
+		<ul>
+			<li class="xxlis"><a href="../../pages/qiantai/zyh/toyIndex.html">首页</a></li>
+			<li class="xxli"><a href="/category.php?id=34">所有玩具</a></li>
+			<li class="xxli"><a
+				href="http://www.babyzulin.com/category.php?id=49">益智玩具</a></li>
+			<li class="xxli"><a
+				href="http://www.babyzulin.com/category.php?id=32">金卡特租</a></li>
+			<li class="xxli"><a
+				href="http://www.babyzulin.com/category.php?id=50">银卡特租</a></li>
+			<li class="xxli"><a
+				href="http://www.babyzulin.com/category.php?id=51">摇摆车充电站</a></li>
+			<li class="xxli"><a
+				href="http://www.babyzulin.com/article.php?id=165">玩具消毒</a></li>
+			<li class="xxli"><a href="article_cat.php?id=19">租赁指南</a></li>
+			<li class="xxli"><a
+				href="http://www.babyzulin.com/category.php?id=109">玩具出售</a></li>
+			<li class="xxli"><a href="article_cat.php?id=16">育儿知识</a></li>
+			<li class="xxli"><a href="article.php?id=5" target="_blank">关于我们</a></li>
+
+		</ul>
+	</div>
+	<div class="mainDivnew">
+		<div class="blocknew ">
+			<div id="ur_here">
+				当前位置: <a href=".">首页</a>
+				<code>&gt;</code>
+				用户中心
+			</div>
+		</div>
+		<div class="blank"></div>
+		<div class="blocknew clearfix">
+
+			<div class="AreaL">
+				<div class="box_0">
+					<div class="box_1">
+						<div class="userCenterBox">
+							<div class="userMenu">
+								<a href="member.html"><img src="../../upload/u1.gif">
+									欢迎页</a>
+								<p>
+								<h2
+									style="padding-left: 13px; margin-top: 13px; color: #FF0000; margin-bottom: 5px; font-size: 12px;">订单管理</h2>
+								</p>
+								<a href="order.html" class="curs"><img
+									src="../../upload/u3.gif"> 我的订单</a> <a href="lease.html"><img
+									src="../../upload/u3.gif"> 租赁订单</a> <a
+									href="showAddress.html"><img src="../../upload/u4.gif">
+									收货地址</a> <a href="collect.html"><img src="../../upload/u5.gif">
+									我的收藏</a> <a href="user.php?act=booking_list"><img
+									src="../../upload/u8.gif"> 缺货登记</a>
+
+								<p>
+								<h2
+									style="padding-left: 13px; margin-top: 13px; color: #FF0000; margin-bottom: 5px;">账户管理</h2>
+								</p>
+								<a href="user.php?act=account_deposit"> <!--<a href="user.php?act=group_buy">我的团购</a>-->
+									&nbsp;&nbsp;&nbsp;&nbsp;<img src="../../upload/u13.gif">在线充值
+								</a> <a href="user.php?act=account_raply">&nbsp;&nbsp;&nbsp;&nbsp;<img
+									src="../../upload/u13.gif">提现金额
+								</a> <a href="user.php?act=account_log">&nbsp;&nbsp;&nbsp;&nbsp;<img
+									src="../../upload/u13.gif">资金管理
+								</a> <a href="user.php?act=userclass">&nbsp;&nbsp;&nbsp;&nbsp;<img
+									src="../../upload/u13.gif">会员充值
+								</a>
+
+
+								<p>
+								<h2
+									style="padding-left: 13px; margin-top: 13px; color: #FF0000; margin-bottom: 5px;">会员信息</h2>
+								</p>
+								<a href="center.html"><img src="../../upload/u2.gif">
+									用户信息</a> <a href="user.php?act=message_list"><img
+									src="../../upload/u6.gif"> 我的留言</a> <a
+									href="user.php?act=tag_list"><img src="../../upload/u7.gif">
+									我的标签</a> <a href="comment.html"><img src="../../upload/u11.gif">
+									我的评论</a>
+								<!--<a href="user.php?act=group_buy">我的团购</a>-->
+								<a href="user.php?act=track_packages"><img
+									src="../../upload/u12.gif"> 跟踪包裹</a> <a
+									href='javascript:exit();'
+									style="background: none; text-align: right; margin-right: 10px;"><img
+									src="../../upload/bnt_sign.gif"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="AreaR">
+				<div class="box_3">
+					<div class="box_1">
+						<div class="userCenterBox boxCenterList clearfix"
+							style="_height: 1%;">
+
+
+
+
+							<h5>
+								<span>我的订单</span>
+							</h5>
+							<div class="blank"></div>
+							<table id="order" width="100%" border="0" cellpadding="5"
+								cellspacing="1" bgcolor="#dddddd">
+								<tr align="center">
+									<td bgcolor="#ffffff">订单号</td>
+									<td bgcolor="#ffffff">下单时间</td>
+									<td bgcolor="#ffffff">玩具名称</td>
+									<td bgcolor="#ffffff">订单用户</td>
+									<td bgcolor="#ffffff">到期日期</td>
+								</tr>
+							</table>
+							<div class="blank5"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="blank"></div>
+	</div>
+	<iframe src="../iframe/iframe-botton.html" width="100%" height="400px"
+		frameborder="0" scrolling="no"></iframe>
+</body>
+</html>
