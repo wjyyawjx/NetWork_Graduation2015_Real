@@ -1,1126 +1,1132 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>植物养护</title>
-<link rel="stylesheet" href="css/bootstrap.min.css"><!-- bootstrap-CSS -->
-<link rel="stylesheet" href="css/bootstrap-select.css"><!-- bootstrap-select-CSS -->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" /><!-- style.css -->
-<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" /><!-- flexslider-CSS -->
-<link rel="stylesheet" href="css/font-awesome.min.css" /><!-- fontawesome-CSS -->
-<link rel="stylesheet" href="css/menu_sideslide.css" type="text/css" media="all"><!-- Navigation-CSS -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<title>植物培养</title>
+<link rel="icon" href="${pageContext.request.contextPath}/img/core-img/favicon.ico">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/style.css">
 </head>
-<body>	
-		<!-- Navigation -->
-		<div class="agiletopbar">
-			<div class="wthreenavigation">
-				<div class="menu-wrap">
-				<nav class="menu">
-					<div class="icon-list">
-						<a href="mobiles.html"><i class="fa fa-fw fa-mobile"></i><span>Mobiles</span></a>
-						<a href="electronics-appliances.html"><i class="fa fa-fw fa-laptop"></i><span>Electronics and appliances</span></a>
-						<a href="cars.html"><i class="fa fa-fw fa-car"></i><span>Cars</span></a>
-						<a href="bikes.html"><i class="fa fa-fw fa-motorcycle"></i><span>Bikes</span></a>
-						<a href="furnitures.html"><i class="fa fa-fw fa-wheelchair"></i><span>Furnitures</span></a>
-						<a href="pets.html"><i class="fa fa-fw fa-paw"></i><span>Pets</span></a>
-						<a href="books-sports-hobbies.html"><i class="fa fa-fw fa-book"></i><span>Books, Sports & Hobbies</span></a>
-						<a href="fashion.html"><i class="fa fa-fw fa-asterisk"></i><span>Fashion</span></a>
-						<a href="kids.html"><i class="fa fa-fw fa-asterisk"></i><span>Kids</span></a>
-						<a href="services.html"><i class="fa fa-fw fa-shield"></i><span>Services</span></a>
-						<a href="jobs.html"><i class="fa fa-fw fa-at"></i><span>Jobs</span></a>
-						<a href="real-estate.html"><i class="fa fa-fw fa-home"></i><span>Real Estate</span></a>
-					</div>
-				</nav>
-				<button class="close-button" id="close-button">Close Menu</button>
-			</div>
-			<button class="menu-button" id="open-button"> </button>
-			</div>
-			<div class="clearfix"></div>
+<body>
+	<!-- Preloader -->
+	<div class="preloader d-flex align-items-center justify-content-center">
+		<div class="preloader-circle"></div>
+		<div class="preloader-img">
+			<img src="img/core-img/leaf.png" alt="">
 		</div>
-	<header>
-		<div class="w3ls-header"><!--header-one--> 
-			<div class="w3ls-header-left">
-				<p><a href="mobileapp.html"><i class="fa fa-download" aria-hidden="true"></i>Download Mobile App </a></p>
-			</div>
-			<div class="w3ls-header-right">
-				<ul>
-					<li class="dropdown head-dpdn">
-						<a href="signin.html" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Sign In</a>
-					</li>
-					<li class="dropdown head-dpdn">
-						<a href="help.html"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
-					</li>
-					<li class="dropdown head-dpdn">
-						<a href="#"><span class="active uls-trigger"><i class="fa fa-language" aria-hidden="true"></i>languages</span></a>
-					</li>
-					<li class="dropdown head-dpdn">
-						<div class="header-right">			
-			<div class="agile-its-selectregion">
-				<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-				<i class="fa fa-globe" aria-hidden="true"></i>Select City</button>
-					<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-					aria-hidden="true">
-						<div class="modal-dialog modal-lg">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-										&times;</button>
-									<h4 class="modal-title" id="myModalLabel">
-										Please Choose Your Location</h4>
-								</div>
-								<div class="modal-body">
-									 <form class="form-horizontal" action="#" method="get">
-										<div class="form-group">
-											<select id="basic2" class="show-tick form-control" multiple>
-												<optgroup label="Popular Cities">
-													<option selected style="display:none;color:#eee;">Select City</option>
-													<option>Birmingham</option>
-													<option>Anchorage</option>
-													<option>Phoenix</option>
-													<option>Little Rock</option>
-													<option>Los Angeles</option>
-													<option>Denver</option>
-													<option>Bridgeport</option>
-													<option>Wilmington</option>
-													<option>Jacksonville</option>
-													<option>Atlanta</option>
-													<option>Honolulu</option>
-													<option>Boise</option>
-													<option>Chicago</option>
-													<option>Indianapolis</option>
-												</optgroup>
-													<optgroup label="Alabama">
-														<option>Birmingham</option>
-														<option>Montgomery</option>
-														<option>Mobile</option>
-														<option>Huntsville</option>
-														<option>Tuscaloosa</option>
-													</optgroup>
-													<optgroup label="Alaska">
-														<option>Anchorage</option>
-														<option>Fairbanks</option>
-														<option>Juneau</option>
-														<option>Sitka</option>
-														<option>Ketchikan</option>
-													</optgroup>
-													<optgroup label="Arizona">
-														<option>Phoenix</option>
-														<option>Tucson</option>
-														<option>Mesa</option>
-														<option>Chandler</option>
-														<option>Glendale</option>
-													</optgroup>
-													<optgroup label="Arkansas">
-														<option>Little Rock</option>
-														<option>Fort Smith</option>
-														<option>Fayetteville</option>
-														<option>Springdale</option>
-														<option>Jonesboro</option>
-													</optgroup>
-													<optgroup label="California">
-														<option>Los Angeles</option>
-														<option>San Diego</option>
-														<option>San Jose</option>
-														<option>San Francisco</option>
-														<option>Fresno</option>
-													</optgroup>
-													<optgroup label="Colorado">
-														<option>Denver</option>
-														<option>Colorado</option>
-														<option>Aurora</option>
-														<option>Fort Collins</option>
-														<option>Lakewood</option>
-													</optgroup>
-													<optgroup label="Connecticut">
-														<option>Bridgeport</option>
-														<option>New Haven</option>
-														<option>Hartford</option>
-														<option>Stamford</option>
-														<option>Waterbury</option>
-													</optgroup>
-													<optgroup label="Delaware">
-														<option>Wilmington</option>
-														<option>Dover</option>
-														<option>Newark</option>
-														<option>Bear</option>
-														<option>Middletown</option>
-													</optgroup>
-													<optgroup label="Florida">
-														<option>Jacksonville</option>
-														<option>Miami</option>
-														<option>Tampa</option>
-														<option>St. Petersburg</option>
-														<option>Orlando</option>
-													</optgroup>
-													<optgroup label="Georgia">
-														<option>Atlanta</option>
-														<option>Augusta</option>
-														<option>Columbus</option>
-														<option>Savannah</option>
-														<option>Athens</option>
-													</optgroup>
-													<optgroup label="Hawaii">
-														<option>Honolulu</option>
-														<option>Pearl City</option>
-														<option>Hilo</option>
-														<option>Kailua</option>
-														<option>Waipahu</option>
-													</optgroup>
-													<optgroup label="Idaho">
-														<option>Boise</option>
-														<option>Nampa</option>
-														<option>Meridian</option>
-														<option>Idaho Falls</option>
-														<option>Pocatello</option>
-													</optgroup>
-													<optgroup label="Illinois">
-														<option>Chicago</option>
-														<option>Aurora</option>
-														<option>Rockford</option>
-														<option>Joliet</option>
-														<option>Naperville</option>
-													</optgroup>
-													<optgroup label="Indiana">
-														<option>Indianapolis</option>
-														<option>Fort Wayne</option>
-														<option>Evansville</option>
-														<option>South Bend</option>
-														<option>Hammond</option>														       
-													</optgroup>
-													<optgroup label="Iowa">
-														<option>Des Moines</option>
-														<option>Cedar Rapids</option>
-														<option>Davenport</option>
-														<option>Sioux City</option>
-														<option>Waterloo</option>       													
-													</optgroup>
-													<optgroup label="Kansas">
-														<option>Wichita</option>
-														<option>Overland Park</option>
-														<option>Kansas City</option>
-														<option>Topeka</option>
-														<option>Olathe  </option>            													
-													</optgroup>
-													<optgroup label="Kentucky">
-														<option>Louisville</option>
-														<option>Lexington</option>
-														<option>Bowling Green</option>
-														<option>Owensboro</option>
-														<option>Covington</option>        														
-													</optgroup>
-													<optgroup label="Louisiana">
-														<option>New Orleans</option>
-														<option>Baton Rouge</option>
-														<option>Shreveport</option>
-														<option>Metairie</option>
-														<option>Lafayette</option>          														
-													</optgroup>
-													<optgroup label="Maine">
-														<option>Portland</option>
-														<option>Lewiston</option>
-														<option>Bangor</option>
-														<option>South Portland</option>
-														<option>Auburn</option>         														
-													</optgroup>
-													<optgroup label="Maryland">
-														<option>Baltimore</option>
-														<option>Frederick</option>
-														<option>Rockville</option>
-														<option>Gaithersburg</option>
-														<option>Bowie</option>         														
-													</optgroup>
-													<optgroup label="Massachusetts">
-														<option>Boston</option>
-														<option>Worcester</option>
-														<option>Springfield</option>
-														<option>Lowell</option>
-														<option>Cambridge</option>  
-													</optgroup>
-													<optgroup label="Michigan">
-														<option>Detroit</option>
-														<option>Grand Rapids</option>
-														<option>Warren</option>
-														<option>Sterling Heights</option>
-														<option>Lansing</option> 
-													</optgroup>
-													<optgroup label="Minnesota">
-														<option>Minneapolis</option>
-														<option>St. Paul</option>
-														<option>Rochester</option>
-														<option>Duluth</option>
-														<option>Bloomington</option>      														
-													</optgroup>
-													<optgroup label="Mississippi">
-														<option>Jackson</option>
-														<option>Gulfport</option>
-														<option>Southaven</option>
-														<option>Hattiesburg</option>
-														<option>Biloxi</option>         														
-													</optgroup>
-													<optgroup label="Missouri">
-														<option>Kansas City</option>
-														<option>St. Louis</option>
-														<option>Springfield</option>
-														<option>Independence</option>
-														<option>Columbia</option>            														
-													</optgroup>
-													<optgroup label="Montana">
-														<option>Billings</option>
-														<option>Missoula</option>
-														<option>Great Falls</option>
-														<option>Bozeman</option>
-														<option>Butte-Silver Bow</option>         														
-													</optgroup>
-													<optgroup label="Nebraska">
-														<option>Omaha</option>
-														<option>Lincoln</option>
-														<option>Bellevue</option>
-														<option>Grand Island</option>
-														<option>Kearney</option>        													
-													</optgroup>
-													<optgroup label="Nevada">
-														<option>Las Vegas</option>
-														<option>Henderson</option>
-														<option>North Las Vegas</option>
-														<option>Reno</option>
-														<option>Sunrise Manor</option>            													
-													</optgroup>
-													<optgroup label="New Hampshire">
-														<option>Manchesters</option>
-														<option>Nashua</option>
-														<option>Concord</option>
-														<option>Dover</option>
-														<option>Rochester</option>              													
-													</optgroup>
-													<optgroup label="New Jersey">
-														<option>Newark</option>
-														<option>Jersey City</option>
-														<option>Paterson</option>
-														<option>Elizabeth</option>
-														<option>Edison</option> 
-													</optgroup>
-													<optgroup label="New Mexico">
-														<option>Albuquerque</option>
-														<option>Las Cruces</option>
-														<option>Rio Rancho</option>
-														<option>Santa Fe</option>
-														<option>Roswell</option>       
-													</optgroup>
-													<optgroup label="New York">
-														<option>New York</option>
-														<option>Buffalo</option>
-														<option>Rochester</option>
-														<option>Yonkers</option>
-														<option>Syracuse</option>        														
-													</optgroup>
-													<optgroup label="North Carolina">
-														<option>Charlotte</option>
-														<option>Raleigh</option>
-														<option>Greensboro</option>
-														<option>Winston-Salem</option>
-														<option>Durham</option>          														
-													</optgroup>
-													<optgroup label="North Dakota">
-														<option>Fargo</option>
-														<option>Bismarck</option>
-														<option>Grand Forks</option>
-														<option>Minot</option>
-														<option>West Fargo</option>
-													</optgroup>
-													<optgroup label="Ohio">
-														<option>Columbus</option>
-														<option>Cleveland</option>
-														<option>Cincinnati</option>
-														<option>Toledo</option>
-														<option>Akron</option>      
-													</optgroup>
-													<optgroup label="Oklahoma">
-														<option>Oklahoma City</option>
-														<option>Tulsa</option>
-														<option>Norman</option>
-														<option>Broken Arrow</option>
-														<option>Lawton</option>        														
-													</optgroup>
-													<optgroup label="Oregon">
-														<option>Portland</option>
-														<option>Eugene</option>
-														<option>Salem</option>
-														<option>Gresham</option>
-														<option>Hillsboro</option>          														
-													</optgroup>
-													<optgroup label="Pennsylvania">
-														<option>Philadelphia</option>
-														<option>Pittsburgh</option>
-														<option>Allentown</option>
-														<option>Erie</option>
-														<option>Reading</option>         														
-													</optgroup>
-													<optgroup label="Rhode Island">
-														<option>Providence</option>
-														<option>Warwick</option>
-														<option>Cranston</option>
-														<option>Pawtucket</option>
-														<option>East Providence</option>   
-													</optgroup>
-													<optgroup label="South Carolina">
-														<option>Columbia</option>
-														<option>Charleston</option>
-														<option>North Charleston</option>
-														<option>Mount Pleasant</option>
-														<option>Rock Hill</option> 
-													</optgroup>
-													<optgroup label="South Dakota">
-														<option>Sioux Falls</option>
-														<option>Rapid City</option>
-														<option>Aberdeen</option>
-														<option>Brookings</option>
-														<option>Watertown</option> 
-													</optgroup>
-													<optgroup label="Tennessee">
-														<option>Memphis</option>
-														<option>Nashville</option>
-														<option>Knoxville</option>
-														<option>Chattanooga</option>
-														<option>Clarksville</option>       
-													</optgroup>
-													<optgroup label="Texas">
-														<option>Houston</option>
-														<option>San Antonio</option>
-														<option>Dallas</option>
-														<option>Austin</option>
-														<option>Fort Worth</option>   
-													</optgroup>
-													<optgroup label="Utah">
-														<option>Salt Lake City</option>
-														<option>West Valley City</option>
-														<option>Provo</option>
-														<option>West Jordan</option>
-														<option>Orem</option>   
-													</optgroup>	
-													<optgroup label="Vermont">
-														<option>Burlington</option>
-														<option>Essex</option>
-														<option>South Burlington</option>
-														<option>Colchester</option>
-														<option>Rutland</option>   
-													</optgroup>
-													<optgroup label="Virginia">
-														<option>Virginia Beach</option>
-														<option>Norfolk</option>
-														<option>Chesapeake</option>
-														<option>Arlington</option>
-														<option>Richmond</option> 
-													</optgroup>	
-													<optgroup label="Washington">
-														<option>Seattle</option>
-														<option>Spokane</option>
-														<option>Tacoma</option>
-														<option>Vancouver</option>
-														<option>Bellevue</option> 
-													</optgroup>	
-													<optgroup label="West Virginia">
-														<option>Charleston</option>
-														<option>Huntington</option>
-														<option>Parkersburg</option>
-														<option>Morgantown</option>
-														<option>Wheeling</option> 
-													</optgroup>	
-													<optgroup label="Wisconsin">
-														<option>Milwaukee</option>
-														<option>Madison</option>
-														<option>Green Bay</option>
-														<option>Kenosha</option>
-														<option>Racine</option>
-													</optgroup>
-													<optgroup label="Wyoming">
-														<option>Cheyenne</option>
-														<option>Casper</option>
-														<option>Laramie</option>
-														<option>Gillette</option>
-														<option>Rock Springs</option>
-													</optgroup>
-											</select>
-										</div>
-									  </form>    
-								</div>
-							</div>
-						</div>
-					</div>
-			</div>
-		</div>
-					</li>
-				</ul>
-			</div>
-			
-			<div class="clearfix"> </div> 
-		</div>
+	</div>
+	<header class="header-area">
+	<div class="top-header-area">
 		<div class="container">
-			<div class="agile-its-header">
-				<div class="logo">
-					<h1><a href="index.html"><span>Re</span>sale-v2</a></h1>
-				</div>
-				<div class="agileits_search">
-					<form action="#" method="post">
-						<input name="Search" type="text" placeholder="How can we help you today?" required="" />
-						<select id="agileinfo_search" name="agileinfo_search" required="">
-							<option value="">All Categories</option>
-							<option value="Mobiles">Mobiles</option>
-							<option value="Electronics & Appliances">Electronics & Appliances</option>
-							<option value="Cars">Cars</option>
-							<option value="Bikes">Bikes</option>
-							<option value="Furnitures">Furnitures</option>
-							<option value="Books, Sports & Hobbies">Books, Sports & Hobbies</option>
-							<option value="Fashion">Fashion</option>
-							<option value="Kids">Kids</option>
-							<option value="Services">Services</option>
-							<option value="Jobs">Jobs</option>
-							<option value="Real Estates">Real Estates</option>
-						</select>
-						<button type="submit" class="btn btn-default" aria-label="Left Align">
-							<i class="fa fa-search" aria-hidden="true"> </i>
-						</button>
-					</form>
-				<a class="post-w3layouts-ad" href="post-ad.html">Post Free Ad</a>
-				</div>	
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</header>
-		<div class="slider">
-			<ul class="rslides" id="slider">
-				<li>
-					<div class="w3ls-slide-text">
-						<h3>Sell or Advertise anything online</h3>
-						<a href="categories.html" class="w3layouts-explore-all">Browse all Categories</a>
-					</div>
-				</li>
-				<li>
-					<div class="w3ls-slide-text">
-						<h3>Find the Best Deals Here</h3>
-						<a href="categories.html" class="w3layouts-explore">Explore</a>
-					</div>
-				</li>
-				<li>
-					<div class="w3ls-slide-text">
-						<h3>Lets build the home of your dreams</h3>
-						<a href="real-estate.html" class="w3layouts-explore">Explore</a>
-					</div>
-				</li>
-				<li>
-					<div class="w3ls-slide-text">
-						<h3>Find your dream ride</h3>
-						<a href="bikes.html" class="w3layouts-explore">Explore</a>
-					</div>
-				</li>
-				<li>
-					<div class="w3ls-slide-text">
-						<h3>The Easiest Way to get a Job</h3>
-						<a href="jobs.html" class="w3layouts-explore">Find a Job</a>
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div class="main-content">
-			<div class="w3-categories">
-				<h3>Browse Categories</h3>
-				<div class="container">
-					<div class="col-md-3">
-						<div class="focus-grid w3layouts-boder1">
-							<a class="btn-8" href="categories.html">
-								<div class="focus-border">
-									<div class="focus-layout">
-										<div class="focus-image"><i class="fa fa-mobile"></i></div>
-										<h4 class="clrchg">Mobiles</h4>
-									</div>
-								</div>
+			<div class="row">
+				<div class="col-12">
+					<div
+						class="top-header-content d-flex align-items-center justify-content-between">
+						<div class="top-header-meta">
+							<a href="#"> <i class="fa fa-envelope-o" aria-hidden="true"></i>
+								<span>邮箱:Ydq7543@hotmail.com</span>
+							</a> 
+							<a href="#"> <i class="fa fa-phone" aria-hidden="true"></i>
+								<span>电话: +1 234 122 122</span>
 							</a>
 						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="focus-grid w3layouts-boder2">	
-						<a class="btn-8" href="categories.html#parentVerticalTab2">
-							<div class="focus-border">
-								<div class="focus-layout">
-									<div class="focus-image"><i class="fa fa-laptop"></i></div>
-									<h4 class="clrchg"> Electronics & Appliances</h4>
-								</div>
-							</div>
-						</a>
-					</div>
-					</div>
-					<div class="col-md-3">
-					<div class="focus-grid w3layouts-boder3">
-						<a class="btn-8" href="categories.html#parentVerticalTab3">
-							<div class="focus-border">
-								<div class="focus-layout">
-									<div class="focus-image"><i class="fa fa-car"></i></div>
-									<h4 class="clrchg">Cars</h4>
-								</div>
-							</div>
-						</a>
-					</div>	
-					</div>
-					<div class="col-md-3">
-					<div class="focus-grid w3layouts-boder4">
-						<a class="btn-8" href="categories.html#parentVerticalTab4">
-							<div class="focus-border">
-								<div class="focus-layout">
-									<div class="focus-image"><i class="fa fa-motorcycle"></i></div>
-									<h4 class="clrchg">Bikes</h4>
-								</div>
-							</div>
-						</a>
-					</div>	
-					</div>
-					<div class="col-md-3">
-					<div class="focus-grid w3layouts-boder5">
-						<a class="btn-8" href="categories.html#parentVerticalTab5">
-							<div class="focus-border">
-								<div class="focus-layout">
-									<div class="focus-image"><i class="fa fa-wheelchair"></i></div>
-									<h4 class="clrchg">Furnitures</h4>
-								</div>
-							</div>
-						</a>
-					</div>
-					</div>
-					<div class="col-md-3">
-					<div class="focus-grid w3layouts-boder6">
-						<a class="btn-8" href="categories.html#parentVerticalTab6">
-							<div class="focus-border">
-								<div class="focus-layout">
-									<div class="focus-image"><i class="fa fa-paw"></i></div>
-									<h4 class="clrchg">Pets</h4>
-								</div>
-							</div>
-						</a>
-					</div>	
-					</div>
-					<div class="col-md-3">
-					<div class="focus-grid w3layouts-boder7">
-						<a class="btn-8" href="categories.html#parentVerticalTab7">
-							<div class="focus-border">
-								<div class="focus-layout">
-									<div class="focus-image"><i class="fa fa-book"></i></div>
-									<h4 class="clrchg">Books, Sports & Hobbies</h4>
-								</div>
-							</div>
-						</a>
-					</div>	
-					</div>
-					<div class="col-md-3">
-					<div class="focus-grid w3layouts-boder8">
-						<a class="btn-8" href="categories.html#parentVerticalTab8">
-							<div class="focus-border">
-								<div class="focus-layout">
-									<div class="focus-image"><i class="fa fa-asterisk"></i></div>
-									<h4 class="clrchg">Fashion</h4>
-								</div>
-							</div>
-						</a>
-					</div>	
-					</div>
-					<div class="col-md-3">
-					<div class="focus-grid w3layouts-boder9">
-						<a class="btn-8" href="categories.html#parentVerticalTab9">
-							<div class="focus-border">
-								<div class="focus-layout">
-									<div class="focus-image"><i class="fa fa-gamepad"></i></div>
-									<h4 class="clrchg">Kids</h4>
-								</div>
-							</div>
-						</a>
-					</div>	
-					</div>
-					<div class="col-md-3">
-					<div class="focus-grid w3layouts-boder10">
-						<a class="btn-8" href="categories.html#parentVerticalTab10">
-							<div class="focus-border">
-								<div class="focus-layout">
-									<div class="focus-image"><i class="fa fa-shield"></i></div>
-									<h4 class="clrchg">Services</h4>
-								</div>
-							</div>
-						</a>
-					</div>
-					</div>
-					<div class="col-md-3">
-					<div class="focus-grid w3layouts-boder11">
-						<a class="btn-8" href="categories.html#parentVerticalTab11">
-							<div class="focus-border">
-								<div class="focus-layout">
-									<div class="focus-image"><i class="fa fa-at"></i></div>
-									<h4 class="clrchg">Jobs</h4>
-								</div>
-							</div>
-						</a>
-					</div>
-					</div>
-					<div class="col-md-3">
-					<div class="focus-grid w3layouts-boder12">
-						<a class="btn-8" href="categories.html#parentVerticalTab12">
-							<div class="focus-border">
-								<div class="focus-layout">
-									<div class="focus-image"><i class="fa fa-home"></i></div>
-									<h4 class="clrchg">Real Estate</h4>
-								</div>
-							</div>
-						</a>
-					</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-			<div class="w3l-popular-ads">  
-				<h3>Most Popular Ads</h3>
-				 <div class="w3l-popular-ads-info">
-					<div class="col-md-4 w3ls-portfolio-left">
-						<div class="portfolio-img event-img">
-							<img src="images/ad1.jpg" class="img-responsive" alt=""/>
-							<div class="over-image"></div>
-						</div>
-						<div class="portfolio-description">
-						   <h4><a href="cars.html">Latest Cars</a></h4>
-						   <p>Suspendisse placerat mattis arcu nec por</p>
-							<a href="cars.html">
-								<span>Explore</span>
-							</a>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="col-md-4 w3ls-portfolio-left">
-						<div class="portfolio-img event-img">
-							<img src="images/ad2.jpg" class="img-responsive" alt=""/>
-							 <div class="over-image"></div>
-						</div>
-						<div class="portfolio-description">
-						   <h4><a href="real-estate.html">Apartments for Sale</a></h4>
-						   <p>Suspendisse placerat mattis arcu nec por</p>
-							<a href="real-estate.html">
-								<span>Explore</span>
-							</a>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="col-md-4 w3ls-portfolio-left">
-						<div class="portfolio-img event-img">
-							<img src="images/ad3.jpg" class="img-responsive" alt=""/>
-							 <div class="over-image"></div>
-						</div>
-						<div class="portfolio-description">
-						   <h4><a href="jobs.html">BPO jobs</a></h4>
-						   <p>Suspendisse placerat mattis arcu nec por</p>
-							<a href="jobs.html">
-								<span>Explore</span>
-							</a>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="col-md-4 w3ls-portfolio-left">
-						<div class="portfolio-img event-img">
-							<img src="images/ad4.jpg" class="img-responsive" alt=""/>
-							 <div class="over-image"></div>
-						</div>
-						<div class="portfolio-description">
-						   <h4><a href="electronics-appliances.html">Accessories</a></h4>
-						   <p>Suspendisse placerat mattis arcu nec por</p>
-							<a href="electronics-appliances.html">
-								<span>Explore</span>
-							</a>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="col-md-4 w3ls-portfolio-left">
-						<div class="portfolio-img event-img">
-							<img src="images/ad5.jpg" class="img-responsive" alt=""/>
-							 <div class="over-image"></div>
-						</div>
-						<div class="portfolio-description">
-						   <h4><a href="furnitures.html">Home Appliances</a></h4>
-						   <p>Suspendisse placerat mattis arcu nec por</p>
-							<a href="furnitures.html">
-								<span>Explore</span>
-							</a>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="col-md-4 w3ls-portfolio-left">
-						<div class="portfolio-img event-img">
-							<img src="images/ad6.jpg" class="img-responsive" alt=""/>
-							 <div class="over-image"></div>
-						</div>
-						<div class="portfolio-description">
-						   <h4><a href="fashion.html">Clothing</a></h4>
-						   <p>Suspendisse placerat mattis arcu nec por</p>
-							<a href="fashion.html">
-								<span>Explore</span>
-							</a>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="clearfix"> </div>
-				 </div>
-			 </div>
-			<div class="trending-ads">
-				<div class="container">
-				<!-- slider -->
-				<div class="agile-trend-ads">
-					<h2>Trending Ads</h2>
-							<ul id="flexiselDemo3">
-								<li>
-									<div class="col-md-3 biseller-column">
-										<a href="single.html">
-											<img src="images/p1.jpg" alt="" />
-											<span class="price">&#36; 450</span>
-										</a> 
-										<div class="w3-ad-info">
-											<h5>There are many variations of passages</h5>
-											<span>1 hour ago</span>
-										</div>
-									</div>
-									<div class="col-md-3 biseller-column">
-										<a href="single.html">
-											<img src="images/p2.jpg" alt="" />
-											<span class="price">&#36; 399</span>
-										</a> 
-										<div class="w3-ad-info">
-											<h5>Lorem Ipsum is simply dummy</h5>
-											<span>3 hour ago</span>
-										</div>
-									</div>
-									<div class="col-md-3 biseller-column">
-										<a href="single.html">
-											<img src="images/p3.jpg" alt="" />
-											<span class="price">&#36; 199</span>
-										</a> 
-										<div class="w3-ad-info">
-											<h5>It is a long established fact that a reader</h5>
-											<span>8 hour ago</span>
-										</div>
-									</div>
-									<div class="col-md-3 biseller-column">
-										<a href="single.html">
-											<img src="images/p4.jpg" alt="" />
-											<span class="price">&#36; 159</span>
-										</a> 
-										<div class="w3-ad-info">
-											<h5>passage of Lorem Ipsum you need to be</h5>
-											<span>19 hour ago</span>
-										</div>
-									</div>
+						<div class="top-header-meta d-flex">
+							<div class="login">
+								<li class="dropdown head-dpdn">
+									<a href="${pageContext.request.contextPath }/TZlogin.action" aria-expanded="false">
+										<i class="fa fa-user" aria-hidden="true"></i>
+										<%if(session.getAttribute("USER_SESSION") != null){ %>
+											${USER_SESSION.username} <%}else{ %>
+											未登陆<%} %>
+									</a>
 								</li>
-								<li>
-									<div class="col-md-3 biseller-column">
-										<a href="single.html">
-											<img src="images/p5.jpg" alt="" />
-											<span class="price">&#36; 1599</span>
-										</a> 
-										<div class="w3-ad-info">
-											<h5>There are many variations of passages</h5>
-											<span>1 hour ago</span>
-										</div>
-									</div>
-									<div class="col-md-3 biseller-column">
-										<a href="single.html">
-											<img src="images/p6.jpg" alt="" />
-											<span class="price">&#36; 1099</span>
-										</a> 
-										<div class="w3-ad-info">
-											<h5>passage of Lorem Ipsum you need to be</h5>
-											<span>1 day ago</span>
-										</div>
-									</div>
-									<div class="col-md-3 biseller-column">
-										<a href="single.html">
-											<img src="images/p7.jpg" alt="" />
-											<span class="price">&#36; 109</span>
-										</a> 
-										<div class="w3-ad-info">
-											<h5>It is a long established fact that a reader</h5>
-											<span>9 hour ago</span>
-										</div>
-									</div>
-									<div class="col-md-3 biseller-column">
-										<a href="single.html">
-											<img src="images/p8.jpg" alt="" />
-											<span class="price">&#36; 189</span>
-										</a> 
-										<div class="w3-ad-info">
-											<h5>Lorem Ipsum is simply dummy</h5>
-											<span>3 hour ago</span>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="col-md-3 biseller-column">
-										<a href="single.html">
-											<img src="images/p9.jpg" alt="" />
-											<span class="price">&#36; 2599</span>
-										</a> 
-										<div class="w3-ad-info">
-											<h5>Lorem Ipsum is simply dummy</h5>
-											<span>3 hour ago</span>
-										</div>
-									</div>
-									<div class="col-md-3 biseller-column">
-										<a href="single.html">
-											<img src="images/p10.jpg" alt="" />
-											<span class="price">&#36; 3999</span>
-										</a> 
-										<div class="w3-ad-info">
-											<h5>It is a long established fact that a reader</h5>
-											<span>9 hour ago</span>
-										</div>
-									</div>
-									<div class="col-md-3 biseller-column">
-										<a href="single.html">
-											<img src="images/p11.jpg" alt="" />
-											<span class="price">&#36; 2699</span>
-										</a> 
-										<div class="w3-ad-info">
-											<h5>passage of Lorem Ipsum you need to be</h5>
-											<span>1 day ago</span>
-										</div>
-									</div>
-									<div class="col-md-3 biseller-column">
-										<a href="single.html">
-											<img src="images/p12.jpg" alt="" />
-											<span class="price">&#36; 899</span>
-										</a> 
-										<div class="w3-ad-info">
-											<h5>There are many variations of passages</h5>
-											<span>1 hour ago</span>
-										</div>
-									</div>
-								</li>
-						</ul>
-					</div>   
-			</div>
-			</div>
-			<div class="w3layouts-partners">
-				<h3>Our Partners</h3>
-					<div class="container">
-						<ul>
-							<li><a href="#"><img class="img-responsive" src="images/p-1.png" alt=""></a></li>
-							<li><a href="#"><img class="img-responsive" src="images/p-2.png" alt=""></a></li>
-							<li><a href="#"><img class="img-responsive" src="images/p-3.png" alt=""></a></li>
-							<li><a href="#"><img class="img-responsive" src="images/p-4.png" alt=""></a></li>
-							<li><a href="#"><img class="img-responsive" src="images/p-5.png" alt=""></a></li>
-							<li><a href="#"><img class="img-responsive" src="images/p-6.png" alt=""></a></li>
-							<li><a href="#"><img class="img-responsive" src="images/p-7.png" alt=""></a></li>
-							<li><a href="#"><img class="img-responsive" src="images/p-8.png" alt=""></a></li>
-							<li><a href="#"><img class="img-responsive" src="images/p-9.png" alt=""></a></li>
-							<li><a href="#"><img class="img-responsive" src="images/p-10.png" alt=""></a></li>	
-						</ul>
-					</div>
-				</div>	
-			<div class="agile-info-mobile-app">
-				<div class="container">
-					<div class="col-md-5 w3-app-left">
-						<a href="mobileapp.html"><img src="images/app.png" alt=""></a>
-					</div>
-					<div class="col-md-7 w3-app-right">
-						<h3>Resale App is the <span>Easiest</span> way for Selling and buying second-hand goods</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor Sed bibendum varius euismod. Integer eget turpis sit amet lorem rutrum ullamcorper sed sed dui. vestibulum odio at elementum. Suspendisse et condimentum nibh.</p>
-						<div class="agileits-dwld-app">
-							<h6>Download The App : 
-								<a href="#"><i class="fa fa-apple"></i></a>
-								<a href="#"><i class="fa fa-windows"></i></a>
-								<a href="#"><i class="fa fa-android"></i></a>
-							</h6>
+							</div>
+							<div class="cart">
+								<li class="dropdown head-dpdn"><a href="${pageContext.request.contextPath }/help.action"><i
+						class="fa fa-question-circle" aria-hidden="true"></i> 帮助</a></li>
+							</div>
 						</div>
 					</div>
-					<div class="clearfix"></div>
 				</div>
 			</div>
 		</div>
-		<footer>
-			<div class="w3-agileits-footer-top">
-				<div class="container">
-					<div class="wthree-foo-grids">
-						<div class="col-md-3 wthree-footer-grid">
-							<h4 class="footer-head">Who We Are</h4>
-							<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-							<p>The point of using Lorem Ipsum is that it has a more-or-less normal letters, as opposed to using 'Content here.</p>
-						</div>
-						<div class="col-md-3 wthree-footer-grid">
-							<h4 class="footer-head">Help</h4>
-							<ul>
-								<li><a href="howitworks.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>How it Works</a></li>						
-								<li><a href="sitemap.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Sitemap</a></li>
-								<li><a href="faq.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Faq</a></li>
-								<li><a href="feedback.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Feedback</a></li>
-								<li><a href="contact.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Contact</a></li>
-								<li><a href="typography.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Short codes</a></li>
-								<li><a href="icons.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Icons Page</a></li>
-							</ul>
-						</div>
-						<div class="col-md-3 wthree-footer-grid">
-							<h4 class="footer-head">Information</h4>
-							<ul>
-								<li><a href="regions.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Locations Map</a></li>	
-								<li><a href="terms.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Terms of Use</a></li>
-								<li><a href="popular-search.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Popular searches</a></li>	
-								<li><a href="privacy.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Privacy Policy</a></li>	
-							</ul>
-						</div>
-						<div class="col-md-3 wthree-footer-grid">
-							<h4 class="footer-head">Contact Us</h4>
-							<span class="hq">Our headquarters</span>
-							<address>
-								<ul class="location">
-									<li><span class="glyphicon glyphicon-map-marker"></span></li>
-									<li>CENTER FOR FINANCIAL ASSISTANCE TO DEPOSED NIGERIAN ROYALTY</li>
-								</ul>	
-								<div class="clearfix"> </div>
-								<ul class="location">
-									<li><span class="glyphicon glyphicon-earphone"></span></li>
-									<li>+0 561 111 235</li>
-								</ul>	
-								<div class="clearfix"> </div>
-								<ul class="location">
-									<li><span class="glyphicon glyphicon-envelope"></span></li>
-									<li><a href="mailto:info@example.com">mail@example.com</a></li>
-								</ul>						
-							</address>
-						</div>
-						<div class="clearfix"></div>
-					</div>						
-				</div>	
-			</div>	
-			<div class="agileits-footer-bottom text-center">
+	</div>
+	<div class="alazea-main-menu">
+		<div class="classy-nav-container breakpoint-off">
 			<div class="container">
-				<div class="w3-footer-logo">
-					<h1><a href="index.html"><span>Re</span>sale-v2</a></h1>
+				<!-- Menu -->
+				<nav class="classy-navbar justify-content-between" id="alazeaNav">
+				<!-- Nav Brand --> 
+				<a href="index.jsp" class="nav-brand"><img
+					src="img/core-img/logo.png" alt=""></a>
+				<div class="classy-navbar-toggler">
+					<span class="navbarToggler"><span></span><span></span><span></span></span>
 				</div>
-				<div class="w3-footer-social-icons">
-					<ul>
-						<li><a class="facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
-						<li><a class="twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a></li>
-						<li><a class="flickr" href="#"><i class="fa fa-flickr" aria-hidden="true"></i><span>Flickr</span></a></li>
-						<li><a class="googleplus" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i><span>Google+</span></a></li>
-						<li><a class="dribbble" href="#"><i class="fa fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a></li>
-					</ul>
+				<!-- Menu -->
+				<div class="classy-menu">
+					<!-- Close Button -->
+					<div class="classycloseIcon">
+						<div class="cross-wrap">
+							<span class="top"></span><span class="bottom"></span>
+						</div>
+					</div>
+					<!-- Navbar Start -->
+					<div class="classynav">
+						<ul>
+							<li><a href="index.html">主页</a></li>
+							<li><a href="about.html">关于我们</a></li>
+							<li><a href="#">页面</a>
+								<ul class="dropdown">
+									<li><a href="index.html">主页</a></li>
+									<li><a href="about.html">关于我们</a></li>
+									<li><a href="shop.html">购买</a>
+										<ul class="dropdown">
+											<li><a href="shop.html">购买</a></li>
+											<li><a href="shop-details.html">商店  细节</a></li>
+											<li><a href="cart.html">购物车</a></li>
+											<li><a href="checkout.html">结帐</a></li>
+										</ul></li>
+									<li><a href="portfolio.html">投资组合</a>
+										<ul class="dropdown">
+											<li><a href="portfolio.html">投资组合</a></li>
+											<li><a href="single-portfolio.html">投资组合细节</a></li>
+										</ul></li>
+									<li><a href="blog.html">博客</a>
+										<ul class="dropdown">
+											<li><a href="blog.html">博客</a></li>
+											<li><a href="single-post.html">博客 细节</a></li>
+										</ul></li>
+									<li><a href="contact.html">联系</a></li>
+								</ul></li>
+							<li><a href="shop.html">店铺</a></li>
+							<li><a href="portfolio.html">投资组合</a></li>
+							<li><a href="contact.html">联系</a></li>
+						</ul>
+
+						<!-- Search Icon -->
+						<div id="searchIcon">
+							<i class="fa fa-search" aria-hidden="true"></i>
+						</div>
+
+					</div>
+					<!-- Navbar End -->
 				</div>
-				<div class="copyrights">
-					<p> © 2016 Resale. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>
+				</nav>
+
+				<!-- Search Form -->
+				<div class="search-form">
+					<form action="#" method="get">
+						<input type="search" name="search" id="search"
+							placeholder="输入关键字,按回车……">
+						<button type="submit" class="d-none"></button>
+					</form>
+					<!-- Close Icon -->
+					<div class="closeIcon">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</div>
 				</div>
-				<div class="clearfix"></div>
 			</div>
 		</div>
-		</footer>
-			<script type="text/javascript" src="js/main.js"></script>
-			<script type="text/javascript" src="js/classie.js"></script>
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.js"></script>
-		<script src="js/bootstrap-select.js"></script>
-		<script>
-		  $(document).ready(function () {
-			var mySelect = $('#first-disabled2');
+	</div>
+	</header>
+	<!-- ##### Header Area End ##### -->
 
-			$('#special').on('click', function () {
-			  mySelect.find('option:selected').prop('disabled', true);
-			  mySelect.selectpicker('refresh');
-			});
+	<!-- ##### Hero Area Start ##### -->
+	<section class="hero-area">
+	<div class="hero-post-slides owl-carousel">
 
-			$('#special2').on('click', function () {
-			  mySelect.find('option:disabled').prop('disabled', false);
-			  mySelect.selectpicker('refresh');
-			});
+		<!-- Single Hero Post -->
+		<div class="single-hero-post bg-overlay">
+			<!-- Post Image -->
+			<div class="slide-img bg-img"
+				style="background-image: url(img/bg-img/1.jpg);"></div>
+			<div class="container h-100">
+				<div class="row h-100 align-items-center">
+					<div class="col-12">
+						<!-- Post Content -->
+						<div class="hero-slides-content text-center">
+							<h2>植物存在于天气和周围的光线中他们</h2>
+							<p>我的朋友们，我的朋友们。我的天，我的天，我的天porttitor。
+							我的天啊，我的天啊语。我的天啊，我的天啊，我的天啊。</p>
+							<div class="welcome-btn-group">
+								<a href="#" class="btn alazea-btn mr-30">开始</a> <a
+									href="#" class="btn alazea-btn active">联系我们</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-			$('#basic2').selectpicker({
-			  liveSearch: true,
-			  maxOptions: 1
-			});
-		  });
-		</script>
-		<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
-		<link href="css/jquery.uls.css" rel="stylesheet"/>
-		<link href="css/jquery.uls.grid.css" rel="stylesheet"/>
-		<link href="css/jquery.uls.lcd.css" rel="stylesheet"/>
-		<script src="js/jquery.uls.data.js"></script>
-		<script src="js/jquery.uls.data.utils.js"></script>
-		<script src="js/jquery.uls.lcd.js"></script>
-		<script src="js/jquery.uls.languagefilter.js"></script>
-		<script src="js/jquery.uls.regionfilter.js"></script>
-		<script src="js/jquery.uls.core.js"></script>
-		<script>
-					$( document ).ready( function() {
-						$( '.uls-trigger' ).uls( {
-							onSelect : function( language ) {
-								var languageName = $.uls.data.getAutonym( language );
-								$( '.uls-trigger' ).text( languageName );
-							},
-							quickList: ['en', 'hi', 'he', 'ml', 'ta', 'fr'] //FIXME
-						} );
-					} );
-				</script>
-		<script type="text/javascript" src="js/jquery.flexisel.js"></script><!-- flexisel-js -->	
-					<script type="text/javascript">
-						 $(window).load(function() {
-							$("#flexiselDemo3").flexisel({
-								visibleItems:1,
-								animationSpeed: 1000,
-								autoPlay: true,
-								autoPlaySpeed: 5000,    		
-								pauseOnHover: true,
-								enableResponsiveBreakpoints: true,
-								responsiveBreakpoints: { 
-									portrait: { 
-										changePoint:480,
-										visibleItems:1
-									}, 
-									landscape: { 
-										changePoint:640,
-										visibleItems:1
-									},
-									tablet: { 
-										changePoint:768,
-										visibleItems:1
-									}
-								}
-							});
-							
-						});
-					   </script>
-			<script src="js/responsiveslides.min.js"></script>	
-			 <script>
-			$(function () {	
-			  $("#slider").responsiveSlides({
-				auto: true,
-				pager: false,
-				nav: true,
-				speed: 500,
-				maxwidth: 800,
-				namespace: "large-btns"
-			  });
+		<!-- Single Hero Post -->
+		<div class="single-hero-post bg-overlay">
+			<!-- Post Image -->
+			<div class="slide-img bg-img"
+				style="background-image: url(img/bg-img/2.jpg);"></div>
+			<div class="container h-100">
+				<div class="row h-100 align-items-center">
+					<div class="col-12">
+						<!-- Post Content -->
+						<div class="hero-slides-content text-center">
+							<h2>植物存在于天气和周围的光线中他们</h2>
+							<p>我的朋友们，我的朋友们。我的天，我的天，我的天porttitor。我的天啊，我的天啊语。我的天啊，我的天啊，我的天啊。</p>
+							<div class="welcome-btn-group">
+								<a href="#" class="btn alazea-btn mr-30">开始</a> <a
+									href="#" class="btn alazea-btn active">联系我们</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-			});
-		  </script>
-			<script type="text/javascript">
-				$(document).ready(function() {
-					$().UItoTop({ easingType: 'easeOutQuart' });
-										
-					});
-			</script>
-			<script type="text/javascript" src="js/move-top.js"></script>
-			<script type="text/javascript" src="js/easing.js"></script>
-			<script type="text/javascript">
-				jQuery(document).ready(function($) {
-					$(".scroll").click(function(event){		
-						event.preventDefault();
-						$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-					});
-				});
-			</script>
-</body>		
+	</div>
+	</section>
+	<!-- ##### Hero Area End ##### -->
+
+	<!-- ##### Service Area Start ##### -->
+	<section class="our-services-area bg-gray section-padding-100-0">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<!-- Section Heading -->
+				<div class="section-heading text-center">
+					<h2>我们的服务</h2>
+					<p>我们为您提供最完善的服务。</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-between">
+			<div class="col-12 col-lg-5">
+				<div class="alazea-service-area mb-100">
+
+					<!-- Single Service Area -->
+					<div
+						class="single-service-area d-flex align-items-center wow fadeInUp"
+						data-wow-delay="100ms">
+						<!-- Icon -->
+						<div class="service-icon mr-30">
+							<img src="img/core-img/s1.png" alt="">
+						</div>
+						<!-- Content -->
+						<div class="service-content">
+							<h5>植物保健</h5>
+							<p>这是一种很好的方法我的天啊，我的天啊。
+							的服务。这是一种很好的方法我的天啊，我的天啊。的服务。</p>
+						</div>
+					</div>
+
+					<!-- Single Service Area -->
+					<div
+						class="single-service-area d-flex align-items-center wow fadeInUp"
+						data-wow-delay="300ms">
+						<!-- Icon -->
+						<div class="service-icon mr-30">
+							<img src="img/core-img/s2.png" alt="">
+						</div>
+						<!-- Content -->
+						<div class="service-content">
+							<h5>压力清洗</h5>
+							<p>这是一种很好的方法我的天啊，我的天啊。的服务。</p>
+						</div>
+					</div>
+
+					<!-- Single Service Area -->
+					<div
+						class="single-service-area d-flex align-items-center wow fadeInUp"
+						data-wow-delay="500ms">
+						<!-- Icon -->
+						<div class="service-icon mr-30">
+							<img src="img/core-img/s3.png" alt="">
+						</div>
+						<!-- Content -->
+						<div class="service-content">
+							<h5>树服务,修剪</h5>
+							<p>这是一种很好的方法我的天啊，我的天啊。的服务。</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="col-12 col-lg-6">
+				<div class="alazea-video-area bg-overlay mb-100">
+					<img src="img/bg-img/23.jpg" alt=""> <a
+						href="http://www.youtube.com/watch?v=7HKoqNJtMTQ"
+						class="video-icon"> <i class="fa fa-play" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+	<!-- ##### Service Area End ##### -->
+
+	<!-- ##### About Area Start ##### -->
+	<section class="about-us-area section-padding-100-0">
+	<div class="container">
+		<div class="row justify-content-between">
+			<div class="col-12 col-lg-5">
+				<!-- Section Heading -->
+				<div class="section-heading">
+					<h2>关于我们</h2>
+					<p>我们在工厂服务领域处于领先地位。</p>
+				</div>
+				<p>Quisque orci quam, vulputate non commodo finibus, molestie ac
+					ante. Duis in sceleri quesem. Nulla sit amet varius nunc. Maecenas
+					dui, tempeu ullam corper in.</p>
+
+				<!-- Progress Bar Content Area -->
+				<div class="alazea-progress-bar mb-50">
+					<!-- Single Progress Bar -->
+					<div class="single_progress_bar">
+						<p>Office plants</p>
+						<div id="bar1" class="barfiller">
+							<div class="tipWrap">
+								<span class="tip"></span>
+							</div>
+							<span class="fill" data-percentage="80"></span>
+						</div>
+					</div>
+
+					<!-- Single Progress Bar -->
+					<div class="single_progress_bar">
+						<p>Field manager</p>
+						<div id="bar2" class="barfiller">
+							<div class="tipWrap">
+								<span class="tip"></span>
+							</div>
+							<span class="fill" data-percentage="70"></span>
+						</div>
+					</div>
+
+					<!-- Single Progress Bar -->
+					<div class="single_progress_bar">
+						<p>Landscape design</p>
+						<div id="bar3" class="barfiller">
+							<div class="tipWrap">
+								<span class="tip"></span>
+							</div>
+							<span class="fill" data-percentage="85"></span>
+						</div>
+					</div>
+
+					<!-- Single Progress Bar -->
+					<div class="single_progress_bar">
+						<p>Garden Care</p>
+						<div id="bar4" class="barfiller">
+							<div class="tipWrap">
+								<span class="tip"></span>
+							</div>
+							<span class="fill" data-percentage="65"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-12 col-lg-6">
+				<div class="alazea-benefits-area">
+					<div class="row">
+						<!-- Single Benefits Area -->
+						<div class="col-12 col-sm-6">
+							<div class="single-benefits-area">
+								<img src="img/core-img/b1.png" alt="">
+								<h5>Quality Products</h5>
+								<p>Intiam eu sagittis est, at commodo lacini libero.
+									Praesent dignissim sed odio vel aliquam manta lagorn.</p>
+							</div>
+						</div>
+
+						<!-- Single Benefits Area -->
+						<div class="col-12 col-sm-6">
+							<div class="single-benefits-area">
+								<img src="img/core-img/b2.png" alt="">
+								<h5>Perfect Service</h5>
+								<p>Intiam eu sagittis est, at commodo lacini libero.
+									Praesent dignissim sed odio vel aliquam manta lagorn.</p>
+							</div>
+						</div>
+
+						<!-- Single Benefits Area -->
+						<div class="col-12 col-sm-6">
+							<div class="single-benefits-area">
+								<img src="img/core-img/b3.png" alt="">
+								<h5>100% Natural</h5>
+								<p>Intiam eu sagittis est, at commodo lacini libero.
+									Praesent dignissim sed odio vel aliquam manta lagorn.</p>
+							</div>
+						</div>
+
+						<!-- Single Benefits Area -->
+						<div class="col-12 col-sm-6">
+							<div class="single-benefits-area">
+								<img src="img/core-img/b4.png" alt="">
+								<h5>Environmentally friendly</h5>
+								<p>Intiam eu sagittis est, at commodo lacini libero.
+									Praesent dignissim sed odio vel aliquam manta lagorn.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="border-line"></div>
+			</div>
+		</div>
+	</div>
+	</section>
+	<!-- ##### About Area End ##### -->
+
+	<!-- ##### Portfolio Area Start ##### -->
+	<section class="alazea-portfolio-area section-padding-100-0">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<!-- Section Heading -->
+				<div class="section-heading text-center">
+					<h2>OUR PORTFOLIO</h2>
+					<p>We devote all of our experience and efforts for creation</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<div class="alazea-portfolio-filter">
+					<div class="portfolio-filter">
+						<button class="btn active" data-filter="*">All</button>
+						<button class="btn" data-filter=".design">Coffee Design</button>
+						<button class="btn" data-filter=".garden">Garden</button>
+						<button class="btn" data-filter=".home-design">Home
+							Design</button>
+						<button class="btn" data-filter=".office-design">Office
+							Design</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row alazea-portfolio">
+
+			<!-- Single Portfolio Area -->
+			<div
+				class="col-12 col-sm-6 col-lg-3 single_portfolio_item design home-design wow fadeInUp"
+				data-wow-delay="100ms">
+				<!-- Portfolio Thumbnail -->
+				<div class="portfolio-thumbnail bg-img"
+					style="background-image: url(img/bg-img/16.jpg);"></div>
+				<!-- Portfolio Hover Text -->
+				<div class="portfolio-hover-overlay">
+					<a href="img/bg-img/16.jpg"
+						class="portfolio-img d-flex align-items-center justify-content-center"
+						title="Portfolio 1">
+						<div class="port-hover-text">
+							<h3>Minimal Flower Store</h3>
+							<h5>Office Plants</h5>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<!-- Single Portfolio Area -->
+			<div
+				class="col-12 col-sm-6 col-lg-3 single_portfolio_item garden wow fadeInUp"
+				data-wow-delay="200ms">
+				<!-- Portfolio Thumbnail -->
+				<div class="portfolio-thumbnail bg-img"
+					style="background-image: url(img/bg-img/17.jpg);"></div>
+				<!-- Portfolio Hover Text -->
+				<div class="portfolio-hover-overlay">
+					<a href="img/bg-img/17.jpg"
+						class="portfolio-img d-flex align-items-center justify-content-center"
+						title="Portfolio 2">
+						<div class="port-hover-text">
+							<h3>Minimal Flower Store</h3>
+							<h5>Office Plants</h5>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<!-- Single Portfolio Area -->
+			<div
+				class="col-12 col-sm-6 col-lg-3 single_portfolio_item garden design wow fadeInUp"
+				data-wow-delay="300ms">
+				<!-- Portfolio Thumbnail -->
+				<div class="portfolio-thumbnail bg-img"
+					style="background-image: url(img/bg-img/18.jpg);"></div>
+				<!-- Portfolio Hover Text -->
+				<div class="portfolio-hover-overlay">
+					<a href="img/bg-img/18.jpg"
+						class="portfolio-img d-flex align-items-center justify-content-center"
+						title="Portfolio 3">
+						<div class="port-hover-text">
+							<h3>Minimal Flower Store</h3>
+							<h5>Office Plants</h5>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<!-- Single Portfolio Area -->
+			<div
+				class="col-12 col-sm-6 col-lg-3 single_portfolio_item garden office-design wow fadeInUp"
+				data-wow-delay="400ms">
+				<!-- Portfolio Thumbnail -->
+				<div class="portfolio-thumbnail bg-img"
+					style="background-image: url(img/bg-img/19.jpg);"></div>
+				<!-- Portfolio Hover Text -->
+				<div class="portfolio-hover-overlay">
+					<a href="img/bg-img/19.jpg"
+						class="portfolio-img d-flex align-items-center justify-content-center"
+						title="Portfolio 4">
+						<div class="port-hover-text">
+							<h3>Minimal Flower Store</h3>
+							<h5>Office Plants</h5>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<!-- Single Portfolio Area -->
+			<div
+				class="col-12 col-sm-6 col-lg-3 single_portfolio_item design office-design wow fadeInUp"
+				data-wow-delay="100ms">
+				<!-- Portfolio Thumbnail -->
+				<div class="portfolio-thumbnail bg-img"
+					style="background-image: url(img/bg-img/20.jpg);"></div>
+				<!-- Portfolio Hover Text -->
+				<div class="portfolio-hover-overlay">
+					<a href="img/bg-img/20.jpg"
+						class="portfolio-img d-flex align-items-center justify-content-center"
+						title="Portfolio 5">
+						<div class="port-hover-text">
+							<h3>Minimal Flower Store</h3>
+							<h5>Office Plants</h5>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<!-- Single Portfolio Area -->
+			<div
+				class="col-12 col-sm-6 col-lg-3 single_portfolio_item garden wow fadeInUp"
+				data-wow-delay="200ms">
+				<!-- Portfolio Thumbnail -->
+				<div class="portfolio-thumbnail bg-img"
+					style="background-image: url(img/bg-img/21.jpg);"></div>
+				<!-- Portfolio Hover Text -->
+				<div class="portfolio-hover-overlay">
+					<a href="img/bg-img/21.jpg"
+						class="portfolio-img d-flex align-items-center justify-content-center"
+						title="Portfolio 6">
+						<div class="port-hover-text">
+							<h3>Minimal Flower Store</h3>
+							<h5>Office Plants</h5>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<!-- Single Portfolio Area -->
+			<div
+				class="col-12 col-lg-6 single_portfolio_item home-design wow fadeInUp"
+				data-wow-delay="300ms">
+				<!-- Portfolio Thumbnail -->
+				<div class="portfolio-thumbnail bg-img"
+					style="background-image: url(img/bg-img/22.jpg);"></div>
+				<!-- Portfolio Hover Text -->
+				<div class="portfolio-hover-overlay">
+					<a href="img/bg-img/22.jpg"
+						class="portfolio-img d-flex align-items-center justify-content-center"
+						title="Portfolio 7">
+						<div class="port-hover-text">
+							<h3>Minimal Flower Store</h3>
+							<h5>Office Plants</h5>
+						</div>
+					</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	</section>
+	<!-- ##### Portfolio Area End ##### -->
+	<div class="tlinks">
+		Collect from <a href="http://www.cssmoban.com/" title="网站模板">网站模板</a>
+	</div>
+	<!-- ##### Testimonial Area Start ##### -->
+	<section class="testimonial-area section-padding-100">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="testimonials-slides owl-carousel">
+
+					<!-- Single Testimonial Slide -->
+					<div class="single-testimonial-slide">
+						<div class="row align-items-center">
+							<div class="col-12 col-md-6">
+								<div class="testimonial-thumb">
+									<img src="img/bg-img/13.jpg" alt="">
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="testimonial-content">
+									<!-- Section Heading -->
+									<div class="section-heading">
+										<h2>TESTIMONIAL</h2>
+										<p>Some kind words from clients about Alazea</p>
+									</div>
+									<p>“Alazea is a pleasure to work with. Their ideas are
+										creative, they came up with imaginative solutions to some
+										tricky issues, their landscaping and planting contacts are
+										equally excellent we have a beautiful but also manageable
+										garden as a result. Thank you!”</p>
+									<div class="testimonial-author-info">
+										<h6>Mr. Nick Jonas</h6>
+										<p>CEO of NAVATECH</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Single Testimonial Slide -->
+					<div class="single-testimonial-slide">
+						<div class="row align-items-center">
+							<div class="col-12 col-md-6">
+								<div class="testimonial-thumb">
+									<img src="img/bg-img/14.jpg" alt="">
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="testimonial-content">
+									<!-- Section Heading -->
+									<div class="section-heading">
+										<h2>TESTIMONIAL</h2>
+										<p>Some kind words from clients about Alazea</p>
+									</div>
+									<p>“Alazea is a pleasure to work with. Their ideas are
+										creative, they came up with imaginative solutions to some
+										tricky issues, their landscaping and planting contacts are
+										equally excellent we have a beautiful but also manageable
+										garden as a result. Thank you!”</p>
+									<div class="testimonial-author-info">
+										<h6>Mr. Nazrul Islam</h6>
+										<p>CEO of NAVATECH</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Single Testimonial Slide -->
+					<div class="single-testimonial-slide">
+						<div class="row align-items-center">
+							<div class="col-12 col-md-6">
+								<div class="testimonial-thumb">
+									<img src="img/bg-img/15.jpg" alt="">
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="testimonial-content">
+									<!-- Section Heading -->
+									<div class="section-heading">
+										<h2>TESTIMONIAL</h2>
+										<p>Some kind words from clients about Alazea</p>
+									</div>
+									<p>“Alazea is a pleasure to work with. Their ideas are
+										creative, they came up with imaginative solutions to some
+										tricky issues, their landscaping and planting contacts are
+										equally excellent we have a beautiful but also manageable
+										garden as a result. Thank you!”</p>
+									<div class="testimonial-author-info">
+										<h6>Mr. Jonas Nick</h6>
+										<p>CEO of NAVATECH</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+	<!-- ##### Testimonial Area End ##### -->
+
+	<!-- ##### Product Area Start ##### -->
+	<section class="new-arrivals-products-area bg-gray section-padding-100">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<!-- Section Heading -->
+				<div class="section-heading text-center">
+					<h2>NEW ARRIVALS</h2>
+					<p>We have the latest products, it must be exciting for you</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+
+			<!-- Single Product Area -->
+			<div class="col-12 col-sm-6 col-lg-3">
+				<div class="single-product-area mb-50 wow fadeInUp"
+					data-wow-delay="100ms">
+					<!-- Product Image -->
+					<div class="product-img">
+						<a href="shop-details.html"><img src="img/bg-img/9.jpg" alt=""></a>
+						<!-- Product Tag -->
+						<div class="product-tag">
+							<a href="#">Hot</a>
+						</div>
+						<div class="product-meta d-flex">
+							<a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
+							<a href="cart.html" class="add-to-cart-btn">Add to cart</a> <a
+								href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+						</div>
+					</div>
+					<!-- Product Info -->
+					<div class="product-info mt-15 text-center">
+						<a href="shop-details.html">
+							<p>Cactus Flower</p>
+						</a>
+						<h6>$10.99</h6>
+					</div>
+				</div>
+			</div>
+
+			<!-- Single Product Area -->
+			<div class="col-12 col-sm-6 col-lg-3">
+				<div class="single-product-area mb-50 wow fadeInUp"
+					data-wow-delay="200ms">
+					<!-- Product Image -->
+					<div class="product-img">
+						<a href="shop-details.html"><img src="img/bg-img/10.jpg"
+							alt=""></a>
+						<div class="product-meta d-flex">
+							<a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
+							<a href="cart.html" class="add-to-cart-btn">Add to cart</a> <a
+								href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+						</div>
+					</div>
+					<!-- Product Info -->
+					<div class="product-info mt-15 text-center">
+						<a href="shop-details.html">
+							<p>Cactus Flower</p>
+						</a>
+						<h6>$10.99</h6>
+					</div>
+				</div>
+			</div>
+
+			<!-- Single Product Area -->
+			<div class="col-12 col-sm-6 col-lg-3">
+				<div class="single-product-area mb-50 wow fadeInUp"
+					data-wow-delay="300ms">
+					<!-- Product Image -->
+					<div class="product-img">
+						<a href="shop-details.html"><img src="img/bg-img/11.jpg"
+							alt=""></a>
+						<div class="product-meta d-flex">
+							<a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
+							<a href="cart.html" class="add-to-cart-btn">Add to cart</a> <a
+								href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+						</div>
+					</div>
+					<!-- Product Info -->
+					<div class="product-info mt-15 text-center">
+						<a href="shop-details.html">
+							<p>Cactus Flower</p>
+						</a>
+						<h6>$10.99</h6>
+					</div>
+				</div>
+			</div>
+
+			<!-- Single Product Area -->
+			<div class="col-12 col-sm-6 col-lg-3">
+				<div class="single-product-area mb-50 wow fadeInUp"
+					data-wow-delay="400ms">
+					<!-- Product Image -->
+					<div class="product-img">
+						<a href="shop-details.html"><img src="img/bg-img/12.jpg"
+							alt=""></a>
+						<!-- Product Tag -->
+						<div class="product-tag sale-tag">
+							<a href="#">Hot</a>
+						</div>
+						<div class="product-meta d-flex">
+							<a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
+							<a href="cart.html" class="add-to-cart-btn">Add to cart</a> <a
+								href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+						</div>
+					</div>
+					<!-- Product Info -->
+					<div class="product-info mt-15 text-center">
+						<a href="shop-details.html">
+							<p>Cactus Flower</p>
+						</a>
+						<h6>$10.99</h6>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-12 text-center">
+				<a href="#" class="btn alazea-btn">View All</a>
+			</div>
+
+		</div>
+	</div>
+	</section>
+	<!-- ##### Product Area End ##### -->
+
+	<!-- ##### Blog Area Start ##### -->
+	<section class="alazea-blog-area section-padding-100-0">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<!-- Section Heading -->
+				<div class="section-heading text-center">
+					<h2>LATEST NEWS</h2>
+					<p>The breaking news about Gardening &amp; House plants</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-center">
+
+			<!-- Single Blog Post Area -->
+			<div class="col-12 col-md-6 col-lg-4">
+				<div class="single-blog-post mb-100">
+					<div class="post-thumbnail mb-30">
+						<a href="single-post.html"><img src="img/bg-img/6.jpg" alt=""></a>
+					</div>
+					<div class="post-content">
+						<a href="single-post.html" class="post-title">
+							<h5>Garden designers across the country forecast ideas
+								shaping the gardening world in 2018</h5>
+						</a>
+						<div class="post-meta">
+							<a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>
+								20 Jun 2018</a> <a href="#"><i class="fa fa-user"
+								aria-hidden="true"></i> Alan Jackson</a>
+						</div>
+						<p class="post-excerpt">Integer luctus diam ac scerisque
+							consectetur. Vimus ottawas nec lacus sit amet. Aenean interdus
+							mid vitae.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Single Blog Post Area -->
+			<div class="col-12 col-md-6 col-lg-4">
+				<div class="single-blog-post mb-100">
+					<div class="post-thumbnail mb-30">
+						<a href="single-post.html"><img src="img/bg-img/7.jpg" alt=""></a>
+					</div>
+					<div class="post-content">
+						<a href="single-post.html" class="post-title">
+							<h5>2018 Midwest Tree and Shrub Conference: Resilient Plants
+								for a Lasting Landscape</h5>
+						</a>
+						<div class="post-meta">
+							<a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>
+								20 Jun 2018</a> <a href="#"><i class="fa fa-user"
+								aria-hidden="true"></i> Christina Aguilera</a>
+						</div>
+						<p class="post-excerpt">Integer luctus diam ac scerisque
+							consectetur. Vimus ottawas nec lacus sit amet. Aenean interdus
+							mid vitae.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Single Blog Post Area -->
+			<div class="col-12 col-md-6 col-lg-4">
+				<div class="single-blog-post mb-100">
+					<div class="post-thumbnail mb-30">
+						<a href="single-post.html"><img src="img/bg-img/8.jpg" alt=""></a>
+					</div>
+					<div class="post-content">
+						<a href="single-post.html" class="post-title">
+							<h5>The summer coming up, it’s time for both us and the
+								flowers to soak up the sunshine</h5>
+						</a>
+						<div class="post-meta">
+							<a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>
+								19 Jun 2018</a> <a href="#"><i class="fa fa-user"
+								aria-hidden="true"></i> Mason Jenkins</a>
+						</div>
+						<p class="post-excerpt">Integer luctus diam ac scerisque
+							consectetur. Vimus ottawas nec lacus sit amet. Aenean interdus
+							mid vitae.</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	</section>
+	<!-- ##### Blog Area End ##### -->
+
+	<!-- ##### Subscribe Area Start ##### -->
+	<section class="subscribe-newsletter-area"
+		style="background-image: url(img/bg-img/subscribe.png);">
+	<div class="container">
+		<div class="row align-items-center justify-content-between">
+			<div class="col-12 col-lg-5">
+				<!-- Section Heading -->
+				<div class="section-heading mb-0">
+					<h2>Join the Newsletter</h2>
+					<p>Subscribe to our newsletter and get 10% off your first
+						purchase</p>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
+				<div class="subscribe-form">
+					<form action="#" method="get">
+						<input type="email" name="subscribe-email" id="subscribeEmail"
+							placeholder="Enter your email">
+						<button type="submit" class="btn alazea-btn">SUBSCRIBE</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Subscribe Side Thumbnail -->
+	<div class="subscribe-side-thumb wow fadeInUp" data-wow-delay="500ms">
+		<img class="first-img" src="img/core-img/leaf.png" alt="">
+	</div>
+	</section>
+	<!-- ##### Subscribe Area End ##### -->
+
+	<!-- ##### Contact Area Start ##### -->
+	<section class="contact-area section-padding-100-0">
+	<div class="container">
+		<div class="row align-items-center justify-content-between">
+			<div class="col-12 col-lg-5">
+				<!-- Section Heading -->
+				<div class="section-heading">
+					<h2>GET IN TOUCH</h2>
+					<p>Send us a message, we will call back later</p>
+				</div>
+				<!-- Contact Form Area -->
+				<div class="contact-form-area mb-100">
+					<form action="#" method="post">
+						<div class="row">
+							<div class="col-12 col-sm-6">
+								<div class="form-group">
+									<input type="text" class="form-control" id="contact-name"
+										placeholder="Your Name">
+								</div>
+							</div>
+							<div class="col-12 col-sm-6">
+								<div class="form-group">
+									<input type="email" class="form-control" id="contact-email"
+										placeholder="Your Email">
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<input type="text" class="form-control" id="contact-subject"
+										placeholder="Subject">
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<textarea class="form-control" name="message" id="message"
+										cols="30" rows="10" placeholder="Message"></textarea>
+								</div>
+							</div>
+							<div class="col-12">
+								<button type="submit" class="btn alazea-btn mt-15">Send
+									Message</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="col-12 col-lg-6">
+				<!-- Google Maps -->
+				<div class="map-area mb-100"></div>
+			</div>
+		</div>
+	</div>
+	</section>
+	<!-- ##### Contact Area End ##### -->
+
+	<!-- ##### Footer Area Start ##### -->
+	<footer class="footer-area bg-img"
+		style="background-image: url(img/bg-img/3.jpg);"> <!-- Main Footer Area -->
+	<div class="main-footer-area">
+		<div class="container">
+			<div class="row">
+
+				<!-- Single Footer Widget -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="single-footer-widget">
+						<div class="footer-logo mb-30">
+							<a href="#"><img src="img/core-img/logo.png" alt=""></a>
+						</div>
+						<p>Lorem ipsum dolor sit samet, consectetur adipiscing elit.
+							India situs atione mantor</p>
+						<div class="social-info">
+							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Single Footer Widget -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="single-footer-widget">
+						<div class="widget-title">
+							<h5>QUICK LINK</h5>
+						</div>
+						<nav class="widget-nav">
+						<ul>
+							<li><a href="#">Purchase</a></li>
+							<li><a href="#">FAQs</a></li>
+							<li><a href="#">Payment</a></li>
+							<li><a href="#">News</a></li>
+							<li><a href="#">Return</a></li>
+							<li><a href="#">Advertise</a></li>
+							<li><a href="#">Shipping</a></li>
+							<li><a href="#">Career</a></li>
+							<li><a href="#">Orders</a></li>
+							<li><a href="#">Policities</a></li>
+						</ul>
+						</nav>
+					</div>
+				</div>
+
+				<!-- Single Footer Widget -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="single-footer-widget">
+						<div class="widget-title">
+							<h5>BEST SELLER</h5>
+						</div>
+
+						<!-- Single Best Seller Products -->
+						<div class="single-best-seller-product d-flex align-items-center">
+							<div class="product-thumbnail">
+								<a href="shop-details.html"><img src="img/bg-img/4.jpg"
+									alt=""></a>
+							</div>
+							<div class="product-info">
+								<a href="shop-details.html">Cactus Flower</a>
+								<p>$10.99</p>
+							</div>
+						</div>
+
+						<!-- Single Best Seller Products -->
+						<div class="single-best-seller-product d-flex align-items-center">
+							<div class="product-thumbnail">
+								<a href="shop-details.html"><img src="img/bg-img/5.jpg"
+									alt=""></a>
+							</div>
+							<div class="product-info">
+								<a href="shop-details.html">Tulip Flower</a>
+								<p>$11.99</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Single Footer Widget -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="single-footer-widget">
+						<div class="widget-title">
+							<h5>CONTACT</h5>
+						</div>
+
+						<div class="contact-information">
+							<p>
+								<span>Address:</span> 505 Silk Rd, New York
+							</p>
+							<p>
+								<span>Phone:</span> +1 234 122 122
+							</p>
+							<p>
+								<span>Email:</span> info.deercreative@gmail.com
+							</p>
+							<p>
+								<span>Open hours:</span> Mon - Sun: 8 AM to 9 PM
+							</p>
+							<p>
+								<span>Happy hours:</span> Sat: 2 PM to 4 PM
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer Bottom Area -->
+	<div class="footer-bottom-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="border-line"></div>
+				</div>
+				<!-- Copywrite Text -->
+				<div class="col-12 col-md-6">
+					<div class="copywrite-text">
+						<p>
+							&copy; Copyright &copy;
+							<script>
+								document.write(new Date().getFullYear());
+							</script>
+							- Colorlib All rights reserved | More Templates <a
+								href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a>
+							- Collect from <a href="http://www.cssmoban.com/" title="网页模板"
+								target="_blank">网页模板</a>
+
+						</p>
+					</div>
+				</div>
+				<!-- Footer Nav -->
+				<div class="col-12 col-md-6">
+					<div class="footer-nav">
+						<nav>
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Service</a></li>
+							<li><a href="#">Portfolio</a></li>
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</footer>
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<script src="js/bootstrap/popper.min.js"></script>
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+	<script src="js/plugins/plugins.js"></script>
+	<script src="js/active.js"></script>
+</body>
+
 </html>
