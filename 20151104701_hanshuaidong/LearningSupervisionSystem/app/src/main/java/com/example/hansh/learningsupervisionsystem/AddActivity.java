@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,11 +12,13 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import org.litepal.LitePal;
+import org.litepal.tablemanager.Connector;
 
 public class AddActivity extends Activity {
-    private static final String TAG = "RegistActivity";
+    private static final String TAG = "AddActivity";
     private String str_task_content, str_tv_date, str_tv_time;
     private TextView tv_main_title, tv_back;
     private TextView tv_date = null;
@@ -53,6 +56,28 @@ public class AddActivity extends Activity {
                 Log.e(TAG, "任务内容：" + str_task_content);
                 Log.e(TAG, "日期：" + str_tv_date);
                 Log.e(TAG, "时间：" + str_tv_time);
+
+                if (TextUtils.isEmpty(str_task_content)) {
+                    Toast.makeText(AddActivity.this, "请输入您的任务内容", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(str_tv_date)) {
+                    Toast.makeText(AddActivity.this, "选择任务结束日期", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(str_tv_time)) {
+                    Toast.makeText(AddActivity.this, "选择任务结束时间", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                //连接数据库
+                Connector.getDatabase();
+                Renwu renwu = new Renwu();
+                renwu.setTask_content(str_task_content);
+                renwu.setDate(str_tv_date);
+                renwu.setTime(str_tv_time);
+                renwu.save();
+                Toast.makeText(AddActivity.this, "添加任务成功", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }
