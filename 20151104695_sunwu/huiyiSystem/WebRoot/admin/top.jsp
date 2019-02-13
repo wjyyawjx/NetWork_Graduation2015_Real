@@ -70,7 +70,7 @@ String path = request.getContextPath();
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand"><img src="../images/logo.png"></img></a>
-                    <font style="float:right;padding:30px 20px 20px 900px;color:white">欢迎您：<strong><c:if test="${sessionScope.userType==0}">
+                    <font style="float:right;padding:30px 20px 20px 800px;color:white">欢迎您：<strong><c:if test="${sessionScope.userType==0}">
 						      系统管理员
 						 </c:if>
 						 <c:if test="${sessionScope.userType==1}">

@@ -84,7 +84,7 @@ $(document).ready(function() {
 </head>
 <body>
 <dl class="admin_login">
- <dt> <strong>会议管理系统登录</strong> <em>Data management system</em> </dt>
+ <dt> <strong>会议管理系统登录</strong> <em>Conference room management system</em> </dt>
   <form name="ThisForm" method="POST" action="">
     <dd class="user_icon">
      <input type="text" id="userName" name="userName" placeholder="请输入用户名" class="login_txtbx"/>

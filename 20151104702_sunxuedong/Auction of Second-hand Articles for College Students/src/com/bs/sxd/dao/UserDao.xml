@@ -4,11 +4,10 @@
 
 <mapper namespace="com.bs.sxd.dao.UserDao">
   <!-- 查询用户 -->
-  <select id="findUser" parameterType="String" resultType="user">
+  <select id="findUser" parameterType="String" resultType="User">
     select *
     from user
     where username = #{username}
     and password = #{password}
-    and type = '1'
   </select>
 </mapper>
