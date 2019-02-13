@@ -27,16 +27,22 @@ public class UserController {
 	 * µÇÂ½
 	 */
 	@RequestMapping(value="/login.action", method = RequestMethod.POST)
-	public String login(String username, String password, Model model, HttpSession session) {
+	public String login(String username, String password,Model model, HttpSession session) {
 		User user = userService.findUser(username, password);
 		if (user != null) {
+		 if(user.getType() == 0){
 			 session.setAttribute("USER_SESSION", user);
-			 
-			return "main";
+			   return "main";
+		}else{
+			return "admin";
 		}
+		  
+			 
+		}else
+		{
 		model.addAttribute("msg", "ÕËºÅ»òÃÜÂë´íÎó£¡£¡");
 		return "login";
-		
+		}
 	}
 	/**
 	 * ÍË³öµÇÂ¼

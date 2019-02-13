@@ -68,6 +68,7 @@
 function check(){
     var usercode = $("#username").val();
     var password = $("#password").val();
+    var type = $("#type").val();
     if(username=="" || password==""){
     	$("#message").text("账号或密码不能为空！");
         return false;
@@ -120,7 +121,8 @@ function check(){
 				<input Name="password" id="password" type="password" placeholder="请输入密码..." size="32"/>
 			</div>
 			
-			<button type="submit" >登<span style="width:20px;"></span>录</button>
+			<button type="submit" >登录</button>
+			<button type="submit" >注册</button>
 		</form>
 	</div>
 </div>
