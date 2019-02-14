@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>植物培养</title>
-<link rel="icon" href="${pageContext.request.contextPath}/img/core-img/favicon.ico">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/style.css">
+<link rel="icon"
+	href="${pageContext.request.contextPath}/img/core-img/favicon.ico">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/style.css">
 </head>
 <body>
 	<!-- Preloader -->
@@ -26,25 +28,30 @@
 						<div class="top-header-meta">
 							<a href="#"> <i class="fa fa-envelope-o" aria-hidden="true"></i>
 								<span>邮箱:Ydq7543@hotmail.com</span>
-							</a> 
-							<a href="#"> <i class="fa fa-phone" aria-hidden="true"></i>
+							</a> <a href="#"> <i class="fa fa-phone" aria-hidden="true"></i>
 								<span>电话: +1 234 122 122</span>
 							</a>
 						</div>
 						<div class="top-header-meta d-flex">
 							<div class="login">
-								<li class="dropdown head-dpdn">
-									<a href="${pageContext.request.contextPath }/TZlogin.action" aria-expanded="false">
-										<i class="fa fa-user" aria-hidden="true"></i>
-										<%if(session.getAttribute("USER_SESSION") != null){ %>
-											${USER_SESSION.username} <%}else{ %>
-											未登陆<%} %>
-									</a>
-								</li>
+								<%
+									if (session.getAttribute("USER_SESSION") != null) {
+								%>
+								${USER_SESSION.username}
+								<%
+									} else {
+								%>
+								<a href="${pageContext.request.contextPath }/TZlogin.action"
+									aria-expanded="false"><i class="fa fa-user"></i>未登陆</a>
+								<%
+									}
+								%>
 							</div>
+
 							<div class="cart">
-								<li class="dropdown head-dpdn"><a href="${pageContext.request.contextPath }/help.action"><i
-						class="fa fa-question-circle" aria-hidden="true"></i> 帮助</a></li>
+								<a href="${pageContext.request.contextPath }/help.action"> <i
+									class="fa fa-question-circle" aria-hidden="true"></i> 帮助
+								</a>
 							</div>
 						</div>
 					</div>
@@ -57,8 +64,7 @@
 			<div class="container">
 				<!-- Menu -->
 				<nav class="classy-navbar justify-content-between" id="alazeaNav">
-				<!-- Nav Brand --> 
-				<a href="index.jsp" class="nav-brand"><img
+				<!-- Nav Brand --> <a href="index.jsp" class="nav-brand"><img
 					src="img/core-img/logo.png" alt=""></a>
 				<div class="classy-navbar-toggler">
 					<span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -83,7 +89,7 @@
 									<li><a href="shop.html">购买</a>
 										<ul class="dropdown">
 											<li><a href="shop.html">购买</a></li>
-											<li><a href="shop-details.html">商店  细节</a></li>
+											<li><a href="shop-details.html">商店 细节</a></li>
 											<li><a href="cart.html">购物车</a></li>
 											<li><a href="checkout.html">结帐</a></li>
 										</ul></li>
@@ -148,10 +154,10 @@
 						<div class="hero-slides-content text-center">
 							<h2>植物存在于天气和周围的光线中他们</h2>
 							<p>我的朋友们，我的朋友们。我的天，我的天，我的天porttitor。
-							我的天啊，我的天啊语。我的天啊，我的天啊，我的天啊。</p>
+								我的天啊，我的天啊语。我的天啊，我的天啊，我的天啊。</p>
 							<div class="welcome-btn-group">
-								<a href="#" class="btn alazea-btn mr-30">开始</a> <a
-									href="#" class="btn alazea-btn active">联系我们</a>
+								<a href="#" class="btn alazea-btn mr-30">开始</a> <a href="#"
+									class="btn alazea-btn active">联系我们</a>
 							</div>
 						</div>
 					</div>
@@ -172,8 +178,8 @@
 							<h2>植物存在于天气和周围的光线中他们</h2>
 							<p>我的朋友们，我的朋友们。我的天，我的天，我的天porttitor。我的天啊，我的天啊语。我的天啊，我的天啊，我的天啊。</p>
 							<div class="welcome-btn-group">
-								<a href="#" class="btn alazea-btn mr-30">开始</a> <a
-									href="#" class="btn alazea-btn active">联系我们</a>
+								<a href="#" class="btn alazea-btn mr-30">开始</a> <a href="#"
+									class="btn alazea-btn active">联系我们</a>
 							</div>
 						</div>
 					</div>
@@ -213,8 +219,7 @@
 						<!-- Content -->
 						<div class="service-content">
 							<h5>植物保健</h5>
-							<p>这是一种很好的方法我的天啊，我的天啊。
-							的服务。这是一种很好的方法我的天啊，我的天啊。的服务。</p>
+							<p>这是一种很好的方法我的天啊，我的天啊。 的服务。这是一种很好的方法我的天啊，我的天啊。的服务。</p>
 						</div>
 					</div>
 
