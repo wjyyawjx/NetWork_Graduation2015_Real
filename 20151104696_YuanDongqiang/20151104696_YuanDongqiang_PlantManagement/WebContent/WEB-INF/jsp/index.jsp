@@ -34,18 +34,20 @@
 						</div>
 						<div class="top-header-meta d-flex">
 							<div class="login">
+							<a href="${pageContext.request.contextPath }/TZlogin.action"
+									aria-expanded="false"><i class="fa fa-user"></i>
 								<%
 									if (session.getAttribute("USER_SESSION") != null) {
 								%>
-								${USER_SESSION.username}
+								${USER_SESSION.u_name}
 								<%
 									} else {
 								%>
-								<a href="${pageContext.request.contextPath }/TZlogin.action"
-									aria-expanded="false"><i class="fa fa-user"></i>未登陆</a>
+								未登陆
 								<%
 									}
 								%>
+								</a>
 							</div>
 
 							<div class="cart">

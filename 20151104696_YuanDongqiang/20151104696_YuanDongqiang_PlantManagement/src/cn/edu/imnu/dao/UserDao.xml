@@ -14,20 +14,24 @@
 			</if>
 		</where>
 	</select>
+	<!-- 查询邮箱 -->
+	<select id="findUseremail" parameterType="String" resultType="user">
+		select * from users where u_email = #{u_email}
+	</select>
 	<!-- 注册 -->
 	<insert id="addUser" parameterType="user">
-		insert into user(
-			code,
-			username,
-			password,
-			phone,
-			email
+		insert into users(
+		u_code,
+		u_name,
+		u_pwd,
+		u_email,
+		u_type
 		)
-		values(#{code},
-			#{username},
-			#{password},
-			#{phone},
-			#{email}
+		values(#{u_code},
+		#{u_name},
+		#{u_pwd},
+		#{u_email},
+		#{u_type}
 		)
 	</insert>
 </mapper>

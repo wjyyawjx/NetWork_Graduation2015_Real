@@ -30,4 +30,11 @@ public class UserServiecImpl implements UserService {
 	public int addUser(User user) {
 		return userDao.addUser(user);
 	}
+
+	// 查询邮箱
+	@Override
+	public User findUseremail(String u_email) {
+		return userDao.findUseremail(u_email);
+	}
+
 }

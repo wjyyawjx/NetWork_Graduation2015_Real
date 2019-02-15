@@ -39,10 +39,22 @@ public class UserController {
 	@RequestMapping(value = "/registercode.action")
 	@ResponseBody
 	// 注册时判断账号是否存在
-	public JSONObject judgeCode(String usercode) {
+	public JSONObject registercode(String usercode) {
 		User u = null;
-		System.out.println(usercode);
 		u = userService.findUser(usercode, null);
+		HashMap<String, String> map = new HashMap<String, String>();
+		if (u != null) {
+			map.put("status", "error");
+		}
+		JSONObject json = JSONObject.fromObject(map);
+		return json;
+	}
+	@RequestMapping(value = "/registeremail.action")
+	@ResponseBody
+	// 注册时判断邮箱是否存在
+	public JSONObject registeremail(String u_email) {
+		User u = null;
+		u = userService.findUseremail(u_email);
 		HashMap<String, String> map = new HashMap<String, String>();
 		if (u != null) {
 			map.put("status", "error");
@@ -53,13 +65,15 @@ public class UserController {
 
 	// 注册
 	@RequestMapping(value = "/add.action")
-	@ResponseBody
 	public String register(User user, Model model, HttpSession session) {
+		String u_type = "普通用户";
+		user.setU_type(u_type);
+		System.out.println(user.getU_code());
 		int rows = userService.addUser(user);
 		if (rows != 0) {
 			return "redirect:TZlogin.action";
 		}
-		model.addAttribute("msg", "账号或密码错误，请重新输入！！");
+		model.addAttribute("msg", "注册失败，请重新输入！！");
 		return "register";
 	}
 }
