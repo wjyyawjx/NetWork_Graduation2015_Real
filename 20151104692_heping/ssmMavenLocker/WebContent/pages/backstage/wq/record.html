@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>记录表</title>
+<!-- 写java代码 -->
+<script src="../../../res/js/wq/jquery-1.11.2.js"></script>
+<!-- bootstrap网上样式 -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<!-- SweetAlert 所要的两个包 -->
+<script src="../../../res/js/wq/sweetalert.min.js"></script> 
+<link rel="stylesheet" type="text/css" href="../../../res/css/wq/sweetalert.css">
+
+<link rel="stylesheet" type="text/css" href="../../../res/css/wq/record.css">
+<script src="../../../res/js/wq/record.js"></script>
+</head>
+<body>
+<div id="a0">
+		<div id="a1">
+			<h1 style="margin-left:500px;">记录表</h1>
+			<table id="bg" class="table table-striped table-bordered table-hover table-condensed">
+				<caption>
+					<button type="button" class="btn btn-primary" id="add">增加</button>
+					<div class="input-group">
+						<span class="input-group-btn">
+							<button class="btn btn-default" id="a11" type="button">
+								Go!
+							</button>
+						</span>
+						<input type="text" class="form-control" id="a12" placeholder="姓名搜索" style="width:300px;">
+					</div><!-- /input-group -->
+				</caption>
+				<thead>
+					<th class="th">记录编号</th>
+					<th class="th">用户编号</th>
+					<th class="th">柜子编号</th>
+					<th style="font-size:20px;width:230px;" >存入时间</th>
+					<th style="font-size:20px;width:230px;" >取出时间</th>
+					<th class="th">放置时间</th>
+					<th class="th">付款金额</th>
+					<th class="th">是否逾期</th>
+					<th class="th">逾期金额</th>
+					<th style="font-size:20px;width:140px;">收件码</th>
+					<th class="th">存放物品</th>
+					<th style="width:180px;font-size:20px;">操作</th>
+				</thead>
+				<tbody id="tb">
+					
+				</tbody>
+			</table>
+			<!-- 分页 -->
+			<table width="1080" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:10px;">
+			  <tr>
+			    <td width="820" height="40" align="center">
+					<div class="p_page" style="text-align:center">
+			
+			                
+					</div>
+				</td>
+			  </tr>
+			</table>
+			
+		</div>
+		<div id="a2">
+			<h3 style="margin-left:150px;">操作页面</h3>
+			<form style="padding-top:40px;" class="form-horizontal" id="a3" role="form">
+				<input type="hidden" id="reId" name="reId"> 
+				<div class="form-group">
+					<label for="firstname" class="col-sm-2 control-label">用户</label>
+					<div class="col-sm-10">
+						<select id="uId" name="uId" class="form-control"  style="width:300px;">
+							<option>==========请选择用户名==========</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="firstname" class="col-sm-2 control-label">柜子</label>
+					<div class="col-sm-10">
+						<select id="caId" name="caId" class="form-control"  style="width:300px;">
+							<option>===========请选择柜子==========</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="firstname" class="col-sm-2 control-label">存入时间</label>
+					<div class="col-sm-10">
+						<input type="date" name="reDeposit" class="form-control" id="reDeposit" style="width:300px;" placeholder="请输入存入时间">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="firstname" class="col-sm-2 control-label">取出时间</label>
+					<div class="col-sm-10">
+						<input type="date" name="reOut" class="form-control" id="reOut" style="width:300px;" placeholder="请输入取出时间">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="firstname" class="col-sm-2 control-label">存放时间</label>
+					<div class="col-sm-10">
+						<input type="text" name="reTime" class="form-control" id="reTime" style="width:300px;" placeholder="请输入存放时间">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="firstname" class="col-sm-2 control-label">付款金额</label>
+					<div class="col-sm-10">
+						<input type="text" name="reMoney" class="form-control" id="reMoney" style="width:300px;" placeholder="请输入付款金额">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="firstname" class="col-sm-2 control-label">是否逾期</label>
+					<div class="col-sm-10">
+						<input type="text" name="reOverdue" class="form-control" id="reOverdue" style="width:300px;" placeholder="请输入是否逾期">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="firstname" class="col-sm-2 control-label">逾期收费</label>
+					<div class="col-sm-10">
+						<input type="text" name="reCharge" class="form-control" id="reCharge" style="width:300px;" placeholder="请输入逾期收费">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="firstname" class="col-sm-2 control-label">取件码</label>
+					<div class="col-sm-10">
+						<input type="text" name="reCode" class="form-control" id="reCode" style="width:300px;" placeholder="请输入取件码">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="firstname" class="col-sm-2 control-label">存放物品</label>
+					<div class="col-sm-10">
+						<input type="text" name="reCodeyin" class="form-control" id="reCodeyin" style="width:300px;" placeholder="请输物品">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="button" id="cabinetSubmit" class="btn btn-default">提交</button>
+						<button type="button" id="fh" class="btn btn-default">返回</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+	</div>
+</body>
+</html>
