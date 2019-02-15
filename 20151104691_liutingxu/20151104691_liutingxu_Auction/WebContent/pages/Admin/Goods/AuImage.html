@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>商品图片管理</title>
+<link rel="stylesheet" type="text/css" href="../../res/js/sweetalert.css">
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+<script type="text/javascript" src="../../res/js/lj/AuImage.js"></script>
+<script src="../../res/js/sweetalert.min.js"></script> 
+<script src="../../res/js/base.js"></script> 
+<link href="../../res/css/cst/auindent.css" rel="stylesheet">
+</head>
+<!--  <style>
+	thead tr th,#body tr td{
+		text-align: center;
+	}
+	#queryForm{
+		margin-left: 100px;
+		margin: auto;
+	}
+	#myTable{
+		margin-top: 100px;
+	}
+	.form-horizontal div{
+	
+		font-family: '微软雅黑';
+		margin-top: 12px;
+		
+	}
+	.form-horizontal{
+		margin-top: 20px;
+	}
+	.control-label{
+		font-size: 19px;
+	}
+	.btn{
+		margin-left: 8px;
+	}
+	#page{
+		width:400px;
+		height:100px;
+		margin-left:500px;
+	}
+	.active{
+		 -webkit-user-select:none;
+	     -moz-user-select:none;
+	     -ms-user-select:none;
+	     user-select:none;
+	}
+	.pagination{
+		margin-left: 700px;
+	}
+</style>-->
+<body>
+	<div class="table-responsive">
+	<form id="queryForm">
+				<input type="text" class="textCss" id="comIds"  name="comId" placeholder="请输入商品id">
+				<input type="text" class="textCss" id="imTypes"  name="imType" placeholder="请输入图片类型">
+				<button type="button" id="query" class="btn btn-success">查询</button>
+				<button type="button" class="btn btn-primary" id="insertBtn" >增加</button>
+	</form>
+	<table id="myTable" class="table table-hover table-bordered table-striped">
+		<thead>
+			<tr>
+				  <th>图片id</th>
+			      <th>商品id</th>
+			      <th>商品图片</th>
+			      <th>图片类型</th>
+			      <th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="body">
+		</tbody>
+</table>
+</div>
+<div id="divBody"></div>
+
+	<form id="myFrom" class="form-horizontal" action="../../image/addOrUpdate.action" enctype="multipart/form-data" method="post" >
+			<fieldset>
+				<div id="legend" class="">
+					<legend class="">商品图片表操作</legend>
+				</div>
+				<div class="control-group">
+					<input type="hidden" name="imId" id="imId"/>
+					<span class="control-label" for="input01">商品id:</span>
+					<input type="text" name="comId" id="comName" placeholder="请输入商品名称" class="input-xlarge"/>
+				</div>
+				<div class="control-group">
+					<span class="control-label" for="input01">商品图片:</span>
+				  <input type="file" name="imUploads" id="flPrice"/>
+				</div>
+				
+				<div class="control-group">
+					<span class="control-label" for="input01">商品类型:</span>
+					<input type="text" name="imType" id="typeIds" placeholder="请输入商品类型" class="input-xlarge"/>
+				</div>
+				<div class="control-group" id="groupInput"> 
+					<label class="control-label"></label>
+					<!-- Button -->
+					<div class="controls">
+						<input type="submit"  onclick="formSubmit()" id="sub" class="btn btn-success" value="确认"/>&nbsp;&nbsp;&nbsp;
+						<input type="button" class="btn btn-danger" id="exit" value="取消"/>
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+
+
+
+
+<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="hideFrom();">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					商品图片操作
+				</h4>
+			</div>
+			<div class="modal-body">
+						<form class="form-horizontal"
+					action="../../image/addOrUpdate.action"
+					enctype="multipart/form-data" method="post" id="flowerForm" name="flowerForm">
+					<input type="hidden" name="imId" id="flId">
+					<fieldset>
+						<div id="legend" class="">
+						</div>
+						<div class="control-group">
+		
+							<input type="hidden" name="typeId" id="typeId"/>
+							<lable class="control-label" for="input01">商品id</lable>
+							<div class="controls">
+							<input type="text" placeholder="请输入商品id" name="comId" id="comName" class="input-xlarge">
+							</div>
+						</div>
+		
+						<div class="control-group">
+		
+							<lable class="control-label" for="input01">商品图片</lable>
+							<div class="controls">
+								<input type="file" placeholder="请输入图片地址" name="imUploads" id="flPrice" class="input-xlarge">
+							</div>
+						</div>
+						
+					<div class="control-group">
+				
+						<lable class="control-label">商品类型</lable>
+						<div class="controls">
+							<input type="text" placeholder="请输人图片类型" name="imType" id="typeIds" class="input-xlarge">
+						</div>
+				
+					</div>
+			</fieldset>
+			
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" onclick="hideFrom();" >关闭
+				</button>
+				<input type="submit" onclick="formSubmit()" class="btn btn-primary" id="sub"  value="提交"/>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>-->
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<ul class="pagination">
+	</ul>	
+</body>
+</html>

@@ -1,0 +1,141 @@
+*{ margin: 0; padding: 0}
+body { font-family: "宋体"; line-height: 1; font-size: 12px; color: #fff; background: #fff}
+.clearfix:after { content: "\20"; display: block; height: 0; clear: both; visibility: hidden}
+.clearfix { display: inline-block; }
+* html .clearfix { height:1%; }
+.clearfix { display:block; }
+.clear { clear:both; font-size:0; height:0; line-height:0; overflow:hidden}
+a{ color: #a00; text-decoration: none;}
+a:hover { color: #f60; text-decoration: underline;}
+img { border: 0}
+ul,li { list-style: none}
+.l_tab td { padding: 5px; color: #000}
+pre {white-space: pre-wrap;
+word-wrap: break-word;}
+
+.admin_login_warp { background: #333}
+.admin_login { width: 500px; margin: 100px auto; background: #fff}
+.admin_login_title { height: 40px;line-height: 40px; background: #a00; font-size: 16px; font-weight: bolder; padding: 0 10px}
+.admin_login_title strong { font-size: 25px;}
+.admin_form { padding: 20px}
+
+.admin_header{ background: #a00;}
+.admin_header_wrap { height: 64px}
+.admin_header_logo { float: left; font-size: 30px; font-weight: bolder; line-height: 64px; color: #fff; padding: 0 0 0 20px}
+.admin_header_logo a { color: #fff}
+.admin_header_logo a:hover { color: #ff0; text-decoration: none}
+.admin_header_right { float: right; line-height: 64px; font-size: 14px; padding: 0 20px 0 0; font-weight: bolder;}
+.admin_header_right a { color: #fff;}
+.admin_header_right a:hover { color: #ff0; text-decoration: none}
+
+.admin_left { background: #006969}
+.admin_nav { padding: 0 10px 10px 10px;}
+.admin_nav p { line-height: 30px; margin: 10px 0 0 0; cursor: pointer; background: #008888; padding: 0 10px; font-weight: bolder;}
+.admin_nav div { line-height: 30px; display: none}
+.admin_nav div a { display: block; border-bottom: 1px solid #009e9e; padding: 0 0 0 30px; background: #00aeae;color: #fff}
+.admin_nav div a:hover { background: #00aaaa; text-decoration: none; color: #fff}
+
+.admin_body { padding: 10px}
+.table_title { background: #eee; color: #000; line-height: 40px; font-size: 16px; border-bottom: 1px solid #bbb; padding: 0 20px; font-weight: bolder;}
+
+.table_form {margin: 20px 0 0 0;}
+.table_form td { padding: 5px 10px; color: #000; }
+.table_list { border: 1px solid #ddd; margin: 20px 0 0 0; border-bottom: 0;}
+.table_list td { padding: 5px 10px; line-height: 30px; color: #000; border-bottom: 1px solid #ddd}
+.table_list th { padding: 5px 10px; line-height: 30px; color: #000; border-bottom: 1px solid #ddd; background: #eee}
+.peger { color: #000; text-align: center; padding: 20px 0 0 0}
+.peger a { color: #a00}
+.peger a:hover {color:#a00}
+
+.content_page { background: #333}
+.wrapper { width: 960px; margin: 0 auto; background: #191919; padding: 0 0 10px 0}
+.header { height: 200px; overflow: hidden}
+.nav { height: 40px; line-height: 40px; background: #800 url(../img/nav.gif) repeat-x}
+.nav p { float: left;}
+.nav p a{ float: left; width: 150px; text-align: center; color: #fff; font-size: 14px; font-weight: bolder;}
+.nav p a:hover { background: #600; text-decoration: none;}
+
+.page_left { float: left; width: 240px; overflow: hidden; padding: 10px 0 0 10px}
+.page_right { float: right; width: 690px; overflow: hidden; padding: 10px 10px 0 0}
+
+
+.index_logoin,.mjjs_box,.works_box,.books_box,.content_box{  background: #424242 url(../img/title.gif) repeat-x;}
+.mjjs_box,.works_box,.books_box,.content_box { margin: 10px 0 0 0}
+.works_box { width: 690px; overflow: hidden;}
+
+
+
+.index_title { height: 25px; line-height: 25px; padding: 0 10px; color: #A4A4A3; font-weight: bolder;}
+.index_title a { color: #A4A4A3}
+.index_title a:hover { color: #f60}
+.login_form { display: block; padding: 10px}
+.login_form td { padding: 5px }
+
+.mjjs_list { padding: 0 10px}
+.mjjs_list li { padding:10px 0; border-bottom: 1px solid #666; line-height: 20px }
+.mjjs_list .pic { float: left; margin: 0 10px 0 0}
+.mjjs_list .name { float: left; width: 150px}
+.mjjs_list .jj { float: left; width: 150px}
+
+.slide { height: 350px}
+
+.works_list { padding: 10px 0 0 10px; width: 750px}
+.works_list li { float: left; background: #000; width: 210px; text-align: center; margin: 0 19px 10px 0; overflow: hidden; padding: 0 0 10px 0;}
+.works_list li .pic { margin: 0 0 10px 0; display: block;}
+
+.books_list { padding: 0 10px; line-height: 20px}
+.books_list li { padding: 5px 0; border-bottom: 1px solid #666}
+.books_list li .cont { color: #888}
+
+.footer{ text-align: center; padding: 20px 0}
+
+.books_btn { height: 40px; line-height: 40px; padding: 10px}
+.books_btn a { display: block;height: 40px;line-height: 40px; color:#fff;font-weight: bolder; font-size: 14px; text-align: center; background: #800;}
+.books_btn a:hover { background:#a00; text-decoration: none; color: #ff0}
+
+.content_text { float: left; padding: 10px; width: 320px}
+.content_text p { font-size:20px; color: #f60; line-height: 30px;}
+.content_text div { line-height: 20px; text-indent: 2em}
+.content_text span {display: block;text-align: right;}
+.content_text span a { color: #f60}
+.content_text span a:hover { color: #f60}
+
+.search_bar { height: 30px; background: #fff; padding: 0 10px; color: #000}
+.search_bar form { float: left; padding: 5px 0 0 0}
+
+.search_page { padding: 50px; text-align: center;}
+.search_title { line-height: 30px; font-size: 14px; margin: 20px 0 0 0; text-align: center;}
+.search_list { padding: 10px 0 0 20px; border-top: 1px dashed #333; margin: 20px 0 0 0}
+.search_list li { padding: 10px 0; border-bottom: 1px dashed #333;}
+.search_list li .s_photo{ margin: 0 10px 0 0; float: left;}
+.search_list li div { line-height: 20px;}
+.search_list li div.s_title { font-size: 14px; font-weight: bolder;}
+.content_page .peger{ color: #fff}
+.login_status{ float: right; padding: 5px 0 0 0; line-height: 20px;}
+.login_box_status { padding: 10px; line-height: 30px; font-size: 14px;}
+.user_singup .table_form td { color: #fff}
+
+.cont_title { font-weight: bold; font-size:20px; color: #f60; line-height: 30px; padding: 20px}
+.cont_text { padding: 0 20px; line-height: 20px;}
+
+.writer_list { padding: 20px;}
+.writer_list li { border-bottom: 1px dashed #333; padding: 10px 0}
+.writer_list li .pic { float: left; margin: 0 10px 0 0}
+.writer_list li .name { font-size: 14px; font-weight: bold; float: left; width: 810px; line-height: 30px;}
+.writer_list li .jj { line-height: 20px; float: left; width: 810px;}
+
+.writer_title { padding: 20px;line-height: 30px; font-size: 20px; font-weight: bold; color: #f60; text-align: center; border-bottom: 1px dashed #333}
+.writer_avatar { float: left; padding: 20px 20px 0 20px}
+.writer_txt { float: left; padding: 20px 0 0 0; width: 500px}
+.writer_cont { padding: 0 0 20px 0; border-bottom: 1px dashed #333;}
+
+.rt_works { padding: 20px}
+.rt_works li { float: left; width: 210px; margin-right: 20px; text-align: center; line-height: 20px; font-weight: bolder;}
+
+.books_wrap .table_form td { color: #fff}
+.books_title { font-size: 20px; color: #f60; line-height: 30px; border-bottom: 1px dashed #333; padding:10px}
+.b_books_list { padding: 10px}
+.b_books_list li { padding: 10px 0; line-height: 20px; border-bottom: 1px dashed #333;}
+.b_user { font-weight: bold; color: #777}
+.b_text { }
+.b_info { color: #666}

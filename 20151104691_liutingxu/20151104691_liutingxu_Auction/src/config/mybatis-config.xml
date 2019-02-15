@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!-- 日志 -->
+  <settings>
+  	<setting name="logImpl" value="STDOUT_LOGGING"/>
+  </settings>
+  
+  <typeAliases>
+  	<package name="com.imnu.model"/>
+  </typeAliases>
+  
+  <!-- <mappers>
+	<mapper resource="com/imnu/model/BangSingerMapper.xml"/>
+  </mappers> -->
+</configuration>

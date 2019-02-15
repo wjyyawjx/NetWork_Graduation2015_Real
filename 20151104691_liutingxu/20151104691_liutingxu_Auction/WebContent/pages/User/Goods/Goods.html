@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>商品详细</title>
+<link rel="stylesheet" href="../../../res/css/cst/detail.css"/>
+<link rel="stylesheet" href="../../../res/js/sweetalert.css"/>
+<script type="text/javascript" src="../../../res/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="../../../res/js/cst/leftTime.min.js"></script>
+<script type="text/javascript" src="../../../res/js/cst/detail.js"></script>
+<script src="../../../res/js/sweetalert.min.js"></script>
+</head>
+<body>
+<div id="bodys">
+		<div id="body-header">头部</div>
+		<div id="body-center">
+			<div id="body-center-header">
+				<ul id="body-center-header-ul">
+					<li style="margin-right:-25px;border:none;"><img src="../../../upload/cst/footer.PNG" id="image-one" >
+					<li style="border:none;"><span id="userName">张三疯</span><br/>用户</li>
+					<li><span class="fontColor">宝贝浏览次数</span><br/>2222</li>
+					<li><span class="fontColor">最近编辑:</span><br/>2018-10-17 09:29</li>
+					<li><span class="fontColor">来自</span><br/><img src="../../../upload/cst/footer.PNG" style="width:50px;height:20px;"></li>
+				</ul>
+				<a id="body-center-header-jb" href="#">举报该宝贝</a>
+			</div>
+			<div id="body-center-body">
+				<div id="body-center-body-left">
+					<div id="body-center-body-left-image">
+						<img style="width:100%;height:450px;" src="../../../upload/cst/01.jpg">
+					</div>
+					<ul id="body-center-body-left-ul">
+						
+					</ul>
+				</div>
+				<div id="body-center-body-right">
+					<div id="body-center-body-right-header">
+						<ul id="body-center-body-right-header-ul">
+							<li><p id="body-center-body-right-header-ul-title"  style="font-size: 18px;">单反相机</p></li>
+							<li><span style="font-size: 14px;color:gray;">起拍价：¥</span><span id="body-center-body-right-header-ul-money"></span></li>
+							<li style="font-size: 14px;color:gray;">商品编号:<span id="comId"></span></li>
+						</ul>
+					</div>
+					
+					<div id="body-center-body-right-center">
+						<ul id="body-center-body-right-center-ul">
+							<li>出价次数：<span style="color:red;font-weight: bold" id="recoldCount">0</span>（出价记录）</li>
+							<li style="height:60px;line-height: 60px;">一口价:<span style="color:red;font-weight: bold" id="starting"></span><input id="shopp" type="button" value="直接购买"></li>
+						</ul>
+						<div id="body-center-body-right-center-date">
+							<span id="dataInfoShow_1"></span>
+		    				<div class="data-show-box" id="dateShow2">
+		    					<span class="date-tiem-span d">00</span>天
+		    					<span class="date-tiem-span h">00</span>时
+		    					<span class="date-tiem-span m">00</span>分
+		    					<span class="date-s-span s">00</span>秒
+		    				</div>
+						</div>
+						<input class="auction" id="zjAuction" type="button" style="margin-left: 0px;" value="直接竞拍">
+						<ul id="body-center-body-right-center-ul2">
+							<li>商品编号:<span id="comIdli"></span></li>
+							<li>商品类型:<span id="comType"></span></li>
+							<li>发布人:<span id="comUser"></span></li>
+							<li>开始时间:<span id="date"></span></li>
+							<li>截止时间:<span id="time"></span></li>
+							<li>保证金额:<span id="margin"></span></li>
+						</ul>
+					</div>
+					
+					<div id="body-center-body-right-footers">
+						<span style="color:gray;">竞拍流程:</span>
+						<table id="body-center-body-right-table" cellpadding="5px" cellspacing="5px">
+							<tr>
+								<td>1、账号注册</td>
+								<td>2、申请发布竞拍</td>
+								<td>3、参与竞拍</td>
+							</tr>
+							<tr>
+								<td>4、竞拍成功</td>
+								<td>5、竞拍失败</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="body-center-body-right-footer">
+					<div id="body-center-body-right-footer-header">
+						<ul id="body-center-body-right-footer-header-ul">
+							<li id="daoulli1" onclick="findUl(1)" style="background: #1091de;color:white;">商品详情</li>
+							<li id="daoulli2" onclick="findUl(2)">出价排行</li>
+							<li id="daoulli3" onclick="findUl(3)">出价记录</li>
+						</ul>
+					</div>
+					
+					<div id="body-center-body-right-footer-header1" class="body-center-body-right-footer-header" style="display: block">
+						<p id="body-center-body-right-footer-header1-p">如遇到以下情况可能是诈骗行为：<span style="color:red;">1.宝贝价格异常低；2.卖家要求QQ沟通；3.卖家要求直接汇款。</span> 寻求防骗经验。</p>
+						<p id="content">宝贝介绍</p>
+						<ul id="contentUl">
+							<li style="background: #f0f0f0;">介绍</li>
+						</ul>
+						<div id="content-content">八成新，用过不超过十次，送相机包，遮光镜等等。自己买时，所有东西加一起三千多。</div>
+						<ul id="content-content-ul">
+							
+							
+						</ul>
+					</div>
+					
+					
+					<div id="body-center-body-right-footer-header2" class="body-center-body-right-footer-header">
+						<table id="body-center-body-right-footer-header2-table" cellpadding="0px" cellspacing="0px">
+							<tr>
+								<td class="table-header" style="border-right:none;">竞拍人</td>
+								<td class="table-header" style="border-left:none;border-right:none;">竞拍价格</td>
+								<td class="table-header" style="border-left:none;">竞拍次数</td>
+							</tr>
+							<tbody id="orderBodys">
+								
+							</tbody>
+						</table>
+					</div>
+					
+					<div id="body-center-body-right-footer-header3" class="body-center-body-right-footer-header">
+						<table id="body-center-body-right-footer-header3-table">
+							<tr>
+								<td style="border-right:none;">出价者</td>
+								<td style="border-left:none;border-right:none;">出价时间</td>
+								<td style="border-left:none;border-right:none;">出价价格</td>
+								<td style="border-left:none;">商品</td>
+							</tr>
+							
+							<tbody id="recoldBodys"></tbody>
+						</table>
+					</div>
+					<div id="body-center-body-right-footer-header4" class="body-center-body-right-footer-header">商家问答</div>
+				</div>
+			</div>
+		</div>
+		<div id="body-footer"></div>
+	</div>
+	
+	<div id="backBody"></div>
+	<div id="addAuction">
+		<div id="addAuctionHeader">出价竞拍</div>
+		<div id="addAuctionDiv">
+			<div id="addAuctionOne">
+				<p id="addAuctionOneP"><span id="oneBzMoney">50,00</span>元以上可以出价竞拍</p>
+			</div>
+			<div id="addAuctionTwo">
+				<p id="addAuctionTwoP">您的出价:</p>
+				<div id="addAuctionInput">
+					<input type="text" id="addAuctionMoney" value="0"/>
+				</div>
+				<p id="addAuctionTwoP2">保证金:$<span id="bzMoney">10.00</span></p>
+			</div>
+			<div id="addAuctionThree">
+				<ul>
+					<li>1.出价竞拍：结束之前出价最高者得。</li>
+					<li>2.可以输入您的心理最高价位，系统每次只会小幅加价。</li>
+					<li>3.出价需谨慎，一旦出价不可取消！</li>
+				</ul>
+			</div>
+			<div id="addAuctionFour">
+				<p id="addAuctionFourP"><span id="sfmoney">实付金额:</span>$<span id="fourMoney">1000.00</span></p>
+				<input type="button" value="确认" id="auctionInput"/>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+        <%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%> -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>登录-智鼎亲玩玩具租凭</title>
+<link rel="stylesheet" type="text/css" href="../res/css/login.css"/>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/limonte-sweetalert2/7.28.11/sweetalert2.all.js"></script>
+<link href="https://cdn.bootcss.com/limonte-sweetalert2/7.28.11/sweetalert2.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+ 
+<script>
+	$(function(){
+		$("#loginBtn").click(function(){
+			var userName=$("#usersName").val();
+			var pwsval=$("#pws").val();
+			if(userName==""&&pwsval==""){
+				swal({
+				    title: '登录失败',
+				    text:'账号和密码不能为空',
+				    type: 'error',
+				    allowOutsideClick:false
+				})
+			
+			}else if(userName==""||userName==null){
+				swal({
+				    title: '登录失败',
+				    text:'账号不能为空',
+				    type: 'error',
+				    allowOutsideClick:false
+				})
+			}else if(pwsval==""||pwsval==null){
+				swal({
+				    title: '登录失败',
+				    text:'密码不能为空',
+				    type: 'error',
+				    allowOutsideClick:false
+				})
+			
+			}else{
+				var data=$("#formLogin").serialize();
+				var url="../../user/login.action";
+				$.post(url,data,function(mes){
+					if(mes.state==1){
+						swal({
+						    title: mes.msg,
+						    type: 'success',
+						    allowOutsideClick:false
+						}).then(
+						    function () {
+						    	location.href="../qiantai/zyh/toyIndex.html";	
+						    }
+						) 
+							
+					}else{
+						swal({
+						    title: '登录失败',
+						    text:'账号或密码错误',
+						    type: 'error',
+						    allowOutsideClick:false
+						})
+					}
+				},"json")
+			}
+			
+		})
+		
+		
+	})
+</script>
+<style>
+.fymain {
+    width: 1200px;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    float: left;
+    margin-left:200px;
+}
+.denglu {
+    width: 960px;
+    height: 330px;
+    background: url(../../upload/dl_bj.jpg) no-repeat;
+    margin: 0 auto;
+}
+.dengleft {
+    float: left;
+    width: 500px;
+    background: url(../../upload/shuxian.jpg) no-repeat right;
+}
+.dengright {
+    float: left;
+    margin-top: 45px;
+    margin-left: 100px;
+    line-height: 32px;
+    width: 310px;
+}
+.dengright em {
+    color: #8cccfe;
+    font-weight: bold;
+}
+.dengright p {
+    font: 12px/1 Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif;
+    color: #333;
+    line-height: 20px;
+}
+.lijizhuce {
+    float: right;
+    position: absolute;
+    position: relative;
+    top: -50px;
+}
+.msdl {
+    background: url(../../upload/dl_an.png) no-repeat;
+    width: 134px;
+    height: 45px;
+    border: none;
+    margin-top: 8px;
+    margin-left: 62px;
+}
+.dengleft div {
+    color: #444;
+    margin-top: 45px;
+    margin-left: 140px;
+}
+.dengleft p b {
+    width: 80px;
+    text-align: right;
+    float: left;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 27px;
+}
+.dengleft p.userDiv {
+    margin-top: 30px;
+}
+.dengleft p {
+    height: 28px;
+    margin-bottom: 20px;
+    margin-left: 60px;
+}
+.kude {
+    height: 28px;
+    width: 250px;
+    line-height: 24px;
+    border: 1px solid #8cccfe;
+    background: url(../../upload/kuang.jpg);
+    float: left;
+    margin-left: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.dengleft p.anniude {
+    margin-left: 152px;
+}
+.dengleft p.mimaop {
+    line-height: 45px;
+    margin-left: 155px;
+    margin-top: 20px;
+}
+.dengleft p.mimaop a {
+    color: #333;
+}
+a {
+    outline: none;
+    text-decoration: none;
+}
+.foot-out{
+	margin-top:376px;
+}
+</style>
+</head>
+<body>
+	
+	<iframe src="../iframe/iframe2.html" width="100%" height="235px" frameborder="0" scrolling="no"></iframe>
+	
+	<div id="text-head" class="style_hui_12">当前位置：首页>用户中心</div>
+
+	 <div class="fymain">
+              <div class="denglu">
+                    <div class="dengleft">
+                        <form id="formLogin"  method="post" >
+                         <div>已经注册，请在此登录</div>
+                          <p class="userDiv"><b>用户名</b>
+						  <input name="userName" type="text" id="usersName" size="25" maxlength="20" class="kude" />
+						</p>
+                          <p><b>密&nbsp;&nbsp;&nbsp;&nbsp;码</b>
+						   <input name="userPsw" type="password" id="pws" size="15" maxlength="20" class="kude"/>
+						 </p>
+						 <p class="anniude">
+							<input type="button" id="loginBtn"  class="msdl" />
+                              
+                          </p>
+                          
+                          <p class="mimaop"><a href="#" >密码问题找回密码</a> |<a href="#" > 注册邮件找回密码</a></p>
+                          </form>
+                      </div>
+                      <div class="dengright">
+                           <div>
+                               <b>如果您不是会员，请注册</b><br />
+                            <em>友情提示：</em>不注册会员不可以在本店租赁商品<br />
+                             <p>但注册之后，您可以...</p>
+                               <p> 1.保存您的个人资料</p>
+                               <p> 2.收藏您关注的商品</p>
+                               <p> 3.享受会员积分制度</p>
+                                <p>4.订阅本店商品信息</p>
+                            </div>
+                            <div class="lijizhuce"><a href="register.html"><img src="../../upload/lijizhuce.png" width="140" height="49"/></a></div>
+                        </div>
+                   </div>
+            </div>
+            <div class="foot-out">
+            	<iframe src="../iframe/iframe-botton.html" width="100%" height="400px" frameborder="0" scrolling="no"></iframe>
+            </div>
+</body>
+</html>
