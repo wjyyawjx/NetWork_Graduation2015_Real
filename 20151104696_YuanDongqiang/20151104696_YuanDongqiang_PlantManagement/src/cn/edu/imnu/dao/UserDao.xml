@@ -7,10 +7,10 @@
 		from users
 		<where>
 			<if test="usercode != null and password !=null">
-				and u_name = #{usercode} and u_pwd =#{password}
+				and u_code = #{usercode} and u_pwd =#{password}
 			</if>
 			<if test="usercode != null and password == null">
-				and u_name = #{usercode}
+				and u_code = #{usercode}
 			</if>
 		</where>
 	</select>

@@ -34,22 +34,22 @@
 						</div>
 						<div class="top-header-meta d-flex">
 							<div class="login">
-							<a href="${pageContext.request.contextPath }/TZlogin.action"
-									aria-expanded="false"><i class="fa fa-user"></i>
-								<%
+								<a href="${pageContext.request.contextPath }/TZlogin.action"
+									aria-expanded="false"><i class="fa fa-user"></i> <%
 									if (session.getAttribute("USER_SESSION") != null) {
-								%>
-								${USER_SESSION.u_name}
-								<%
+								%> ${USER_SESSION.u_name} <%
 									} else {
-								%>
-								未登陆
-								<%
+								%> 未登陆 <%
 									}
-								%>
+								%> </a>
+							</div>
+							<% if (session.getAttribute("USER_SESSION") != null) { %>
+							<div class="cart">
+								<a href="${pageContext.request.contextPath }/logout.action">
+									<i class="fa fa-question-circle" aria-hidden="true"></i> 退出登陆
 								</a>
 							</div>
-
+							<% } %>
 							<div class="cart">
 								<a href="${pageContext.request.contextPath }/help.action"> <i
 									class="fa fa-question-circle" aria-hidden="true"></i> 帮助

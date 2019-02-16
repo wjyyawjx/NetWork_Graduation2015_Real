@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
+import org.omg.PortableInterceptor.USER_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,6 +50,7 @@ public class UserController {
 		JSONObject json = JSONObject.fromObject(map);
 		return json;
 	}
+
 	@RequestMapping(value = "/registeremail.action")
 	@ResponseBody
 	// 注册时判断邮箱是否存在
@@ -68,12 +70,17 @@ public class UserController {
 	public String register(User user, Model model, HttpSession session) {
 		String u_type = "普通用户";
 		user.setU_type(u_type);
-		System.out.println(user.getU_code());
 		int rows = userService.addUser(user);
 		if (rows != 0) {
 			return "redirect:TZlogin.action";
 		}
 		model.addAttribute("msg", "注册失败，请重新输入！！");
 		return "register";
+	}
+	//退出登录
+	@RequestMapping(value = "/logout.action")
+	public String logout(HttpSession session) {
+		session.removeAttribute("USER_SESSION");
+		return "index"; 
 	}
 }
