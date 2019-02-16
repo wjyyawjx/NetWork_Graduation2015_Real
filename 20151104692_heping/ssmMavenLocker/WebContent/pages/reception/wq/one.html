@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>图片滚动</title>
+  
+  
+ <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+ body {
+  background:white;
+}
+
+.container {
+  margin: 50px auto;
+  width: 500px;
+  height: 300px;
+  overflow: hidden;
+  border: 10px solid;
+  border-top-color: #856036;
+  border-left-color: #5d4426;
+  border-bottom-color: #856036;
+  border-right-color: #5d4426;
+  position: relative;
+}
+
+.photo {
+  position: absolute;
+  animation: round 16s infinite;
+  opacity: 0;
+}
+
+@keyframes round {
+  25% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+}
+img:nth-child(1) {
+  animation-delay: 12s;
+}
+
+img:nth-child(2) {
+  animation-delay: 8s;
+}
+
+img:nth-child(3) {
+  animation-delay: 4s;
+}
+
+img:nth-child(4) {
+  animation-delay: 0s;
+}
+
+    </style>
+
+  <script src="../../../res/js/wq/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+  <img class='photo'  src="../../../upload/img/8562729616_35b1384aa1.jpg" alt="" />
+  <img class='photo'  src="../../../upload/img/8113424031_72048dd887.jpg" alt="" />
+  <img class='photo'  src="../../../upload/img/8562729616_35b1384aa1.jpg" alt="" />
+  <img class='photo'  src="../../../upload/img/8562523343_9bb49b7b7b.jpg" alt="" />
+
+</div>
+ 
+</body>
+</html>

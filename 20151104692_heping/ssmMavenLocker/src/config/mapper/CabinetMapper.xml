@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.CabinetMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.domain.Cabinet" >
+    <id column="ca_id" property="caId" jdbcType="VARCHAR" />
+    <result column="lo_id" property="loId" jdbcType="VARCHAR" />
+    <result column="lo_name" property="loName" jdbcType="VARCHAR" />
+    <result column="ch_id" property="chId" jdbcType="VARCHAR" />
+    <result column="ch_type" property="chType" jdbcType="VARCHAR" />
+    <result column="ca_whether" property="caWhether" jdbcType="VARCHAR" />
+    <result column="ca_deadline" property="caDeadline" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="BaseResultMap2" type="com.yidu.domain.Charge" >
+    <id column="ch_id" property="chId" jdbcType="VARCHAR" />
+    <result column="ch_type" property="chType" jdbcType="VARCHAR" />
+    <result column="ch_charge" property="chCharge" jdbcType="VARCHAR" />
+    <result column="ch_overdue" property="chOverdue" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="BaseResultMap3" type="com.yidu.domain.Cabinet" >
+    <id column="ca_id" property="caId" jdbcType="VARCHAR" />
+    <result column="lo_id" property="loId" jdbcType="VARCHAR" />
+    <result column="lo_name" property="loName" jdbcType="VARCHAR" />
+    <result column="ch_id" property="chId" jdbcType="VARCHAR" />
+    <result column="ch_type" property="chType" jdbcType="VARCHAR" />
+    <result column="ca_whether" property="caWhether" jdbcType="VARCHAR" />
+    <result column="ca_deadline" property="caDeadline" jdbcType="VARCHAR" />
+    <result column="ch_charge" property="chCharge" jdbcType="VARCHAR" />
+    <result column="ch_overdue" property="chOverdue" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    ca_id, lo_id, ch_id, ca_whether, ca_deadline
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_cabinet
+    where ca_id = #{caId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_cabinet
+    where ca_id = #{caId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.Cabinet" >
+    insert into tb_cabinet (ca_id, lo_id, ch_id, 
+      ca_whether, ca_deadline)
+    values (#{caId,jdbcType=VARCHAR}, #{loId,jdbcType=VARCHAR}, #{chId,jdbcType=VARCHAR}, 
+      #{caWhether,jdbcType=VARCHAR}, #{caDeadline,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.Cabinet" >
+    insert into tb_cabinet
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+     
+      <if test="loId != null" >
+        lo_id,
+      </if>
+      <if test="chId != null" >
+        ch_id,
+      </if>
+      <if test="caWhether != null" >
+        ca_whether,
+      </if>
+      <if test="caDeadline != null" >
+        ca_deadline,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+     
+      <if test="loId != null" >
+        #{loId,jdbcType=VARCHAR},
+      </if>
+      <if test="chId != null" >
+        #{chId,jdbcType=VARCHAR},
+      </if>
+      <if test="caWhether != null" >
+        #{caWhether,jdbcType=VARCHAR},
+      </if>
+      <if test="caDeadline != null" >
+        #{caDeadline,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.Cabinet" >
+    update tb_cabinet
+    <set >
+      <if test="loId != null" >
+        lo_id = #{loId,jdbcType=VARCHAR},
+      </if>
+      <if test="chId != null" >
+        ch_id = #{chId,jdbcType=VARCHAR},
+      </if>
+      <if test="caWhether != null" >
+        ca_whether = #{caWhether,jdbcType=VARCHAR},
+      </if>
+      <if test="caDeadline != null" >
+        ca_deadline = #{caDeadline,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ca_id = #{caId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.Cabinet" >
+    update tb_cabinet
+    set lo_id = #{loId,jdbcType=VARCHAR},
+      ch_id = #{chId,jdbcType=VARCHAR},
+      ca_whether = #{caWhether,jdbcType=VARCHAR},
+      ca_deadline = #{caDeadline,jdbcType=VARCHAR}
+    where ca_id = #{caId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAll" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select lo.lo_name,ca.*,ch.ch_type from tb_locker lo,tb_cabinet ca,tb_charge ch where lo.lo_id=ca.lo_id and ca.ch_id=ch.ch_id
+  	<if test="net.caId != null and net.caId != '' " >
+       and ca.ca_id like concat('%',#{net.caId},'%')
+     </if>
+     order by ca.ca_id asc
+     limit #{page.firstRows},#{page.maxResult}
+  </select>
+  <select id="selectAllType" resultMap="BaseResultMap2">
+  	select * from tb_charge
+  </select>
+  <select id="count" parameterType="com.yidu.domain.Cabinet" resultType="int">
+  	select count(*) from tb_cabinet 
+  	<where>
+	  	 <if test="caId != null and caId != '' " >
+	       ca_id like concat('%',#{caId},'%')
+	      </if>
+     </where>
+  </select>
+  <select id="backSelectAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	SELECT lo.lo_name,ca.*,ch.ch_type FROM tb_locker lo,tb_cabinet ca,tb_charge ch,tb_area ar
+	WHERE lo.lo_id=ca.lo_id AND ca.ch_id=ch.ch_id AND ar.ar_id=lo.ar_id AND ar.ar_id=#{arId};
+  </select>
+  <select id="backKon" parameterType="com.yidu.domain.Cabinet" resultMap="BaseResultMap">
+  	select * from tb_cabinet where lo_id=#{loId} and ca_whether=#{caWhether} and ch_id=#{chId}
+  </select>
+  <select id="backTypeCharge" parameterType="String" resultMap="BaseResultMap3">
+  	select * from tb_cabinet ca,tb_charge ch where ca.ch_id=ch.ch_id and ca.ca_id=#{caId}
+  </select>
+  <select id="findByGuiZi" resultMap="BaseResultMap">
+  	select * from tb_cabinet
+  </select>
+  <select id="selectDaguizi" parameterType="String" resultType="int">
+  	SELECT COUNT(*) FROM tb_cabinet WHERE ca_whether='满' AND ch_id= #{chId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectDZXguizi" parameterType="java.util.Map" resultType="int">
+  	select count(*) from tb_cabinet ca,tb_locker lo where ca.lo_id=lo.lo_id and ca.ca_whether='满' and ca.ch_id=#{bin.chId} and lo.lo_id=#{ker.loId}
+  </select>
+  
+</mapper>

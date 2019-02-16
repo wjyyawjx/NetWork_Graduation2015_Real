@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.RecordMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.domain.Record" >
+    <id column="re_id" property="reId" jdbcType="VARCHAR" />
+    <result column="u_id" property="uId" jdbcType="VARCHAR" />
+    <result column="ca_id" property="caId" jdbcType="VARCHAR" />
+    <result column="re_deposit" property="reDeposit" jdbcType="VARCHAR" />
+    <result column="re_out" property="reOut" jdbcType="VARCHAR" />
+    <result column="re_money" property="reMoney" jdbcType="VARCHAR" />
+    <result column="re_overdue" property="reOverdue" jdbcType="VARCHAR" />
+    <result column="re_charge" property="reCharge" jdbcType="VARCHAR" />
+    <result column="re_code" property="reCode" jdbcType="VARCHAR" />
+    <result column="re_time" property="reTime" jdbcType="VARCHAR" />
+    <result column="re_codeyin" property="reCodeyin" jdbcType="VARCHAR" />
+    <result column="u_zh" property="uZh" jdbcType="VARCHAR" />
+    <result column="ar_id" property="louceng2" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="BaseResultMap2" type="com.yidu.domain.Record" >
+    <id column="re_id" property="reId" jdbcType="VARCHAR" />
+    <result column="u_id" property="uId" jdbcType="VARCHAR" />
+    <result column="ca_id" property="caId" jdbcType="VARCHAR" />
+    <result column="re_deposit" property="reDeposit" jdbcType="VARCHAR" />
+    <result column="re_out" property="reOut" jdbcType="VARCHAR" />
+    <result column="re_money" property="reMoney" jdbcType="VARCHAR" />
+    <result column="re_overdue" property="reOverdue" jdbcType="VARCHAR" />
+    <result column="re_charge" property="reCharge" jdbcType="VARCHAR" />
+    <result column="re_code" property="reCode" jdbcType="VARCHAR" />
+    <result column="re_time" property="reTime" jdbcType="VARCHAR" />
+    <result column="re_codeyin" property="reCodeyin" jdbcType="VARCHAR" />
+    <result column="ch_overdue" property="chOverdue" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    re_id, u_id, ca_id, re_deposit, re_out, re_money, re_overdue, re_charge, re_code
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select *
+    from tb_record
+    where re_id = #{reId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_record
+    where re_id = #{reId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.Record" >
+    insert into tb_record (re_id, u_id, ca_id, 
+      re_deposit, re_out, re_money, 
+      re_overdue, re_charge, re_code
+      )
+    values (#{reId,jdbcType=VARCHAR}, #{uId,jdbcType=VARCHAR}, #{caId,jdbcType=VARCHAR}, 
+      #{reDeposit,jdbcType=VARCHAR}, #{reOut,jdbcType=VARCHAR}, #{reMoney,jdbcType=VARCHAR}, 
+      #{reOverdue,jdbcType=VARCHAR}, #{reCharge,jdbcType=VARCHAR}, #{reCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.Record" >
+    insert into tb_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="caId != null" >
+        ca_id,
+      </if>
+      <if test="reDeposit != null" >
+        re_deposit,
+      </if>
+      <if test="reOut != null" >
+        re_out,
+      </if>
+      <if test="reMoney != null" >
+        re_money,
+      </if>
+      <if test="reOverdue != null" >
+        re_overdue,
+      </if>
+      <if test="reCharge != null" >
+        re_charge,
+      </if>
+      <if test="reCode != null" >
+        re_code,
+      </if>
+      <if test="reTime != null" >
+        re_time,
+      </if>
+      <if test="reCodeyin != null" >
+        re_codeyin,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      
+      <if test="uId != null" >
+        #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="caId != null" >
+        #{caId,jdbcType=VARCHAR},
+      </if>
+      <if test="reDeposit != null" >
+        #{reDeposit,jdbcType=VARCHAR},
+      </if>
+      <if test="reOut != null" >
+        #{reOut,jdbcType=VARCHAR},
+      </if>
+      <if test="reMoney != null" >
+        #{reMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="reOverdue != null" >
+        #{reOverdue,jdbcType=VARCHAR},
+      </if>
+      <if test="reCharge != null" >
+        #{reCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="reCode != null" >
+        #{reCode,jdbcType=VARCHAR},
+      </if>
+      <if test="reTime != null" >
+        #{reTime,jdbcType=VARCHAR},
+      </if>
+      <if test="reCodeyin != null" >
+        #{reCodeyin,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.Record" >
+    update tb_record
+    <set >
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="caId != null" >
+        ca_id = #{caId,jdbcType=VARCHAR},
+      </if>
+      <if test="reDeposit != null" >
+        re_deposit = #{reDeposit,jdbcType=VARCHAR},
+      </if>
+      <if test="reOut != null" >
+        re_out = #{reOut,jdbcType=VARCHAR},
+      </if>
+      <if test="reMoney != null" >
+        re_money = #{reMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="reOverdue != null" >
+        re_overdue = #{reOverdue,jdbcType=VARCHAR},
+      </if>
+      <if test="reCharge != null" >
+        re_charge = #{reCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="reCode != null" >
+        re_code = #{reCode,jdbcType=VARCHAR},
+      </if>
+      <if test="reCodeyin != null" >
+        re_codeyin = #{reCodeyin,jdbcType=VARCHAR},
+      </if>
+      <if test="reTime != null" >
+        re_time = #{reTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where re_id = #{reId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.Record" >
+    update tb_record
+    set u_id = #{uId,jdbcType=VARCHAR},
+      ca_id = #{caId,jdbcType=VARCHAR},
+      re_deposit = #{reDeposit,jdbcType=VARCHAR},
+      re_out = #{reOut,jdbcType=VARCHAR},
+      re_money = #{reMoney,jdbcType=VARCHAR},
+      re_overdue = #{reOverdue,jdbcType=VARCHAR},
+      re_charge = #{reCharge,jdbcType=VARCHAR},
+      re_code = #{reCode,jdbcType=VARCHAR}
+    where re_id = #{reId,jdbcType=VARCHAR}
+  </update>
+  <select id="backQuJian" parameterType="com.yidu.domain.Record" resultMap="BaseResultMap">
+  	SELECT re.* FROM tb_record re,tb_cabinet ca,tb_locker lo WHERE re.ca_id=ca.ca_id AND ca.lo_id=lo.lo_id AND lo.ar_id=#{louceng} AND re.re_code=#{reCode}
+  	
+  </select>
+  <update id="updateOut" parameterType="com.yidu.domain.Record">
+  	update tb_record set re_out = #{reOut,jdbcType=VARCHAR},re_code = #{reCode,jdbcType=VARCHAR}   where re_id = #{reId,jdbcType=VARCHAR}
+  </update>
+  <select id="backyuqi" parameterType="java.lang.String" resultMap="BaseResultMap2">
+  	SELECT ch.ch_overdue,re.re_deposit,re.re_time FROM tb_cabinet ca,tb_charge ch,tb_record re WHERE ca.ch_id=ch.ch_id AND re.ca_id=ca.ca_id AND re.re_code=#{reCode,jdbcType=VARCHAR}
+  </select>
+  <select id="findAll" parameterType="com.yidu.domain.Record" resultMap="BaseResultMap">
+  	select re.*,u.u_zh from tb_record re,tb_user u where u.u_id=re.u_id 
+  	<if test="uZh != null">
+  		and u.u_zh like CONCAT('%',#{uZh},'%')
+  	</if>
+  		ORDER BY re.re_id DESC 
+  		limit #{firstRows},#{maxResult}
+  </select>
+  <select id="findAllCount" parameterType="string" resultType="int">
+  	select count(*) from tb_record re,tb_user u where u.u_id=re.u_id 
+  	<if test="_parameter != null">
+  		and u.u_zh like CONCAT('%',#{uZh},'%')
+  	</if>
+  </select>
+  <select id="findUser" resultMap="BaseResultMap">
+  	select * from tb_user
+  </select>
+  <select id="findMoneyById" parameterType="string" resultMap="BaseResultMap">
+  	select * from tb_record where u_id=#{uId,jdbcType=VARCHAR}
+  </select>
+  <select id="findAllByZh" parameterType="com.yidu.domain.Record" resultMap="BaseResultMap">
+  	select * from tb_record where u_id=#{uId,jdbcType=VARCHAR} ORDER BY re_deposit DESC limit #{firstRows},#{maxResult}
+  </select>
+  <select id="findAllCountById" parameterType="com.yidu.domain.Record" resultType="int">
+  	select count(*) from tb_record where u_id=#{uId}
+  </select>
+  <select id="backLouCeng" parameterType="com.yidu.domain.Record" resultMap="BaseResultMap">
+		SELECT lo.ar_id FROM tb_record re,tb_cabinet ca,tb_locker lo WHERE re.ca_id=ca.ca_id AND ca.lo_id=lo.lo_id AND re.re_code=#{reCode,jdbcType=VARCHAR}
+  </select>
+</mapper>
