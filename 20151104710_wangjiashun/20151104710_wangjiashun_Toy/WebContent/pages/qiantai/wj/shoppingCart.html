@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>智鼎亲玩购物车</title>
+</head>
+<link href="../../../res/css/wj/Cart.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src = "../../../res/js/jquery-1.11.2.min.js"></script>
+<script src="https://cdn.bootcss.com/limonte-sweetalert2/7.28.11/sweetalert2.all.js"></script>
+<link href="https://cdn.bootcss.com/limonte-sweetalert2/7.28.11/sweetalert2.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+<script type="text/javascript" src = "../../../res/js/wj/Cart.js"></script>
+<body>
+	<iframe src="../../iframe/iframe2.html" target="_top" width="100%" height="210px"
+		frameborder="0" scrolling="no"></iframe>
+	<div id="ur_here" style="width: 1174px; margin-left: 166px;">
+		当前位置: <a href=".">首页</a>
+		<code>&gt;</code>
+		购物流程
+	</div>
+	<div class="divv">
+		<table width="99%" id = "tb1" align="center" border="0" cellpadding="5"
+			cellspacing="1" bgcolor="#dddddd">
+			<tbody id = "tbb">
+				<tr>
+					<th bgcolor="#ffffff">ID</th>
+					<th bgcolor="#ffffff">商品名称</th>
+					<th bgcolor="#ffffff">用户名</th>
+					<th bgcolor="#ffffff">租金</th>
+					<th bgcolor="#ffffff">押金</th>
+					<th bgcolor="#ffffff">租赁时间</th>
+					<th bgcolor="#ffffff">小计</th>
+					<th bgcolor="#ffffff">操作</th>
+				</tr>
+			</tbody>
+		</table>
+		<div style = "height: 5px;"></div>
+		<table width="99%" align="center" border="0" cellpadding="5"
+			cellspacing="1" bgcolor="#dddddd">
+			<tbody>
+				<tr>
+					<td id = "totalMoney" width="50%" bgcolor="#ffffff">购物金额小计 ￥元</td>
+					<td align="right" width="50%" bgcolor="#ffffff"><input type="button"
+						value="清空购物车" class="bnt_blue_1" id = "bnt_1"
+						onclick="deleteAll()"></td>
+				</tr>
+			</tbody>
+		</table>
+		<div style = "height: 5px;"></div>
+		<table width="99%" align="center" border="0" cellpadding="5"
+			cellspacing="0" bgcolor="#dddddd">
+			<tbody>
+				<tr>
+					<td bgcolor="#ffffff" width="50%"><a href=""><img
+							src="../../../upload/wj/continue.gif" alt="continue"></a></td>
+					<td bgcolor="#ffffff" align="right" width="50%"><a
+						href="../../../pages/qiantai/wj/Bill.html"><img
+							src="../../../upload/wj/checkout.gif" alt="checkout"></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="foot-out">
+		<iframe src="../../iframe/iframe-botton.html" width="100%"
+			height="400px" frameborder="0" scrolling="no"></iframe>
+	</div>
+</body>
+</html>
