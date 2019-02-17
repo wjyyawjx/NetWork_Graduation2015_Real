@@ -3,9 +3,9 @@ package com.locker.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.yidu.domain.Pages;
-import com.yidu.domain.Record;
-import com.yidu.domain.User;
+import com.locker.domain.Pages;
+import com.locker.domain.Record;
+import com.locker.domain.User;
 
 public interface RecordMapper {
     int deleteByPrimaryKey(String reId);
