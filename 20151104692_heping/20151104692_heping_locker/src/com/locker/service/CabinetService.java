@@ -3,7 +3,7 @@ package com.locker.service;
 import java.util.List;
 import java.util.Map;
 
-import com.locker.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.locker.domain.Cabinet;
 import com.locker.domain.Charge;
 import com.locker.domain.Locker;
