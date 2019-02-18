@@ -1,10 +1,15 @@
 package cn.edu.imnu.web.controller;
 
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.Enumeration;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
-import org.omg.PortableInterceptor.USER_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +33,33 @@ public class UserController {
 	public String toLogin(String usercode, String password, Model model, HttpSession session) {
 		User user = userService.findUser(usercode, password);
 		if (user != null) {
+			// 获取windows本机IP
+			// try {
+			// System.out.println("本机的IP = " + InetAddress.getLocalHost());
+			// } catch (UnknownHostException e) {
+			// e.printStackTrace();
+			// }
+			//可以获取linux下的IP
+			Enumeration allNetInterfaces = null;
+			try {
+				allNetInterfaces = NetworkInterface.getNetworkInterfaces();
+			} catch (SocketException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			InetAddress ip = null;
+			while (allNetInterfaces.hasMoreElements()) {
+				NetworkInterface netInterface = (NetworkInterface) allNetInterfaces.nextElement();
+				System.out.println(netInterface.getName());
+				Enumeration addresses = netInterface.getInetAddresses();
+				while (addresses.hasMoreElements()) {
+					ip = (InetAddress) addresses.nextElement();
+					if (ip != null && ip instanceof Inet4Address) {
+						System.out.println("本机的IP = " + ip.getHostAddress());
+					}
+				}
+			}
+
 			// 将用户对象添加到Session
 			session.setAttribute("USER_SESSION", user);
 			// 跳转到主页
@@ -77,10 +109,11 @@ public class UserController {
 		model.addAttribute("msg", "注册失败，请重新输入！！");
 		return "register";
 	}
-	//退出登录
+
+	// 退出登录
 	@RequestMapping(value = "/logout.action")
 	public String logout(HttpSession session) {
 		session.removeAttribute("USER_SESSION");
-		return "index"; 
+		return "index";
 	}
 }
