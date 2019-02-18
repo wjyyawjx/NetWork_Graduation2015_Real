@@ -155,12 +155,18 @@
                 </div>
                 
                 <hr class="whiter" />
-				<!--<c:forEach items="${Lab}" var="lab">
-					${lab.id}
-					${lab.name}
+				<c:forEach items="${Lab}" var="lab">
+					${lab.lId}
+					${lab.lName}
+					${lab.campus}
+					${lab.building}
+					${lab.houseId}
+					${lab.major}
+					${lab.time}
+					${lab.temperature}
+					${lab.humidity}
 
-				</c:forEach>-->
-				${Lab.name}
+				</c:forEach>
             </section>
 
         </section>
