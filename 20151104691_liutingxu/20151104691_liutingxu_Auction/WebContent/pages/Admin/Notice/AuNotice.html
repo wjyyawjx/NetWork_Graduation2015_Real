@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公告管理</title>
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+<script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../res/js/lj/AuNotice.js"></script>
+<script src="../../res/js/sweetalert.min.js"></script> 
+<script src="../../res/js/base.js"></script> 
+<link rel="stylesheet" type="text/css" href="../../res/js/sweetalert.css">
+</head>
+<!-- <style>
+	thead tr th,#body tr td{
+		text-align: center;
+	}
+	#queryForm{
+		margin-left: 100px;
+		margin: auto;
+	}
+	#myTable{
+		margin-top: 100px;
+	}
+	#formMain{
+		margin-left: 100px;
+		margin-top: 180px;
+	}
+	.form-horizontal{
+		margin-top: 100px;
+	}
+	.control-label{
+		font-size: 19px;
+		margin-left: 160px;
+	}
+	.btn btn-success{
+		padding-right: 10px;
+	}
+	.pagination{
+		margin-left: 700px;
+	}
+	.controls{
+		margin-left: 160px;
+	}
+</style> -->
+<body>
+	<div class="table-responsive">
+	<form id="queryForm">
+				<input type="text" class="textCss" id="Title"  name="noTitle" placeholder="请输入公告标题">
+				<button type="button" class="btn btn-primary"  id="query" >查询</button>
+				<button type="button" class="btn btn-primary" onclick="showForm();">增加</button>
+		</form>
+	<table id="myTable" class="table table-hover table-bordered table-striped">
+		<thead>
+			<tr>
+				  <th>公告id</th>
+			      <th>公告标题</th>
+			      <th>公告内容</th>
+			      <th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="body">
+		</tbody>
+</table>
+
+
+
+	<!-- 表单层 -->
+	<div id="formMain" style="display: none;width: 680px;height:380px;background: #f5f5f5;   position: absolute;top:1px;left:1px;">
+	<div id="myform" style="width: 60%;background: #f5f5f5;margin: 0px auto;">
+		<form class="form-horizontal" method="post" id="flowerForm" name="flowerForm">
+			<input type="hidden" name="noId" id="flId">
+			<fieldset>
+				<div id="legend" class="">
+					<!--  <legend class="">表单名</legend>-->
+				</div>
+				<div class="control-group">
+					<!-- Text input-->
+					<input type="hidden" name="typeId" id="typeId"/>
+				</div>
+				<div class="control-group">
+					<!-- Text input-->
+					<lable class="control-label" for="input01">公告标题</lable>
+					<div class="controls">
+						<input type="text" placeholder="请输入公告标题" name="noTitle" id="noTitle" class="input-xlarge">
+					</div>
+				</div>
+			<div class="control-group">
+		
+				<!-- Select Basic -->
+				<lable class="control-label">公告内容</lable>
+				<div class="controls">
+					<input type="text" placeholder="请输人公告内容" name="noContent" id="noContent" class="input-xlarge">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label"></label>
+				<!-- Button -->
+				<div class="controls">
+					<input type="button" onclick="addOrUpdate()" class="btn btn-success" id="sub"  value="提交" />
+					<button type="button" class="btn btn-success" onclick="hideFrom();">取消</button>
+				</div>
+			</div>
+	</fieldset>
+	</form>
+	</div>
+	</div>
+</div> 
+	<ul class="pagination">
+	</ul>	
+</body>
+</html>

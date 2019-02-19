@@ -37,7 +37,7 @@ public class UserView extends HttpServlet {
 		AdminDao userdao = new AdminDao();
 		userdata = (ArrayList<UserBean>)userdao.userList();
 		request.setAttribute("userdata", userdata);
-		request.getRequestDispatcher("admin-user.jsp").forward(request, response);
+		request.getRequestDispatcher("admin-jsp/admin-user.jsp").forward(request, response);
 	
 	}
 

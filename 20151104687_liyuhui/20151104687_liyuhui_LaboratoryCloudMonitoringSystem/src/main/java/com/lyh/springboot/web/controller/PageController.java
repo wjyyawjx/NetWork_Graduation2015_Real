@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("")
 public class PageController {
 
-	@RequestMapping("index")
+	@RequestMapping("login")
 	public String index() {
-		return "index";
+		return "login";
 	}
 
 	@RequestMapping("unauthorized")

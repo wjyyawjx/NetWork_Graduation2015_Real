@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.ChargeMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.domain.Charge" >
+    <id column="ch_id" property="chId" jdbcType="VARCHAR" />
+    <result column="ch_type" property="chType" jdbcType="VARCHAR" />
+    <result column="ch_charge" property="chCharge" jdbcType="VARCHAR" />
+    <result column="ch_overdue" property="chOverdue" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ch_id, ch_type, ch_charge, ch_overdue
+  </sql>
+  <select id="findAll" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List"></include>
+  	from tb_charge
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_charge
+    where ch_id = #{chId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_charge
+    where ch_id = #{chId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.Charge" >
+    insert into tb_charge (ch_id, ch_type, ch_charge, 
+      ch_overdue)
+    values (#{chId,jdbcType=VARCHAR}, #{chType,jdbcType=VARCHAR}, #{chCharge,jdbcType=VARCHAR}, 
+      #{chOverdue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.Charge" >
+    insert into tb_charge
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      
+      <if test="chType != null" >
+        ch_type,
+      </if>
+      <if test="chCharge != null" >
+        ch_charge,
+      </if>
+      <if test="chOverdue != null" >
+        ch_overdue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      
+      <if test="chType != null" >
+        #{chType,jdbcType=VARCHAR},
+      </if>
+      <if test="chCharge != null" >
+        #{chCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="chOverdue != null" >
+        #{chOverdue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.Charge" >
+    update tb_charge
+    <set >
+      <if test="chType != null" >
+        ch_type = #{chType,jdbcType=VARCHAR},
+      </if>
+      <if test="chCharge != null" >
+        ch_charge = #{chCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="chOverdue != null" >
+        ch_overdue = #{chOverdue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ch_id = #{chId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.Charge" >
+    update tb_charge
+    set ch_type = #{chType,jdbcType=VARCHAR},
+      ch_charge = #{chCharge,jdbcType=VARCHAR},
+      ch_overdue = #{chOverdue,jdbcType=VARCHAR}
+    where ch_id = #{chId,jdbcType=VARCHAR}
+  </update>
+  <select id="findAllAll"  resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List"></include>
+  	from tb_charge
+  </select>
+
+</mapper>

@@ -56,18 +56,18 @@ public class InformationView extends HttpServlet {
 			//普通用户
 			
 			
-			request.getRequestDispatcher("general-information.jsp").forward(request, response);
+			request.getRequestDispatcher("general-jsp/general-information.jsp").forward(request, response);
 		}
 		else if(qx.equals("1")) {
 			//记录员用户
 			
 			
-			request.getRequestDispatcher("recorder-information.jsp").forward(request, response);
+			request.getRequestDispatcher("recorder-jsp/recorder-information.jsp").forward(request, response);
 		}
 		else if(qx.equals("2")) {
 			//管理员用户
 			
-			request.getRequestDispatcher("admin-information.jsp").forward(request, response);	
+			request.getRequestDispatcher("admin-jsp/admin-information.jsp").forward(request, response);	
 		}
 		
 	}

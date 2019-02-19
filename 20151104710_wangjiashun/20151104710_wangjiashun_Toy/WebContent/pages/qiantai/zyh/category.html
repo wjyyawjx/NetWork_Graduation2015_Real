@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="Generator" content="ECSHOP v2.7.3" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta http-equiv="X-Ua-Compatible" content="IE=EmulateIE8" />
+<title>所有玩具_智鼎亲宝玩具租赁-官方网站</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="css/index.css" type="text/css" rel="stylesheet" />
+<link href="css/fy.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript"
+	src="themes/default/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/compare.js"></script>
+<script src="js/rx/jquery.js"></script>
+<script type="text/javascript" src="themes/default/js/js.js"></script>
+<script>
+	$(function() {
+
+		var url = "../../../toy/queryAll.action";
+		var data = null;
+		$
+				.post(
+						url,
+						data,
+						function(mes) {
+							$
+									.each(
+											mes,
+											function(index, item) {
+												$("#wanju")
+														.append(
+																"<li><a href='toy.html?id="
+																		+ item.toyId
+																		+ "'><img src='../../../"+item.photoPath+"' alt='"+item.toyName+"' width='138' height='138' /></a><p><a href='toy.html?id="
+																		+ item.toyId
+																		+ "' title='"
+																		+ item.toyName
+																		+ "'>"
+																		+ item.toyName
+																		+ "</a></p><p><a href='toy.html?id="
+																		+ item.toyId
+																		+ "'>租金(月)：<span class='zjj'>"
+																		+ item.toyMoney
+																		+ "</span></a></p><p><a href='toy.html?id="
+																		+ item.toyId
+																		+ "'>押金：<span class='zjj'>"
+																		+ item.toyDeposit
+																		+ "</span></a></p></li>");
+											});
+
+						}, "json");
+
+		var url = "../../../toy/findType.action";
+		var data = null;
+		$.post(url, data, function(mes) {
+			$.each(mes, function(index, item) {
+				$("#toyType").append(
+						"<a href='javascript:findByType(" + item.typeId
+								+ ");'>" + item.typeName + "</a>&nbsp;");
+			});
+
+		}, "json");
+
+	})
+
+	function findByType(id) {
+		var url = "../../../toy/findTypeById.action";
+		var data = {
+			"typeId" : id
+		};
+		$
+				.post(
+						url,
+						data,
+						function(mes) {
+							$("#wanju").html("");
+							$
+									.each(
+											mes,
+											function(index, item) {
+
+												$("#wanju")
+														.append(
+																"<li><a href='toy.html?id="
+																		+ item.toyId
+																		+ "'><img src='../../../"+item.photoPath+"' alt='"+item.toyName+"' width='138' height='138' /></a><p><a href='toy.html?id="
+																		+ item.toyId
+																		+ "' title='"
+																		+ item.toyName
+																		+ "'>"
+																		+ item.toyName
+																		+ "</a></p><p><a href='toy.html?id="
+																		+ item.toyId
+																		+ "'>租金(月)：<span class='zjj'>"
+																		+ item.toyMoney
+																		+ "</span></a></p><p><a href='toy.html?id="
+																		+ item.toyId
+																		+ "'>押金：<span class='zjj'>"
+																		+ item.toyDeposit
+																		+ "</span></a></p></li>");
+
+											});
+
+						}, "json");
+
+	}
+</script>
+</head>
+<body>
+	<iframe src="../../iframe/iframe2.html" target="_top" width="100%"
+		height="220px" frameborder="0" scrolling="no"></iframe>
+
+
+	<div class="mainDivnew">
+		<div class="fytop">
+			当前位置：当前位置: <a href="toyIndex.html">首页</a>
+			<code>&gt;</code>
+			<a href="category.html">所有玩具</a>
+		</div>
+		<div class="list_nr">
+			<div class="list_left">
+				<div class="fyflb">
+					<ul class="fyfenlei">
+						<li><a href="category.php?id=34">
+								<p>
+									<span class="fenlei">所有玩具</span>
+								</p>
+						</a>
+							<ul class="xxfenlei">
+								<li><a href="category.php?id=51">摇摆车充电站</a></li>
+								<li><a href="category.php?id=33">认知类玩具</a></li>
+								<li><a href="category.php?id=6">语言类玩具</a></li>
+								<li><a href="category.php?id=109">玩具出售</a></li>
+								<li><a href="category.php?id=12">动作类玩具</a></li>
+								<li><a href="category.php?id=16">操作类玩具</a></li>
+								<li><a href="category.php?id=19">艺术类玩具</a></li>
+								<li><a href="category.php?id=25">社会生活玩具</a></li>
+								<li><a href="category.php?id=26">童车童床</a></li>
+								<li><a href="category.php?id=30">图书绘本</a></li>
+								<li><a href="category.php?id=29">精品区</a></li>
+								<div class="clear"></div>
+							</ul></li>
+						<li><a href="category.php?id=113">
+								<p>
+									<span class="fenlei">钓鱼</span>
+								</p>
+						</a>
+							<ul class="xxfenlei">
+								<div class="clear"></div>
+							</ul></li>
+					</ul>
+				</div>
+
+
+
+
+				<div id="rz">
+					<div class="rzph_nr"></div>
+				</div>
+				<div class="clear"></div>
+				<div class="lljl" id='history_div'></div>
+				<script type="text/javascript">
+					if (document.getElementById('history_list').innerHTML
+							.replace(/\s/g, '').length < 1) {
+						document.getElementById('history_div').style.display = 'none';
+					} else {
+						document.getElementById('history_div').style.display = 'block';
+					}
+					function clear_history() {
+						Ajax.call('user.php', 'act=clear_history',
+								clear_history_Response, 'GET', 'TEXT', 1, 1);
+					}
+					function clear_history_Response(res) {
+						document.getElementById('history_list').innerHTML = '您已清空最近浏览过的商品';
+					}
+				</script>
+			</div>
+		</div>
+		<div class="list_right">
+
+			<div class="hotm">
+				<h3 class="liulan rmen">
+					<span class="more"></span>热门分类
+				</h3>
+					<div class="rmxfl" id="toyType">
+					<b>类型 :</b> <span>全部</span>
+				</div>
+			</div>
+
+			<div class="hotm2">
+				<h3 class="liulan rmen">
+					<span class="sleft">搜索结果</span><a name='goods_list'></a>
+					<form method="post" class="sort" name="listform">
+
+						<input type="hidden" name="category" value="34" /> <input
+							type="hidden" name="display" value="grid" id="display" /> <input
+							type="hidden" name="brand" value="0" /> <input type="hidden"
+							name="price_min" value="0" /> <input type="hidden"
+							name="price_max" value="0" /> <input type="hidden"
+							name="filter_attr" value="0" /> <input type="hidden" name="page"
+							value="1" /> <input type="hidden" name="sort" value="goods_id" />
+						<input type="hidden" name="order" value="DESC" />
+					</form>
+				</h3>
+				<form name="compareForm" action="compare.php" method="post"
+					onSubmit="return compareGoods(this);">
+					<div class="splbnr">
+						<ul id="wanju">
+
+						</ul>
+					</div>
+				</form>
+
+			</div>
+			<script type="Text/Javascript" language="JavaScript">
+			<!--
+				function selectPage(sel) {
+					sel.form.submit();
+				}
+			//-->
+			</script>
+			<script type="text/javascript">
+				window.onload = function() {
+					Compare.init();
+					fixpng();
+				}
+				var button_compare = '';
+				var exist = "您已经选择了%s";
+				var count_limit = "最多只能选择4个商品进行对比";
+				var goods_type_different = "\"%s\"和已选择商品类型不同无法进行对比";
+				var compare_no_goods = "您没有选定任何需要比较的商品或者比较的商品数少于 2 个。";
+				var btn_buy = "租赁";
+				var is_cancel = "取消";
+				var select_spe = "请选择商品属性";
+			</script>
+
+			<script type="Text/Javascript" language="JavaScript">
+			<!--
+				function selectPage(sel) {
+					sel.form.submit();
+				}
+			//-->
+			</script>
+		</div>
+		<div class="clear"></div>
+
+		<iframe src="../../iframe/iframe-botton.html" width="100%"
+			height="400px" frameborder="0" scrolling="no"></iframe>
+</body>
+</html>

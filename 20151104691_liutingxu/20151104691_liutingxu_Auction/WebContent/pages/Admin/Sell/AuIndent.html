@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>订单管理</title>
+<!-- <link href="https://lib.baomitu.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+<link rel="stylesheet" type="text/css" href="../../res/js/sweetalert.css">
+<link href="../../res/css/cst/auindent.css" rel="stylesheet">
+<script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="../../res/js/cst/auindent.js"></script>
+<script src="../../res/js/sweetalert.min.js"></script> 
+<script src="../../res/js/cx/imgUp.js"></script>
+<script type="text/javascript" src="../../res/js/cx/laydate.js"></script>
+  <script>
+    lay('#version').html('-v'+ laydate.v);
+    //时间选择器
+    laydate.render({
+      elem: '#inDate'
+      ,type: 'datetime'
+    });
+    
+    laydate.render({
+        elem: '#comTime'
+        ,type: 'datetime'
+      });
+    </script>
+</head>
+<body>
+<div class="table-responsive">
+	<form id="queryForm">
+			商品名称:<input type="text" class="textCss" id="comName" placeholder="请输入商品名称">
+			调查时间:
+			<input type="date" class="textCss" id="inDate" placeholder="请输入开始时间">-
+			<input type="date"  class="textCss" id="inTime" placeholder="请输入结束时间">
+			
+			<input type="button"  value="查询" class="btn btn-success btn-sm" id="queryBtn" onclick="queryStu()">
+			<input type="button"  value="增加" class="btn btn-info btn-sm" id="insertBtn">
+		</form>
+	
+	<table id="myTable" class="table table-hover table-bordered table-striped">
+		<thead>
+			<tr>
+				  <th>订单id</th>
+			      <th>商品</th>
+			      <th>用户</th>
+			      <th>订单时间</th>
+			      <th>成交价格</th>
+			      <th>状态</th>
+			      <th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="body">
+			
+		</tbody>
+</table>
+<ul class="pagination"></ul>
+
+</div>  	
+<div id="divBody"></div>
+		<form id="myFrom" class="form-horizontal">
+			<fieldset>
+				<div id="legend" class="">
+					<legend class="">编辑</legend>
+				</div>
+				<div class="control-group">
+					<input type="hidden" id="inId" name="inId" >
+					<!-- Select Basic -->
+					<span class="control-label">商品名称:</span>
+						<select class="input-xlarge" id="comSelect" name="comId">
+							<option>Enter</option>
+							<option>Your</option>
+							<option>Options</option>
+							<option>Here!</option>
+						</select>
+				</div>
+
+				<div class="control-group">
+
+					<!-- Select Basic -->
+					<span class="control-label">用户名称:</span>
+						<select class="input-xlarge" id="userSelect" name="userId">
+							<option>Enter</option>
+							<option>Your</option>
+							<option>Options</option>
+							<option>Here!</option>
+						</select>
+				</div>
+
+				<div class="control-group">
+
+					<span class="control-label" for="input01">订单时间:</span>
+				    <input type="date" placeholder="" class="input-xlarge" id="inDate" name="inDate">
+						<!--  <input type="text" class="demo-input" placeholder="开拍时间" id="inDate" name="inDate">-->
+				</div>
+
+				<div class="control-group">
+
+					<span class="control-label" for="input01">成交价格:</span>
+						<input type="text" placeholder="" class="input-xlarge" id="inMoney" name="inMoney">
+				</div>
+
+				<div class="control-group">
+
+					<!-- Select Basic -->
+					<span class="control-label">订单状态:</span>
+						<select class="input-xlarge" id="stateSelect" name="inState">
+							<option value="">====请选择====</option>
+							<option value="0">等待买家确认购买</option>
+							<option value="1">等待商家发货</option>
+							<option value="2">已发货等待买家收货</option>
+							<option value="9">该商品出售完成</option>
+							<option value="10">该订单已经失效了</option>
+						</select>
+				</div>
+				
+				<div class="control-group" id="groupInput"> 
+					<label class="control-label"></label>
+
+					<!-- Button -->
+					<div class="controls">
+						<input type="button" class="btn btn-success" id="fromSubmit" value="确认"/>&nbsp;&nbsp;&nbsp;
+						<input type="button" class="btn btn-danger" id="exit" value="取消"/>
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+</body>
+<script src="../../res/js/uploadImg.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+			imgUpload({
+				inputId:'file', //input框id
+				imgBox:'imgBox', //图片容器id
+				buttonId:'btn', //提交按钮id
+				upUrl:'php/imgFile.php',  //提交地址
+				data:'file1', //参数名
+				num:"5"//上传个数
+			})
+		</script>
+</html>

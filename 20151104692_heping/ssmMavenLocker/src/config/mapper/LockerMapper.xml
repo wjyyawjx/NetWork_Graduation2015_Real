@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.LockerMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.domain.Locker" >
+    <id column="lo_id" property="loId" jdbcType="VARCHAR" />
+    <result column="ar_id" property="arId" jdbcType="VARCHAR" />
+    <result column="ar_name" property="arName" jdbcType="VARCHAR" />
+    <result column="lo_name" property="loName" jdbcType="VARCHAR" />
+    <result column="lo_phone" property="loPhone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    lo_id, ar_id, lo_name, lo_phone
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_locker
+    where lo_id = #{loId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_locker
+    where lo_id = #{loId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.Locker" >
+    insert into tb_locker ( ar_id, lo_name, 
+      lo_phone)
+    values ( #{arId,jdbcType=VARCHAR}, #{loName,jdbcType=VARCHAR}, 
+      #{loPhone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.Locker" >
+    insert into tb_locker
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="loId != null" >
+        lo_id,
+      </if>
+      <if test="arId != null" >
+        ar_id,
+      </if>
+      <if test="loName != null" >
+        lo_name,
+      </if>
+      <if test="loPhone != null" >
+        lo_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="loId != null" >
+        #{loId,jdbcType=VARCHAR},
+      </if>
+      <if test="arId != null" >
+        #{arId,jdbcType=VARCHAR},
+      </if>
+      <if test="loName != null" >
+        #{loName,jdbcType=VARCHAR},
+      </if>
+      <if test="loPhone != null" >
+        #{loPhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.Locker" >
+    update tb_locker
+    <set >
+      <if test="arId != null" >
+        ar_id = #{arId,jdbcType=VARCHAR},
+      </if>
+      <if test="loName != null" >
+        lo_name = #{loName,jdbcType=VARCHAR},
+      </if>
+      <if test="loPhone != null" >
+        lo_phone = #{loPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lo_id = #{loId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.Locker" >
+    update tb_locker
+    set ar_id = #{arId,jdbcType=VARCHAR},
+      lo_name = #{loName,jdbcType=VARCHAR},
+      lo_phone = #{loPhone,jdbcType=VARCHAR}
+    where lo_id = #{loId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select ar.ar_name,lo.* from tb_area ar , tb_locker lo where ar.ar_id=lo.ar_id ;
+  </select>
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select ar.ar_name,lo.* from tb_area ar , tb_locker lo
+  	where ar.ar_id=lo.ar_id and lo.lo_name like #{loName,jdbcType=VARCHAR}
+  </select>
+</mapper>

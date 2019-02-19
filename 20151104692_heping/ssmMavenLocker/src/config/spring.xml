@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<!-- 支持注解 -->
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="com.yidu">
+		 <!-- 扫描时跳过 @Controller 注解的JAVA类（控制器） -->
+         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	 <!--扫描配置文件(这里指向的是之前配置的那个config.properties)-->
+    <context:property-placeholder location="classpath:/config/my.properties" />
+	
+	<!--配置数据源-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${userdb}" />
+		<property name="password" value="${password}" />
+    </bean>
+	
+	 
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="configLocation" value="classpath:config/mybatis.xml" />
+		<!--指定sql映射xml文件的路径 -->
+		<property name="mapperLocations"
+			value="classpath:config/mapper/*.xml"></property>
+		
+	</bean>
+	
+	<!-- mapper扫描器 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 扫描的包，如果要扫描多个，中间用,隔开 -->
+		<property name="basePackage" value="com.yidu.dao"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+    
+    <!-- 事物管理器配置  -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="insert*" propagation="REQUIRED" /> <!-- 支持当前事务，如果执行到save开头的任何方法时没有事务则开启一个事务 这是最常见的方式-->
+			<tx:method name="save*" propagation="REQUIRED" /> <!-- 支持当前事务，如果执行到save开头的任何方法时没有事务则开启一个事务 这是最常见的方式-->
+			<tx:method name="update*" propagation="REQUIRED" /><!-- 支持当前事务，如果执行到save开头的任何方法时没有事务则开启一个事务 这是最常见的方式-->
+			<tx:method name="add*" propagation="REQUIRED" /><!-- 支持当前事务，如果执行到save开头的任何方法时没有事务则开启一个事务 这是最常见的方式-->
+			<tx:method name="delete*" propagation="REQUIRED" /><!-- 支持当前事务，如果执行到save开头的任何方法时没有事务则开启一个事务 这是最常见的方式-->
+			<tx:method name="remove*" propagation="REQUIRED" /><!-- 支持当前事务，如果执行到save开头的任何方法时没有事务则开启一个事务 这是最常见的方式-->
+			
+			<tx:method name="find*" propagation="SUPPORTS" read-only="true"/> <!-- 支持当前事务，如果当前没有事务，就以非事务方式执行。只读 -->
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true"/><!-- 支持当前事务，如果当前没有事务，就以非事务方式执行。只读 -->
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 那些类那些方法使用事务 -->
+	<aop:config>
+	  <!-- 只对业务逻辑层实施事务 -->
+		<aop:pointcut id="allManagerMethod"
+			expression="execution(* com.yidu.service.impl.*.*(..))" />
+		<aop:advisor pointcut-ref="allManagerMethod" advice-ref="txAdvice" />
+	</aop:config>
+	
+	<!-- 可通过注解控制事务 -->
+	<tx:annotation-driven /> 
+	
+</beans>

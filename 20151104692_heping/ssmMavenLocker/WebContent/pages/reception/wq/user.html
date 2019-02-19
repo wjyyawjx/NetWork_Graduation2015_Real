@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>个人信息</title>
+<style type="text/css">
+	.h3{
+			margin-top:20px;
+			margin-left:10px;
+			color:#0FC80F;
+		}
+		#fiveTiJiao{
+			width:120px;
+			background:#0FC80F;
+			font-size:30px;
+			font-family:幼圆;
+			color:#075C07;
+			font-weight:bold;
+			text-align:left;
+			height:40px;
+			border-radius:5px;
+			color:bluk;
+			float:left;
+			padding-left:50px;
+			padding-top:3px;
+			opacity: 0.8;
+			margin-top:30px;
+			margin-left:70px;
+			cursor:pointer
+			
+		}
+		
+		body{
+			background:#80FF80;
+			background-color:white;
+		}
+</style>
+<!-- 写java代码 -->
+<script src="../../../res/js/wq/jquery-1.11.2.js"></script>
+<!-- SweetAlert 所要的两个包 -->
+<script src="../../../res/js/wq/sweetalert.min.js"></script> 
+<link rel="stylesheet" type="text/css" href="../../../res/css/wq/sweetalert.css">
+
+<script type="text/javascript">
+	$(function(){
+		var url="../../../user/userSelect.action";
+		$.post(url,null,function(mes){
+			$("#uId").val(mes.uId);
+			$("#uZh").val(mes.uZh);
+			$("#uMm").val(mes.uMm);
+			$("#uPhone").val(mes.uPhone);
+			$("#uSite").val(mes.uSite);
+			if(mes.uType=="1"){
+				$("#useruser").html("普通用户");
+			}else if(mes.uType=="2"){
+				$("#useruser").html("会员用户");
+			}
+		},"json");
+		
+		//个人中心点击提交
+		$("#fiveTiJiao").click(function(){
+			$("#five").hide();
+			var url="../../../user/addOrUpdate.action";
+			var data=$("#biaodan").serialize(); //将表单序列化;
+			$.post(url,data,function(mes){
+				if(mes.state==1){
+					swal({
+					    title: '修改成功',
+					    timer: 2000
+					})
+				}else{
+					swal({
+					    title: '修改失败',
+					    timer: 2000
+					})
+				}
+			},"json");
+		})
+	})
+</script>
+</head>
+<body>
+	<div style="height:540px;background:#B8FAB8;margin-top:-15px;">
+		<div style="width:300px;margin:auto;">
+			<h1 style="margin-left:70px;color:#0FC80F;">个人信息</h1>
+			<form id="biaodan" method='POST'>
+				<input type="hidden" id="uId" name="uId"> 
+				<h2 class="h3">账号:<input style="width:200px;height:25px;font-size:25px;color:#075C07;" type="text" id="uZh" name="uZh"></h2>
+				<h2 class="h3">密码:<input style="width:200px;height:25px;font-size:25px;color:#075C07;" type="text" id="uMm" name="uMm"></h2>
+				<h2 class="h3">电话:<input style="width:200px;height:25px;font-size:25px;color:#075C07;" type="text" id="uPhone" name="uPhone"></h2>
+				<h2 class="h3">地址:<input style="width:200px;height:25px;font-size:25px;color:#075C07;" type="text" id="uSite" name="uSite"></h2>
+				<h2 class="h3">用户:<span id="useruser"></span></h2>
+				<div id="fiveTiJiao">提交</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

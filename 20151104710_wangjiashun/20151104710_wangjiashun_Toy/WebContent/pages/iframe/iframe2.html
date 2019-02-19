@@ -1,0 +1,99 @@
+  
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>投票头部</title>
+<link rel="stylesheet" type="text/css" href="../res/css/iframe.css" />
+<script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$(function(){
+		show();
+		
+		
+	})
+	
+	
+	function show(){
+		var url="../../user/getUser.action";
+		var data = null;
+		$.post(url,data,function(mes){
+			if(mes!=null){
+				$(".topleft").html("<a href='#'>收藏</a> | 您好，<font color='red'>"+mes.userName+"</font>, 欢迎光临本店<a href='../user/member.html' target='_top'>&nbsp&nbsp&nbsp<font color='gray'>用户中心</font></a>"+
+				 " | <a href='javascript:exit();'><font color='gray'>退出</font></a>&nbsp&nbsp&nbsp<a href='../user/order.html' target='_top'><font color='gray'>我的订单</font></a>");
+			}
+		},"json");
+	}
+	function exit(){
+		var url="../../user/exit.action";
+		var data = null;
+		$.post(url,data,function(mes){
+			if(mes.state==1){
+				window.location.reload();
+				
+			}
+		},"json");
+	}
+</script>
+<style>
+
+</style>
+</head>
+<body>
+	<div>
+			<div class="topDiv">
+				<div class="topDiv_nr">
+					<span class="topleft">
+					<a href="#">收藏</a>
+					 | 您好，欢迎光临本店 <span id="user_head_tip"><a href="../user/login.html" target="_top"><font color="red">登录</font></a>
+					  | <a href="../user/register.html" target="_top"><font color="red">免费注册</font></a>
+					  </span>
+					 </span>
+	        		<span class="topright">
+	        		<img src="../../upload/gwc.png" /> 
+	        		<a href="../../pages/qiantai/wj/shoppingCart.html" target="_top">租赁车<b  id="cart_count">
+	        		</b>  ▼</a>
+	        		 |<a href="flow.php"> 去结算 ▼ </a>
+	        		 </span>
+
+				
+				</div>
+			</div>
+			
+			<div class="headerDiv">
+				<div class="logo">
+					<img id="logimage" src="../../upload/logo.png"/>
+				</div>
+			<div class="headeright">
+             <div class="tell"><img src="../../upload/tell.png" width="255" height="65"/></div>
+             <div class="sousuo">
+					  <input  name="category" value="0" type="hidden" />
+			          <input class="sousuo_nr" name="toyName" id="toyName" type="text" value="" />
+			          <a href="javascript:fuck();" target="_top"><input class="btn" name="imageField" type="button"  value="搜索" /></a>
+		  
+             </div>
+        	</div>
+
+			</div>
+				
+			
+		</div>
+		
+		<div class="menuDiv">
+		     <ul>
+			<li class="xxlis"><a href="../../pages/qiantai/zyh/toyIndex.html" target="_top">首页</a></li>
+            <li class="xxli"><a href="../qiantai/zyh/category.html" target="_top">所有玩具</a></li>
+            <li class="xxli"><a href="http://www.babyzulin.com/category.php?id=49" >益智玩具</a></li>
+            <li class="xxli"><a href="http://www.babyzulin.com/category.php?id=32" >金卡特租</a></li>
+            <li class="xxli"><a href="http://www.babyzulin.com/category.php?id=50" >银卡特租</a></li>
+            <li class="xxli"><a href="http://www.babyzulin.com/category.php?id=51" >摇摆车充电站</a></li>
+            <li class="xxli"><a href="http://www.babyzulin.com/article.php?id=165" >玩具消毒</a></li>
+            <li class="xxli"><a href="article_cat.php?id=19" >租赁指南</a></li>
+            <li class="xxli"><a href="http://www.babyzulin.com/category.php?id=109" >玩具出售</a></li>
+            <li class="xxli"><a href="article_cat.php?id=16" >育儿知识</a></li>
+            <li class="xxli"><a href="article.php?id=5" target="_blank" >关于我们</a></li>
+		     </ul>
+		</div>
+		
+</body>
+</html>

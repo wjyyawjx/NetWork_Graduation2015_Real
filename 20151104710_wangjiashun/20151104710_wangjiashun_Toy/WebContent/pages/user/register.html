@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>注册页面</title>
+<link rel="stylesheet" type="text/css" href="../res/css/register.css"/>
+<style>
+	
+</style>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/limonte-sweetalert2/7.28.11/sweetalert2.all.js"></script>
+<link href="https://cdn.bootcss.com/limonte-sweetalert2/7.28.11/sweetalert2.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+<script type="text/javascript">
+/**
+ * 提交
+ */
+$(function(){
+	$("#username").blur(function(){
+		var userval=$("#username").val();
+		if(userval==""){
+			$("#username_notice").html("<font color='#FF0000'>请填写用户名</font>");
+		}else if(userval.length<3){
+			$("#username_notice").html("<font color='#FF0000'>字符长度不能小于3</font>");
+		}else if(userval.length>15){
+			$("#username_notice").html("<font color='#FF0000'>字符长度不能大于15</font>");
+		}else{
+			var url = "../../user/findByUserName.action";
+			var data = {"userName":$("#username").val()}
+			$.post(url,data,function(mes){
+				if(mes.state==1){
+					$("#username_notice").html("<font name='dui' color='green'>"+mes.msg+"</font>");
+				}else{
+					$("#username_notice").html("<font color='#FF0000'>"+mes.msg+"</font>");
+				}
+			},"json");
+		}
+	})
+	$("#password1").blur(function(){
+		var pwdval=$("#password1").val();
+		if(pwdval==""){
+			$("#password_notice").html("<font color='#FF0000'>请填写密码</font>");
+		}else if(pwdval.length<6){
+			$("#password_notice").html("<font color='#FF0000'>字符长度不能小于6</font>");
+		}else if(pwdval.length>15){
+			$("#password_notice").html("<font color='#FF0000'>字符长度不能大于15</font>");
+		}else{
+			$("#password_notice").html("<font name='dui' color='green'>√</font>");
+		}
+	})
+	$("#conform_password").blur(function(){
+		var pwdsval=$("#conform_password").val();
+		var pwdval=$("#password1").val();
+		if(pwdsval==""){
+			$("#conform_password_notice").html("<font color='#FF0000'>请填写密码</font>");
+		}else if(pwdval.length<6){
+			$("#conform_password_notice").html("<font color='#FF0000'>字符长度不能小于6</font>");
+		}else if(pwdval.length>15){
+			$("#conform_password_notice").html("<font color='#FF0000'>字符长度不能大于15</font>");
+		}else if(pwdsval!=pwdval){
+			$("#conform_password_notice").html("<font color='FF0000'>密码不一致</font>");
+		}else{
+			$("#conform_password_notice").html("<font name='dui' color='green'>√</font>");
+		}
+	})
+	
+	
+	
+	$("#email").blur(function(){
+		var emailval=$("#email").val();
+		var tval=/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+		if(emailval==""){
+			$("#email_notice").html("<font color='#FF0000'>请填写邮箱</font>");
+		}else if(!tval.test(emailval)){
+			$("#email_notice").html("<font color='FF0000'>请输入正确的格式</font>");
+		}else{
+			$("#email_notice").html("<font name='dui' color='green'>√</font>");
+		}
+	})
+	
+	$("#phone").blur(function(){
+		var phoneval=$("#phone").val();
+		var tval=/^1(?:3\d|4[4-9]|5[0-35-9]|6[67]|7[013-8]|8\d|9\d)\d{8}$/;
+		if(phoneval==""){
+			$("#phone_notice").html("<font color='#FF0000'>请填写手机号</font>");
+		}else if(!tval.test(phoneval)){
+			$("#phone_notice").html("<font color='FF0000'>请输入正确的格式</font>");
+		}else{
+			$("#phone_notice").html("<font name='dui' color='green'>√</font>");
+		}
+	})
+	
+})
+function submitRegister(){
+		var s=document.getElementsByName("dui");
+		if(s.length==5&&document.getElementById("chie").checked){
+			var url = "../../user/register.action";
+			var data = $("#registerFrom").serialize();
+			$.post(url,data,function(mes){
+				if(mes.state==1){
+					swal({
+					    title: mes.msg,
+					    type: 'success',
+					    allowOutsideClick:false
+					}).then(
+					    function () {
+					    	location.href="login.html";
+					    }
+					) 
+				}else{
+					swal({
+					    title: '注册失败',
+					    type: 'error',
+					    allowOutsideClick:false
+					}).then(
+						    function () {
+						    	window.location.reload();
+						    }
+						) 
+					
+				}
+			},"json");
+		}else{
+			swal({
+			    title: '注册失败',
+			    text:'请完善信息',
+			    type: 'error',
+			    allowOutsideClick:false
+			})
+		}
+}
+				
+			
+		
+	
+</script>
+</head>
+<body>
+	<iframe src="../iframe/iframe2.html" width="100%" height="235px" frameborder="0" scrolling="no"></iframe>
+	<div id="text-head" class="style_hui_12">当前位置：首页>用户中心</div>
+	<div class="maxnvdiv">
+	 <div class="fymain">
+         <div class="zcDiv">
+          <div class="zctop"></div>
+        <div class="zcmiddle">
+				
+
+	    	<form id="registerFrom" method="post">
+	              <div class="zctitle">
+	                    <img src="../../upload/xinzhuce.png" width="110" height="30"/>
+	                    <span>立即注册，享受多重惊喜，马上加入我们惊喜多多，好运连连。<b>已有账号，请<a href="login.html">登录</a></b></span>
+	              </div>
+                  <div class="zccontent">
+                  		<p><b>用&nbsp;户&nbsp;名：</b>
+							<input name="userName" type="text"  id="username" maxlength="15"  class="kude" >
+	       					<span id="username_notice"></span>
+						</p>
+                        <p><b>设置密码：</b>
+							<input  type="password" id="password1" maxlength="15" class="kude"  />
+							<span  id="password_notice"></span>
+						</p>
+                        <p><b>确认密码：</b>
+							<input name="userPsw" type="password" id="conform_password" maxlength="15"   class="kude" />
+							<span  id="conform_password_notice"></span>
+						</p>
+                        <p><b>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</b>
+							 <input type="text" size="25" name="userEmail" id="email" class="kude"/>
+							 <span id="email_notice"> </span>
+						</p>
+				        
+		  	        	<p><b><i>*</i>手机：</b>
+						    <input name="userPhone"  id="phone" type="text" size="25" maxlength="11" class="kude" />
+						    &nbsp;&nbsp;<font id="phone_notice"></font>
+					    </p>
+		  	        	
+		  		         <p><b>用户类型：</b>
+   						    <select name='userType'>
+						  		<option value="1">普通用户</option>
+						  		<option value="2">会员</option>
+						  		<option value="3">商家</option>
+					  		</select>	  
+				      	</p>
+						
+	                   <p class="zcanniu">
+						 	 <img  src="../../upload/lijizhuce.png" width="140" id="userBtn" height="49"  style="float:left" onclick="submitRegister()"/> 
+	        				<em>
+	        					<input id="chie" class="fuxu" type="checkbox" checked="checked"  value="1" >我已看过并接受<a href="">《用户协议》</a>
+	        					<span id="check_notice"></span>
+	        				</em>
+	        		   </p>
+	                   
+	                  </div>
+	              </form>
+               </div>
+               <div class="zcbottom"></div>
+            </div>
+                       
+         </div>
+		</div>	
+		<iframe src="../iframe/iframe-botton.html" width="100%" height="400px" frameborder="0" scrolling="no"></iframe>
+</body>
+</html>

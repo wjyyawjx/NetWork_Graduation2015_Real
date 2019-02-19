@@ -40,7 +40,7 @@ public class RecorderJView extends HttpServlet {
 		ArrayList<AthletBean> abean = new ArrayList<AthletBean>();
 		abean = (ArrayList<AthletBean>)rgdao.athletList(tsid);
 		request.setAttribute("mea", abean);
-		request.getRequestDispatcher("recorder-athlet.jsp").forward(request, response);
+		request.getRequestDispatcher("recorder-jsp/athlet.jsp").forward(request, response);
 
 	}
 
