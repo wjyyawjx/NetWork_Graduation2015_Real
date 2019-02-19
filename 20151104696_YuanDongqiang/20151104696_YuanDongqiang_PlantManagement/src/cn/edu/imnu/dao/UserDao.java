@@ -20,5 +20,9 @@ public interface UserDao {
 	 * 判断邮箱是否存在
 	 */
 	public User findUseremail(@Param("u_email") String u_email);
+	/**
+	 * 更新ip
+	 */
+	public void SaveIp(User user);
 
 }
