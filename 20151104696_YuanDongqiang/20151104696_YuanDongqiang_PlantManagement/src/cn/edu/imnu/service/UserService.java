@@ -11,4 +11,7 @@ public interface UserService {
 
 	// 查询邮箱
 	public User findUseremail(String u_email);
+
+	// 更新登陆的ip
+	public void SaveIp(User user);
 }

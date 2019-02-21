@@ -1,6 +1,7 @@
 package cn.edu.imnu.po;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 用户类
@@ -13,6 +14,8 @@ public class User implements Serializable {
 	private String u_type;// 用户类别
 	private String u_email;// 用户邮箱
 	private String u_code;// 用户账号
+	private String u_ip;// 登陆机器的ip
+	private Date u_time;// 登录时间
 
 	public Integer getU_id() {
 		return u_id;
@@ -60,6 +63,22 @@ public class User implements Serializable {
 
 	public void setU_code(String u_code) {
 		this.u_code = u_code;
+	}
+
+	public String getU_ip() {
+		return u_ip;
+	}
+
+	public void setU_ip(String u_ip) {
+		this.u_ip = u_ip;
+	}
+
+	public Date getU_time() {
+		return u_time;
+	}
+
+	public void setU_time(Date u_time) {
+		this.u_time = u_time;
 	}
 
 	public static long getSerialversionuid() {

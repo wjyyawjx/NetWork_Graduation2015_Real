@@ -28,5 +28,5 @@ public interface LaboratoryMapper {
 
     int updateByPrimaryKey(Laboratory record);
 
-	Laboratory selectLab();
+	List<Laboratory> selectLab(LaboratoryExample example);
 }

@@ -74,44 +74,6 @@
 </script>
 </head>
 <body>
-	<div class="agiletopbar">
-		<div class="wthreenavigation">
-			<div class="menu-wrap">
-				<nav class="menu">
-				<div class="icon-list">
-					<a
-						href="${pageContext.request.contextPath }/categories.action?id=2">
-						<i class="fa fa-fw fa-mobile"></i><span>移动</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=3">
-						<i class="fa fa-fw fa-laptop"></i><span>电子产品和电器</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=4">
-						<i class="fa fa-fw fa-car"></i><span>汽车</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=1">
-						<i class="fa fa-fw fa-motorcycle"></i><span>自行车</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=5">
-						<i class="fa fa-fw fa-paw"></i><span>宠物</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=6">
-						<i class="fa fa-fw fa-book"></i><span>书</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=7">
-						<i class="fa fa-fw fa-asterisk"></i><span>时尚</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=8">
-						<i class="fa fa-fw fa-asterisk"></i><span>儿童</span>
-					</a>
-				</div>
-				</nav>
-				<button class="close-button" id="close-button">关闭菜单</button>
-			</div>
-			<button class="menu-button" id="open-button"></button>
-		</div>
-		<div class="clearfix"></div>
-	</div>
 	<header>
 	<div class="w3ls-header">
 		<div class="w3ls-header-right">
@@ -131,7 +93,6 @@
 						class="fa fa-question-circle" aria-hidden="true"></i> 帮助</a></li>
 			</ul>
 		</div>
-
 		<div class="clearfix"></div>
 	</div>
 	<div class="container">
@@ -141,30 +102,6 @@
 					<a href="${pageContext.request.contextPath }/index.action">主页</a>
 				</h1>
 			</div>
-			<div class="agileits_search">
-				<form action="#" method="post">
-					<input name="Search" type="text" placeholder="今天能为您做些什么?"
-						required=" "> <select id="agileinfo_search"
-						name="agileinfo_search" required="">
-						<option value="">所有类别</option>
-						<option value="Mobiles">移动</option>
-						<option value="Electronics & Appliances">电子产品和电器</option>
-						<option value="Cars">汽车</option>
-						<option value="Bikes">自行车</option>
-						<option value="Furnitures">宠物</option>
-						<option value="Books, Sports & Hobbies">书</option>
-						<option value="Fashion">时尚</option>
-						<option value="Kids">儿童</option>
-					</select>
-					<button type="submit" class="btn btn-default"
-						aria-label="Left Align">
-						<i class="fa fa-search" aria-hidden="true"> </i>
-					</button>
-				</form>
-				<a class="post-w3layouts-ad"
-					href="${pageContext.request.contextPath }/post.action">免费发布广告</a>
-			</div>
-			<div class="clearfix"></div>
 		</div>
 	</div>
 	</header>

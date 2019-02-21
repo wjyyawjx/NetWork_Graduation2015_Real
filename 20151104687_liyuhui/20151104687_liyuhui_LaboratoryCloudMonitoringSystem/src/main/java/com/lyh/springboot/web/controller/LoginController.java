@@ -29,6 +29,7 @@ import com.lyh.springboot.service.UserService;
 public class LoginController {
 	@Autowired
 	private UserService userService;
+	@Autowired
 	private LaboratoryService laboratoryService;
     
     @RequestMapping(value="/login",method= RequestMethod.POST)
@@ -43,9 +44,8 @@ public class LoginController {
 			session.setAttribute("subject", subject);
 			User user = userService.findUserName(num);
 			httpSession.setAttribute("User", user);
-			//List<Laboratory> lab = laboratoryService.findLab();
-			//Laboratory lab = laboratoryService.findLab1();
-			//model.addAttribute("Lab", lab);
+			List<Laboratory> lab = laboratoryService.findLab();
+			httpSession.setAttribute("Lab", lab);
 			return "redirect:menu";
 
 		} catch (AuthenticationException e) {

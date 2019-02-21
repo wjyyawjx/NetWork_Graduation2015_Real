@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<head>
 <title>二手交易网</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"><!-- bootstrap-CSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-select.css"><!-- bootstrap-select-CSS -->
@@ -46,7 +45,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="clearfix"></div>
 	</div>
-	<header>
 	<div class="w3ls-header">
 		<div class="w3ls-header-right">
 			<ul>

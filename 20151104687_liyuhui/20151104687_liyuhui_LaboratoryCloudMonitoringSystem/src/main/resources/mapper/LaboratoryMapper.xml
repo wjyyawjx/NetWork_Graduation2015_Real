@@ -85,9 +85,18 @@
   </select>
   
   
-  <select id="selectLab" parameterType="java.lang.String" resultType="com.lyh.springboot.pojo.Laboratory">
-    select l_id, l_name, place_id, tem_id
-    from laboratory
+  <select id="selectLab" parameterType="com.lyh.springboot.pojo.LaboratoryExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    l_id, l_name, campus, building, house_id, major, time, temperature, humidity
+    from laboratory, place, tem_hum
+    where laboratory.place_id = place.place.id and laboratory.tem_id = tem_hum.tem_id
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
   </select>
   
   

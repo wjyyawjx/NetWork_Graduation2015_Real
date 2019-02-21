@@ -34,4 +34,9 @@
 		#{u_type}
 		)
 	</insert>
+	<update id="SaveIp" parameterType="user">
+		UPDATE users
+		SET u_ip = #{u_ip},u_time=#{u_time}
+		WHERE u_id = #{u_id}
+	</update>
 </mapper>

@@ -8,6 +8,4 @@ public interface LaboratoryService {
 
 	public List<Laboratory> findLab();
 
-	public Laboratory findLab1();
-	
 }

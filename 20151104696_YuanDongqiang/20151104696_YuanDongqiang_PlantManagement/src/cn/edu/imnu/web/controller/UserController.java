@@ -1,10 +1,11 @@
 package cn.edu.imnu.web.controller;
 
+import java.net.UnknownHostException;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
-import org.omg.PortableInterceptor.USER_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +29,18 @@ public class UserController {
 	public String toLogin(String usercode, String password, Model model, HttpSession session) {
 		User user = userService.findUser(usercode, password);
 		if (user != null) {
+			// 获取windows本机IP
+			try {
+				String u_ip = java.net.InetAddress.getLocalHost().getHostAddress();
+				Date u_time=new Date();
+				user.setU_time(u_time);
+				if (u_ip != user.getU_ip()) {
+					user.setU_ip(u_ip);
+					userService.SaveIp(user);
+				}
+			} catch (UnknownHostException e) {
+				e.printStackTrace();
+			}
 			// 将用户对象添加到Session
 			session.setAttribute("USER_SESSION", user);
 			// 跳转到主页
@@ -77,10 +90,11 @@ public class UserController {
 		model.addAttribute("msg", "注册失败，请重新输入！！");
 		return "register";
 	}
-	//退出登录
+
+	// 退出登录
 	@RequestMapping(value = "/logout.action")
 	public String logout(HttpSession session) {
 		session.removeAttribute("USER_SESSION");
-		return "index"; 
+		return "index";
 	}
 }

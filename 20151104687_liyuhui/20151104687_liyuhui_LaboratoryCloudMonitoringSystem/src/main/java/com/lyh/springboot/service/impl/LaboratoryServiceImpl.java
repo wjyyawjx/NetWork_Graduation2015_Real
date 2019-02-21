@@ -20,17 +20,10 @@ public class LaboratoryServiceImpl  implements LaboratoryService{
 	@Override
 	public List<Laboratory> findLab() {
 		// TODO Auto-generated method stub
+		System.out.println("lab");
 		LaboratoryExample example = new LaboratoryExample();
-		example.setOrderByClause("id desc");
-		return laboratoryMapper.selectByExample(example);
-	}
-
-
-	@Override
-	public Laboratory findLab1() {
-		// TODO Auto-generated method stub
-		System.out.println(laboratoryMapper.selectLab());
-		return laboratoryMapper.selectLab();
+		example.setOrderByClause("l_id desc");
+		return laboratoryMapper.selectLab(example);
 	}
 
 }
