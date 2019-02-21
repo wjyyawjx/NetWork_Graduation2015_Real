@@ -1,0 +1,145 @@
+*{
+	padding:0px;
+	margin:0px;
+}
+.style_hui_12 {
+	font-size: 12px; 
+	color: #555555; 
+}
+/* .style_shenhui_14 {
+	font-size: 14px; 
+	color: #8a8a8a 
+}
+.style_hui_12_bold {
+	font-size: 12px; 
+	color: #555555; 
+	font-weight: bold
+}
+.style_hui_26_bold {
+	font-size: 26px; 
+	color: #555555; 
+	font-weight: bold;
+}
+.wenben{
+	width:260px; 
+	height:32px; 
+	line-height:32px; 
+	border: 1px solid #999999; 
+	ime-mode: disabled
+}
+.wenben2{
+	width:260px; 
+	height:32px; 
+	line-height:32px; 
+	border: 1px solid #FF2020; 
+	ime-mode: disabled 
+}
+
+.style_hui_14_bold {
+	font-size: 14px; 
+	color: #555555; 
+	font-weight: bold
+}
+.style_hui_14 {
+	font-size: 14px; 
+	color: #555555; 
+}
+.max-div{
+	width:1080px; 
+	margin:0 auto;
+	bgcolor:#FFFFFF; 
+	border:1px solid #CCCCCC; 
+	margin-top:20px;
+}
+.max-div-one{
+	width:619px;
+	height:314px; 
+	align:left; 
+	padding-left:20px;
+	border-right:1px solid #CCCCCC;
+}
+.max-div-two{
+	height:314px; 
+	width:459px; 
+	margin-left:700px;
+	margin-top:-310px;
+} */
+#text-head{
+	width:900px; 
+	margin:auto; 
+	margin-top:20px;
+	margin-left:270px;
+}
+/* .login-tab{
+	width:452px;
+	border:0px;
+	cellpadding:0px; 
+	cellspacing:0px;
+}
+#login-tab-td-name{
+	width:82px; 
+	height:60px; 
+	text-align:right;
+}
+#login-tab-td-name-text{
+	width:370px; 
+	text-align:left;
+}
+#login-tab-td-pwd{
+	height:60px; 
+	text-align:right;
+}
+.login-tab-td-pwd-text{
+	height:30px; 
+	text-align:left;
+}
+#login-tab-td-yzm{
+	height:60px; 
+	text-align:right;
+	padding-right:10px;
+}
+.login-tab-td-yzm-text{
+	
+	text-align:left;
+}
+#login-tab-td-b{
+	height:62px; 
+	text-align:left;
+}
+.bt{
+	cursor:pointer; 
+	border-width:0px; 
+	border-radius:4px; 
+	background-color:#F07800;
+	font-size:12px; 
+	color:#FFFFFF; 
+	letter-spacing:1px; 
+	width:80px; 
+	height:35px; 
+	padding-top:2px"
+}
+.hong_12{
+	text-decoration: none;
+	font-size: 12px;
+	color: #ff0000; 
+}
+.regImg{
+	width:130px; 
+	height:121px; 
+}
+.login-botton-tab{
+	width:251px; 
+	border:0px; 
+	text-align:center; 
+	margin-top:15px;
+}
+.login-botton-tab-onetd{
+	height:158px; 
+	text-align:center; 
+	padding-left:0px;
+	}
+.login-botton-tab-twotd{
+	width:251px; 
+	line-height:30px;
+} */
+	
