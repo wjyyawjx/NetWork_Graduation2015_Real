@@ -105,7 +105,7 @@ public class UserServiceImpl implements UserService {
 			return userMapper.insertSelective(user);
 		}
 	}
-
+	
 	/**
 	 * 如果付款>=100,普通用户升级为会员用户
 	 */

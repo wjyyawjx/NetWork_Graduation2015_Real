@@ -1,11 +1,7 @@
 package cn.edu.imnu.web.controller;
 
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
 import java.net.UnknownHostException;
-import java.util.Enumeration;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
@@ -34,32 +30,17 @@ public class UserController {
 		User user = userService.findUser(usercode, password);
 		if (user != null) {
 			// 获取windows本机IP
-			// try {
-			// System.out.println("本机的IP = " + InetAddress.getLocalHost());
-			// } catch (UnknownHostException e) {
-			// e.printStackTrace();
-			// }
-			//可以获取linux下的IP
-			Enumeration allNetInterfaces = null;
 			try {
-				allNetInterfaces = NetworkInterface.getNetworkInterfaces();
-			} catch (SocketException e) {
-				// TODO Auto-generated catch block
+				String u_ip = java.net.InetAddress.getLocalHost().getHostAddress();
+				Date u_time=new Date();
+				user.setU_time(u_time);
+				if (u_ip != user.getU_ip()) {
+					user.setU_ip(u_ip);
+					userService.SaveIp(user);
+				}
+			} catch (UnknownHostException e) {
 				e.printStackTrace();
 			}
-			InetAddress ip = null;
-			while (allNetInterfaces.hasMoreElements()) {
-				NetworkInterface netInterface = (NetworkInterface) allNetInterfaces.nextElement();
-				System.out.println(netInterface.getName());
-				Enumeration addresses = netInterface.getInetAddresses();
-				while (addresses.hasMoreElements()) {
-					ip = (InetAddress) addresses.nextElement();
-					if (ip != null && ip instanceof Inet4Address) {
-						System.out.println("本机的IP = " + ip.getHostAddress());
-					}
-				}
-			}
-
 			// 将用户对象添加到Session
 			session.setAttribute("USER_SESSION", user);
 			// 跳转到主页
