@@ -97,7 +97,6 @@ public class GeneralDao {
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
 		String sql = "delete from toapplyfor where username=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
