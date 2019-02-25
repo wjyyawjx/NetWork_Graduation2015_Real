@@ -2,6 +2,7 @@
     <wb-module deploy-name="20151104696_YuanDongqiang_PlantManagement">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/config"/>
         <property name="context-root" value="20151104696_YuanDongqiang_PlantManagement"/>
         <property name="java-output-path" value="/20151104696_YuanDongqiang_PlantManagement/build/classes"/>
     </wb-module>
