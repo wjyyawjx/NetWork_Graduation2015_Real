@@ -65,6 +65,30 @@ public class RecorderGameDao {
 
 	}
 	
+	// 修改运动员信息
+		public void recorderUpdate(int tid,String athletusername, String ranking, String results, String events) {
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement pstmt = null;
+
+			String sql = "update athlet set athletusername=?,ranking=?,results=?,events=? where tid=?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, athletusername);
+				pstmt.setString(2, ranking);
+				pstmt.setString(3, results);
+				pstmt.setString(4, events);
+				pstmt.setInt(5, tid);
+				pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBUtil.closeJDBC(null, pstmt, conn);
+			}
+
+		}
+	
+	
 	// 记录员查看运动员信息
 		public ArrayList<AthletBean> athletList(int tsid) {
 			// TODO Auto-generated method stub

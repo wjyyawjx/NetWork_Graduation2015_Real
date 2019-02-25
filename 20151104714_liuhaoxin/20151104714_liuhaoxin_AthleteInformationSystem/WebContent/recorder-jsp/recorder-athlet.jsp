@@ -27,16 +27,21 @@
 				<th>项目</th>
 				<th>成绩</th>
 				<th>排名</th>
+				<th>修改</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${mea}" var="w">
+			<form action="RecorderUpdate" method="post">
 				<tr align="center">
-					<td>${w.athletusername}</td>
-					<td>${w.events}</td>
-					<td>${w.results}</td>
-					<td>${w.ranking}</td>
+				<td><input type="text" name="athletusername" value="${w.athletusername}" required=""></td>
+				<td><input type="text" name="events" value="${w.events}" required=""></td>
+				<td><input type="text" name="results" value="${w.results}" required=""></td>
+				<td><input type="text" name="ranking" value="${w.ranking}" required=""></td>
+					<td><input type="hidden" name="tid" value=${w.tid}> 
+					<input type="submit" value="修改"></td>
 				</tr>
+					</form>
 			</c:forEach>
 		</tbody>
 	</table>
