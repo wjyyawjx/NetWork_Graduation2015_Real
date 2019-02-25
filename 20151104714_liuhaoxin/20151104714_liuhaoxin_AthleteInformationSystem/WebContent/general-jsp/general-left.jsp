@@ -16,7 +16,7 @@
 <br><br><br>
 <a  href ="../MessageView"      target ="general-right">查看留言                   </a>
 <br><br><br>
-<a  href ="../general-view"      target ="general-right">查询信息                  </a>
+<a  href ="general-view"      target ="general-right">查询信息                  </a>
 <br><br><br>
 </div>
 </body>
