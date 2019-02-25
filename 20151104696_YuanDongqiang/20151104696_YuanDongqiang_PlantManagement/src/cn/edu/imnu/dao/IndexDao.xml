@@ -1,0 +1,15 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.imnu.dao.IndexDao">
+	<!-- 查询用户 -->
+	<select id="IpFind" parameterType="String" resultType="ip">
+		select *
+		from ip_adress
+		where u_ip = #{u_ip}
+	</select>
+	<select id="find" parameterType="Integer" resultType="user">
+		select *
+		from users
+		where u_id = #{u_ip}
+	</select>
+</mapper>
