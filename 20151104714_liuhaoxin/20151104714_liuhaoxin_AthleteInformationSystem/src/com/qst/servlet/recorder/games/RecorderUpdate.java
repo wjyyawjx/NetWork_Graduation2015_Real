@@ -38,8 +38,9 @@ public class RecorderUpdate extends HttpServlet {
 		String ranking = request.getParameter("ranking");
 		String results = request.getParameter("results");
 		String events = request.getParameter("events");
+		String theclass = request.getParameter("theclass");
 		RecorderGameDao redao = new RecorderGameDao();
-		redao.recorderUpdate(tid,athletusername,ranking,results,events);
+		redao.recorderUpdate(tid,athletusername,ranking,results,events,theclass);
 		response.sendRedirect("RecorderJView");	
 
 	

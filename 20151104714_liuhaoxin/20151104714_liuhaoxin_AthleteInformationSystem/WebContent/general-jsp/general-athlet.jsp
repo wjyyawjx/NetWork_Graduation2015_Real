@@ -1,3 +1,4 @@
+<%-- 一般用户查看运动员信息 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -14,6 +15,7 @@
 		<thead>
 			<tr>          
 				<th>运动员名字</th>
+				<th>班级</th>
 				<th>项目</th>
 				<th>成绩</th>
 				<th>排名</th>
@@ -24,6 +26,7 @@
 			<c:forEach items="${mea}" var="w">
 				<tr align="center">
 				<td>${w.athletusername}</td>
+				<td>${w.theclass}</td>
 				<td>${w.events}</td>
 				<td>${w.results}</td>
 				<td>${w.ranking}</td>

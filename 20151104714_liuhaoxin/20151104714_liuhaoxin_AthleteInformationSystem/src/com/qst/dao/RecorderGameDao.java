@@ -43,11 +43,11 @@ public class RecorderGameDao {
 	}
 	
 	// 添加运动员信息
-	public void recorderAdd(int tsid,String athletusername, String ranking, String results, String events) {
+	public void recorderAdd(int tsid,String athletusername, String ranking, String results, String events,String theclass) {
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 
-		String sql = "insert into athlet (tsid,athletusername,ranking,results,events)" + "values(?,?,?,?,?)";
+		String sql = "insert into athlet (tsid,athletusername,ranking,results,events,theclass)" + "values(?,?,?,?,?,?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, tsid);
@@ -55,6 +55,7 @@ public class RecorderGameDao {
 			pstmt.setString(3, ranking);
 			pstmt.setString(4, results);
 			pstmt.setString(5, events);
+			pstmt.setString(6, theclass);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -66,18 +67,19 @@ public class RecorderGameDao {
 	}
 	
 	// 修改运动员信息
-		public void recorderUpdate(int tid,String athletusername, String ranking, String results, String events) {
+		public void recorderUpdate(int tid,String athletusername, String ranking, String results, String events,String theclass) {
 			Connection conn = DBUtil.getConnection();
 			PreparedStatement pstmt = null;
 
-			String sql = "update athlet set athletusername=?,ranking=?,results=?,events=? where tid=?";
+			String sql = "update athlet set athletusername=?,ranking=?,results=?,events=?,theclass=? where tid=?";
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, athletusername);
 				pstmt.setString(2, ranking);
 				pstmt.setString(3, results);
 				pstmt.setString(4, events);
-				pstmt.setInt(5, tid);
+				pstmt.setString(5, theclass);
+				pstmt.setInt(6, tid);
 				pstmt.executeUpdate();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -108,6 +110,7 @@ public class RecorderGameDao {
 					tag.setRanking(rs.getString("ranking"));
 					tag.setResults(rs.getString("results"));
 					tag.setEvents(rs.getString("events"));
+					tag.setTheclass(rs.getString("theclass"));
 					Array.add(tag);
 				}
 			} catch (SQLException e) {

@@ -61,6 +61,7 @@ public class GeneralQueryDao {
 							tag.setRanking(rs.getString("ranking"));
 							tag.setResults(rs.getString("results"));
 							tag.setEvents(rs.getString("events"));
+							tag.setTheclass(rs.getString("theclass"));
 							Array.add(tag);
 						}
 					} catch (SQLException e) {

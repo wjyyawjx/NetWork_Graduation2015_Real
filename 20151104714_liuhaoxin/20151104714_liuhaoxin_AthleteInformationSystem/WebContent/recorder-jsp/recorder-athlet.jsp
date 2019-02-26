@@ -24,6 +24,7 @@
 		<thead>
 			<tr>          
 				<th>运动员名字</th>
+				<th>班级</th>
 				<th>项目</th>
 				<th>成绩</th>
 				<th>排名</th>
@@ -35,6 +36,7 @@
 			<form action="RecorderUpdate" method="post">
 				<tr align="center">
 				<td><input type="text" name="athletusername" value="${w.athletusername}" required=""></td>
+				<td><input type="text" name="theclass" value="${w.theclass}" required=""></td>
 				<td><input type="text" name="events" value="${w.events}" required=""></td>
 				<td><input type="text" name="results" value="${w.results}" required=""></td>
 				<td><input type="text" name="ranking" value="${w.ranking}" required=""></td>
