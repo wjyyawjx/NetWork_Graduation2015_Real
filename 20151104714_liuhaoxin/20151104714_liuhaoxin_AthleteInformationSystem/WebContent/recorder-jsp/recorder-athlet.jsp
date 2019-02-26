@@ -12,6 +12,7 @@
 <body>
 <form action="RecorderAdd" method="post">
 		<input type="text" name="athletusername" placeholder="运动员名字" required="" >
+		<input type="text" name="theclass" placeholder="班级" required="">
 		<input type="text" name="events" placeholder="项目" required="">
 		<input type="text" name="results" placeholder="成绩" required="">
 		<input type="text" name="ranking" placeholder="排名" required="">
