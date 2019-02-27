@@ -34,17 +34,19 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${mea}" var="w">
+			<tr align="center">
 			<form action="RecorderUpdate" method="post">
-				<tr align="center">
+				
 				<td><input type="text" name="athletusername" value="${w.athletusername}" required=""></td>
 				<td><input type="text" name="theclass" value="${w.theclass}" required=""></td>
 				<td><input type="text" name="events" value="${w.events}" required=""></td>
 				<td><input type="text" name="results" value="${w.results}" required=""></td>
 				<td><input type="text" name="ranking" value="${w.ranking}" required=""></td>
-					<td><input type="hidden" name="tid" value=${w.tid}> 
-					<input type="submit" value="修改"></td>
-				</tr>
-					</form>
+				<td><input type="hidden" name="tid" value=${w.tid}> 
+				<input type="submit" value="修改"></td>
+				
+			</form>
+			</tr>
 			</c:forEach>
 		</tbody>
 	</table>
