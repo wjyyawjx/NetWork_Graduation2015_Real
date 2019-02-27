@@ -16,6 +16,8 @@
 <br><br><br>
 <a  href ="../MessageView"      target ="general-right">查看留言                   </a>
 <br><br><br>
+<a  href ="../GeneralGameView"      target ="general-right">查看信息                  </a>
+<br><br><br>
 </div>
 </body>
 </html>

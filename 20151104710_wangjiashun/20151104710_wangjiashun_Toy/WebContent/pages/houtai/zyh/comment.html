@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>评论管理</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="../../../res/css/layui.css"  media="all">
+    <link rel="stylesheet" href="../../../res/js/css/modules/code.css"  media="all">
+</head>
+<body>  
+<div style = "margin-left:20px;margin-top:10px;overflow: hidden;height:521px;text-align: center;">
+<div>          
+	 <div class="demoTable">
+	  搜索商品：
+	  <div class="layui-inline">
+	    <input class ="layui-input" name="commentContent" id=commentContent autocomplete="off">
+	  </div>
+  <button  class="layui-btn" data-type="reload" id="sous" >搜索</button>
+  <input type="button" id="demoinsert" class="layui-btn layui-insert" value="增加"></input>
+</div>
+<!-- 示例-970 -->
+</div>
+<table class="layui-table" lay-data="{width: 1247, height:471, url:'../../../comment/findAll.action', page:true, id:'idTest'}" lay-filter="demo">
+  <thead>
+    <tr>
+      <th lay-data="{field:'commentId', width:100, sort: true}">评论ID</th>
+      <th lay-data="{field:'userName', width:100}">用户名</th>
+      <th lay-data="{field:'toyName', width:100,sort: true }">玩具名称</th>
+      <th lay-data="{field:'commentContent', width:348}">评论内容</th>
+      <th lay-data="{field:'commentTime', width:100}">评论时间</th>
+      <th lay-data="{field:'commentPhoto', width:145, sort: true}">评论图片</th>
+      <th lay-data="{field:'commentEvaluate', width:145, sort: true}">评价</th>
+      <th lay-data="{fixed: 'right', width:200, align:'center', toolbar: '#barDemo'}">操作</th>
+    </tr>
+  </thead>
+</table>
+
+<script type="text/html" id="imgTpl">
+    <img style="width:30px;height:30px;" src="">
+</script>
+
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+               
+          
+<script src="../../../res/js/layui.all.js" charset="UTF-8"></script> 
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+ 
+
+layui.use('table', function(){
+	 
+  var table = layui.table;
+  //监听表格复选框选择
+  table.on('checkbox(demo)', function(obj){
+    console.log(obj)
+  });
+  //监听工具条
+  table.on('tool(demo)', function(obj){	
+    var da = obj.data;
+    if(obj.event === 'del'){
+      layer.confirm('真的删除行么', function(index){
+    	var url="../../../comment/delete.action"; 
+    	var data={"id":da.commentId};
+        $.post(url,data,function(mes){
+          layer.msg(mes.msg);
+  		  obj.del();
+        },"json");
+      });
+    } else if(obj.event === 'edit'){
+    	layer.open({
+    		type:2
+    		,title:'修改'
+    		,area: ['450px', '500px']
+    	  ,content: ['commentAddOrUpdate.html', 'no']
+    	,success:function(layero, index){
+    		var body = layer.getChildFrame('body', index);
+	    	 var iframe = window[layero.find('iframe')[0]['name']]; 
+	    	 var url="../../../comment/findById.action";
+	    	 var data={"id":da.commentId};
+	    	 $.ajax({
+	    		 async:false,
+	    		 url:url,
+	    		 data:data,
+	    		 dataType:"json",
+	    		 success:function(mes){
+		    			 iframe.$("#commentId").val(mes.commentId); 
+			    		 iframe.$("#toyId").val(mes.toyId);
+			    		 iframe.$("#commentContent").val(mes.commentContent);
+			    		 iframe.$("#commentTime").val(mes.commentTime);
+			    		 iframe.$("#commentPhoto").val(mes.commentPhoto);
+			    		 iframe.$("#commentEvaluate").val(mes.commentEvaluate);
+			    		 iframe.load();
+	    		 }
+	    	 }); 
+    	}
+    	//操作完成执行刷新 
+    	,end:function(index,layero){
+    		location.reload();
+    	}
+    	});
+    	
+    	}
+    });
+  
+  var $ = layui.$, active = {
+		    reload: function(){
+		      var commentContent = $('#commentContent');
+		      
+		      //执行重载
+		      table.reload('idTest', {
+		        page: {
+		          curr: 1 //重新从第 1 页开始
+		        }
+		      ,where: {
+		        key: {
+		        	commentContent: commentContent.val()
+		        	
+		        }
+		      }
+		   });
+		}
+	};
+  	
+  $('.demoTable .layui-btn').on('click', function(){
+	  var type = $(this).data('type');
+	  active[type] ? active[type].call(this) : '';
+});
+//增加 
+$('#demoinsert').on('click', function(){
+	  layer.open({
+	        type: 2 //此处以iframe举例
+	        ,title: '增加'
+	        ,area: ['450px', '560px']
+	        ,content: ['commentAddOrUpdate.html' , 'no']
+			,end: function(index, layero){ 
+				location.reload();
+			}    
+	  });
+});
+});
+</script>
+</div>
+</body>
+</html>

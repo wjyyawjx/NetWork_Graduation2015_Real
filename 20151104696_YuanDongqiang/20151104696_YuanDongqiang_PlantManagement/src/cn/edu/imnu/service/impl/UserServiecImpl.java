@@ -24,4 +24,23 @@ public class UserServiecImpl implements UserService {
 		User user = this.userDao.findUser(usercode, password);
 		return user;
 	}
+
+	// 注册
+	@Override
+	public int addUser(User user) {
+		return userDao.addUser(user);
+	}
+
+	// 查询邮箱
+	@Override
+	public User findUseremail(String u_email) {
+		return userDao.findUseremail(u_email);
+	}
+
+	@Override
+	public void SaveIp(User user) {
+		// TODO Auto-generated method stub
+		userDao.SaveIp(user);
+	}
+
 }

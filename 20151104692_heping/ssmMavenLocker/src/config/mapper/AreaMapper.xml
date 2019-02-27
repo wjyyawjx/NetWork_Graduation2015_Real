@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.AreaMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.domain.Area" >
+    <id column="ar_id" property="arId" jdbcType="VARCHAR" />
+    <result column="ar_name" property="arName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ar_id, ar_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_area
+    where ar_id = #{arId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_area
+    where ar_id = #{arId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.Area" >
+    insert into tb_area (ar_name)
+    values (#{arName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.Area" >
+    insert into tb_area
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="arId != null" >
+        ar_id,
+      </if>
+      <if test="arName != null" >
+        ar_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="arId != null" >
+        #{arId,jdbcType=VARCHAR},
+      </if>
+      <if test="arName != null" >
+        #{arName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.Area" >
+    update tb_area
+    <set >
+      <if test="arName != null" >
+        ar_name = #{arName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ar_id = #{arId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.Area" >
+    update tb_area
+    set ar_name = #{arName,jdbcType=VARCHAR}
+    where ar_id = #{arId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from tb_area
+  </select>
+</mapper>

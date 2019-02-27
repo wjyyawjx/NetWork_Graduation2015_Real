@@ -1,0 +1,151 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>编辑</title>
+<link rel="stylesheet" href="../../../res/css/layui.css"  media="all">
+<script src="https://cdn.bootcss.com/limonte-sweetalert2/7.28.11/sweetalert2.all.js"></script>
+<link href="https://cdn.bootcss.com/limonte-sweetalert2/7.28.11/sweetalert2.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+<script>
+</script>
+</head>
+<body>
+	<form id="form" class="layui-form" method="post" style="margin-top: 10px;">
+		<input type="hidden" name="addressId"  id="id"   class="layui-input" /><!-- 隐藏hidden -->
+		 <div class="layui-form-item" style="width:70%;">
+	      <label class="layui-form-label" >用户</label>
+	      <div class="layui-input-inline">
+	        <select name="userId" id="userId" name="modules" lay-verify="required" lay-search="">
+	        	<option value="">请选择</option>
+	        </select>
+	      </div>
+	   </div>
+		
+	 	<div class="layui-form-item" style="width:70%;">
+	      <label class="layui-form-label" >配送区域：</label>
+	      <div class="layui-input-block">
+	      	  <input  placeholder="请输入省份" class="layui-input" lay-verify="required" type="text" maxlength="10" id='country'>
+		      <input   placeholder="请输入城市" class="layui-input" lay-verify="required" type="text" maxlength="10" id='province'>
+		      <input placeholder="请输入地区" class="layui-input"  type="text" maxlength="10" id='city'>
+		      <input name="addressName" placeholder="配送区域" class="layui-input" type="hidden" id='addressName'>
+		    </div>
+	   </div>
+	   <div class="layui-form-item" style="width:70%;">
+	      <label class="layui-form-label" >收货人：</label>
+	      <div class="layui-input-block">
+		      <input name="addressPeople" lay-verify="required" autocomplete="off" placeholder="请输入姓名" class="layui-input" maxlength="15" type="text" id='addressPeople'>
+		    </div>
+	   </div>
+	   <div class="layui-form-item" style="width:70%;">
+	      <label class="layui-form-label" >联系手机：</label>
+	      <div class="layui-input-block">
+		      <input name="addressPhoto" lay-verify="required|phone" autocomplete="off" placeholder="请输入用户手机号"  maxlength="11" class="layui-input" type="text" id='addressPhoto'>
+		    </div>
+	   </div>
+	   
+	   
+	   
+	   <div class="layui-form-item" style="width:70%;">
+	      <label class="layui-form-label" >详情地址：</label>
+	      <div class="layui-input-block">
+		      <input name="addressDetails" lay-verify="required" autocomplete="off" placeholder="请输入详情地址" maxlength="50" class="layui-input" type="text" id='addressDetails'>
+		    </div>
+	   </div>
+	 
+	   
+	 <br/>
+	  <div class="layui-form-item" style="width:70%;">
+	    <div class="layui-input-block">
+	      <button type="button" class="layui-btn" lay-submit lay-filter="formDemo" id="sub">立即提交</button>
+	      <a href="javascript:exit();" class="layui-btn">关闭</a>
+	    </div>
+	   </div>
+	</form>
+<script src="../../../res/js/layui.all.js" charset="UTF-8"></script> 
+<script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+
+	
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,laydate = layui.laydate
+  ,layer = layui.layer
+  ,layedit = layui.layedit;
+  
+	//日期
+  laydate.render({
+	  elem:'#date'
+   });
+  
+   
+
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+ 
+
+  
+
+  //监听提交
+  form.on('submit(formDemo)', function(data){
+	  var index=parent.layer.getFrameIndex(window.name);
+	  var c1=$("#country").val();
+	  var c2=$("#province").val();
+	  var c3=$("#city").val();
+	  $("#addressName").val(c1+","+c2+","+c3);
+		var url="../../../address/insertUpdate.action";
+		var data=$("#form").serialize();
+		$.post(url,data,function(mes){
+			if(mes.state==1){
+				swal({
+				    title: mes.msg,
+				    type: 'success',
+				    
+				    allowOutsideClick:false
+				}).then(
+					    function () {
+					    	 parent.layer.close(index);
+					    }
+					) 
+			}else{
+				swal({
+				    title: '操作失败',
+				    type: 'error',
+				    
+				    allowOutsideClick:false
+				}).then(
+					    function () {
+					    	 parent.layer.close(index);
+					    }
+					) 
+				
+			}
+			
+		},"json") 
+	 
+  });
+ 
+  	var url="../../../user/findUserAll.action";
+	var data=null;
+	$.post(url,data,function(mes){
+		$.each(mes,function(i,item){
+			$("#userId").append("<option value='"+item.userId+"'>"+item.userName+"</option>");
+			form.render();
+		})
+	},"json")
+  
+});
+
+function load(){
+	var form = layui.form;
+	form.render();
+}
+
+function exit(){
+	var index=parent.layer.getFrameIndex(window.name);
+	 parent.layer.close(index);
+}
+</script>
+</body>
+</html>

@@ -253,7 +253,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="w3-footer-logo">
 				<h1>
-					<a href="${pageContext.request.contextPath }/index.actionl">交易网</a>
+					<a href="${pageContext.request.contextPath }/index.actionl"><img
+					src="img/core-img/logo.png" alt=""></a>
 				</h1>
 			</div>
 			<div class="w3-footer-social-icons">

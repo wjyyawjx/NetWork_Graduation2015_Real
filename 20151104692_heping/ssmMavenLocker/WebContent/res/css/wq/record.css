@@ -1,0 +1,23 @@
+.th{
+	width: 160px;
+	font-size:20px;
+}
+#a0{
+	width:1280px;
+	margin:0 auto;
+}
+.input-group{
+	position: relative;
+    left: 90px;
+    top: -35px;
+}
+#a2{
+	border:1px solid #c0c0c0;
+	 width:400px;
+	 height:740px;
+	 position: fixed;
+	 left: 700px;
+	 top:80px;
+	 background:#ffffff;
+}
+.skin{ display:inline-block; padding:3px 8px; border:1px solid #aaaaaa; margin:0 3px;}

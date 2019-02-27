@@ -89,18 +89,18 @@
 
 			<!-- Side Menu -->
 			<ul class="list-unstyled side-menu">
-				<li class="active"><a class="sa-side-home"
+				<li><a class="sa-side-home"
 					href="${pageContext.request.contextPath }/menu"> <span
 						class="menu-item">主页</span>
 				</a></li>
-				<li class="dropdown"><a class="sa-side-form" href=""> <span
+				<li><a class="sa-side-form" href="${pageContext.request.contextPath }/mine"> <span
 						class="menu-item">我的信息</span>
 				</a></li>
 				<li><a class="sa-side-ui"
 					href="${pageContext.request.contextPath }/config/listUser"> <span
 						class="menu-item">用户管理</span>
 				</a></li>
-				<li><a class="sa-side-ui"
+				<li class="active"><a class="sa-side-ui"
 					href="${pageContext.request.contextPath }/config/listRole"> <span
 						class="menu-item">角色管理</span>
 				</a></li>

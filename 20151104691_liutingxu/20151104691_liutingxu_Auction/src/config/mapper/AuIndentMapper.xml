@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imnu.dao.AuIndentMapper">
+  <resultMap id="BaseResultMap" type="com.imnu.model.AuIndent">
+    <id column="in_id" jdbcType="VARCHAR" property="inId" />
+    <result column="com_id" jdbcType="VARCHAR" property="comId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="in_date" jdbcType="VARCHAR" property="inDate" />
+    <result column="in_money" jdbcType="DECIMAL" property="inMoney" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="com_name" jdbcType="VARCHAR" property="comName" />
+    <result column="in_state" jdbcType="VARCHAR" property="inState" />
+    
+  </resultMap>
+  <sql id="Base_Column_List">
+    in_id, com_id, user_id, in_date, in_money,in_state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from au_indent
+    where in_id = #{inId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from au_indent
+    where in_id = #{inId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.imnu.model.AuIndent">
+  	<selectKey keyProperty="inId" resultType="string" order="BEFORE">
+	   SELECT REPLACE(UUID(),'-','') AS id;
+	</selectKey>
+    insert into au_indent (in_id, com_id, user_id, 
+      in_date, in_money,in_state)
+    values (#{inId,jdbcType=VARCHAR}, #{comId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{inDate,jdbcType=DATE}, #{inMoney,jdbcType=DECIMAL},#{inState,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.imnu.model.AuIndent">
+    insert into au_indent
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="inId != null">
+        in_id,
+      </if>
+      <if test="comId != null">
+        com_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="inDate != null">
+        in_date,
+      </if>
+      <if test="inMoney != null">
+        in_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="inId != null">
+        #{inId,jdbcType=VARCHAR},
+      </if>
+      <if test="comId != null">
+        #{comId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="inDate != null">
+        #{inDate,jdbcType=DATE},
+      </if>
+      <if test="inMoney != null">
+        #{inMoney,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.imnu.model.AuIndent">
+    update au_indent
+    <set>
+      <if test="comId != null">
+        com_id = #{comId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="inDate != null">
+        in_date = #{inDate,jdbcType=DATE},
+      </if>
+      <if test="inMoney != null">
+        in_money = #{inMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="inState != null">
+        in_state = #{inState,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where in_id = #{inId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.imnu.model.AuIndent">
+    update au_indent
+    set com_id = #{comId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      in_date = #{inDate,jdbcType=DATE},
+      in_money = #{inMoney,jdbcType=DECIMAL}
+    where in_id = #{inId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="query" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	SELECT ind.*,us.user_name,co.com_name FROM au_indent ind,au_user us,au_commodity co WHERE 
+  		ind.user_id=us.user_id
+  		AND ind.com_id=co.com_id
+  		<if test="comName != null and comName != ''">
+  			and co.com_name like concat('%',#{comName},'%')
+  		</if>
+  		<if test="inDate != null and inDate != ''">
+  			and ind.in_date  &gt;= #{inDate}
+  		</if>
+  		<if test="inTime != null and inTime != ''">
+  			and ind.in_date &lt;= #{inTime}
+  		</if>
+  		order by ind.in_date desc limit #{page.startRows},#{page.rows} 
+  </select>
+  
+  <!-- 查询行数 -->
+  <select id="inCount" parameterType="java.util.Map" resultType="Integer">
+  	SELECT count(*) FROM au_indent ind,au_user us,au_commodity co WHERE 
+  		ind.user_id=us.user_id
+  		AND ind.com_id=co.com_id
+  		<if test="comName != null and comName != ''">
+  			and co.com_name like concat('%',#{comName},'%')
+  		</if>
+  		<if test="inDate != null and inDate != ''">
+  			and ind.in_date  &gt;= #{inDate}
+  		</if>
+  		<if test="inTime != null and inTime != ''">
+  			and ind.in_date &lt;= #{inTime}
+  		</if>
+  </select>
+  
+  
+  <!-- 根据用户查询订单 用户表 商品表  -->
+  <select id="selectUser" parameterType="string" resultType="java.util.Map">
+  	SELECT * FROM au_indent ind,au_user us,au_commodity co WHERE 
+  		ind.user_id=us.user_id
+  		AND ind.com_id=co.com_id
+  		and us.user_id=#{userId}
+  </select>
+  <!-- 查询统计图 -->
+  <select id="selectTjt" parameterType="string" resultType="string">
+  	SELECT in_money FROM au_indent ins WHERE  ins.in_date LIKE concat('%',#{inDate},'%') AND ins.in_state='9' ORDER BY ins.in_money DESC
+  </select>
+</mapper>

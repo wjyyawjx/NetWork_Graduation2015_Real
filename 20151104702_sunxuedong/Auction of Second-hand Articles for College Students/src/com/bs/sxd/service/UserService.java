@@ -10,4 +10,6 @@ import com.bs.sxd.po.User;
  */
 public interface UserService {
 	public User findUser(String username,String password);
+
+	
 }

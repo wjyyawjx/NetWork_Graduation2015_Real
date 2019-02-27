@@ -1,0 +1,19 @@
+#a0{
+	width:1280px;
+	margin:0 auto;
+}
+.input-group{
+	position: relative;
+    left: 90px;
+    top: -35px;
+}
+#a2{
+	 width:400px;
+	 height:380px;
+	 position: fixed;
+	 left: 700px;
+	 top:100px;
+	 background:#ffffff;
+	 border:1px solid #c0c0c0;
+}
+.skin{ display:inline-block; padding:3px 8px; border:1px solid #aaaaaa; margin:0 3px;}
