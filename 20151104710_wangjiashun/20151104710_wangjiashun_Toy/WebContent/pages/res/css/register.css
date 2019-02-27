@@ -1,0 +1,135 @@
+.style_hui_12 {
+	font-size: 12px; 
+	color: #555555; 
+}
+*{
+	padding:0px;
+	margin:0px;
+}
+.zctitle img {
+    float: left;
+    margin-left: 38px;
+}
+body{
+font: 12px/1 Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif;
+    line-height: 170%;
+    color: #333;
+}
+#text-head{
+	width:900px; 
+	margin:auto; 
+	margin-top:20px;
+	margin-left:270px;
+}
+.fymain {
+    width: 1200px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    float: left;
+   
+}
+.maxnvdiv{
+	 width: 1200px;
+	 height:422px;
+	 margin:0 auto;
+}
+.zcDiv {
+    width: 960px;
+    margin: 0 auto;
+    height: auto;
+}
+.zctop {
+    width: 960px;
+    height: 30px;
+    background: url(../../../upload/zhuce_s.jpg) no-repeat;
+    float: left;
+}
+.zcmiddle {
+    width: 960px;
+    background: url(../../../upload/zhuce_z.jpg) repeat-y;
+    float: left;
+}
+.zcbottom {
+    width: 960px;
+    height: 30px;
+    background: url(../../../upload/zhuce_x.jpg) no-repeat;
+    float: left;
+}
+.zctitle {
+    width: 700px;
+    float: left;
+}
+.zctitle span {
+    line-height: 35px;
+    margin-left: 20px;
+}
+.zctitle span b {
+    font-size: 14px;
+    color: #0e6db5;
+}
+.zctitle span b a {
+    color: #0e6db5;
+}
+a {
+    outline: none;
+    text-decoration: none;
+}
+.zccontent {
+    float: left;
+    margin-left: 126px;
+    _margin-left: 100px;
+    margin-top: 20px;
+}
+.zccontent p {
+    float: left;
+    display: block;
+    width: 958px;
+    margin-bottom: 15px;
+}
+.zccontent p b {
+    float: left;
+    width: 120px;
+    text-align: right;
+    font-size: 14px;
+    font-weight: normal;
+}
+.kude {
+    height: 28px;
+    width: 250px;
+    line-height: 24px;
+    border: 1px solid #8cccfe;
+    background: url(../../../upload/kuang.jpg);
+    float: left;
+    margin-left: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.zccontent p span {
+    float: left;
+    padding-left: 10px;
+}
+.zccontent p.zcanniu {
+    width: 364px;
+    overflow: hidden;
+    margin-left: 132px;
+    _margin-left: 70px;
+    height: 46px;
+}
+
+.zcanniu em {
+	font-style: normal;
+    float: left;
+    margin-top: -47px;
+    margin-left: 146px;
+}
+.fuxu {
+    vertical-align: middle;
+    padding-right: 10px;
+    margin-right: 5px;
+}
+.zccontent p.zcanniu a {
+    color: #0066cc;
+}
+.zcanniu em a {
+    float: right;
+}

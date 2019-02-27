@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.domain.User" >
+    <id column="u_id" property="uId" jdbcType="VARCHAR" />
+    <result column="u_zh" property="uZh" jdbcType="VARCHAR" />
+    <result column="u_mm" property="uMm" jdbcType="VARCHAR" />
+    <result column="u_type" property="uType" jdbcType="VARCHAR" />
+    <result column="u_phone" property="uPhone" jdbcType="VARCHAR" />
+    <result column="u_site" property="uSite" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    u_id, u_zh, u_mm, u_type, u_phone, u_site
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_user
+    where u_id = #{uId,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectFindShow" resultMap="BaseResultMap" parameterType="com.yidu.domain.User" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_user
+    where u_zh = #{uZh} and u_mm=#{uMm}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_user
+    where u_id = #{uId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.User" >
+    insert into tb_user (u_id, u_zh, u_mm, 
+      u_type, u_phone, u_site
+      )
+    values (#{uId,jdbcType=VARCHAR}, #{uZh,jdbcType=VARCHAR}, #{uMm,jdbcType=VARCHAR}, 
+      #{uType,jdbcType=VARCHAR}, #{uPhone,jdbcType=VARCHAR}, #{uSite,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.User" >
+    insert into tb_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      
+      <if test="uZh != null" >
+        u_zh,
+      </if>
+      <if test="uMm != null" >
+        u_mm,
+      </if>
+      <if test="uType != null" >
+        u_type,
+      </if>
+      <if test="uPhone != null" >
+        u_phone,
+      </if>
+      <if test="uSite != null" >
+        u_site,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      
+      <if test="uZh != null" >
+        #{uZh,jdbcType=VARCHAR},
+      </if>
+      <if test="uMm != null" >
+        #{uMm,jdbcType=VARCHAR},
+      </if>
+      <if test="uType != null" >
+        #{uType,jdbcType=VARCHAR},
+      </if>
+      <if test="uPhone != null" >
+        #{uPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="uSite != null" >
+        #{uSite,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.User" >
+    update tb_user
+    <set >
+      <if test="uZh != null" >
+        u_zh = #{uZh,jdbcType=VARCHAR},
+      </if>
+      <if test="uMm != null" >
+        u_mm = #{uMm,jdbcType=VARCHAR},
+      </if>
+      <if test="uType != null" >
+        u_type = #{uType,jdbcType=VARCHAR},
+      </if>
+      <if test="uPhone != null" >
+        u_phone = #{uPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="uSite != null" >
+        u_site = #{uSite,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where u_id = #{uId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.User" >
+    update tb_user
+    set u_zh = #{uZh,jdbcType=VARCHAR},
+      u_mm = #{uMm,jdbcType=VARCHAR},
+      u_type = #{uType,jdbcType=VARCHAR},
+      u_phone = #{uPhone,jdbcType=VARCHAR},
+      u_site = #{uSite,jdbcType=VARCHAR}
+    where u_id = #{uId,jdbcType=VARCHAR}
+  </update>
+  <select id="findName" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select * from tb_user where u_zh = #{uZh,jdbcType=VARCHAR}
+  </select>
+  <select id="YongHuMing" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List"></include>
+  	from tb_user where u_zh = #{uZh,jdbcType=VARCHAR}
+  </select>
+  <select id="backFindAll" parameterType="com.yidu.domain.User" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List"></include>
+  	from tb_user
+  	<if test="uZh != null" >
+      where u_zh like concat('%',#{uZh},'%')
+     </if>
+     limit #{firstRows},#{maxResult}
+  </select>
+  <select id="backFindCount" parameterType="java.lang.String" resultType="int">
+  	select count(*) from tb_user
+  	<if test="_parameter != null">
+      where u_zh like concat('%',#{uZh},'%')
+     </if>
+  </select>
+</mapper>
+
+

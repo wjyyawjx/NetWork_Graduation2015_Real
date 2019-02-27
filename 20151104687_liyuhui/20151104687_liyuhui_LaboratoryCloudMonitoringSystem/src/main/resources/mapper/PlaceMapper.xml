@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyh.springboot.mapper.PlaceMapper">
+  <resultMap id="BaseResultMap" type="com.lyh.springboot.pojo.Place">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="place_id" jdbcType="CHAR" property="placeId" />
+    <result column="campus" jdbcType="CHAR" property="campus" />
+    <result column="building" jdbcType="CHAR" property="building" />
+    <result column="house_id" jdbcType="CHAR" property="houseId" />
+    <result column="major" jdbcType="CHAR" property="major" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, place_id, campus, building, house_id, major
+  </sql>
+  <select id="selectByExample" parameterType="com.lyh.springboot.pojo.PlaceExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from place
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from place
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from place
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lyh.springboot.pojo.PlaceExample">
+    delete from place
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lyh.springboot.pojo.Place">
+    insert into place (id, place_id, campus, 
+      building, house_id, major)
+    values (#{id,jdbcType=INTEGER}, #{placeId,jdbcType=CHAR}, #{campus,jdbcType=CHAR}, 
+      #{building,jdbcType=CHAR}, #{houseId,jdbcType=CHAR}, #{major,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lyh.springboot.pojo.Place">
+    insert into place
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="placeId != null">
+        place_id,
+      </if>
+      <if test="campus != null">
+        campus,
+      </if>
+      <if test="building != null">
+        building,
+      </if>
+      <if test="houseId != null">
+        house_id,
+      </if>
+      <if test="major != null">
+        major,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="placeId != null">
+        #{placeId,jdbcType=CHAR},
+      </if>
+      <if test="campus != null">
+        #{campus,jdbcType=CHAR},
+      </if>
+      <if test="building != null">
+        #{building,jdbcType=CHAR},
+      </if>
+      <if test="houseId != null">
+        #{houseId,jdbcType=CHAR},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lyh.springboot.pojo.PlaceExample" resultType="java.lang.Long">
+    select count(*) from place
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update place
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.placeId != null">
+        place_id = #{record.placeId,jdbcType=CHAR},
+      </if>
+      <if test="record.campus != null">
+        campus = #{record.campus,jdbcType=CHAR},
+      </if>
+      <if test="record.building != null">
+        building = #{record.building,jdbcType=CHAR},
+      </if>
+      <if test="record.houseId != null">
+        house_id = #{record.houseId,jdbcType=CHAR},
+      </if>
+      <if test="record.major != null">
+        major = #{record.major,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update place
+    set id = #{record.id,jdbcType=INTEGER},
+      place_id = #{record.placeId,jdbcType=CHAR},
+      campus = #{record.campus,jdbcType=CHAR},
+      building = #{record.building,jdbcType=CHAR},
+      house_id = #{record.houseId,jdbcType=CHAR},
+      major = #{record.major,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lyh.springboot.pojo.Place">
+    update place
+    <set>
+      <if test="placeId != null">
+        place_id = #{placeId,jdbcType=CHAR},
+      </if>
+      <if test="campus != null">
+        campus = #{campus,jdbcType=CHAR},
+      </if>
+      <if test="building != null">
+        building = #{building,jdbcType=CHAR},
+      </if>
+      <if test="houseId != null">
+        house_id = #{houseId,jdbcType=CHAR},
+      </if>
+      <if test="major != null">
+        major = #{major,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lyh.springboot.pojo.Place">
+    update place
+    set place_id = #{placeId,jdbcType=CHAR},
+      campus = #{campus,jdbcType=CHAR},
+      building = #{building,jdbcType=CHAR},
+      house_id = #{houseId,jdbcType=CHAR},
+      major = #{major,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

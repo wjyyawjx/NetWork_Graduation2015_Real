@@ -37,7 +37,7 @@ public class GameRecorderView extends HttpServlet {
 		ArrayList<UserBean> userbean = new ArrayList<UserBean>();
 		userbean = (ArrayList<UserBean>)gamdao.usernameList();
 		request.setAttribute("userbean", userbean);
-		request.getRequestDispatcher("admin-newgames.jsp").forward(request, response);
+		request.getRequestDispatcher("admin-jsp/admin-newgames.jsp").forward(request, response);
 
 		}
 

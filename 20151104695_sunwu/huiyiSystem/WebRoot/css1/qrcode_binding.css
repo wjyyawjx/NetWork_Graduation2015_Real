@@ -1,0 +1,58 @@
+.container-fluid{
+	width:256px;
+	overflow:hidden;
+	margin:50px auto;
+	border:3px solid #CCC;
+}
+.container-fluid:hover{
+	border:3px solid #999;
+}
+.container-fluid .qrcode-page{
+	width:248px;
+	height:248px;
+	float:left;
+	margin:4px;
+}
+.container-fluid .qrcode-page img{
+	width:240px;
+	height:240px;
+	padding:3px;
+	border:1px solid #CCCCCC;
+	background:url(../images/qrcode_loading.gif) no-repeat center;
+}
+.container-fluid .qrcode-msg{
+	overflow:hidden;
+	width:240px;
+	padding:4px;
+}
+.container-fluid .qrcode-msg span{
+	width:240px;
+	height:30px;
+	color:#666;
+	font-size:24px;
+	font-family:"微软雅黑","宋体", Arial, Helvetica, sans-serif;
+}
+.container-fluid .qrcode-msg span font{
+	width:240px;
+	height:30px;
+	color: #F00;
+	font-size:24px;
+	font-family:"微软雅黑","宋体", Arial, Helvetica, sans-serif;
+}
+.container-fluid .qrcode-msg p{
+	width:240px;
+	text-align:center;
+	line-height:16px;
+	margin:5px auto;
+	color:#666;
+	font-size:14px;
+	font-family:"微软雅黑","宋体", Arial, Helvetica, sans-serif;
+}
+.container-fluid .qrcode-msg p a{
+	text-decoration:none;
+	font-weight:bold;
+	line-height:16px;
+	color:#666;
+	font-size:14px;
+	font-family:"微软雅黑","宋体", Arial, Helvetica, sans-serif;
+}

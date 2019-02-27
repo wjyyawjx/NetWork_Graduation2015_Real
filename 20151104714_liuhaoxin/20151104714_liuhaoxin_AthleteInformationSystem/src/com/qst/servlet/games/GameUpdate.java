@@ -27,7 +27,7 @@ public class GameUpdate extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//创建修改运动会
+		//修改运动会
 		}
 
 	/**

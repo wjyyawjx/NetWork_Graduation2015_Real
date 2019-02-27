@@ -8,9 +8,6 @@ email：记录用户email
 phone：记录用户联系方式
 permission：记录用户权限
 
-表名：Sportsday
-用途：记录运动会创建信息
-字段：
 
 表名：toapplyfor
 用途：记录用户申请成为记录员
@@ -28,3 +25,35 @@ cid：id自增
 reason：记录用户的情况说明
 username：记录联系者用户名
 phone：记录联系者联系方式
+
+
+
+表名：athlet
+用途：运动员信息记录
+字段：
+tid：    id自增 
+athletusername：记录运动员名字
+tsid：运动会id，记录运动员是那一届运动会
+ranking：记录运动员排名信息
+results：记录运动员成绩信息
+events：记录运动员比赛项目
+theclass：记录运动员班级
+
+
+
+表名：game
+用途：记录运动会信息
+字段：
+sid：  id自增 
+username：记录员用户名
+gamesname：运动会名称
+startTime：开始时间
+stopTime：结束时间
+
+
+表名：message
+用途：记录留言
+字段：
+mid：id自增 
+message：记录留言
+username：记录留言人的名字

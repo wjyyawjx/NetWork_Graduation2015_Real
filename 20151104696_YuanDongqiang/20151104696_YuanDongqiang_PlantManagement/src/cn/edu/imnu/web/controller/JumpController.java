@@ -10,7 +10,6 @@ public class JumpController {
 	 */
 	@RequestMapping(value = "/register.action")
 	public String toRegister(String id) {
-		System.out.println(id);
 		return "register";
 	}
 	/**

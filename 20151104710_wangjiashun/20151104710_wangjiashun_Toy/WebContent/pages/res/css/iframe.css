@@ -1,0 +1,141 @@
+.topDiv{
+	width: 99.7%;
+	    margin: 0 auto;
+	     height: 30px;
+	    line-height: 30px;
+	    border-top: 0px;
+	    background-color: #f6f6f6;
+	    margin-top: -8px;
+	}
+	.topDiv_nr{
+		width: 1200px;
+	    height: 30px;
+	    margin: 0 auto;
+	   
+	}
+	.topleft {
+    float: left;
+    line-height: 30px;
+    font-size: 14px;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+}
+
+.topleft a {
+    color: #666666;
+}
+.topright {
+    float: right;
+    line-height: 30px;
+}
+.topright b {
+    color: #F00;
+    font-weight: 100;
+}
+.topright a {
+    font: 12px/1 Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif;
+    color: #333;
+}
+.logo {
+    width: 330px;
+    padding-top: 28px;
+    height: 72px;
+    float: left;
+}
+.headerDiv {
+    width: 1200px;
+    height: 126px;
+    margin: 0 auto;
+}
+.headeright {
+    width: 315px;
+    float: right;
+    height: 126px;
+}
+.tell {
+    width: 287px;
+    height: 74px;
+    float: right;
+}
+.sousuo {
+    width: 313px;
+    height: 35px;
+    float: left;
+    background: url(../../../upload/qianbi.png) no-repeat;
+    margin-top: 2px;
+}
+.f_r {
+    float: right;
+}
+.sousuo_nr {
+    width: 150px;
+    height: 24px;
+    outline: medium none;
+    background: url(../../../upload/fdj_13.jpg) no-repeat;
+    float: left;
+    line-height: 24px;
+    border: none;
+    margin-top: 5px;
+    margin-left: 68px;
+    padding-left: 30px;
+    padding-right: 6px;
+}
+.btn {
+    height: 24px;
+    width: 50px;
+    background: #7cbcfc;
+    border: medium none;
+    float: left;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 5px;
+    box-shadow: #000 1px 1px 2px;
+}
+.menuDiv {
+    width: 1194px;
+    height: 38px;
+    background: url(../../../upload/nav.png) no-repeat;
+    margin: 0 auto;
+    padding-left: 6px;
+}
+ul, ol {
+    list-style: none;
+}
+.menuDiv li {
+	margin: 0;
+    padding: 0;
+    border: none;
+    float: left;
+}
+
+.xxli a{
+	border-right:1px solid white;
+}
+.xxli a {
+    color: #FFF;
+    display: block;
+    height: 36px;
+    width: 98px;
+    margin-top: 2px;
+}
+.menuDiv li a {
+    float: left;
+    width: 98px;
+    _width: 94px;
+    display: block;
+    text-align: center;
+    line-height: 38px;
+    color: #fff;
+    font-size: 14px;
+}
+.menuDiv li a:hover{
+	background:#1266a9;
+}
+.menuDiv li img {
+    margin-top: 4px;
+    float: left;
+}

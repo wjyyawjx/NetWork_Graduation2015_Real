@@ -39,7 +39,7 @@ public class GameView extends HttpServlet {
 		GameDao gamdao = new GameDao();
 		gambean = (ArrayList<GameBean>)gamdao.gameList();
 		request.setAttribute("gambean", gambean);
-		request.getRequestDispatcher("admin-games.jsp").forward(request, response);
+		request.getRequestDispatcher("admin-jsp/admin-games.jsp").forward(request, response);
 	}
 
 	/**

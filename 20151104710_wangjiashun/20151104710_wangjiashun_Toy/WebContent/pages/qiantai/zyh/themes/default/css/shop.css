@@ -1,0 +1,45 @@
+#preview{ float:none;  text-align:center;}
+.jqzoom{ width:358px; height:358px; position:relative;}
+
+.zoomdiv{ left:859px; height:400px; width:400px;}
+.list-h li{ float:left;}
+#spec-n5{height:56px; padding-top:6px; overflow:hidden;}
+#spec-left{ background:url(images/left.gif) no-repeat; width:10px; height:45px; float:left; cursor:pointer; margin-top:5px;}
+#spec-right{background:url(images/right.gif) no-repeat; width:10px; height:45px; float:left;cursor:pointer; margin-top:5px;}
+#spec-list{ width:325px; float:left; height:56px;  overflow:hidden; margin-left:2px; display:inline;}
+#spec-list ul li{ float:left; margin-right:0px; display:inline; width:62px;}
+#spec-list ul li img{ padding:2px ; border:1px solid #ccc; width:50px; height:50px;}
+
+/*jqzoom*/
+.jqzoom{position:relative;padding:0;}
+.jqzoom img{border:1px solid #E4E4E4;}
+.zoomdiv{z-index:100;position:absolute;top:1px;left:0px;width:400px;height:400px;background:url(i/loading.gif) #fff no-repeat center center;border:1px solid #e4e4e4;display:none;text-align:center;overflow: hidden;}
+.bigimg{width:800px;height:800px;}
+.jqZoomPup{z-index:10;visibility:hidden;position:absolute;top:0px;left:0px;width:50px;height:50px;border:1px solid #aaa;background:#FEDE4F 50% top no-repeat;opacity:0.5;-moz-opacity:0.5;-khtml-opacity:0.5;filter:alpha(Opacity=50);cursor:move;}
+#spec-list{ position:relative; width:322px; margin-right:6px;}
+#spec-list div{ margin-top:0;margin-left:-30px; *margin-left:0;}
+
+
+/*相册*/
+	#spec-n51{ padding:8px; _height:1%;}
+   #spec-n51 .imgInfo{width:230px; float:left; margin-right:10px; overflow:hidden;}
+   #spec-n51 .imgInfo .thumb{width:230px; height:230px; display:block;}/*商品详情图片*/
+   #spec-n51 span{width:10px; height:45px; float:left;}
+   #spec-n51 span.spanR{width:10px; height:45px;  float:right;}
+   #spec-n51 .gallery{width:310px; float:left; margin-left:10px; _margin-left:5px; overflow:hidden;}
+   #spec-n51 .gallery ul{width:auto;}
+   #spec-n51 .gallery li{float:left; width:48px; margin:0 2px;}
+   #spec-n51 .gallery li img{width:46px; height:46px; display:block;}
+   
+   .clearfix:after{clear:both;content:' ';display:block;font-size:0;line-height:0;visibility:hidden;width:0;height:0}*html .clearfix,*+html .clearfix{height:1%}
+   
+   .depict_cut,.depict_add{ background:url(../images/wares_bg.png) 0 0 no-repeat;}
+.depict_cut,.depict_add{ display:inline-block; width:11px; height:21px; vertical-align:middle; cursor:pointer;}
+	.depict_cut{ background-position:-30px -69px;}
+	.depict_add{ background-position:-30px -46px;}
+	.depict_text{ width:52px; height:19px; line-height:21px; border:1px solid #a7a7a9; text-align:center; vertical-align:middle; margin:0 4px;}
+	/*相关商品*/
+.goodsbox {width:170px; float:left; margin-left:16px; margin-right:3px;}  
+.goodsbox .psla{ display:block;width:170px; text-align:center; float:left; line-height:32px; color:#333333;}
+
+#TabCon3xc{height:200px;}

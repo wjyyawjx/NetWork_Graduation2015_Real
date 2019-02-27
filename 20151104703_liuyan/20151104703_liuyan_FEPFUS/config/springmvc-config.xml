@@ -14,7 +14,7 @@
                             http://www.springframework.org/schema/tx/spring-tx.xsd
                             http://www.springframework.org/schema/aop
                             http://www.springframework.org/schema/aop/spring-aop.xsd">
-       <context:component-scan base-package="com.qst.controller"/>	
+       <context:component-scan base-package="com.imnu.controller"/>	
        <mvc:annotation-driven/>
        <mvc:resources location="/js/" mapping="/js/**"/>
        <mvc:resources location="/css/" mapping="/css/**"/>

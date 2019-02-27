@@ -1,0 +1,99 @@
+	*{
+		padding:0px;
+		margin:0px;
+	}
+	.headdiv-text{
+		font-size: 12px; color: #555555;
+		width:1080px; 
+		margin:auto; 
+		margin-top:20px;
+	}
+	.body-div{
+		width:1080px;
+		height:490px;
+		border: 1px solid #CCCCCC;
+		margin:0 auto;
+	}
+	.body-first-div{
+		width:700px;
+		height:468px;
+		border-right: 1px solid #CCCCCC;
+	}
+	.body-two-div{
+		width:370px;
+		height:468px;
+	}
+	ul{
+		list-style: none;
+		
+	}
+	ul li{
+		float:left;
+	}
+	b{
+		font-size: 26px;
+	    color: #555555;
+	    font-weight: bold;
+	}
+	.tab{
+		margin:20px;
+	}
+	.tab-td{
+		padding-top:16px;
+		width:536px;
+		height:50px;
+		padding-left:30px;
+		}
+		.td-text{
+			width: 260px;
+		    height: 32px;
+		    line-height: 32px;
+		    border: 1px solid #999999;
+		}
+		.fonts{
+			font-size: 14px;
+    		color: #8a8a8a;
+    		margin:right;
+		}
+		p{
+			font-size: 12px;
+		    color: #8a8a8a;
+		    margin-left:80px;
+		}
+		.td-yzm{
+			width: 102px;
+		    height: 32px;
+		}
+		.fonts-yzm{
+			font-size: 14px;
+    		color: #8a8a8a;
+    		margin-left:15px;
+		}
+		.tds{
+			height:28;  
+			font-size: 12px; color: #555555;
+			padding-top:15px; 
+			padding-left:105px;
+		}
+		.hui_12{text-decoration: none;font-size: 12px;color: #666666; }
+		.btn-input{
+			cursor:pointer; 
+			border-width:0px; 
+			border-radius:4px; 
+			background-color:#F07800;
+			font-size:12px; 
+			color:#FFFFFF; 
+			letter-spacing:1px; 
+			width:180px; 
+			height:35px; 
+			padding-top:2px;
+			margin-top:20px;
+			margin-left:100px;
+		}
+		.style_hui_12 {font-size: 12px; color: #555555; }
+		.bottom-tab{
+			width:290px; 
+			border:0px; 
+			margin-top:50px;
+			margin-left:50px;
+		}
