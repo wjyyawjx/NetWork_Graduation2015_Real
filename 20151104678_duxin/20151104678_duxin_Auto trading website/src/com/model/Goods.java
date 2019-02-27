@@ -10,7 +10,7 @@ public class Goods {//定义一个实体对象
   private String  picture="";
   private int newGoods=-1;
   private int sale=-1;
-
+//123
   public void goods(){
   }
 
