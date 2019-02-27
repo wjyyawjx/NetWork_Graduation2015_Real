@@ -107,7 +107,67 @@ public class RecordServiceImpl implements RecordService {
 		return cord4;
 	}
 
-	
+	/**
+	 * 逾期要支付的金额
+	 * @throws ParseException 
+	 */
+	@Override
+	public Record backyuqi(String reCode) throws ParseException {
+		Record cord = record.backyuqi(reCode);
+		//设置日期格式
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		//获取当前时间
+		Date date = new Date();
+		//把当前时间换为毫秒
+		long str = date.getTime();
+		//把数据库数据转换为毫秒
+		long str2 = df.parse(cord.getReDeposit()).getTime();
+		//存放时设置的时间
+		long str3 = Long.valueOf(cord.getReTime())*3600000;
+		
+		long str4 =  (long) Math.ceil((str-str2)/str3);
+		System.err.println("减"+str+"被减"+str2+"可以滴"+str3+"===="+str4);
+		//柜子的价格
+		long str5 = Long.valueOf(cord.getChOverdue());
+		//逾期的金额
+		long str6 = str4*str5;
+		//转为string
+		String str7 = String.valueOf(str6);
+		System.err.println("柜子逾期价格"+str5+"要付的钱"+str6);
+		cord.setReCharge(str7);
+		return cord;
+	}
+
+	/**
+	 * 取件码去除，增加取件时间，柜子变空
+	 */
+	@Override
+	public int backYuqiQujian(String reCharge) {
+		//new个对象
+		Record cord = new Record();
+		//逾期费用赋值上去
+		cord.setReCharge(reCharge);
+		//把取件码清空
+		cord.setReCode("1");
+		//把当前时间增加到表中
+		Date date = new Date();
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String date2 = df.format(date);
+		cord.setReOut(date2);
+		//记录表id
+		cord.setReId(reId);
+		record.updateByPrimaryKeySelective(cord);
+		
+		//取完柜子变空
+		Cabinet bin = new Cabinet();
+		//
+		bin.setCaId(caId);
+		System.err.println("清空的id==="+caId);
+		bin.setCaWhether("空");
+		cabinet.updateByPrimaryKeySelective(bin);
+		
+		return 1;
+	}
 
 	/**
 	 * 查询所有，模糊查询
