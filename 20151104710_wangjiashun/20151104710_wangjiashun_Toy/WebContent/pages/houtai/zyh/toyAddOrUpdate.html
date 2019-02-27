@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>增加和修改</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="../../../res/css/layui.css"  media="all">
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	
+})
+</script>
+</head>
+<body>
+	<form id="form" class="layui-form" action="../../../toy/addOrUpdate.action" method="post" style="margin-top: 10px;" enctype="multipart/form-data">
+	 	
+	 	<input type="hidden" name="toyId" id="toyId"/>
+	 	<div class="layui-form-item" style="width:70%;">
+	    <label class="layui-form-label">玩具类型:</label>
+		    <div class="layui-input-inline">
+	        <select name="typeId" id="typeId" lay-verify="required" >
+	        <option value="">请选择</option>
+	        </select>
+	      </div>
+	  	</div>
+	  	
+	  	<div class="layui-form-item" style="width:80%;">
+	      <label class="layui-form-label">玩具名称</label>
+	      <div class="layui-input-inline">
+	        <input name="toyName" id="toyName" lay-verify="required|commodityName" placeholder="请输入玩具名称"  class="layui-input" type="text" >
+	      </div>
+	    </div>
+	    
+	    <div class="layui-form-item" style="width:80%;">
+	      <label class="layui-form-label">适合年龄</label>
+	      <div class="layui-input-inline">
+	        <input name="toyAge" id="toyAge" lay-verify="required|number|commodityPrice" placeholder="请输入适合年龄"  class="layui-input" type="text" >
+	      </div>
+	    </div>
+	    
+	    <div class="layui-form-item" style="width:80%;">
+	      <label class="layui-form-label">玩具价格</label>
+	      <div class="layui-input-inline">
+	        <input name="toyMoney" id="toyMoney" lay-verify="required|number|commodityPrice" placeholder="请输入玩具价格"  class="layui-input" type="text" >
+	      </div>
+	    </div>
+	  	
+	    
+	    <div class="layui-form-item" style="width:80%;">
+	      <label class="layui-form-label">玩具押金</label>
+	      <div class="layui-input-inline">
+	        <input name="toyDeposit" id="toyDeposit" lay-verify="required|number|commodityPrice" placeholder="请输入玩具押金"  class="layui-input" type="text" >
+	      </div>
+	    </div>
+	  
+	   <div class="layui-form-item layui-form-text"  style="width:80%;">
+	      <label class="layui-form-label" >玩具介绍</label>
+	      <div class="layui-input-block">
+	     	 <textarea name="toyIntroduce" id="toyIntroduce" lay-verify="required|commodityExplain" placeholder="请输入玩具介绍" class="layui-textarea" ></textarea>
+	   	  </div>
+	   </div>
+	   
+	  <div class="layui-form-item" style="width:80%;">
+	   	<label class="layui-form-label">玩具图片</label>
+	  	<input type="file" class="layui-input"  id="photoPath" name="photoPaths" value="上传图片">
+		  <span id="FileName"></span>
+	  </div>
+	  <div class="layui-form-item" style="width:80%;">
+	    <div class="layui-input-block">
+	      <button class="layui-btn" lay-submit lay-filter="formDemo" id="sub">立即提交</button>
+	      
+	    </div>
+	   </div>
+	</form>
+	<script src="../../../res/js/layui.all.js" charset="UTF-8"></script> 
+	<script type="text/javascript">
+	layui.use(['form', 'layedit', 'laydate'], function(){
+		 var form = layui.form
+		,layer = layui.layer
+		,layedit = layui.layedit
+		,laydate = layui.laydate
+		  
+	 
+			
+		
+	 form.verify({
+			toyName: function(value){
+		      if(value.length > 20){
+		        return '商品名字不能大于20个字符';
+		      }
+		    },
+		    toyAge: function(value){
+			      if(value.length > 2){
+			        return '年龄不能大于99岁';
+			      }
+			 },
+			 commodityExplain: function(value){
+			      if(value.length > 100){
+			        return '商品说明不能大于100个字符';
+			      }
+			 },
+			 commodityDetails: function(value){
+			      if(value.length > 100){
+			        return '商品详情不能大于100个字符';
+			      }
+			 },
+			 commodityColor: function(value){
+			      if(value.length > 50){
+			        return '商品颜色不能大于50个字符';
+			      }
+			 },
+			 commoditySize: function(value){
+			      if(value.length > 50){
+			        return '商品尺码不能大于50个字符';
+			      }
+			 },
+		    	content: function(value){
+		      layedit.sync(editIndex);
+		    }
+		  });
+	  //监听提交
+	  form.on('submit(formDemo)', function(data){
+		  var index=parent.layer.getFrameIndex(window.name);
+		  parent.layer.close(index);
+		  
+	  });
+	  
+	  var url="../../../toy/findType.action";
+		var data=null;    
+		$.post(url,data,function(mes){
+			$.each(mes,function(index,item){
+				$("#typeId").append("<option value="+item.typeId+">"+item.typeName+"</option>");
+				form.render();
+			});
+			
+		},"json");
+	  
+	});
+	
+	
+	function load() {
+		var form=layui.form;
+		 form.render();
+	}
+</script>
+</body>
+</html>

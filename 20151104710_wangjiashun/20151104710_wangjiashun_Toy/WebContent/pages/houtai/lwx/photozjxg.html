@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>玩具类型增加和修改</title>
+<link rel="stylesheet" href="../../../res/css/layui.css"  media="all">
+<script type="text/javascript" src="../../../res/js/jquery-1.11.2.min.js"></script>
+<script>
+
+</script>
+</head>
+<body>
+	<form id="form" class="layui-form" enctype="multipart/form-data" action="../../../photo/addOrUpdate.action" method="post" style="margin-top: 10px;" >
+		<div class="layui-form-item" style="width:70%;">
+	    <label class="layui-form-label"></label>
+		    <div class="layui-input-block">
+		    <input type="hidden" id="photoId" required lay-verify="photoId" placeholder="请输入备注" name="photoId" class="layui-input" >
+		     
+		    </div>
+	  	</div>
+	<div class="layui-form-item" style="width:70%;">
+	    <label class="layui-form-label">图片:</label>
+		    <div class="layui-input-block">
+		    <input required lay-verify="pic" name="pic" id="pic" class="layui-input" type="file">
+		      
+		    </div>
+	  	</div>
+	  <div class="layui-form-item" style="width:70%;">
+	    <label class="layui-form-label">备注:</label>
+		    <div class="layui-input-block">
+		    <input type="text" id="photoRemark" required lay-verify="photoRemark" placeholder="请输入备注" name="photoRemark" class="layui-input" >
+		     
+		    </div>
+	  	</div>
+	 
+	  <div class="layui-form-item" style="width:70%;">
+	    <div class="layui-input-block">
+	      <button class="layui-btn" lay-submit lay-filter="formDemo" id="sub">立即提交</button>
+	     
+	    </div>
+	   </div>
+	</form>
+<script src="../../../res/js/layui.all.js"></script>	
+<script type="text/javascript">
+layui.use(['form', 'layedit', 'laydate'], function(){
+	  var form = layui.form
+	  ,layer = layui.layer
+	  ,layedit = layui.layedit
+	  ,laydate = layui.laydate;
+	 
+	 	 //日期
+		  laydate.render({
+		    elem: '#date'
+		  });
+	  
+	  //创建一个编辑器
+	  var editIndex = layedit.build('LAY_demo_editor');
+	 
+	  //自定义验证规则
+	  form.verify({
+	    title: function(value){
+	      if(value.length > 7){
+	        return '字数不能过大';
+	      }
+	    }
+	    ,content: function(value){
+	      layedit.sync(editIndex);
+	    }
+	  });
+	 
+
+	  //监听提交
+	  form.on('submit(formDemo)', function(data){
+		  var index=parent.layer.getFrameIndex(window.name);
+		  parent.layer.close(index);
+		  
+	  });
+	  
+});
+//接收到ajax传过来的对象 
+function load() {
+	var form = layui.form;
+	 form.render();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>租借记录</title>
+  <link rel="stylesheet" href="../../../res/css/layui.css"  media="all">
+  <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+<div class="demoTable" style="margin-top: 10px;text-align: center;margin-left:90px;width: 910px">        
+	 <div class="demoTable">
+	  搜索订单：
+	 	 <div class="layui-inline"><input class="layui-input" id="name" placeholder="客户姓名"/></div>
+ 		 <button class="layui-btn" data-type="reload" id="sous">搜索</button>
+	</div>
+  <table class="layui-table" lay-data="{width: 1010, height:458, url:'../../../record/findAll.action' , page:true, id:'idTest'}" lay-filter="demo">
+  <thead>
+    <tr>
+      <th lay-data="{field:'recordId', width:150 ,sort: true,}">记录ID</th>
+      <th lay-data="{field:'toyName', width:150}">玩具名称</th>
+      <th lay-data="{field:'toyDeposit', width:150}">玩具押金</th>
+      <th lay-data="{field:'toyMoney', width:150}">玩具租金</th>
+      <th lay-data="{field:'recordTime', width:155,templet: '#loginTime'}">租借时间</th>
+      <th lay-data="{field:'userName', width:100}">租借用户</th>
+    </tr>
+  </thead>
+</table>
+</div>
+
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+	<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="fahuo">发货</a>
+</script>
+
+<script type="text/html" id="loginTime">
+  {{ formatDate(d.recordTime) }}  
+</script>
+
+<script src="../../../res/js/jquery-1.11.2.min.js"></script>
+<script src="../../../res/js/layui.js" charset="utf-8"></script>
+<script src="../../../res/js/wj/common.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+$(function(){
+layui.use('table', function(){
+	 var table = layui.table;
+	 var $ = layui.$, active = {
+			    reload: function(){
+			      var start = $('#start');
+			      var end = $('#end');
+			      var name= $("#name");
+			      //执行重载
+			      
+			      table.reload('idTest', {
+			    	page: {
+			        curr: 1 //重新从第 1 页开始
+			        }
+			      ,where: {
+			       key: {
+			           startdate:start.val(),
+			           enddate:end.val(),
+			           name:name.val()
+			        }
+			     }
+			  });
+			}
+		};
+	//搜索按钮点击事件
+		$('.demoTable #sous').on('click', function(){
+			  var type = $(this).data('type');
+			  active[type] ? active[type].call(this) : '';
+		});
+	//监听工具条
+	  table.on('tool(demo)', function(obj){
+	    var da = obj.data;
+	    if(obj.event === 'detail'){
+	    	layer.open({
+	    		 type: 2, //设置为iframe
+	    		  title:'销售明细',
+	    		  area: ['1000px', '460px'],
+	    		  content: ['<%=basePath %>pages/houtai/wpy/saledetailed.jsp', 'no'] 
+		    		,success: function(layero, index){
+	    			var url="<%=basePath %>SaleServlet?action=detailSale";
+	    	    	var data={"saleId":da.saleId};
+	    	    	var body = layer.getChildFrame('body', index);
+	  				var iframe = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+	    	    	$.post(url,data,function(mes){
+	    	    		$.each(mes,function(index,item){
+	    	    			iframe.$("#userName").html(item.userName);
+	    	    			iframe.$("#userEmail").html(item.userEmail);
+	    	    			iframe.$("#userPhone").html(item.userPhone);
+	    	    			iframe.$("#Address").html(item.userAddress);
+	    	    			iframe.$("#thbody").append("<tr><td class='td'><img src='<%=basePath%>"+item.shoesPhoto+"' width='50px' height='50px'/><span class='name'>"+item.shoesName+"</span><p class='size'>尺码:"+item.shoesSize+"</p></td><td  class='thbody_td'>"+item.shoesPrice+"</td><td class='thbody_td'>"+item.sdNum+"</td><td>"+item.sdTotal+"</td></tr>");
+	    	    		});
+	    	    	},"json");
+	    		}
+	    	});
+	    	}
+	    
+	    if(obj.event === 'fahuo'){
+	    	var url="<%=basePath%>SaleServlet?action=update";
+	    	var data={"saleId":da.saleId};
+	    	$.post(url,data,function(mes){
+	    		if(mes.datas==1){
+	    			 table.reload('idTest', {
+					    	page: {
+					        	curr: 1 //重新从第 1 页开始
+					        }
+					  });
+	    		}
+	    	},'json');
+	    }
+	    });
+	});
+
+	layui.use('laydate',function(){
+		  var laydate = layui.laydate;
+		  //执行一个laydate实例
+		  laydate.render({
+			  elem:'#start'
+		  	,theme: 'molv'
+		  });
+		  laydate.render({
+			  elem:'#end'
+		  	,theme: 'molv'
+		  });
+	});
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>玩具管理</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="../../../res/css/layui.css"  media="all">
+    <link rel="stylesheet" href="../../../res/js/css/modules/code.css"  media="all">
+  <script>
+	function getPathOver(obj){
+		$("#pic").toggle(500);
+		$('#pic').attr({"src":obj.src});
+	}
+	/**
+	*鼠标退出时
+	*/
+	function getPathOut(){
+		$('#pic').css({"display":"none"});
+	}
+  </script>
+</head>
+<body>  
+<img id="pic" src="#" style="width:400px;height:400px;display:none;z-index:99;position: absolute;left:305px;top:100px;"/>
+<div style = "margin-left:20px;margin-top:10px;overflow: hidden;height:521px;text-align: center;">
+<div>          
+	 <div class="demoTable">
+	  搜索商品：
+	  <div class="layui-inline">
+	    <input class ="layui-input" name="toyName" id=toyName autocomplete="off">
+	  </div>
+  <button  class="layui-btn" data-type="reload" id="sous" >搜索</button>
+  <input type="button" id="demoinsert" class="layui-btn layui-insert" value="增加"></input>
+</div>
+<!-- 示例-970 -->
+</div>
+<table class="layui-table" lay-data="{width: 1247, height:471, url:'../../../toy/findAll.action', page:true, id:'idTest'}" lay-filter="demo">
+  <thead>
+    <tr>
+      <th lay-data="{field:'toyId', width:100, sort: true}">玩具ID</th>
+      <th lay-data="{field:'typeName', width:100}">玩具类型</th>
+      <th lay-data="{field:'photoPath', width:100,sort: false,align:'center',templet:'#imgTpl'}">玩具图片</th>
+      <th lay-data="{field:'toyName', width:348}">玩具名称</th>
+      <th lay-data="{field:'toyIntroduce', width:100}">玩具介绍</th>
+      <th lay-data="{field:'toyMoney', width:145, sort: true}">玩具价格</th>
+      <th lay-data="{field:'toyDeposit', width:145, sort: true}">玩具押金</th>
+      <th lay-data="{fixed: 'right', width:200, align:'center', toolbar: '#barDemo'}">操作</th>
+    </tr>
+  </thead>
+</table>
+
+<script type="text/html" id="imgTpl">
+    <img style="width:30px;height:30px;"  onmouseover="getPathOver(this)" onmouseout="getPathOut()" src="../../../{{ d.photoPath }}">
+</script>
+
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+               
+          
+<script src="../../../res/js/layui.all.js" charset="UTF-8"></script> 
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+ 
+
+layui.use('table', function(){
+	 
+  var table = layui.table;
+  //监听表格复选框选择
+  table.on('checkbox(demo)', function(obj){
+    console.log(obj)
+  });
+  //监听工具条
+  table.on('tool(demo)', function(obj){	
+    var da = obj.data;
+    if(obj.event === 'del'){
+      layer.confirm('真的删除行么', function(index){
+    	var url="../../../toy/delete.action"; 
+    	var data={"id":da.toyId};
+        $.post(url,data,function(mes){
+          layer.msg(mes.msg);
+  		  obj.del();
+        },"json");
+      });
+    } else if(obj.event === 'edit'){
+    	layer.open({
+    		type:2
+    		,title:'修改'
+    		,area: ['450px', '600px']
+    	  ,content: ['toyAddOrUpdate.html', 'no']
+    	,success:function(layero, index){
+    		var body = layer.getChildFrame('body', index);
+	    	 var iframe = window[layero.find('iframe')[0]['name']]; 
+	    	 var url="../../../toy/findById.action";
+	    	 var data={"id":da.toyId};
+	    	 $.ajax({
+	    		 async:false,
+	    		 url:url,
+	    		 data:data,
+	    		 dataType:"json",
+	    		 success:function(mes){
+		    			 iframe.$("#toyId").val(mes.toyId); 
+			    		 iframe.$("#typeId").val(mes.typeId);
+			    		 iframe.$("#toyName").val(mes.toyName);
+			    		 iframe.$("#toyMoney").val(mes.toyMoney);
+			    		 iframe.$("#toyAge").val(mes.toyAge);
+			    		 iframe.$("#toyDeposit").val(mes.toyDeposit);
+			    		 iframe.$("#toyIntroduce").val(mes.toyIntroduce);
+			    		 iframe.$("#photoId").val(mes.photoId);
+			    		 iframe.load();
+	    		 }
+	    	 }); 
+    	}
+    	//操作完成执行刷新 
+    	,end:function(index,layero){
+    		location.reload();
+    	}
+    	});
+    	
+    	}
+    });
+  
+  var $ = layui.$, active = {
+		    reload: function(){
+		      var toyName = $('#toyName');
+		      
+		      //执行重载
+		      table.reload('idTest', {
+		        page: {
+		          curr: 1 //重新从第 1 页开始
+		        }
+		      ,where: {
+		        key: {
+		        	toyName: toyName.val()
+		        	
+		        }
+		      }
+		   });
+		}
+	};
+  
+  
+  	
+  $('.demoTable .layui-btn').on('click', function(){
+	  var type = $(this).data('type');
+	  active[type] ? active[type].call(this) : '';
+});
+//增加 
+$('#demoinsert').on('click', function(){
+	  layer.open({
+	        type: 2 //此处以iframe举例
+	        ,title: '增加'
+	        ,area: ['450px', '560px']
+	        ,content: ['toyAddOrUpdate.html' , 'no']
+			,end: function(index, layero){ 
+				location.reload();
+			}
+	  
+	  });
+});
+
+});
+</script>
+</div>
+</body>
+</html>
