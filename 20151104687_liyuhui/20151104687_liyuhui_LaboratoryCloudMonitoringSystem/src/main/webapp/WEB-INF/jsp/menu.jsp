@@ -155,18 +155,29 @@
                 </div>
                 
                 <hr class="whiter" />
-				<c:forEach items="${Lab}" var="lab">
-					${lab.lId}
-					${lab.lName}
-					${lab.campus}
-					${lab.building}
-					${lab.houseId}
-					${lab.major}
-					${lab.time}
-					${lab.temperature}
-					${lab.humidity}
+                <table border="1">
+                	<tr>
+                		<td>实验室名称</td>
+                		<td>所属校区</td>
+                		<td>所属教学楼</td>
+                		<td>所属院系</td>
+                		<td>门牌号</td>
+                		<td>当前温度</td>
+                		<td>当前湿度</td>
+                	</tr>
+                	<c:forEach items="${Lab}" var="lab">
+                	<tr>
+                		<td>${lab.lName}</td>
+                		<td>${lab.campus}</td>
+                		<td>${lab.building}</td>
+                		<td>${lab.major}</td>
+                		<td>${lab.houseId}</td>
+                		<td>${lab.temperature}</td>
+                		<td>${lab.humidity}</td>
+                	</tr>
+                	</c:forEach>
+                </table>
 
-				</c:forEach>
             </section>
 
         </section>
