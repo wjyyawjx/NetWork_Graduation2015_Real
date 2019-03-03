@@ -90,9 +90,8 @@
     l_id, l_name, campus, building, house_id, major, time, temperature, humidity
     from laboratory, place, tem_hum
     where laboratory.place_id = place.place_id and laboratory.tem_id = tem_hum.tem_id
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
+	order by time desc
+	limit 3
   </select>
   
   

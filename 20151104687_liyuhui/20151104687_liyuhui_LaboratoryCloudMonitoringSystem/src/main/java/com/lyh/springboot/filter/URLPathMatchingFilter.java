@@ -40,7 +40,7 @@ public class URLPathMatchingFilter extends PathMatchingFilter {
 		System.out.println("permissionService:"+permissionService);
 		boolean needInterceptor = permissionService.needInterceptor(requestURI);
 		if (!needInterceptor) {
-			return true;
+			return false;
 		} else {
 			boolean hasPermission = false;
 			String userName = subject.getPrincipal().toString();

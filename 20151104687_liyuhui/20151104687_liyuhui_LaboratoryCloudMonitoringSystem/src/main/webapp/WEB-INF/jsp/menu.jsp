@@ -164,6 +164,7 @@
                 		<td>门牌号</td>
                 		<td>当前温度</td>
                 		<td>当前湿度</td>
+                		<td>获取时间</td>
                 	</tr>
                 	<c:forEach items="${Lab}" var="lab">
                 	<tr>
@@ -174,6 +175,7 @@
                 		<td>${lab.houseId}</td>
                 		<td>${lab.temperature}</td>
                 		<td>${lab.humidity}</td>
+                		<td>${lab.time}</td>
                 	</tr>
                 	</c:forEach>
                 </table>
