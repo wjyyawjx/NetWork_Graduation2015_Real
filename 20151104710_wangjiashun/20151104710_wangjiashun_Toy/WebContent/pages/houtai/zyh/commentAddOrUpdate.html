@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>增加和修改</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="../../../res/css/layui.css"  media="all">
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	
+})
+</script>
+</head>
+<body>
+	<form id="form" class="layui-form" action="../../../comment/addOrUpdate.action" method="post" style="margin-top: 10px;" enctype="multipart/form-data">
+	 	
+	 	<input type="hidden" name="commentId" id="commentId"/>
+	 	<div class="layui-form-item" style="width:70%;">
+	    <label class="layui-form-label">玩具名称:</label>
+		    <div class="layui-input-inline">
+	        <select name="toyId" id="toyId" lay-verify="required" >
+	        	<option value="">请选择</option>
+	        </select>
+	      </div>
+	  	</div>
+	  	
+	    
+	    <div class="layui-form-item" style="width:80%;">
+	      <label class="layui-form-label">评论时间</label>
+	      <div class="layui-input-inline">
+	        <input name="commentTime" id="commentTime" lay-verify="required|commodityPrice" placeholder="请选择时间"  class="layui-input" type="date" >
+	      </div>
+	    </div>
+	  
+	  	<div class="layui-form-item" style="width:70%;">
+	    <label class="layui-form-label">满意度:</label>
+		    <div class="layui-input-inline">
+	        <select name="commentEvaluate" id="commentEvaluate" lay-verify="required" >
+	        	<option value="">请选择</option>
+	        	<option value="1">满意</option>
+	        	<option value="2">一般</option>
+	        	<option value="3">不满意</option>
+	        </select>
+	      </div>
+	  	</div>
+	  
+	   <div class="layui-form-item layui-form-text"  style="width:80%;">
+	      <label class="layui-form-label" >评论内容</label>
+	      <div class="layui-input-block">
+	     	 <textarea name="commentContent" id="commentContent" lay-verify="required|commodityExplain" placeholder="请输入玩具介绍" class="layui-textarea" ></textarea>
+	   	  </div>
+	   </div>
+	   
+	  <div class="layui-form-item" style="width:80%;">
+	   	<label class="layui-form-label">评论图片</label>
+	  	<input type="file" class="layui-input"  id="commentPhoto" name="commentPhotos" value="上传图片">
+		  <span id="FileName"></span>
+	  </div>
+	  <div class="layui-form-item" style="width:80%;">
+	    <div class="layui-input-block">
+	      <input class="layui-btn" lay-submit lay-filter="formDemo" id="sub" type="submit" value="立即提交"/>
+	      
+	    </div>
+	   </div>
+	</form>
+	<script src="../../../res/js/layui.all.js" charset="UTF-8"></script> 
+	<script type="text/javascript">
+	layui.use(['form', 'layedit', 'laydate'], function(){
+		 var form = layui.form
+		,layer = layui.layer
+		,layedit = layui.layedit
+		,laydate = layui.laydate
+		  
+	 
+			
+		
+	 form.verify({
+		 	
+		    commentContent: function(value){
+			      if(value.length > 100){
+			        return '评论不能大于100个字符';
+			      }
+			 },
+			 commodityExplain: function(value){
+			      if(value.length > 100){
+			        return '商品说明不能大于100个字符';
+			      }
+			 },
+			 commodityDetails: function(value){
+			      if(value.length > 100){
+			        return '商品详情不能大于100个字符';
+			      }
+			 },
+			 commodityColor: function(value){
+			      if(value.length > 50){
+			        return '商品颜色不能大于50个字符';
+			      }
+			 },
+			 commoditySize: function(value){
+			      if(value.length > 50){
+			        return '商品尺码不能大于50个字符';
+			      }
+			 },
+		    	content: function(value){
+		      layedit.sync(editIndex);
+		    }
+		  });
+	  //监听提交
+	 form.on('submit(formDemo)', function(data){
+		  var index=parent.layer.getFrameIndex(window.name);
+		  parent.layer.close(index);
+		  
+	  });
+	  
+	  var url="../../../toy/selectAll.action";
+		var data=null;    
+		$.post(url,data,function(mes){
+			$.each(mes,function(index,item){
+				$("#toyId").append("<option value="+item.toyId+">"+item.toyName+"</option>");
+				form.render();
+			});
+			
+		},"json");
+	  
+	});
+	
+	 
+	function load() {
+		var form=layui.form;
+		 form.render();
+	} 
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>编辑</title>
+<link rel="stylesheet" href="../../../res/css/layui.css"  media="all">
+<script src="https://cdn.bootcss.com/limonte-sweetalert2/7.28.11/sweetalert2.all.js"></script>
+<link href="https://cdn.bootcss.com/limonte-sweetalert2/7.28.11/sweetalert2.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+<script>
+</script>
+</head>
+<body>
+	<form id="form" class="layui-form" method="post" style="margin-top: 10px;">
+		<input type="hidden" name="userId"  id="id"   class="layui-input" /><!-- 隐藏hidden -->
+		
+		<div class="layui-form-item" style="width:70%;">
+	      <label class="layui-form-label" >用户名：</label>
+	      <div class="layui-input-block">
+		  	 <input type="text" name="userName" lay-verify="required|title" autocomplete="off" placeholder="请输入用户民" maxlength="15" class="layui-input" type="text" id='userName'/><!-- 隐藏hidden -->
+		    </div>
+	   </div>
+		
+	 	<div class="layui-form-item" style="width:70%;">
+	      <label class="layui-form-label" >用户密码：</label>
+	      <div class="layui-input-block">
+		      <input name="userPsw" type="password" lay-verify="required|userPswd" autocomplete="off" maxlength="15" placeholder="请输入用户密码" class="layui-input"  id='userPsw'>
+		    </div>
+	   </div>
+	   
+	   <div class="layui-form-item" style="width:70%;">
+	      <label class="layui-form-label" >用户手机：</label>
+	      <div class="layui-input-block">
+		      <input name="userPhone" lay-verify="required|phone" autocomplete="off" placeholder="请输入用户手机号" maxlength="11" class="layui-input" type="text" id='userPhone'>
+		    </div>
+	   </div>
+	   
+	   
+	   
+	   <div class="layui-form-item" style="width:70%;">
+	      <label class="layui-form-label" >用户邮箱：</label>
+	      <div class="layui-input-block">
+		      <input name="userEmail" lay-verify="required|email" autocomplete="off" maxlength="20" placeholder="请输入用户邮箱" class="layui-input" type="text" id='userEmail'>
+		    </div>
+	   </div>
+	   <!--  <div class="layui-form-item" style="width:70%;">
+	      <label class="layui-form-label" >用户信用：</label>
+	      <div class="layui-input-block">
+		      <input name="userCredit"  autocomplete="off" maxlength="50" placeholder="请输入用户信用" class="layui-input" type="text" id='userCredit'>
+		    </div>
+	   </div> -->
+	  <div class="layui-form-item" style="width:70%;">
+	      <label class="layui-form-label" >用户类型</label>
+	      <div class="layui-input-inline">
+	        <select name="userType" id="userType" name="modules"  lay-verify="required" lay-search="">
+	        	<option value="">请选择用户类型</option>
+	        	<option value="1">普通用户</option>
+	        	<option value="2">会员</option>
+	        	<option value="3">管理员</option>
+	        </select>
+	      </div>
+	   </div>
+	   
+	 <br/>
+	  <div class="layui-form-item" style="width:70%;">
+	    <div class="layui-input-block">
+	      <button type="button" class="layui-btn" lay-submit lay-filter="formDemo" id="sub">立即提交</button>
+	      <a href="javascript:exit();" class="layui-btn">关闭</a>
+	    </div>
+	   </div>
+	</form>
+<script src="../../../res/js/layui.all.js" charset="UTF-8"></script> 
+<script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,laydate = layui.laydate
+  ,layer = layui.layer
+  ,layedit = layui.layedit;
+  
+	//日期
+  laydate.render({
+	  elem:'#date'
+   });
+  
+   
+
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+ 
+  //自定义验证规则
+  form.verify({
+	 userPswd: function(value){
+      if(value.length <6){
+        return '密码必须大于6';
+      }
+    },
+    title: function(value){
+        if(value.length <3){
+          return '用户名必须大于3';
+        }
+      }
+  });
+  
+
+  //监听提交
+  form.on('submit(formDemo)', function(data){
+	  var index=parent.layer.getFrameIndex(window.name);
+		var url="../../../user/insertUpdate.action";
+		var data=$("#form").serialize();
+		$.post(url,data,function(mes){
+			if(mes.state==1){
+				swal({
+				    title: mes.msg,
+				    type: 'success',
+				    
+				    allowOutsideClick:false
+				}).then(
+					    function () {
+					    	 parent.layer.close(index);
+					    }
+					) 
+			}else{
+				swal({
+				    title: '操作失败',
+				    type: 'error',
+				    
+				    allowOutsideClick:false
+				}).then(
+					    function () {
+					    	 parent.layer.close(index);
+					    }
+					) 
+			}
+			
+		},"json")
+	 
+  });
+ 
+ 
+  
+});
+
+function load(){
+	var form = layui.form;
+	form.render();
+}
+
+function exit(){
+	var index=parent.layer.getFrameIndex(window.name);
+	 parent.layer.close(index);
+}
+</script>
+</body>
+</html>

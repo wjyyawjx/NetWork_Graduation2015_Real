@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>图片后台</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="../../../res/css/layui.css"  media="all">
+  <link rel="stylesheet" href="../../../res/js/css/modules/code.css"  media="all">
+<script type="text/javascript" src="js/phtot.js"></script>
+  <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+<img id="pic" src="#" style="width:400px;height:400px;display:none;z-index:99;position: absolute;left:305px;top:100px;"/>
+<div class="demoTable" style="margin-top: 10px;text-align: center;margin-left: 15px">
+<div class="demoTable">
+  搜索备注：
+  <div class="layui-inline">
+    <input class="layui-input" name="photoRemark" id="photoRemark" autocomplete="off">
+  </div>
+  <button class="layui-btn" data-type="reload">搜索</button>
+  <button id="insert" class="layui-btn" >增加</button>
+</div>
+<table class="layui-table" lay-data="{width:1308,height:465, url:'../../../photo/findAll.action', page:true, id:'idTest'}" lay-filter="demo">
+  <thead>
+    <tr>
+		
+       <th lay-data="{field:'photoPath',width:200,align:'center',templet:'#imgTpl'}">图片</th>
+      <th lay-data="{field:'photoRemark', width:500,align:'center'}">备注</th>
+      <th lay-data="{field: 'right', width:150, align:'center', toolbar: '#barDemo'}">操作</th>
+    </tr>
+  </thead>
+</table>
+ </div>
+ <script type="textml" id="imgTpl">
+    		<img style="width:50px;height:50px;" onmouseover="getPathOver(this)" onmouseout="getPathOut()" src="../../../{{ d.photoPath }}">
+		</script>
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+               
+          
+<script src="../../../res/js/layui.all.js" charset="UTF-8"></script> 
+<script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use('table', function(){
+  var table = layui.table;
+  //监听表格复选框选择
+  table.on('checkbox(demo)', function(obj){
+    console.log(obj)
+  });
+  //监听工具条
+  table.on('tool(demo)', function(obj){
+    var da = obj.data;
+    //删除
+    if(obj.event === 'del'){
+    	
+      layer.confirm('真的删除行么', function(index){
+    	layer.close(index);
+        obj.del();
+        var url="../../../photo/delete.action";
+        var data={"photoId":da.photoId};
+       
+        $.post(url,data,function(mes){
+        	layer.msg(mes.msg);
+        },"json");
+      });
+    //修改
+    } else if(obj.event === 'edit'){
+    	layer.open({
+  		  type: 2, //设置为iframe
+  		  area: ['400px', '500px'],
+  		  content: ['photozjxg.html', 'no'] //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+  		  ,end: function(){ 
+  			 location.reload();
+  		  } 
+  		  ,success: function(layero, index){
+  			var url="../../../photo/findById.action";
+  	    	var data={"id":da.photoId};
+  	
+  	    	$.post(url,data,function(mes){
+  	    		var body = layer.getChildFrame('body', index);
+				var iframe = window[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+  	    		iframe.$("#photoId").val(mes.photoId);
+				iframe.$("#photoRemark").val(mes.photoRemark);
+				iframe.$("#pic").val(mes.photoPath);
+				// alert(mes.newPath);
+				//调用子页面渲染的方法 刷新
+				iframe.load();
+  	    	},"json");
+  		  }
+  	  }); 
+    }
+  });
+  
+  //表单重载
+  var $ = layui.$, active = {
+		    reload: function(){
+		      var photoRemark = $('#photoRemark');
+		      
+		      //执行重载
+		      table.reload('idTest', {
+		        page: {
+		          curr: 1 //重新从第 1 页开始
+		        }
+		        ,where: {
+		          key: {
+		        	  photoRemark: photoRemark.val()
+		          }
+		        }
+		      });
+		    }
+		  };
+  
+  $('.demoTable .layui-btn').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+  /**
+  * 增加
+  */
+  $('#insert').on('click', function(){
+	  layer.open({
+		  type: 2, //设置为iframe
+		  area: ['400px', '500px'],
+		  content: ['photozjxg.html', 'no'] //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+		  ,end: function(){ 
+			 location.reload();
+		  }    
+	  }); 
+	          
+  });
+});
+</script>
+
+</body>
+</html>

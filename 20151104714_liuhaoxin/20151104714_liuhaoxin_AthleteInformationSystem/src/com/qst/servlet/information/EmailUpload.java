@@ -36,7 +36,7 @@ public class EmailUpload extends HttpServlet {
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("user");
 		String pwd = (String) session.getAttribute("pwd");
-		// 获取要修改的密码
+		// 获取要修改的email
 		String email = request.getParameter("email");
 		// 进行修改
 		UserDao uploaddao = new UserDao();

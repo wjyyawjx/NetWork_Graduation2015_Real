@@ -29,7 +29,6 @@ public class PermissionUpload extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//修改用户的权限,在显示所有用户界面修改用户权限
-		System.err.println("123123123");
 		int uid =Integer.parseInt(request.getParameter("uid"));
 		String qx =request.getParameter("qx");
 		GeneralDao userdao = new GeneralDao();
