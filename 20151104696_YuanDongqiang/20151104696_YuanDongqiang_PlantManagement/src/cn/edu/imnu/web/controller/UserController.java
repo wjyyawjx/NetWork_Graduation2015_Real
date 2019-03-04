@@ -41,30 +41,18 @@ public class UserController {
 				long day = getDatePoor(u_time, user.getU_time());
 				System.out.println(day);
 				System.out.println(u_ip);
-				// 获取本机登陆信息
-				indexController.IPuesing(u_ip,u_time,user.getU_id());
-//				IP ipAdress = indexService.IpFind(u_ip);
-//				if (ipAdress.getU_ip() != null) {
-//					ipAdress.setU_ip(u_ip);
-//					ipAdress.setU_time(u_time);
-//					ipAdress.setU_id(user.getU_id());
-//					indexService.updateIp(ipAdress);
-//
-//				} else {
-//					ipAdress.setU_ip(u_ip);
-//					ipAdress.setU_id(user.getU_id());
-//					ipAdress.setU_time(u_time);
-//					indexService.addIp(ipAdress);
-//				}
 				if (u_ip != user.getU_ip()) {
 					user.setU_ip(u_ip);
+					user.setU_time(u_time);
 					userService.SaveIp(user);
 				}
+				user.setU_time(u_time);
+				userService.SaveIp(user);
+				// 将用户对象添加到Session
+				session.setAttribute("USER_SESSION", user);
 			} catch (UnknownHostException e) {
 				e.printStackTrace();
 			}
-			// 将用户对象添加到Session
-			session.setAttribute("USER_SESSION", user);
 			// 跳转到主页
 			return "index";
 		}

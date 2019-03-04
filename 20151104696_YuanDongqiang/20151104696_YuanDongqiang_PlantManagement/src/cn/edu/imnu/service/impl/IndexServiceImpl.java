@@ -40,4 +40,21 @@ public class IndexServiceImpl implements IndexService {
 
 	}
 
+	@Override
+	public User IpFind1(String u_ip) {
+		return indexDao.IpFind1(u_ip);
+	}
+
+	@Override
+	public void updateIp1(User user) {
+		indexDao.updateIp1(user);
+		
+	}
+
+	@Override
+	public void addIp1(User user) {
+		indexDao.addIp1(user);
+		
+	}
+
 }

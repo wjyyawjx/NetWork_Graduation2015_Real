@@ -28,4 +28,25 @@
 		SET u_time = #{u_time},u_id=#{u_id}
 		WHERE u_ip = #{u_ip}
 	</update>
+	<insert id="addIp1" parameterType="USER">
+		insert into ip_adress(
+		u_ip,
+		u_time,
+		u_id
+		)
+		values(#{u_ip},
+		#{u_time},
+		#{u_id}
+		)
+	</insert>
+	<update id="updateIp1" parameterType="USER" >
+		UPDATE ip_adress
+		SET u_time = #{u_time},u_id=#{u_id}
+		WHERE u_ip = #{u_ip}
+	</update>
+	<select id="IpFind1" parameterType="String" resultType="USER">
+		select *
+		from ip_adress
+		where u_ip = #{u_ip}
+	</select>
 </mapper>
