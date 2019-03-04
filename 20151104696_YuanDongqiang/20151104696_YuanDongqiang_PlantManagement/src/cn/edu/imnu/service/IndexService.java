@@ -9,8 +9,11 @@ public interface IndexService {
 
 	// 查询用户信息
 	public User find(Integer u_id);
-	
-	//查询本机是否使用过该系统
+
+	// 查询本机是否使用过该系统
 	public IP IpFind(String u_ip);
+
+	// 更新IP地址
+	public void updateIp(IP ipAdress);
 
 }

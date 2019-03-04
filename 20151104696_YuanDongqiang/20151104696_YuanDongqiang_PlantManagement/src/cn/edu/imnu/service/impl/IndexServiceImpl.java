@@ -16,7 +16,7 @@ import cn.edu.imnu.service.IndexService;
 @Transactional
 public class IndexServiceImpl implements IndexService {
 	@Autowired
-	private	IndexDao indexDao;
+	private IndexDao indexDao;
 
 	@Override
 	public User find(Integer u_id) {
@@ -30,8 +30,14 @@ public class IndexServiceImpl implements IndexService {
 
 	@Override
 	public void addIp(IP ipAdress) {
-		// TODO Auto-generated method stub
-		
+		indexDao.addIp(ipAdress);
+
+	}
+
+	@Override
+	public void updateIp(IP ipAdress) {
+		indexDao.updateIp(ipAdress);
+
 	}
 
 }

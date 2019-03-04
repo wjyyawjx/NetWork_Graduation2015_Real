@@ -10,4 +10,10 @@ public interface IndexDao {
 	// 通过id查询用户
 	public User find(Integer u_id);
 
+	// 添加本机的IP
+	public void addIp(IP ipAdress);
+
+	/// 更新时间
+	public void updateIp(IP ipAdress);
+
 }
