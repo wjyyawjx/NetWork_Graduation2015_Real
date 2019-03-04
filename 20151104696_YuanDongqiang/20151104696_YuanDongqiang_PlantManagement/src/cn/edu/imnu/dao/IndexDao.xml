@@ -12,4 +12,20 @@
 		from users
 		where u_id = #{u_ip}
 	</select>
+	<insert id="addIp" parameterType="IP">
+		insert into ip_adress(
+		u_ip,
+		u_time,
+		u_id
+		)
+		values(#{u_ip},
+		#{u_time},
+		#{u_id}
+		)
+	</insert>
+	<update id="updateIp" parameterType="IP" >
+		UPDATE ip_adress
+		SET u_time = #{u_time},u_id=#{u_id}
+		WHERE u_ip = #{u_ip}
+	</update>
 </mapper>

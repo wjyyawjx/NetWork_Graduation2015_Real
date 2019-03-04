@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.edu.imnu.po.IP;
 import cn.edu.imnu.po.User;
+import cn.edu.imnu.service.IndexService;
 import cn.edu.imnu.service.UserService;
 import net.sf.json.JSONObject;
 
@@ -20,6 +22,10 @@ public class UserController {
 	// 依赖注入
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private IndexService indexService;
+	@Autowired
+	private IndexController indexController;
 
 	/**
 	 * 用户登录
@@ -36,19 +42,19 @@ public class UserController {
 				System.out.println(day);
 				System.out.println(u_ip);
 				// 获取本机登陆信息
-//				IP ipAdress = null;
-//				JZIndexService indexService = new JZIndexService();
-//				ipAdress = indexService.findip(u_ip);
-//				if (ipAdress == null) {
-//					
+				indexController.IPuesing(u_ip,u_time,user.getU_id());
+//				IP ipAdress = indexService.IpFind(u_ip);
+//				if (ipAdress.getU_ip() != null) {
 //					ipAdress.setU_ip(u_ip);
 //					ipAdress.setU_time(u_time);
 //					ipAdress.setU_id(user.getU_id());
-//					indexService.addIp(ipAdress);
+//					indexService.updateIp(ipAdress);
+//
 //				} else {
+//					ipAdress.setU_ip(u_ip);
 //					ipAdress.setU_id(user.getU_id());
 //					ipAdress.setU_time(u_time);
-//					indexService.updateIp(ipAdress);
+//					indexService.addIp(ipAdress);
 //				}
 				if (u_ip != user.getU_ip()) {
 					user.setU_ip(u_ip);

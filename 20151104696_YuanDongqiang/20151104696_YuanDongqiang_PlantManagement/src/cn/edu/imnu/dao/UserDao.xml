@@ -23,9 +23,7 @@
 		insert into users(
 		u_code,
 		u_name,
-		u_pwd,
-		u_email,
-		u_type
+		u_id
 		)
 		values(#{u_code},
 		#{u_name},

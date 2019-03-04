@@ -5,10 +5,10 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Select;
 
-import com.yidu.domain.Cabinet;
-import com.yidu.domain.Charge;
-import com.yidu.domain.Pages;
-import com.yidu.domain.Record;
+import com.locker.domain.Cabinet;
+import com.locker.domain.Charge;
+import com.locker.domain.Pages;
+import com.locker.domain.Record;
 
 public interface CabinetMapper {
 

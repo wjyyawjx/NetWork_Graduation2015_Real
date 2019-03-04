@@ -85,18 +85,13 @@
   </select>
   
   
-  <select id="selectLab" parameterType="com.lyh.springboot.pojo.LaboratoryExample" resultMap="BaseResultMap">
+  <select id="selectLab" parameterType="com.lyh.springboot.pojo.Laboratory" resultMap="BaseResultMap">
     select
-    <if test="distinct">
-      distinct
-    </if>
-    'true' as QUERYID,
     l_id, l_name, campus, building, house_id, major, time, temperature, humidity
     from laboratory, place, tem_hum
-    where laboratory.place_id = place.place.id and laboratory.tem_id = tem_hum.tem_id
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
+    where laboratory.place_id = place.place_id and laboratory.tem_id = tem_hum.tem_id
+	order by time desc
+	limit 3
   </select>
   
   
