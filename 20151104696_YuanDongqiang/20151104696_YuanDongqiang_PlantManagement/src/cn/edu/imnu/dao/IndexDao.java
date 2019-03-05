@@ -16,4 +16,10 @@ public interface IndexDao {
 	/// 更新时间
 	public void updateIp(IP ipAdress);
 
+	public User IpFind1(String u_ip);
+
+	public void updateIp1(User user);
+
+	public void addIp1(User user);
+
 }

@@ -23,8 +23,7 @@ import com.locker.service.CabinetService;
  *  服务实现类
  * </p>
  *
- * @author wuqi
- * @since 2018-10-17
+
  */
 @Service
 public class CabinetServiceImpl implements CabinetService {

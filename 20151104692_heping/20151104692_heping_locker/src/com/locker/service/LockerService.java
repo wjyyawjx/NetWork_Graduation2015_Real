@@ -9,8 +9,7 @@ import com.locker.domain.Locker;
  *  服务类
  * </p>
  *
- * @author wuqi
- * @since 2018-10-17
+
  */
 public interface LockerService {
 

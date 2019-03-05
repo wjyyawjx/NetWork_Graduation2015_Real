@@ -34,8 +34,11 @@ public class Exit extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");                                                                                  
         request.getSession().removeAttribute("user");
         request.getSession().removeAttribute("pwd");
+        
         HttpSession session = request.getSession();
+        
 		String username = (String) session.getAttribute("user");
+		System.err.println(username);
         response.sendRedirect("Login.jsp");	
 
 	}
