@@ -12,8 +12,7 @@ import com.locker.domain.User;
  *  服务类
  * </p>
  *
- * @author liandyao
- * @since 2018-10-17
+
  */
 public interface RecordService {
 

@@ -11,8 +11,7 @@ import com.locker.domain.Area;
  *  服务类
  * </p>
  *
- * @author wuqi
- * @since 2018-10-17
+
  */
 public interface AreaService {
 	
