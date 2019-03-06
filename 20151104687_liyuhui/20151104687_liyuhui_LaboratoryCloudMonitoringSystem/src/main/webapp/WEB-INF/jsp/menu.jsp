@@ -13,6 +13,8 @@
         <title>实验室云端监管系统</title>
             
         <!-- CSS -->
+        <link rel="stylesheet" type="text/css"
+	href="superAdministrator/css/style.css" />
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/animate.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -118,7 +120,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="sa-side-calendar" href="">
+                        <a class="sa-side-calendar" href="${pageContext.request.contextPath }/config/listStu">
                             <span class="menu-item">我的日程</span>
                         </a>
                     </li>
@@ -155,6 +157,7 @@
                 </div>
                 
                 <hr class="whiter" />
+                <div class="workingroom">
                 <table border="1">
                 	<tr>
                 		<td>实验室名称</td>
@@ -179,7 +182,7 @@
                 	</tr>
                 	</c:forEach>
                 </table>
-
+				</div>
             </section>
 
         </section>

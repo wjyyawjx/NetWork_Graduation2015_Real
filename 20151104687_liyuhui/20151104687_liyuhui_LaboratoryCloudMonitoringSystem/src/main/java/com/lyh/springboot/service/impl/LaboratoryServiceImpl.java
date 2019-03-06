@@ -26,4 +26,13 @@ public class LaboratoryServiceImpl  implements LaboratoryService{
 		return laboratoryMapper.selectLab(example);
 	}
 
+
+	@Override
+	public List<Laboratory> list() {
+		// TODO Auto-generated method stub
+		LaboratoryExample example = new LaboratoryExample();
+		example.setOrderByClause("l_id desc");
+		return laboratoryMapper.selectByExample(example);
+	}
+
 }

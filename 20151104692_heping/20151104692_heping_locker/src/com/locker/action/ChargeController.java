@@ -1,12 +1,12 @@
-package com.yidu.action;
+package com.locker.action;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.yidu.domain.Charge;
-import com.yidu.domain.JsonMessage;
-import com.yidu.service.ChargeService;
+import com.locker.domain.Charge;
+import com.locker.domain.JsonMessage;
+import com.locker.service.ChargeService;
 
 import java.util.Iterator;
 import java.util.List;
@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
  * <p>
  *  前端控制器
  * </p>
+ *
 
  */
 @Controller

@@ -3,14 +3,14 @@ package com.lyh.springboot.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class user_labExample {
+public class LabUserExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public user_labExample() {
+    public LabUserExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
