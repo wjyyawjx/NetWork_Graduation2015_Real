@@ -2,6 +2,7 @@ package com.lyh.springboot.service;
 
 import java.util.List;
 
+import com.lyh.springboot.pojo.Laboratory;
 import com.lyh.springboot.pojo.User;
 
 
@@ -21,4 +22,6 @@ public interface UserService {
 	public void update(User user);
 
 	public User findUserName(String num);
+
+	public List<User> listUser(Laboratory laboratory);
 }

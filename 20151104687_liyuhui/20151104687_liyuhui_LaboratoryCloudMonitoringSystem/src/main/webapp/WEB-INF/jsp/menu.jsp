@@ -118,7 +118,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="sa-side-calendar" href="">
+                        <a class="sa-side-calendar" href="${pageContext.request.contextPath }/config/listStu">
                             <span class="menu-item">我的日程</span>
                         </a>
                     </li>

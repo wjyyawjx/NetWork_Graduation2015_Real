@@ -2,10 +2,10 @@ package com.lyh.springboot.pojo;
 
 import java.io.Serializable;
 
-public class user_lab implements Serializable {
+public class LabUser implements Serializable {
     private Integer id;
 
-    private Integer uId;
+    private Long uId;
 
     private Integer lId;
 
@@ -21,11 +21,11 @@ public class user_lab implements Serializable {
         this.id = id;
     }
 
-    public Integer getuId() {
+    public Long getuId() {
         return uId;
     }
 
-    public void setuId(Integer uId) {
+    public void setuId(Long uId) {
         this.uId = uId;
     }
 
@@ -44,4 +44,5 @@ public class user_lab implements Serializable {
     public void setuType(String uType) {
         this.uType = uType == null ? null : uType.trim();
     }
+
 }
