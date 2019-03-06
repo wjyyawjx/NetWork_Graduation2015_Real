@@ -89,28 +89,36 @@
 
 			<!-- Side Menu -->
 			<ul class="list-unstyled side-menu">
-				<li><a class="sa-side-home"
-					href="${pageContext.request.contextPath }/menu"> <span
-						class="menu-item">主页</span>
-				</a></li>
-				<li><a class="sa-side-form" href="${pageContext.request.contextPath }/mine"> <span
-						class="menu-item">我的信息</span>
-				</a></li>
-				<li><a class="sa-side-ui"
-					href="${pageContext.request.contextPath }/config/listUser"> <span
-						class="menu-item">用户管理</span>
-				</a></li>
-				<li class="active"><a class="sa-side-ui"
-					href="${pageContext.request.contextPath }/config/listRole"> <span
-						class="menu-item">角色管理</span>
-				</a></li>
-				<li><a class="sa-side-folder"
-					href="${pageContext.request.contextPath }/config/listPermission">
-						<span class="menu-item">权限管理</span>
-				</a></li>
-				<li><a class="sa-side-calendar" href=""> <span
-						class="menu-item">我的日程</span>
-				</a></li>
+				<li class="active">
+                        <a class="sa-side-home" href="${pageContext.request.contextPath }/menu">
+                            <span class="menu-item">主页</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sa-side-form" href="${pageContext.request.contextPath }/mine">
+                            <span class="menu-item">我的信息</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sa-side-table" href="${pageContext.request.contextPath }/config/listUser">
+                            <span class="menu-item">用户管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sa-side-folder" href="${pageContext.request.contextPath }/config/listRole">
+                            <span class="menu-item">角色管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sa-side-chart" href="${pageContext.request.contextPath }/config/listPermission">
+                            <span class="menu-item">权限管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="sa-side-calendar" href="${pageContext.request.contextPath }/config/listStu">
+                            <span class="menu-item">我的日程</span>
+                        </a>
+                    </li>
 			</ul>
 
 		</aside>

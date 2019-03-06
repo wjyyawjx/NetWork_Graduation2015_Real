@@ -91,12 +91,12 @@
                 
                 <!-- Side Menu -->
                 <ul class="list-unstyled side-menu">
-                    <li>
+                    <li class="active">
                         <a class="sa-side-home" href="${pageContext.request.contextPath }/menu">
                             <span class="menu-item">主页</span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a class="sa-side-form" href="${pageContext.request.contextPath }/mine">
                             <span class="menu-item">我的信息</span>
                         </a>
@@ -117,7 +117,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="sa-side-calendar" href="">
+                        <a class="sa-side-calendar" href="${pageContext.request.contextPath }/config/listStu">
                             <span class="menu-item">我的日程</span>
                         </a>
                     </li>
