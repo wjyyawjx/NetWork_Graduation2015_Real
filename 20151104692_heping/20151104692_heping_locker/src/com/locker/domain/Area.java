@@ -1,8 +1,7 @@
 package com.locker.domain;
 /**
  * 地区表
- * @author wuqi
- *
+
  */
 public class Area {
 	/**

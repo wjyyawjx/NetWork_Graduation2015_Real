@@ -5,9 +5,7 @@ package com.locker.domain;
 
 /**
  * 分页工具类
- * @author wuandqi
- * @date 2017年9月29日 下午6:16:21
- * @version 1.0
+ 
  */
 public class Pages {
 	

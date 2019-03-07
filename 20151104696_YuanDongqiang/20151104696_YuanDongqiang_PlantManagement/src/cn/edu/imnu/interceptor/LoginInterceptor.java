@@ -44,9 +44,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 				if(user!=null) {
 					System.out.println(user.getU_name());
 					session.setAttribute("USER_SESSION", user);
-					session.setAttribute("KEY", 1);
 				}
-				
+				session.setAttribute("KEY", 1);
 			}
 		}
 

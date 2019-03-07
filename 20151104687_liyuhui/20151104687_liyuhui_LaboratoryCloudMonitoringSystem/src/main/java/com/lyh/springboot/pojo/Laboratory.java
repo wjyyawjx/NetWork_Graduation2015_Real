@@ -1,6 +1,7 @@
 package com.lyh.springboot.pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Laboratory implements Serializable {
     private Integer lId;
@@ -10,6 +11,20 @@ public class Laboratory implements Serializable {
     private String placeId;
 
     private Integer temId;
+
+    private Date time;
+
+    private Float temperature;
+
+    private Float humidity;
+    
+    private String campus;
+
+    private String building;
+
+    private String houseId;
+
+    private String major;
 
     private static final long serialVersionUID = 1L;
 
@@ -44,4 +59,60 @@ public class Laboratory implements Serializable {
     public void setTemId(Integer temId) {
         this.temId = temId;
     }
+
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	public Float getTemperature() {
+		return temperature;
+	}
+
+	public void setTemperature(Float temperature) {
+		this.temperature = temperature;
+	}
+
+	public Float getHumidity() {
+		return humidity;
+	}
+
+	public void setHumidity(Float humidity) {
+		this.humidity = humidity;
+	}
+
+	public String getCampus() {
+		return campus;
+	}
+
+	public void setCampus(String campus) {
+		this.campus = campus;
+	}
+
+	public String getBuilding() {
+		return building;
+	}
+
+	public void setBuilding(String building) {
+		this.building = building;
+	}
+
+	public String getHouseId() {
+		return houseId;
+	}
+
+	public void setHouseId(String houseId) {
+		this.houseId = houseId;
+	}
+
+	public String getMajor() {
+		return major;
+	}
+
+	public void setMajor(String major) {
+		this.major = major;
+	}
 }

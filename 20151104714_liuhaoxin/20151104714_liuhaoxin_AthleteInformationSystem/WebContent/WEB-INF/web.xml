@@ -9,4 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <filter>
+    <filter-name>login</filter-name>
+    <filter-class>com.qst.filter.filter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>login</filter-name>
+    <url-pattern>/admin-index.jsp</url-pattern>
+  </filter-mapping>
 </web-app>
