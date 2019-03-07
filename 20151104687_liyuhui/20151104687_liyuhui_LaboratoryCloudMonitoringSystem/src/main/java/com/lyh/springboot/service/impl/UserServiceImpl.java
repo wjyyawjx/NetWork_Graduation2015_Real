@@ -99,4 +99,38 @@ public class UserServiceImpl implements UserService {
 		return users;
 	}
 
+	@Override
+	public List<User> listStu(Laboratory laboratory) {
+		// TODO Auto-generated method stub
+		List<User> users = new ArrayList<>();
+
+		LabUserExample example = new LabUserExample();
+
+		example.createCriteria().andLIdEqualTo(laboratory.getlId());
+		List<LabUser> labUsers = labUserMapper.selectByExample(example);
+
+		for (LabUser labUser : labUsers) {
+			User user = userMapper.selectStuByPrimaryKey(labUser.getuId());
+			users.add(user);
+		}
+		return users;
+	}
+
+	@Override
+	public List<User> listTeacher(Laboratory laboratory) {
+		// TODO Auto-generated method stub
+		List<User> users = new ArrayList<>();
+
+		LabUserExample example = new LabUserExample();
+
+		example.createCriteria().andLIdEqualTo(laboratory.getlId());
+		List<LabUser> labUsers = labUserMapper.selectByExample(example);
+
+		for (LabUser labUser : labUsers) {
+			User user = userMapper.selectTeachByPrimaryKey(labUser.getuId());
+			users.add(user);
+		}
+		return users;
+	}
+
 }

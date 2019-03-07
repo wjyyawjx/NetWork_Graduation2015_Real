@@ -27,13 +27,41 @@ public class LaboratoryController {
 	@Autowired
 	LaboratoryService laboratoryService;
 	
-	@RequestMapping("listStu")     //查询
-	public String list(Model model) {
+	@RequestMapping("listLab")     //查询
+	public String listLab(Model model) {
 		List<Laboratory> lab = laboratoryService.list();
 		model.addAttribute("lab", lab);
 		Map<Laboratory, List<User>> lab_user = new HashMap<>();
 		for (Laboratory laboratory : lab) {
 			List<User> user = userService.listUser(laboratory);
+			lab_user.put(laboratory, user);
+		}
+		model.addAttribute("lab_user", lab_user);
+
+		return "labDetails";
+	}
+	
+	@RequestMapping("listStu")     //查询
+	public String listStu(Model model) {
+		List<Laboratory> lab = laboratoryService.list();
+		model.addAttribute("lab", lab);
+		Map<Laboratory, List<User>> lab_user = new HashMap<>();
+		for (Laboratory laboratory : lab) {
+			List<User> user = userService.listStu(laboratory);
+			lab_user.put(laboratory, user);
+		}
+		model.addAttribute("lab_user", lab_user);
+
+		return "labDetails";
+	}
+	
+	@RequestMapping("listTeach")     //查询
+	public String listTeach(Model model) {
+		List<Laboratory> lab = laboratoryService.list();
+		model.addAttribute("lab", lab);
+		Map<Laboratory, List<User>> lab_user = new HashMap<>();
+		for (Laboratory laboratory : lab) {
+			List<User> user = userService.listTeacher(laboratory);
 			lab_user.put(laboratory, user);
 		}
 		model.addAttribute("lab_user", lab_user);
