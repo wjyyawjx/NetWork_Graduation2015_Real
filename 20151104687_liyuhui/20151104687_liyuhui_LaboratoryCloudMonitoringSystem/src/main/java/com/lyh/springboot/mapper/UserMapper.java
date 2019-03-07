@@ -29,4 +29,8 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
 	User selectByName(String num);
+
+	User selectStuByPrimaryKey(Long id);
+
+	User selectTeachByPrimaryKey(Long id);
 }

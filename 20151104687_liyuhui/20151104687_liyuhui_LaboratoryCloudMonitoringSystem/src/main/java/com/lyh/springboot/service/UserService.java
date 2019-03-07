@@ -24,4 +24,8 @@ public interface UserService {
 	public User findUserName(String num);
 
 	public List<User> listUser(Laboratory laboratory);
+	
+	public List<User> listStu(Laboratory laboratory);
+	
+	public List<User> listTeacher(Laboratory laboratory);
 }

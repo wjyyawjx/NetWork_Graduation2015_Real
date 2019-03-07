@@ -82,8 +82,7 @@
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
-  </select>
-  
+  </select>  
   
   <select id="selectLab" parameterType="com.lyh.springboot.pojo.Laboratory" resultMap="BaseResultMap">
     select

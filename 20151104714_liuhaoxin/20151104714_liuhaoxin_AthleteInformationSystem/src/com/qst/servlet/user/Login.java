@@ -76,8 +76,6 @@ public class Login extends HttpServlet {
 				// 管理员用户
 				JOptionPane.showMessageDialog(null, location + "\n" + tmp + "\n" + cond_txt + "\n" + loc, "欢迎访问",
 						JOptionPane.DEFAULT_OPTION);
-				System.err.println(username);
-
 				request.getRequestDispatcher("admin-jsp/admin-index.jsp").forward(request, response);
 			} else {
 				// 受限制用户，或出错用户

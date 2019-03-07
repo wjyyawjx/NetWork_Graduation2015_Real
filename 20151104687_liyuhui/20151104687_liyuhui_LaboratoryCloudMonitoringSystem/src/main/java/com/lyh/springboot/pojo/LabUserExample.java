@@ -174,8 +174,8 @@ public class LabUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andUIdEqualTo(Integer value) {
-            addCriterion("u_id =", value, "uId");
+        public Criteria andUIdEqualTo(long uid) {
+            addCriterion("u_id =", uid, "uId");
             return (Criteria) this;
         }
 
