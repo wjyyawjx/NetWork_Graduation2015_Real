@@ -19,6 +19,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (url.indexOf("/login.action") >= 0) {
 			return true;
 		}
+		
 		// 获取Session
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("USER_SESSION");
@@ -26,10 +27,26 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (user != null) {
 			return true;
 		}
+		if (url.indexOf("/register.action") >= 0){
+			return true;
+		}
+		if (url.indexOf("/add.action") >= 0){
+			return true;
+		}
+	
+		if (url.indexOf("/person.action") >= 0){
+			return true;
+		}
+		if (url.indexOf("/zulinShop.action") >= 0){
+			return true;
+		}
+	
 		// 不符合条件的给出提示信息，并转发到登录页面
 		request.setAttribute("msg", "您还没有登录，请先登录！");
 		request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+		
 		return false;
+		
 	}
 
 	@Override

@@ -23,10 +23,24 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 
 	@Override
-	public User findUser(String username, String password) {
+	public User findUser(String username, String password, Integer type) {
 		// TODO Auto-generated method stub
-		User user = this.userDao.findUser(username, password);
+		User user = this.userDao.findUser(username, password, type);
 		return user;
 	}
 
+	@Override
+	public User findByUserName(String username) {
+		User user = this.userDao.findByUserName(username);
+		return user;
+		
+	}
+
+	@Override
+	public void addUser(User user) {
+		userDao.addUser(user);
+		
+	}
+
+	
 }
