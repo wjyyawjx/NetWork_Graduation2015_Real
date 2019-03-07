@@ -11,4 +11,12 @@ public interface LaboratoryService {
 
 	public List<Laboratory> list();
 
+	public Laboratory get(long id);
+
+	public void delete(long uid);
+
+	public void update(Laboratory lab);
+
+	public void add(Laboratory lab);
+
 }
