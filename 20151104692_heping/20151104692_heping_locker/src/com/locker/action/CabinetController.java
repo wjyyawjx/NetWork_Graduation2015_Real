@@ -1,4 +1,4 @@
-package com.yidu.action;
+package com.locker.action;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.HttpServletBean;
 
 import com.mysql.fabric.xmlrpc.base.Array;
-import com.yidu.domain.Cabinet;
-import com.yidu.domain.Charge;
-import com.yidu.domain.JsonMessage;
-import com.yidu.domain.Locker;
-import com.yidu.domain.Pages;
-import com.yidu.domain.Record;
-import com.yidu.domain.User;
-import com.yidu.service.CabinetService;
+import com.locker.domain.Cabinet;
+import com.locker.domain.Charge;
+import com.locker.domain.JsonMessage;
+import com.locker.domain.Locker;
+import com.locker.domain.Pages;
+import com.locker.domain.Record;
+import com.locker.domain.User;
+import com.locker.service.CabinetService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
