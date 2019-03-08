@@ -8,20 +8,7 @@ public interface UserDao {
 		                @Param("password") String password,
 		                @Param("type") Integer type);
 
-
-
-
-
 public User findByUserName(@Param("username") String username);
-
-
-
-
-
-
-
-
-
 
 public void addUser(User user);
 
