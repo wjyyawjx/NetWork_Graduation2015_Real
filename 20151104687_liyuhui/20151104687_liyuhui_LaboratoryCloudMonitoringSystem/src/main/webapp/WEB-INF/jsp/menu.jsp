@@ -13,6 +13,8 @@
         <title>实验室云端监管系统</title>
             
         <!-- CSS -->
+        <link rel="stylesheet" type="text/css"
+	href="superAdministrator/css/style.css" />
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/animate.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -102,19 +104,30 @@
                             <span class="menu-item">我的信息</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="sa-side-table" href="${pageContext.request.contextPath }/config/listUser">
-                            <span class="menu-item">用户管理</span>
+                    <li class="dropdown">
+                        <a class="sa-side-folder" href="">
+                            <span class="menu-item">实验室信息</span>
                         </a>
+                        <ul class="list-unstyled menu-item">
+                        	<li><a href="${pageContext.request.contextPath }/config/listLab">实验室信息管理</a></li>
+                        	<li><a href="${pageContext.request.contextPath }/config/listStu">实验室学生信息管理</a></li>
+                        	<li><a href="${pageContext.request.contextPath }/config/listTeach">实验室教师信息管理</a></li>
+                        </ul>
                     </li>
-                    <li>
-                        <a class="sa-side-folder" href="${pageContext.request.contextPath }/config/listRole">
-                            <span class="menu-item">角色管理</span>
+                    <li class="dropdown">
+                        <a class="sa-side-table" href="">
+                            <span class="menu-item">超级管理</span>
                         </a>
+                        <ul class="list-unstyled menu-item">
+                            <li><a href="${pageContext.request.contextPath }/config/listUser">用户管理</a></li>
+                            <li><a href="${pageContext.request.contextPath }/config/listRole">角色管理</a></li>
+                            <li><a href="${pageContext.request.contextPath }/config/listPermission">权限管理</a></li>                     
+                        </ul>
                     </li>
+                    
                     <li>
-                        <a class="sa-side-chart" href="${pageContext.request.contextPath }/config/listPermission">
-                            <span class="menu-item">权限管理</span>
+                        <a class="sa-side-chart" href="">
+                            <span class="menu-item">****</span>
                         </a>
                     </li>
                     <li>
@@ -155,6 +168,7 @@
                 </div>
                 
                 <hr class="whiter" />
+                <div class="workingroom">
                 <table border="1">
                 	<tr>
                 		<td>实验室名称</td>
@@ -179,7 +193,7 @@
                 	</tr>
                 	</c:forEach>
                 </table>
-
+				</div>
             </section>
 
         </section>

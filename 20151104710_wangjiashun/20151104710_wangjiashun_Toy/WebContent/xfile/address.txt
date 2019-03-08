@@ -1,0 +1,7 @@
+前台登陆：http://localhost:8080/Toy2/pages/user/login.html
+
+后台登陆：http://localhost:8080/Toy2/pages/houtai/user/loginRegister.html
+
+账号：admin   密码：123456
+
+

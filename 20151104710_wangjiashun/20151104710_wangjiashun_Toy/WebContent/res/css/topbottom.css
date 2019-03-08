@@ -1,0 +1,131 @@
+*{
+				margin: 0px auto;
+				padding:0px auto;
+			}
+			#quan{
+				width:1338px;
+				margin:0 auto;
+			}
+			a{
+				text-decoration: none;
+				color:black;
+			}
+			#head_div{
+				position: fixed;
+				width:100%;
+				margin-top:-1px;
+				background:white;
+				z-index: 3;
+			}
+			#head_div_top{
+				position:absolute;
+				right:100px;
+				font-size: 12px;
+				color:black;
+				margin-top: 5px;
+				padding:20px;
+			}
+			#query{
+				position: absolute;
+				margin-left: -30px;
+				margin-top: -3px;
+			}
+			#queryValue{
+				padding-left:10px;
+			}
+			#head_div_top>a{
+				margin-left:30px;
+			}
+			#head_img{
+				width:45px;
+				height:70px;
+				position: absolute;
+				top:10px;
+				left:48.5%;
+			}
+			#head_type{
+				width:90%;
+				margin-top:85px;
+				margin-left:100px;
+				height:30px;
+				line-height: 15px;
+			}
+			ul>li{
+				list-style: none;
+			}
+			#head_type>ul>li{
+				float:left;
+				font-size: 13px;
+				margin-right: 60px;
+			}
+			#head_type>ul>li:hover{
+				text-decoration: underline;
+			}
+			#head_button{
+				width:100%;
+				text-align:center;
+				color:white;
+				background:black;
+			}
+			#head_button>a{
+				color:white;
+				font-size: 13px;
+			}
+			#div_bottom{
+				background:#f4f4f4;
+				height:300px;
+				margin-top:50px;
+				padding-top:50px;
+				position:relative;
+			}
+			#top{
+				width:700px;
+				height:100px;
+				margin-left: 150px;
+			}
+			#top>dl>dt{
+				font-weight:bold;
+				margin-right: 100px;
+			}
+			#top>dl{
+				font-size:12px;
+				float:left;
+				position:relative;
+			}
+			#top>dl>dd{
+				margin-top:15px;
+				margin-right: 100px;
+				font-size:12px;
+				color:gray;
+			}
+			.ash-footer{
+				width:500px;
+				height:50px;
+				margin:0px;
+				margin-left: 150px;
+				margin-top: 30px;
+			}
+			.ash-footer>dl{
+				font-size:13px;
+				float:left;
+				position:relative;
+				margin-right: 100px;
+			}
+			.ash-footer-email{
+				width:300px;
+				margin-top:-180px;
+				margin-right:80px;
+				position: relative;
+			}
+			.footer-rights{
+				width:100%;
+				text-align:center;
+				height:50px;
+				position: relative;
+				margin-top: 50px;
+				font-size:12px;
+				color:gray;
+			}
+			#user{
+				margin-left: 20px;
+			}

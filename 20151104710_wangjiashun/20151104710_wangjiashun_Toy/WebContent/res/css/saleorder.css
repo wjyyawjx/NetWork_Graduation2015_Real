@@ -1,0 +1,83 @@
+	#sale{
+				margin-top: 160px;
+				width:80%;
+				font-size: 12px;
+			}
+			#sale_top,#sale_top>a{
+				color:#c6c6c6;
+			}
+			.thead>tr>td{
+				background:#f7f7f8;
+				height:20px;
+				text-align:center;
+			}
+			#shoes>tr>td>span{
+				color:#ddd;
+			}
+			#shoes>tr>td{
+				height:80px;
+				text-align:center;
+			}
+			.address{
+				height:170px;
+				width:180px;
+				border:1px solid #ccc;
+				float: left;
+				margin-top: 10px;
+				margin-bottom: 10px;
+				margin-right: 20px;
+				cursor: pointer;
+			}
+			.address>p{
+				margin-left:10px;
+				font-weight: bold;
+				margin-top: 15px;
+			}
+			.p{
+				position:absolute;
+			}
+			.p>a{
+				font-weight:bold;
+				margin-right: 5px;
+			}
+			.address>p>span{
+				font-weight: normal;
+			}
+			#address{
+				text-align: center;
+			}
+			.address:hover{
+				border:1px solid black;
+			}
+			#pay{
+				height:100px;
+			}
+			#pay li{
+				float:left;
+				margin-top:10px;
+				margin-right: 100px;
+			}
+			.tb{
+				width:100%;
+				margin-top: 20px;
+			}
+			.btn{padding:5px 50px 5px 50px;font-size:13px;cursor: pointer;background: black;color:white;}
+			#shoesdetail{
+				background: #f4f4f4;
+				margin-top: 20px;
+				height:180px;
+				width:100%;
+			}
+			#msg{
+				padding-top: 30px;
+				padding-left: 20px;
+			}
+			#detail_table{
+				margin-left: 600px;
+				margin-top: -25px;
+				width:500px;
+			}
+			.td{
+				text-align: right;
+				padding-left: 50px;
+			}

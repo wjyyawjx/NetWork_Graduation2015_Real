@@ -122,8 +122,13 @@ function check(){
 			</div>
 			
 			<button type="submit" >登录</button>
-			<button type="submit" >注册</button>
+			<hr>
+			<div>
+			<div  align="left" ><a href="${pageContext.request.contextPath }/register.action"> 注册 </a></div>
+			<div align="right"><a href="${pageContext.request.contextPath }/action"> 忘记密码？ </a></div>
+			</div>
 		</form>
+		
 	</div>
 </div>
 

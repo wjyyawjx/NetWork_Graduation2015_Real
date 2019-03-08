@@ -121,7 +121,7 @@
 			<property name="useActualColumnNames" value="false" />
 		</table>
 		
- -->	
+	
  		<table tableName="user_lab"
 			domainObjectName="user_lab"
 			schema="laboratorycloudmonitoringsystem" enableCountByExample="true"
@@ -129,6 +129,6 @@
 			enableSelectByExample="true" selectByExampleQueryId="true">
 			<property name="useActualColumnNames" value="false" />
 		</table>
-
+ -->
 	</context>
 </generatorConfiguration>    
