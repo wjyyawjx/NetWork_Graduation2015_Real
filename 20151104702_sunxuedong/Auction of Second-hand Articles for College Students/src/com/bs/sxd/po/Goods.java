@@ -3,9 +3,9 @@ package com.bs.sxd.po;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Leasedgoods implements Serializable{
+public class Goods implements Serializable  {
 	private static final long serialVersionUID = 1L;
-	private Integer id;
+    private Integer l_id;
 	private String l_name;
 	private String l_image;
 	private float l_price;
@@ -15,11 +15,11 @@ public class Leasedgoods implements Serializable{
 	private Date l_in_time;
 	private Integer u_id;
 	private String l_addr;
-	public Integer getId() {
-		return id;
+	public Integer getL_id() {
+		return l_id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setL_id(Integer l_id) {
+		this.l_id = l_id;
 	}
 	public String getL_name() {
 		return l_name;
@@ -78,14 +78,4 @@ public class Leasedgoods implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	public void setRows(Integer rows) {
-		// TODO Auto-generated method stub
-		
-	}
-	public void setSart(int i) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

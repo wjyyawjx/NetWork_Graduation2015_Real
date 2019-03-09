@@ -72,11 +72,35 @@ public class UserController {
 	public String zulinShop() {
 		return "zulinShop";
 	}
+	@RequestMapping(value = "/table-user-list.action")
+	public String table_user_list() {
+		return "table-user-list";
+	}
+	@RequestMapping(value = "/table-goods-list-admin.action")
+	public String table_goods_list_admin() {
+		return "table-goods-list-admin";
+	}
+	@RequestMapping(value = "/form-news.action")
+	public String form_news() {
+		return "form-news";
+	}
+	@RequestMapping(value = "/form-show-goods.action")
+	public String form_show_goods() {
+		return "form-show-goods";
+	}
+	@RequestMapping(value = "/form-show-goods-user.action")
+	public String form_show_goods_user() {
+		return "form-show-goods-user";
+	}
+	@RequestMapping(value = "/form-lease.action")
+	public String form_lease() {
+		return "form-lease";
+	}
 
 	@RequestMapping(value = "/add.action", method = RequestMethod.POST)
 	public String register(User user, String username, String password, String phone, String qq, String sex,
 			String university, String college, String adreess) {
-		System.out.println(username);
+		//System.out.println(username);
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setPhone(phone);
@@ -87,7 +111,7 @@ public class UserController {
 		user.setAdreess(adreess);
 		Integer type = 0;
 		user.setType(type);
-		System.out.println(user);
+		//System.out.println(user);
 		User u = null;
 		u = userService.findByUserName(username);
 		if (u == null) {

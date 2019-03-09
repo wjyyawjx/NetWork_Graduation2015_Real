@@ -89,6 +89,25 @@ public class RecorderGameDao {
 			}
 
 		}
+		
+		// 删除运动员信息
+		public void recorderDelete(int tid) {
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement pstmt = null;
+
+			String sql = "delete from athlet where tid=?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, tid);
+				pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBUtil.closeJDBC(null, pstmt, conn);
+			}
+
+		}
 	
 	
 	// 记录员查看运动员信息
