@@ -184,7 +184,7 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath }/table-font-list.action">
+                                <a href="${pageContext.request.contextPath }/table-user-list.action">
                                                                
                                     <i class="am-icon-angle-right"></i>
                                     <span>用户列表</span>
@@ -192,7 +192,7 @@
                                 </a>
 
                                 
-                                <a href="${pageContext.request.contextPath }/table-images-list.action">
+                                <a href="${pageContext.request.contextPath }/table-goods-list-admin.action">
                                     <i class="am-icon-angle-right"></i>
                                     <span>商品列表</span>
                                     <i class="tpl-left-nav-content tpl-badge-success">18</i>
@@ -222,14 +222,14 @@
                         <ul class="tpl-left-nav-sub-menu" style="display: block;">
                             <li>
                                 
-                                 <a href="${pageContext.request.contextPath }/form-amazeui.action">
+                                 <a href="${pageContext.request.contextPath }/form-show-goods.action">
                                     <i class="am-icon-angle-right"></i>
                                     <span>上架商品</span>
                                     <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
                                 </a>
 
                                 
-                                <a href="${pageContext.request.contextPath }/form-line.action">
+                                <a href="${pageContext.request.contextPath }/form-lease.action">
                                     <i class="am-icon-angle-right"></i>
                                     <span>租賃商品</span>
                                 </a>

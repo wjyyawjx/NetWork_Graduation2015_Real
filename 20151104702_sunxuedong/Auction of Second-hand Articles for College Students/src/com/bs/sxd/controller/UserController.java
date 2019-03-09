@@ -72,25 +72,29 @@ public class UserController {
 	public String zulinShop() {
 		return "zulinShop";
 	}
-	@RequestMapping(value = "/table-font-list.action")
-	public String table_font_list() {
-		return "table-font-list";
+	@RequestMapping(value = "/table-user-list.action")
+	public String table_user_list() {
+		return "table-user-list";
 	}
-	@RequestMapping(value = "/table-images-list.action")
-	public String table_images_list() {
-		return "table-images-list";
+	@RequestMapping(value = "/table-goods-list-admin.action")
+	public String table_goods_list_admin() {
+		return "table-goods-list-admin";
 	}
 	@RequestMapping(value = "/form-news.action")
 	public String form_news() {
 		return "form-news";
 	}
-	@RequestMapping(value = "/form-amazeui.action")
-	public String form_amazeui() {
-		return "form-amazeui";
+	@RequestMapping(value = "/form-show-goods.action")
+	public String form_show_goods() {
+		return "form-show-goods";
 	}
-	@RequestMapping(value = "/form-line.action")
-	public String form_line() {
-		return "form-line";
+	@RequestMapping(value = "/form-show-goods-user.action")
+	public String form_show_goods_user() {
+		return "form-show-goods-user";
+	}
+	@RequestMapping(value = "/form-lease.action")
+	public String form_lease() {
+		return "form-lease";
 	}
 
 	@RequestMapping(value = "/add.action", method = RequestMethod.POST)

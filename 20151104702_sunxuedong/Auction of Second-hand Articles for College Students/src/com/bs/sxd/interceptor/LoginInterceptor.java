@@ -33,23 +33,29 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (url.indexOf("/add.action") >= 0){
 			return true;
 		}
+		if (url.indexOf("/addgoods.action") >= 0){
+			return true;
+		}
 	
 		if (url.indexOf("/person.action") >= 0){
 			return true;
 		}
-		if (url.indexOf("/table-font-list.action") >= 0){
+		if (url.indexOf("/table-user-list.action") >= 0){
 			return true;
 		}
-		if (url.indexOf("/table-images-list.action") >= 0){
+		if (url.indexOf("/table-goods-list-admin.action") >= 0){
 			return true;
 		}
 		if (url.indexOf("/form-news.action") >= 0){
 			return true;
 		}
-		if (url.indexOf("/form-amazeui.action") >= 0){
+		if (url.indexOf("/form-show-goods.action") >= 0){
 			return true;
 		}
-		if (url.indexOf("/form-line.action") >= 0){
+		if (url.indexOf("/form-show-goods-user.action") >= 0){
+			return true;
+		}
+		if (url.indexOf("/form-lease.action") >= 0){
 			return true;
 		}
 		
