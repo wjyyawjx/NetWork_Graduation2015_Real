@@ -22,8 +22,7 @@ import com.yidu.util.Message;
  *  前端控制器
  * </p>
  *
- * @author wuqi
- * @since 2018-10-23
+
  */
 @Controller
 @RequestMapping("/user")

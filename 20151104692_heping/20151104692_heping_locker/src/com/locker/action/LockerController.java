@@ -1,13 +1,13 @@
-package com.yidu.action;
+package com.locker.action;
 
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.yidu.domain.JsonMessage;
-import com.yidu.domain.Locker;
-import com.yidu.service.LockerService;
+import com.locker.domain.JsonMessage;
+import com.locker.domain.Locker;
+import com.locker.service.LockerService;
 
 import java.util.List;
 
