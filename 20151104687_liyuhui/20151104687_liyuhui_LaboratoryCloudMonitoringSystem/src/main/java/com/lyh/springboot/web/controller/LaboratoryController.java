@@ -89,7 +89,7 @@ public class LaboratoryController {
 		return "redirect:listLab";
 	}
 
-	@RequestMapping("updateUser")   //改密码
+	@RequestMapping("updateLab")   //改密码
 	public String update(Laboratory lab, long[] userIds) {
 		labUserService.setUser(lab, userIds);
 		laboratoryService.update(lab);
