@@ -12,6 +12,7 @@
 <body>
 <form action="RecorderAdd" method="post">
 		<input type="text" name="athletusername" placeholder="运动员名字" required="" >
+		<input type="text" name="theclass" placeholder="班级" required="">
 		<input type="text" name="events" placeholder="项目" required="">
 		<input type="text" name="results" placeholder="成绩" required="">
 		<input type="text" name="ranking" placeholder="排名" required="">
@@ -24,19 +25,34 @@
 		<thead>
 			<tr>          
 				<th>运动员名字</th>
+				<th>班级</th>
 				<th>项目</th>
 				<th>成绩</th>
 				<th>排名</th>
+				<th>修改</th>
+				<th>删除</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${mea}" var="w">
-				<tr align="center">
-					<td>${w.athletusername}</td>
-					<td>${w.events}</td>
-					<td>${w.results}</td>
-					<td>${w.ranking}</td>
-				</tr>
+			<tr align="center">
+			<form action="RecorderUpdate" method="post">
+				
+				<td><input type="text" name="athletusername" value="${w.athletusername}" required=""></td>
+				<td><input type="text" name="theclass" value="${w.theclass}" required=""></td>
+				<td><input type="text" name="events" value="${w.events}" required=""></td>
+				<td><input type="text" name="results" value="${w.results}" required=""></td>
+				<td><input type="text" name="ranking" value="${w.ranking}" required=""></td>
+				<td><input type="hidden" name="tid" value=${w.tid}> 
+				<input type="submit" value="修改"></td>
+				
+				
+			</form>
+				<form action="RecorderDelete" method="post">
+				<td><input type="hidden" name="tid" value=${w.tid}> 
+				<input type="submit" value="删除"></td>
+				</form>
+			</tr>
 			</c:forEach>
 		</tbody>
 	</table>

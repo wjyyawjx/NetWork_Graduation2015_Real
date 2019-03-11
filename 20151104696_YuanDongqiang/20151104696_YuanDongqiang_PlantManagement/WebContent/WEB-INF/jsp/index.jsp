@@ -9,6 +9,22 @@
 	href="${pageContext.request.contextPath}/img/core-img/favicon.ico">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/style.css">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/ajax.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		fajax("${pageContext.request.contextPath }/JZIndex.action", null,
+				function(data) {
+					if (data.status == "ok") {
+						if (<%=session.getAttribute("KEY") %>！=1){
+							location.replace(document.referrer);
+						}
+					}
+					return true;
+				})
+	})
+</script>
 </head>
 <body>
 	<!-- Preloader -->
@@ -32,24 +48,28 @@
 								<span>电话: +1 234 122 122</span>
 							</a>
 						</div>
-						<div class="top-header-meta d-flex">
+						<div class="top-header-meta d-flex" id="login">
 							<div class="login">
 								<a href="${pageContext.request.contextPath }/TZlogin.action"
 									aria-expanded="false"><i class="fa fa-user"></i> <%
-									if (session.getAttribute("USER_SESSION") != null) {
-								%> ${USER_SESSION.u_name} <%
-									} else {
-								%> 未登陆 <%
-									}
-								%> </a>
+									 	if (session.getAttribute("USER_SESSION") != null) {
+									 %> ${USER_SESSION.u_name} <%
+									 	} else {
+									 %> 未登陆 <%
+									 	}
+									 %> </a>
 							</div>
-							<% if (session.getAttribute("USER_SESSION") != null) { %>
+							<%
+								if (session.getAttribute("USER_SESSION") != null) {
+							%>
 							<div class="cart">
 								<a href="${pageContext.request.contextPath }/logout.action">
 									<i class="fa fa-question-circle" aria-hidden="true"></i> 退出登陆
 								</a>
 							</div>
-							<% } %>
+							<%
+								}
+							%>
 							<div class="cart">
 								<a href="${pageContext.request.contextPath }/help.action"> <i
 									class="fa fa-question-circle" aria-hidden="true"></i> 帮助

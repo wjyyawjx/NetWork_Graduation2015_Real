@@ -1,0 +1,50 @@
+@charset "UTF-8";
+*{
+	padding:0px;
+	margin:0px;
+}
+#ur_here {
+	border: 1px solid #c5e4ff;
+	border-top: none;
+	background: url(images/uh_bg.gif) repeat-x left top;
+	height: 36px;
+	line-height: 36px;
+	padding: 0 12px;
+}
+
+#ur_here a {
+	color: #006cce;
+	text-decoration: none;
+}
+
+.divv {
+	width: 1200px;
+	margin-left: 170px;
+}
+
+.flowBox {
+	border: 1px solid #c8e6fe;
+	border-top: 2px solid #9fd2ff;
+	background: #fff;
+}
+
+.flowBox table {
+	margin: 5px auto;
+}
+.gongneng{
+	width: 99%;
+	height: 30px;
+	border: 1px solid #dddddd;
+	margin: auto;
+}
+
+.bnt_blue_1 {
+    background: url(../../../upload/wj/bg.gif) no-repeat 0px -663px;
+    width: 77px;
+    height: 21px;
+    text-align: center;
+    line-height: 21px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}

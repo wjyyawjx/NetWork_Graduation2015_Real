@@ -30,8 +30,7 @@ import org.springframework.stereotype.Controller;
  *  前端控制器
  * </p>
  *
- * @author wuqi
- * @since 2018-10-17
+
  */
 @Controller
 @RequestMapping("/cabinet")

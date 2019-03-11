@@ -11,7 +11,7 @@
 </head>
 <body>
 <form action="UserQuery" method="post">
-	<table border="0" cellpadding="0" cellspacing="0" style="font-size: 20px"  width="100%" height="31" background:#b5cfd2 url('img/a.jpeg');>
+	<table border="0" cellpadding="0" cellspacing="0" style="font-size: 20px"  width="100%" height="31" >
 		  <tr>
 		  <td width="17%" align="right" valign="middle">
 		  <h3>用户名：</h3>
@@ -31,24 +31,34 @@
     </table>
 </form>
 	<table border="2" cellpadding="0" cellspacing="0"
-		style="font-size: 40px"  width="100%" height="100%">
+		style="font-size: 20px"  width="100%" height="50px">
 		<thead>
 			<tr>
 				<th>用户名                                                </th>
 				<th>密码                                                   </th>
+					<th>修改密码                                           </th>
 				<th>邮箱                                                   </th>
 				<th>联系方式                                            </th>
 				<th>权限（0代表普通用户，1代表记录员）</th>
 				<th>修改用户的权限为0                </th>
 				<th>修改用户的权限为1                </th>
 				<th>禁用用户                                            </th>
+				
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${userdata}" var="w">
 				<tr align="center">
 					<td>${w.username}</td>
-					<td>${w.pwd}</td>
+					<form action="UserPwdUpdate" method="post">
+					<td>
+					
+					<input type="text" name="pwd" value=${w.pwd}> </td><td>
+						<input type="hidden" name="uid" value=${w.uid}> 
+						
+						<input type="submit" style="width: 150px" value="修改密码">
+					</td>
+					</form>
 					<td>${w.email}</td>
 					<td>${w.phone}</td>
 					<td>${w.permission}</td>
@@ -72,6 +82,7 @@
 						<input type="submit" style="width: 150px" value="禁用此用户">
 						</form>
 					</td>
+					
 				</tr>
 			</c:forEach>
 		</tbody>

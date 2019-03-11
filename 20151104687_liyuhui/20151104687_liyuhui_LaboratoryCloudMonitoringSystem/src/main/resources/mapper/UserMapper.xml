@@ -94,6 +94,26 @@
     from user
     where id = #{id,jdbcType=BIGINT}
   </select>
+  
+  
+  <select id="selectStuByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT} and <![CDATA[ LENGTH(num) >= 11   ]]>
+  </select>
+  <select id="selectTeachByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT} and <![CDATA[ LENGTH(num) < 11   ]]>
+  </select>
+  
+  
+  
+  
+  
+  
   <select id="selectByName" parameterType="java.lang.String" resultType="com.lyh.springboot.pojo.User">
     select name, num, sex, age, tel, email
     from user

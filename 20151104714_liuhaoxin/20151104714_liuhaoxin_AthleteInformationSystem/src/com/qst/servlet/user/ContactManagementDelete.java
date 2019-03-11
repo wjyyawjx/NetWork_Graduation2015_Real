@@ -30,11 +30,11 @@ public class ContactManagementDelete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//管理员删除申请，关于忘记密码的
 		int cid =Integer.parseInt(request.getParameter("cid"));
 		GeneralDao geldao = new GeneralDao();
 		UserDao userdao = new UserDao();
 		userdao.ContactManagementDelete(cid);
-		
 		response.sendRedirect("ContactManagementView");
 
 	}

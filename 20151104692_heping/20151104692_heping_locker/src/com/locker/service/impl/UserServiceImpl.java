@@ -16,9 +16,7 @@ import com.locker.service.UserService;
 
 /**
  * 
- * @author wuqi
- * @date 2018年10月23日
- * @version 1.0
+
  */
 @Service
 public class UserServiceImpl implements UserService {

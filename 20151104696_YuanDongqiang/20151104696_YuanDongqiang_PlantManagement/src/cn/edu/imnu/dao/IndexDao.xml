@@ -1,0 +1,52 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.imnu.dao.IndexDao">
+	<!-- 查询用户 -->
+	<select id="IpFind" parameterType="String" resultType="ip">
+		select *
+		from ip_adress
+		where u_ip = #{u_ip}
+	</select>
+	<select id="find" parameterType="Integer" resultType="user">
+		select *
+		from users
+		where u_id = #{u_ip}
+	</select>
+	<insert id="addIp" parameterType="IP">
+		insert into ip_adress(
+		u_ip,
+		u_time,
+		u_id
+		)
+		values(#{u_ip},
+		#{u_time},
+		#{u_id}
+		)
+	</insert>
+	<update id="updateIp" parameterType="IP" >
+		UPDATE ip_adress
+		SET u_time = #{u_time},u_id=#{u_id}
+		WHERE u_ip = #{u_ip}
+	</update>
+	<insert id="addIp1" parameterType="USER">
+		insert into ip_adress(
+		u_ip,
+		u_time,
+		u_id
+		)
+		values(#{u_ip},
+		#{u_time},
+		#{u_id}
+		)
+	</insert>
+	<update id="updateIp1" parameterType="USER" >
+		UPDATE ip_adress
+		SET u_time = #{u_time},u_id=#{u_id}
+		WHERE u_ip = #{u_ip}
+	</update>
+	<select id="IpFind1" parameterType="String" resultType="USER">
+		select *
+		from ip_adress
+		where u_ip = #{u_ip}
+	</select>
+</mapper>
