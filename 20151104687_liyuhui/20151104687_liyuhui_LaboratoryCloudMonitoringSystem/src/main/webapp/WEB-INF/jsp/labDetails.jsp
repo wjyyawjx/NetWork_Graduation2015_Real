@@ -192,13 +192,13 @@
 						</tr>
 					</c:forEach>
 				</table>
-				<!-- <div class="addOrEdit">
+				<div class="addOrEdit">
 					<form action="addLab" method="post">
-						角色名称: <input type="text" name="name"> <br> 角色描述: <input
-							type="text" name="desc_"> <br>
+						角色名称: <input type="text" name="name"> <br> 
+						角色描述: <input type="text" name="desc_"> <br>
 						<br> <input type="submit" value="增加">
 					</form>
-				</div> -->
+				</div>
 				</div>
 			</section>
 

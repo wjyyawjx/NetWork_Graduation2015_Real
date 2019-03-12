@@ -190,10 +190,10 @@
 
 				<div class="addOrEdit">
 					<form action="addPermission" method="post">
-						权限名称: <input type="text" name="name"> <br> 权限描述: <input
-							type="text" name="desc_"> <br> 权限对应的url: <input
-							type="text" name="url"> <br>
-						<br> <input type="submit" value="增加">
+						权限名称: <div style="color: black;"> <input type="text" name="name"> </div><br> 
+						权限描述: <div style="color: black;"> <input type="text" name="desc"> </div><br> 
+						权限对应的url: <div style="color: black;"><input type="text" name="url"> </div><br>
+						<br> <input type="submit" value="增加" style="color: black;">
 					</form>
 				</div>
 			</div>

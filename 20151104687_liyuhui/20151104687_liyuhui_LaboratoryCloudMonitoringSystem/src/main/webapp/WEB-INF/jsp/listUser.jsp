@@ -190,14 +190,15 @@
 						</tr>
 					</c:forEach>
 				</table>
+				<div class="addOrEdit">
+					<form action="addUser" method="post">
+						用户名: <div style="color: black;"><input type="text" name="name"></div> <br> 
+						密码: <div style="color: black;"><input type="password" name="password"></div> <br>
+						<br> <input type="submit" value="增加" style="color: black;">
+					</form>
+				</div>
 			</div>
-			<div class="addOrEdit">
-				<form action="addUser" method="post">
-					用户名: <input type="text" name="name"> <br> 密码: <input
-						type="password" name="password"> <br>
-					<br> <input type="submit" value="增加">
-				</form>
-			</div>
+			
 
 		</section>
 

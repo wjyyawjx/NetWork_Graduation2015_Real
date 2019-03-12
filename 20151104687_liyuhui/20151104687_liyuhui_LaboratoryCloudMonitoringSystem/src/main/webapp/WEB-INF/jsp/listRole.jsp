@@ -192,9 +192,9 @@
 
 				<div class="addOrEdit">
 					<form action="addRole" method="post">
-						角色名称: <input type="text" name="name"> <br> 角色描述: <input
-							type="text" name="desc_"> <br>
-						<br> <input type="submit" value="增加">
+						角色名称:<div style="color: black;"> <input type="text" name="name"></div> <br> 
+						角色描述:<div style="color: black;"> <input type="text" name="desc"></div> <br>
+						<br> <input type="submit" value="增加" style="color: black;">
 					</form>
 				</div>
 			</div>
