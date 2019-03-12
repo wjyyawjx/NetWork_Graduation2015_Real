@@ -19,10 +19,10 @@ public class LabUserServiceImpl implements LabUserService {
 	LabUserMapper labUserMapper;
 
 	@Override
-	public void deleteByUser(long uid) {
+	public void deleteByUser(Integer lId) {
 		// TODO Auto-generated method stub
 		LabUserExample example = new LabUserExample();
-		example.createCriteria().andUIdEqualTo(uid);
+		example.createCriteria().andLIdEqualTo(lId); 
 		List<LabUser> lus = labUserMapper.selectByExample(example);
 		for (LabUser labUser : lus) {
 			labUserMapper.deleteByPrimaryKey(labUser.getId());

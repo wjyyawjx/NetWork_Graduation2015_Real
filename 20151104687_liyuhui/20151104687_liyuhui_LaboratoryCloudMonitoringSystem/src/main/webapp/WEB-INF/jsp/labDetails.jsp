@@ -187,16 +187,15 @@
                         			<br>
 								</c:forEach>
 							</td>
-							<td><a href="editUser?id=${u.id}">编辑</a></td>
-							<td><a href="deleteUser?id=${u.id}">删除</a></td>
+							<td><a href="editLab?lId=${l.lId}">编辑</a></td>
+							<td><a href="deleteLab?lId=${l.lId}">删除</a></td>
 						</tr>
 					</c:forEach>
 				</table>
 				<div class="addOrEdit">
 					<form action="addLab" method="post">
-						角色名称: <input type="text" name="name"> <br> 
-						角色描述: <input type="text" name="desc_"> <br>
-						<br> <input type="submit" value="增加">
+						实验室名称: <input type="text" name="lName" style="color: black;"> <br> 
+						<br> <input type="submit" value="增加" style="color: black;">
 					</form>
 				</div>
 				</div>

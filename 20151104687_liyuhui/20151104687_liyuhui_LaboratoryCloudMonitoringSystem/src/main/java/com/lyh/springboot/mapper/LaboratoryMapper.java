@@ -10,7 +10,7 @@ public interface LaboratoryMapper {
 
     int deleteByExample(LaboratoryExample example);
 
-    int deleteByPrimaryKey(long uid);
+    int deleteByPrimaryKey(long lId);
 
     int insert(Laboratory record);
 
@@ -18,7 +18,7 @@ public interface LaboratoryMapper {
 
     List<Laboratory> selectByExample(LaboratoryExample example);
 
-    Laboratory selectByPrimaryKey(Long lId);
+    Laboratory selectByPrimaryKey(Integer lId);
 
     int updateByExampleSelective(@Param("record") Laboratory record, @Param("example") LaboratoryExample example);
 

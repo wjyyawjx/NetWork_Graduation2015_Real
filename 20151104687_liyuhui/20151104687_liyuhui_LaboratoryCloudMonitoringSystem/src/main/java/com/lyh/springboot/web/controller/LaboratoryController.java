@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lyh.springboot.pojo.Laboratory;
+import com.lyh.springboot.pojo.Permission;
 import com.lyh.springboot.pojo.Role;
 import com.lyh.springboot.pojo.User;
 import com.lyh.springboot.service.LaboratoryService;
@@ -70,27 +71,28 @@ public class LaboratoryController {
 		return "labDetails";
 	}
 
-	@RequestMapping("editlab")    //修改
-	public String edit(Model model, long id) {
+	@RequestMapping("editLab")    //修改
+	public String edit(Model model, Integer lId) {
+		Laboratory lab = laboratoryService.get(lId);
+		model.addAttribute("lab", lab);
+		
 		List<User> us = userService.list();
 		model.addAttribute("us", us);
-		Laboratory lab = laboratoryService.get(id);
-		model.addAttribute("lab", lab);
 
 		List<User> users = userService.listUser(lab);
 		model.addAttribute("currentusers", users);
 
-		return "editlab";
+		return "editLab";
 	}
 
 	@RequestMapping("deleteLab")   //删除
-	public String delete(Model model, long uid) {
-		laboratoryService.delete(uid);
+	public String delete(Model model, Integer lId) {
+		laboratoryService.delete(lId);
 		return "redirect:listLab";
 	}
 
-	@RequestMapping("updateLab")   //改密码
-	public String update(Laboratory lab, long[] userIds) {
+	@RequestMapping("updateLab") 
+	public String update(Laboratory lab, long[] userIds) {	
 		labUserService.setUser(lab, userIds);
 		laboratoryService.update(lab);
 		return "redirect:listLab";

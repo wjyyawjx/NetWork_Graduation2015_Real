@@ -6,6 +6,7 @@
     <result column="l_name" jdbcType="VARCHAR" property="lName" />
     <result column="place_id" jdbcType="CHAR" property="placeId" />
     <result column="tem_id" jdbcType="INTEGER" property="temId" />
+    <result column="house_id" jdbcType="CHAR" property="houseId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -100,7 +101,7 @@
     from laboratory
     where l_id = #{lId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from laboratory
     where l_id = #{lId,jdbcType=INTEGER}
   </delete>
