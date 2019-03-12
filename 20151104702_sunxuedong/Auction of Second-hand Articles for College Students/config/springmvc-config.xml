@@ -34,6 +34,15 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
     </bean>	
+    <!-- 图片上传 -->
+     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">    
+    <property name="defaultEncoding" value="utf-8"/>    
+    <!-- 最大内存大小 -->    
+    <property name="maxInMemorySize" value="10240"/>    
+    <!-- 最大文件大小，-1为不限制大小 -->    
+    <property name="maxUploadSize" value="-1"/>    
+    </bean> 
+
     
     <!-- 配置拦截器 -->
 	<mvc:interceptors>
