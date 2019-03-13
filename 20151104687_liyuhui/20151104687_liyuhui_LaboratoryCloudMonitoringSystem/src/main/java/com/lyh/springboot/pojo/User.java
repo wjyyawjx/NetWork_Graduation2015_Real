@@ -21,6 +21,10 @@ public class User implements Serializable {
 
     private String email;
 
+    private String type;
+
+    private String image;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -93,5 +97,21 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image == null ? null : image.trim();
     }
 }

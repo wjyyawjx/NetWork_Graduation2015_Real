@@ -43,6 +43,20 @@ public class LaboratoryController {
 		return "labDetails";
 	}
 	
+	@RequestMapping("listAll")     //查询
+	public String listAll(Model model) {
+		List<Laboratory> lab = laboratoryService.list();
+		model.addAttribute("lab", lab);
+		Map<Laboratory, List<User>> lab_user = new HashMap<>();
+		for (Laboratory laboratory : lab) {
+			List<User> user = userService.listUser(laboratory);
+			lab_user.put(laboratory, user);
+		}
+		model.addAttribute("lab_user", lab_user);
+
+		return "listLab";
+	}
+	
 	@RequestMapping("listStu")     //查询
 	public String listStu(Model model) {
 		List<Laboratory> lab = laboratoryService.list();
@@ -54,7 +68,7 @@ public class LaboratoryController {
 		}
 		model.addAttribute("lab_user", lab_user);
 
-		return "labDetails";
+		return "listLab";
 	}
 	
 	@RequestMapping("listTeach")     //查询
@@ -68,7 +82,7 @@ public class LaboratoryController {
 		}
 		model.addAttribute("lab_user", lab_user);
 
-		return "labDetails";
+		return "listLab";
 	}
 
 	@RequestMapping("editLab")    //修改
@@ -93,6 +107,7 @@ public class LaboratoryController {
 
 	@RequestMapping("updateLab") 
 	public String update(Laboratory lab, long[] userIds) {	
+		System.out.println(lab.getlName());
 		labUserService.setUser(lab, userIds);
 		laboratoryService.update(lab);
 		return "redirect:listLab";

@@ -15,7 +15,7 @@
 
     <div class="addOrEdit" >
         <form action="updateLab" method="post">
-            	实验室名: <input type="text" name="name" value="${lab.lName}"> <br><br>
+            	实验室名: <input type="text" name="lName" value="${lab.lName}"> <br><br>
      			授权用户:<br>
             <div style="text-align:left;width:300px;margin:0px auto;padding-left:50px">
                 <c:forEach items="${us}" var="us">

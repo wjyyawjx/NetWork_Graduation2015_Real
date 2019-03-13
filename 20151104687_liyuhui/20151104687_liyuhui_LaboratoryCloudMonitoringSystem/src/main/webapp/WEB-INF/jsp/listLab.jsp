@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
-    <head>
+ <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta name="format-detection" content="telephone=no">
         <meta charset="UTF-8">
@@ -12,6 +14,8 @@
         <title>实验室云端监管系统</title>
             
         <!-- CSS -->
+        <link rel="stylesheet" type="text/css"
+	href="superAdministrator/css/style.css" />
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/animate.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -166,35 +170,30 @@
                 </div>
                 
                 <hr class="whiter" />
-				<div class="workingroom">
-					<table>
-	                	<tr>
-	                		<td>姓名：</td>
-	                        <td>${User.name}</td>
-	                    </tr>
-	                    <tr>
-							<td>编号： </td>
-	                        <td>${User.num }</td>
-	                    </tr>
-	                    <tr>
-							<td>性别： </td>
-	                        <td>${User.sex }</td>
-	                    </tr>
-	                    <tr>
-							<td>年龄： </td>
-	                        <td>${User.age }</td>
-	                    </tr>
-	                    <tr>
-							<td>电话： </td>
-	                        <td>${User.tel }</td>
-	                    </tr>
-	                    <tr>
-							<td>邮箱： </td>
-	                        <td>${User.email }</td>
-	                    </tr>
-	                </table>
+                <div class="workingroom">
+                <a href="${pageContext.request.contextPath }/config/listAll">实验室全部用户信息管理</a>
+                <a href="${pageContext.request.contextPath }/config/listStu">实验室学生用户信息管理</a>
+                <a href="${pageContext.request.contextPath }/config/listTeach">实验室教师用户信息管理</a>
+				<table>
+					<tr>
+						<td>实验室id</td>
+						<td>实验室名称</td>
+						<td>用户</td>
+					</tr>
+					<c:forEach items="${lab}" var="l">
+						<tr>
+							<td>${l.lId}</td>
+							<td>${l.lName}</td>
+							<td><c:forEach items="${lab_user[l]}" var="lu">
+                        			${lu.name} 
+                        			<br>
+								</c:forEach>
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
 				</div>
-            </section>
+			</section>
 
         </section>
         
