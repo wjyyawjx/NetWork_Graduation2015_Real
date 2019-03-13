@@ -115,7 +115,7 @@ public class UserController {
 		User u = null;
 		u = userService.findByUserName(username);
 		if (u == null) {
-			System.out.println(u);
+			//System.out.println(u);
 			userService.addUser(user);
 			return "login";
 		} else {
