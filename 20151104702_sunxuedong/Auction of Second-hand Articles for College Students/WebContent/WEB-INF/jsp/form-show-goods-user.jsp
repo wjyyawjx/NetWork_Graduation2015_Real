@@ -20,6 +20,12 @@
 <link rel="stylesheet" href="assets/css/app.css">
 
 <script language="javascript" type="text/javascript" src="js/WdatePicker.js"></script>
+<script>
+function check() {
+	
+	
+}
+</script>
 </head>
 
 
@@ -231,7 +237,7 @@
 							<li>
 								<!-- 打开状态 a 标签添加 active 即可   --> 
 							 
-							<a href="${pageContext.request.contextPath }/form-show-goods.action">
+							<a href="${pageContext.request.contextPath }/form-show-goods-user.action">
 								<i class="am-icon-angle-right"></i> 
 								<span>上架商品</span>
 								<i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
@@ -287,44 +293,40 @@
 
 
 						<div class="am-u-sm-12 am-u-md-9">
-							<form class="am-form am-form-horizontal" action="${pageContext.request.contextPath }/addgoods.action" 
-			                       method="post" onsubmit="return check()">
+							<form  class="am-form am-form-horizontal" action="${pageContext.request.contextPath }/addgoods.action" 
+			                       method="post" enctype="multipart/form-data" onsubmit="return check()" >
 								<div class="am-form-group">
 									<label for="l_name" class="am-u-sm-3 am-form-label">商品名称</label>
 									<div class="am-u-sm-9">
-										<input type="text" id="l_name" placeholder="商品名称"> <small>输入商品的名字，让别人记住你。</small>
+										<input type="text" id="l_name" name="l_name" placeholder="商品名称"> <small>输入商品的名字，让别人记住你。</small>
 									</div>
 								</div>
 
 
-								<div class="am-form-group">
+							<!-- 	<div class="am-form-group">
 									<label for="l_image" class="am-u-sm-3 am-form-label">商品图片
 										<span class="tpl-form-line-small-title">Images</span>
 									</label>
 									<div class="am-u-sm-9">
-										<div class="am-form-group am-form-file">
-											<div class="tpl-form-file-img"></div>
-											<button type="button" class="am-btn am-btn-danger am-btn-sm">
-												<i class="am-icon-cloud-upload"></i> 添加图片
-											</button>
-											<input id="doc-form-file" type="file" multiple>
+										<div class="am-form-group am-form-file">		
+											<input type="file" name="file">
 										</div>
 
 									</div>
-								</div>
-
+								</div>   -->                            
+                                 <label>上传封面：</label><input type="file" name="file">
 
 								<div class="am-form-group">
 									<label for="l_price" class="am-u-sm-3 am-form-label">价格</label>
 									<div class="am-u-sm-9">
-										<input type="text" id="l_price" placeholder="输入你的商品价格 / Price">
+										<input type="text" id="l_price" placeholder="输入你的商品价格 / Price" onkeyup="this.value=this.value.replace(/[^\d\.]/g)">
 									</div>
 								</div>
 
 								<div class="am-form-group">
 									<label for="l_info" class="am-u-sm-3 am-form-label">商品信息</label>
 									<div class="am-u-sm-9">
-										<input type="text" id="l_info" placeholder="输入你的商品信息">
+										<input type="text" id="l_info" name="l_info" placeholder="输入你的商品信息">
 									</div>
 								</div>
 
@@ -334,11 +336,11 @@
 										<span class="tpl-form-line-small-title">Type</span>
 									</label>
 									<div class="am-u-sm-9">
-										<select data-am-selected="{searchBox: 1}">
-											<option value="a">笔记</option>
-											<option value="b">图书</option>
-											<option value="o">工具</option>
-											<option value="o">娱乐</option>
+										<select data-am-selected="{searchBox: 1}" name="l_type" id="l_type" >
+											<option value="笔记">笔记</option>
+											<option value="图书">图书</option>
+											<option value="工具">工具</option>
+											<option value="娱乐">娱乐</option>
 										</select>
 									</div>
 								</div>
@@ -348,25 +350,20 @@
 
 
 								<div class="am-form-group">
-									<label for="l_out_time" class="am-u-sm-3 am-form-label">允许租赁起始时间</label>
+									<label for="l_out_time" class="am-u-sm-3 am-form-label">允许租赁时间</label>
 									<div class="am-u-sm-9">
-										<textarea class="" id="l_out_time"  onClick="WdatePicker()"/></textarea>
-                                         <input class="Wdate" type="text" onClick="WdatePicker(dateFmt:'yyyy-MM-dd HH:mm')">--<input class="Wdate" type="text" onClick="WdatePicker()">
+										
+                                         <input class="Wdate" id="l_out_time" name="l_out_time" type="text" onClick="WdatePicker(dateFmt:'yyyy-MM-dd HH:mm')">--
+                                         <input class="Wdate" id="l_in_time" name="l_in_time" type="text" onClick="WdatePicker()">
 									</div>
 								</div>
 
-								<div class="am-form-group">
-									<label for="l_in_time" class="am-u-sm-3 am-form-label">允许租赁截至时间</label>
-									<div class="am-u-sm-9">
-										<textarea class="" id="l_in_time" placeholder="选择时间"></textarea>
-
-									</div>
-								</div>
+								
 
 								<div class="am-form-group">
 									<label for="u_id" class="am-u-sm-3 am-form-label">物主</label>
 									<div class="am-u-sm-9">
-										<textarea class="" id="u_id" placeholder="物主"></textarea>
+										<textarea class="" id="u_id" name="u_id" placeholder="物主"></textarea>
 
 									</div>
 								</div>
@@ -374,14 +371,14 @@
 								<div class="am-form-group">
 									<label for="l_addr" class="am-u-sm-3 am-form-label">商品地址</label>
 									<div class="am-u-sm-9">
-										<textarea class="" id="l_addr" placeholder="选择时间"></textarea>
+										<textarea class="" id="l_addr" name="l_addr" placeholder="请输入地址"></textarea>
 
 									</div>
 								</div>
 
 								<div class="am-form-group">
 									<div class="am-u-sm-9 am-u-sm-push-3">
-										<button type="button" class="am-btn am-btn-primary">保存修改</button>
+										<button type="submit" class="am-btn am-btn-primary">保存修改</button>
 									</div>
 								</div>
 							</form>

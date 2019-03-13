@@ -89,7 +89,7 @@
 
 			<!-- Side Menu -->
 			<ul class="list-unstyled side-menu">
-				<li class="active">
+                    <li class="active">
                         <a class="sa-side-home" href="${pageContext.request.contextPath }/menu">
                             <span class="menu-item">主页</span>
                         </a>
@@ -101,12 +101,12 @@
                     </li>
                     <li class="dropdown">
                         <a class="sa-side-folder" href="">
-                            <span class="menu-item">实验室信息</span>
+                            <span class="menu-item">实验室用户信息</span>
                         </a>
                         <ul class="list-unstyled menu-item">
-                        	<li><a href="${pageContext.request.contextPath }/config/listLab">实验室信息管理</a></li>
-                        	<li><a href="${pageContext.request.contextPath }/config/listStu">实验室学生信息管理</a></li>
-                        	<li><a href="${pageContext.request.contextPath }/config/listTeach">实验室教师信息管理</a></li>
+                        	<li><a href="${pageContext.request.contextPath }/config/listAll">实验室全部用户信息管理</a></li>
+                        	<li><a href="${pageContext.request.contextPath }/config/listStu">实验室学生用户信息管理</a></li>
+                        	<li><a href="${pageContext.request.contextPath }/config/listTeach">实验室教师用户信息管理</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -114,6 +114,7 @@
                             <span class="menu-item">超级管理</span>
                         </a>
                         <ul class="list-unstyled menu-item">
+                        	<li><a href="${pageContext.request.contextPath }/config/listLab">实验室管理</a></li>
                             <li><a href="${pageContext.request.contextPath }/config/listUser">用户管理</a></li>
                             <li><a href="${pageContext.request.contextPath }/config/listRole">角色管理</a></li>
                             <li><a href="${pageContext.request.contextPath }/config/listPermission">权限管理</a></li>                     
@@ -130,7 +131,7 @@
                             <span class="menu-item">我的日程</span>
                         </a>
                     </li>
-			</ul>
+                </ul>
 
 		</aside>
 
@@ -192,9 +193,9 @@
 
 				<div class="addOrEdit">
 					<form action="addRole" method="post">
-						角色名称: <input type="text" name="name"> <br> 角色描述: <input
-							type="text" name="desc_"> <br>
-						<br> <input type="submit" value="增加">
+						角色名称:<div style="color: black;"> <input type="text" name="name"></div> <br> 
+						角色描述:<div style="color: black;"> <input type="text" name="desc"></div> <br>
+						<br> <input type="submit" value="增加" style="color: black;">
 					</form>
 				</div>
 			</div>

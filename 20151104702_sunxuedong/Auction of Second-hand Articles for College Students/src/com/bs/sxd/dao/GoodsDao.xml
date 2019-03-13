@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.bs.sxd.dao.GoodsDao">
 
 <insert id="addGoods" parameterType="Goods" useGeneratedKeys="true"
 		keyProperty="id">
 		<!--useGeneratedKeys:使用自增主键获取主键值策略 keyProperty:指定对应主键属性名(即获取主键值之后,赋值给bean的哪个属性) -->
 		insert into
-		user(l_name,l_image,l_price,l_info,l_type,l_out_time,l_in_time,l_addr)
+		goods(l_name,l_image,l_price,l_info,l_type,l_out_time,l_in_time,l_addr)
 		values(
 		#{l_name},#{l_image},#{l_price},#{l_info},#{l_type},#{l_out_time},#{l_in_time},#{l_addr})
 	</insert>

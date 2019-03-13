@@ -40,17 +40,18 @@ public class LaboratoryServiceImpl  implements LaboratoryService{
 
 
 	@Override
-	public Laboratory get(long id) {
+	public Laboratory get(Integer lId) {
 		// TODO Auto-generated method stub
-		return laboratoryMapper.selectByPrimaryKey(id);
+		return laboratoryMapper.selectByPrimaryKey(lId);
 	}
 
 
 	@Override
-	public void delete(long uid) {
+	public void delete(Integer lId) {
 		// TODO Auto-generated method stub
-		laboratoryMapper.deleteByPrimaryKey(uid);
-		labUserService.deleteByUser(uid);
+		System.out.println(lId+"  2");
+		laboratoryMapper.deleteByPrimaryKey(lId);
+		labUserService.deleteByUser(lId);
 	}
 
 

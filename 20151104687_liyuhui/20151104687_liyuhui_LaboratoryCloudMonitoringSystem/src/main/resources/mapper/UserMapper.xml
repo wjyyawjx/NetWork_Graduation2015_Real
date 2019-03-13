@@ -11,6 +11,8 @@
     <result column="age" jdbcType="INTEGER" property="age" />
     <result column="tel" jdbcType="VARCHAR" property="tel" />
     <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, num, password, salt, sex, age, tel, email
+    id, name, num, password, salt, sex, age, tel, email, type, image
   </sql>
   <select id="selectByExample" parameterType="com.lyh.springboot.pojo.UserExample" resultMap="BaseResultMap">
     select
@@ -96,29 +98,28 @@
   </select>
   
   
+  
   <select id="selectStuByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
-    where id = #{id,jdbcType=BIGINT} and <![CDATA[ LENGTH(num) >= 11   ]]>
+    where id = #{id,jdbcType=BIGINT} and type = "学生"
   </select>
   <select id="selectTeachByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
-    where id = #{id,jdbcType=BIGINT} and <![CDATA[ LENGTH(num) < 11   ]]>
+    where id = #{id,jdbcType=BIGINT} and type = "教师"
   </select>
-  
-  
-  
-  
-  
-  
   <select id="selectByName" parameterType="java.lang.String" resultType="com.lyh.springboot.pojo.User">
-    select name, num, sex, age, tel, email
+    select id, name, num, password, salt, sex, age, tel, email, type, image
     from user
     where num = #{num,jdbcType=VARCHAR}
   </select>
+  
+  
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from user
     where id = #{id,jdbcType=BIGINT}
@@ -132,10 +133,12 @@
   <insert id="insert" parameterType="com.lyh.springboot.pojo.User">
     insert into user (id, name, num, 
       password, salt, sex, 
-      age, tel, email)
+      age, tel, email, type, 
+      image)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{num,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
-      #{age,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
+      #{age,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{image,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lyh.springboot.pojo.User">
     insert into user
@@ -167,6 +170,12 @@
       <if test="email != null">
         email,
       </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -195,6 +204,12 @@
       </if>
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -234,6 +249,12 @@
       <if test="record.email != null">
         email = #{record.email,jdbcType=VARCHAR},
       </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.image != null">
+        image = #{record.image,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -249,7 +270,9 @@
       sex = #{record.sex,jdbcType=VARCHAR},
       age = #{record.age,jdbcType=INTEGER},
       tel = #{record.tel,jdbcType=VARCHAR},
-      email = #{record.email,jdbcType=VARCHAR}
+      email = #{record.email,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      image = #{record.image,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -281,6 +304,12 @@
       <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
       </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -293,7 +322,9 @@
       sex = #{sex,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},
       tel = #{tel,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR}
+      email = #{email,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

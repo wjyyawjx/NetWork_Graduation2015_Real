@@ -4,7 +4,7 @@ import com.lyh.springboot.pojo.Laboratory;
 
 public interface LabUserService {
 
-	void deleteByUser(long uid);
+	void deleteByUser(Integer lId);
 
 	void setUser(Laboratory lab, long[] userIds);
 

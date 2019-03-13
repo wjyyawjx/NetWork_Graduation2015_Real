@@ -5,10 +5,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import com.bs.sxd.po.User;
 import com.bs.sxd.service.UserService;
@@ -115,7 +115,7 @@ public class UserController {
 		User u = null;
 		u = userService.findByUserName(username);
 		if (u == null) {
-			System.out.println(u);
+			//System.out.println(u);
 			userService.addUser(user);
 			return "login";
 		} else {

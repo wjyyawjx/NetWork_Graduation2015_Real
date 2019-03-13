@@ -70,7 +70,6 @@ public class Weather extends HttpServlet {
 	        String str=sb.toString();
 	        
 	    	JSONObject obj = new JSONObject(str).getJSONArray("HeWeather6").getJSONObject(0);
-
 			JSONObject basic = obj.getJSONObject("basic");
 			JSONObject now = obj.getJSONObject("now");
 			JSONObject update = obj.getJSONObject("update");

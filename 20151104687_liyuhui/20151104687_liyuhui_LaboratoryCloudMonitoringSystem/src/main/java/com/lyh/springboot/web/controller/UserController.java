@@ -57,8 +57,8 @@ public class UserController {
 	}
 
 	@RequestMapping("deleteUser")   //删除
-	public String delete(Model model, long uid) {
-		userService.delete(uid);
+	public String delete(Model model, long id) {
+		userService.delete(id);
 		return "redirect:listUser";
 	}
 
