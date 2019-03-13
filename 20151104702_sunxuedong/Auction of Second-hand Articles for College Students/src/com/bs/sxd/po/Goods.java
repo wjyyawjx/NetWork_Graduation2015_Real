@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Goods implements Serializable  {
 	private static final long serialVersionUID = 1L;
-    private Integer l_id;
+    private Integer id;
 	private String l_name;
 	private String l_image;
 	private float l_price;
@@ -16,10 +16,10 @@ public class Goods implements Serializable  {
 	private Integer u_id;
 	private String l_addr;
 	public Integer getL_id() {
-		return l_id;
+		return id;
 	}
-	public void setL_id(Integer l_id) {
-		this.l_id = l_id;
+	public void setL_id(Integer id) {
+		this.id = id;
 	}
 	public String getL_name() {
 		return l_name;
@@ -78,4 +78,9 @@ public class Goods implements Serializable  {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	 @Override
+	    public String toString() {
+	        return "Goods [id=" + id + ", l_name=" + l_name + ", l_image=" + l_image + ", l_price=" + l_price
+	                + ", l_info=" + l_info + ", l_type=" + l_type + ", l_out_time=" + l_out_time + ", l_in_time=" + l_in_time + ",l_addr=" + l_addr + ",u_id=" + u_id + "]";
+	    }
 }

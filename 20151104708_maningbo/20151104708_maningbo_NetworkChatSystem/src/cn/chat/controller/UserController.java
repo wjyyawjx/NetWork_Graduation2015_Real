@@ -241,7 +241,7 @@ public class UserController {
     }
     
     @RequestMapping("send.action")
-    public String sendMail(String email,Model model){
+    public String sendMail(String email,String getVali,Model model,HttpServletRequest request){
         System.out.println("获取网页输入的email:"+email);
         UserBean user = userService.findUserByEmail(email);
         System.out.println("获取数据库的email:"+user.getEmail());
@@ -263,13 +263,11 @@ public class UserController {
 		        mMessageHelper.setTo(user.getEmail());//收件人邮箱
 		        mMessageHelper.setSubject("马宁博发送给您的验证码");//邮件的主题
 		        mMessageHelper.setText("<p>您好，欢迎使用马宁博的聊天工具，您正在进行邮箱验证，本次验证码为：</p><br/>" +validate,true);//邮件的文本内容，true表示文本以html格式打开
-//                    File file=new File("F:/img/枫叶.png");//在邮件中添加一张图片
-//                    FileSystemResource resource=new FileSystemResource(file);
-//                    mMessageHelper.addInline("fengye", resource);//这里指定一个id,在上面引用
-//                    mMessageHelper.addAttachment("枫叶.png", resource);//在邮件中添加一个附件
 		        javaMailSender.send(mMessage);//发送邮件
 		        model.addAttribute("msg", "验证码发送成功");
-		        return "forgetpwd";
+		        request.setAttribute("validate", validate);
+		        System.out.println(validate);
+		        return "validate";
 		    } catch (MessagingException e) {
 		        e.printStackTrace();
 		    }
@@ -277,4 +275,19 @@ public class UserController {
 		model.addAttribute("msg", "验证码发送失败");
 		return "forgetpwd"; 
         }
+    @RequestMapping("validate.action")
+    public String validate(String validate,Model model,HttpServletRequest request){
+    	System.out.println(validate);
+    	System.out.println("---------------");
+    	String s =  (String) request.getAttribute("validate");
+    	System.out.println(s);
+    	if(validate.equals(s)){
+    		return "login";
+    	}
+    	else{
+    		 model.addAttribute("msg", "验证码错误！");
+    		return"validate";
+    	}
+    	
+    }
 }

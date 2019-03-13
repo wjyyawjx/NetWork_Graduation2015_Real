@@ -231,7 +231,7 @@
 							<li>
 								<!-- 打开状态 a 标签添加 active 即可   --> 
 							 
-							<a href="${pageContext.request.contextPath }/form-show-goods.action">
+							<a href="${pageContext.request.contextPath }/form-show-goods-user.action">
 								<i class="am-icon-angle-right"></i> 
 								<span>上架商品</span>
 								<i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
@@ -287,12 +287,12 @@
 
 
 						<div class="am-u-sm-12 am-u-md-9">
-							<form class="am-form am-form-horizontal" action="${pageContext.request.contextPath }/addgoods.action" 
-			                       method="post" onsubmit="return check()">
+							<form  class="am-form am-form-horizontal" action="${pageContext.request.contextPath }/addgoods.action" 
+			                       method="post" enctype="multipart/form-data" onsubmit="return check()" >
 								<div class="am-form-group">
 									<label for="l_name" class="am-u-sm-3 am-form-label">商品名称</label>
 									<div class="am-u-sm-9">
-										<input type="text" id="l_name" placeholder="商品名称"> <small>输入商品的名字，让别人记住你。</small>
+										<input type="text" id="l_name" name="l_name" placeholder="商品名称"> <small>输入商品的名字，让别人记住你。</small>
 									</div>
 								</div>
 
@@ -307,7 +307,7 @@
 											<button type="button" class="am-btn am-btn-danger am-btn-sm">
 												<i class="am-icon-cloud-upload"></i> 添加图片
 											</button>
-											<input id="doc-form-file" type="file" multiple>
+											<input id="doc-form-file" type="file" name="l_image" multiple>
 										</div>
 
 									</div>
@@ -317,7 +317,7 @@
 								<div class="am-form-group">
 									<label for="l_price" class="am-u-sm-3 am-form-label">价格</label>
 									<div class="am-u-sm-9">
-										<input type="text" id="l_price" placeholder="输入你的商品价格 / Price">
+										<input type="text" id="l_price" placeholder="输入你的商品价格 / Price" onkeyup="this.value=this.value.replace(/[^\d\.]/g)">
 									</div>
 								</div>
 
@@ -381,7 +381,7 @@
 
 								<div class="am-form-group">
 									<div class="am-u-sm-9 am-u-sm-push-3">
-										<button type="button" class="am-btn am-btn-primary">保存修改</button>
+										<button type="submit" class="am-btn am-btn-primary">保存修改</button>
 									</div>
 								</div>
 							</form>

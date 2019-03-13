@@ -287,7 +287,7 @@
 
 
 						<div class="am-u-sm-12 am-u-md-9">
-							<form class="am-form am-form-horizontal">
+							<form class="am-form am-form-horizontal" >
 								<div class="am-form-group">
 									<label for="l_name" class="am-u-sm-3 am-form-label">商品名称</label>
 									<div class="am-u-sm-9">

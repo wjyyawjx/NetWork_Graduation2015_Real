@@ -11,9 +11,9 @@ public interface LaboratoryService {
 
 	public List<Laboratory> list();
 
-	public Laboratory get(long id);
+	public Laboratory get(Integer lId);
 
-	public void delete(long uid);
+	public void delete(Integer lId);
 
 	public void update(Laboratory lab);
 
