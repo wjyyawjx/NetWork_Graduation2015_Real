@@ -44,11 +44,9 @@ public class LoginController {
 			session.setAttribute("subject", subject);
 			User user = userService.findUserName(num);
 			httpSession.setAttribute("User", user);
-			List<Laboratory> lab = laboratoryService.findLab();
-//			List<TemHum> tem = temHumService.selectByTemId();
-//			List<Place> place = placeService.selectByPlaceId();
-			System.out.println(lab.size());
-			httpSession.setAttribute("Lab", lab);
+			
+			List<Laboratory> labs = laboratoryService.findLab();
+			httpSession.setAttribute("Lab", labs);
 			return "redirect:menu";
 
 		} catch (AuthenticationException e) {
@@ -73,16 +71,7 @@ public class LoginController {
             e.printStackTrace();
         }
     }
- 
-    /**
-     * 验证登录
-     * @param model
-     * @param userName
-     * @param password
-     * @param inputStr
-     * @param session
-     * @return
-     */
+  
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(Model model, String num, String pwd,String randomjsp, int type,  String name, String tel, String sex, String email, Integer age, HttpSession session) {
         //从session中获取随机数
@@ -115,7 +104,6 @@ public class LoginController {
 		return "register";
     }
     
-    
     @RequestMapping(value = "/findpwd", method = RequestMethod.POST)
     public String findpwd(Model model, String num, String pwd, String randomjsp, HttpSession session) {
         //从session中获取随机数
@@ -145,7 +133,6 @@ public class LoginController {
 		return "findpwd";
     }
     
-
 	@RequestMapping("/tologin")
 	public String toLogin() {
 		return "login";

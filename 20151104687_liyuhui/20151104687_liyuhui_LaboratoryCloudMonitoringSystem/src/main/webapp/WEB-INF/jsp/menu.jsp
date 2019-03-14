@@ -84,12 +84,7 @@
 
 
                     <!-- Projects -->
-                    <div class="s-widget m-b-25">
-                        <h2 class="tile-title">
-                            实验室温湿度
-                        </h2>
-                        
-                    </div>
+                    
                 </div>
                 
                 <!-- Side Menu -->
@@ -178,20 +173,14 @@
                 		<td>所属教学楼</td>
                 		<td>所属院系</td>
                 		<td>门牌号</td>
-                		<td>当前温度</td>
-                		<td>当前湿度</td>
-                		<td>获取时间</td>
                 	</tr>
                 	<c:forEach items="${Lab}" var="lab">
                 	<tr>
-                		<td>${lab.lName}</td>
+                		<td><a href="/config/showLab?lId=${lab.lId}">${lab.lName}</a></td>
                 		<td>${lab.campus}</td>
                 		<td>${lab.building}</td>
                 		<td>${lab.major}</td>
                 		<td>${lab.houseId}</td>
-                		<td>${lab.temperature}</td>
-                		<td>${lab.humidity}</td>
-                		<td>${lab.time}</td>
                 	</tr>
                 	</c:forEach>
                 </table>

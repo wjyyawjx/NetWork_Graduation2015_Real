@@ -87,11 +87,10 @@
   
   <select id="selectLab" parameterType="com.lyh.springboot.pojo.Laboratory" resultMap="BaseResultMap">
     select
-    l_id, l_name, campus, building, house_id, major, time, temperature, humidity
-    from laboratory, place, tem_hum
-    where laboratory.place_id = place.place_id and laboratory.tem_id = tem_hum.tem_id
-	order by time desc
-	limit 3
+    l_id, l_name, campus, building, house_id, major, laboratory.place_id, tem_id
+    from laboratory, place
+    where laboratory.place_id = place.place_id 
+	order by l_id desc
   </select>
   
   
