@@ -28,7 +28,7 @@ public class GoodsController {
 		private GoodsService goodsService;
 	@RequestMapping(value = "/addgoods.action", method = RequestMethod.POST)
 	public String addGoods(Goods goods, String l_name, String l_image, Integer l_price, String l_info, String l_type,
-			Date l_out_time, Date l_in_time, String l_addr,Integer u_id) throws Exception {
+			String l_out_time, Date l_in_time, String l_addr,Integer u_id) throws Exception {
 		System.out.println(l_name);
 		l_price = Integer.valueOf(l_price).intValue();
 		 //保存数据库的路径  

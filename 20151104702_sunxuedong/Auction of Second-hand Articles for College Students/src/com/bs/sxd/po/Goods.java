@@ -13,7 +13,7 @@ public class Goods implements Serializable  {
 	private Integer l_price;
 	private String l_info;
 	private String l_type;
-	private Date l_out_time;
+	private String l_out_time;
 	private Date l_in_time;
 	private Integer u_id;
 	private String l_addr;
@@ -62,10 +62,10 @@ public class Goods implements Serializable  {
 	public void setL_type(String l_type) {
 		this.l_type = l_type;
 	}
-	public Date getL_out_time() {
+	public String getL_out_time() {
 		return l_out_time;
 	}
-	public void setL_out_time(Date l_out_time) {
+	public void setL_out_time(String l_out_time) {
 		this.l_out_time = l_out_time;
 	}
 	public Date getL_in_time() {
