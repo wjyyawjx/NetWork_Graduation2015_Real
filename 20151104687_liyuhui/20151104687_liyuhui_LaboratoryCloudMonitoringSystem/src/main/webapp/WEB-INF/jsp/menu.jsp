@@ -120,6 +120,7 @@
                         </a>
                         <ul class="list-unstyled menu-item">
                         	<li><a href="${pageContext.request.contextPath }/config/listLab">实验室管理</a></li>
+                        	<li><a href="${pageContext.request.contextPath }/config/listPlace">位置管理</a></li>
                             <li><a href="${pageContext.request.contextPath }/config/listUser">用户管理</a></li>
                             <li><a href="${pageContext.request.contextPath }/config/listRole">角色管理</a></li>
                             <li><a href="${pageContext.request.contextPath }/config/listPermission">权限管理</a></li>                     

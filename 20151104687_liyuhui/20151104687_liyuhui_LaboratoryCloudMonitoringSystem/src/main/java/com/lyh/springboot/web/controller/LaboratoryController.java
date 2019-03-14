@@ -57,7 +57,7 @@ public class LaboratoryController {
 			lab_user.put(laboratory, user);
 		}
 		model.addAttribute("lab_user", lab_user);
-
+		
 		return "listLab";
 	}
 	
