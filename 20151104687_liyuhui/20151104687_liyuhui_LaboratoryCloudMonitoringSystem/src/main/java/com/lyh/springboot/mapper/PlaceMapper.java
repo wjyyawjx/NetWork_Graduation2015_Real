@@ -27,4 +27,6 @@ public interface PlaceMapper {
     int updateByPrimaryKeySelective(Place record);
 
     int updateByPrimaryKey(Place record);
+
+	Place selectByLabId(String placeId);
 }

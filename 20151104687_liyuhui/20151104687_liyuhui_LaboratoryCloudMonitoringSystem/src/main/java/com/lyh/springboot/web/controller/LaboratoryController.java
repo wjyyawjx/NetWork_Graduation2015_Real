@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lyh.springboot.pojo.Laboratory;
 import com.lyh.springboot.pojo.Permission;
+import com.lyh.springboot.pojo.Place;
 import com.lyh.springboot.pojo.Role;
 import com.lyh.springboot.pojo.User;
 import com.lyh.springboot.service.LaboratoryService;
+import com.lyh.springboot.service.PlaceService;
 import com.lyh.springboot.service.LabUserService;
 import com.lyh.springboot.service.UserService;
 
@@ -28,6 +30,8 @@ public class LaboratoryController {
 	LabUserService labUserService;
 	@Autowired
 	LaboratoryService laboratoryService;
+	@Autowired
+	PlaceService placeService;
 	
 	@RequestMapping("listLab")     //查询
 	public String listLab(Model model) {
@@ -95,6 +99,12 @@ public class LaboratoryController {
 
 		List<User> users = userService.listUser(lab);
 		model.addAttribute("currentusers", users);
+		
+		List<Place> places = placeService.listPlace();
+		model.addAttribute("places", places);
+		
+		Place place = placeService.selectPlace(lab);
+		model.addAttribute("place", place);
 
 		return "editLab";
 	}
@@ -106,8 +116,9 @@ public class LaboratoryController {
 	}
 
 	@RequestMapping("updateLab") 
-	public String update(Laboratory lab, long[] userIds) {	
+	public String update(Laboratory lab, long[] userIds, String placeId) {	
 		System.out.println(lab.getlName());
+		lab.setPlaceId(placeId);
 		labUserService.setUser(lab, userIds);
 		laboratoryService.update(lab);
 		return "redirect:listLab";

@@ -27,7 +27,18 @@
                     </c:forEach>
                     <input type="checkbox"  ${hasPermission?"checked='checked'":"" } name="userIds" value="${us.id}"> ${us.name}<br>
                 </c:forEach>
-            </div>           
+            </div>   
+            <br><br>
+            	实验室位置：<br>
+            <div style="text-align:left;width:300px;margin:0px auto;padding-left:50px">
+                <c:forEach items="${places}" var="ps">
+                    <c:set var="hasPermission" value="false" />
+                        <c:if test="${ps.id==place.id}">
+                            <c:set var="hasPermission" value="true" />
+                        </c:if>
+                    <input type="radio"  ${hasPermission?"checked='checked'":"" } name="placeId" value="${ps.placeId}"> ${ps.campus}${ps.building}${ps.houseId},${ps.major}<br>
+                </c:forEach>
+            </div>          
              
             <input type="hidden" name="lId" value="${lab.lId}">
             <input type="submit" value="修改">
