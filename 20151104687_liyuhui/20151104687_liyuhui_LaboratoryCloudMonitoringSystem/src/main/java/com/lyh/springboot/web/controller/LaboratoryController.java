@@ -4,17 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.shiro.crypto.SecureRandomNumberGenerator;
-import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lyh.springboot.pojo.Laboratory;
-import com.lyh.springboot.pojo.Permission;
 import com.lyh.springboot.pojo.Place;
-import com.lyh.springboot.pojo.Role;
 import com.lyh.springboot.pojo.User;
 import com.lyh.springboot.service.LaboratoryService;
 import com.lyh.springboot.service.PlaceService;

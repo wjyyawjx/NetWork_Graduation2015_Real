@@ -21,12 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lyh.springboot.common.utils.RandomValidateCode;
 import com.lyh.springboot.pojo.Laboratory;
-import com.lyh.springboot.pojo.Place;
-import com.lyh.springboot.pojo.TemHum;
 import com.lyh.springboot.pojo.User;
 import com.lyh.springboot.service.LaboratoryService;
-import com.lyh.springboot.service.PlaceService;
-import com.lyh.springboot.service.TemHumService;
 import com.lyh.springboot.service.UserService;
 
 @Controller
@@ -35,10 +31,6 @@ public class LoginController {
 	private UserService userService;
 	@Autowired
 	private LaboratoryService laboratoryService;
-	@Autowired
-	private TemHumService temHumService;
-	@Autowired
-	private PlaceService placeService;
     
     @RequestMapping(value="/login",method= RequestMethod.POST)
     public String login(String num,String pwd, Model model, HttpSession httpSession){

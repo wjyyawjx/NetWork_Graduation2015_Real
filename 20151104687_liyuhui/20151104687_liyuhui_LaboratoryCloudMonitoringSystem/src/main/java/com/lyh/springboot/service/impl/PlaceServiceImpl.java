@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.lyh.springboot.mapper.PlaceMapper;
 import com.lyh.springboot.pojo.Laboratory;
-import com.lyh.springboot.pojo.PermissionExample;
 import com.lyh.springboot.pojo.Place;
 import com.lyh.springboot.pojo.PlaceExample;
 import com.lyh.springboot.service.PlaceService;
