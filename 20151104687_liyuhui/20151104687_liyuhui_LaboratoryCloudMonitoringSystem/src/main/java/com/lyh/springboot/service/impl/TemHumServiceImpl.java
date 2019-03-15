@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.lyh.springboot.mapper.TemHumMapper;
 import com.lyh.springboot.pojo.Laboratory;
-import com.lyh.springboot.pojo.PlaceExample;
 import com.lyh.springboot.pojo.TemHum;
-import com.lyh.springboot.pojo.TemHumExample;
 import com.lyh.springboot.service.TemHumService;
 
 @Service

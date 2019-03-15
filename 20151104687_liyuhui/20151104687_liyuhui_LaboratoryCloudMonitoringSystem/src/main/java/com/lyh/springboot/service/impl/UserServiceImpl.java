@@ -3,9 +3,6 @@ package com.lyh.springboot.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
-import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +27,6 @@ public class UserServiceImpl implements UserService {
 	UserRoleService userRoleService;
 	@Autowired
 	LabUserMapper labUserMapper;
-	private HttpSession session;
 	
 
 	@Override
@@ -133,6 +129,44 @@ public class UserServiceImpl implements UserService {
 		for (LabUser labUser : labUsers) {
 			User user = userMapper.selectTeachByPrimaryKey(labUser.getuId());
 			users.add(user);
+		}
+		return users;
+	}
+	
+	@Override
+	public List<User> listStu2(Laboratory laboratory) {
+		// TODO Auto-generated method stub
+		List<User> users = new ArrayList<>();
+
+		LabUserExample example = new LabUserExample();
+
+		example.createCriteria().andLIdEqualTo(laboratory.getlId());
+		List<LabUser> labUsers = labUserMapper.selectByExample(example);
+
+		for (LabUser labUser : labUsers) {
+			User user = userMapper.selectStuByPrimaryKey(labUser.getuId());
+			if(user!=null) {
+				users.add(user);
+			}
+		}
+		return users;
+	}
+	
+	@Override
+	public List<User> listTeacher2(Laboratory laboratory) {
+		// TODO Auto-generated method stub
+		List<User> users = new ArrayList<>();
+
+		LabUserExample example = new LabUserExample();
+
+		example.createCriteria().andLIdEqualTo(laboratory.getlId());
+		List<LabUser> labUsers = labUserMapper.selectByExample(example);
+
+		for (LabUser labUser : labUsers) {
+			User user = userMapper.selectTeachByPrimaryKey(labUser.getuId());
+			if(user!=null) {
+				users.add(user);
+			}
 		}
 		return users;
 	}

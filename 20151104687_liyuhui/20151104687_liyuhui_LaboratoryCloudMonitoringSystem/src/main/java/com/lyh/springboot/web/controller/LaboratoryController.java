@@ -59,7 +59,6 @@ public class LaboratoryController {
 			lab_user.put(laboratory, user);
 		}
 		model.addAttribute("lab_user", lab_user);
-		
 		return "listLab";
 	}
 	
@@ -87,7 +86,6 @@ public class LaboratoryController {
 			lab_user.put(laboratory, user);
 		}
 		model.addAttribute("lab_user", lab_user);
-
 		return "listLab";
 	}
 
@@ -95,19 +93,14 @@ public class LaboratoryController {
 	public String edit(Model model, Integer lId) {
 		Laboratory lab = laboratoryService.get(lId);
 		model.addAttribute("lab", lab);
-		
 		List<User> us = userService.list();
 		model.addAttribute("us", us);
-
 		List<User> users = userService.listUser(lab);
-		model.addAttribute("currentusers", users);
-		
+		model.addAttribute("currentusers", users);		
 		List<Place> places = placeService.listPlace();
-		model.addAttribute("places", places);
-		
+		model.addAttribute("places", places);		
 		Place place = placeService.selectPlace(lab);
 		model.addAttribute("place", place);
-
 		return "editLab";
 	}
 
@@ -139,10 +132,9 @@ public class LaboratoryController {
 	
 	@RequestMapping("showLab")
 	public String show(Model model, Laboratory l) {
-		System.out.println(l.getlId());
 		Laboratory lab = laboratoryService.get(l.getlId());
-		List<User> stu = userService.listStu(lab);
-		List<User> teach = userService.listTeacher(lab);
+		List<User> stu = userService.listStu2(lab);
+		List<User> teach = userService.listTeacher2(lab);
 		model.addAttribute("lab_stu", stu);
 		model.addAttribute("lab_teach", teach);
 		Place place = placeService.selectPlace(lab);

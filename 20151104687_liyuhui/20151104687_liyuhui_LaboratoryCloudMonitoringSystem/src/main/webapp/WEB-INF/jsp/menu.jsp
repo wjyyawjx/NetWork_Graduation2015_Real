@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -28,7 +29,7 @@
 
         <header id="header" class="media">
             <a href="" id="menu-toggle"></a> 
-            <a class="logo pull-left" href="index.html">实验室云端监管系统</a>
+            <a class="logo pull-left" href="menu.html">实验室云端监管系统</a>
             
             <div class="media-body">
                 <div class="media" id="top-menu">
@@ -166,7 +167,6 @@
                 
                 <hr class="whiter" />
                 <div class="workingroom">
-                ${skinImg}
                 <table border="1">
                 	<tr>
                 		<td>实验室名称</td>
