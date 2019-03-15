@@ -103,6 +103,30 @@ public class LaboratoryController {
 		model.addAttribute("place", place);
 		return "editLab";
 	}
+	
+	@RequestMapping("addStu")    //修改
+	public String editStu(Model model, Integer lId) {
+		Laboratory lab = laboratoryService.get(lId);
+		model.addAttribute("lab", lab);
+		List<User> us = userService.listStu();
+		model.addAttribute("us", us);
+		List<User> users = userService.listStu2(lab);
+		model.addAttribute("currentusers", users);
+		model.addAttribute("type", "学生");
+		return "editUserByLab";
+	}
+	
+	@RequestMapping("addTeach")    //修改
+	public String editTeach(Model model, Integer lId) {
+		Laboratory lab = laboratoryService.get(lId);
+		model.addAttribute("lab", lab);
+		List<User> us = userService.listTeach();
+		model.addAttribute("us", us);
+		List<User> users = userService.listTeacher2(lab);
+		model.addAttribute("currentusers", users);
+		model.addAttribute("type", "教师");
+		return "editUserByLab";
+	}
 
 	@RequestMapping("deleteLab")   //删除
 	public String delete(Model model, Integer lId, HttpSession httpSession) {
@@ -114,7 +138,6 @@ public class LaboratoryController {
 
 	@RequestMapping("updateLab") 
 	public String update(Laboratory lab, long[] userIds, String placeId, HttpSession httpSession) {	
-		System.out.println(lab.getlName());
 		lab.setPlaceId(placeId);
 		labUserService.setUser(lab, userIds);
 		laboratoryService.update(lab);
@@ -122,7 +145,20 @@ public class LaboratoryController {
 		httpSession.setAttribute("Lab", labs);
 		return "redirect:listLab";
 	}
-
+	
+	@RequestMapping("updateUserByLab") 
+	public String updateUserByLab(Laboratory lab, long[] userIds, String TYPE, HttpSession httpSession) {	
+		List<User> users;
+		if(TYPE.equals("教师")) {
+			users = userService.listStu2(lab);
+		}else {
+			users = userService.listTeacher2(lab);
+		}
+		labUserService.setUser2(lab, userIds, users);
+		List<Laboratory> labs = laboratoryService.findLab();
+		httpSession.setAttribute("Lab", labs);
+		return "redirect:showLab?lId="+lab.getlId();
+	}
 
 	@RequestMapping("addLab")  //添加用户
 	public String add(Model model, Laboratory lab, HttpSession httpSession) {
@@ -133,6 +169,7 @@ public class LaboratoryController {
 	@RequestMapping("showLab")
 	public String show(Model model, Laboratory l) {
 		Laboratory lab = laboratoryService.get(l.getlId());
+		model.addAttribute("lab", lab);
 		List<User> stu = userService.listStu2(lab);
 		List<User> teach = userService.listTeacher2(lab);
 		model.addAttribute("lab_stu", stu);

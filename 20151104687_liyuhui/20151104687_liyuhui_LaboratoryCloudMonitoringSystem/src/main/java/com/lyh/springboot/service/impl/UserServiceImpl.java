@@ -73,7 +73,22 @@ public class UserServiceImpl implements UserService {
 		UserExample example = new UserExample();
 		example.setOrderByClause("id desc");
 		return userMapper.selectByExample(example);
+	}
+	
+	@Override
+	public List<User> listStu() {
+		// TODO Auto-generated method stub
+		UserExample example = new UserExample();
+		example.setOrderByClause("id desc");
+		return userMapper.selectStuByExample(example);
+	}
 
+	@Override
+	public List<User> listTeach() {
+		// TODO Auto-generated method stub
+		UserExample example = new UserExample();
+		example.setOrderByClause("id desc");
+		return userMapper.selectTeachByExample(example);
 	}
 
 	@Override
@@ -175,5 +190,7 @@ public class UserServiceImpl implements UserService {
 	public void skinChange(User user) {
 		userMapper.updateByPrimaryKeySelective(user);
 	}
+
+	
 
 }

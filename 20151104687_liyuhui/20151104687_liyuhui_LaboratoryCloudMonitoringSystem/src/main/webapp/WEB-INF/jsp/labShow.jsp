@@ -24,6 +24,7 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="css/icons.css" rel="stylesheet">
         <link href="css/generics.css" rel="stylesheet"> 
+        <script src="js/echarts.min.js"></script>
     </head>
     <body id="${User.color}">
 
@@ -52,7 +53,7 @@
             </div>
         </header>
         
-        <div class="clearfix"></div>
+        <div class="clearfix"></div>        
         
         <section id="main" class="p-relative" role="main">
             
@@ -166,25 +167,250 @@
                 </div>
                 
                 <hr class="whiter" />
-				${lab_place.campus}${lab_place.building}${lab_place.houseId}
-				<br><br><br>
-				 <c:forEach items="${lab_stu}" var="stu">
-				 	 	${stu.name}${stu.num}
-				 <br>
-				 </c:forEach>
-				 <br><br><br>
-				  <c:forEach items="${lab_teach}" var="teach">
-				  ${teach.name}${teach.num}
-				  <br>
-				 </c:forEach>
-				  <br><br><br>
-				 ${lab_th.temperature}${lab_th.humidity}
-				  <br><br><br>
-				  <c:forEach items="${lab_ths}" var="lab_ths">
-				  ${lab_ths.temperature}+++${lab_ths.humidity}+++${lab_ths.time}
-				  <br>
-				 </c:forEach>
-				</section>
+                <div>
+                	<a href="addTeach?lId=${lab.lId}">添加教师</a>
+                	<a href="addStu?lId=${lab.lId}">添加学生</a>
+                </div>
+                <div class="workingroom" style="width: 1500px;height:800px;font-size:20px;">
+                <table>
+                <tr>
+                	<td>${lab_place.campus}${lab_place.building}${lab_place.houseId}</td>
+                </tr>
+                <tr>
+                	<td>
+                		<table>
+                			<tr>
+                				<td>实验室学生用户</td>
+                				<td></td>
+                			</tr>
+                			<tr>
+                				<td>姓名</td>
+                				<td>学号</td>
+                			</tr>
+                			<c:forEach items="${lab_stu}" var="stu">
+                			<tr>
+                				<td>${stu.name}</td>
+                				<td>${stu.num}</td>
+                			</tr>
+                			</c:forEach>
+                		</table>
+                	</td>
+                	<td>   
+                		<div id="mychart" style="width: 600px;height:400px;">
+				        <script type="text/javascript">
+				            // 基于准备好的dom，初始化echarts实例
+				            var myChart = echarts.init(document.getElementById('mychart'));
+				            // 指定图表的配置项和数据
+				            var option = {
+				            	    backgroundColor: '#1b1b1b',
+				            	    tooltip : {
+				            	        formatter: "{a} <br/>{c} {b}"
+				            	    },
+				            	    toolbox: {
+				            	        show : true,
+				            	        feature : {
+				            	            mark : {show: true},
+				            	            restore : {show: true},
+				            	            saveAsImage : {show: true}
+				            	        }
+				            	    },
+				            	    series : [
+				            	        {
+				            	            name:'实验室湿度',
+				            	            type:'gauge',
+				            	            min:0,
+				            	            max:100,
+				            	            splitNumber:10,
+				            	            center : ['70%', '55%'],
+				            	            radius: '60%',
+				            	            axisLine: {            // 坐标轴线
+				            	                lineStyle: {       // 属性lineStyle控制线条样式
+				            	                    color: [[0.09, 'lime'],[0.82, '#1e90ff'],[1, '#ff4500']],
+				            	                    width: 3,
+				            	                    shadowColor : '#fff', //默认透明
+				            	                    shadowBlur: 10
+				            	                }
+				            	            },
+				            	            axisLabel: {            // 坐标轴小标记
+				            	                textStyle: {       // 属性lineStyle控制线条样式
+				            	                    fontWeight: 'bolder',
+				            	                    color: '#fff',
+				            	                    shadowColor : '#fff', //默认透明
+				            	                    shadowBlur: 10
+				            	                }
+				            	            },
+				            	            axisTick: {            // 坐标轴小标记
+				            	                length :15,        // 属性length控制线长
+				            	                lineStyle: {       // 属性lineStyle控制线条样式
+				            	                    color: 'auto',
+				            	                    shadowColor : '#fff', //默认透明
+				            	                    shadowBlur: 10
+				            	                }
+				            	            },
+				            	            splitLine: {           // 分隔线
+				            	                length :25,         // 属性length控制线长
+				            	                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+				            	                    width:3,
+				            	                    color: '#fff',
+				            	                    shadowColor : '#fff', //默认透明
+				            	                    shadowBlur: 10
+				            	                }
+				            	            },
+				            	            pointer: {           // 分隔线
+				            	                shadowColor : '#fff', //默认透明
+				            	                shadowBlur: 5
+				            	            },
+				            	            title : {
+				            	                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+				            	                    fontWeight: 'bolder',
+				            	                    fontSize: 20,
+				            	                    fontStyle: 'italic',
+				            	                    color: '#fff',
+				            	                    shadowColor : '#fff', //默认透明
+				            	                    shadowBlur: 10
+				            	                }
+				            	            },
+				            	            detail : {
+				            	                //backgroundColor: 'rgba(30,144,255,0.8)',
+				            	                //borderWidth: 1,
+				            	                borderColor: '#fff',
+				            	                shadowColor : '#fff', //默认透明
+				            	                shadowBlur: 5,
+				            	                offsetCenter: [0, '50%'],       // x, y，单位px
+				            	                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+				            	                    fontWeight: 'bolder',
+				            	                    color: '#fff'
+				            	                }
+				            	            },
+				            	            data:[{value: ${lab_th.humidity},name: '湿度 %'}]
+				            	        },
+				            	        {
+				            	            name:'实验室温度',
+				            	            type:'gauge',
+				            	            center : ['38%', '55%'],    // 默认全局居中
+				            	            radius : '60%',
+				            	            min:0,
+				            	            max:50,
+				            	            endAngle:45,
+				            	            splitNumber:5,
+				            	            axisLine: {            // 坐标轴线
+				            	                lineStyle: {       // 属性lineStyle控制线条样式
+				            	                    color: [[0.29, 'lime'],[0.86, '#1e90ff'],[1, '#ff4500']],
+				            	                    width: 2,
+				            	                    shadowColor : '#fff', //默认透明
+				            	                    shadowBlur: 10
+				            	                }
+				            	            },
+				            	            axisLabel: {            // 坐标轴小标记
+				            	                textStyle: {       // 属性lineStyle控制线条样式
+				            	                    fontWeight: 'bolder',
+				            	                    color: '#fff',
+				            	                    shadowColor : '#fff', //默认透明
+				            	                    shadowBlur: 10
+				            	                }
+				            	            },
+				            	            axisTick: {            // 坐标轴小标记
+				            	                length :12,        // 属性length控制线长
+				            	                lineStyle: {       // 属性lineStyle控制线条样式
+				            	                    color: 'auto',
+				            	                    shadowColor : '#fff', //默认透明
+				            	                    shadowBlur: 10
+				            	                }
+				            	            },
+				            	            splitLine: {           // 分隔线
+				            	                length :20,         // 属性length控制线长
+				            	                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+				            	                    width:3,
+				            	                    color: '#fff',
+				            	                    shadowColor : '#fff', //默认透明
+				            	                    shadowBlur: 10
+				            	                }
+				            	            },
+				            	            pointer: {
+				            	                width:5,
+				            	                shadowColor : '#fff', //默认透明
+				            	                shadowBlur: 5
+				            	            },
+				            	            title : {
+				            	                offsetCenter: [0, '-30%'],       // x, y，单位px
+				            	                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+				            	                    fontWeight: 'bolder',
+				            	                    fontStyle: 'italic',
+				            	                    color: '#fff',
+				            	                    shadowColor : '#fff', //默认透明
+				            	                    shadowBlur: 10
+				            	                }
+				            	            },
+				            	            detail : {
+				            	                backgroundColor: 'rgba(30,144,255,0.8)',
+				            	                borderWidth: 1,
+				            	                borderColor: '#fff',
+				            	                shadowColor : '#fff', //默认透明
+				            	                shadowBlur: 5,
+				            	                width: 80,
+				            	                height:30,
+				            	                offsetCenter: [20, 50],       // x, y，单位px
+				            	                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+				            	                    fontWeight: 'bolder',
+				            	                    color: '#fff'
+				            	                }
+				            	            },
+				            	            data:[{value: ${lab_th.temperature}, name: '温度 ℃'}]
+				            	        }
+				            	    ]
+				            	};
+				            // 使用刚指定的配置项和数据显示图表。
+				            myChart.setOption(option);
+				        </script>
+				        </div>
+                	</td>
+                </tr>
+                <tr>
+                	<td>
+                		<table>
+                			<tr>
+                				<td>实验室教师用户</td>
+                				<td></td>
+                			</tr>
+                			<tr>
+                				<td>姓名</td>
+                				<td>工号</td>
+                			</tr>
+                			<c:forEach items="${lab_teach}" var="teach">
+                			<tr>
+                				<td>${teach.name}</td>
+                				<td>${teach.num}</td>
+                			</tr>
+                			</c:forEach>
+                		</table>
+                	</td>
+                	<td>
+                		<table>
+                			<tr>
+                				<td>实验室温湿度记录</td>
+                				<td></td>
+                			</tr>
+                			<tr>
+                				<td>编号</td>
+                				<td>时间</td>
+                				<td>温度</td>
+                				<td>湿度</td>
+                			</tr>
+                			<c:forEach items="${lab_ths}" var="lab_ths">
+                			<tr>
+                				<td>${lab_ths.id}</td>
+                				<td>${lab_ths.time}</td>
+                				<td>${lab_ths.temperature}</td>
+                				<td>${lab_ths.humidity}</td>
+                			</tr>
+                			</c:forEach>
+                		</table>
+                	</td>
+                </tr>
+                
+                </table>
+                </div>
+			</section>
 
         </section>
         
@@ -196,17 +422,6 @@
 
         <!-- Bootstrap -->
         <script src="js/bootstrap.min.js"></script>
-
-        <!-- Charts -->
-        <script src="js/charts/jquery.flot.js"></script> <!-- Flot Main -->
-        <script src="js/charts/jquery.flot.time.js"></script> <!-- Flot sub -->
-        <script src="js/charts/jquery.flot.animator.min.js"></script> <!-- Flot sub -->
-        <script src="js/charts/jquery.flot.resize.min.js"></script> <!-- Flot sub - for repaint when resizing the screen -->
-
-        <script src="js/sparkline.min.js"></script> <!-- Sparkline - Tiny charts -->
-        <script src="js/easypiechart.js"></script> <!-- EasyPieChart - Animated Pie Charts -->
-        <script src="js/charts.js"></script> <!-- All the above chart related functions -->
-
 
         <!--  Form Related -->
         <script src="js/icheck.js"></script> <!-- Custom Checkbox + Radio -->
@@ -221,4 +436,5 @@
 
         <!-- All JS functions -->
         <script src="js/functions.js"></script>
+        <script src="${pageContext.request.contextPath }/js/echarts.min.js"></script>
     </body>

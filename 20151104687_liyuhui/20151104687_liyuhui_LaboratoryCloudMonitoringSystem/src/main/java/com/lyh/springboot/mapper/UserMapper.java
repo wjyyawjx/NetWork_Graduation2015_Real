@@ -33,4 +33,8 @@ public interface UserMapper {
 	User selectStuByPrimaryKey(Long id);
 
 	User selectTeachByPrimaryKey(Long id);
+
+	List<User> selectStuByExample(UserExample example);
+
+	List<User> selectTeachByExample(UserExample example);
 }
