@@ -24,7 +24,7 @@
         <link href="css/icons.css" rel="stylesheet">
         <link href="css/generics.css" rel="stylesheet"> 
     </head>
-    <body id="skin-blur-blue">
+    <body id="${User.color}">
 
         <header id="header" class="media">
             <a href="" id="menu-toggle"></a> 
@@ -166,6 +166,7 @@
                 
                 <hr class="whiter" />
                 <div class="workingroom">
+                ${skinImg}
                 <table border="1">
                 	<tr>
                 		<td>实验室名称</td>

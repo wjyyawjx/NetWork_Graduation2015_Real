@@ -13,6 +13,7 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="color" jdbcType="VARCHAR" property="color" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, num, password, salt, sex, age, tel, email, type, image
+    id, name, num, password, salt, sex, age, tel, email, type, image, color
   </sql>
   <select id="selectByExample" parameterType="com.lyh.springboot.pojo.UserExample" resultMap="BaseResultMap">
     select
@@ -98,8 +99,7 @@
   </select>
   
   
-  
-  <select id="selectStuByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <select id="selectStuByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
@@ -112,12 +112,10 @@
     where id = #{id,jdbcType=BIGINT} and type = "教师"
   </select>
   <select id="selectByName" parameterType="java.lang.String" resultType="com.lyh.springboot.pojo.User">
-    select id, name, num, password, salt, sex, age, tel, email, type, image
+    select id, name, num, password, salt, sex, age, tel, email, type, image, color
     from user
     where num = #{num,jdbcType=VARCHAR}
   </select>
-  
-  
   
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
@@ -134,11 +132,11 @@
     insert into user (id, name, num, 
       password, salt, sex, 
       age, tel, email, type, 
-      image)
+      image, color)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{num,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
       #{age,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
-      #{image,jdbcType=VARCHAR})
+      #{image,jdbcType=VARCHAR}, #{color,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lyh.springboot.pojo.User">
     insert into user
@@ -176,6 +174,9 @@
       <if test="image != null">
         image,
       </if>
+      <if test="color != null">
+        color,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -210,6 +211,9 @@
       </if>
       <if test="image != null">
         #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null">
+        #{color,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -255,6 +259,9 @@
       <if test="record.image != null">
         image = #{record.image,jdbcType=VARCHAR},
       </if>
+      <if test="record.color != null">
+        color = #{record.color,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -272,7 +279,8 @@
       tel = #{record.tel,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=VARCHAR},
-      image = #{record.image,jdbcType=VARCHAR}
+      image = #{record.image,jdbcType=VARCHAR},
+      color = #{record.color,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -310,6 +318,9 @@
       <if test="image != null">
         image = #{image,jdbcType=VARCHAR},
       </if>
+      <if test="color != null">
+        color = #{color,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -324,7 +335,9 @@
       tel = #{tel,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
-      image = #{image,jdbcType=VARCHAR}
+      image = #{image,jdbcType=VARCHAR},
+      color = #{color,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
 </mapper>

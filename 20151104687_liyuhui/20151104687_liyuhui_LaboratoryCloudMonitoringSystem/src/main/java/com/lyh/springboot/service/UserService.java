@@ -28,4 +28,6 @@ public interface UserService {
 	public List<User> listStu(Laboratory laboratory);
 	
 	public List<User> listTeacher(Laboratory laboratory);
+
+	public void skinChange(User user);
 }

@@ -25,6 +25,8 @@ public class User implements Serializable {
 
     private String image;
 
+    private String color;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -113,5 +115,13 @@ public class User implements Serializable {
 
     public void setImage(String image) {
         this.image = image == null ? null : image.trim();
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color == null ? null : color.trim();
     }
 }

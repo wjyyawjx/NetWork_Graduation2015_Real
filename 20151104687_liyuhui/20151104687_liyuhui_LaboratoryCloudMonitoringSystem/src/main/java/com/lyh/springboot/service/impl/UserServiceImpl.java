@@ -3,6 +3,9 @@ package com.lyh.springboot.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +30,7 @@ public class UserServiceImpl implements UserService {
 	UserRoleService userRoleService;
 	@Autowired
 	LabUserMapper labUserMapper;
+	private HttpSession session;
 	
 
 	@Override
@@ -131,6 +135,11 @@ public class UserServiceImpl implements UserService {
 			users.add(user);
 		}
 		return users;
+	}
+
+	@Override
+	public void skinChange(User user) {
+		userMapper.updateByPrimaryKeySelective(user);
 	}
 
 }

@@ -4,14 +4,14 @@ $(document).ready(function(){
     -----------------------------------------------------------*/
     
     var settings =  '<a id="settings" href="#changeSkin" data-toggle="modal">' +
-			'<i class="fa fa-gear"></i> Change Skin' +
+			'<i class="fa fa-gear"></i> 更改背景' +
 		    '</a>' +   
 		    '<div class="modal fade" id="changeSkin" tabindex="-1" role="dialog" aria-hidden="true">' +
 			'<div class="modal-dialog modal-lg">' +
 			    '<div class="modal-content">' +
 				'<div class="modal-header">' +
 				    '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
-				    '<h4 class="modal-title">Change Template Skin</h4>' +
+				    '<h4 class="modal-title">选择背景图片</h4>' +
 				'</div>' +
 				'<div class="modal-body">' +
 				    '<div class="row template-skins">' +
@@ -67,6 +67,7 @@ $(document).ready(function(){
     $('body').on('click', '.template-skins > a', function(e){
 	e.preventDefault();
 	var skin = $(this).data('skin');
+	window.location.href="skinChange?color="+skin;
 	$('body').attr('id', skin);
 	$('#changeSkin').modal('hide');
     });
