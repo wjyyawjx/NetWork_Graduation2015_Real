@@ -6,6 +6,7 @@
     <result column="l_name" jdbcType="VARCHAR" property="lName" />
     <result column="place_id" jdbcType="CHAR" property="placeId" />
     <result column="tem_id" jdbcType="INTEGER" property="temId" />
+    <result column="house_id" jdbcType="CHAR" property="houseId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -82,21 +83,14 @@
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
-  </select>
+  </select>  
   
-  
-  <select id="selectLab" parameterType="com.lyh.springboot.pojo.LaboratoryExample" resultMap="BaseResultMap">
+  <select id="selectLab" parameterType="com.lyh.springboot.pojo.Laboratory" resultMap="BaseResultMap">
     select
-    <if test="distinct">
-      distinct
-    </if>
-    'true' as QUERYID,
-    l_id, l_name, campus, building, house_id, major, time, temperature, humidity
-    from laboratory, place, tem_hum
-    where laboratory.place_id = place.place.id and laboratory.tem_id = tem_hum.tem_id
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
+    l_id, l_name, campus, building, house_id, major, laboratory.place_id, tem_id
+    from laboratory, place
+    where laboratory.place_id = place.place_id 
+	order by l_id desc
   </select>
   
   
@@ -106,7 +100,7 @@
     from laboratory
     where l_id = #{lId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from laboratory
     where l_id = #{lId,jdbcType=INTEGER}
   </delete>

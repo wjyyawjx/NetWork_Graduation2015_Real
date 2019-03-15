@@ -25,9 +25,7 @@ import com.yidu.service.RecordService;
  * <p>
  *  前端控制器
  * </p>
- *
- * @author wuandqi
- * @since 2018-10-17
+
  */
 @Controller
 @RequestMapping("/record")

@@ -3,11 +3,22 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.bs.sxd.dao.UserDao">
-  <!-- 查询用户 -->
-  <select id="findUser" parameterType="String" resultType="User">
-    select *
-    from user
-    where username = #{username}
-    and password = #{password}
-  </select>
+	<!-- 查询用户 -->
+	<select id="findUser" parameterType="String" resultType="User">
+		select *
+		from user
+		where username = #{username}
+		and password = #{password}
+	</select>
+	<insert id="addUser" parameterType="User" useGeneratedKeys="true"
+		keyProperty="id">
+		<!--useGeneratedKeys:使用自增主键获取主键值策略 keyProperty:指定对应主键属性名(即获取主键值之后,赋值给bean的哪个属性) -->
+		insert into
+		user(username,password,phone,sex,qq,university,college,adreess,type)
+		values(
+		#{username},#{password},#{phone},#{sex},#{qq},#{university},#{college},#{adreess},#{type})
+	</insert>
+	<select id="findByUserName" parameterType="String" resultType="User">
+		select * from user where username = #{username}
+	</select>
 </mapper>

@@ -1,0 +1,121 @@
+
+			#item{width:100%;}
+			#item_left{margin: 0px;width:60px;margin-left: 100px;position: relative;}
+			#item_left>ul>li{width:60px;height:80px;margin-bottom: 30px;margin-left: -30px;}
+			#item_left>ul>li>img{width:100%;height:100%;}
+			#item_center{width:350px;height:410px;position: relative;background:white;margin-top: -440px;margin-left: 250px;}
+			#item_center>img{width:100%;height:100%;background: white;}
+			#item_right{position: absolute;margin-top:-400px;margin-left:680px;width:350px;font-size: 12px;}
+			#size{margin-top: -18px;margin-left: 45px;width:250px;position: relative;}
+			#size>span{padding:0px 17px 0px 17px;border:1px solid #dedede;margin-right: 10px;margin-bottom:5px;position: relative;float: left;}
+			#color>img{width:20px;height:20px;float:left;margin-right: 10px;}
+			#color{position: relative;margin-top: -18px;margin-left:45px; }
+			#cart{padding:10px 55px 10px 55px;font-size:13px;cursor: pointer;background: black;color:white;}
+			#policy>a{color:gray;font-size:11px;margin-right: 10px;}
+			#policy{margin-top:17px;color:gray;	}
+			#hobby{margin-left: -43px;margin-top:10px}
+			#hobby>ul>li{font-size: 11px;float:left;margin-right: 25px;}
+			#item_bottom{margin-top:20px;margin-left:19.5%;position:relative;}
+			#item_bottom>a{background:#f4f4f4;width:150px;font-size: 12px;padding: 5px 30px 5px 30px;margin-right: 10px}
+			#showbox{
+				display:none;
+				position:absolute;
+				left:675px;
+				top:130px;
+				width:350px;
+				height:320px;
+				border:1px solid #ccc;
+				z-index:2;
+			}
+			.left{
+				width:70%;
+				margin-left:250px;
+				padding:0px;
+				position:relative;
+				margin-top: 20px;
+			}
+			#pay  .first-col {
+			    width: 150px;
+			    border-right: 1px solid #dcdddd;
+			    text-align: center;
+			    vertical-align: middle;
+			}
+			#pay td {
+			    text-align: left;
+				font-size: 13px;
+				 height: 150px;
+				 padding-left: 50px;
+				 padding-right: 50px;
+			}
+			#pay td p{
+				margin-bottom: 10px;
+			}
+			#pay td span{
+				font-size:10px;
+				color: #727171;
+			}
+			#pay .pd-pay {
+			   background-color: #f7f8f8;
+			}
+			#pay .pd-dispatching {
+			    background-color: #efefef;
+			}
+			#pay td ul{
+			    list-style: none;
+			    padding-left: -60px;
+			    margin: 0;
+			    padding: 0;
+				font-size:10px;
+				color: #727171;
+			}
+			#pay td ul li{
+				margin-top: 5px;
+			}
+			#hoverbox{
+					display:none;
+					position:absolute;
+					top:0;
+					background:pink;
+					border:1px solid #09f;
+					height:75px;
+					width:100px;
+					cursor:pointer;
+					z-index:10;
+			}
+			.form-item{
+				font-size: 12px;
+				color:#717171;
+			}
+			.submitBtn{
+				width:70px;
+				height:25px;
+				border:1px solid #c0c0c0;
+				font-size: 12px;
+				margin-top: 10px;
+			}
+			.p-quantity a{
+				position: absolute;
+			}
+			.btn-decrease{
+				width:12px;
+				height:8px;
+				margin-top:0.5px;
+				margin-left: -15px;
+			}
+			.btn-decrease img{
+				width:100%;
+				height:100%;
+			}
+			.btn-increase{
+				width:12px;
+				height:8px;
+				margin-left: -15px;
+				margin-top:9.5px;
+			}
+			.btn-increase img{
+				width:100%;
+				height:100%;
+			}
+			#size>span:hover{
+				cursor: pointer;
+			}

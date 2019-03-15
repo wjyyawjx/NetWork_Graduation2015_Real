@@ -13,6 +13,8 @@
         <title>实验室云端监管系统</title>
             
         <!-- CSS -->
+        <link rel="stylesheet" type="text/css"
+	href="superAdministrator/css/style.css" />
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/animate.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -82,12 +84,7 @@
 
 
                     <!-- Projects -->
-                    <div class="s-widget m-b-25">
-                        <h2 class="tile-title">
-                            实验室温湿度
-                        </h2>
-                        
-                    </div>
+                    
                 </div>
                 
                 <!-- Side Menu -->
@@ -102,19 +99,32 @@
                             <span class="menu-item">我的信息</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="sa-side-table" href="${pageContext.request.contextPath }/config/listUser">
-                            <span class="menu-item">用户管理</span>
+                    <li class="dropdown">
+                        <a class="sa-side-folder" href="">
+                            <span class="menu-item">实验室用户信息</span>
                         </a>
+                        <ul class="list-unstyled menu-item">
+                        	<li><a href="${pageContext.request.contextPath }/config/listAll">实验室全部用户信息管理</a></li>
+                        	<li><a href="${pageContext.request.contextPath }/config/listStu">实验室学生用户信息管理</a></li>
+                        	<li><a href="${pageContext.request.contextPath }/config/listTeach">实验室教师用户信息管理</a></li>
+                        </ul>
                     </li>
-                    <li>
-                        <a class="sa-side-folder" href="${pageContext.request.contextPath }/config/listRole">
-                            <span class="menu-item">角色管理</span>
+                    <li class="dropdown">
+                        <a class="sa-side-table" href="">
+                            <span class="menu-item">超级管理</span>
                         </a>
+                        <ul class="list-unstyled menu-item">
+                        	<li><a href="${pageContext.request.contextPath }/config/listLab">实验室管理</a></li>
+                        	<li><a href="${pageContext.request.contextPath }/config/listPlace">位置管理</a></li>
+                            <li><a href="${pageContext.request.contextPath }/config/listUser">用户管理</a></li>
+                            <li><a href="${pageContext.request.contextPath }/config/listRole">角色管理</a></li>
+                            <li><a href="${pageContext.request.contextPath }/config/listPermission">权限管理</a></li>                     
+                        </ul>
                     </li>
+                    
                     <li>
-                        <a class="sa-side-chart" href="${pageContext.request.contextPath }/config/listPermission">
-                            <span class="menu-item">权限管理</span>
+                        <a class="sa-side-chart" href="">
+                            <span class="menu-item">****</span>
                         </a>
                     </li>
                     <li>
@@ -155,18 +165,26 @@
                 </div>
                 
                 <hr class="whiter" />
-				<c:forEach items="${Lab}" var="lab">
-					${lab.lId}
-					${lab.lName}
-					${lab.campus}
-					${lab.building}
-					${lab.houseId}
-					${lab.major}
-					${lab.time}
-					${lab.temperature}
-					${lab.humidity}
-
-				</c:forEach>
+                <div class="workingroom">
+                <table border="1">
+                	<tr>
+                		<td>实验室名称</td>
+                		<td>所属校区</td>
+                		<td>所属教学楼</td>
+                		<td>所属院系</td>
+                		<td>门牌号</td>
+                	</tr>
+                	<c:forEach items="${Lab}" var="lab">
+                	<tr>
+                		<td><a href="/config/showLab?lId=${lab.lId}">${lab.lName}</a></td>
+                		<td>${lab.campus}</td>
+                		<td>${lab.building}</td>
+                		<td>${lab.major}</td>
+                		<td>${lab.houseId}</td>
+                	</tr>
+                	</c:forEach>
+                </table>
+				</div>
             </section>
 
         </section>

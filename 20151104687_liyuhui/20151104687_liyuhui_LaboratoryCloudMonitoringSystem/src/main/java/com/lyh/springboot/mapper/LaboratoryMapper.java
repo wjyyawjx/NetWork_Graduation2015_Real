@@ -10,7 +10,7 @@ public interface LaboratoryMapper {
 
     int deleteByExample(LaboratoryExample example);
 
-    int deleteByPrimaryKey(Integer lId);
+    int deleteByPrimaryKey(long lId);
 
     int insert(Laboratory record);
 
@@ -29,4 +29,5 @@ public interface LaboratoryMapper {
     int updateByPrimaryKey(Laboratory record);
 
 	List<Laboratory> selectLab(LaboratoryExample example);
+
 }

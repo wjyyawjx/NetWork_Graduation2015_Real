@@ -7,9 +7,7 @@ import com.locker.domain.User;
 
 /**
  * 
- * @author wuqi
- * @date 2018年10月23日
- * @version 1.0
+ 
  */
 public interface UserService {
 

@@ -109,5 +109,10 @@ $(document).ready(function() {
   <dd>
   </dd>
 </dl>
+<!-- 时钟控件 -->
+<embed wmode="transparent" src="admin/honehone_clock_tr.swf" quality="high" bgcolor="#FDF6E3" width="220" height="110" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+
+
+
 </body>
 </html>

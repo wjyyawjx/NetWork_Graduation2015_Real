@@ -133,6 +133,25 @@ public class AdminDao {
 			}
 			return Array;
 		}
+		
+		// 修改密码
+		public void UploadPwd(int uid, String pwd) {
+			// TODO Auto-generated method stub
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement pstmt = null;
+			String sql = "update user set pwd=?   where uid =?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, pwd);
+				pstmt.setInt(2, uid);
+				pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBUtil.closeJDBC(null, pstmt, conn);
+			}
+		}
 	
 }
 

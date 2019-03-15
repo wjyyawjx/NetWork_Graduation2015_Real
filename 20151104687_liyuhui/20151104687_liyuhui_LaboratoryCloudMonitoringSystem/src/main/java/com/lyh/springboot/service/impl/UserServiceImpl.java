@@ -1,11 +1,16 @@
 package com.lyh.springboot.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lyh.springboot.mapper.LabUserMapper;
 import com.lyh.springboot.mapper.UserMapper;
+import com.lyh.springboot.pojo.LabUser;
+import com.lyh.springboot.pojo.LabUserExample;
+import com.lyh.springboot.pojo.Laboratory;
 import com.lyh.springboot.pojo.User;
 import com.lyh.springboot.pojo.UserExample;
 import com.lyh.springboot.service.UserRoleService;
@@ -20,6 +25,9 @@ public class UserServiceImpl implements UserService {
 	UserMapper userMapper;
 	@Autowired
 	UserRoleService userRoleService;
+	@Autowired
+	LabUserMapper labUserMapper;
+	
 
 	@Override
 	public String getPassword(String name) {
@@ -72,6 +80,57 @@ public class UserServiceImpl implements UserService {
 	public User findUserName(String num) {
 		// TODO Auto-generated method stub
 		return userMapper.selectByName(num);
+	}
+
+	@Override
+	public List<User> listUser(Laboratory laboratory) {
+		// TODO Auto-generated method stub
+		List<User> users = new ArrayList<>();
+
+		LabUserExample example = new LabUserExample();
+
+		example.createCriteria().andLIdEqualTo(laboratory.getlId());
+		List<LabUser> labUsers = labUserMapper.selectByExample(example);
+
+		for (LabUser labUser : labUsers) {
+			User user = userMapper.selectByPrimaryKey(labUser.getuId());
+			users.add(user);
+		}
+		return users;
+	}
+
+	@Override
+	public List<User> listStu(Laboratory laboratory) {
+		// TODO Auto-generated method stub
+		List<User> users = new ArrayList<>();
+
+		LabUserExample example = new LabUserExample();
+
+		example.createCriteria().andLIdEqualTo(laboratory.getlId());
+		List<LabUser> labUsers = labUserMapper.selectByExample(example);
+
+		for (LabUser labUser : labUsers) {
+			User user = userMapper.selectStuByPrimaryKey(labUser.getuId());
+			users.add(user);
+		}
+		return users;
+	}
+
+	@Override
+	public List<User> listTeacher(Laboratory laboratory) {
+		// TODO Auto-generated method stub
+		List<User> users = new ArrayList<>();
+
+		LabUserExample example = new LabUserExample();
+
+		example.createCriteria().andLIdEqualTo(laboratory.getlId());
+		List<LabUser> labUsers = labUserMapper.selectByExample(example);
+
+		for (LabUser labUser : labUsers) {
+			User user = userMapper.selectTeachByPrimaryKey(labUser.getuId());
+			users.add(user);
+		}
+		return users;
 	}
 
 }

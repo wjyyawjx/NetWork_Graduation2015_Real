@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yidu.dao.AuNoticeMapper">
+  <resultMap id="BaseResultMap" type="com.yidu.model.AuNotice">
+    <id column="no_id" jdbcType="VARCHAR" property="noId" />
+    <result column="no_title" jdbcType="VARCHAR" property="noTitle" />
+    <result column="no_content" jdbcType="VARCHAR" property="noContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    no_id, no_title, no_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from au_notice
+    where no_id = #{noId,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="findAll" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    *
+    from au_notice
+    <where>
+	  	<if test="noTitle != null and noTitle != '' ">
+	  		and no_title like concat('%',#{noTitle,jdbcType=VARCHAR},'%')
+	  	</if>
+  	</where>
+  	limit #{curPage.startRows},#{curPage.rows}
+  </select>
+  
+    <select id="findById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from au_notice where no_id=#{noId,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from au_notice
+    where no_id = #{noId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.model.AuNotice">
+    insert into au_notice (no_id, no_title, no_content
+      )
+    values (#{noId,jdbcType=VARCHAR}, #{noTitle,jdbcType=VARCHAR}, #{noContent,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.model.AuNotice">
+    insert into au_notice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="noId != null">
+        no_id,
+      </if>
+      <if test="noTitle != null">
+        no_title,
+      </if>
+      <if test="noContent != null">
+        no_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="noId != null">
+        #{noId,jdbcType=VARCHAR},
+      </if>
+      <if test="noTitle != null">
+        #{noTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="noContent != null">
+        #{noContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.model.AuNotice">
+    update au_notice
+    <set>
+      <if test="noTitle != null">
+        no_title = #{noTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="noContent != null">
+        no_content = #{noContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where no_id = #{noId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.model.AuNotice">
+    update au_notice
+    set no_title = #{noTitle,jdbcType=VARCHAR},
+      no_content = #{noContent,jdbcType=VARCHAR}
+    where no_id = #{noId,jdbcType=VARCHAR}
+  </update>
+</mapper>

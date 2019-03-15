@@ -62,7 +62,7 @@
 						<div class="content-top">
 							  	<div class="box_wrapper"><h1>租赁商品列表</h1>
 								</div>
-						  <form class="form-inline" action="${pageContext.request.contextPath }/Leased/list.action" method="get" >
+						  <form class="form-inline" action="${pageContext.request.contextPath }/Leased/list.action" method="post" >
 							 <div class="text"> 	
 								<div class="grid_1_of_3 images_1_of_3">
 								   <div class="grid_1">
@@ -92,47 +92,51 @@
 						</div>
 				</div>
 		</div>
+		
 		<div class="header-para">
 				<div class="categories">
 						<div class="list-categories">
 							<div class="first-list">
 								<div class="div_2">
-								  <li>
-								    <a href="person.jsp">
+								 
+								    <a>
 				                                        用户：${USER_SESSION.username}
 				                    </a>
-				                  </li>
+				                
 				                 </div>
 								<div class="div_img">
 									<img src="images/car1.jpg" alt="Cars" title="Cars" width="60" height="39">
 								</div><div class="clear"></div>
 							</div>
 							<div class="first-list">
-								<li>
-								    <a href="person.jsp">
-				                                        我的商品
+								
+								   <div>
+								    <a href="${pageContext.request.contextPath }/person.action">
+				                                        个人中心
 				                    </a>
-				                  </li>
+				                   </div>
 								<div class="div_img">
 									<img src="images/car2.jpg" alt="Cars" title="Cars" width="60" height="39">
 								</div><div class="clear"></div>
 							</div>
 							<div class="first-list">
-								<li>
-								    <a href="person.jsp">
-				                                        我的收藏
+							
+								    <div>
+								    <a href="${pageContext.request.contextPath }/zulinShop.action">
+				                                       租赁物品
 				                    </a>
-				                  </li>
+				                    </div>
 								<div class="div_img">
 									<img src="images/car3.jpg" alt="Cars" title="Cars" width="60" height="39">
-								</div><div class="clear"></div>
+								</div>
+								<div class="clear"></div>
 							</div>
 							<div class="first-list">
-								<li>
+								
 								    <a href="${pageContext.request.contextPath }/logout.action">
 				                                        退出系统
 				                    </a>
-				                  </li>
+				                  
 								<div class="div_img">
 									<img src="images/car4.jpg" alt="Cars" title="Cars" width="60" height="39">
 								</div><div class="clear"></div>
@@ -164,6 +168,7 @@
 				<div class="clear"></div>
 				</div>
 	</div>
+	
 		<div class="clear"></div>
 		<div class="footer-bottom">
 			<div class="copy">

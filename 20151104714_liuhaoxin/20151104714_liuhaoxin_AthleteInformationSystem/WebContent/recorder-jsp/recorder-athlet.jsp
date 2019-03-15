@@ -30,6 +30,7 @@
 				<th>成绩</th>
 				<th>排名</th>
 				<th>修改</th>
+				<th>删除</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -45,7 +46,12 @@
 				<td><input type="hidden" name="tid" value=${w.tid}> 
 				<input type="submit" value="修改"></td>
 				
+				
 			</form>
+				<form action="RecorderDelete" method="post">
+				<td><input type="hidden" name="tid" value=${w.tid}> 
+				<input type="submit" value="删除"></td>
+				</form>
 			</tr>
 			</c:forEach>
 		</tbody>

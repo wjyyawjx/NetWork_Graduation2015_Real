@@ -2,6 +2,8 @@ package com.bs.sxd.po;
 
 import java.io.Serializable;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
@@ -14,6 +16,13 @@ public class User implements Serializable {
 	private String college;
 	private String adreess;
 	private Integer type;
+	private MultipartFile file;  
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -78,4 +87,9 @@ public class User implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	 @Override
+	    public String toString() {
+	        return "User [id=" + id + ", username=" + username + ", password=" + password + ", phone=" + phone
+	                + ", sex=" + sex + ", qq=" + qq + ", university=" + university + ", college=" + college + ",adreess=" + adreess + ",type=" + type + "]";
+	    }
 }
