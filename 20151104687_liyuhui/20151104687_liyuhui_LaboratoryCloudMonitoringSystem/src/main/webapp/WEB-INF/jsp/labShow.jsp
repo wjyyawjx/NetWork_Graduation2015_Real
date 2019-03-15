@@ -63,7 +63,7 @@
                 <div class="side-widgets overflow">
                     <!-- Profile Menu -->
                     <div class="text-center s-widget m-b-25 dropdown" id="profile-menu">
-                            <img class="profile-pic animated" src="img/profile-pic.jpg" alt=""><!--头像-->
+                            <img class="profile-pic animated" src="${pageContext.request.contextPath }/${User.image }" alt=""><!--头像-->
                             <table>
                             	<tr>
                             		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>

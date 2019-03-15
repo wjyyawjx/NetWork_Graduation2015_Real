@@ -29,7 +29,7 @@
 
         <header id="header" class="media">
             <a href="" id="menu-toggle"></a> 
-            <a class="logo pull-left" href="menu.html">实验室云端监管系统</a>
+            <a class="logo pull-left" href="">实验室云端监管系统</a>
             
             <div class="media-body">
                 <div class="media" id="top-menu">
@@ -63,7 +63,7 @@
                 <div class="side-widgets overflow">
                     <!-- Profile Menu -->
                     <div class="text-center s-widget m-b-25 dropdown" id="profile-menu">
-                            <img class="profile-pic animated" src="img/profile-pic.jpg" alt=""><!--头像-->
+                            <img class="profile-pic animated" src="${User.image }" alt=""><!--头像-->
                             <table>
                             	<tr>
                             		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>

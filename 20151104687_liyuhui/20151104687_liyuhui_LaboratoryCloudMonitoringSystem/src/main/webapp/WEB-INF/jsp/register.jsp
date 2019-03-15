@@ -54,16 +54,17 @@
         <div class="page-container">
             <h1>注册新账户</h1>
             <font color="red"><span id="message">${msg }</span></font>
-            <form action="${pageContext.request.contextPath }/register" method="post" onsubmit="return check()">
+            <form action="${pageContext.request.contextPath }/register" method="post" enctype="multipart/form-data" onsubmit="return check()" >
                 <input type="text" name="num" class="uname" placeholder="请输入学号/工号">
                 <input type="password" name="pwd1" class="upwd" placeholder="请输入密码">
                 <input type="password" name="pwd" class="upwd" placeholder="请确认密码">
-                <label><input name="type" type="radio" value="1"  style="width:30px;height:30px"/>学生</label>
+                <label><input name="type" type="radio" value="学生"  style="width:30px;height:30px"/>学生</label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<label><input name="type" type="radio" value="0"  style="width:30px;height:30px"/>老师 </label> 
+				<label><input name="type" type="radio" value="老师"  style="width:30px;height:30px"/>老师 </label> 
 				<input type="text" name="name" class="uname" placeholder="姓名">
                 <input type="text" name="tel" class="uname" placeholder="联系方式">
                 <input type="text" name="email" class="uname" placeholder="电子邮箱">
+                <input type="file" id="image" name="image" accept="image/*" class="uname" placeholder="头像">
                 <label><input name="sex" type="radio" value="男"  style="width:30px;height:30px"/>男</label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<label><input name="sex" type="radio" value="女"  style="width:30px;height:30px"/>女 </label> 

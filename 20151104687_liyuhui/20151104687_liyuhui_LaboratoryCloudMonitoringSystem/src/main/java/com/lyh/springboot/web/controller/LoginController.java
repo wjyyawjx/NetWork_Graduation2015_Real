@@ -1,5 +1,7 @@
 package com.lyh.springboot.web.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.lyh.springboot.common.utils.RandomValidateCode;
 import com.lyh.springboot.pojo.Laboratory;
@@ -73,7 +76,7 @@ public class LoginController {
     }
   
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(Model model, String num, String pwd,String randomjsp, int type,  String name, String tel, String sex, String email, Integer age, HttpSession session) {
+    public String register(MultipartFile image, Model model, String num, String pwd, String randomjsp, String type, String name, String tel, String sex, String email, Integer age, HttpSession session, HttpServletRequest req) throws IllegalStateException, IOException {
         //从session中获取随机数
         String random = (String) session.getAttribute("RANDOMVALIDATECODEKEY");
         if(random.equals(randomjsp)) {
@@ -86,14 +89,24 @@ public class LoginController {
         		int times = 2;
         		String algorithmName = "md5";
         		String encodedPassword = new SimpleHash(algorithmName, pwd, salt, times).toString();
+                String fileName = System.currentTimeMillis()+image.getOriginalFilename();
+                String destFileName="C:/Users/li/Downloads/upload"+name+fileName;
+                String destsql = name+fileName;
+                File destFile = new File(destFileName);
+                destFile.getParentFile().mkdirs();
+                image.transferTo(destFile);
         		User u = new User();
         		u.setNum(num);
+        		u.setName(name);
         		u.setPassword(encodedPassword);
         		u.setSalt(salt);
         		u.setAge(age);
         		u.setEmail(email);
         		u.setSex(sex);
         		u.setTel(tel);
+        		u.setType(type);
+        		u.setColor("skin-cloth");
+        		u.setImage(destsql);
         		userService.add(u);
         		model.addAttribute("msg","用户注册成功，请登录！");
         		return "redirect:tologin.action";

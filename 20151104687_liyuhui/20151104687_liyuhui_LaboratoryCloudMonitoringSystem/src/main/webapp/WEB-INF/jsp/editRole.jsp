@@ -63,7 +63,7 @@
                 <div class="side-widgets overflow">
                     <!-- Profile Menu -->
                     <div class="text-center s-widget m-b-25 dropdown" id="profile-menu">
-                            <img class="profile-pic animated" src="img/profile-pic.jpg" alt=""><!--头像-->
+                            <img class="profile-pic animated" src="${pageContext.request.contextPath }/${User.image }" alt=""><!--头像-->
                             <table>
                             	<tr>
                             		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -171,7 +171,7 @@
 				    <div class="addOrEdit" >
 				        <form action="updateRole" method="post">
 				            角色名: <input type="text" name="name" value="${role.name}"> <br>
-				            角色描述: <input type="text" name="desc_" value="${role.desc}" > <br><br>
+				            角色描述: <input type="text" name="desc" value="${role.desc}" > <br><br>
 				            配置权限:<br>
 				            <div style="text-align:left;width:300px;margin:0px auto;padding-left:50px">
 				                <c:forEach items="${ps}" var="p">
