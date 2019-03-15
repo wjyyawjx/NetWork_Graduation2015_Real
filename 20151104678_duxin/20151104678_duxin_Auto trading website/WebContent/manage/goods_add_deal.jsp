@@ -21,6 +21,7 @@
 </head>
 <body>
 	<%
+	
 		request.setCharacterEncoding("UTF-8");					//设置请求的编码为UTF-8
 		String goodsName = goods.getGoodsName();			
 		ResultSet rs=conn.executeQuery("select * from tb_goods where goodsname='"+goodsName+"'");
