@@ -27,10 +27,14 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
-
+    
     User selectByName(String num);
 
 	User selectStuByPrimaryKey(Long id);
 
 	User selectTeachByPrimaryKey(Long id);
+
+	List<User> selectStuByExample(UserExample example);
+
+	List<User> selectTeachByExample(UserExample example);
 }

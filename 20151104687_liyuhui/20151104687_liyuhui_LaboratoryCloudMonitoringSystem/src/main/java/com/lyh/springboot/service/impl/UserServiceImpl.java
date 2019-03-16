@@ -73,7 +73,22 @@ public class UserServiceImpl implements UserService {
 		UserExample example = new UserExample();
 		example.setOrderByClause("id desc");
 		return userMapper.selectByExample(example);
+	}
+	
+	@Override
+	public List<User> listStu() {
+		// TODO Auto-generated method stub
+		UserExample example = new UserExample();
+		example.setOrderByClause("id desc");
+		return userMapper.selectStuByExample(example);
+	}
 
+	@Override
+	public List<User> listTeach() {
+		// TODO Auto-generated method stub
+		UserExample example = new UserExample();
+		example.setOrderByClause("id desc");
+		return userMapper.selectTeachByExample(example);
 	}
 
 	@Override
@@ -132,5 +147,50 @@ public class UserServiceImpl implements UserService {
 		}
 		return users;
 	}
+	
+	@Override
+	public List<User> listStu2(Laboratory laboratory) {
+		// TODO Auto-generated method stub
+		List<User> users = new ArrayList<>();
+
+		LabUserExample example = new LabUserExample();
+
+		example.createCriteria().andLIdEqualTo(laboratory.getlId());
+		List<LabUser> labUsers = labUserMapper.selectByExample(example);
+
+		for (LabUser labUser : labUsers) {
+			User user = userMapper.selectStuByPrimaryKey(labUser.getuId());
+			if(user!=null) {
+				users.add(user);
+			}
+		}
+		return users;
+	}
+	
+	@Override
+	public List<User> listTeacher2(Laboratory laboratory) {
+		// TODO Auto-generated method stub
+		List<User> users = new ArrayList<>();
+
+		LabUserExample example = new LabUserExample();
+
+		example.createCriteria().andLIdEqualTo(laboratory.getlId());
+		List<LabUser> labUsers = labUserMapper.selectByExample(example);
+
+		for (LabUser labUser : labUsers) {
+			User user = userMapper.selectTeachByPrimaryKey(labUser.getuId());
+			if(user!=null) {
+				users.add(user);
+			}
+		}
+		return users;
+	}
+
+	@Override
+	public void skinChange(User user) {
+		userMapper.updateByPrimaryKeySelective(user);
+	}
+
+	
 
 }

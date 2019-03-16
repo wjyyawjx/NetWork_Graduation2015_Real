@@ -4,6 +4,7 @@
 <jsp:useBean id="conn" scope="page" class="com.tools.ConnDB" />
 <%-- 创建MemberDaoImpl类的对象 --%>	
 <jsp:useBean id="ins_member" scope="page" class="com.dao.MemberDaoImpl" />
+
 <%-- 创建Member类的对象，并对Member类的所有属性进行赋值 --%>	
 <jsp:useBean id="member" scope="request" class="com.model.Member">
 	<jsp:setProperty name="member" property="*" />

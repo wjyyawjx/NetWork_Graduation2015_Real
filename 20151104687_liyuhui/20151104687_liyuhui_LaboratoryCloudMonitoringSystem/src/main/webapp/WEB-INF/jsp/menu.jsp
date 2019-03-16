@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -24,11 +25,11 @@
         <link href="css/icons.css" rel="stylesheet">
         <link href="css/generics.css" rel="stylesheet"> 
     </head>
-    <body id="skin-blur-blue">
+    <body id="${User.color}">
 
         <header id="header" class="media">
             <a href="" id="menu-toggle"></a> 
-            <a class="logo pull-left" href="index.html">实验室云端监管系统</a>
+            <a class="logo pull-left" href="">实验室云端监管系统</a>
             
             <div class="media-body">
                 <div class="media" id="top-menu">
@@ -62,7 +63,7 @@
                 <div class="side-widgets overflow">
                     <!-- Profile Menu -->
                     <div class="text-center s-widget m-b-25 dropdown" id="profile-menu">
-                            <img class="profile-pic animated" src="img/profile-pic.jpg" alt=""><!--头像-->
+                            <img class="profile-pic animated" src="${User.image }" alt=""><!--头像-->
                             <table>
                             	<tr>
                             		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -84,12 +85,7 @@
 
 
                     <!-- Projects -->
-                    <div class="s-widget m-b-25">
-                        <h2 class="tile-title">
-                            实验室温湿度
-                        </h2>
-                        
-                    </div>
+                    
                 </div>
                 
                 <!-- Side Menu -->
@@ -120,6 +116,7 @@
                         </a>
                         <ul class="list-unstyled menu-item">
                         	<li><a href="${pageContext.request.contextPath }/config/listLab">实验室管理</a></li>
+                        	<li><a href="${pageContext.request.contextPath }/config/listPlace">位置管理</a></li>
                             <li><a href="${pageContext.request.contextPath }/config/listUser">用户管理</a></li>
                             <li><a href="${pageContext.request.contextPath }/config/listRole">角色管理</a></li>
                             <li><a href="${pageContext.request.contextPath }/config/listPermission">权限管理</a></li>                     
@@ -177,20 +174,14 @@
                 		<td>所属教学楼</td>
                 		<td>所属院系</td>
                 		<td>门牌号</td>
-                		<td>当前温度</td>
-                		<td>当前湿度</td>
-                		<td>获取时间</td>
                 	</tr>
                 	<c:forEach items="${Lab}" var="lab">
                 	<tr>
-                		<td>${lab.lName}</td>
+                		<td><a href="/config/showLab?lId=${lab.lId}">${lab.lName}</a></td>
                 		<td>${lab.campus}</td>
                 		<td>${lab.building}</td>
                 		<td>${lab.major}</td>
                 		<td>${lab.houseId}</td>
-                		<td>${lab.temperature}</td>
-                		<td>${lab.humidity}</td>
-                		<td>${lab.time}</td>
                 	</tr>
                 	</c:forEach>
                 </table>

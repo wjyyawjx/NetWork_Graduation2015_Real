@@ -1,5 +1,7 @@
 package com.lyh.springboot.web.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,15 +20,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.lyh.springboot.common.utils.RandomValidateCode;
 import com.lyh.springboot.pojo.Laboratory;
-import com.lyh.springboot.pojo.Place;
-import com.lyh.springboot.pojo.TemHum;
 import com.lyh.springboot.pojo.User;
 import com.lyh.springboot.service.LaboratoryService;
-import com.lyh.springboot.service.PlaceService;
-import com.lyh.springboot.service.TemHumService;
 import com.lyh.springboot.service.UserService;
 
 @Controller
@@ -35,10 +34,6 @@ public class LoginController {
 	private UserService userService;
 	@Autowired
 	private LaboratoryService laboratoryService;
-	@Autowired
-	private TemHumService temHumService;
-	@Autowired
-	private PlaceService placeService;
     
     @RequestMapping(value="/login",method= RequestMethod.POST)
     public String login(String num,String pwd, Model model, HttpSession httpSession){
@@ -52,11 +47,9 @@ public class LoginController {
 			session.setAttribute("subject", subject);
 			User user = userService.findUserName(num);
 			httpSession.setAttribute("User", user);
-			List<Laboratory> lab = laboratoryService.findLab();
-//			List<TemHum> tem = temHumService.selectByTemId();
-//			List<Place> place = placeService.selectByPlaceId();
-			System.out.println(lab.size());
-			httpSession.setAttribute("Lab", lab);
+			
+			List<Laboratory> labs = laboratoryService.findLab();
+			httpSession.setAttribute("Lab", labs);
 			return "redirect:menu";
 
 		} catch (AuthenticationException e) {
@@ -81,18 +74,9 @@ public class LoginController {
             e.printStackTrace();
         }
     }
- 
-    /**
-     * 验证登录
-     * @param model
-     * @param userName
-     * @param password
-     * @param inputStr
-     * @param session
-     * @return
-     */
+  
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(Model model, String num, String pwd,String randomjsp, int type,  String name, String tel, String sex, String email, Integer age, HttpSession session) {
+    public String register(MultipartFile image, Model model, String num, String pwd, String randomjsp, String type, String name, String tel, String sex, String email, Integer age, HttpSession session, HttpServletRequest req) throws IllegalStateException, IOException {
         //从session中获取随机数
         String random = (String) session.getAttribute("RANDOMVALIDATECODEKEY");
         if(random.equals(randomjsp)) {
@@ -105,14 +89,24 @@ public class LoginController {
         		int times = 2;
         		String algorithmName = "md5";
         		String encodedPassword = new SimpleHash(algorithmName, pwd, salt, times).toString();
+                String fileName = System.currentTimeMillis()+image.getOriginalFilename();
+                String destFileName="C:/Users/li/Downloads/upload"+name+fileName;
+                String destsql = name+fileName;
+                File destFile = new File(destFileName);
+                destFile.getParentFile().mkdirs();
+                image.transferTo(destFile);
         		User u = new User();
         		u.setNum(num);
+        		u.setName(name);
         		u.setPassword(encodedPassword);
         		u.setSalt(salt);
         		u.setAge(age);
         		u.setEmail(email);
         		u.setSex(sex);
         		u.setTel(tel);
+        		u.setType(type);
+        		u.setColor("skin-cloth");
+        		u.setImage(destsql);
         		userService.add(u);
         		model.addAttribute("msg","用户注册成功，请登录！");
         		return "redirect:tologin.action";
@@ -122,7 +116,6 @@ public class LoginController {
         model.addAttribute("msg","验证码错误，请重新输入！");
 		return "register";
     }
-    
     
     @RequestMapping(value = "/findpwd", method = RequestMethod.POST)
     public String findpwd(Model model, String num, String pwd, String randomjsp, HttpSession session) {
@@ -153,7 +146,6 @@ public class LoginController {
 		return "findpwd";
     }
     
-
 	@RequestMapping("/tologin")
 	public String toLogin() {
 		return "login";
@@ -181,6 +173,18 @@ public class LoginController {
 	@RequestMapping("/findpwd")
 	public String tofindpwd2() {
 		return "findpwd";
+	}
+	
+	@RequestMapping("/skinChange")
+	public String skinChange(String color, HttpSession session){
+		User user = (User) session.getAttribute("User");
+		user.setColor(color);
+		System.out.println(user.getId());
+		System.out.println(user.getColor());
+		userService.skinChange(user);
+		User u = userService.findUserName(user.getNum());
+		session.setAttribute("User", u);
+		return "menu";
 	}
 
 }
