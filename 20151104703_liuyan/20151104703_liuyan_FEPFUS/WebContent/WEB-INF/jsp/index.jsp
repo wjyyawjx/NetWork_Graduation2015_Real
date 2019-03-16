@@ -24,27 +24,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="header-bottom">
 			<div class="container">
 				<div class="logo">
-					<a><h1>Gat<span>o</span></h1></a>
+
 				</div>
 				<span class="menu"></span>
 				<div class="top-menu">
 					<ul>
-					<nav>
+					
 						<li><a href="${pageContext.request.contextPath}/index.action">全部商品</a></li> 
 						<li><a href="${pageContext.request.contextPath}/mygoods.action">我的商品</a></li>
 						<li><a href="${pageContext.request.contextPath}/upload.action">上传商品</a></li> 
 						<li><a href="#">用户名:${UESR_SESSION.u_name}</a></li>					
 						<li><a href="${pageContext.request.contextPath}/logout.action">退出登录</a></li>
-						<form action="${pageContext.request.contextPath}/selectgoods.action">
-						       <select name="c_type" id="c_type">
-						         <option value="植物">植物</option>
-						         <option value="其它">其它</option>
-						         <option value="动物" selected="selected">动物</option>
-		                       </select>
-						       <input type="submit" value="搜索" />    
-						 </form>
 						
-					</nav>
+						
+				
 					</ul>
 				</div>
 				<!-- script for menu -->
@@ -71,7 +64,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>   
 	</div>
 	</div>
-</div>
+
 <!--gallery-->
 	<div class="gallery services">
 		<div class="container">
@@ -94,7 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!--swipebox -->	
-			<link rel="stylesheet" href="css/swipebox.css">
+			
 				<script src="js/jquery.swipebox.min.js"></script> 
 				<script type="text/javascript">
 					jQuery(function($) {
