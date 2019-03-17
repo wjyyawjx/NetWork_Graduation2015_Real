@@ -60,9 +60,12 @@
 				  	</div>
 		  			<div class="content-wrapper">		  
 						<div class="content-top">
-							  	<div class="box_wrapper"><h1>租赁商品列表</h1>
+							  	<div class="box_wrapper">
+							  	<h1 align="left">租赁商品列表</h1>
+							  
+							  	
 								</div>
-						  <form class="form-inline" action="${pageContext.request.contextPath }/Leased/list.action" method="post" >
+						  <form class="form-inline" action="${pageContext.request.contextPath }/goodslist.action" method="post" >
 							 <div class="text"> 	
 								<div class="grid_1_of_3 images_1_of_3">
 								   <div class="grid_1">
