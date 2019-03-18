@@ -31,20 +31,26 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	@Override
-	public Page<Goods> findGoods_yList(Integer page, Integer rows, Integer l_price, String l_name, String l_info,
-			String l_image) {
+	public Page<Goods> findGoods_yList(Integer page, Integer rows, Integer l_static, String l_name, String l_type) {
 		Goods goods = new Goods();
 		// 当前页
 		goods.setStart((page - 1) * rows);
 		// 每页数
 		goods.setRows(rows);
+		goods.setL_name(l_name);
+		goods.setL_type(l_type);
+		goods.setL_static(l_static);
 		List<Goods> good = goodsDao.findGoods_yList(goods);
 		// 创建Page返回对象
+		
 				Page<Goods> result = new Page<Goods>();
+				
 				result.setPage(page);
 				result.setRows(good);
 				result.setSize(rows);
 				return result;
 	}
+
+	
 
 }

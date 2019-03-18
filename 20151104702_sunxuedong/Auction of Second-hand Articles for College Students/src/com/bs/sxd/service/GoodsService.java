@@ -17,8 +17,6 @@ public interface GoodsService {
 	public void addGoods(Goods goods);
 
 	// ≤È—Ø…Ã∆∑
-
-	public Page<Goods> findGoods_yList(Integer page, Integer rows, Integer l_price, String l_name, String l_info,
-			String l_image);
+	public Page<Goods> findGoods_yList(Integer page, Integer rows, Integer l_static, String l_name, String l_type);
 
 }
