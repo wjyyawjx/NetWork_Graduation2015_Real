@@ -5,10 +5,10 @@
 <mapper namespace="com.bs.sxd.dao.GoodsDao">
 <sql id="findGoods_yListWhere">
 		<where>
-			<if test="l_name != null">
-				l_name like '%'#{l_name}'%'
+			<if test="l_name != ''">
+				l_name like #{l_name}
 			</if>
-			<if test="l_type != null">
+			<if test="l_type!='全部'">
 				and l_type = #{l_type}
 			</if>
 			<if test="l_static != null">

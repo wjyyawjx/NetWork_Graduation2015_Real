@@ -45,7 +45,7 @@
 									<input type="text" class="textbox"  id="l_name" name="l_name" />
 									<label for="commdityFrom">商品类型：</label>
 									<select data-am-selected="{searchBox: 1}" name="l_type" id="l_type">
-									        <option value="">全部</option>
+									        <option value="全部">全部</option>
 											<option value="笔记">笔记</option>
 											<option value="图书">图书</option>
 											<option value="工具">工具</option>

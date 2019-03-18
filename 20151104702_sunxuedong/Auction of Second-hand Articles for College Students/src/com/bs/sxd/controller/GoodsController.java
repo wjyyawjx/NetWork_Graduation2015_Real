@@ -81,7 +81,9 @@ public class GoodsController {
 	@RequestMapping(value = "/findgoodslist.action")
 	public String list(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer rows,
 			String l_name, String l_type, Integer l_static, Model model) {
-		
+		if(l_name!=null && l_name!=""){
+			l_name = "%"+l_name+"%";
+		}
 		Page<Goods> goods = goodsService.findGoods_yList(page, rows, l_static, l_name, l_type);
 		model.addAttribute("page", goods);
 		model.addAttribute("l_name", l_name);
