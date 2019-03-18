@@ -40,6 +40,7 @@ public class RecorderJump extends HttpServlet {
 		int sid =Integer.parseInt(request.getParameter("sid"));
 		HttpSession session = request.getSession();
 		session.setAttribute("sid",sid);
+		
 		response.sendRedirect("RecorderJView");	
 		
 	}

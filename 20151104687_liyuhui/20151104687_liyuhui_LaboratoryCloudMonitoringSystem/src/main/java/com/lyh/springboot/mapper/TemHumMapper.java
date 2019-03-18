@@ -27,4 +27,8 @@ public interface TemHumMapper {
     int updateByPrimaryKeySelective(TemHum record);
 
     int updateByPrimaryKey(TemHum record);
+
+	TemHum selectTemHum(Integer temId);
+
+	List<TemHum> selectByLab(Integer temId);
 }

@@ -67,8 +67,11 @@ public class UserController {
 	public String person() {
 		return "person";
 	}
-
-	@RequestMapping(value = "/zulinShop.action")
+	@RequestMapping(value = "/main.action")
+	public String main() {
+		return "main";
+	}
+	
 	public String zulinShop() {
 		return "zulinShop";
 	}

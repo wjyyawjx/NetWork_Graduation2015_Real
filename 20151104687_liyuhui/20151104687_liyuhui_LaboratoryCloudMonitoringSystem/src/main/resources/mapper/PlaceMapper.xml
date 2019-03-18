@@ -8,6 +8,7 @@
     <result column="building" jdbcType="CHAR" property="building" />
     <result column="house_id" jdbcType="CHAR" property="houseId" />
     <result column="major" jdbcType="CHAR" property="major" />
+    <result column="l_id" jdbcType="INTEGER" property="lId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -85,13 +86,22 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from place
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  
+  <select id="selectByLabId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from place
+    where place_id = #{placeId, jdbcType=CHAR}
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from place
     where id = #{id,jdbcType=INTEGER}
   </delete>
