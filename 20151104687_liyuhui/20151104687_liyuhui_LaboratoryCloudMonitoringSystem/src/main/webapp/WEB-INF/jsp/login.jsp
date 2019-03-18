@@ -31,9 +31,13 @@
     </head>
 
     <body>
-
+		
         <div class="page-container">
+        		 
             <h1>登录</h1>
+            <br>
+            <img src="/assets/img/imnu.jpg" style="width:320px;height:160px">
+            <br>
             <font color="red"><span id="message">${msg }</span></font>
             <form action="${pageContext.request.contextPath }/login" method="post" onsubmit="return check()">
                 <input type="text" name="num" class="uname" placeholder="学号/工号" >
@@ -44,14 +48,10 @@
             <br>
             <a href="${pageContext.request.contextPath }/toregister">新用户注册</a> 
             <br> 
-            <a href="${pageContext.request.contextPath }/tofindpwd">忘记密码</a>  
-            <div class="connect">
-                <p></p>
-                <p>
-                    <a></a>
-                    <a></a>
-                </p>
-            </div>
+            <a href="${pageContext.request.contextPath }/tofindpwd">忘记密码</a> 
+            <br> 
+            <br>  
+            
         </div>
         <div align="center">李宇辉——毕业设计——实验室云端监管系统</div>
 

@@ -166,10 +166,18 @@
                 </div>
                 
                 <hr class="whiter" />
+                
+                <div style="font-size:20px; text-align:center; ">
+                	<a >实验室用户信息查询</a>
+                </div>
+                <hr class="whiter" />
+                <hr class="whiter" />
+                <hr class="whiter" />
+                
                 <div class="workingroom">
-                <a href="${pageContext.request.contextPath }/config/listAll">实验室全部用户信息管理</a>
-                <a href="${pageContext.request.contextPath }/config/listStu">实验室学生用户信息管理</a>
-                <a href="${pageContext.request.contextPath }/config/listTeach">实验室教师用户信息管理</a>
+                <a href="${pageContext.request.contextPath }/config/listAll">实验室全部用户信息查询</a>
+                <a href="${pageContext.request.contextPath }/config/listStu">实验室学生用户信息查询</a>
+                <a href="${pageContext.request.contextPath }/config/listTeach">实验室教师用户信息查询</a>
 				<table>
 					<tr>
 						<td>实验室id</td>

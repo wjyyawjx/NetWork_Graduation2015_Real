@@ -166,6 +166,15 @@
                 </div>
                 
                 <hr class="whiter" />
+                <div style="font-size:20px; text-align:center; ">
+                	<a >我的信息</a>
+                </div>
+                <div style="font-size:16px; text-align:center; ">
+                	<a >欢迎使用！ ${User.name}</a>
+                </div>
+                <hr class="whiter" />
+                <hr class="whiter" />
+                <hr class="whiter" />
 				<div class="workingroom">
 					<table>
 	                	<tr>

@@ -166,6 +166,12 @@
                 </div>
                 
                 <hr class="whiter" />
+                <div style="font-size:20px; text-align:center; ">
+                	<a >用户信息管理</a>
+                </div>
+                <hr class="whiter" />
+                <hr class="whiter" />
+                <hr class="whiter" />
 			<div class="workingroom">
 				<table>
 					<tr>
