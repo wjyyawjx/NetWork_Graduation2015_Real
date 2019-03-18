@@ -21,9 +21,9 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 	@Override
-	public  void registerUser(String u_name, String u_pwd, String u_email,String u_phone,String u_type) {
+	public  void registerUser(String u_name, String u_pwd, String u_email,String u_phone,String u_type, String p_img, String p_dirpath) {
 		// TODO Auto-generated method stub
-		this.userDao.registerUser(u_name, u_pwd,u_email,u_phone,u_type);
+		this.userDao.registerUser(u_name, u_pwd,u_email,u_phone,u_type,p_img,p_dirpath);
 		
 	}
 	@Override

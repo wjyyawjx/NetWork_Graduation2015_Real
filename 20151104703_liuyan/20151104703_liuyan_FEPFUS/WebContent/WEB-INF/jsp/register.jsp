@@ -53,7 +53,7 @@ function check() {
 </head>
 <body>
 <div align="center">
-<form action="${pageContext.request.contextPath}/register.action" method="post" onsubmit="return check()">
+<form action="${pageContext.request.contextPath}/register.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
  用户名:<input id="u_name" type="text" name="u_name" /><br> 
     密&nbsp;&nbsp;&nbsp;&nbsp;码:<input id="u_pwd" type="password" name="u_pwd" /><br>
     邮&nbsp;&nbsp;&nbsp;&nbsp;箱:<input id="u_email" type="email" name="u_email" /><br>
@@ -63,6 +63,7 @@ function check() {
 						         <option value="教员">教员</option>
 						         <option value="家长" selected="selected">家长</option>
 		                       </select> <br>
+       身份认证图片:<input id="file" type="file" name="uploadfile" multiple="multiple" /><br />
     <input type="submit" value="注册" />
 </form>
 <a href="${pageContext.request.contextPath}/login.action" >返回登陆界面</a>

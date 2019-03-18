@@ -167,42 +167,50 @@
                 </div>
                 
                 <hr class="whiter" />
+                <div style="font-size:20px; text-align:center; ">
+                	<a >${lab_place.campus}${lab_place.building}${lab_place.houseId}</a>
+                </div>
+                
                 <div>
                 	<a href="addTeach?lId=${lab.lId}">添加教师</a>
                 	<a href="addStu?lId=${lab.lId}">添加学生</a>
                 </div>
-                <div class="workingroom" style="width: 1500px;height:800px;font-size:20px;">
-                <table>
-                <tr>
-                	<td>${lab_place.campus}${lab_place.building}${lab_place.houseId}</td>
-                </tr>
-                <tr>
-                	<td>
-                		<table>
-                			<tr>
-                				<td>实验室学生用户</td>
-                				<td></td>
-                			</tr>
-                			<tr>
-                				<td>姓名</td>
-                				<td>学号</td>
-                			</tr>
-                			<c:forEach items="${lab_stu}" var="stu">
-                			<tr>
-                				<td>${stu.name}</td>
-                				<td>${stu.num}</td>
-                			</tr>
-                			</c:forEach>
-                		</table>
-                	</td>
-                	<td>   
-                		<div id="mychart" style="width: 600px;height:400px;">
+                <hr class="whiter" />
+                <hr class="whiter" />
+                <hr class="whiter" />
+                <div class="block-area" style="margin-top:50px; margin-left:80px; ">
+                    
+                    <div class="row">
+                    	
+                        <div class="col-md-5 col-xs-8  ">
+                        	<a style="font-size:18px">实验室温湿度记录</a>
+	                        <table  border="1" style="width:100%; border-color:white">
+	                			<tr>
+	                				<td>编号</td>
+	                				<td>时间</td>
+	                				<td>温度（℃）</td>
+	                				<td>湿度（%）</td>
+	                			</tr>
+	                			<c:forEach items="${lab_ths}" var="lab_ths">
+	                			<tr>
+	                				<td>${lab_ths.id}</td>
+	                				<td>${lab_ths.time}</td>
+	                				<td>${lab_ths.temperature} ℃</td>
+	                				<td>${lab_ths.humidity} %</td>
+	                			</tr>
+	                			</c:forEach>
+	                		</table>
+                        	
+                        </div>
+                        <div class="col-md-5 col-xs-8">
+                        <a style="font-size:18px">实验室实时温度</a>
+                        <div  id="mychart" style="height:400px">
 				        <script type="text/javascript">
 				            // 基于准备好的dom，初始化echarts实例
 				            var myChart = echarts.init(document.getElementById('mychart'));
 				            // 指定图表的配置项和数据
 				            var option = {
-				            	    backgroundColor: '#1b1b1b',
+				            	    //backgroundColor: '#1b1b1b',
 				            	    tooltip : {
 				            	        formatter: "{a} <br/>{c} {b}"
 				            	    },
@@ -363,53 +371,43 @@
 				            myChart.setOption(option);
 				        </script>
 				        </div>
-                	</td>
-                </tr>
-                <tr>
-                	<td>
-                		<table>
-                			<tr>
-                				<td>实验室教师用户</td>
-                				<td></td>
-                			</tr>
-                			<tr>
-                				<td>姓名</td>
-                				<td>工号</td>
-                			</tr>
-                			<c:forEach items="${lab_teach}" var="teach">
-                			<tr>
-                				<td>${teach.name}</td>
-                				<td>${teach.num}</td>
-                			</tr>
-                			</c:forEach>
-                		</table>
-                	</td>
-                	<td>
-                		<table>
-                			<tr>
-                				<td>实验室温湿度记录</td>
-                				<td></td>
-                			</tr>
-                			<tr>
-                				<td>编号</td>
-                				<td>时间</td>
-                				<td>温度</td>
-                				<td>湿度</td>
-                			</tr>
-                			<c:forEach items="${lab_ths}" var="lab_ths">
-                			<tr>
-                				<td>${lab_ths.id}</td>
-                				<td>${lab_ths.time}</td>
-                				<td>${lab_ths.temperature}</td>
-                				<td>${lab_ths.humidity}</td>
-                			</tr>
-                			</c:forEach>
-                		</table>
-                	</td>
-                </tr>
-                
-                </table>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:50px; ">
+                        <div class="col-md-5 col-xs-8">
+                       		 <a style="font-size:18px">实验室教师用户</a>
+	                        <table border="1" style="width:100%; border-color:white;">
+	                			<tr>
+	                				<td>姓名</td>
+	                				<td>工号</td>
+	                			</tr>
+	                			<c:forEach items="${lab_teach}" var="teach">
+	                			<tr>
+	                				<td>${teach.name}</td>
+	                				<td>${teach.num}</td>
+	                			</tr>
+	                			</c:forEach>
+	                		</table>
+                        
+                        </div>
+                        <div class="col-md-5 col-xs-8">
+                        	<a style="font-size:18px">实验室学生用户</a>
+	                        <table border="1" style="width:100%; border-color:white">
+	                			<tr>
+	                				<td>姓名</td>
+	                				<td>学号</td>
+	                			</tr>
+	                			<c:forEach items="${lab_stu}" var="stu">
+	                			<tr>
+	                				<td>${stu.name}</td>
+	                				<td>${stu.num}</td>
+	                			</tr>
+	                			</c:forEach>
+	                		</table>
+                        </div>
+                    </div>
                 </div>
+                
 			</section>
 
         </section>

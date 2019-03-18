@@ -3,6 +3,7 @@ package com.bs.sxd.po;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Goods implements Serializable  {
@@ -13,10 +14,33 @@ public class Goods implements Serializable  {
 	private Integer l_price;
 	private String l_info;
 	private String l_type;
+
 	private String l_out_time;
-	private Date l_in_time;
+	
+	private String l_in_time;
 	private Integer u_id;
 	private String l_addr;
+	private Integer l_static;
+	private Integer start;            // 起始行
+	private Integer rows;             // 所取行数
+	public Integer getStart() {
+		return start;
+	}
+	public void setStart(Integer start) {
+		this.start = start;
+	}
+	public Integer getRows() {
+		return rows;
+	}
+	public void setRows(Integer rows) {
+		this.rows = rows;
+	}
+	public Integer getL_static() {
+		return l_static;
+	}
+	public void setL_static(Integer l_static) {
+		this.l_static = l_static;
+	}
 	private MultipartFile file;  
 	public Integer getId() {
 		return id;
@@ -68,10 +92,10 @@ public class Goods implements Serializable  {
 	public void setL_out_time(String l_out_time) {
 		this.l_out_time = l_out_time;
 	}
-	public Date getL_in_time() {
+	public String getL_in_time() {
 		return l_in_time;
 	}
-	public void setL_in_time(Date l_in_time) {
+	public void setL_in_time(String l_in_time) {
 		this.l_in_time = l_in_time;
 	}
 	public Integer getU_id() {

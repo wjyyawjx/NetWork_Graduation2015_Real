@@ -9,6 +9,8 @@ public class User implements Serializable {
     private String u_pwd;
     private String u_email;
     private String u_phone;
+    private String p_img;
+    private String p_dirpath;
     public Integer getU_id() {
 		return u_id;
 	}
@@ -38,5 +40,17 @@ public class User implements Serializable {
 	}
 	public void setU_phone(String u_phone) {
 		this.u_phone = u_phone;
+	}
+	public String getP_dirpath() {
+		return p_dirpath;
+	}
+	public void setP_dirpath(String p_dirpath) {
+		this.p_dirpath = p_dirpath;
+	}
+	public String getP_img() {
+		return p_img;
+	}
+	public void setP_img(String p_img) {
+		this.p_img = p_img;
 	}
 }

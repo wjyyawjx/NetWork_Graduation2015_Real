@@ -1,15 +1,10 @@
 package com.bs.common.utils;
-
 import java.util.List;
-
-
-
-
 public class Page<T> {   
-	private int total;    // 鎬绘潯鏁�
-	private int page;     // 褰撳墠椤�
-	private int size;     // 姣忛〉鏁�
-	private List<T> rows; // 缁撴灉闆�
+	private int total;    // 总条数
+	private int page;     // 当前页
+	private int size;     // 每页数
+	private List<T> rows; // 结果集
 	public int getTotal() {
 		return total;
 	}
@@ -31,10 +26,7 @@ public class Page<T> {
 	public List<T> getRows() {
 		return rows;
 	}
-	
-	
 	public void setRows(List<T> rows) {
 		this.rows = rows;
-		
 	}  
 }

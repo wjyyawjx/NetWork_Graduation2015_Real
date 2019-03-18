@@ -166,26 +166,30 @@
                 </div>
                 
                 <hr class="whiter" />
-                <div class="workingroom">
-                <table border="1">
-                	<tr>
-                		<td>实验室名称</td>
-                		<td>所属校区</td>
-                		<td>所属教学楼</td>
-                		<td>所属院系</td>
-                		<td>门牌号</td>
-                	</tr>
-                	<c:forEach items="${Lab}" var="lab">
-                	<tr>
-                		<td><a href="/config/showLab?lId=${lab.lId}">${lab.lName}</a></td>
-                		<td>${lab.campus}</td>
-                		<td>${lab.building}</td>
-                		<td>${lab.major}</td>
-                		<td>${lab.houseId}</td>
-                	</tr>
-                	</c:forEach>
-                </table>
-				</div>
+                <div style="font-size:20px; text-align:center; ">
+                	<a >实验室云端监管系统</a>
+                </div>
+                <div style="font-size:16px; text-align:center; ">
+                	<a >欢迎使用！ ${User.name}</a>
+                </div>
+                <hr class="whiter" />
+                <hr class="whiter" />
+                <hr class="whiter" />
+                <div class="block-area" style="margin-top:50px; margin-left:80px; width:90%">
+                	<div class="row">
+                	<c:forEach items="${Lab}" var="lab">	
+                       	<div class="col-md-3 col-xs-6 " style="height:260px" >
+                       		<a href="/config/showLab?lId=${lab.lId}"><img alt="${lab.lName}" src="img/imnu_head.jpg" style="width:120px;height:120px">
+	                		<p>实验室名称: ${lab.lName}</p>
+	                		<p>所属校区: ${lab.campus}</p>
+	                		<p>所属教学楼: ${lab.building}</p>
+	                		<p>所属院系: ${lab.major}</p>
+	                		<p>门牌号: ${lab.houseId} </p></a>
+                        </div>
+                     </c:forEach>   
+                    </div>
+                </div>
+                
             </section>
 
         </section>
