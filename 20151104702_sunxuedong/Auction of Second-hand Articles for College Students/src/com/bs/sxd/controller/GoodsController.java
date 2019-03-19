@@ -31,15 +31,14 @@ public class GoodsController {
 
 	@RequestMapping(value = "/addgoods.action", method = RequestMethod.POST)
 	public String addGoods(Goods goods, String l_name, String l_image, Integer l_price, String l_info, String l_type,
-			String l_out_time, String l_in_time, String l_addr, Integer u_id,String year,String month,String day) throws Exception {
+			String l_out_time, String l_in_time, String l_addr, Integer u_id, String year, String month, String day)
+			throws Exception {
+
 		
-		System.out.println(year);
-		System.out.println(l_out_time);
-	    l_in_time = year +"-"+ month +"-"+ day;
-	    System.out.println(u_id);
+		l_in_time = year + "-" + month + "-" + day;
+		System.out.println(u_id);
 		l_price = Integer.valueOf(l_price).intValue();
-		
-	
+
 		// 保存数据库的路径
 		String sqlPath = null;
 		// 定义文件保存的本地路径
@@ -61,10 +60,8 @@ public class GoodsController {
 		}
 		// 把图片的相对路径保存至数据库
 		sqlPath = "/images/" + filename;
-		// System.out.println(sqlPath);
 		int l_static = 1;
 		goods.setL_name(l_name);
-		// goods.setL_image(l_image);
 		goods.setL_price(l_price);
 		goods.setL_info(l_info);
 		goods.setL_type(l_type);
@@ -79,22 +76,28 @@ public class GoodsController {
 		return "person";
 	}
 
-	private Date SimpleDateFormat(String format) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@RequestMapping(value = "/goodslist.action")
-	public String list(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer rows,
-			String l_name, String l_info, String l_image, Integer l_price, Model model) {
-
-		Page<Goods> goods = goodsService.findGoods_yList(page, rows, l_price, l_name, l_info, l_image);
+	@RequestMapping(value = "/findgoodslist.action")
+	public String list(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "6") Integer rows,
+			String l_name, String l_type, Integer l_static, Model model) {
+		if(l_name!=null && l_name!=""){
+			l_name = "%"+l_name+"%";
+		}
+		Page<Goods> goods = goodsService.findGoods_yList(page, rows, l_static, l_name, l_type);
+		//添加参数
 		model.addAttribute("page", goods);
 		model.addAttribute("l_name", l_name);
-		model.addAttribute("l_info", l_info);
-		model.addAttribute("l_image", l_image);
-		model.addAttribute("l_price", l_price);
-		return "goods";
-
+		model.addAttribute("l_static", l_static);
+		model.addAttribute("l_type", l_type);
+		return "main";
 	}
+
+	/*@RequestMapping(value = "/goodslist.action")
+	public String goods_showlist(String l_name, String l_type, Integer l_static, Model model) {
+		Page<Goods> goods = goodsService.findGoods_yList(page, rows, l_static, l_name, l_type);
+		model.addAttribute("page", goods);
+		model.addAttribute("l_name", l_name);
+		model.addAttribute("l_static", l_static);
+		model.addAttribute("l_type", l_type);
+		return "main";
+	}*/
 }

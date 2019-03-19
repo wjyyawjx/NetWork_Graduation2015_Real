@@ -15,7 +15,8 @@
 		</where>
 	</select>
 	<!-- 查询邮箱 -->
-	<select id="findUseremail" parameterType="String" resultType="user">
+	<select id="findUseremail" parameterType="String"
+		resultType="user">
 		select * from users where u_email = #{u_email}
 	</select>
 	<!-- 注册 -->
@@ -34,7 +35,13 @@
 	</insert>
 	<update id="SaveIp" parameterType="user">
 		UPDATE users
-		SET u_ip = #{u_ip},u_time=#{u_time}
+		SET u_ip =
+		#{u_ip},u_time=#{u_time}
 		WHERE u_id = #{u_id}
+	</update>
+	<update id="SaveIp1" parameterType="user">
+		UPDATE ip_adress
+		SET u_id = #{u_id}
+		WHERE u_ip = #{u_ip}
 	</update>
 </mapper>

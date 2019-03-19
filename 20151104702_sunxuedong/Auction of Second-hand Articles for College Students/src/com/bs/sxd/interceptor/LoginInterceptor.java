@@ -30,13 +30,16 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (url.indexOf("/register.action") >= 0){
 			return true;
 		}
+		if (url.indexOf("/main.action") >= 0){
+			return true;
+		}
 		if (url.indexOf("/add.action") >= 0){
 			return true;
 		}
 		if (url.indexOf("/addgoods.action") >= 0){
 			return true;
 		}
-		if (url.indexOf("/findGoods_y.action") >= 0){
+		if (url.indexOf("/findgoodslist.action") >= 0){
 			return true;
 		}
 	

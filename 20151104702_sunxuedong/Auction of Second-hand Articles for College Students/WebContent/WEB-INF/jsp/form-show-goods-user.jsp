@@ -341,7 +341,7 @@
 		<div class="tpl-content-wrapper">
 			<div class="tpl-content-page-title">Amaze UI 表单</div>
 			<ol class="am-breadcrumb">
-				<li><a href="#" class="am-icon-home">首页</a></li>
+				<li><a href="${pageContext.request.contextPath }/main.action" class="am-icon-home">首页</a></li>
 				<li><a href="#">表单</a></li>
 				<li class="am-active">Amaze UI 表单</li>
 			</ol>
@@ -418,8 +418,7 @@
 										<span class="tpl-form-line-small-title">Type</span>
 									</label>
 									<div class="am-u-sm-9">
-										<select data-am-selected="{searchBox: 1}" name="l_type"
-											id="l_type">
+										<select data-am-selected="{searchBox: 1}" name="l_type" id="l_type">
 											<option value="笔记">笔记</option>
 											<option value="图书">图书</option>
 											<option value="工具">工具</option>
