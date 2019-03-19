@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-
+import com.bs.common.utils.Page;
+import com.bs.sxd.po.Goods;
 import com.bs.sxd.po.User;
 import com.bs.sxd.service.UserService;
 
@@ -123,8 +125,21 @@ public class UserController {
 			return "login";
 		} else {
 			return "register";
-		}
-		// return "register";
+		}	
 	}
+	@RequestMapping(value = "/finduserlist.action")
+	public String list(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5") Integer rows_u,
+			String username, String sex,  Model model) {
+		if(username!=null && username!=""){
+			username = "%"+username+"%";
+		}
+		Page<User> user = userService.findUserList(page, rows_u, username, sex);
+		//Ìí¼Ó²ÎÊý
+		model.addAttribute("page", user);
+		model.addAttribute("l_name", username);
+		model.addAttribute("l_static", sex);
+		return "table-user-list";
+	}
+
 
 }

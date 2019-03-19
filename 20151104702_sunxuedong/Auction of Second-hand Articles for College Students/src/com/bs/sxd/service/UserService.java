@@ -1,5 +1,6 @@
 package com.bs.sxd.service;
 
+import com.bs.common.utils.Page;
 import com.bs.sxd.po.User;
 
 /**
@@ -15,6 +16,8 @@ public interface UserService {
 		public User findByUserName(String username);
 	//增加用户
 		public void addUser(User user);
+    //管理员模糊、条件、分页查询
+		public Page<User> findUserList(Integer page, Integer rows_u, String username, String sex);
 		
     
 	

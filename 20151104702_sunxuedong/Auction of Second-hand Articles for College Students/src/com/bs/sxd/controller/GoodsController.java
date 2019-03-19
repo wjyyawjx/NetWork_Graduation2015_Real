@@ -75,7 +75,7 @@ public class GoodsController {
 		goodsService.addGoods(goods);
 		return "person";
 	}
-
+    //模糊、条件、分页查询
 	@RequestMapping(value = "/findgoodslist.action")
 	public String list(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "6") Integer rows,
 			String l_name, String l_type, Integer l_static, Model model) {

@@ -1,5 +1,7 @@
 package com.bs.sxd.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.bs.sxd.po.User;
@@ -11,6 +13,10 @@ public interface UserDao {
 public User findByUserName(@Param("username") String username);
 
 public void addUser(User user);
+//模糊、条件、分页查询
+public List<User> findUserList(User user);
+//查询总用户数，为分页提供数据
+public Integer selectuserListCount(User user);
 
 }
 

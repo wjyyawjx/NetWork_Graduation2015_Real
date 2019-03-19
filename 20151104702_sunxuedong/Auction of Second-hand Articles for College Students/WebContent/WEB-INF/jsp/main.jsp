@@ -42,7 +42,7 @@
 								action="${pageContext.request.contextPath }/findgoodslist.action"
 								method="post">
 								<div class="search">
-									<label for="commodityName">商品名称：</label> <input type="text"
+									<label for="goodsName">商品名称：</label> <input type="text"
 										class="textbox" id="l_name" name="l_name" /> <label
 										for="commdityFrom">商品类型：</label> <select
 										data-am-selected="{searchBox: 1}" name="l_type" id="l_type">
