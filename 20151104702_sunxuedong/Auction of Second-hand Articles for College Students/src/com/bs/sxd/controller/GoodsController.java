@@ -60,10 +60,8 @@ public class GoodsController {
 		}
 		// 把图片的相对路径保存至数据库
 		sqlPath = "/images/" + filename;
-		// System.out.println(sqlPath);
 		int l_static = 1;
 		goods.setL_name(l_name);
-		// goods.setL_image(l_image);
 		goods.setL_price(l_price);
 		goods.setL_info(l_info);
 		goods.setL_type(l_type);
@@ -79,12 +77,13 @@ public class GoodsController {
 	}
 
 	@RequestMapping(value = "/findgoodslist.action")
-	public String list(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer rows,
+	public String list(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "6") Integer rows,
 			String l_name, String l_type, Integer l_static, Model model) {
 		if(l_name!=null && l_name!=""){
 			l_name = "%"+l_name+"%";
 		}
 		Page<Goods> goods = goodsService.findGoods_yList(page, rows, l_static, l_name, l_type);
+		//添加参数
 		model.addAttribute("page", goods);
 		model.addAttribute("l_name", l_name);
 		model.addAttribute("l_static", l_static);

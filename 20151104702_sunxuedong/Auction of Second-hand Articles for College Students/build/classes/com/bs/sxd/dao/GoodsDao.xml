@@ -34,4 +34,9 @@
 		</if>
 		
 	</select>
+	<select id="selectgoodsListCount" parameterType="Goods" 
+                                                 resultType="Integer">
+		select count(*) from goods
+		<include refid="findGoods_yListWhere"/>
+	</select>
 </mapper>
