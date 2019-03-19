@@ -1,5 +1,7 @@
 package cn.edu.imnu.service.impl;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,13 +50,21 @@ public class IndexServiceImpl implements IndexService {
 	@Override
 	public void updateIp1(User user) {
 		indexDao.updateIp1(user);
-		
+
 	}
 
+	// @Override
+	// public void addIp1(User user) {
+	// indexDao.addIp1(user);
+	//
+	// }
+
 	@Override
-	public void addIp1(User user) {
+	public void addIp1(String u_ip, Date u_time) {
+		User user = new User();
+		user.setU_ip(u_ip);
+		user.setU_time(u_time);
 		indexDao.addIp1(user);
-		
 	}
 
 }

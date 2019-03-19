@@ -2,6 +2,7 @@ package cn.edu.imnu.web.controller;
 
 import java.util.Date;
 import java.util.HashMap;
+
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,22 +19,27 @@ public class IndexController {
 	@Autowired
 	private IndexService indexService;
 
+	// @Autowired
+	// private User user;
+
 	public User IPFind(String u_ip, HttpSession session) {
 		User user = null;
 		IP ipAdress = null;
 		Date u_time = new Date();
 		ipAdress = indexService.IpFind(u_ip);
 		if (ipAdress != null) {
-			Integer u_id = ipAdress.getU_id();
-			user = indexService.find(u_id);
-			session.setAttribute("USER_SESSION", user);
-			user.setU_time(u_time);
-			indexService.updateIp1(user);
+			if (ipAdress.getU_id() != null) {
+				System.out.println("111");
+				Integer u_id = ipAdress.getU_id();
+				user = indexService.find(u_id);
+				session.setAttribute("USER_SESSION", user);
+				user.setU_time(u_time);
+				indexService.updateIp1(user);
 
-		}else {
-			user.setU_ip(u_ip);
-			user.setU_time(u_time);
-			indexService.addIp1(user);
+			}
+		} else {
+			System.out.println("222");
+			indexService.addIp1(u_ip, u_time);
 		}
 		return user;
 	}
