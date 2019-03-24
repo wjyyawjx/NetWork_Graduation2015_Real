@@ -11,13 +11,14 @@
 	href="${pageContext.request.contextPath}/style.css">
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/ajax.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		fajax("${pageContext.request.contextPath }/JZIndex.action", null,
 				function(data) {
 					if (data.status == "ok") {
-						if (<%=session.getAttribute("KEY") %>！=1){
+						if (<%=session.getAttribute("KEY")%>！=1){
 							location.replace(document.referrer);
 						}
 					}
@@ -52,12 +53,12 @@
 							<div class="login">
 								<a href="${pageContext.request.contextPath }/TZlogin.action"
 									aria-expanded="false"><i class="fa fa-user"></i> <%
-									 	if (session.getAttribute("USER_SESSION") != null) {
-									 %> ${USER_SESSION.u_name} <%
-									 	} else {
-									 %> 未登陆 <%
-									 	}
-									 %> </a>
+ 	if (session.getAttribute("USER_SESSION") != null) {
+ %> ${USER_SESSION.u_name} <%
+ 	} else {
+ %> 未登陆 <%
+ 	}
+ %> </a>
 							</div>
 							<%
 								if (session.getAttribute("USER_SESSION") != null) {
@@ -174,11 +175,10 @@
 					<div class="col-12">
 						<!-- Post Content -->
 						<div class="hero-slides-content text-center">
-							<h2>植物存在于天气和周围的光线中他们</h2>
-							<p>我的朋友们，我的朋友们。我的天，我的天，我的天porttitor。
-								我的天啊，我的天啊语。我的天啊，我的天啊，我的天啊。</p>
+							<h2>存在于天气和周围的光线中的绿色植物</h2>
+							<p></p>
 							<div class="welcome-btn-group">
-								<a href="#" class="btn alazea-btn mr-30">开始</a> <a href="#"
+								<a href="#" class="btn alazea-btn mr-30">开始使用</a> <a href="#"
 									class="btn alazea-btn active">联系我们</a>
 							</div>
 						</div>
@@ -197,8 +197,8 @@
 					<div class="col-12">
 						<!-- Post Content -->
 						<div class="hero-slides-content text-center">
-							<h2>植物存在于天气和周围的光线中他们</h2>
-							<p>我的朋友们，我的朋友们。我的天，我的天，我的天porttitor。我的天啊，我的天啊语。我的天啊，我的天啊，我的天啊。</p>
+							<h2>存在于天气和周围的光线中的绿色植物</h2>
+							<p></p>
 							<div class="welcome-btn-group">
 								<a href="#" class="btn alazea-btn mr-30">开始</a> <a href="#"
 									class="btn alazea-btn active">联系我们</a>
@@ -241,7 +241,7 @@
 						<!-- Content -->
 						<div class="service-content">
 							<h5>植物保健</h5>
-							<p>这是一种很好的方法我的天啊，我的天啊。 的服务。这是一种很好的方法我的天啊，我的天啊。的服务。</p>
+							<p></p>
 						</div>
 					</div>
 
@@ -256,7 +256,7 @@
 						<!-- Content -->
 						<div class="service-content">
 							<h5>压力清洗</h5>
-							<p>这是一种很好的方法我的天啊，我的天啊。的服务。</p>
+							<p></p>
 						</div>
 					</div>
 
@@ -271,7 +271,7 @@
 						<!-- Content -->
 						<div class="service-content">
 							<h5>树服务,修剪</h5>
-							<p>这是一种很好的方法我的天啊，我的天啊。的服务。</p>
+							<p></p>
 						</div>
 					</div>
 
@@ -301,15 +301,14 @@
 					<h2>关于我们</h2>
 					<p>我们在工厂服务领域处于领先地位。</p>
 				</div>
-				<p>Quisque orci quam, vulputate non commodo finibus, molestie ac
-					ante. Duis in sceleri quesem. Nulla sit amet varius nunc. Maecenas
-					dui, tempeu ullam corper in.</p>
+				<p>我们主要致力于植物的介绍和植物的相关习性的介绍，通过我们的网站主要可以查看各类植物的信息以及养护的相关知识，
+					我们不求最好只求更好。</p>
 
 				<!-- Progress Bar Content Area -->
 				<div class="alazea-progress-bar mb-50">
 					<!-- Single Progress Bar -->
 					<div class="single_progress_bar">
-						<p>Office plants</p>
+						<p>办公室植物</p>
 						<div id="bar1" class="barfiller">
 							<div class="tipWrap">
 								<span class="tip"></span>
@@ -320,7 +319,7 @@
 
 					<!-- Single Progress Bar -->
 					<div class="single_progress_bar">
-						<p>Field manager</p>
+						<p>现场经理</p>
 						<div id="bar2" class="barfiller">
 							<div class="tipWrap">
 								<span class="tip"></span>
@@ -331,7 +330,7 @@
 
 					<!-- Single Progress Bar -->
 					<div class="single_progress_bar">
-						<p>Landscape design</p>
+						<p>景观设计</p>
 						<div id="bar3" class="barfiller">
 							<div class="tipWrap">
 								<span class="tip"></span>
@@ -342,7 +341,7 @@
 
 					<!-- Single Progress Bar -->
 					<div class="single_progress_bar">
-						<p>Garden Care</p>
+						<p>花园护理</p>
 						<div id="bar4" class="barfiller">
 							<div class="tipWrap">
 								<span class="tip"></span>
@@ -360,9 +359,9 @@
 						<div class="col-12 col-sm-6">
 							<div class="single-benefits-area">
 								<img src="img/core-img/b1.png" alt="">
-								<h5>Quality Products</h5>
-								<p>Intiam eu sagittis est, at commodo lacini libero.
-									Praesent dignissim sed odio vel aliquam manta lagorn.</p>
+								<h5>质量的产品</h5>
+								<p>我们拥有质量最好的参产品
+									，本平台所出售的产品可保证质量</p>
 							</div>
 						</div>
 
@@ -370,9 +369,9 @@
 						<div class="col-12 col-sm-6">
 							<div class="single-benefits-area">
 								<img src="img/core-img/b2.png" alt="">
-								<h5>Perfect Service</h5>
-								<p>Intiam eu sagittis est, at commodo lacini libero.
-									Praesent dignissim sed odio vel aliquam manta lagorn.</p>
+								<h5>完善的服务</h5>
+								<p>我们有最好的服务，
+									通过我们的服务让你宾至如归。</p>
 							</div>
 						</div>
 
@@ -380,9 +379,9 @@
 						<div class="col-12 col-sm-6">
 							<div class="single-benefits-area">
 								<img src="img/core-img/b3.png" alt="">
-								<h5>100% Natural</h5>
-								<p>Intiam eu sagittis est, at commodo lacini libero.
-									Praesent dignissim sed odio vel aliquam manta lagorn.</p>
+								<h5>100% 自然</h5>
+								<p>我们的植物都是百分之百的纯天然植物，
+									无公害，每颗都是经过精心培养的。</p>
 							</div>
 						</div>
 
@@ -390,9 +389,9 @@
 						<div class="col-12 col-sm-6">
 							<div class="single-benefits-area">
 								<img src="img/core-img/b4.png" alt="">
-								<h5>Environmentally friendly</h5>
-								<p>Intiam eu sagittis est, at commodo lacini libero.
-									Praesent dignissim sed odio vel aliquam manta lagorn.</p>
+								<h5>环境友好型</h5>
+								<p>植物生长的环境属于大自然，
+									还原大自然的生长环境。</p>
 							</div>
 						</div>
 					</div>
@@ -418,8 +417,8 @@
 			<div class="col-12">
 				<!-- Section Heading -->
 				<div class="section-heading text-center">
-					<h2>OUR PORTFOLIO</h2>
-					<p>We devote all of our experience and efforts for creation</p>
+					<h2>我们的投资组合</h2>
+					<p>我们把所有的经验和努力都用于创造</p>
 				</div>
 			</div>
 		</div>
@@ -430,13 +429,10 @@
 			<div class="col-12">
 				<div class="alazea-portfolio-filter">
 					<div class="portfolio-filter">
-						<button class="btn active" data-filter="*">All</button>
-						<button class="btn" data-filter=".design">Coffee Design</button>
-						<button class="btn" data-filter=".garden">Garden</button>
-						<button class="btn" data-filter=".home-design">Home
-							Design</button>
-						<button class="btn" data-filter=".office-design">Office
-							Design</button>
+						<button class="btn active" data-filter="*">全部</button>
+						<button class="btn" data-filter=".garden">花园设计</button>
+						<button class="btn" data-filter=".home-design">家设计</button>
+						<button class="btn" data-filter=".office-design">办公室设计</button>
 					</div>
 				</div>
 			</div>
@@ -457,8 +453,8 @@
 						class="portfolio-img d-flex align-items-center justify-content-center"
 						title="Portfolio 1">
 						<div class="port-hover-text">
-							<h3>Minimal Flower Store</h3>
-							<h5>Office Plants</h5>
+							<h3>最小的鲜花店</h3>
+							<h5>办公室植物</h5>
 						</div>
 					</a>
 				</div>
@@ -477,8 +473,8 @@
 						class="portfolio-img d-flex align-items-center justify-content-center"
 						title="Portfolio 2">
 						<div class="port-hover-text">
-							<h3>Minimal Flower Store</h3>
-							<h5>Office Plants</h5>
+							<h3>最小的鲜花店</h3>
+							<h5>办公室植物</h5>
 						</div>
 					</a>
 				</div>
@@ -497,8 +493,8 @@
 						class="portfolio-img d-flex align-items-center justify-content-center"
 						title="Portfolio 3">
 						<div class="port-hover-text">
-							<h3>Minimal Flower Store</h3>
-							<h5>Office Plants</h5>
+							<h3>最小的鲜花店</h3>
+							<h5>办公室植物</h5>
 						</div>
 					</a>
 				</div>
@@ -517,8 +513,8 @@
 						class="portfolio-img d-flex align-items-center justify-content-center"
 						title="Portfolio 4">
 						<div class="port-hover-text">
-							<h3>Minimal Flower Store</h3>
-							<h5>Office Plants</h5>
+							<h3>最小的鲜花店</h3>
+							<h5>办公室植物</h5>
 						</div>
 					</a>
 				</div>
@@ -537,8 +533,8 @@
 						class="portfolio-img d-flex align-items-center justify-content-center"
 						title="Portfolio 5">
 						<div class="port-hover-text">
-							<h3>Minimal Flower Store</h3>
-							<h5>Office Plants</h5>
+							<h3>最小的鲜花店</h3>
+							<h5>办公室植物</h5>
 						</div>
 					</a>
 				</div>
@@ -557,8 +553,8 @@
 						class="portfolio-img d-flex align-items-center justify-content-center"
 						title="Portfolio 6">
 						<div class="port-hover-text">
-							<h3>Minimal Flower Store</h3>
-							<h5>Office Plants</h5>
+							<h3>最小的鲜花店</h3>
+							<h5>办公室植物</h5>
 						</div>
 					</a>
 				</div>
@@ -577,8 +573,8 @@
 						class="portfolio-img d-flex align-items-center justify-content-center"
 						title="Portfolio 7">
 						<div class="port-hover-text">
-							<h3>Minimal Flower Store</h3>
-							<h5>Office Plants</h5>
+							<h3>最小的鲜花店</h3>
+							<h5>办公室植物</h5>
 						</div>
 					</a>
 				</div>
@@ -588,325 +584,6 @@
 	</div>
 	</section>
 	<!-- ##### Portfolio Area End ##### -->
-	<div class="tlinks">
-		Collect from <a href="http://www.cssmoban.com/" title="网站模板">网站模板</a>
-	</div>
-	<!-- ##### Testimonial Area Start ##### -->
-	<section class="testimonial-area section-padding-100">
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<div class="testimonials-slides owl-carousel">
-
-					<!-- Single Testimonial Slide -->
-					<div class="single-testimonial-slide">
-						<div class="row align-items-center">
-							<div class="col-12 col-md-6">
-								<div class="testimonial-thumb">
-									<img src="img/bg-img/13.jpg" alt="">
-								</div>
-							</div>
-							<div class="col-12 col-md-6">
-								<div class="testimonial-content">
-									<!-- Section Heading -->
-									<div class="section-heading">
-										<h2>TESTIMONIAL</h2>
-										<p>Some kind words from clients about Alazea</p>
-									</div>
-									<p>“Alazea is a pleasure to work with. Their ideas are
-										creative, they came up with imaginative solutions to some
-										tricky issues, their landscaping and planting contacts are
-										equally excellent we have a beautiful but also manageable
-										garden as a result. Thank you!”</p>
-									<div class="testimonial-author-info">
-										<h6>Mr. Nick Jonas</h6>
-										<p>CEO of NAVATECH</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Testimonial Slide -->
-					<div class="single-testimonial-slide">
-						<div class="row align-items-center">
-							<div class="col-12 col-md-6">
-								<div class="testimonial-thumb">
-									<img src="img/bg-img/14.jpg" alt="">
-								</div>
-							</div>
-							<div class="col-12 col-md-6">
-								<div class="testimonial-content">
-									<!-- Section Heading -->
-									<div class="section-heading">
-										<h2>TESTIMONIAL</h2>
-										<p>Some kind words from clients about Alazea</p>
-									</div>
-									<p>“Alazea is a pleasure to work with. Their ideas are
-										creative, they came up with imaginative solutions to some
-										tricky issues, their landscaping and planting contacts are
-										equally excellent we have a beautiful but also manageable
-										garden as a result. Thank you!”</p>
-									<div class="testimonial-author-info">
-										<h6>Mr. Nazrul Islam</h6>
-										<p>CEO of NAVATECH</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Testimonial Slide -->
-					<div class="single-testimonial-slide">
-						<div class="row align-items-center">
-							<div class="col-12 col-md-6">
-								<div class="testimonial-thumb">
-									<img src="img/bg-img/15.jpg" alt="">
-								</div>
-							</div>
-							<div class="col-12 col-md-6">
-								<div class="testimonial-content">
-									<!-- Section Heading -->
-									<div class="section-heading">
-										<h2>TESTIMONIAL</h2>
-										<p>Some kind words from clients about Alazea</p>
-									</div>
-									<p>“Alazea is a pleasure to work with. Their ideas are
-										creative, they came up with imaginative solutions to some
-										tricky issues, their landscaping and planting contacts are
-										equally excellent we have a beautiful but also manageable
-										garden as a result. Thank you!”</p>
-									<div class="testimonial-author-info">
-										<h6>Mr. Jonas Nick</h6>
-										<p>CEO of NAVATECH</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-	</section>
-	<!-- ##### Testimonial Area End ##### -->
-
-	<!-- ##### Product Area Start ##### -->
-	<section class="new-arrivals-products-area bg-gray section-padding-100">
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<!-- Section Heading -->
-				<div class="section-heading text-center">
-					<h2>NEW ARRIVALS</h2>
-					<p>We have the latest products, it must be exciting for you</p>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-
-			<!-- Single Product Area -->
-			<div class="col-12 col-sm-6 col-lg-3">
-				<div class="single-product-area mb-50 wow fadeInUp"
-					data-wow-delay="100ms">
-					<!-- Product Image -->
-					<div class="product-img">
-						<a href="shop-details.html"><img src="img/bg-img/9.jpg" alt=""></a>
-						<!-- Product Tag -->
-						<div class="product-tag">
-							<a href="#">Hot</a>
-						</div>
-						<div class="product-meta d-flex">
-							<a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-							<a href="cart.html" class="add-to-cart-btn">Add to cart</a> <a
-								href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-						</div>
-					</div>
-					<!-- Product Info -->
-					<div class="product-info mt-15 text-center">
-						<a href="shop-details.html">
-							<p>Cactus Flower</p>
-						</a>
-						<h6>$10.99</h6>
-					</div>
-				</div>
-			</div>
-
-			<!-- Single Product Area -->
-			<div class="col-12 col-sm-6 col-lg-3">
-				<div class="single-product-area mb-50 wow fadeInUp"
-					data-wow-delay="200ms">
-					<!-- Product Image -->
-					<div class="product-img">
-						<a href="shop-details.html"><img src="img/bg-img/10.jpg"
-							alt=""></a>
-						<div class="product-meta d-flex">
-							<a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-							<a href="cart.html" class="add-to-cart-btn">Add to cart</a> <a
-								href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-						</div>
-					</div>
-					<!-- Product Info -->
-					<div class="product-info mt-15 text-center">
-						<a href="shop-details.html">
-							<p>Cactus Flower</p>
-						</a>
-						<h6>$10.99</h6>
-					</div>
-				</div>
-			</div>
-
-			<!-- Single Product Area -->
-			<div class="col-12 col-sm-6 col-lg-3">
-				<div class="single-product-area mb-50 wow fadeInUp"
-					data-wow-delay="300ms">
-					<!-- Product Image -->
-					<div class="product-img">
-						<a href="shop-details.html"><img src="img/bg-img/11.jpg"
-							alt=""></a>
-						<div class="product-meta d-flex">
-							<a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-							<a href="cart.html" class="add-to-cart-btn">Add to cart</a> <a
-								href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-						</div>
-					</div>
-					<!-- Product Info -->
-					<div class="product-info mt-15 text-center">
-						<a href="shop-details.html">
-							<p>Cactus Flower</p>
-						</a>
-						<h6>$10.99</h6>
-					</div>
-				</div>
-			</div>
-
-			<!-- Single Product Area -->
-			<div class="col-12 col-sm-6 col-lg-3">
-				<div class="single-product-area mb-50 wow fadeInUp"
-					data-wow-delay="400ms">
-					<!-- Product Image -->
-					<div class="product-img">
-						<a href="shop-details.html"><img src="img/bg-img/12.jpg"
-							alt=""></a>
-						<!-- Product Tag -->
-						<div class="product-tag sale-tag">
-							<a href="#">Hot</a>
-						</div>
-						<div class="product-meta d-flex">
-							<a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-							<a href="cart.html" class="add-to-cart-btn">Add to cart</a> <a
-								href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-						</div>
-					</div>
-					<!-- Product Info -->
-					<div class="product-info mt-15 text-center">
-						<a href="shop-details.html">
-							<p>Cactus Flower</p>
-						</a>
-						<h6>$10.99</h6>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-12 text-center">
-				<a href="#" class="btn alazea-btn">View All</a>
-			</div>
-
-		</div>
-	</div>
-	</section>
-	<!-- ##### Product Area End ##### -->
-
-	<!-- ##### Blog Area Start ##### -->
-	<section class="alazea-blog-area section-padding-100-0">
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<!-- Section Heading -->
-				<div class="section-heading text-center">
-					<h2>LATEST NEWS</h2>
-					<p>The breaking news about Gardening &amp; House plants</p>
-				</div>
-			</div>
-		</div>
-
-		<div class="row justify-content-center">
-
-			<!-- Single Blog Post Area -->
-			<div class="col-12 col-md-6 col-lg-4">
-				<div class="single-blog-post mb-100">
-					<div class="post-thumbnail mb-30">
-						<a href="single-post.html"><img src="img/bg-img/6.jpg" alt=""></a>
-					</div>
-					<div class="post-content">
-						<a href="single-post.html" class="post-title">
-							<h5>Garden designers across the country forecast ideas
-								shaping the gardening world in 2018</h5>
-						</a>
-						<div class="post-meta">
-							<a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>
-								20 Jun 2018</a> <a href="#"><i class="fa fa-user"
-								aria-hidden="true"></i> Alan Jackson</a>
-						</div>
-						<p class="post-excerpt">Integer luctus diam ac scerisque
-							consectetur. Vimus ottawas nec lacus sit amet. Aenean interdus
-							mid vitae.</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- Single Blog Post Area -->
-			<div class="col-12 col-md-6 col-lg-4">
-				<div class="single-blog-post mb-100">
-					<div class="post-thumbnail mb-30">
-						<a href="single-post.html"><img src="img/bg-img/7.jpg" alt=""></a>
-					</div>
-					<div class="post-content">
-						<a href="single-post.html" class="post-title">
-							<h5>2018 Midwest Tree and Shrub Conference: Resilient Plants
-								for a Lasting Landscape</h5>
-						</a>
-						<div class="post-meta">
-							<a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>
-								20 Jun 2018</a> <a href="#"><i class="fa fa-user"
-								aria-hidden="true"></i> Christina Aguilera</a>
-						</div>
-						<p class="post-excerpt">Integer luctus diam ac scerisque
-							consectetur. Vimus ottawas nec lacus sit amet. Aenean interdus
-							mid vitae.</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- Single Blog Post Area -->
-			<div class="col-12 col-md-6 col-lg-4">
-				<div class="single-blog-post mb-100">
-					<div class="post-thumbnail mb-30">
-						<a href="single-post.html"><img src="img/bg-img/8.jpg" alt=""></a>
-					</div>
-					<div class="post-content">
-						<a href="single-post.html" class="post-title">
-							<h5>The summer coming up, it’s time for both us and the
-								flowers to soak up the sunshine</h5>
-						</a>
-						<div class="post-meta">
-							<a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>
-								19 Jun 2018</a> <a href="#"><i class="fa fa-user"
-								aria-hidden="true"></i> Mason Jenkins</a>
-						</div>
-						<p class="post-excerpt">Integer luctus diam ac scerisque
-							consectetur. Vimus ottawas nec lacus sit amet. Aenean interdus
-							mid vitae.</p>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-	</section>
-	<!-- ##### Blog Area End ##### -->
 
 	<!-- ##### Subscribe Area Start ##### -->
 	<section class="subscribe-newsletter-area"
@@ -916,17 +593,16 @@
 			<div class="col-12 col-lg-5">
 				<!-- Section Heading -->
 				<div class="section-heading mb-0">
-					<h2>Join the Newsletter</h2>
-					<p>Subscribe to our newsletter and get 10% off your first
-						purchase</p>
+					<h2>加入通讯</h2>
+					<p>订阅我们的通讯，先打九折购买</p>
 				</div>
 			</div>
 			<div class="col-12 col-lg-6">
 				<div class="subscribe-form">
 					<form action="#" method="get">
 						<input type="email" name="subscribe-email" id="subscribeEmail"
-							placeholder="Enter your email">
-						<button type="submit" class="btn alazea-btn">SUBSCRIBE</button>
+							placeholder="输入您的邮箱">
+						<button type="submit" class="btn alazea-btn">订阅</button>
 					</form>
 				</div>
 			</div>
@@ -947,8 +623,8 @@
 			<div class="col-12 col-lg-5">
 				<!-- Section Heading -->
 				<div class="section-heading">
-					<h2>GET IN TOUCH</h2>
-					<p>Send us a message, we will call back later</p>
+					<h2>与我们取得联系</h2>
+					<p>请给我们发个消息，我们会及时处理。</p>
 				</div>
 				<!-- Contact Form Area -->
 				<div class="contact-form-area mb-100">
@@ -957,30 +633,29 @@
 							<div class="col-12 col-sm-6">
 								<div class="form-group">
 									<input type="text" class="form-control" id="contact-name"
-										placeholder="Your Name">
+										placeholder="您的名字">
 								</div>
 							</div>
 							<div class="col-12 col-sm-6">
 								<div class="form-group">
 									<input type="email" class="form-control" id="contact-email"
-										placeholder="Your Email">
+										placeholder="您的邮箱">
 								</div>
 							</div>
 							<div class="col-12">
 								<div class="form-group">
 									<input type="text" class="form-control" id="contact-subject"
-										placeholder="Subject">
+										placeholder="主题">
 								</div>
 							</div>
 							<div class="col-12">
 								<div class="form-group">
 									<textarea class="form-control" name="message" id="message"
-										cols="30" rows="10" placeholder="Message"></textarea>
+										cols="30" rows="10" placeholder="主要内容"></textarea>
 								</div>
 							</div>
 							<div class="col-12">
-								<button type="submit" class="btn alazea-btn mt-15">Send
-									Message</button>
+								<button type="submit" class="btn alazea-btn mt-15">发送消息</button>
 							</div>
 						</div>
 					</form>
@@ -1009,8 +684,7 @@
 						<div class="footer-logo mb-30">
 							<a href="#"><img src="img/core-img/logo.png" alt=""></a>
 						</div>
-						<p>Lorem ipsum dolor sit samet, consectetur adipiscing elit.
-							India situs atione mantor</p>
+						<p>网站的主要连接，转发网站。</p>
 						<div class="social-info">
 							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
 							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -1025,20 +699,16 @@
 				<div class="col-12 col-sm-6 col-lg-3">
 					<div class="single-footer-widget">
 						<div class="widget-title">
-							<h5>QUICK LINK</h5>
+							<h5>快速链接</h5>
 						</div>
 						<nav class="widget-nav">
 						<ul>
-							<li><a href="#">Purchase</a></li>
-							<li><a href="#">FAQs</a></li>
-							<li><a href="#">Payment</a></li>
-							<li><a href="#">News</a></li>
-							<li><a href="#">Return</a></li>
-							<li><a href="#">Advertise</a></li>
-							<li><a href="#">Shipping</a></li>
-							<li><a href="#">Career</a></li>
-							<li><a href="#">Orders</a></li>
-							<li><a href="#">Policities</a></li>
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">消息</a></li>
+							<li><a href="#">返回</a></li>
+							<li><a href="#">做广告</a></li>
+							<li><a href="#">航运</a></li>
+							<li><a href="#">职业生涯</a></li>
 						</ul>
 						</nav>
 					</div>
@@ -1048,57 +718,18 @@
 				<div class="col-12 col-sm-6 col-lg-3">
 					<div class="single-footer-widget">
 						<div class="widget-title">
-							<h5>BEST SELLER</h5>
-						</div>
-
-						<!-- Single Best Seller Products -->
-						<div class="single-best-seller-product d-flex align-items-center">
-							<div class="product-thumbnail">
-								<a href="shop-details.html"><img src="img/bg-img/4.jpg"
-									alt=""></a>
-							</div>
-							<div class="product-info">
-								<a href="shop-details.html">Cactus Flower</a>
-								<p>$10.99</p>
-							</div>
-						</div>
-
-						<!-- Single Best Seller Products -->
-						<div class="single-best-seller-product d-flex align-items-center">
-							<div class="product-thumbnail">
-								<a href="shop-details.html"><img src="img/bg-img/5.jpg"
-									alt=""></a>
-							</div>
-							<div class="product-info">
-								<a href="shop-details.html">Tulip Flower</a>
-								<p>$11.99</p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Single Footer Widget -->
-				<div class="col-12 col-sm-6 col-lg-3">
-					<div class="single-footer-widget">
-						<div class="widget-title">
-							<h5>CONTACT</h5>
+							<h5>联系</h5>
 						</div>
 
 						<div class="contact-information">
 							<p>
-								<span>Address:</span> 505 Silk Rd, New York
+								<span>地址:</span> 内蒙古师范大学
 							</p>
 							<p>
-								<span>Phone:</span> +1 234 122 122
+								<span>电话:</span> +1 234 122 122
 							</p>
 							<p>
-								<span>Email:</span> info.deercreative@gmail.com
-							</p>
-							<p>
-								<span>Open hours:</span> Mon - Sun: 8 AM to 9 PM
-							</p>
-							<p>
-								<span>Happy hours:</span> Sat: 2 PM to 4 PM
+								<span>Email:</span> Yqd7543@hotmail.com
 							</p>
 						</div>
 					</div>
@@ -1118,14 +749,11 @@
 				<div class="col-12 col-md-6">
 					<div class="copywrite-text">
 						<p>
-							&copy; Copyright &copy;
+							&copy; 版权 &copy;
 							<script>
 								document.write(new Date().getFullYear());
 							</script>
-							- Colorlib All rights reserved | More Templates <a
-								href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a>
-							- Collect from <a href="http://www.cssmoban.com/" title="网页模板"
-								target="_blank">网页模板</a>
+							- 本人保留所有权利
 
 						</p>
 					</div>
@@ -1135,12 +763,12 @@
 					<div class="footer-nav">
 						<nav>
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li><a href="#">About</a></li>
-							<li><a href="#">Service</a></li>
-							<li><a href="#">Portfolio</a></li>
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">Contact</a></li>
+							<li><a href="#">主页</a></li>
+							<li><a href="#">关于我们</a></li>
+							<li><a href="#">服务</a></li>
+							<li><a href="#">投资组合</a></li>
+							<li><a href="#">博客</a></li>
+							<li><a href="#">联系</a></li>
 						</ul>
 						</nav>
 					</div>

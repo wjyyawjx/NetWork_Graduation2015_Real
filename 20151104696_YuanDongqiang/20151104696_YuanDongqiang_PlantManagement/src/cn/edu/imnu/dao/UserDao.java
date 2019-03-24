@@ -21,8 +21,10 @@ public interface UserDao {
 	 */
 	public User findUseremail(@Param("u_email") String u_email);
 	/**
-	 * 更新ip
+	 * 更新IP地址
 	 */
 	public void SaveIp(User user);
+
+	public void SaveIp1(User user);
 
 }

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="itheima" uri="http://bs.com/common/"%>
+<%@ taglib prefix="bs" uri="http://bs.com/common/"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -14,6 +14,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>大学生二手物品租赁系统</title>
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/bootstrap.min.css" rel="stylesheet" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -35,33 +36,31 @@
 							<div class="logo"width:100%; height:100%>
 								<a><img src="images/logo.png" alt="" /></a>
 							</div>
-							
+
 
 							<form class="form-inline"
 								action="${pageContext.request.contextPath }/findgoodslist.action"
 								method="post">
 								<div class="search">
-									<label for="commodityName">商品名称：</label> 
-									<input type="text" class="textbox"  id="l_name" name="l_name" />
-									<label for="commdityFrom">商品类型：</label>
-									<select data-am-selected="{searchBox: 1}" name="l_type" id="l_type">
-									        <option value="">全部</option>
-											<option value="笔记">笔记</option>
-											<option value="图书">图书</option>
-											<option value="工具">工具</option>
-											<option value="娱乐">娱乐</option>
-										</select>
-										<label for="commdityFrom">商品状态：</label>
-									<select data-am-selected="{searchBox: 1}" name="l_static" id="l_static">
-										    <option value="">全部</option>
-											<option value="1">可租赁</option>
-											<option value="0">租赁中</option>
-											
-										</select>
-									
-										<input type="submit" class="gray-button" value="查询">
+									<label for="commodityName">商品名称：</label> <input type="text"
+										class="textbox" id="l_name" name="l_name" /> <label
+										for="commdityFrom">商品类型：</label> <select
+										data-am-selected="{searchBox: 1}" name="l_type" id="l_type">
+										<option value="全部">全部</option>
+										<option value="笔记">笔记</option>
+										<option value="图书">图书</option>
+										<option value="工具">工具</option>
+										<option value="娱乐">娱乐</option>
+									</select> <label for="commdityFrom">商品状态：</label> <select
+										data-am-selected="{searchBox: 1}" name="l_static"
+										id="l_static">
+										<option value="">全部</option>
+										<option value="1">可租赁</option>
+										<option value="0">租赁中</option>
+
+									</select> <input type="submit" class="gray-button" value="查询">
 								</div>
-								
+
 							</form>
 							<!------------------------------------------查询分割线---------------------------------------------------  -->
 							<div class="clear"></div>
@@ -104,43 +103,42 @@
 
 
 										</div>
+
 										<form class="form-inline"
 											action="${pageContext.request.contextPath }/goodslist.action"
 											method="post">
-											<div class="text">
-												<div class="grid_1_of_3 images_1_of_3">
-													<div class="grid_1">
-														<c:forEach items="${page.rows}" var="row"
-															varStatus="status">
-															<a href="single.html"><img src="${row.l_image}" title="continue reading" style="width: 280px;height: 280px"></a>
-															<div class="grid_desc">
-																<p class="title">${row.l_name}</p>
-																<p class="title">租赁时间：<a >${row.l_out_time}---${row.l_in_time}</a></p>
-																
-																
-																<div class="price" style="height: 19px;" align="right">
-																	<span class="reducedfrom" >${row.l_price}.00元</span>
+											<div>
+												<c:forEach items="${page.rows}" var="row" varStatus="status">
 
-																</div>
-																<div class="cart-button">
-																	<div class="cart">
-																		<a href="#"><img src="images/cart.png" alt="" /></a>
-																	</div>
+
+													<div style="float: left">
+														<a href="#">
+															<div style="width: 220px; height: 220px">
+																<img src="${row.l_image}" />
+															</div>
+															<h4>${row.l_name}</h4>
+														</a>
+														<p>
+															<p align="left">价格：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${row.l_price}.00元</p>
+															
+														</p>
+														
+														<p class="title">租赁时间：<a >${row.l_out_time}---${row.l_in_time}</a></p>
+														
 																	<input type="submit" class="button" value="点击购买">
 																	<div class="clear"></div>
-																</div>
-															</div>
-														</c:forEach>
-														
 													</div>
-													<div style="clear: left" style="float:right">
-															<itheima:page
-																url="${pageContext.request.contextPath }/findgoodslist.action" />
+
+
+
+
+												</c:forEach>
+												<div class="col-md-12 text-right" >
+															<bs:page url="${pageContext.request.contextPath }/findgoodslist.action" />
 														</div>
-													<div class="clear"></div>
-												</div>
-												<div class="clear"></div>
+
 											</div>
+
 										</form>
 
 									</div>
@@ -217,13 +215,15 @@
 									<div class="section group example">
 										<div class="col_1_of_2 span_1_of_2">
 											<img src="images/pic21.jpg" alt="" /> <img
-												src="images/pic24.jpg" alt="" /> <img src="images/pic25.jpg"
-												alt="" /> <img src="images/pic27.jpg" alt="" />
+												src="images/pic24.jpg" alt="" /> <img
+												src="images/pic25.jpg" alt="" /> <img
+												src="images/pic27.jpg" alt="" />
 										</div>
 										<div class="col_1_of_2 span_1_of_2">
 											<img src="images/pic22.jpg" alt="" /> <img
-												src="images/pic23.jpg" alt="" /> <img src="images/pic26.jpg"
-												alt="" /> <img src="images/pic28.jpg" alt="" />
+												src="images/pic23.jpg" alt="" /> <img
+												src="images/pic26.jpg" alt="" /> <img
+												src="images/pic28.jpg" alt="" />
 										</div>
 										<div class="clear"></div>
 									</div>

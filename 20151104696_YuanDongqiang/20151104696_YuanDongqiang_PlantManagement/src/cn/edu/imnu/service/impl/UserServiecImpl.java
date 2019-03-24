@@ -39,8 +39,8 @@ public class UserServiecImpl implements UserService {
 
 	@Override
 	public void SaveIp(User user) {
-		// TODO Auto-generated method stub
 		userDao.SaveIp(user);
+		userDao.SaveIp1(user);
 	}
 
 }
