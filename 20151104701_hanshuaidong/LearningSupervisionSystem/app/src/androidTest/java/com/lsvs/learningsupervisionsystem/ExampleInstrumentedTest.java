@@ -1,4 +1,4 @@
-package com.example.hansh.learningsupervisionsystem;
+package com.lsvs.learningsupervisionsystem;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.hansh.learningsupervisionsystem", appContext.getPackageName());
+        assertEquals("com.lsvs.learningsupervisionsystem", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package com.example.hansh.learningsupervisionsystem;
+package com.lsvs.learningsupervisionsystem;
 
 import org.junit.Test;
 
