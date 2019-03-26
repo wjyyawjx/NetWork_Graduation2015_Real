@@ -1,0 +1,2 @@
+127.0.0.1 - - [24/Mar/2019:13:03:24 +0800] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [24/Mar/2019:13:03:25 +0800] "GET /20151104697_zhongyangyang_GraduationDesign/html/buytoday.jsp HTTP/1.1" 200 4809

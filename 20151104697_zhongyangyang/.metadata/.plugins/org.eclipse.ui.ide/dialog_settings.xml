@@ -2,4 +2,6 @@
 <section name="Workbench">
 	<section name="ExternalProjectImportWizard">
 	</section>
+	<section name="NewWizardAction">
+	</section>
 </section>

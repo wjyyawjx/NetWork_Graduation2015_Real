@@ -12,5 +12,9 @@ public interface GoodsDao {
  public List<Goods>  findGoods_yList(Goods goods);
 //总商品数
 public Integer selectgoodsListCount(Goods goods);
+//下架商品
+public void updategoodstype_n(Goods goods);
+//删除商品
+public void deletegoods(Integer id);
  
 }

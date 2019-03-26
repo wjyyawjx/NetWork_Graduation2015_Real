@@ -19,12 +19,7 @@
     				alert("两次密码不一致！");
         			return false;
     			}
-    			if(randomjsp == ""){
-    				alert("请输入验证码！");
-        			return false;
-    			}
-    			return true;
-			}
+    			
 		</script>
 </head>
 <body>

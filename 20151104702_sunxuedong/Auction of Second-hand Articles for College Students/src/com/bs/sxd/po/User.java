@@ -1,9 +1,6 @@
 package com.bs.sxd.po;
-
 import java.io.Serializable;
-
 import org.springframework.web.multipart.MultipartFile;
-
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
@@ -16,6 +13,20 @@ public class User implements Serializable {
 	private String college;
 	private String adreess;
 	private Integer type;
+	private Integer start;            // 起始行
+	private Integer rows;             // 所取行数
+	public Integer getStart() {
+		return start;
+	}
+	public void setStart(Integer start) {
+		this.start = start;
+	}
+	public Integer getRows() {
+		return rows;
+	}
+	public void setRows(Integer rows) {
+		this.rows = rows;
+	}
 	private MultipartFile file;  
 	public MultipartFile getFile() {
 		return file;

@@ -39,4 +39,18 @@
 		select count(*) from goods
 		<include refid="findGoods_yListWhere"/>
 	</select>
+	<!--下架商品  -->
+	<update id="updategoodstype_n" parameterType="Goods" >
+	    update goods
+	    <set>
+	        <if test="l_static != null">
+	            l_static =#{l_static},
+	        </if>
+	    </set>
+	    where id=#{id}
+	</update>
+	<!-- 删除商品 -->
+	<delete id="deletegoods" parameterType="Integer">
+	    delete from goods where id=#{id}
+	</delete>
 </mapper>

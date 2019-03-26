@@ -1,88 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_bg"
-    android:orientation="vertical">
+    android:gravity="center"
+    android:padding="16dp">
 
-    <include layout="@layout/main_title_bar"></include>
-
-    <ImageView
-        android:id="@+id/iv_head"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/default_icon" />
-
-    <EditText
-        android:id="@+id/et_user_name"
-        android:layout_width="fill_parent"
-        android:layout_height="48dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginTop="35dp"
-        android:drawableLeft="@drawable/user_name_icon"
-        android:drawablePadding="10dp"
-        android:gravity="center_vertical"
-        android:hint="请输入用户名"
-        android:paddingLeft="8dp"
-        android:singleLine="true"
-        android:textColor="#000000"
-        android:textColorHint="#a3a3a3"
-        android:textSize="14sp" />
-
-    <EditText
-        android:id="@+id/et_psw"
-        android:layout_width="fill_parent"
-        android:layout_height="48dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
-        android:drawableLeft="@drawable/psw_icon"
-        android:drawablePadding="10dp"
-        android:gravity="center_vertical"
-        android:hint="请输入密码"
-        android:inputType="textPassword"
-        android:paddingLeft="8dp"
-        android:singleLine="true"
-        android:textColor="#000000"
-        android:textColorHint="#a3a3a3"
-        android:textSize="14sp" />
-
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/email_login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_login"
-            android:background="@color/colorPrimary"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:padding="8dp"
-            android:text="登 陆"
-            android:textColor="@android:color/white"
-            android:textSize="14sp" />
+        <ImageView
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:layout_marginBottom="@dimen/size_8dp"
+            android:src="@drawable/ic_app_icon" />
 
-        <TextView
-            android:id="@+id/tv_register"
-            android:background="@color/colorPrimary"
-            android:layout_width="0dp"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <AutoCompleteTextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_password"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/email_sign_in_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:padding="8dp"
-            android:text="注 册"
-            android:textColor="@android:color/white"
-            android:textSize="14sp" />
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_account_shape"
+            android:text="登录"
+            android:textColor="@color/text_write"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

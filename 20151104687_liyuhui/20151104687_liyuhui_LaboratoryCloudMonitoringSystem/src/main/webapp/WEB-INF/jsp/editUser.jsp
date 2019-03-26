@@ -171,9 +171,9 @@
 				
 				    <div class="addOrEdit" >
 				        <form action="updateUser" method="post">
-				            用户名: <input type="text" name="name" value="${user.num}"> <br><br>
-				            密码: <input type="password" name="password" value="" placeholder="留空就表示不修改密码"> <br><br>
-				            配置角色:<br>
+				            用户名: <input type="text" name="name" value="${user.num}" style="color:black"> <br><br>
+				            密码: <input type="password" name="password" value=""  style="color:black" placeholder="留空就表示不修改密码" > <br>留空就表示不修改密码<br>
+				           <br> 配置角色:<br>
 				            <div style="text-align:left;width:300px;margin:0px auto;padding-left:50px">
 				                <c:forEach items="${rs}" var="r">
 				                    <c:set var="hasRole" value="false" />

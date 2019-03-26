@@ -182,7 +182,7 @@
 							class="tpl-dropdown-content-photo"> <img
 								src="assets/img/user02.png" alt="">
 						</span> <span class="tpl-dropdown-content-subject"> <span
-								class="tpl-dropdown-content-from"> 禁言小张 </span> <span
+								class="tpl-dropdown-content-from"> ${USER_SESSION.username} </span> <span
 								class="tpl-dropdown-content-time">10分钟前 </span>
 						</span> <span class="tpl-dropdown-content-font"> Amaze UI 的诞生，依托于
 								GitHub 及其他技术社区上一些优秀的资源；Amaze UI 的成长，则离不开用户的支持。 </span>
@@ -248,7 +248,7 @@
 
 			<li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
 				<a class="am-dropdown-toggle tpl-header-list-link"
-				href="javascript:;"> <span class="tpl-header-list-user-nick">禁言小张</span><span
+				href="javascript:;"> <span class="tpl-header-list-user-nick">${USER_SESSION.username}</span><span
 					class="tpl-header-list-user-ico"> <img
 						src="assets/img/user01.png"></span>
 			</a>
@@ -312,7 +312,7 @@
 							<i
 							class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
 					</a> <!-- 打开状态 添加 display:block-->
-						<ul class="tpl-left-nav-sub-menu" style="display: block;">
+						<ul class="tpl-left-nav-sub-menu" >
 							<li>
 								<!-- 打开状态 a 标签添加 active 即可   --> <a
 								href="${pageContext.request.contextPath }/form-show-goods-user.action">
@@ -325,7 +325,7 @@
 						</ul>
 					</li>
 
-					<li class="tpl-left-nav-item"><a href="login.html"
+					<li class="tpl-left-nav-item"><a href="${pageContext.request.contextPath }/logout.action"
 						class="nav-link tpl-left-nav-link-list"> <i
 							class="am-icon-key"></i> <span>退出</span>
 
@@ -378,19 +378,6 @@
 											placeholder="商品名称"> <small>输入商品的名字，让别人记住你。</small>
 									</div>
 								</div>
-
-
-								<!-- 	<div class="am-form-group">
-									<label for="l_image" class="am-u-sm-3 am-form-label">商品图片
-										<span class="tpl-form-line-small-title">Images</span>
-									</label>
-									<div class="am-u-sm-9">
-										<div class="am-form-group am-form-file">		
-											<input type="file" name="file">
-										</div>
-
-									</div>
-								</div>   -->
 								<div class="am-form-group">
 									<label class="am-u-sm-3 am-form-label">上传封面：</label>
 									<input type="file" name="file">

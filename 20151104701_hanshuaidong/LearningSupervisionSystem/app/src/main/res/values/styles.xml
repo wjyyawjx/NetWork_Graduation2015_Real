@@ -6,6 +6,57 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!-- ActionBar上的titel的字体颜色 -->
+        <item name="titleTextColor">@color/text_write</item>
+        <!-- ActionBar上Menu的字体颜色 -->
+        <item name="actionMenuTextColor">@color/text_write</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- ActionBar上的titel的字体颜色 -->
+        <item name="titleTextColor">@color/text_write</item>
+        <!-- ActionBar上Menu的字体颜色 -->
+        <item name="actionMenuTextColor">@color/text_write</item>
+        <!--设置menu中item的图标颜色-->
+        <item name="android:textColorSecondary">@color/text_write</item>
+        <item name="android:windowBackground">@color/bg_write</item>
+    </style>
+
+    <style name="EditStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/bg_blank</item>
+        <item name="colorPrimaryDark">@color/bg_blank</item>
+        <item name="colorAccent">@color/bg_blank</item>
+    </style>
+
+    <style name="Widget.SearchView" parent="Widget.AppCompat.SearchView">
+        <!--修改搜索框左边的搜索按钮图标-->
+        <item name="searchHintIcon">@null</item>
+    </style>
+
+    <style name="TextStyleNormal" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/text_blank</item>
+        <item name="android:textSize">@dimen/text_16sp</item>
+    </style>
+
+    <style name="TextStyleLarge18" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/text_blank</item>
+        <item name="android:textSize">@dimen/text_18sp</item>
+    </style>
+
+    <style name="TextStyleLarge20" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/text_blank</item>
+        <item name="android:textSize">@dimen/text_20sp</item>
+    </style>
+
+    <style name="TextStyleLarge24" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/text_blank</item>
+        <item name="android:textSize">@dimen/text_24sp</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

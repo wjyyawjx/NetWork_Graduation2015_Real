@@ -1,10 +1,13 @@
 package com.bs.common.utils;
 import java.util.List;
+
+
 public class Page<T> {   
 	private int total;    // 总条数
 	private int page;     // 当前页
 	private int size;     // 每页数
 	private List<T> rows; // 结果集
+	private List<T> rows_u; // 结果集
 	public int getTotal() {
 		return total;
 	}
@@ -28,5 +31,12 @@ public class Page<T> {
 	}
 	public void setRows(List<T> rows) {
 		this.rows = rows;
-	}  
+	}
+	public List<T> getRows_u() {
+		return rows_u;
+	}
+	public void setRows_u(List<T> rows_u) {
+		this.rows_u = rows_u;
+	}
+	
 }

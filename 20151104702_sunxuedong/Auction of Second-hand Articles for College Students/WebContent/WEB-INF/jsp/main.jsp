@@ -42,7 +42,7 @@
 								action="${pageContext.request.contextPath }/findgoodslist.action"
 								method="post">
 								<div class="search">
-									<label for="commodityName">商品名称：</label> <input type="text"
+									<label for="goodsName">商品名称：</label> <input type="text"
 										class="textbox" id="l_name" name="l_name" /> <label
 										for="commdityFrom">商品类型：</label> <select
 										data-am-selected="{searchBox: 1}" name="l_type" id="l_type">
@@ -154,10 +154,7 @@
 												<a> 用户：${USER_SESSION.username} </a>
 
 											</div>
-											<div class="div_img">
-												<img src="images/car1.jpg" alt="Cars" title="Cars"
-													width="60" height="39">
-											</div>
+											
 											<div class="clear"></div>
 										</div>
 										<div class="first-list">
@@ -166,10 +163,7 @@
 												<a href="${pageContext.request.contextPath }/person.action">
 													个人中心 </a>
 											</div>
-											<div class="div_img">
-												<img src="images/car2.jpg" alt="Cars" title="Cars"
-													width="60" height="39">
-											</div>
+											
 											<div class="clear"></div>
 										</div>
 										<div class="first-list">
@@ -179,10 +173,7 @@
 													href="${pageContext.request.contextPath }/zulinShop.action">
 													租赁物品 </a>
 											</div>
-											<div class="div_img">
-												<img src="images/car3.jpg" alt="Cars" title="Cars"
-													width="60" height="39">
-											</div>
+											
 											<div class="clear"></div>
 										</div>
 										<div class="first-list">
@@ -190,10 +181,7 @@
 											<a href="${pageContext.request.contextPath }/logout.action">
 												退出系统 </a>
 
-											<div class="div_img">
-												<img src="images/car4.jpg" alt="Cars" title="Cars"
-													width="60" height="39">
-											</div>
+											
 											<div class="clear"></div>
 										</div>
 									</div>
@@ -212,19 +200,7 @@
 											<span class="title-icon"></span><a href="">Branches</a>
 										</h1>
 									</div>
-									<div class="section group example">
-										<div class="col_1_of_2 span_1_of_2">
-											<img src="images/pic21.jpg" alt="" /> <img
-												src="images/pic24.jpg" alt="" /> <img
-												src="images/pic25.jpg" alt="" /> <img
-												src="images/pic27.jpg" alt="" />
-										</div>
-										<div class="col_1_of_2 span_1_of_2">
-											<img src="images/pic22.jpg" alt="" /> <img
-												src="images/pic23.jpg" alt="" /> <img
-												src="images/pic26.jpg" alt="" /> <img
-												src="images/pic28.jpg" alt="" />
-										</div>
+									
 										<div class="clear"></div>
 									</div>
 									<div class="clear"></div>

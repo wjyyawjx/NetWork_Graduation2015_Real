@@ -14,9 +14,7 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
  *<p>
  * 使用该代码自动生成之后,不再需要使用generatorConfig.xml
  *</p>
- * @author K神
- * 
- * @date 2017/12/18
+ 
  */
 public class GeneratorServiceEntity {
 

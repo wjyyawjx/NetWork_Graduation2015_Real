@@ -1,2 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
+<fullyQualifiedTypeName name="com.qst.dao.RecommendDao"/>
+<fullyQualifiedTypeName name="com.qst.dao.RecommendDaoimp"/>
+<fullyQualifiedTypeName name="com.qst.service.RecommendService"/>
+<fullyQualifiedTypeName name="com.qst.bean.Recommend"/>
+<fullyQualifiedTypeName name="com.qst.bean.RecommendBean"/>
+<fullyQualifiedTypeName name="com.qst.bean.BuytodayBean"/>
+<fullyQualifiedTypeName name="com.qst.service.RecommendServiceimp"/>
+<fullyQualifiedTypeName name="com.qst.dao.BuytodayDao"/>
+<fullyQualifiedTypeName name="com.qst.dao.BuytodayDaoimp"/>
+<fullyQualifiedTypeName name="javax.websocket.Session"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="com.qst.bean.TmbuyBean"/>
+<fullyQualifiedTypeName name="com.qst.service.TmbuyService"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload"/>
+<fullyQualifiedTypeName name="org.apache.tomcat.util.http.fileupload.RequestContext"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
+<fullyQualifiedTypeName name="org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="org.apache.tomcat.util.http.fileupload.FileUploadException"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="com.qst.dao.PhotoDao"/>
+</qualifiedTypeNameHistroy>
