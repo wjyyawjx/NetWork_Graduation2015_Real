@@ -1,0 +1,83 @@
+package com.qst.servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.qst.bean.BuytodayBean;
+import com.qst.bean.TmbuyBean;
+import com.qst.bean.TmbuyBean;
+import com.qst.service.BuytodayService;
+import com.qst.service.BuytodayServiceimp;
+import com.qst.service.TmbuyService;
+import com.qst.service.TmbuyServiceimp;
+/**
+ * Servlet implementation class Tmbuy
+ */
+@WebServlet("/Tmbuy")
+public class Tmbuy extends HttpServlet {
+	private static final long serialVersionUID = 5804433309240831094L;
+
+	public Tmbuy() {
+		super();
+	}
+
+	public void destroy() {
+		super.destroy(); 
+	}
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.doPost(request, response);
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8");
+		response.setCharacterEncoding("utf-8");
+		HttpServletRequest req = (HttpServletRequest) request; 
+		req.setCharacterEncoding("utf-8");
+		String tmname = request.getParameter("tmTmname");
+		String tmnum = request.getParameter("tmnum");
+		String tmprice = request.getParameter("tmprice");
+		
+		TmbuyBean tm = new TmbuyBean();
+		tm.setTmname(tmname);
+		tm.setTmname(tmname);
+		tm.setTmprice(tmname);
+		
+		TmbuyService tmbuyService = new TmbuyServiceimp();
+		
+		if(tmbuyService.findTmbuy(tm)){//如果学生已经存在就不添加
+			response.sendRedirect("html/buytoday.jsp");
+			
+		}else{//如果学生不存在就添加
+			
+			String opr = request.getParameter("opr");//根据传的opr参数决定是添加学生还是修改学生
+			int n = 0;
+			if(opr.equals("addTm")){
+				n = TmbuyService.addTmbuy(tm);
+			}else if(opr.equals("modifyRec")){
+				int id = Integer.parseInt(request.getParameter("tmId"));
+				tm.setTmid(id);
+				n = tmbuyService.modifyTmbuy(tm);
+			}
+			
+			
+			if(n>0){
+				response.sendRedirect("html/buytoday.jsp");
+			}else{
+				response.sendRedirect("html/buytoday.jsp");
+			}
+			
+		}
+		
+		
+
+	}
+
+	public void init() throws ServletException {
+	}
+
+}

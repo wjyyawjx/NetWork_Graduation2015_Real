@@ -19,7 +19,8 @@
 <link rel="stylesheet" href="assets/css/admin.css">
 <link rel="stylesheet" href="assets/css/app.css">
 
-<script language="javascript" type="text/javascript" src="js/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript"
+	src="js/WdatePicker.js"></script>
 </head>
 
 
@@ -49,8 +50,8 @@
 			class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
 			<li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
 				<a class="am-dropdown-toggle tpl-header-list-link"
-				href="javascript:;"> <span class="am-icon-bell-o"></span> 提醒 
-				<span class="am-badge tpl-badge-success am-round">5</span> 
+				href="javascript:;"> <span class="am-icon-bell-o"></span> 提醒 <span
+					class="am-badge tpl-badge-success am-round">5</span>
 			</a>
 				<ul class="am-dropdown-content tpl-dropdown-content">
 					<li class="tpl-dropdown-content-external">
@@ -88,8 +89,8 @@
 							class="tpl-dropdown-content-photo"> <img
 								src="assets/img/user02.png" alt="">
 						</span> <span class="tpl-dropdown-content-subject"> <span
-								class="tpl-dropdown-content-from"> 禁言小张 </span> <span
-								class="tpl-dropdown-content-time">10分钟前 </span>
+								class="tpl-dropdown-content-from">${USER_SESSION.username}</span>
+								<span class="tpl-dropdown-content-time">10分钟前 </span>
 						</span> <span class="tpl-dropdown-content-font"> Amaze UI 的诞生，依托于
 								GitHub 及其他技术社区上一些优秀的资源；Amaze UI 的成长，则离不开用户的支持。 </span>
 					</a> <a href="#" class="tpl-dropdown-content-message"> <span
@@ -105,8 +106,8 @@
 			</li>
 			<li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
 				<a class="am-dropdown-toggle tpl-header-list-link"
-				href="javascript:;"> <span class="am-icon-calendar"></span> 进度 
-				<span class="am-badge tpl-badge-primary am-round">4</span>
+				href="javascript:;"> <span class="am-icon-calendar"></span> 进度 <span
+					class="am-badge tpl-badge-primary am-round">4</span>
 			</a>
 				<ul class="am-dropdown-content tpl-dropdown-content">
 					<li class="tpl-dropdown-content-external">
@@ -154,7 +155,7 @@
 
 			<li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
 				<a class="am-dropdown-toggle tpl-header-list-link"
-				href="javascript:;"> <span class="tpl-header-list-user-nick">禁言小张</span><span
+				href="javascript:;"> <span class="tpl-header-list-user-nick">${USER_SESSION.username}</span><span
 					class="tpl-header-list-user-ico"> <img
 						src="assets/img/user01.png"></span>
 			</a>
@@ -191,61 +192,47 @@
 					</a></li>
 
 					<li class="tpl-left-nav-item"><a href="javascript:;"
-						class="nav-link tpl-left-nav-link-list"> 
-						<i class="am-icon-table"></i> 
-						<span>信息表單</span> 
-						<i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+						class="nav-link tpl-left-nav-link-list"> <i
+							class="am-icon-table"></i> <span>信息表單</span> <i
+							class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
 					</a>
 						<ul class="tpl-left-nav-sub-menu">
-							<li>
-					 
-					<a href="${pageContext.request.contextPath }/table-user-list.action">
-							<i class="am-icon-angle-right"></i> 
-							<span>用户列表</span> 
-							<i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-					</a> 
-					<a href="${pageContext.request.contextPath }/table-goods-list-admin.action">
-					
-							<i class="am-icon-angle-right"></i> 
-							<span>商品列表</span> 
-					       <i class="tpl-left-nav-content tpl-badge-success"> 18 </i> 
-					</a>
-					
-					<a href="${pageContext.request.contextPath }/form-news.action">
-						    <i class="am-icon-angle-right"></i>
-							<span>评价信息</span> 
-							<i class="tpl-left-nav-content tpl-badge-primary"> 5 </i>
-					</a>
-							</li>
+							<li><a
+								href="${pageContext.request.contextPath }/table-user-list.action">
+									<i class="am-icon-angle-right"></i> <span>用户列表</span> <i
+									class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+							</a> <a
+								href="${pageContext.request.contextPath }/table-goods-list-admin.action">
+
+									<i class="am-icon-angle-right"></i> <span>商品列表</span> <i
+									class="tpl-left-nav-content tpl-badge-success"> 18 </i>
+							</a> <a href="${pageContext.request.contextPath }/form-news.action">
+									<i class="am-icon-angle-right"></i> <span>评价信息</span> <i
+									class="tpl-left-nav-content tpl-badge-primary"> 5 </i>
+							</a></li>
 						</ul></li>
 
 					<li class="tpl-left-nav-item">
-						<!-- 打开状态 a 标签添加 active 即可   --> 
-				    <a href="javascript:;" class="nav-link tpl-left-nav-link-list active"> 
-						<i class="am-icon-wpforms"></i> <span>商品信息</span> 
-						<!-- 列表打开状态的i标签添加 tpl-left-nav-more-ico-rotate 图表即90°旋转  -->
-						<i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
-					</a> 
-					<!-- 打开状态 添加 display:block-->
-						<ul class="tpl-left-nav-sub-menu" style="display: block;">
+						<!-- 打开状态 a 标签添加 active 即可   --> <a href="javascript:;"
+						class="nav-link tpl-left-nav-link-list active"> <i
+							class="am-icon-wpforms"></i> <span>商品信息</span> <!-- 列表打开状态的i标签添加 tpl-left-nav-more-ico-rotate 图表即90°旋转  -->
+							<i
+							class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+					</a> <!-- 打开状态 添加 display:block-->
+						<ul class="tpl-left-nav-sub-menu" ">
 							<li>
-								<!-- 打开状态 a 标签添加 active 即可   --> 
-							 
-							<a href="${pageContext.request.contextPath }/form-show-goods.action">
-								<i class="am-icon-angle-right"></i> 
-								<span>上架商品</span>
-								<i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-							</a> 
-						 
-							 <a href="${pageContext.request.contextPath }/form-lease.action">
-							    <i class="am-icon-angle-right"></i>
-								<span>租賃商品</span>
+								<!-- 打开状态 a 标签添加 active 即可   --> <a
+								href="${pageContext.request.contextPath }/form-show-goods.action">
+									<i class="am-icon-angle-right"></i> <span>上架商品</span> <i
+									class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+							</a> <a href="${pageContext.request.contextPath }/form-lease.action">
+									<i class="am-icon-angle-right"></i> <span>租賃商品</span>
 							</a>
 							</li>
 						</ul>
 					</li>
 
-					<li class="tpl-left-nav-item"><a href="login.html"
+					<li class="tpl-left-nav-item"><a href="${pageContext.request.contextPath }/logout.action"
 						class="nav-link tpl-left-nav-link-list"> <i
 							class="am-icon-key"></i> <span>退出</span>
 
@@ -287,7 +274,7 @@
 
 
 						<div class="am-u-sm-12 am-u-md-9">
-							<form class="am-form am-form-horizontal" >
+							<form class="am-form am-form-horizontal">
 								<div class="am-form-group">
 									<label for="l_name" class="am-u-sm-3 am-form-label">商品名称</label>
 									<div class="am-u-sm-9">
@@ -349,8 +336,10 @@
 								<div class="am-form-group">
 									<label for="l_out_time" class="am-u-sm-3 am-form-label">允许租赁起始时间</label>
 									<div class="am-u-sm-9">
-										<textarea class="" id="l_out_time"  onClick="WdatePicker()"/></textarea>
-                                         <input class="Wdate" type="text" onClick="WdatePicker(dateFmt:'yyyy-MM-dd HH:mm')">--<input class="Wdate" type="text" onClick="WdatePicker()">
+										<textarea class="" id="l_out_time" onClick="WdatePicker()" /></textarea>
+										<input class="Wdate" type="text"
+											onClick="WdatePicker(dateFmt:'yyyy-MM-dd HH:mm')">--<input
+											class="Wdate" type="text" onClick="WdatePicker()">
 									</div>
 								</div>
 

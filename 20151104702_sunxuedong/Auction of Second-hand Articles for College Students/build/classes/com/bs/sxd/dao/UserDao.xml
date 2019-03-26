@@ -3,12 +3,32 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.bs.sxd.dao.UserDao">
-	<!-- 查询用户 -->
+	<sql id="findUserListWhere">
+		<where>
+			<if test="username != ''">
+				username like #{username}
+			</if>
+			<if test="sex!='全部'">
+				and sex = #{sex}
+			</if>
+			<if test="id!='null'">
+				and id != '37'
+			</if>
+		</where>
+	</sql>
+	<!-- 登陆查询用户 -->
 	<select id="findUser" parameterType="String" resultType="User">
 		select *
 		from user
 		where username = #{username}
 		and password = #{password}
+	</select>
+	<!-- 查询个人信息 -->
+	<select id="findper" parameterType="Integer" resultType="User">
+		select *
+		from user
+		where id = #{id}
+
 	</select>
 	<insert id="addUser" parameterType="User" useGeneratedKeys="true"
 		keyProperty="id">
@@ -21,4 +41,65 @@
 	<select id="findByUserName" parameterType="String" resultType="User">
 		select * from user where username = #{username}
 	</select>
+	<select id="findUserList" parameterType="User" resultType="User">
+		select * from user 
+
+		<include refid="findUserListWhere" />
+		<!-- 执行分页查询 -->
+		<if test="start !=null and rows != null">
+			limit #{start},#{rows}
+		</if>
+
+	</select>
+	<select id="selectuserListCount" parameterType="User"
+		resultType="Integer">
+		select count(*) from user
+		<include refid="findUserListWhere" />
+	</select>
+	<!-- 更新客户 -->
+	<update id="updateUser" parameterType="User" >
+	    update user
+	    <set>
+	        <if test="username!=null">
+	            username=#{username},
+	        </if>
+	        <if test="phone!=null">
+	            phone=#{phone},
+	        </if>
+	        <if test="qq!=null">
+	            qq=#{qq},
+	        </if>
+	        <if test="university!=null">
+	            university=#{university},
+	        </if>
+	        <if test="college!=null">
+	            college=#{college},
+	        </if>
+	    </set>
+	    where id=#{id}
+	</update>
+	<!--更新用户为管理员  -->
+	<update id="updateUser_Admin" parameterType="User" >
+	    update user
+	    <set>
+	        <if test="type!=null">
+	            type=#{type},
+	        </if>
+	    </set>
+	    where id=#{id}
+	</update>
+	<!--更新管理员为用户  -->
+	<update id="updateUser_User" parameterType="User" >
+	    update user
+	    <set>
+	        <if test="type!=null">
+	            type=#{type},
+	        </if>
+	    </set>
+	    where id=#{id}
+	</update>
+	<!-- 删除用户 -->
+	<delete id="deleteuser" parameterType="Integer">
+	    delete from user where id=#{id}
+	</delete>
 </mapper>

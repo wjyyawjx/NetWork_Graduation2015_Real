@@ -1,0 +1,32 @@
+package com.qst.dao;
+
+import java.io.File;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.tomcat.util.http.fileupload.RequestContext;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+
+public class PhotoDao {
+	 public static <FileItem> List<FileItem> getRequsetFileItems(RequestContext request,ServletContext servletContext){
+	        boolean isMultipart=ServletFileUpload.isMultipartContent(request);
+	        if(isMultipart) {
+	            DiskFileItemFactory factory = new DiskFileItemFactory();
+	            String str="javax.servelet.context.tempdir";
+	            File repository=(File) servletContext.getAttribute(str);
+	            factory.setRepository(repository);
+	            ServletFileUpload upload=new ServletFileUpload(factory);
+	            try {
+	                return (List<FileItem>) upload.parseRequest(request);
+	            }catch (FileUploadException e) {
+	                // TODO: handle exception
+	                return null;
+	            }
+	        }else {
+	            return null;
+	        }
+	    }
+}

@@ -170,8 +170,8 @@
 				
 				    <div class="addOrEdit" >
 				        <form action="updateRole" method="post">
-				            角色名: <input type="text" name="name" value="${role.name}"> <br>
-				            角色描述: <input type="text" name="desc" value="${role.desc}" > <br><br>
+				            角色名: <input type="text" name="name" value="${role.name}" style="color:black"> <br>
+				            角色描述: <input type="text" name="desc" value="${role.desc}" style="color:black" > <br><br>
 				            配置权限:<br>
 				            <div style="text-align:left;width:300px;margin:0px auto;padding-left:50px">
 				                <c:forEach items="${ps}" var="p">

@@ -1,11 +1,8 @@
 package com.bs.sxd.po;
-
 import java.io.Serializable;
 import java.util.Date;
-
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
-
 public class Goods implements Serializable  {
 	private static final long serialVersionUID = 1L;
     private Integer id;
@@ -14,9 +11,7 @@ public class Goods implements Serializable  {
 	private Integer l_price;
 	private String l_info;
 	private String l_type;
-
-	private String l_out_time;
-	
+	private String l_out_time;	
 	private String l_in_time;
 	private Integer u_id;
 	private String l_addr;

@@ -1,0 +1,85 @@
+package com.qst.servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.qst.bean.BuytodayBean;
+import com.qst.bean.RecommendBean;
+import com.qst.service.BuytodayService;
+import com.qst.service.BuytodayServiceimp;
+import com.qst.service.RecommendService;
+import com.qst.service.RecommendServiceimp;
+/**
+ * Servlet implementation class Buytoday
+ */
+@WebServlet("/Buytoday")
+public class Buytoday extends HttpServlet {
+	private static final long serialVersionUID = 5804433309240831094L;
+
+	public Buytoday() {
+		super();
+	}
+
+	public void destroy() {
+		super.destroy(); 
+	}
+	
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.doPost(request, response);
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8");
+		response.setCharacterEncoding("utf-8");
+		HttpServletRequest req = (HttpServletRequest) request; 
+		req.setCharacterEncoding("utf-8");
+		String tyname = request.getParameter("buyTyname");
+		String original = request.getParameter("original");
+		String present = request.getParameter("present");
+		String dscount = request.getParameter("dscount");
+		
+		BuytodayBean buy = new BuytodayBean();
+		buy.setTyname(tyname);
+		buy.setOriginal(original);
+		buy.setPresent(present);
+		buy.setDscount(dscount);
+		
+		BuytodayService buytodayService = new BuytodayServiceimp();
+		
+		if(buytodayService.findBuytoday(buy)){//如果学生已经存在就不添加
+			response.sendRedirect("html/buytoday.jsp");
+			
+		}else{//如果学生不存在就添加
+			
+			String opr = request.getParameter("opr");//根据传的opr参数决定是添加学生还是修改学生
+			int n = 0;
+			if(opr.equals("addBuy")){
+				n = buytodayService.addBuytoday(buy);
+				System.out.println("123");
+			}else if(opr.equals("modifyRec")){
+				int id = Integer.parseInt(request.getParameter("buyId"));
+				buy.setTodayid(id);
+				n = buytodayService.modifyBuytoday(buy);
+			}
+			
+			
+			if(n>0){
+				response.sendRedirect("html/buytoday.jsp");
+			}else{
+				response.sendRedirect("html/buytoday.jsp");
+			}
+			
+		}
+		
+		
+
+	}
+
+	public void init() throws ServletException {
+	}
+
+}
