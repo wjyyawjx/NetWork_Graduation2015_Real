@@ -1,0 +1,6 @@
+127.0.0.1 - - [21/Mar/2019:10:37:23 +0800] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [21/Mar/2019:10:37:24 +0800] "GET /20151104697_zhongyangyang_GraduationDesign/login.jsp HTTP/1.1" 200 2171
+0:0:0:0:0:0:0:1 - - [21/Mar/2019:10:37:29 +0800] "POST /20151104697_zhongyangyang_GraduationDesign/Loginservlet HTTP/1.1" 200 17285
+0:0:0:0:0:0:0:1 - - [21/Mar/2019:10:37:29 +0800] "GET /res/static/js/util/mm.js HTTP/1.1" 404 1042
+0:0:0:0:0:0:0:1 - - [21/Mar/2019:10:37:31 +0800] "GET /20151104697_zhongyangyang_GraduationDesign/html/commodity.jsp HTTP/1.1" 200 7157
+0:0:0:0:0:0:0:1 - - [21/Mar/2019:10:38:07 +0800] "GET /res/static/js/util/mm.js HTTP/1.1" 404 1042

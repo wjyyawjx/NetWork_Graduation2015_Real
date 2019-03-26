@@ -1,0 +1,28 @@
+package com.qst.dao;
+
+import java.util.List;
+
+import com.qst.bean.Recommend;
+
+/*
+ * @ Copyright (c) Create by JASON  Date:2018-02-09  All rights reserved.
+ *
+ * @ class description：对推荐表的操作接口
+ *
+ */
+public interface RecommendDao {
+	//获取所有学生信息
+	public List<Recommend> getAllRecommend();
+	//获取指定学生信息
+	public Recommend getRecommendMoreInfo(Recommend recommend);
+	//添加学生
+	public int addRecommend(Recommend recommend);
+	//删除学生
+	public int delRecommendt(Recommend recommend);
+	//修改学生信息
+	public int modifyRecommend(Recommend recommend);
+	//查找指定的学生存在不存在
+	public boolean findRecommend(Recommend recommend);
+	int delRecommend(Recommend recommend);
+
+}

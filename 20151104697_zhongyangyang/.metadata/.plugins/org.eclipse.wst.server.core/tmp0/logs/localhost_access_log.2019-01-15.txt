@@ -1,0 +1,6 @@
+127.0.0.1 - - [15/Jan/2019:20:58:35 +0800] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [15/Jan/2019:20:58:37 +0800] "GET /20151104697_zhongyangyang_GraduationDesign/login.jsp HTTP/1.1" 200 2171
+0:0:0:0:0:0:0:1 - - [15/Jan/2019:20:58:49 +0800] "POST /20151104697_zhongyangyang_GraduationDesign/Loginservlet HTTP/1.1" 500 1644
+0:0:0:0:0:0:0:1 - - [15/Jan/2019:20:58:53 +0800] "POST /20151104697_zhongyangyang_GraduationDesign/Loginservlet HTTP/1.1" 500 1644
+0:0:0:0:0:0:0:1 - - [15/Jan/2019:20:59:03 +0800] "GET /20151104697_zhongyangyang_GraduationDesign/rejister.jsp HTTP/1.1" 200 3409
+0:0:0:0:0:0:0:1 - - [15/Jan/2019:20:59:09 +0800] "GET /20151104697_zhongyangyang_GraduationDesign/UserCheckServlet?username=gdgdg HTTP/1.1" 500 1666
