@@ -1,0 +1,8 @@
+package com.qst.bean;
+
+public class BuytodayBean {
+	private int todayid;
+	private String tyname;
+	private String original;
+	private String present;
+}

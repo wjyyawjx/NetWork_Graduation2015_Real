@@ -170,9 +170,9 @@
 				 
 				    <div class="addOrEdit" >
 				        <form action="updatePermission" method="post">
-				            权限名称: <input type="text" name="name" value="${permission.name}"> <br>
-				            权限描述: <input type="text" name="desc_" value="${permission.desc}"> <br>
-				            权限对应的url: <input type="text" name="url"  value="${permission.url}"> <br><br>
+				            权限名称: <input type="text" name="name" value="${permission.name}" style="color:black"> <br>
+				            权限描述: <input type="text" name="desc_" value="${permission.desc}" style="color:black"> <br>
+				            权限对应的url: <input type="text" name="url"  value="${permission.url}" style="color:black"> <br><br>
 				            <input type="hidden" name="id" value="${permission.id}">
 				            <input type="submit" value="修改">
 				        </form>  

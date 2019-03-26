@@ -170,13 +170,31 @@
 			 
 			    <div class="addOrEdit" >
 			        <form action="updatePlace" method="post">
-			        	位置ID：<input type="text" name="placeId" value="${place.placeId}"> <br>
-						校区：<input type="text" name="campus" value="${place.campus}"> <br> 
-						教学楼：<input type="text" name="building" value="${place.building}"> <br>
-						房间号：<input type="text" name="houseId" value="${place.houseId}"> <br>
-						所属专业：<input type="text" name="major" value="${place.major}"> <br><br>
+			        	<table border="0">
+			        	<tr>
+			        		<td>位置ID：</td>
+			        		<td><input type="text" name="placeId" value="${place.placeId}" style="width:100%;color:black"></td>
+			       		</tr>
+			        	<tr>
+			        		<td>校区：</td>
+			        		<td><input type="text" name="campus" value="${place.campus}" style="width:100%;color:black"></td>
+			       		</tr>
+			        	<tr>
+			        		<td>教学楼：</td>
+			        		<td><input type="text" name="building" value="${place.building}" style="width:100%;color:black"></td>
+			        	</tr>
+			        	<tr>
+			        		<td>房间号： </td>
+			        		<td><input type="text" name="houseId" value="${place.houseId}" style="width:100%;color:black"></td>
+			        	</tr>
+			        	<tr>
+			        		<td>所属专业：</td>
+			        		<td><input type="text" name="major" value="${place.major}" style="width:100%;color:black"></td>	
+			        	</tr>
+			        	</table>
+			        	<br><br>
 			            <input type="hidden" name="id" value="${place.id}">
-			            <input type="submit" value="修改">
+			            <input type="submit" value="修改" style="color:black">
 			        </form>  
 			    </div>
 			</div>

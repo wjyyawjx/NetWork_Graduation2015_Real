@@ -1,5 +1,7 @@
 package cn.edu.imnu.service;
 
+import java.util.Date;
+
 import cn.edu.imnu.po.IP;
 import cn.edu.imnu.po.User;
 
@@ -20,6 +22,6 @@ public interface IndexService {
 
 	public void updateIp1(User user);
 
-	public void addIp1(User user);
+	public void addIp1(String u_ip, Date u_time);
 
 }

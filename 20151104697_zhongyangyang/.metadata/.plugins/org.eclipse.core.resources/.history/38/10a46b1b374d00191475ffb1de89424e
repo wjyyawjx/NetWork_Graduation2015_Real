@@ -1,0 +1,149 @@
+package com.qst.dao;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.qst.dao.BaseDao;
+import com.qst.dao.BuytodayDao;
+import com.qst.bean.BuytodayBean;
+
+/*
+ * @ Copyright (c) Create by JASON  Date:2018-02-10  All rights reserved.
+ *
+ * @ class description对推荐表的操作类
+ *
+ */
+public abstract class BuytodayDaoimp extends BaseDao implements BuytodayDao {
+
+	@Override
+	//获取所有推荐信息
+	public List<BuytodayBean> getAllBuytoday() {
+		List<BuytodayBean> list = new ArrayList<BuytodayBean>();
+		String sql = "select`tyname`,`orginal`, `present`,`dscount`from buytoday ";
+		Object[] params = {};
+		ResultSet rs = this.executeQuerySQL(sql, params);
+		try {
+			while (rs.next()) {
+				BuytodayBean buy = new BuytodayBean();
+				buy.setTyname(rs.getString("tyname"));
+				buy.setOriginal(rs.getString("original"));
+				buy.setPresent(rs.getString("present"));
+				buy.setDscount(rs.getString("dscount"));
+				list.add(buy);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	//获取指定推荐商品信息
+	public BuytodayBean getBuytodayMoreInfo(BuytodayBean buytoday) {
+		BuytodayBean buy = new BuytodayBean();
+		String sql = "select`tyname`,`orginal`, `present`,`dscount`from buytoday where `todayid`=?";
+		Object[] params = { buytoday.getTodayid() };
+		ResultSet rs = this.executeQuerySQL(sql, params);
+		try {
+			while (rs.next()) {
+				
+				buy.setTyname(rs.getString("tyname"));
+				buy.setOriginal(rs.getString("original"));
+				buy.setPresent(rs.getString("present"));
+				buy.setDscount(rs.getString("dscount"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return buy;
+	}
+
+	@Override
+	//添加商品信息
+	public int addBuytoday(BuytodayBean buytoday) {
+		int row = 0;
+		System.out.println(buytoday.getTyname());
+		System.out.println(buytoday.getOriginal());
+		System.out.println(buytoday.getPresent());
+		System.out.println(buytoday.getDscount());
+		String sql = "insert into recommend(`tyname`,`original`,`present`,`dscount`) values(?,?,?,?)";
+		Object[] params = {buytoday.getTyname(),buytoday.getOriginal(),buytoday.getPresent(),buytoday.getDscount()};
+		row = this.executeUpdateSQL(sql, params);
+		if(row>0){
+			System.out.println("添加商品信息成功");
+		}else{
+			System.out.println("添加商品信息失败");
+		}
+		return row;
+	}
+
+	@Override
+	//删除商品信息
+	public int delBuytoday(BuytodayBean buytoday) {
+		int row = 0;
+		String sql = "delete from buytoday where `todayid`=?";
+		Object[] params = {buytoday.getTodayid()};
+		row = this.executeUpdateSQL(sql, params);
+		if(row>0){
+			System.out.println("success");
+		}else{
+			System.out.println("erro");
+		}
+		return row;
+	}
+
+	@Override
+	//修改商品信息
+	public int modifyBuytoday(BuytodayBean buytoday) {
+		int row = 0;
+		String sql = "update buytoday set tyname=?,original=?,present=?,dscount=? where todayid=?";
+		Object[] params = {buytoday.getTodayid(),buytoday.getTyname(),buytoday.getOriginal(),buytoday.getPresent(),buytoday.getDscount()};
+		System.out.println(buytoday.getTyname());
+		row = this.executeUpdateSQL(sql, params);
+		if(row>0){
+			System.out.println("修改商品信息成功");
+		}else{
+			System.out.println("修改商品信息失败");
+		}
+		
+		return row;
+	}
+	
+	
+	//查询商品信息
+	public boolean findBuytoday(BuytodayBean buytoday){
+		boolean flag = true;
+		int row = 0;
+		String sql = "select count(1) from buytoday where  `tyname`=? and `original`=? and `present`=? and `dscount`=?";
+		Object[] params = {buytoday.getTyname(),buytoday.getOriginal(),buytoday.getPresent(),buytoday.getDscount()};
+		ResultSet rs = this.executeQuerySQL(sql, params);
+		try {
+			while(rs.next()){
+				row = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		if(row>0){
+			System.out.println("查询商品信息成功");
+			flag = true;
+		}else{
+			System.out.println("查询商品信息失败");
+			flag = false;
+		}
+		
+		return flag;
+		
+	}
+
+	@Override
+	public int delBuytoda1(BuytodayBean buytoyday) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}
+
+

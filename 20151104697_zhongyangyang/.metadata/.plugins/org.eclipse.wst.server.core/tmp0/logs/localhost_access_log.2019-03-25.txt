@@ -1,0 +1,6 @@
+127.0.0.1 - - [25/Mar/2019:16:28:10 +0800] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [25/Mar/2019:16:28:11 +0800] "GET /20151104697_zhongyangyang_GraduationDesign/html/add.jsp HTTP/1.1" 200 1352
+0:0:0:0:0:0:0:1 - - [25/Mar/2019:16:28:11 +0800] "GET /20151104697_zhongyangyang_GraduationDesign/html/css/common.css HTTP/1.1" 404 1118
+127.0.0.1 - - [25/Mar/2019:21:10:14 +0800] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [25/Mar/2019:21:10:15 +0800] "GET /20151104697_zhongyangyang_GraduationDesign/html/add.jsp HTTP/1.1" 200 1352
+0:0:0:0:0:0:0:1 - - [25/Mar/2019:21:10:15 +0800] "GET /20151104697_zhongyangyang_GraduationDesign/html/css/common.css HTTP/1.1" 404 1118
