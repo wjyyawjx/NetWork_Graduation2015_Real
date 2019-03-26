@@ -67,7 +67,7 @@
                                 <span class="tpl-dropdown-content-photo">
                       <img src="assets/img/user02.png" alt=""> </span>
                                 <span class="tpl-dropdown-content-subject">
-                      <span class="tpl-dropdown-content-from"> 禁言小张 </span>
+                      <span class="tpl-dropdown-content-from"> ${USER_SESSION.username} </span>
                                 <span class="tpl-dropdown-content-time">10分钟前 </span>
                                 </span>
                                 <span class="tpl-dropdown-content-font"> Amaze UI 的诞生，依托于 GitHub 及其他技术社区上一些优秀的资源；Amaze UI 的成长，则离不开用户的支持。 </span>
@@ -132,12 +132,12 @@
 
                 <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                     <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
-                        <span class="tpl-header-list-user-nick">禁言小张</span><span class="tpl-header-list-user-ico"> <img src="assets/img/user01.png"></span>
+                        <span class="tpl-header-list-user-nick">${USER_SESSION.username}</span><span class="tpl-header-list-user-ico"> <img src="assets/img/user01.png"></span>
                     </a>
                     <ul class="am-dropdown-content">
                         <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
                         <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-                        <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                        <li><a href="${pageContext.request.contextPath }/logout.action"><span class="am-icon-power-off"></span> 退出</a></li>
                     </ul>
                 </li>
                 <li><a href="###" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
@@ -184,7 +184,7 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath }/table-user-list.action">
+                                <a href="${pageContext.request.contextPath }/personalinformation_user.action">
                                                                
                                     <i class="am-icon-angle-right"></i>
                                     <span>我的信息</span>
@@ -219,7 +219,7 @@
                             <span>商品信息</span>
                             <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
                         </a>
-                        <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                        <ul class="tpl-left-nav-sub-menu" >
                             <li>
                                 
                                  <a href="${pageContext.request.contextPath }/form-show-goods-user.action">
@@ -238,7 +238,7 @@
                     </li>
 
                     <li class="tpl-left-nav-item">
-                        <a href="login.html" class="nav-link tpl-left-nav-link-list">
+                        <a href="${pageContext.request.contextPath }/logout.action" class="nav-link tpl-left-nav-link-list">
                             <i class="am-icon-key"></i>
                             <span>退出</span>
 

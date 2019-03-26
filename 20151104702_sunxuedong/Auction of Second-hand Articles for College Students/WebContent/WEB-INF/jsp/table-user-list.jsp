@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page trimDirectiveWhitespaces="true"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="bs" uri="http://bs.com/common/"%>
 <%
@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="assets/css/amazeui.min.css" />
 <link rel="stylesheet" href="assets/css/admin.css">
 <link rel="stylesheet" href="assets/css/app.css">
+
 </head>
 
 <body data-type="generalComponents">
@@ -96,8 +97,8 @@
 							class="tpl-dropdown-content-photo"> <img
 								src="assets/img/user02.png" alt="">
 						</span> <span class="tpl-dropdown-content-subject"> <span
-								class="tpl-dropdown-content-from"> 禁言小张 </span> <span
-								class="tpl-dropdown-content-time">10分钟前 </span>
+								class="tpl-dropdown-content-from">${USER_SESSION.username}
+							</span> <span class="tpl-dropdown-content-time">10分钟前 </span>
 						</span> <span class="tpl-dropdown-content-font"> Amaze UI 的诞生，依托于
 								GitHub 及其他技术社区上一些优秀的资源；Amaze UI 的成长，则离不开用户的支持。 </span>
 					</a> <a href="#" class="tpl-dropdown-content-message"> <span
@@ -163,7 +164,7 @@
 
 			<li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
 				<a class="am-dropdown-toggle tpl-header-list-link"
-				href="javascript:;"> <span class="tpl-header-list-user-nick">禁言小张</span><span
+				href="javascript:;"> <span class="tpl-header-list-user-nick">${USER_SESSION.username}</span><span
 					class="tpl-header-list-user-ico"> <img
 						src="assets/img/user01.png"></span>
 			</a>
@@ -208,7 +209,7 @@
 							<i
 							class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
 					</a>
-						<ul class="tpl-left-nav-sub-menu" style="display: block">
+						<ul class="tpl-left-nav-sub-menu">
 							<li>
 								<!-- 打开状态 a 标签添加 active 即可   --> <a
 								href="${pageContext.request.contextPath }/table-user-list.action">
@@ -229,24 +230,11 @@
 						</ul>
 					</li>
 
-					<li class="tpl-left-nav-item"><a href="javascript:;"
-						class="nav-link tpl-left-nav-link-list"> <i
-							class="am-icon-wpforms"></i> <span>商品信息</span> <i
-							class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
-					</a>
-						<ul class="tpl-left-nav-sub-menu">
-							<li><a
-								href="${pageContext.request.contextPath }/form-show-goods.action">
-									<i class="am-icon-angle-right"></i> <span>上架商品</span> <i
-									class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
-							</a> <a href="${pageContext.request.contextPath }/form-lease.action">
-									<i class="am-icon-angle-right"></i> <span>租赁商品</span>
-							</a></li>
-						</ul></li>
 
-					<li class="tpl-left-nav-item"><a href="login.html"
+					<li class="tpl-left-nav-item"><a
+						href="${pageContext.request.contextPath }/logout.action"
 						class="nav-link tpl-left-nav-link-list"> <i
-							class="am-icon-key"></i> <span>登录</span>
+							class="am-icon-key"></i> <span>退出</span>
 
 					</a></li>
 				</ul>
@@ -282,28 +270,26 @@
 				</div>
 				<div class="tpl-block">
 					<div class="am-g">
-
+						<font color="red"> <%-- 提示信息--%> <span id="message">${msg_a}</span>
+						</font>
 						<form class="form-inline"
 							action="${pageContext.request.contextPath }/finduserlist.action"
 							method="post">
 							<div class="search">
-								<label for="commodityName">用户名称：</label> 
-								<input type="text" class="textbox" id="username" name="username" /> 
-									<label for="commdityFrom">性别：</label> 
-									<select data-am-selected="{searchBox: 1}" name="sex" id="sex">
+								<label for="commodityName">用户名称：</label> <input type="text"
+									class="textbox" id="username" name="username" /> <label
+									for="commdityFrom">性别：</label> <select
+									data-am-selected="{searchBox: 1}" name="sex" id="sex">
 									<option value="全部">全部</option>
 									<option value="男">男</option>
 									<option value="女">女</option>
-								</select> 
-								<input type="submit" class="gray-button" value="查询">
+								</select> <input type="submit" class="gray-button" value="查询">
 							</div>
 						</form>
 					</div>
 					<div class="am-g">
 						<div class="am-u-sm-12">
-							<form class="am-form"
-								action="${pageContext.request.contextPath }/userlist.action"
-								method="post">
+							<form class="am-form">
 								<table
 									class="am-table am-table-striped am-table-hover table-main">
 									<thead>
@@ -332,19 +318,22 @@
 												<td>${rows_u.college}</td>
 												<td>${rows_u.adreess}</td>
 												<td>${rows_u.type}</td>
-												<td><a href="#" class="btn btn-primary btn-xs"
-													data-toggle="modal" data-target="#customerEditDialog"
-													onclick="edituser(${row.id})">修改</a> <a href="#"
+												<td><a
+													href="${pageContext.request.contextPath }/updateUser_a.action?type=${rows_u.type}&id=${rows_u.id}"
+													class="btn btn-primary btn-xs"
+													onclick="updateuser_a(${rows_u.id})">设置为管理员</a> <a
+													href="${pageContext.request.contextPath }/updateUser_p.action?type=${rows_u.type}&id=${rows_u.id}"
+													class="btn btn-primary btn-xs"
+													onclick="updateuser_a(${rows_u.id})">取消管理员</a> <a
+													href="${pageContext.request.contextPath }/deleteUser.action?id=${rows_u.id}"
 													class="btn btn-danger btn-xs"
-													onclick="deleteuser(${row.id})">删除</a></td>
+													onclick="deleteuser(${rows_u.id})">删除</a></td>
 											</tr>
 										</c:forEach>
-										
+
 									</tbody>
 								</table>
-								<div class="col-md-12 text-right" >
-															<bs:page url="${pageContext.request.contextPath }/finduserlist.action" />
-														</div>
+
 							</form>
 						</div>
 
@@ -366,59 +355,10 @@
 
 	</div>
 
-
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/amazeui.min.js"></script>
 	<script src="assets/js/app.js"></script>
-	<%-- <script type="text/javascript">
-	function edituser(id) {
-	    $.ajax({
-	        type:"get",
-	        url:"<%=basePath%>customer/getCustomerById.action",
-	        data:{"id":id},
-	        success:function(data) {
-	            $("#edit_cust_id").val(data.cust_id);
-	            $("#edit_customerName").val(data.cust_name);
-	            $("#edit_customerFrom").val(data.cust_source)
-	            $("#edit_custIndustry").val(data.cust_industry)
-	            $("#edit_custLevel").val(data.cust_level)
-	            $("#edit_linkMan").val(data.cust_linkman);
-	            $("#edit_phone").val(data.cust_phone);
-	            $("#edit_mobile").val(data.cust_mobile);
-	            $("#edit_zipcode").val(data.cust_zipcode);
-	            $("#edit_address").val(data.cust_address);
-	            
-	        }
-	    });
-	}
-    // 执行修改客户操作
-	function updateCustomer() {
-		$.post("<%=basePath%>customer/update.action",$("#edit_customer_form").serialize(),function(data){
-			if(data =="OK"){
-				alert("客户信息更新成功！");
-				window.location.reload();
-			}else{
-				alert("客户信息更新失败！");
-				window.location.reload();
-			}
-		});
-	}
-	// 删除客户
-	function deleteuser(id) {
-	    if(confirm('确实要删除该客户吗?')) {
-	$.post("<%=basePath%>customer/delete.action",{"id":id},
-	function(data){
-	            if(data =="OK"){
-	                alert("客户删除成功！");
-	                window.location.reload();
-	            }else{
-	                alert("删除客户失败！");
-	                window.location.reload();
-	            }
-	        });
-	    }
-	}
-	</script> --%>
+
 </body>
 
 </html>

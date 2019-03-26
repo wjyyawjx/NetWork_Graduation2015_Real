@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bs.common.utils.Page;
 import com.bs.sxd.po.Goods;
+import com.bs.sxd.po.User;
 import com.bs.sxd.service.GoodsService;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
@@ -34,7 +35,6 @@ public class GoodsController {
 			String l_out_time, String l_in_time, String l_addr, Integer u_id, String year, String month, String day)
 			throws Exception {
 
-		
 		l_in_time = year + "-" + month + "-" + day;
 		System.out.println(u_id);
 		l_price = Integer.valueOf(l_price).intValue();
@@ -75,15 +75,16 @@ public class GoodsController {
 		goodsService.addGoods(goods);
 		return "person";
 	}
-    //模糊、条件、分页查询
+
+	// 模糊、条件、分页查询
 	@RequestMapping(value = "/findgoodslist.action")
 	public String list(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "6") Integer rows,
 			String l_name, String l_type, Integer l_static, Model model) {
-		if(l_name!=null && l_name!=""){
-			l_name = "%"+l_name+"%";
+		if (l_name != null && l_name != "") {
+			l_name = "%" + l_name + "%";
 		}
 		Page<Goods> goods = goodsService.findGoods_yList(page, rows, l_static, l_name, l_type);
-		//添加参数
+		// 添加参数
 		model.addAttribute("page", goods);
 		model.addAttribute("l_name", l_name);
 		model.addAttribute("l_static", l_static);
@@ -91,13 +92,42 @@ public class GoodsController {
 		return "main";
 	}
 
-	/*@RequestMapping(value = "/goodslist.action")
-	public String goods_showlist(String l_name, String l_type, Integer l_static, Model model) {
+	// 模糊、条件、分页查询
+	@RequestMapping(value = "/findgoodslist_a.action")
+	public String list_a(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5") Integer rows,
+			String l_name, String l_type, Integer l_static, Model model) {
+		if (l_name != null && l_name != "") {
+			l_name = "%" + l_name + "%";
+		}
 		Page<Goods> goods = goodsService.findGoods_yList(page, rows, l_static, l_name, l_type);
+		// 添加参数
 		model.addAttribute("page", goods);
 		model.addAttribute("l_name", l_name);
 		model.addAttribute("l_static", l_static);
 		model.addAttribute("l_type", l_type);
-		return "main";
-	}*/
+		return "table-goods-list-admin";
+	}
+
+	// 修改商品状态(下架商品)
+	@RequestMapping(value = "/updategools_xiajia.action")
+	public String update_Goods(Integer l_static, Integer id, Model model) {
+		Goods goods = new Goods();
+		if (l_static == 1) {
+			l_static = 3;
+		} else {
+			model.addAttribute("msg_G", "商品已经下架，无需重复操作！！");
+			return "table-goods-list-admin";
+		}
+		goods.setId(id);
+		goods.setL_static(l_static);
+		goodsService.updategoodstype_n(goods);
+		return "table-goods-list-admin";
+	}
+	//删除商品
+	@RequestMapping(value = "/deleteGoods.action")
+	public String delete_Goods(Integer id) {			
+		goodsService.deletegoods(id);
+		return "table-goods-list-admin";
+		
+	}
 }
