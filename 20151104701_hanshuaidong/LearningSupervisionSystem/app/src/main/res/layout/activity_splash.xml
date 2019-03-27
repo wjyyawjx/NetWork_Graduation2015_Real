@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/side_nav_bar"
+    android:fitsSystemWindows="true"
+    tools:context=".splash.SplashActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/flower_icon"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:src="@drawable/ic_app_icon" />
+
+        <TextView
+            android:id="@+id/flower_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_8dp"
+            android:text="@string/app_name"
+            android:textColor="@color/bg_write"
+            android:textSize="32sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/login"
+            style="@style/TextStyleLarge20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="64dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/btn_account_shape_right"
+            android:gravity="center"
+            android:text="登录"
+            android:textColor="@color/bg_write" />
+
+        <Button
+            android:id="@+id/register"
+            style="@style/TextStyleLarge20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="64dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/btn_primary_shape_left"
+            android:gravity="center"
+            android:text="注册"
+            android:textColor="@color/bg_write" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/load_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#95333333"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+    </RelativeLayout>
+
+</RelativeLayout>
