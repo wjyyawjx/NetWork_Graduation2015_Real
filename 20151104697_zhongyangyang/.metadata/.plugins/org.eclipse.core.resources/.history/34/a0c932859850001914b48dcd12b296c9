@@ -1,0 +1,19 @@
+package com.qst.service;
+
+import com.qst.bean.Student;
+import com.qst.dao.UploadimgDao;
+
+public class UploadimgService {
+	public static void UPloadValidate(String file, String name, String sex, String age, String fileName) {
+		// TODO Auto-generated method stub
+		Student stu = new Student();
+		
+		stu.setFile(file);
+		stu.setName(name);
+		stu.setSex(sex);
+		stu.setAge(age);
+		stu.setFileName(fileName);
+	UploadimgDao ld = new UploadimgDao();
+		ld.addFile(stu);
+	}
+}

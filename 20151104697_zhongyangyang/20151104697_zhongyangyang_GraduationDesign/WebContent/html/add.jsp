@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>添加商品</title>
 <link href="css/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jquery-3.2.1.js"></script>
 <script type="text/javascript">
   function check() {
 		for (var i = 0; i < document.form1.elements.length - 1; i++) {
@@ -20,6 +21,20 @@
 
 		}
   
+  function show() {
+      var fileTag = document.getElementById('file');
+      fileTag.onchange = function () {
+          var file = fileTag.files[0];
+          var fileReader = new FileReader();
+          fileReader.onloadend = function () {
+              if (fileReader.readyState == fileReader.DONE) {
+                  document.getElementById('img').setAttribute('src', fileReader.result);
+              }
+          };
+          fileReader.readAsDataURL(file);
+      };
+  };
+
 </script>
 </head>
 <body>
@@ -27,11 +42,13 @@
 <form action="../AddStudent?opr=addStu" name="form" method="post">
 
 <table>
-   <tr>
-
-                <td>请提交图片<br>必须是gif格式</td>
-                <td><input type="file" name="file"style="border: 0px; font-size: 20px;" /></td>
-    </tr>
+	<tr><img src="${pageContext.request.contextPath}/image/preview.jpg" id="img" style="width:80px;height:80px;"/>
+</tr>
+	<tr>
+	<td>图片上传</td>
+	<td><input type="file" id="file" name="fileupload" onclick="show()"/> </td>
+	</tr>
+	<tr>
      <td>商品名：</td>
     <td><input type="text" name="stuName"></td>
   </tr>

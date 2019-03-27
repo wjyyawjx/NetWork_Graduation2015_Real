@@ -64,7 +64,7 @@ public class StudentDaoimp extends BaseDao implements StudentDao {
 	//添加学生信息
 	public int addStudent(Student student) {
 		int row = 0;
-		String sql = "insert into student(`name`,`sex`,`age`) values(?,?,?)";
+		String sql = "insert into student(`file`,`name`,`sex`,`age`,`fileName`) values(?,?,?)";
 		Object[] params = {student.getName(),student.getSex(),student.getAge()};
 		row = this.executeUpdateSQL(sql, params);
 		if(row>0){

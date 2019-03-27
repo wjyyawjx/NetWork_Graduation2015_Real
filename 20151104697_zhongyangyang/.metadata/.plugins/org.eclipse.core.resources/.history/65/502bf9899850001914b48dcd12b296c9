@@ -1,0 +1,37 @@
+package com.qst.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.qst.DButil.LoginDButil;
+
+import com.qst.bean.Student;
+
+public class UploadimgDao {
+
+	public void addFile(Student stu) {
+		// TODO Auto-generated method stub
+		Connection conn = LoginDButil.getConnection();
+		String sql = "insert into tb_file(file_name,file_size,file_where) values(?,?,?)";
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		try {
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1,stu.getFile());
+			pstm.setString(2, stu.getName());
+			pstm.setString(3, stu.getSex());
+			pstm.setString(4, stu.getAge());
+			pstm.setString(5, stu.getFileName());
+			pstm.executeUpdate();
+		} catch (SQLException e) {
+			// TODO: handle exceptions
+			e.printStackTrace();
+		}finally {
+			// TODO: handle finally clause
+			LoginDButil.CloseDB(conn, pstm, rs);
+		}
+	}
+
+}

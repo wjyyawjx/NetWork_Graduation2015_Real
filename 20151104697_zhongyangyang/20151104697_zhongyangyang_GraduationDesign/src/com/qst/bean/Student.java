@@ -10,6 +10,20 @@ public class Student {
 	private String name;
 	private String sex;
 	private String age;
+	private String file;
+	private String fileName;
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getFile() {
+		return file;
+	}
+	public void setFile(String file) {
+		this.file = file;
+	}
 	public int getId() {
 		return id;
 	}
