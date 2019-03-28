@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" import = "java.sql.ResultSet"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 <%@ page import="com.tools.ConnDB"%>
 <%@ page import="com.tools.ChStr"%>	
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.*"%>
+<!-- 数据库调用信息 -->
 <%
 	ConnDB conn =new ConnDB();
 	ChStr chStr =new ChStr();
@@ -112,7 +113,7 @@
 			<table width="92%" height="192"  border="0" cellpadding="0" cellspacing="0">
 				<tr>
 				<td valign="top">
-                      <form action="goods_add_deal.jsp" method="post" name="form1">
+                      <form action="goods_add_deal.jsp" method="post" name="form1" >
                       <fieldset>
                       <table width="100%"  border="0" align="center" cellpadding="-2" cellspacing="-2" bordercolordark="#FFFFFF">
                      
@@ -152,8 +153,9 @@
                     </tr>
                  	 <tr>
                       	<td height="41">图片文件：</td>
-                    	<td height="41">
-                        <input name="fileupload" type="file" class="Style_upload" id="picture"></td>
+                    	<td height="41">                	
+                        <input name="picture" type="file" class="Style_upload" id="picture">
+                        </td>
                     	<td height="41">定　　价：</td>
 	                    <td height="41"><input name="price" type="text" class="Sytle_text" id="price">(元)</td>
 					</tr>
@@ -172,7 +174,7 @@
                     </tr>                    
                     <tr>
                     <td height="38" colspan="4" align="center">
-                        <input name="Button" type="button" class="btn_grey" value="保存" onClick="mycheck()">
+                        <input name="Button" type="submit" class="btn_grey" value="保存" onClick="mycheck()">
                       	&nbsp;                        
 						<input name="Submit2" type="reset" class="btn_grey" value="重置">
                         &nbsp;
@@ -188,10 +190,5 @@
 			</table>	
 			</table>	
 </table>
-			
-			
-			
-	
-
 </body>
 </html>
