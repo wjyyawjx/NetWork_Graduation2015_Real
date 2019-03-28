@@ -60,7 +60,7 @@ public class RecommendDaoimp extends BaseDao implements RecommendDao {
 	//添加商品信息
 	public int addRecommend(RecommendBean recommend) {
 		int row = 0;
-		System.out.println(recommend.getPrice());
+		System.out.println(recommend.getPrice()+"价格Reco");
 		String sql = "insert into recommend(`comname`,`price`) values(?,?)";
 		Object[] params = {recommend.getComname(),recommend.getPrice()};
 		row = this.executeUpdateSQL(sql, params);

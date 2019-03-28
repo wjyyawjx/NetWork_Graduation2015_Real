@@ -39,8 +39,7 @@
 </head>
 <body>
 <h2>添加商品信息</h2>
-<form action="../AddStudent?opr=addStu" name="form" method="post" enctype = "multipart/form-data">
-
+<form action="../AddStudent?opr=addStu"  method="post" enctype = "multipart/form-data">
 <table>
 	<tr><img src="${pageContext.request.contextPath}/image/preview.jpg" id="img" style="width:80px;height:80px;"/>
 </tr>
@@ -50,15 +49,15 @@
 	</tr>
 	<tr>
      <td>商品名：</td>
-    <td><input type="text" name="stuName"></td>
+    <td><input type="text" id="stuName" name="stuName"></td>
   </tr>
     <tr>
     <td>价格：</td>
-    <td><input type="text" name="sex" ></td>
+    <td><input type="text" id="sex" name="sex" ></td>
   </tr>
     <tr>
     <td>数量：</td>
-    <td><input type="text" name="stuAge"></td>
+    <td><input type="text" id="stuAge" name="stuAge"></td>
   </tr>
     
        <tr>

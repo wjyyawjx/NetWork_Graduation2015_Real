@@ -40,8 +40,8 @@ public class Recommend extends HttpServlet {
 		String comname = request.getParameter("recName");
 		String price = request.getParameter("price"); 
 
-		System.out.println(comname );
-		System.out.println(price);
+		System.out.println(comname +"/Reco什么名字");
+		System.out.println(price +"/Reco什么价格");
 		
 		RecommendBean rec = new RecommendBean();
 		rec.setComname(comname);
