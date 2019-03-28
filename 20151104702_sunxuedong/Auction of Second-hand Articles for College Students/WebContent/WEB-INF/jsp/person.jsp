@@ -192,9 +192,9 @@
                                 </a>
 
                                 
-                                <a href="${pageContext.request.contextPath }/table-goods-list-admin.action">
+                                <a href="${pageContext.request.contextPath }/mygoods.action">
                                     <i class="am-icon-angle-right"></i>
-                                    <span>我的租赁</span>
+                                    <span>我的商品</span>
                                     <i class="tpl-left-nav-content tpl-badge-success">18</i>
                                 </a> 
              
@@ -231,7 +231,7 @@
                                 
                                 <a href="${pageContext.request.contextPath }/form-lease.action">
                                     <i class="am-icon-angle-right"></i>
-                                    <span>租賃商品</span>
+                                    <span>我租赁的商品</span>
                                 </a>
                             </li>
                         </ul>

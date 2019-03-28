@@ -46,6 +46,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (url.indexOf("/person.action") >= 0){
 			return true;
 		}
+		if (url.indexOf("/mygoods.action") >= 0){
+			return true;
+		}
 		if (url.indexOf("/table-user-list.action") >= 0){
 			return true;
 		}
@@ -67,7 +70,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (url.indexOf("/personalinformation_user.action") >= 0){
 			return true;
 		}
-		if (url.indexOf("/zulinShop.action") >= 0){
+		if (url.indexOf("/commodity_information.action") >= 0){
 			return true;
 		}
 		if (url.indexOf("/updateUser_a.action") >= 0){

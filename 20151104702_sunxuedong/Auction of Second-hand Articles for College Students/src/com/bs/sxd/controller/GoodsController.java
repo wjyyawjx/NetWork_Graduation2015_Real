@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,7 +40,6 @@ public class GoodsController {
 		l_in_time = year + "-" + month + "-" + day;
 		System.out.println(u_id);
 		l_price = Integer.valueOf(l_price).intValue();
-
 		// 保存数据库的路径
 		String sqlPath = null;
 		// 定义文件保存的本地路径
@@ -76,7 +77,7 @@ public class GoodsController {
 		return "person";
 	}
 
-	// 模糊、条件、分页查询
+	//用户 模糊、条件、分页查询
 	@RequestMapping(value = "/findgoodslist.action")
 	public String list(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "6") Integer rows,
 			String l_name, String l_type, Integer l_static, Model model) {
@@ -92,7 +93,7 @@ public class GoodsController {
 		return "main";
 	}
 
-	// 模糊、条件、分页查询
+	// 管理员模糊、条件、分页查询
 	@RequestMapping(value = "/findgoodslist_a.action")
 	public String list_a(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5") Integer rows,
 			String l_name, String l_type, Integer l_static, Model model) {
@@ -105,6 +106,7 @@ public class GoodsController {
 		model.addAttribute("l_name", l_name);
 		model.addAttribute("l_static", l_static);
 		model.addAttribute("l_type", l_type);
+		
 		return "table-goods-list-admin";
 	}
 
@@ -129,5 +131,16 @@ public class GoodsController {
 		goodsService.deletegoods(id);
 		return "table-goods-list-admin";
 		
+	}
+	@RequestMapping(value = "/mygoods.action")
+	public String person() {
+		return "mygoods";
+	}
+    //展示商品信息的方法
+	@RequestMapping(value = "/commodity_information.action")
+	public String 	commodity_information(Integer id,HttpSession session) {
+		Goods goods = goodsService.findThegoods(id);
+		session.setAttribute("GOODS_SESSION", goods);
+		return "commodity_information";
 	}
 }

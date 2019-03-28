@@ -83,10 +83,6 @@ public class UserController {
 		return "main";
 	}
 
-	public String zulinShop() {
-		return "zulinShop";
-	}
-
 	@RequestMapping(value = "/table-user-list.action")
 	public String table_user_list() {
 		return "table-user-list";
