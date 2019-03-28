@@ -47,9 +47,7 @@ public class AddStudent extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		HttpServletRequest req = (HttpServletRequest) request; 
 		req.setCharacterEncoding("utf-8");
-		String name = request.getParameter("stuName");
-		String sex = request.getParameter("sex");
-		String age = request.getParameter("stuAge"); 
+		
 
 		 //1、创建一个DiskFileItemFactory工厂  
         DiskFileItemFactory factory = new DiskFileItemFactory();  
@@ -60,10 +58,10 @@ public class AddStudent extends HttpServlet {
         factory.setSizeThreshold(1024 * 500);//设置内存的临界值为500K  
         File linshi = new File("D:\\linshi");//当超过500K的时候，存到一个临时文件夹中  
         factory.setRepository(linshi);  
-        upload.setSizeMax(1024 * 1024 * 5);//设置上传的文件总的大小不能超过5M  
+        upload.setSizeMax(1024 * 1024 * 100);//设置上传的文件总的大小不能超过5M  
         try {  
             // 1. 得到 FileItem 的集合 items  
-            List<FileItem> /* FileItem */items = upload.parseRequest(request);  
+            List<FileItem> /* FileItem */items = upload.parseRequest(request);
   
             // 2. 遍历 items:  
             for (FileItem item : items) {  
@@ -71,7 +69,7 @@ public class AddStudent extends HttpServlet {
                 if (item.isFormField()) {  
                     String fileName = item.getFieldName();  
                     String value = item.getString("utf-8");
-  
+                    
                     System.out.println(value);
                       
                       
@@ -89,7 +87,7 @@ public class AddStudent extends HttpServlet {
   
                     fileName = "f:\\upload\\img" + fileName.substring(fileName.lastIndexOf("\\"));//文件最终上传的位置  
                     String file = fileName.substring(fileName.lastIndexOf("\\"));
-                    System.out.println(file);  
+                    
                     //System.out.println();
                     OutputStream out = new FileOutputStream(fileName);
                     
@@ -101,46 +99,49 @@ public class AddStudent extends HttpServlet {
                     while ((len = in.read(buffer)) != -1) {  
                         out.write(buffer, 0, len);  
                     }  
+                    
+                    String name = request.getParameter("stuName");
+            		String sex = request.getParameter("sex");
+            		String age = request.getParameter("stuAge"); 
+            		System.out.println(name );
 		
-		System.out.println(name );
+            		Student stu = new Student();
+            		stu.setFile(file);
+            		stu.setName(name);
+            		stu.setAge(age);
+            		stu.setSex(sex);
+            		stu.setFileName(fileName);
 		
-		Student stu = new Student();
-		stu.setFile(file);
-		stu.setName(name);
-		stu.setAge(age);
-		stu.setSex(sex);
-		stu.setFileName(fileName);
+            		StudentService studentService = new StudentServiceimp();
 		
-		StudentService studentService = new StudentServiceimp();
-		
-		if(studentService.findStudent(stu)){//如果学生已经存在就不添加
-			response.sendRedirect("html/commodity.jsp");
+            		if(studentService.findStudent(stu)){//如果学生已经存在就不添加
+            			response.sendRedirect("html/commodity.jsp");
 			
-		}else{//如果学生不存在就添加
+            		}else{//如果学生不存在就添加
 			
-			String opr = request.getParameter("opr");//根据传的opr参数决定是添加学生还是修改学生
-			int n = 0;
-			if(opr.equals("addStu")){
-				n = studentService.addStudent(stu);
-			}else if(opr.equals("modifyStu")){
-				int id = Integer.parseInt(request.getParameter("stuId"));
-				stu.setId(id);
-				n = studentService.modifyStudent(stu);
-			}
+            			String opr = request.getParameter("opr");//根据传的opr参数决定是添加学生还是修改学生
+            			int n = 0;
+            			if(opr.equals("addStu")){
+            				n = studentService.addStudent(stu);
+            			}else if(opr.equals("modifyStu")){
+            				int id = Integer.parseInt(request.getParameter("stuId"));
+            				stu.setId(id);
+            				n = studentService.modifyStudent(stu);
+            			}
 			
 			
-			if(n>0){
-				response.sendRedirect("html/commodity.jsp");
-			}else{
-				response.sendRedirect("html/commodity.jsp");
-			}
+            			if(n>0){
+            				response.sendRedirect("html/commodity.jsp");
+            			}else{
+            				response.sendRedirect("html/commodity.jsp");
+            			}
 			
-		}
-		out.close();  
-        in.close();  
-        } 
+            		}
+            		out.close();  
+            		in.close();  
+                } 
     
-        }
+            }
 
         } catch (FileUploadException e) {  
         	e.printStackTrace();  

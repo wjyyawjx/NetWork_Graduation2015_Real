@@ -28,31 +28,31 @@ public class StudentServiceimp implements StudentService{
 
 	@Override
 	//获取指定学生信息
-	public Student getStudentMoreInfo(Student student) {
-		return studentDao.getStudentMoreInfo(student);
+	public Student getStudentMoreInfo(Student stu) {
+		return studentDao.getStudentMoreInfo(stu);
 	}
 
 	@Override
 	//添加学生
-	public int addStudent(Student student) {
-		return studentDao.addStudent(student);
+	public int addStudent(Student stu) {
+		return studentDao.addStudent(stu);
 	}
 
 	@Override
 	//删除学生
-	public int delStudent(Student student) {
-		return studentDao.delStudent(student);
+	public int delStudent(Student stu) {
+		return studentDao.delStudent(stu);
 	}
 
 	@Override
 	//修改学生信息
-	public int modifyStudent(Student student) {
-		return studentDao.modifyStudent(student);
+	public int modifyStudent(Student stu) {
+		return studentDao.modifyStudent(stu);
 	}
 	
 	//查找有没有指定的学生
-	public boolean findStudent(Student student){
-		return studentDao.findStudent(student);
+	public boolean findStudent(Student stu){
+		return studentDao.findStudent(stu);
 				
 	}
 

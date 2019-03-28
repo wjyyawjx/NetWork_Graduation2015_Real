@@ -39,7 +39,7 @@
 </head>
 <body>
 <h2>添加商品信息</h2>
-<form action="../AddStudent?opr=addStu" name="form" method="post">
+<form action="../AddStudent?opr=addStu" name="form" method="post" enctype = "multipart/form-data">
 
 <table>
 	<tr><img src="${pageContext.request.contextPath}/image/preview.jpg" id="img" style="width:80px;height:80px;"/>
