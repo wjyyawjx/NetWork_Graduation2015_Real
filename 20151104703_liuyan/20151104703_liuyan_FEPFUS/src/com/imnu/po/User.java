@@ -11,6 +11,7 @@ public class User implements Serializable {
     private String u_phone;
     private String p_img;
     private String p_dirpath;
+    private String u_message; 
     public Integer getU_id() {
 		return u_id;
 	}
@@ -52,5 +53,11 @@ public class User implements Serializable {
 	}
 	public void setP_img(String p_img) {
 		this.p_img = p_img;
+	}
+	public String getU_message() {
+		return u_message;
+	}
+	public void setU_message(String u_message) {
+		this.u_message = u_message;
 	}
 }

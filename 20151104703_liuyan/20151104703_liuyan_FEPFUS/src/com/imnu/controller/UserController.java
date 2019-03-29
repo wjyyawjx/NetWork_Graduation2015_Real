@@ -31,7 +31,7 @@ public class UserController {
      public String Login(String u_name, String u_pwd,Model model,HttpSession session) {
     	 User user = userService.LoginUser(u_name, u_pwd);
     	 if(user != null) {
-    		 return "index";
+    		 return "admin-index";
     	 }else {
     		 model.addAttribute("msg","用户名或密码错误!");
     		 return "login";
@@ -42,7 +42,7 @@ public class UserController {
     	 return "register";
      }
      @RequestMapping(value = "/register.action" ,method = RequestMethod.POST)
-     public String register(@RequestParam("uploadfile") List<MultipartFile> uploadfile,String u_name, String u_pwd,String u_email,String u_phone,String u_type,Model model,HttpSession session,HttpServletRequest request) throws InterruptedException
+     public String register(@RequestParam("uploadfile") List<MultipartFile> uploadfile,String u_name, String u_pwd,String u_email,String u_phone,String u_type,String u_message,Model model,HttpSession session,HttpServletRequest request) throws InterruptedException
      {
     	 if (!uploadfile.isEmpty() && uploadfile.size() > 0) {
     		 User email = userService.findEmail(u_email);
@@ -77,7 +77,7 @@ public class UserController {
     	 				}
     	 				String p_dirpath = dirPath + newFilename;
     	 				String p_img = "upload" +"/"+ newFilename;
-    	 				userService.registerUser(u_name, u_pwd,u_email,u_phone,u_type,p_img,p_dirpath);
+    	 				userService.registerUser(u_name, u_pwd,u_email,u_phone,u_type,p_img,p_dirpath,u_message);
     	 				try {
     	 					zoomImage(dirPath+newFilename,dirPath+newFilename,600,400);
     	 				} catch (Exception e) {
