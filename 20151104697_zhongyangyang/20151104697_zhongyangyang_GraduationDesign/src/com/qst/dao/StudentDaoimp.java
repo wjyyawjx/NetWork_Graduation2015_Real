@@ -21,15 +21,17 @@ public class StudentDaoimp extends BaseDao implements StudentDao {
 	//获取所有学生信息
 	public List<Student> getAllStudent() {
 		List<Student> list = new ArrayList<Student>();
-		String sql = "select`name`,`sex`,`age`  from student ";
+		String sql = "select * from student ";
 		Object[] params = {};
 		ResultSet rs = this.executeQuerySQL(sql, params);
 		try {
 			while (rs.next()) {
 				Student stu = new Student();
+				stu.setId(rs.getInt("id"));
 				stu.setAge(rs.getString("name"));
 				stu.setSex(rs.getString("sex"));
 				stu.setName(rs.getString("age"));
+				stu.setFileName(rs.getString("fileName"));
 				list.add(stu);
 			}
 		} catch (SQLException e) {
@@ -42,7 +44,7 @@ public class StudentDaoimp extends BaseDao implements StudentDao {
 	//获取指定学生信息
 	public Student getStudentMoreInfo(Student stu) {
 		Student student = new Student();
-		String sql = "select `name`,`sex`,`age`  from student where `id`=?";
+		String sql = "select *  from student where `id`=?";
 		Object[] params = { stu.getId() };
 		ResultSet rs = this.executeQuerySQL(sql, params);
 		try {
@@ -51,7 +53,7 @@ public class StudentDaoimp extends BaseDao implements StudentDao {
 				student.setName(rs.getString("name"));
 				student.setSex(rs.getString("sex"));
 				student.setAge(rs.getString("age"));
-				
+				student.setFileName(rs.getString("fileName"));
 				
 			}
 		} catch (SQLException e) {
@@ -65,8 +67,8 @@ public class StudentDaoimp extends BaseDao implements StudentDao {
 	public int addStudent(Student stu) {
 		System.out.println(stu.getName()+"StudaoImp名字");
 		int row = 0;
-		String sql = "insert into student(`file`,`name`,`sex`,`age`,`fileName`) values(?,?,?,?,?)";
-		Object[] params = {stu.getFile(),stu.getName(),stu.getSex(),stu.getAge(),stu.getFileName()};
+		String sql = "insert into student(`id`,`file`,`name`,`sex`,`age`,`fileName`) values(?,?,?,?,?)";
+		Object[] params = {stu.getId(),stu.getFile(),stu.getName(),stu.getSex(),stu.getAge(),stu.getFileName()};
 		row = this.executeUpdateSQL(sql, params);
 		if(row>0){
 			System.out.println("添加学生信息成功");

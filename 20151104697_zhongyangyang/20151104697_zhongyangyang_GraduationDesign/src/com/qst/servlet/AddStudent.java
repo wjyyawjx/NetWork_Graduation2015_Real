@@ -109,7 +109,7 @@ public class AddStudent extends HttpServlet {
             		stu.setFile(file);
             		stu.setFileName(fileName);
 		
-            		
+            		System.out.println(fileName);
             		out.close();  
             		in.close();  
                 } 
@@ -139,7 +139,7 @@ public class AddStudent extends HttpServlet {
 				stu.setId(id);
 				n = studentService.modifyStudent(stu);
 			}
-
+           
 
 			if(n>0){
 				response.sendRedirect("html/commodity.jsp");

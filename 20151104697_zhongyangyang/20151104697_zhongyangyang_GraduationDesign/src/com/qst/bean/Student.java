@@ -12,6 +12,13 @@ public class Student {
 	private String age;
 	private String file;
 	private String fileName;
+	private int gradeId;
+	public int getGradeId() {
+		return gradeId;
+	}
+	public void setGradeId(int gradeId) {
+		this.gradeId = gradeId;
+	}
 	public String getFileName() {
 		return fileName;
 	}

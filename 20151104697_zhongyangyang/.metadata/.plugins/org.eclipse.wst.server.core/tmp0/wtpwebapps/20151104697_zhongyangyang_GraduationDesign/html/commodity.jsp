@@ -126,7 +126,7 @@
                  %>
               <div class="item">
                 <div class="img">
-                  <a href="javascript:;"><img src="../res/static/img/paging_img1.jpg"></a>
+                  <a href="javascript:;"><img src="<%=stu.getFileName()%>" style="width:280px;height:300px;"></a>
                 </div>
                 <div class="text">
                   <p class="title"><%=stu.getName() %></p>

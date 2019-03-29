@@ -30,10 +30,10 @@
               if (fileReader.readyState == fileReader.DONE) {
                   document.getElementById('img').setAttribute('src', fileReader.result);
               }
-          };
+          }
           fileReader.readAsDataURL(file);
-      };
-  };
+      }
+  }
 
 </script>
 </head>
