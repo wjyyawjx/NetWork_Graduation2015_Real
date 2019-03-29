@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
 <fullyQualifiedTypeName name="com.qst.dao.RecommendDao"/>
 <fullyQualifiedTypeName name="com.qst.dao.RecommendDaoimp"/>
 <fullyQualifiedTypeName name="com.qst.service.RecommendService"/>
@@ -29,4 +28,5 @@
 <fullyQualifiedTypeName name="com.qst.dao.UploadimgDao"/>
 <fullyQualifiedTypeName name="com.qst.servlet.AddStudent"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
 </qualifiedTypeNameHistroy>

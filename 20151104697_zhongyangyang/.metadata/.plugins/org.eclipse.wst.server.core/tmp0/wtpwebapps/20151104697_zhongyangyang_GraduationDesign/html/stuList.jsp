@@ -58,7 +58,7 @@
    <td><%=stu.getFileName() %> </td>
    <td>
    <a href="modifyStu1.jsp?id=<%=stu.getId() %>">修改&nbsp;</a>
-   <a href="/students/servlet/delStudent?id=<%=stu.getId() %>" onclick="return check()">删除&nbsp;</a></td>
+   <a href="../Delstu?id=<%=stu.getId() %>" onclick="return check()">删除&nbsp;</a></td>
   </tr>
 <%} %>
 
