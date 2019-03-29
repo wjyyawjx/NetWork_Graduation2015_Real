@@ -58,7 +58,7 @@
 								<div class="row">
 									<div class="col-xs-12 col-md-4 col-sm-4">
 										<ul class="thumbnails" style="list-style: none">
-											<li><a class="thumbnail" href="#"> <img src="../images/goods/<%=picture%>"></a></li>
+											<li><a class="thumbnail" href="#"> <img style="width:200px;height: 250px;" src="/upload/<%=picture%>"></a></li>
 										</ul>
 									</div>
 									<div class="col-xs-12 col-md-8 col-sm-8">
@@ -66,7 +66,7 @@
 											<h1 class="product-title"><%=goodsName%></h1>
 											<ul class="list-unstyled price"><li><h2><%=nowprice%>元</h2></li></ul>
 											<ul class="list-unstyled price"><li>原价: <%=price%>元</li></ul>
-											<div class="rating"><p>商城活动：全场满99包邮</p></div>
+											
 											<div id="product"><hr>
 												<div class="form-group">
 													<label class="control-label" for="shuliang"> 数量 </label>

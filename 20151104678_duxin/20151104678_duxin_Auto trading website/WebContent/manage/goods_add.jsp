@@ -4,6 +4,10 @@
 <%@ page import="com.tools.ChStr"%>	
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.*"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!-- 数据库调用信息 -->
 <%
 	ConnDB conn =new ConnDB();
@@ -41,9 +45,57 @@
 <script src="../front/js/module.js" type="text/javascript"></script>
 <script src="../front/js/jsArr02.js" type="text/javascript"></script>
 <script src="../front/js/tab.js" type="text/javascript"></script>
+<script  type="text/javascript" src="${pageContext.request.contextPath}/front/js/jquery.1.3.2.js"></script>
+<script  type="text/javascript" src="${pageContext.request.contextPath}/front/js/ajaxupload.js"></script>
 
 <script type="text/javascript">
+	$(function(){
+		//上传图片
+		new AjaxUpload('#picture', {
+			action: '${pageContext.request.contextPath}/manage/upload.jsp', 
+			name: 'picFile',
+			responseType: 'json',
+			onSubmit : function(file , ext){
+				if (ext && /^(jpg|png|bmp)$/.test(ext.toLowerCase())){
+					this.setData({
+						'picName': file
+					});
+				} else {
+					alert("请上传格式为 jpg|png|bmp 的图片！");
+					return false;				
+				}
+			},
+			onComplete : function(file,response){
+				if(response.error) {
+					alert(response.error);
+					return;
+				}
+				//alert(response.picUrl);
+				show(response.picUrl);
+			}		
+		});
+	})
+	  
+	  function show(path){
+	
+	   if(document.all)//IE
+	   {
+	   //path = "D:/upload/11.png";
+	   document.getElementById("imgPreview").innerHTML="";
+	   document.getElementById("imgPreview").style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src=\"" + path + "\")";//使用滤镜效果www.2cto.com  
+	   }
+	   else//FF
+	   {
+	   //path = "D:/upload/11.png";
+	   //document.getElementById("imgPreview").innerHTML = "<img id='img1' width='120px' height='100px' src='"+path+"'/>";
+	   
+	   document.getElementById("viewImg").src = path;
+	   
+	    }  
+	   };
+
 	function mycheck(){
+		//验证
 		if(form1.goodsName.value==""){
 			alert("请输入商品名称！");
 			from1.goodsName.focus();
@@ -153,8 +205,10 @@
                     </tr>
                  	 <tr>
                       	<td height="41">图片文件：</td>
-                    	<td height="41">                	
-                        <input name="picture" type="file" class="Style_upload" id="picture">
+                    	<td height="41"> 
+                    	               	
+                        <input name="picture" type="text" class="Style_upload" value="<%=path%>" id="picture">
+                        <img id="viewImg"  width="100px" height="100px;">	
                         </td>
                     	<td height="41">定　　价：</td>
 	                    <td height="41"><input name="price" type="text" class="Sytle_text" id="price">(元)</td>

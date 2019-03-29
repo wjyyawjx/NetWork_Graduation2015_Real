@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    //document.getElementById("imgPreview").innerHTML = "<img id='img1' width='120px' height='100px' src='"+path+"'/>";
    
    document.getElementById("viewImg").src = path;
-   
+   alert(path);
     }  
    };
   </script>
@@ -74,11 +74,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<button id="addLabProdPic">选择图片</button>
 	<br>
 	<div id="imgPreview" style='width:120px; height:100px;'>
-	 <img id="viewImg"  width="200px" height="200px;">
-	 <%         
-		String param = request.getParameter("param");//param就是取到的传递过来的内容	
-	 %> 	
-	 alert(<%=param%>);
+	 <img id="viewImg"  width="200px" height="200px;">	
+	 alert(<%=path%>);
 	 <img src="/upload/test.png"  width="200px" height="200px;">
 	 </div>
   </body>
