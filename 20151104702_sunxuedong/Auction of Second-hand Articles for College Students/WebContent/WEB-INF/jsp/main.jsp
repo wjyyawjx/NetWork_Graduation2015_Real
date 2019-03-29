@@ -105,7 +105,7 @@
 										</div>
 
 										<form class="form-inline"
-											action="${pageContext.request.contextPath }/goodslist.action"
+											action="${pageContext.request.contextPath }/commodity_information.action"
 											method="post">
 											<div>
 												<c:forEach items="${page.rows}" var="row" varStatus="status">
@@ -119,23 +119,29 @@
 															<h4>${row.l_name}</h4>
 														</a>
 														<p>
-															<p align="left">价格：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${row.l_price}.00元</p>
-															
+														<p align="left">价格：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${row.l_price}.00元</p>
+
 														</p>
-														
-														<p class="title">租赁时间：<a >${row.l_out_time}---${row.l_in_time}</a></p>
-														
-																	<input type="submit" class="button" value="点击购买">
-																	<div class="clear"></div>
+
+														<p class="title">
+															租赁时间：<a>${row.l_out_time}---${row.l_in_time}</a>
+														</p>
+
+														<!-- <input type="submit" class="button" value="点击购买"> -->
+														<a
+															href="${pageContext.request.contextPath }/commodity_information.action?id=${row.id}">点击购买</a>
+														<%-- <a "${pageContext.request.contextPath }/commodity_information.action?id=${rows.id}">点击gou'm</a> --%>
+														<div class="clear"></div>
 													</div>
 
 
 
 
 												</c:forEach>
-												<div class="col-md-12 text-right" >
-															<bs:page url="${pageContext.request.contextPath }/findgoodslist.action" />
-														</div>
+												<div class="col-md-12 text-right">
+													<bs:page
+														url="${pageContext.request.contextPath }/findgoodslist.action" />
+												</div>
 
 											</div>
 
@@ -154,7 +160,7 @@
 												<a> 用户：${USER_SESSION.username} </a>
 
 											</div>
-											
+
 											<div class="clear"></div>
 										</div>
 										<div class="first-list">
@@ -163,7 +169,7 @@
 												<a href="${pageContext.request.contextPath }/person.action">
 													个人中心 </a>
 											</div>
-											
+
 											<div class="clear"></div>
 										</div>
 										<div class="first-list">
@@ -173,7 +179,7 @@
 													href="${pageContext.request.contextPath }/zulinShop.action">
 													租赁物品 </a>
 											</div>
-											
+
 											<div class="clear"></div>
 										</div>
 										<div class="first-list">
@@ -181,7 +187,7 @@
 											<a href="${pageContext.request.contextPath }/logout.action">
 												退出系统 </a>
 
-											
+
 											<div class="clear"></div>
 										</div>
 									</div>
@@ -200,28 +206,28 @@
 											<span class="title-icon"></span><a href="">Branches</a>
 										</h1>
 									</div>
-									
-										<div class="clear"></div>
-									</div>
+
 									<div class="clear"></div>
 								</div>
+								<div class="clear"></div>
 							</div>
+						</div>
 
-							<div class="clear"></div>
-							<div class="footer-bottom">
-								<div class="copy">
-									<p>
-										2015级计算机与信息工程学院网络编程班毕业设计 <a href="http://www.cssmoban.com/"
-											target="_blank" title="模板连接">模板地址</a> - The JSP from <a
-											href="http://www.cssmoban.com/" title="网页模板" target="_blank">修改版</a>
-									</p>
-								</div>
+						<div class="clear"></div>
+						<div class="footer-bottom">
+							<div class="copy">
+								<p>
+									2015级计算机与信息工程学院网络编程班毕业设计 <a href="http://www.cssmoban.com/"
+										target="_blank" title="模板连接">模板地址</a> - The JSP from <a
+										href="http://www.cssmoban.com/" title="网页模板" target="_blank">修改版</a>
+								</p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

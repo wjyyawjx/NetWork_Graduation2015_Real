@@ -27,5 +27,6 @@
 <fullyQualifiedTypeName name="com.qst.dao.PhotoDao"/>
 <fullyQualifiedTypeName name="com.qst.service.UploadimgService"/>
 <fullyQualifiedTypeName name="com.qst.dao.UploadimgDao"/>
+<fullyQualifiedTypeName name="com.qst.servlet.AddStudent"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

@@ -21,7 +21,7 @@ public class StudentDaoimp extends BaseDao implements StudentDao {
 	//获取所有学生信息
 	public List<Student> getAllStudent() {
 		List<Student> list = new ArrayList<Student>();
-		String sql = "select`name`,`sex`,`age` from student ";
+		String sql = "select`name`,`sex`,`age`  from student ";
 		Object[] params = {};
 		ResultSet rs = this.executeQuerySQL(sql, params);
 		try {
@@ -42,7 +42,7 @@ public class StudentDaoimp extends BaseDao implements StudentDao {
 	//获取指定学生信息
 	public Student getStudentMoreInfo(Student stu) {
 		Student student = new Student();
-		String sql = "select `name`,`sex`,`age`from student where `id`=?";
+		String sql = "select `name`,`sex`,`age`  from student where `id`=?";
 		Object[] params = { stu.getId() };
 		ResultSet rs = this.executeQuerySQL(sql, params);
 		try {
@@ -63,7 +63,7 @@ public class StudentDaoimp extends BaseDao implements StudentDao {
 	@Override
 	//添加学生信息
 	public int addStudent(Student stu) {
-		System.out.println(stu.getName());
+		System.out.println(stu.getName()+"StudaoImp名字");
 		int row = 0;
 		String sql = "insert into student(`file`,`name`,`sex`,`age`,`fileName`) values(?,?,?,?,?)";
 		Object[] params = {stu.getFile(),stu.getName(),stu.getSex(),stu.getAge(),stu.getFileName()};

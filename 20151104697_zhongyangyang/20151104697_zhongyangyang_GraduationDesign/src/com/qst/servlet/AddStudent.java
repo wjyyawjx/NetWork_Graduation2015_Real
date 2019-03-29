@@ -47,7 +47,7 @@ public class AddStudent extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		HttpServletRequest req = (HttpServletRequest) request; 
 		req.setCharacterEncoding("utf-8");
-		
+		Student stu = new Student();
 
 		 //1、创建一个DiskFileItemFactory工厂  
         DiskFileItemFactory factory = new DiskFileItemFactory();  
@@ -67,14 +67,19 @@ public class AddStudent extends HttpServlet {
             for (FileItem item : items) {  
                 // 若是一个一般的表单域, 打印信息  
                 if (item.isFormField()) {  
-                    String fileName = item.getFieldName();  
-                    String value = item.getString("utf-8");
-                    
-                    System.out.println(value);
-                      
-                      
+                    String value = item.getString("utf-8"); 
+                    if ("stuName".equals(item.getFieldName())) {
+                        stu.setName(new String(item.getString("UTF-8")));
+                        System.out.println(stu.getName()+"1");
+                    }else if ("sex".equals(item.getFieldName())) {
+                        stu.setSex(new String(item.getString("UTF-8")));
+                        System.out.println(stu.getSex()+"2");
+                    } else if ("stuAge".equals(item.getFieldName())) {
+                        stu.setAge(new String(item.getString("UTF-8")));
+                        System.out.println(stu.getAge()+"3");
+                    }
                 }  
-                // 若是文件域则把文件保存到 e:\\files 目录下.  
+                // 若是文件域则把文件保存到 "f:\\upload\\img 目录下.  
                 else {
                     String fileName = item.getName();  
                     long sizeInBytes = item.getSize();  
@@ -99,56 +104,50 @@ public class AddStudent extends HttpServlet {
                     while ((len = in.read(buffer)) != -1) {  
                         out.write(buffer, 0, len);  
                     }  
-                    
-                    String name = request.getParameter("stuName");
-            		String sex = request.getParameter("sex");
-            		String age = request.getParameter("stuAge"); 
-            		System.out.println(name );
 		
-            		Student stu = new Student();
+                   
             		stu.setFile(file);
-            		stu.setName(name);
-            		stu.setAge(age);
-            		stu.setSex(sex);
             		stu.setFileName(fileName);
 		
-            		StudentService studentService = new StudentServiceimp();
-		
-            		if(studentService.findStudent(stu)){//如果学生已经存在就不添加
-            			response.sendRedirect("html/commodity.jsp");
-			
-            		}else{//如果学生不存在就添加
-			
-            			String opr = request.getParameter("opr");//根据传的opr参数决定是添加学生还是修改学生
-            			int n = 0;
-            			if(opr.equals("addStu")){
-            				n = studentService.addStudent(stu);
-            			}else if(opr.equals("modifyStu")){
-            				int id = Integer.parseInt(request.getParameter("stuId"));
-            				stu.setId(id);
-            				n = studentService.modifyStudent(stu);
-            			}
-			
-			
-            			if(n>0){
-            				response.sendRedirect("html/commodity.jsp");
-            			}else{
-            				response.sendRedirect("html/commodity.jsp");
-            			}
-			
-            		}
+            		
             		out.close();  
             		in.close();  
                 } 
     
             }
+            
+            
 
         } catch (FileUploadException e) {  
         	e.printStackTrace();  
         }  
 
 
+        StudentService studentService = new StudentServiceimp();
 		
+		if(studentService.findStudent(stu)){//如果学生已经存在就不添加
+			response.sendRedirect("html/commodity.jsp");
+
+		}else{//如果学生不存在就添加
+
+			String opr = request.getParameter("opr");//根据传的opr参数决定是添加学生还是修改学生
+			int n = 0;
+			if(opr.equals("addStu")){
+				n = studentService.addStudent(stu);
+			}else if(opr.equals("modifyStu")){
+				int id = Integer.parseInt(request.getParameter("stuId"));
+				stu.setId(id);
+				n = studentService.modifyStudent(stu);
+			}
+
+
+			if(n>0){
+				response.sendRedirect("html/commodity.jsp");
+			}else{
+				response.sendRedirect("html/commodity.jsp");
+			}
+
+		}
 		
 
 	}
