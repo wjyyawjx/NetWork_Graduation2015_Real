@@ -16,5 +16,7 @@ public Integer selectgoodsListCount(Goods goods);
 public void updategoodstype_n(Goods goods);
 //删除商品
 public void deletegoods(Integer id);
+//用于显示购买界面商品信息
+public Goods findThegoods(Integer id);
  
 }

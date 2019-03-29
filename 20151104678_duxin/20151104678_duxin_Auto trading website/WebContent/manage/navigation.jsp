@@ -9,7 +9,7 @@
 <body>
 	<table width="100%" height="301"  border="0" cellpadding="0" cellspacing="0">
 		<tr>
-            <td width="20%" height="61"><img alt="" src="../front/images/logo2.png" width="30px" height="30px"></td>
+            <td width="20%" height="61"><img alt="" src="${pageContext.request.contextPath}/front/images/logo2.png" width="30px" height="30px"></td>
             <td width="80%" style=" font-size: 10px; text-shadow: 5px 5px 5px black, 0px 0px 2px black;color: white;">商城后台管理<br>Background Manage</td>
          </tr>
          <tr>

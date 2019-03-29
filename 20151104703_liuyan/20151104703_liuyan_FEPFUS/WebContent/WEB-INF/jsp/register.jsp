@@ -12,7 +12,8 @@ function check() {
 	var pwd = $("#u_pwd").val();
 	var email = $("#u_email").val();
 	var phone = $("#u_phone").val();
-	if(name==""||pwd==""||email==""||phone==""){
+	var message = $("#u_message").val();
+	if(name==""||pwd==""||email==""||phone==""||u_messag=""){
 		$("#message").text("请填写全部信息!");
 		return false;
 	}
@@ -64,6 +65,8 @@ function check() {
 						         <option value="家长" selected="selected">家长</option>
 		                       </select> <br>
        身份认证图片:<input id="file" type="file" name="uploadfile" multiple="multiple" /><br />
+       自我简介:<br><textarea id="u_message" name="u_message"  rows="7" cols="60">
+</textarea><br>
     <input type="submit" value="注册" />
 </form>
 <a href="${pageContext.request.contextPath}/login.action" >返回登陆界面</a>

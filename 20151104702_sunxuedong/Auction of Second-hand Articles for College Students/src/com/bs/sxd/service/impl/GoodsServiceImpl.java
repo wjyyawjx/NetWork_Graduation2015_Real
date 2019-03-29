@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bs.common.utils.Page;
 import com.bs.sxd.dao.GoodsDao;
 import com.bs.sxd.po.Goods;
+import com.bs.sxd.po.User;
 import com.bs.sxd.service.GoodsService;
 /**
  * 用户Service接口实现类
@@ -56,5 +57,11 @@ public class GoodsServiceImpl implements GoodsService {
 	public void deletegoods(Integer id) {
 		goodsDao.deletegoods(id);
 		
+	}
+	  //用于显示购买界面商品信息
+	@Override
+	public Goods findThegoods(Integer id) {
+		Goods goods = this.goodsDao.findThegoods(id);
+		return goods;
 	}	
 }

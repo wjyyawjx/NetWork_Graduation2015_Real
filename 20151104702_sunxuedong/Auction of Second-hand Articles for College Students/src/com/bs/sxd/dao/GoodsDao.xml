@@ -39,6 +39,9 @@
 		select count(*) from goods
 		<include refid="findGoods_yListWhere"/>
 	</select>
+	<select id="findThegoods" parameterType="Integer" resultType="Goods">
+	   select * from goods where id = #{id}
+	</select>
 	<!--下架商品  -->
 	<update id="updategoodstype_n" parameterType="Goods" >
 	    update goods
