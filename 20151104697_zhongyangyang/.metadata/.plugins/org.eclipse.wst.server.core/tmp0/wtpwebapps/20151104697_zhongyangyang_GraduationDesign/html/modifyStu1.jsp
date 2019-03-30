@@ -54,7 +54,7 @@
 </tr>
 	<tr>
 	<td>图片上传</td>
-	<td><input type="file" id="file" name="fileupload" value="<%=stu.getFileName() %>>" onclick="show()"/> </td>
+	<td><input type="file" id="file" name="fileupload"  onclick="show()"/> </td>
 	</tr>
 	<tr>
      <td>商品名：</td>

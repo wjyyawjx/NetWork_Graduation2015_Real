@@ -14,15 +14,15 @@ public interface StudentDao {
 	//获取所有学生信息
 	public List<Student> getAllStudent();
 	//获取指定学生信息
-	public Student getStudentMoreInfo(Student student);
+	public Student getStudentMoreInfo(Student stu);
 	//添加学生
-	public int addStudent(Student student);
+	public int addStudent(Student stu);
 	//删除学生
-	public int delStudent(Student student);
+	public int delStudent(Student stu);
 	//修改学生信息
-	public int modifyStudent(Student student);
+	public int modifyStudent(Student stu);
 	//查找指定的学生存在不存在
-	public boolean findStudent(Student student);
+	public boolean findStudent(Student stu);
 
 }
 
