@@ -114,8 +114,8 @@ public class StudentDaoimp extends BaseDao implements StudentDao {
 	public boolean findStudent(Student stu){
 		boolean flag = true;
 		int row = 0;
-		String sql = "select count(1) from student where `fiLeName`=? and `name`=? and `sex`=? and `age`=?";
-		Object[] params = {stu.getFileName(),stu.getName(),stu.getAge(),stu.getSex()};
+		String sql = "select count(1) from student where  `name`=? and `sex`=? and `age`=?";
+		Object[] params = {stu.getName(),stu.getAge(),stu.getSex()};
 		ResultSet rs = this.executeQuerySQL(sql, params);
 		try {
 			while(rs.next()){
