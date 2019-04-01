@@ -35,7 +35,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 			return true;
 		}
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("UESR_SESSION");
+		User user = (User) session.getAttribute("USER_SESSION");
 		if(user != null) {
 			return true;
 		}

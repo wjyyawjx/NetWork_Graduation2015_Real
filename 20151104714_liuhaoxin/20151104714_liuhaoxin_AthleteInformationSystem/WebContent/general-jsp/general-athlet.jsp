@@ -10,6 +10,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form action="GameAdd" method="post">
+		<h4>项目:</h4><select name="events">
+				<c:forEach items="${abe}" var="w">
+					<option value="${w.events}">${w.events}</option>
+				</c:forEach>
+					</select>
+				<input type="submit" value="查询">
+		
+		
+	</form>
 <table border="2" cellpadding="0" cellspacing="0"
 		style="font-size: 40px" width="100%" height="100%">
 		<thead>

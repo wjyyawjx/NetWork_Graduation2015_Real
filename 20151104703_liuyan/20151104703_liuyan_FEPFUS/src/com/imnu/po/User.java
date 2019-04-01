@@ -5,8 +5,9 @@ import java.io.Serializable;
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
     private Integer u_id; 
-	private String u_name;
+	private String u_user;
     private String u_pwd;
+    private String u_name;
     private String u_email;
     private String u_phone;
     private String p_img;
@@ -59,5 +60,11 @@ public class User implements Serializable {
 	}
 	public void setU_message(String u_message) {
 		this.u_message = u_message;
+	}
+	public String getU_user() {
+		return u_user;
+	}
+	public void setU_user(String u_user) {
+		this.u_user = u_user;
 	}
 }

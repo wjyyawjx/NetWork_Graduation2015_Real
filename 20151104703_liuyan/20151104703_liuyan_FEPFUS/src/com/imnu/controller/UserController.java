@@ -26,11 +26,16 @@ import com.imnu.service.UserService;
 public class UserController {
      @Autowired
      private UserService userService;
-     
+    
+     @RequestMapping(value = "/login.action" ,method = RequestMethod.GET)
+     public String Login1() {
+    	 return "login";
+     }
      @RequestMapping(value = "/login.action" ,method = RequestMethod.POST)
-     public String Login(String u_name, String u_pwd,Model model,HttpSession session) {
-    	 User user = userService.LoginUser(u_name, u_pwd);
+     public String Login(String u_user, String u_pwd,Model model,HttpSession session) {
+    	 User user = userService.LoginUser(u_user, u_pwd);
     	 if(user != null) {
+    		 session.setAttribute("USER_SESSION", user);
     		 return "admin-index";
     	 }else {
     		 model.addAttribute("msg","用户名或密码错误!");
@@ -42,11 +47,11 @@ public class UserController {
     	 return "register";
      }
      @RequestMapping(value = "/register.action" ,method = RequestMethod.POST)
-     public String register(@RequestParam("uploadfile") List<MultipartFile> uploadfile,String u_name, String u_pwd,String u_email,String u_phone,String u_type,String u_message,Model model,HttpSession session,HttpServletRequest request) throws InterruptedException
+     public String register(@RequestParam("uploadfile") List<MultipartFile> uploadfile,String u_user, String u_pwd,String u_name,String u_email,String u_phone,String u_type,String u_message,Model model,HttpSession session,HttpServletRequest request) throws InterruptedException
      {
     	 if (!uploadfile.isEmpty() && uploadfile.size() > 0) {
     		 User email = userService.findEmail(u_email);
-        	 User user = userService.findUser(u_name);
+        	 User user = userService.findUser(u_user);
              if(email != null) {
             	 model.addAttribute("msg","邮箱已存在，请重新输入!");
     	   		 return "register"; 
@@ -77,7 +82,7 @@ public class UserController {
     	 				}
     	 				String p_dirpath = dirPath + newFilename;
     	 				String p_img = "upload" +"/"+ newFilename;
-    	 				userService.registerUser(u_name, u_pwd,u_email,u_phone,u_type,p_img,p_dirpath,u_message);
+    	 				userService.registerUser(u_user, u_pwd,u_name,u_email,u_phone,u_type,p_img,p_dirpath,u_message);
     	 				try {
     	 					zoomImage(dirPath+newFilename,dirPath+newFilename,600,400);
     	 				} catch (Exception e) {
@@ -94,6 +99,7 @@ public class UserController {
  			return"error";
  		}
      }
+    
      public static void zoomImage(String src,String dest,int w,int h) throws Exception {
 	        
 	        double wr=0,hr=0;

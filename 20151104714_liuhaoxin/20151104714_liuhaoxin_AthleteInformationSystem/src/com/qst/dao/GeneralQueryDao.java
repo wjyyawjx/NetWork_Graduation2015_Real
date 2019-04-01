@@ -73,4 +73,32 @@ public class GeneralQueryDao {
 					return Array;
 				}
 
+				// 一般用户查看项目信息
+						public ArrayList<AthletBean> eventsList(int tsid) {
+							// TODO Auto-generated method stub
+							ArrayList<AthletBean> Array = new ArrayList<AthletBean>();
+							Connection conn = DBUtil.getConnection();
+							String sql = "SELECT DISTINCT events FROM athlet where tsid=?";
+							PreparedStatement pstmt = null;
+							ResultSet rs = null;
+							try {
+								pstmt = conn.prepareStatement(sql);
+								pstmt.setInt(1, tsid);
+								rs = pstmt.executeQuery();
+								while (rs.next()) {
+									AthletBean tag = new AthletBean();
+									
+									tag.setEvents(rs.getString("events"));
+									
+									Array.add(tag);
+								}
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} finally {
+								DBUtil.closeJDBC(rs, pstmt, conn);
+							}
+							return Array;
+						}
+
 }

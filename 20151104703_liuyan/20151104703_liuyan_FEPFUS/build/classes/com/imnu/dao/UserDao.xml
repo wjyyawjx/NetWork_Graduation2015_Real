@@ -4,13 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.imnu.dao.UserDao">
   <select id="LoginUser" parameterType="String" resultType="user">
-    select * from user where u_name = #{u_name} and u_pwd=#{u_pwd}
+    select * from user where u_user = #{u_user} and u_pwd=#{u_pwd}
   </select>
   <insert id="registerUser" parameterType="String">
-    insert into user (u_name,u_pwd,u_email,u_phone,u_type,p_img,p_dirpath,u_message) values (#{u_name},#{u_pwd},#{u_email},#{u_phone},#{u_type},#{p_img},#{p_dirpath},#{u_message})
+    insert into user (u_user,u_pwd,u_name,u_email,u_phone,u_type,p_img,p_dirpath,u_message) values (#{u_user},#{u_pwd},#{u_name},#{u_email},#{u_phone},#{u_type},#{p_img},#{p_dirpath},#{u_message})
   </insert>
   <select id="findUser" parameterType="String" resultType="user">
-    select * from user where u_name = #{u_name}
+    select * from user where u_user = #{u_user}
   </select>
   <select id="findEmail" parameterType="String" resultType="user">
     select * from user where u_email = #{u_email}

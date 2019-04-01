@@ -56,7 +56,7 @@ function check() {
 
 <div align="center" class="a">
 <form action="${pageContext.request.contextPath}/login.action" method="post" onsubmit="return check()">
- 用户名:<input id="u_name" type="text" name="u_name" /><br> 
+ 用户名:<input id="u_user" type="text" name="u_user" /><br> 
  密&nbsp;&nbsp;&nbsp;&nbsp;码:<input id="u_pwd" type="password" name="u_pwd" /><br>
 <input type="submit" value="登陆" />
 </form>

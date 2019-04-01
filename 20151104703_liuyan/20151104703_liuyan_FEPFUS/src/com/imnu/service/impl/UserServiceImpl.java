@@ -15,15 +15,15 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 	@Override
-	public User LoginUser(String u_name, String u_pwd) {
+	public User LoginUser(String u_user, String u_pwd) {
 		// TODO Auto-generated method stub
-		User user = this.userDao.LoginUser(u_name, u_pwd);
+		User user = this.userDao.LoginUser(u_user, u_pwd);
 		return user;
 	}
 	@Override
-	public  void registerUser(String u_name, String u_pwd, String u_email,String u_phone,String u_type, String p_img, String p_dirpath,String u_message) {
+	public  void registerUser(String u_user, String u_pwd,String u_name,String u_email,String u_phone,String u_type, String p_img, String p_dirpath,String u_message) {
 		// TODO Auto-generated method stub
-		this.userDao.registerUser(u_name, u_pwd,u_email,u_phone,u_type,p_img,p_dirpath,u_message);
+		this.userDao.registerUser(u_user, u_pwd,u_name,u_email,u_phone,u_type,p_img,p_dirpath,u_message);
 		
 	}
 	@Override
