@@ -47,7 +47,7 @@ public class UserController {
     	 return "register";
      }
      @RequestMapping(value = "/register.action" ,method = RequestMethod.POST)
-     public String register(@RequestParam("uploadfile") List<MultipartFile> uploadfile,String u_user, String u_pwd,String u_email,String u_phone,String u_type,String u_message,Model model,HttpSession session,HttpServletRequest request) throws InterruptedException
+     public String register(@RequestParam("uploadfile") List<MultipartFile> uploadfile,String u_user, String u_pwd,String u_name,String u_email,String u_phone,String u_type,String u_message,Model model,HttpSession session,HttpServletRequest request) throws InterruptedException
      {
     	 if (!uploadfile.isEmpty() && uploadfile.size() > 0) {
     		 User email = userService.findEmail(u_email);
@@ -82,7 +82,7 @@ public class UserController {
     	 				}
     	 				String p_dirpath = dirPath + newFilename;
     	 				String p_img = "upload" +"/"+ newFilename;
-    	 				userService.registerUser(u_user, u_pwd,u_email,u_phone,u_type,p_img,p_dirpath,u_message);
+    	 				userService.registerUser(u_user, u_pwd,u_name,u_email,u_phone,u_type,p_img,p_dirpath,u_message);
     	 				try {
     	 					zoomImage(dirPath+newFilename,dirPath+newFilename,600,400);
     	 				} catch (Exception e) {

@@ -7,7 +7,7 @@
     select * from user where u_user = #{u_user} and u_pwd=#{u_pwd}
   </select>
   <insert id="registerUser" parameterType="String">
-    insert into user (u_user,u_pwd,u_email,u_phone,u_type,p_img,p_dirpath,u_message) values (#{u_user},#{u_pwd},#{u_email},#{u_phone},#{u_type},#{p_img},#{p_dirpath},#{u_message})
+    insert into user (u_user,u_pwd,u_name,u_email,u_phone,u_type,p_img,p_dirpath,u_message) values (#{u_user},#{u_pwd},#{u_name},#{u_email},#{u_phone},#{u_type},#{p_img},#{p_dirpath},#{u_message})
   </insert>
   <select id="findUser" parameterType="String" resultType="user">
     select * from user where u_user = #{u_user}
