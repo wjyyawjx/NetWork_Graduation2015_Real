@@ -10,8 +10,10 @@
 </head>
 <body>
 	<div align="center"><br><br>
-		<a href="laoshi.jsp"        target="admin-right">老师      </a>   <br><br><br>
+		
 		<a href="jiazhang.jsp"               target="admin-right">家长          </a>   <br><br><br> 
+		<a href="laoshi.jsp"               target="admin-right">老师          </a>   <br><br><br>
+		<a href="${pageContext.request.contextPath}/SelectInf.action" target="admin-right">家长          </a>   <br><br><br>
 	
 	</div>
 </body>

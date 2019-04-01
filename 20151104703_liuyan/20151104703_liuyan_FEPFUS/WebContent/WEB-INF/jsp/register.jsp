@@ -8,12 +8,12 @@
 <script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
 <script >
 function check() {
-	var name = $("#u_name").val();
+	var name = $("#u_user").val();
 	var pwd = $("#u_pwd").val();
 	var email = $("#u_email").val();
 	var phone = $("#u_phone").val();
 	var message = $("#u_message").val();
-	if(name==""||pwd==""||email==""||phone==""||u_messag=""){
+	if(name==""||pwd==""||email==""||phone==""||u_messag==""){
 		$("#message").text("请填写全部信息!");
 		return false;
 	}
@@ -55,7 +55,7 @@ function check() {
 <body>
 <div align="center">
 <form action="${pageContext.request.contextPath}/register.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
- 用户名:<input id="u_name" type="text" name="u_name" /><br> 
+ 用户名:<input id="u_user" type="text" name="u_user" /><br> 
     密&nbsp;&nbsp;&nbsp;&nbsp;码:<input id="u_pwd" type="password" name="u_pwd" /><br>
     邮&nbsp;&nbsp;&nbsp;&nbsp;箱:<input id="u_email" type="email" name="u_email" /><br>
     电&nbsp;&nbsp;&nbsp;&nbsp;话:<input id="u_phone" type="text" name="u_phone" /><br>
