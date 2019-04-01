@@ -3,6 +3,7 @@ package com.qst.service;
 import java.util.List;
 
 import com.qst.bean.RecommendBean;
+import com.qst.servlet.Recommend;
 
 /*
  * @ Copyright (c) Create by JASON  Date:2018-02-10  All rights reserved.
@@ -18,7 +19,7 @@ public interface RecommendService {
 	//添加学生
 	public int addRecommend(RecommendBean recommend);
 	//删除学生
-	public int delRecommend(RecommendBean recommend);
+	public int delRecommend(RecommendBean rec);
 	//修改学生信息
 	public int modifyRecommend(RecommendBean recommend);
 	//查找有没有指定的学生

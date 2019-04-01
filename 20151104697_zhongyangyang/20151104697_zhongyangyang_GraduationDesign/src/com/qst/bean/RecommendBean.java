@@ -29,8 +29,8 @@ public class RecommendBean {
 	public int getComid() {
 		return comid;
 	}
-	public void setComid(int comid) {
-		this.comid = comid;
+	public void setComid(int id) {
+		this.comid = id;
 	}
 	public String getComname() {
 		return comname;

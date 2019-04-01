@@ -33,3 +33,6 @@
 0:0:0:0:0:0:0:1 - - [01/Apr/2019:10:37:59 +0800] "GET /20151104697_zhongyangyang_GraduationDesign/html/recommend.jsp HTTP/1.1" 200 1841
 0:0:0:0:0:0:0:1 - - [01/Apr/2019:10:37:59 +0800] "GET /20151104697_zhongyangyang_GraduationDesign/html/css/common.css HTTP/1.1" 404 1118
 0:0:0:0:0:0:0:1 - - [01/Apr/2019:10:37:59 +0800] "GET /20151104697_zhongyangyang_GraduationDesign/image/preview.jpg HTTP/1.1" 404 1114
+127.0.0.1 - - [01/Apr/2019:21:01:26 +0800] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [01/Apr/2019:21:01:28 +0800] "GET /20151104697_zhongyangyang_GraduationDesign/html/recList.jsp HTTP/1.1" 200 1326
+0:0:0:0:0:0:0:1 - - [01/Apr/2019:21:01:28 +0800] "GET /20151104697_zhongyangyang_GraduationDesign/css/common.css HTTP/1.1" 304 -

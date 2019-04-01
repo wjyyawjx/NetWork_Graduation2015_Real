@@ -14,15 +14,15 @@ public interface RecommendDao {
 	//获取所有商品信息
 	public List<RecommendBean> getAllRecommend();
 	//获取商品信息
-	public RecommendBean getRecommendMoreInfo(RecommendBean recommend);
+	public RecommendBean getRecommendMoreInfo(RecommendBean rec);
 	//添加商品
-	public int addRecommend(RecommendBean recommend);
+	public int addRecommend(RecommendBean rec);
 	//删除商品
-	public int delRecommendt(RecommendBean recommend);
+	public int delRecommendt(RecommendBean rec);
 	//修改商品信息
-	public int modifyRecommend(RecommendBean recommend);
+	public int modifyRecommend(RecommendBean rec);
 	//查找指定的商品存在不存在
-	public boolean findRecommend(RecommendBean recommend);
+	public boolean findRecommend(RecommendBean rec);
 	int delRecommend(RecommendBean recommend);
 
 }

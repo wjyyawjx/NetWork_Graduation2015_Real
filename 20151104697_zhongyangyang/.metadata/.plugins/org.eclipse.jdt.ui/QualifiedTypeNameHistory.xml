@@ -2,11 +2,8 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="com.qst.dao.RecommendDao"/>
 <fullyQualifiedTypeName name="com.qst.dao.RecommendDaoimp"/>
-<fullyQualifiedTypeName name="com.qst.service.RecommendService"/>
 <fullyQualifiedTypeName name="com.qst.bean.Recommend"/>
-<fullyQualifiedTypeName name="com.qst.bean.RecommendBean"/>
 <fullyQualifiedTypeName name="com.qst.bean.BuytodayBean"/>
-<fullyQualifiedTypeName name="com.qst.service.RecommendServiceimp"/>
 <fullyQualifiedTypeName name="com.qst.dao.BuytodayDao"/>
 <fullyQualifiedTypeName name="com.qst.dao.BuytodayDaoimp"/>
 <fullyQualifiedTypeName name="javax.websocket.Session"/>
@@ -29,4 +26,7 @@
 <fullyQualifiedTypeName name="com.qst.servlet.AddStudent"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
+<fullyQualifiedTypeName name="com.qst.bean.RecommendBean"/>
+<fullyQualifiedTypeName name="com.qst.service.RecommendService"/>
+<fullyQualifiedTypeName name="com.qst.service.RecommendServiceimp"/>
 </qualifiedTypeNameHistroy>

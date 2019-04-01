@@ -31,14 +31,14 @@
 <body>  
 <div align="right">欢迎你，${sessionScope.username } &nbsp;&nbsp;&nbsp;<a href="logout.jsp">退出</a></div>
 <h2>商品信息列表</h2>
-<p id="addStu"><a href="addStu.jsp"><input type="button" value="添加学生"></a></p>
+<p id="addStu"><a href="addStu.jsp"><input type="button" value="添加商品"></a></p>
 
 <table>
   <tr>
     <td class="listTable" width="100">编号</td>
-    <td class="listTable" width="100">姓名</td>
-    <td class="listTable" width="100">性别</td>
-    <td class="listTable" width="100">年龄</td>
+    <td class="listTable" width="100">商品名</td>
+    <td class="listTable" width="100">价格</td>
+    <td class="listTable" width="100">数量</td>
     <td id="profile"  width="200">图片</td>
     <td id="operate">操作</td>
   </tr>
