@@ -41,8 +41,8 @@ public class RecommendDaoimp extends BaseDao implements RecommendDao {
 
 	@Override
 	//获取指定推荐商品信息
-	public RecommendBean getRecommendMoreInfo(RecommendBean rec) {
-		RecommendBean recommend = new RecommendBean();
+	public RecommendBean getRecommendMoreInfo(RecommendBean recommend) {
+		RecommendBean rec = new RecommendBean();
 		String sql = "select * from Recommend where `comid`=?";
 		Object[] params = { rec.getIndexId() };
 		ResultSet rs = this.executeQuerySQL(sql, params);
@@ -76,7 +76,7 @@ public class RecommendDaoimp extends BaseDao implements RecommendDao {
 
 	@Override
 	//删除商品信息
-	public int delRecommend(RecommendBean rec) {
+	public int delRecommend(RecommendBean recommend) {
 		int row = 0;
 		String sql = "delete from Recommend where `comid`=?";
 		Object[] params = { rec.getIndexId()};
@@ -91,11 +91,11 @@ public class RecommendDaoimp extends BaseDao implements RecommendDao {
 
 	@Override
 	//修改商品信息
-	public int modifyRecommend(RecommendBean rec) {
+	public int modifyRecommend(RecommendBean recommend) {
 		int row = 0;
-		String sql = "update recommend set comname=?,price=?,photoname=? where comid=?";
-		Object[] params = {rec.getComname(),rec.getPrice(),rec.getPhotoname(),rec.getComid()};
-		System.out.println(rec.getComname());
+		String sql = "update recommend set comname=?,price=? where comid=?";
+		Object[] params = {recommend.getComname(),recommend.getPrice(),recommend.getComid()};
+		System.out.println(recommend.getComname());
 		row = this.executeUpdateSQL(sql, params);
 		if(row>0){
 			System.out.println("修改商品信息成功");
@@ -108,11 +108,11 @@ public class RecommendDaoimp extends BaseDao implements RecommendDao {
 	
 	
 	//查询商品信息
-	public boolean findRecommend(RecommendBean rec){
+	public boolean findRecommend(RecommendBean recommend){
 		boolean flag = true;
 		int row = 0;
-		String sql = "select count(1) from Recommend where  `Comname`=? and `price`=? and `photoname`=?" ;
-		Object[] params = {rec.getComname(),rec.getPrice(),rec.getPhotoname()};
+		String sql = "select count(1) from Recommend where  `Comname`=? and `price`=?";
+		Object[] params = {recommend.getComname(),recommend.getPrice()};
 		ResultSet rs = this.executeQuerySQL(sql, params);
 		try {
 			while(rs.next()){

@@ -28,31 +28,31 @@ public class RecommendServiceimp implements RecommendService{
 
 	@Override
 	//获取指定学生信息
-	public RecommendBean getRecommendMoreInfo(RecommendBean recommend) {
-		return recommendDao.getRecommendMoreInfo(recommend);
+	public RecommendBean getRecommendMoreInfo(RecommendBean rec) {
+		return recommendDao.getRecommendMoreInfo(rec);
 	}
 
 	@Override
 	//添加学生
-	public int addRecommend(RecommendBean recommend) {
-		return recommendDao.addRecommend(recommend);
+	public int addRecommend(RecommendBean rec) {
+		return recommendDao.addRecommend(rec);
 	}
 
 	@Override
 	//删除学生
-	public int delRecommend(RecommendBean recommend) {
-		return recommendDao.delRecommend(recommend);
+	public int delRecommend(RecommendBean rec) {
+		return recommendDao.delRecommend(rec);
 	}
 
 	@Override
 	//修改学生信息
-	public int modifyRecommend(RecommendBean recommend) {
-		return recommendDao.modifyRecommend(recommend);
+	public int modifyRecommend(RecommendBean rec) {
+		return recommendDao.modifyRecommend(rec);
 	}
 	
 	//查找有没有指定的学生
-	public boolean findSRecommend(RecommendBean recommend){
-		return recommendDao.findRecommend(recommend);
+	public boolean findSRecommend(RecommendBean rec){
+		return recommendDao.findRecommend(rec);
 				
 	}
 

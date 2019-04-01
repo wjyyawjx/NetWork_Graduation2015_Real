@@ -6,20 +6,6 @@ public class RecommendBean {
 	private String comname;
 	private String price;
 	private int indexId;
-	private String photo;
-	public String getPhoto() {
-		return photo;
-	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-	public String getPhotoname() {
-		return photoname;
-	}
-	public void setPhotoname(String photoname) {
-		this.photoname = photoname;
-	}
-	private String photoname;
 	public int getIndexId() {
 		return indexId;
 	}

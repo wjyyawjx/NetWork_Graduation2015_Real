@@ -19,6 +19,19 @@
 		return true;
 
 		}
+  function show() {
+      var photoTag = document.getElementById('photo');
+      photoTag.onchange = function () {
+          var photo = photoTag.photos[0];
+          var photoReader = new PhotoReader();
+          photoReader.onloadend = function () {
+              if (photoReader.readyState == photoReader.DONE) {
+                  document.getElementById('img').setAttribute('src', photoReader.result);
+              }
+          }
+          photoReader.readAsDataURL(photo);
+      }
+  }
   
 </script>
 </head>
@@ -27,6 +40,13 @@
 <form action="../Recommend?opr=addRec" method="post">
 
 <table>
+  <tr>
+  		<img src="${pageContext.request.contextPath}/image/preview.jpg" id="img" style="width:80px;height:80px;"/>
+  </tr>
+  <tr>
+	<td>图片上传</td>
+	<td><input type="file" id="photo" name="photoupload" onclick="show()"/> </td>
+  </tr>
   <tr>
      <td>商品名：</td>
     <td><input type="text" name="recName" id="recName"></td>

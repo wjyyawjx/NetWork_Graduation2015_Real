@@ -20,16 +20,16 @@
 
 		}
   function show() {
-      var photoTag = document.getElementById('photo');
-      photoTag.onchange = function () {
-          var photo = photoTag.photos[0];
-          var photoReader = new PhotoReader();
-          photoReader.onloadend = function () {
-              if (photoReader.readyState == photoReader.DONE) {
-                  document.getElementById('img').setAttribute('src', photoReader.result);
+      var fileTag = document.getElementById('file');
+      fileTag.onchange = function () {
+          var file = fileTag.files[0];
+          var fileReader = new FileReader();
+          fileReader.onloadend = function () {
+              if (fileReader.readyState == fileReader.DONE) {
+                  document.getElementById('img').setAttribute('src', fileReader.result);
               }
           }
-          photoReader.readAsDataURL(photo);
+          fileReader.readAsDataURL(file);
       }
   }
   
@@ -42,10 +42,6 @@
 <table>
   <tr>
   		<img src="${pageContext.request.contextPath}/image/preview.jpg" id="img" style="width:80px;height:80px;"/>
-  </tr>
-  <tr>
-	<td>图片上传</td>
-	<td><input type="file" id="photo" name="photoupload" onclick="show()"/> </td>
   </tr>
   <tr>
      <td>商品名：</td>

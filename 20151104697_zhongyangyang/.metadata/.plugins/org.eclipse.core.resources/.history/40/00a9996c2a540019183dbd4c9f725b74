@@ -108,11 +108,11 @@ public class RecommendDaoimp extends BaseDao implements RecommendDao {
 	
 	
 	//查询商品信息
-	public boolean findRecommend(RecommendBean rec){
+	public boolean findRecommend(RecommendBean recommend){
 		boolean flag = true;
 		int row = 0;
-		String sql = "select count(1) from Recommend where  `Comname`=? and `price`=? and `photoname`=?" ;
-		Object[] params = {rec.getComname(),rec.getPrice(),rec.getPhotoname()};
+		String sql = "select count(1) from Recommend where  `Comname`=? and `price`=?";
+		Object[] params = {recommend.getComname(),recommend.getPrice()};
 		ResultSet rs = this.executeQuerySQL(sql, params);
 		try {
 			while(rs.next()){
