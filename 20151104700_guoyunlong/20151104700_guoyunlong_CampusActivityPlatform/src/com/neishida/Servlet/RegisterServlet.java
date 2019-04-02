@@ -36,24 +36,13 @@ public class RegisterServlet extends HttpServlet {
 		
 		String user_name = request.getParameter("username");
 		String user_pwd = request.getParameter("password");
-		String name = request.getParameter("name");
-		String meon= request.getParameter("meon");
 
-		String sessionValidateCode = (String)request.getSession().getAttribute("SESSION_VALIDATECODE");
-		String verifyCode = request.getParameter("verifyCode");
 		
-		PrintWriter out = response.getWriter();
+		RegisterService rese = new RegisterService();
+		rese.informationAdd(user_name, user_pwd);
+		response.sendRedirect("index.jsp");
+		System.out.println(user_pwd);
 		
-		if(!sessionValidateCode.equals(verifyCode)){
-			out.print("<script type='text/javascript'>");
-			out.print("alert('Code Error');");
-			out.print("window.location='register.jsp';");
-			out.print("</script>");
-		}else{
-				RegisterService rese = new RegisterService();
-				rese.informationAdd(user_name, user_pwd, name,meon );
-				response.sendRedirect("index.jsp");
-		}
 	}
 
 	/**

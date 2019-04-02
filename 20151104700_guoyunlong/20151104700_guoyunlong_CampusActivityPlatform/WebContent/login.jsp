@@ -30,7 +30,7 @@
  </style>
 <body>
 <h3 align="center">用户登录</h3>
-			<form action="../../../../../students/LoginServlet" method="post">
+			<form action="LoginServlet" method="post">
 				<div align="center">
 					用户名：<input name="username" id="userLogname" type="text"
 						class="login_input" />

@@ -30,7 +30,7 @@
 						class="login_input" />
 				</div>
 				<div align="center">
-					密&nbsp;&nbsp;&nbsp;&nbsp;码：<input name="pwd" id="userPwd"
+					密&nbsp;&nbsp;&nbsp;&nbsp;码：<input name="password" id="password"
 						type="password" class="login_input" />
 				</div>
 				<div align="center">

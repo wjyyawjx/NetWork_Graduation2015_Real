@@ -49,23 +49,23 @@ public class SimpleFileupload extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");  
         response.setCharacterEncoding("utf-8");  
-        //1銆佸垱寤轰竴涓狣iskFileItemFactory宸ュ巶  
+        //1閵嗕礁鍨卞杞扮娑撶嫞iskFileItemFactory瀹搞儱宸�  
         DiskFileItemFactory factory = new DiskFileItemFactory();  
-        //2銆佸垱寤轰竴涓枃浠朵笂浼犺В鏋愬櫒  
+        //2閵嗕礁鍨卞杞扮娑擃亝鏋冩禒鏈电瑐娴肩姾袙閺嬫劕娅�  
         ServletFileUpload upload = new ServletFileUpload(factory);  
-        //瑙ｅ喅涓婁紶鏂囦欢鍚嶇殑涓枃涔辩爜  
+        //鐟欙絽鍠呮稉濠佺炊閺傚洣娆㈤崥宥囨畱娑擃厽鏋冩稊杈╃垳  
         upload.setHeaderEncoding("UTF-8");   
-        factory.setSizeThreshold(1024 * 500);//璁剧疆鍐呭瓨鐨勪复鐣屽�间负500K  
-        File linshi = new File("D:\\linshi");//褰撹秴杩�500K鐨勬椂鍊欙紝瀛樺埌涓�涓复鏃舵枃浠跺す涓�  
+        factory.setSizeThreshold(1024 * 500);//鐠佸墽鐤嗛崘鍛摠閻ㄥ嫪澶嶉悾灞斤拷闂磋礋500K  
+        File linshi = new File("D:\\linshi");//瑜版捁绉存潻锟�500K閻ㄥ嫭妞傞崐娆欑礉鐎涙ê鍩屾稉锟芥稉顏冨閺冭埖鏋冩禒璺恒仚娑擄拷  
         factory.setRepository(linshi);  
-        upload.setSizeMax(1024 * 1024 * 5);//璁剧疆涓婁紶鐨勬枃浠舵�荤殑澶у皬涓嶈兘瓒呰繃5M  
+        upload.setSizeMax(1024 * 1024 * 5);//鐠佸墽鐤嗘稉濠佺炊閻ㄥ嫭鏋冩禒鑸碉拷鑽ゆ畱婢堆冪毈娑撳秷鍏樼搾鍛扮箖5M  
         try {  
-            // 1. 寰楀埌 FileItem 鐨勯泦鍚� items  
+            // 1. 瀵版鍩� FileItem 閻ㄥ嫰娉﹂崥锟� items  
             List<FileItem> /* FileItem */items = upload.parseRequest(request);  
   
-            // 2. 閬嶅巻 items:  
+            // 2. 闁秴宸� items:  
             for (FileItem item : items) {  
-                // 鑻ユ槸涓�涓竴鑸殑琛ㄥ崟鍩�, 鎵撳嵃淇℃伅  
+                // 閼汇儲妲告稉锟芥稉顏冪閼割剛娈戠悰銊ュ礋閸╋拷, 閹垫挸宓冩穱鈩冧紖  
                 if (item.isFormField()) {  
                     String name = item.getFieldName();  
                     String value = item.getString("utf-8");
@@ -74,7 +74,7 @@ public class SimpleFileupload extends HttpServlet {
                       
                       
                 }  
-                // 鑻ユ槸鏂囦欢鍩熷垯鎶婃枃浠朵繚瀛樺埌 e:\\files 鐩綍涓�.  
+                // 閼汇儲妲搁弬鍥︽閸╃喎鍨幎濠冩瀮娴犳湹绻氱�涙ê鍩� e:\\files 閻╊喖缍嶆稉锟�.  
                 else {
                     String fileName = item.getName();  
                     long sizeInBytes = item.getSize();  
@@ -85,7 +85,7 @@ public class SimpleFileupload extends HttpServlet {
                     byte[] buffer = new byte[1024];  
                     int len = 0;  
   
-                    fileName = "g:\\NBA\\WebContent\\FILE\\upload" + fileName.substring(fileName.lastIndexOf("\\"));//鏂囦欢鏈�缁堜笂浼犵殑浣嶇疆  
+                    fileName = "d:\\upload\\file" + fileName.substring(fileName.lastIndexOf("\\"));//閺傚洣娆㈤張锟界紒鍫滅瑐娴肩姷娈戞担宥囩枂  
                     String file = fileName.substring(fileName.lastIndexOf("\\"));
                     System.out.println(file);  
                     //System.out.println();
@@ -102,7 +102,7 @@ public class SimpleFileupload extends HttpServlet {
                     
                     
 					uploadservice.UPloadValidate(file,fileName,sizeInBytes);
-                    response.sendRedirect("suibian.jsp");
+                    response.sendRedirect("main.jsp");
                     
                     out.close();  
                     in.close();  

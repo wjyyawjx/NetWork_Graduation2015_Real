@@ -17,7 +17,7 @@ public class InforAddDao {
     public String getName(String name){  
         String NAME=null;  
         try{  
-            pstm=conn.prepareStatement("select name from tb_user where name=?");  
+            pstm=conn.prepareStatement("select name from user where name=?");  
             pstm.setString(1, name);  
             ResultSet rs=pstm.executeQuery();  
             while(rs.next()){  
@@ -35,15 +35,13 @@ public class InforAddDao {
 	public void register(UserInformationBean userinfor) {
 		// TODO Auto-generated method stub
 		Connection conn = DBUtil.getConnection();
-		String sql = "insert into tb_user(user_name,user_pwd,name,meon) values (?,?,?,?)";
+		String sql = "insert into user(name,pwd) values (?,?)";
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
 		try {
 			pstm = conn.prepareStatement(sql);
 			pstm.setString(1,userinfor.getUsername());
 			pstm.setString(2,userinfor.getPassword());
-			pstm.setString(3,userinfor.getName());
-			pstm.setString(4,userinfor.getMeon());
 			pstm.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -41,16 +41,15 @@ $(function(){
     <span><img src="images/leftico01.png" /></span>管理信息
     </div>
     	<ul class="menuson">
-        <li><cite></cite><a href="index.html" target="rightFrame">首页模版</a><i></i></li>
-        <li class="active"><cite></cite><a href="right.html" target="rightFrame">数据列表</a><i></i></li>
-        <li><cite></cite><a href="imgtable.html" target="rightFrame">图片数据表</a><i></i></li>
-        <li><cite></cite><a href="form.html" target="rightFrame">添加编辑</a><i></i></li>
-        <li><cite></cite><a href="imglist.html" target="rightFrame">图片列表</a><i></i></li>
-        <li><cite></cite><a href="imglist1.html" target="rightFrame">自定义</a><i></i></li>
-        <li><cite></cite><a href="tools.html" target="rightFrame">常用工具</a><i></i></li>
-        <li><cite></cite><a href="filelist.html" target="rightFrame">信息管理</a><i></i></li>
-        <li><cite></cite><a href="tab.html" target="rightFrame">Tab页</a><i></i></li>
-        <li><cite></cite><a href="error.html" target="rightFrame">404页面</a><i></i></li>
+        <li><cite></cite><a href="index.jsp" target="rightFrame">首页模版</a><i></i></li>
+        <li class="active"><cite></cite><a href="right.jsp" target="rightFrame">数据列表</a><i></i></li>
+        <li><cite></cite><a href="imgtable.jsp" target="rightFrame">图片数据表</a><i></i></li>
+        <li><cite></cite><a href="form.jsp" target="rightFrame">添加编辑</a><i></i></li>
+        <li><cite></cite><a href="imglist.jsp" target="rightFrame">图片列表</a><i></i></li>
+        <li><cite></cite><a href="imglist1.jsp" target="rightFrame">自定义</a><i></i></li>
+        <li><cite></cite><a href="tools.jsp" target="rightFrame">常用工具</a><i></i></li>
+        <li><cite></cite><a href="filelist.jsp" target="rightFrame">信息管理</a><i></i></li>
+        <li><cite></cite><a href="tab.jsp" target="rightFrame">Tab页</a><i></i></li>
         </ul>    
     </dd>
         

@@ -47,14 +47,13 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("user", user);
 			//request.getRequestDispatcher("MessageListServlet").forward(request, response);
 			//request.getRequestDispatcher("main.jsp").forward(request,response);
-			response.sendRedirect("/students/page/stuList.jsp");
+			response.sendRedirect("index.jsp");
 		} else {
 			out.print("<script type='text/javascript'>");
 			out.print("alert('ÓÃ»§ÃûÃÜÂë´íÎó£¡');");
 			out.print("window.location='login.jsp';");
 			out.print("</script>");
 		}
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

@@ -17,7 +17,7 @@
 	<form action="SimpleFileupload" method="post" enctype="multipart/form-data">  
 		<div id="div" style="width:1000px; height:50px; border:1px solid #000;">
 			<div style="margin-top:25px;text-align: center;">
-				最简单的文件上传：<input type="file" name="fileupload"/> 
+				文件上传：<input type="file" name="fileupload"/> 
 			</div>
 		</div>
     	 <div id="div" style="width:1000px; height:50px; border:1px solid #000;">
