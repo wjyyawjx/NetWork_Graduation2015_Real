@@ -118,9 +118,9 @@
 								<td align="center"><%=Tel%></td>
 								<td align="center"><%=Email%></td>
 								<td align="center"><%=Amount%></td>
-								<td align="center"><%if(freeze==0){%><a href="member_freeze.jsp?ID=<%=ID%>"><img src="../images/freeze.gif" alt="冻结" width="13" height="15"></a>
+								<td align="center"><%if(freeze==0){%><a href="member_freeze.jsp?ID=<%=ID%>"><img src="../images/freeze.gif" alt="冻结" width="20" height="15"></a>
 								<%}%>
-									<%if(freeze==1){%><a href="member_thaw.jsp?ID=<%=ID%>"><img src="../images/thaw.gif" alt="解冻" width="15" height="15"></a>
+									<%if(freeze==1){%><a href="member_thaw.jsp?ID=<%=ID%>"><img src="../images/thaw.gif" alt="解冻" width="20" height="15"></a>
 									<%}%></td>
 							</tr>
 							<%

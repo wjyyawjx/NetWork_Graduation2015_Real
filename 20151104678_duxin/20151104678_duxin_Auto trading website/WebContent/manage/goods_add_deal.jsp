@@ -22,8 +22,9 @@
 	<%
 		request.setCharacterEncoding("UTF-8");					//设置请求的编码为UTF-8
 		response.setCharacterEncoding("UTF-8");  
-		String goodsName = goods.getGoodsName();			
+		String goodsName = goods.getGoodsName();
 		ResultSet rs=conn.executeQuery("select * from tb_goods where goodsname='"+goodsName+"'");
+		
 		if (rs.next()){
 			out.println("<script language='javascript'>alert('该商品信息已经添加！');window.location.href='goods_add.jsp';</script>");
 		}else{

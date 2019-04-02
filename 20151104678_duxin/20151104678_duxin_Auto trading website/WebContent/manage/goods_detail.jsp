@@ -109,5 +109,5 @@
 </html>
 <%conn.close();
 }else{
-      out.println("<script lanage='javascript'>alert('您的操作有误');window.location.href='index.jsp';");
+      out.println("<script lanage='javascript'>alert('您的操作有误');window.location.href='ht_index.jsp';");
 }%>

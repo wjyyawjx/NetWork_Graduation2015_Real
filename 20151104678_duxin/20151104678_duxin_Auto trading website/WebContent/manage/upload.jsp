@@ -10,6 +10,7 @@ org.apache.commons.fileupload.servlet.ServletFileUpload" %>
 	ServletFileUpload sfu = new ServletFileUpload(dfif);
 sfu.setHeaderEncoding("utf-8");//解决了上传图片如果为中文就是乱码问题
 String loadpath="D:/upload";//上传文件存放目录(此路径是将上传的文件放在本地的硬盘上)
+
 String filName="";
 try{
 	// 开始解析(分析InputStream)
@@ -24,6 +25,7 @@ try{
 					String name = item.getString();
 					filName=name;
 					System.out.println("name:" + name);
+					request.getSession().setAttribute("FileName",name);
 					out.print("<a href=\"index.jsp?param=" +filName + "\">" + filName + "</a>" );
 					
 				} else {

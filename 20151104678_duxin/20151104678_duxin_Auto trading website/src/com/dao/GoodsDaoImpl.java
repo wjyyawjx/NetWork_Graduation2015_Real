@@ -82,4 +82,5 @@ public class GoodsDaoImpl implements GoodsDao {
 
 	}
 
+
 }
