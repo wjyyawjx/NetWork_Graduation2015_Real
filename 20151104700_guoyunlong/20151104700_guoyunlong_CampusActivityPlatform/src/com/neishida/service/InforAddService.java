@@ -2,8 +2,9 @@ package com.neishida.service;
 
 import com.neishida.bean.UserInformationBean;
 import com.neishida.dao.InforAddDao;
+import com.neishida.bean.ActivityBean;
 
-public class RegisterService {
+public class InforAddService {
 	public void informationAdd(String user_name, String user_pwd) {
 		// TODO Auto-generated method stub
 		UserInformationBean userinfor = new UserInformationBean();
@@ -12,5 +13,14 @@ public class RegisterService {
 		System.out.println(user_pwd);
 		InforAddDao infordao = new InforAddDao();
 		infordao.register(userinfor);
+	}
+
+	public void actAdd(String actname, String des) {
+		// TODO Auto-generated method stub
+		ActivityBean act = new ActivityBean();
+		act.setActname(actname);
+		act.setDes(des);
+		InforAddDao infordao = new InforAddDao();
+		infordao.actadd(act);
 	}
 }

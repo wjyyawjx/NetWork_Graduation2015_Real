@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.neishida.DBUtil.DBUtil;
+import com.neishida.bean.ActivityBean;
 import com.neishida.bean.UserInformationBean;
 
 public class InforAddDao {
@@ -42,6 +43,27 @@ public class InforAddDao {
 			pstm = conn.prepareStatement(sql);
 			pstm.setString(1,userinfor.getUsername());
 			pstm.setString(2,userinfor.getPassword());
+			pstm.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBUtil.CloseDB(conn,pstm,rs);
+		}
+	}
+
+
+
+	public void actadd(ActivityBean act) {
+		// TODO Auto-generated method stub
+		Connection conn = DBUtil.getConnection();
+		String sql = "insert into activity(actname,des) values (?,?)";
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		try {
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1,act.getActname());
+			pstm.setString(2,act.getDes());
 			pstm.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

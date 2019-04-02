@@ -1,8 +1,6 @@
 package com.neishida.Servlet;
 
 import java.io.IOException;
-
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.neishida.service.InforAddService;
 
 /**
- * Servlet implementation class RegisterServlet
+ * Servlet implementation class ActivityServlet
  */
-@WebServlet("/RegisterServlet")
-public class RegisterServlet extends HttpServlet {
+@WebServlet("/ActivityServlet")
+public class ActivityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegisterServlet() {
+    public ActivityServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,15 +32,13 @@ public class RegisterServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;cahrset=utf-8");
 		
-		String user_name = request.getParameter("username");
-		String user_pwd = request.getParameter("password");
+		String actname = request.getParameter("actname");
+		String des = request.getParameter("des");
 
 		
-		InforAddService rese = new InforAddService();
-		rese.informationAdd(user_name, user_pwd);
+		InforAddService act = new InforAddService();
+		act.actAdd(actname, des);
 		response.sendRedirect("index.jsp");
-		System.out.println(user_pwd);
-		
 	}
 
 	/**
