@@ -13,6 +13,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>我的商品</title>
+
+<script src="js/axios.min.js"></script>
+<script src="js/iview.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="assets/css/amazeui.min.css" />
 <link rel="stylesheet" href="assets/css/admin.css">
@@ -45,7 +48,10 @@
 				value="${USER_SESSION.id}"> <input type="submit"
 				class="gray-button" value="查询">
 		</div>
-
+		<div align="center">
+			<font color="red"> <%-- 提示信息--%> <span id="message">${msg_scyhsp}</span>
+			</font>
+		</div>
 	</form>
 
 	<div class="am-g">
@@ -86,13 +92,12 @@
 							<td>${rows.u_id}</td>
 							<td>${rows.l_static}</td>
 							<td><a
-								href="${pageContext.request.contextPath }/updatemygools.action?l_static=${rows.l_static}&id=${rows.id}"
+								href="${pageContext.request.contextPath }/updatemygools.action?id=${rows.id}"
 								class="btn btn-primary btn-xs" data-toggle="modal"
 								data-target="#customerEditDialog"
 								onclick="editgoods(${rows.id})">修改</a> <a
-								href="${pageContext.request.contextPath }/deleteGoods.actionl_static=${rows.l_static}&id=${rows.id}"
-								class="btn btn-danger btn-xs"
-								onclick="deletegoods(${rows.id})">删除</a></td>
+								href="${pageContext.request.contextPath }/deletemyGoods.action?l_static=${rows.l_static}&id=${rows.id}"
+								class="btn btn-danger btn-xs" onclick="deletegoods(${rows.id})">删除</a></td>
 						</tr>
 					</c:forEach>
 
@@ -104,6 +109,9 @@
 			</div>
 		</form>
 	</div>
+
+
+
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/amazeui.min.js"></script>
 	<script src="assets/js/app.js"></script>

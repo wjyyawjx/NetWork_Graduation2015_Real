@@ -87,4 +87,15 @@ public class GoodsServiceImpl implements GoodsService {
 		Goods goods = this.goodsDao.findThegoods(id);
 		return goods;
 	}
+	//删除个人商品
+	@Override
+	public void deletemygoods(Integer id) {
+		goodsDao.deletemygoods(id);
+		
+	}
+	//修改个人商品信息
+	@Override
+	public void updatemygoods(Goods goods) {
+		goodsDao.updatemygoods(goods);
+	}
 }

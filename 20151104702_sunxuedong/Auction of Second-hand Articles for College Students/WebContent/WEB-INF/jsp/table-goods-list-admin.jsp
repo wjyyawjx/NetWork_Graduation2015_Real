@@ -307,7 +307,8 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${page.rows}" var="rows">
+									
+										<c:forEach items="${page.rows}" var="rows" >
 											<tr>
 												<td>${rows.id}</td>
 												<td>${rows.l_name}</td>
