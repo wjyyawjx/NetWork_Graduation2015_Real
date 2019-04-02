@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bs.common.utils.Page;
 import com.bs.sxd.dao.GoodsDao;
 import com.bs.sxd.po.Goods;
-import com.bs.sxd.po.User;
 import com.bs.sxd.service.GoodsService;
 /**
  * 用户Service接口实现类
@@ -24,6 +23,7 @@ public class GoodsServiceImpl implements GoodsService {
 	public void addGoods(Goods goods) {
 		goodsDao.addGoods(goods);
 	}
+	//用户管理员/用户查询所有商品
 	@Override
 	public Page<Goods> findGoods_yList(Integer page, Integer rows, Integer l_static, String l_name, String l_type) {
 		Goods goods = new Goods();
@@ -46,22 +46,45 @@ public class GoodsServiceImpl implements GoodsService {
 				result.setTotal(count);
 				return result;
 	}
+	//用于用户查询个人商品
+	@Override
+	public Page<Goods> findGoods_uList(Integer page, Integer rows, Integer l_static, String l_name, String l_type,
+			Integer u_id) {
+		Goods goods = new Goods();
+		// 当前页
+		goods.setStart((page - 1) * rows);
+		// 每页数
+		goods.setRows(rows);
+		//存起来，不然xml文件取不到值
+		goods.setL_name(l_name);
+		goods.setL_type(l_type);
+		goods.setL_static(l_static);
+		goods.setU_id(u_id);
+		List<Goods> good = goodsDao.findGoods_uList(goods);
+		// 查询商品列表总记录数
+				Integer count = goodsDao.selectgoodsList_uCount(goods);	
+		// 创建Page返回对象
+				Page<Goods> result = new Page<Goods>();	
+				result.setPage(page);
+				result.setRows(good);
+				result.setSize(rows);
+				result.setTotal(count);
+				return result;
+	}	
 	//下架商品
 	@Override
 	public void updategoodstype_n(Goods goods) {
-		goodsDao.updategoodstype_n(goods);
-		
+		goodsDao.updategoodstype_n(goods);	
 	}
 	//删除商品
 	@Override
 	public void deletegoods(Integer id) {
-		goodsDao.deletegoods(id);
-		
+		goodsDao.deletegoods(id);	
 	}
 	  //用于显示购买界面商品信息
 	@Override
 	public Goods findThegoods(Integer id) {
 		Goods goods = this.goodsDao.findThegoods(id);
 		return goods;
-	}	
+	}
 }

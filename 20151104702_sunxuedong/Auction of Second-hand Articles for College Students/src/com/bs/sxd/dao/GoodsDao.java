@@ -1,10 +1,6 @@
 package com.bs.sxd.dao;
-
 import java.util.List;
-
-
 import com.bs.sxd.po.Goods;
-
 public interface GoodsDao {
 //添加商品
  public void addGoods(Goods goods);
@@ -18,5 +14,8 @@ public void updategoodstype_n(Goods goods);
 public void deletegoods(Integer id);
 //用于显示购买界面商品信息
 public Goods findThegoods(Integer id);
- 
+//用于查询个人商品
+public List<Goods> findGoods_uList(Goods goods);
+//用于查询个人商品总数
+public Integer selectgoodsList_uCount(Goods goods);
 }

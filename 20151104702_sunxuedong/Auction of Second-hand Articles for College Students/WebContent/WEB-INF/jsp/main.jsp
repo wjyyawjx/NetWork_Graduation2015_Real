@@ -112,22 +112,22 @@
 
 
 													<div style="float: left">
-														
-															<div style="width: 220px; height: 220px">
-																<img src="${row.l_image}" />
-															</div>
-															<h4>${row.l_name}</h4>
-														</a>
+
+														<div style="width: 220px; height: 220px">
+															<img src="${row.l_image}" />
+														</div>
+														<h4>${row.l_name}</h4>
+
 														<p>
 														<p align="left">价格：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${row.l_price}.00元</p>
+														<p align="left">卖家：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${row.u_name}</p>
 
-														</p>
 
 														<p class="title">
 															租赁时间：<a>${row.l_out_time}---${row.l_in_time}</a>
 														</p>
 
-														
+
 														<a
 															href="${pageContext.request.contextPath }/commodity_information.action?id=${row.id}">点击购买</a>
 														<%-- <a "${pageContext.request.contextPath }/commodity_information.action?id=${rows.id}">点击gou'm</a> --%>

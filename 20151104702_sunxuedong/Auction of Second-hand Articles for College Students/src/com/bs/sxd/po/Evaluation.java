@@ -1,7 +1,5 @@
 package com.bs.sxd.po;
-
 import java.io.Serializable;
-
 public class Evaluation implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
@@ -12,7 +10,6 @@ public class Evaluation implements Serializable {
 	private String p_time;
 	private Integer start;            // 起始行
 	private Integer rows;             // 所取行数
-	
 	public Integer getId() {
 		return id;
 	}

@@ -1,19 +1,12 @@
 package com.bs.sxd.service.impl;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.bs.common.utils.Page;
 import com.bs.sxd.dao.EvaluationDao;
-import com.bs.sxd.dao.GoodsDao;
 import com.bs.sxd.po.Evaluation;
-import com.bs.sxd.po.Goods;
 import com.bs.sxd.service.EvaluationService;
-import com.bs.sxd.service.GoodsService;
-
 /**
  * 用户Service接口实现类
  * 
@@ -23,18 +16,14 @@ import com.bs.sxd.service.GoodsService;
 @Service("evaluationService")
 @Transactional
 public class EvaluationServiceImpl implements EvaluationService {
-
 	// 注入GoodsDao
 	@Autowired
 	private EvaluationDao evaluationDao;
-
 	// 添加评价信息
 	@Override
 	public void addReview(Evaluation eval) {
 		evaluationDao.addReview(eval);
-
 	}
-
 	// 分页查询评价信息
 	@Override
 	public Page<Evaluation> findeval_List(Integer page, Integer rows_p, Integer l_id) {
@@ -44,8 +33,7 @@ public class EvaluationServiceImpl implements EvaluationService {
 		// 每页数
 		eval.setRows(rows_p);
 		// 存起来，不然xml文件取不到值
-		eval.setL_id(l_id);
-		
+		eval.setL_id(l_id);	
 		List<Evaluation> evals = evaluationDao.findeval_List(eval);
 		// 查询商品列表总记录数
 		Integer count = evaluationDao.selectevalListCount(eval);
@@ -57,5 +45,4 @@ public class EvaluationServiceImpl implements EvaluationService {
 		result.setTotal(count);
 		return result;
 	}
-
 }

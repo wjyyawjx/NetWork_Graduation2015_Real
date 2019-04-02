@@ -100,58 +100,44 @@
 	<div class="col-md-9 col-sm-7">
 		<div class="product-page">
 			<div class="row">
-				<div class="col-md-6 col-sm-6">
-					<div class="product-main-image" style="width: 200px; height: 200px">
+				<div class="col-md-6 col-sm-6"></div>
+				<form action="${pageContext.request.contextPath }/addToMyGoods.action"
+					method="post">
+					<div class="col-md-6 col-sm-6">
+						<h1>商品信息</h1>
+						<div class="product-main-image"
+							style="width: 200px; height: 200px">
 
-						<img src="${GOODS_SESSION.l_image}" alt="${GOODS_SESSION.l_name}"
-							class="img-responsive" data-BigImgsrc="${GOODS_SESSION.l_image}">
-					</div>
-				
-				</div>
-				<div class="col-md-6 col-sm-6">
-					<h1>商品信息</h1>
-					<div class="price-availability-block clearfix">
-						<div class="price">
-							<strong><span>$</span>${GOODS_SESSION.l_price}.00元</strong>
+							<img src="${GOODS_SESSION.l_image}" alt="${GOODS_SESSION.l_name}"
+								class="img-responsive" data-BigImgsrc="${GOODS_SESSION.l_image}">
+						</div>
+						<div class="price-availability-block clearfix">
+							<div class="price">
+								<strong><span>$</span>${GOODS_SESSION.l_price}.00元</strong>
+
+							</div>
 
 						</div>
-						
-					</div>
-				
-                  
-					<div class="product-page-options">
-						<div class="pull-left">
-							<label class="control-label">名字：${GOODS_SESSION.l_name}</label>
 
+
+						<div class="product-page-options">
+							<div class="pull-left">
+								<label class="control-label">名字：${GOODS_SESSION.l_name}</label>
+
+							</div>
+							<div class="pull-left">
+								<label class="control-label">类型：${GOODS_SESSION.l_type}</label>
+
+							</div>
 						</div>
-						<div class="pull-left">
-							<label class="control-label">类型：${GOODS_SESSION.l_type}</label>
+						<div class="product-page-cart">
 
+							<button class="btn btn-primary" type="submit">点击购买</button>
 						</div>
-					</div>
-					<div class="product-page-cart">
 
-						<button class="btn btn-primary" type="submit">点击购买</button>
 					</div>
-					<!-- <div class="review">
-                    <input type="range" value="4" step="0.25" id="backing4">
-                    <div class="rateit" data-rateit-backingfld="#backing4" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
-                    </div>
-                    <a href="javascript:;">7 reviews</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;">Write a review</a>
-                  </div> -->
-					<ul class="social-icons">
-						<li><a class="facebook" data-original-title="facebook"
-							href="javascript:;"></a></li>
-						<li><a class="twitter" data-original-title="twitter"
-							href="javascript:;"></a></li>
-						<li><a class="googleplus" data-original-title="googleplus"
-							href="javascript:;"></a></li>
-						<li><a class="evernote" data-original-title="evernote"
-							href="javascript:;"></a></li>
-						<li><a class="tumblr" data-original-title="tumblr"
-							href="javascript:;"></a></li>
-					</ul>
-				</div>
+				</form>
+
 				<script type="text/javascript">
 					function showpjxx() {
 						var LyBtn = document.getElementById("PJXX");
@@ -237,29 +223,16 @@
 									action="${pageContext.request.contextPath }/findeval.action"
 									method="post">
 									<div class="review-item-submitted">
-											<p>商品的评价信息</p>
-											<strong>bob</strong> <em>这里是评价信息</em>
-											<div class="rateit" data-rateit-value="5"
-												data-rateit-ispreset="true" data-rateit-readonly="true">2018-04-01</div>
-												<div style="display: none">商品ID：<input id="l_id" name="l_id" value="${GOODS_SESSION.id}"></div>
-												<input type="submit" value="查看更多评价" align="right">
+										<p>商品的评价信息</p>
+										<strong>bob</strong> <em>这里是评价信息</em>
+										<div class="rateit" data-rateit-value="5"
+											data-rateit-ispreset="true" data-rateit-readonly="true">2018-04-01</div>
+										<div style="display: none">
+											商品ID：<input id="l_id" name="l_id" value="${GOODS_SESSION.id}">
 										</div>
-									
-									<%-- <c:forEach items="${page.rows_p}" var="row" varStatus="status">
-										<div class="review-item-submitted">
-											<p>商品的评价信息</p>
-											<strong>bob</strong> <em>2018-04-01</em>
-											<div class="rateit" data-rateit-value="5"
-												data-rateit-ispreset="true" data-rateit-readonly="true"></div>
-										</div>
-										<div class="review-item-content">
-											<p>评价信息</p>
-										</div>
-									</c:forEach>
-									<div class="col-md-12 text-right">
-										<bs:page
-											url="${pageContext.request.contextPath }/findgoodslist.action" />
-									</div> --%>
+										<input type="submit" value="查看更多评价" align="right">
+									</div>
+
 								</form>
 
 							</div>

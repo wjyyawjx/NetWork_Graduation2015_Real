@@ -7,6 +7,7 @@ public class Goods implements Serializable  {
 	private static final long serialVersionUID = 1L;
     private Integer id;
 	private String l_name;
+	private String u_name;
 	private String l_image;
 	private Integer l_price;
 	private String l_info;
@@ -53,6 +54,12 @@ public class Goods implements Serializable  {
 	
 	public String getL_name() {
 		return l_name;
+	}
+	public String getU_name() {
+		return u_name;
+	}
+	public void setU_name(String u_name) {
+		this.u_name = u_name;
 	}
 	public void setL_name(String l_name) {
 		this.l_name = l_name;
