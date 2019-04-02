@@ -42,7 +42,7 @@ public class EvaluationServiceImpl implements EvaluationService {
 		// 当前页
 		eval.setStart((page - 1) * rows_p);
 		// 每页数
-		eval.setRows_p(rows_p);
+		eval.setRows(rows_p);
 		// 存起来，不然xml文件取不到值
 		eval.setL_id(l_id);
 		

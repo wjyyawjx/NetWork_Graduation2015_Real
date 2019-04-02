@@ -3,6 +3,14 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.bs.sxd.dao.EvaluationDao">
+<sql id="findeval_ListWhere">
+		<where>
+			<if test="l_id != ''">
+				l_id like #{l_id}
+			</if>
+			
+		</where>
+	</sql>
 <!-- 添加评价信息 -->
 <insert id="addReview" parameterType="Evaluation" useGeneratedKeys="true"
 		keyProperty="id">
@@ -15,14 +23,15 @@
 	<!--  分页查询-->
 	<select id="findeval_List" parameterType="Evaluation" resultType="Evaluation">
 		select * from evaluation
+		<include refid="findeval_ListWhere" />
 		<!-- 执行分页查询 -->
-		<if test="start !=null and rows_p != null">
-			limit #{start},#{rows_p}
+		<if test="start !=null and rows != null">
+			limit #{start},#{rows}
 		</if>
 	</select>
 	<select id="selectevalListCount" parameterType="Evaluation"
 		resultType="Integer">
 		select count(*) from evaluation
-		
+		<include refid="findeval_ListWhere" />
 	</select>
 </mapper>

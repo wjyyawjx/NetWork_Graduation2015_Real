@@ -13,6 +13,6 @@ public interface EvaluationService {
     //添加评论
 	public void addReview(Evaluation eval);
     //分页查询评价信息
-	public Page<Evaluation> findeval_List(Integer page, Integer rows_p, Integer u_id);
+	public Page<Evaluation> findeval_List(Integer page, Integer rows_p, Integer l_id);
 
 }

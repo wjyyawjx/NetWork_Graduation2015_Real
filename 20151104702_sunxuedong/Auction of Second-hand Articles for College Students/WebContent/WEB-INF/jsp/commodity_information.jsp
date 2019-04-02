@@ -106,11 +106,7 @@
 						<img src="${GOODS_SESSION.l_image}" alt="${GOODS_SESSION.l_name}"
 							class="img-responsive" data-BigImgsrc="${GOODS_SESSION.l_image}">
 					</div>
-					<!-- <div class="product-other-images">
-                    <a href="assets/pages/img/products/model3.jpg" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress" src="assets/pages/img/products/model3.jpg"></a>
-                    <a href="assets/pages/img/products/model4.jpg" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress" src="assets/pages/img/products/model4.jpg"></a>
-                    <a href="assets/pages/img/products/model5.jpg" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress" src="assets/pages/img/products/model5.jpg"></a>
-                  </div> -->
+				
 				</div>
 				<div class="col-md-6 col-sm-6">
 					<h1>商品信息</h1>
@@ -119,14 +115,10 @@
 							<strong><span>$</span>${GOODS_SESSION.l_price}.00元</strong>
 
 						</div>
-						<!--  <div class="availability">
-                      Availability: <strong>In Stock</strong>
-                    </div> -->
+						
 					</div>
-					<!-- <div class="description">
-                    <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat 
-Nostrud duis molestie at dolore.</p>
-                  </div> -->
+				
+                  
 					<div class="product-page-options">
 						<div class="pull-left">
 							<label class="control-label">名字：${GOODS_SESSION.l_name}</label>

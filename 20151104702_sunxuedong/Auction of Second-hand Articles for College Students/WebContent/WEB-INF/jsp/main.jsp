@@ -127,7 +127,7 @@
 															租赁时间：<a>${row.l_out_time}---${row.l_in_time}</a>
 														</p>
 
-														<!-- <input type="submit" class="button" value="点击购买"> -->
+														
 														<a
 															href="${pageContext.request.contextPath }/commodity_information.action?id=${row.id}">点击购买</a>
 														<%-- <a "${pageContext.request.contextPath }/commodity_information.action?id=${rows.id}">点击gou'm</a> --%>

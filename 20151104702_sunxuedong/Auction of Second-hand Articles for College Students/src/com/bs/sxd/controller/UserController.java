@@ -56,63 +56,7 @@ public class UserController {
 		return "personalinformation_user";
 	}
 
-	/**
-	 * 退出登录
-	 */
-	@RequestMapping(value = "/logout.action")
-	public String logout(HttpSession session) {
-		// 清除Session
-		session.invalidate();
-		// 重定向到登录页面的跳转方法
-		return "redirect:login.action";
-	}
-
-	// 关于用户注册的表单提交
-	@RequestMapping(value = "/register.action")
-	public String register() {
-		return "register";
-	}
-
-	@RequestMapping(value = "/person.action")
-	public String person() {
-		return "person";
-	}
-
-	@RequestMapping(value = "/main.action")
-	public String main() {
-		return "main";
-	}
-
-	@RequestMapping(value = "/table-user-list.action")
-	public String table_user_list() {
-		return "table-user-list";
-	}
-
-	@RequestMapping(value = "/table-goods-list-admin.action")
-	public String table_goods_list_admin() {
-		return "table-goods-list-admin";
-	}
-
-	@RequestMapping(value = "/form-news.action")
-	public String form_news() {
-		return "form-news";
-	}
-
-	@RequestMapping(value = "/form-show-goods.action")
-	public String form_show_goods() {
-		return "form-show-goods";
-	}
-
-	@RequestMapping(value = "/form-show-goods-user.action")
-	public String form_show_goods_user() {
-		return "form-show-goods-user";
-	}
-
-	@RequestMapping(value = "/form-lease.action")
-	public String form_lease() {
-		return "form-lease";
-	}
-
+	
 	// 关于用户注册的表单提交
 	@RequestMapping(value = "/personalinformation_user.action")
 	public String personalinformation_user() {
@@ -219,5 +163,62 @@ public class UserController {
 					return "table-user-list";
 					
 				}
+				/**
+				 * 退出登录
+				 */
+				@RequestMapping(value = "/logout.action")
+				public String logout(HttpSession session) {
+					// 清除Session
+					session.invalidate();
+					// 重定向到登录页面的跳转方法
+					return "redirect:login.action";
+				}
+
+				// 关于用户注册的表单提交
+				@RequestMapping(value = "/register.action")
+				public String register() {
+					return "register";
+				}
+
+				@RequestMapping(value = "/person.action")
+				public String person() {
+					return "person";
+				}
+
+				@RequestMapping(value = "/main.action")
+				public String main() {
+					return "main";
+				}
+
+				@RequestMapping(value = "/table-user-list.action")
+				public String table_user_list() {
+					return "table-user-list";
+				}
+
+				@RequestMapping(value = "/table-goods-list-admin.action")
+				public String table_goods_list_admin() {
+					return "table-goods-list-admin";
+				}
+
+				@RequestMapping(value = "/form-news.action")
+				public String form_news() {
+					return "form-news";
+				}
+
+				@RequestMapping(value = "/form-show-goods.action")
+				public String form_show_goods() {
+					return "form-show-goods";
+				}
+
+				@RequestMapping(value = "/form-show-goods-user.action")
+				public String form_show_goods_user() {
+					return "form-show-goods-user";
+				}
+
+				@RequestMapping(value = "/form-lease.action")
+				public String form_lease() {
+					return "form-lease";
+				}
+
 
 }

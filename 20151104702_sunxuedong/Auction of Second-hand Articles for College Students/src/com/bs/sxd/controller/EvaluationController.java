@@ -46,9 +46,7 @@ public class EvaluationController {
 			Page<Evaluation> eval = evaluationService.findeval_List(page, rows_p, l_id);
 			// Ìí¼Ó²ÎÊý
 			model.addAttribute("page", eval);
-			model.addAttribute("l_name", l_id);
-			
-			
+			model.addAttribute("l_id", l_id);	
 			return "evaluation";
 		}
 }
