@@ -11,7 +11,7 @@ public interface UserDao {
 		                @Param("type") Integer type);
 
 public User findByUserName(@Param("username") String username);
-
+//添加用户
 public void addUser(User user);
 //模糊、条件、分页查询
 public List<User> findUserList(User user);

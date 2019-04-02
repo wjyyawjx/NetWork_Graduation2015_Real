@@ -112,7 +112,7 @@
 
 
 													<div style="float: left">
-														<a href="#">
+														
 															<div style="width: 220px; height: 220px">
 																<img src="${row.l_image}" />
 															</div>

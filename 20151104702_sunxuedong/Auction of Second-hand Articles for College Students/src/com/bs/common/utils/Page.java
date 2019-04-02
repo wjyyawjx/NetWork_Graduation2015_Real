@@ -7,7 +7,9 @@ public class Page<T> {
 	private int page;     // 当前页
 	private int size;     // 每页数
 	private List<T> rows; // 结果集
-	private List<T> rows_u; // 结果集
+	private List<T> rows_u; // 用户结果集
+	private List<T> rows_p; // 评价信息结果集
+	
 	public int getTotal() {
 		return total;
 	}
@@ -38,5 +40,10 @@ public class Page<T> {
 	public void setRows_u(List<T> rows_u) {
 		this.rows_u = rows_u;
 	}
-	
+	public List<T> getRows_p() {
+		return rows_p;
+	}
+	public void setRows_p(List<T> rows_p) {
+		this.rows_p = rows_p;
+	}
 }

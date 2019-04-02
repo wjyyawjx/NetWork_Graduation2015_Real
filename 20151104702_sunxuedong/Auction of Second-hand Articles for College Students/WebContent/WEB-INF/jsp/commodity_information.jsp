@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="bs" uri="http://bs.com/common/"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -58,7 +61,34 @@
 <link href="css/style-responsive.css" rel="stylesheet">
 <link href="css/red.css" rel="stylesheet" id="style-color">
 <link href="css/custom.css" rel="stylesheet">
-<!-- Theme styles END -->
+
+<style>
+.box {
+	width: 50%;
+	margin-top: 10%;
+	margin: auto;
+	padding: 28px;
+	height: 600px;
+	border: 1px #111 solid;
+	display: none; /* 默认对话框隐藏 */
+}
+
+.box.show {
+	display: block;
+}
+
+.box .x {
+	font-size: 18px;
+	text-align: right;
+	display: block;
+}
+
+.box input {
+	width: 80%;
+	font-size: 18px;
+	margin-top: 18px;
+}
+</style>
 </head>
 <!-- Head END -->
 
@@ -71,12 +101,10 @@
 		<div class="product-page">
 			<div class="row">
 				<div class="col-md-6 col-sm-6">
-					<div class="product-main-image" style="width: 200px;height: 200px">
+					<div class="product-main-image" style="width: 200px; height: 200px">
 
-						<img
-							src="${GOODS_SESSION.l_image}"
-							alt="${GOODS_SESSION.l_name}" class="img-responsive"
-							data-BigImgsrc="${GOODS_SESSION.l_image}">
+						<img src="${GOODS_SESSION.l_image}" alt="${GOODS_SESSION.l_name}"
+							class="img-responsive" data-BigImgsrc="${GOODS_SESSION.l_image}">
 					</div>
 					<!-- <div class="product-other-images">
                     <a href="assets/pages/img/products/model3.jpg" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress" src="assets/pages/img/products/model3.jpg"></a>
@@ -132,99 +160,186 @@ Nostrud duis molestie at dolore.</p>
 							href="javascript:;"></a></li>
 					</ul>
 				</div>
+				<script type="text/javascript">
+					function showpjxx() {
+						var LyBtn = document.getElementById("PJXX");
+						var lDiv = document.getElementById("pingjia");
+						if (lDiv.style.display == "block") {
+							lDiv.style.display = "none";
 
-				 <div class="product-page-content">
-					<ul id="myTab" class="nav nav-tabs">
-						<!-- <li><a href="#Description" data-toggle="tab">Description</a></li> -->
-						<li><a href="#Information" data-toggle="tab">商品信息</a></li>
-						<li class="active"><a href="#Reviews" data-toggle="tab">评价信息</a></li>
-					</ul>
+						} else {
+							lDiv.style.display = 'block';
+						}
+					}
+					function showspxx() {
+						var SpBtn = document.getElementById("SPXX");
+						var sDiv = document.getElementById("informations");
+						if (sDiv.style.display == "block") {
+							sDiv.style.display = "none";
+
+						} else {
+							sDiv.style.display = 'block';
+						}
+
+					}
+				</script>
+				<div class="product-page-content">
+					<table border="1px">
+						<tr>
+
+							<td><a href="#Information" data-toggle="tab"><input
+									type="button" id="SPXX" value="商品信息" onclick="showspxx()"></a></td>
+							<td><a href="#Reviews" data-toggle="tab"><input
+									type="button" id="PJXX" value="评价信息" onclick="showpjxx()"></a></td>
+							<td><a href="#Liuyan" data-toggle="tab"><input
+									type="button" value="我要留言" onClick="msgbox(1)"></a></td>
+						</tr>
+					</table>
+					<script>
+						function msgbox(n) {
+							document.getElementById('inputbox').style.display = n ? 'block'
+									: 'none'; /* 点击按钮打开/关闭 对话框 */
+						}
+					</script>
+
+
 					<div id="myTabContent" class="tab-content">
-						<div class="tab-pane fade" id="Description">
-							<p>商品的详细信息</p>
-						</div>
-						<div class="tab-pane fade" id="Information">
-							<table class="datasheet">
-								<tr>
-									<th colspan="2">！请仔细阅读数据表！</th>
-								</tr>
-								<tr>
-									<td class="datasheet-features-type">租赁起始时间：</td>
-									<td>${GOODS_SESSION.l_out_time}</td>
-								</tr>
-								<tr>
-									<td class="datasheet-features-type">租赁截至时间：</td>
-									<td>${GOODS_SESSION.l_in_time}</td>
-								</tr>
-								<tr>
-									<td class="datasheet-features-type">提示：</td>
-									<td>请即使归还物品，以营造良好的租赁环境！</td>
-								</tr>
-								<tr>
-									<td class="datasheet-features-type">地址：</td>
-									<td>${GOODS_SESSION.l_addr}</td>
-								</tr>
-								<tr>
-									<td class="datasheet-features-type">描述：</td>
-									<td>${GOODS_SESSION.l_info}</td>
-								</tr>
-							</table>
+						<div id="informations" style="display: none">
+							<div class="tab-pane fade" id="Description">
+								<p>商品的详细信息</p>
+							</div>
+							<div class="tab-pane fade" id="Information">
+								<table class="datasheet">
+									<tr>
+										<th colspan="2">！请仔细阅读数据表！</th>
+									</tr>
+									<tr>
+										<td class="datasheet-features-type">租赁起始时间：</td>
+										<td>${GOODS_SESSION.l_out_time}</td>
+									</tr>
+									<tr>
+										<td class="datasheet-features-type">租赁截至时间：</td>
+										<td>${GOODS_SESSION.l_in_time}</td>
+									</tr>
+									<tr>
+										<td class="datasheet-features-type">提示：</td>
+										<td>请即使归还物品，以营造良好的租赁环境！</td>
+									</tr>
+									<tr>
+										<td class="datasheet-features-type">地址：</td>
+										<td>${GOODS_SESSION.l_addr}</td>
+									</tr>
+									<tr>
+										<td class="datasheet-features-type">描述：</td>
+										<td>${GOODS_SESSION.l_info}</td>
+									</tr>
+								</table>
+							</div>
 						</div>
 						<div class="tab-pane fade in active" id="Reviews">
-							<!--<p>There are no reviews for this product.</p>-->
-							<div class="review-item clearfix">
-								<div class="review-item-submitted">
-									<strong>Bob</strong> <em>30/12/2013 - 07:37</em>
-									<div class="rateit" data-rateit-value="5"
-										data-rateit-ispreset="true" data-rateit-readonly="true"></div>
-								</div>
-								<div class="review-item-content">
-									<p>Sed velit quam, auctor id semper a, hendrerit eget
-										justo. Cum sociis natoque penatibus et magnis dis parturient
-										montes, nascetur ridiculus mus. Duis vel arcu pulvinar dolor
-										tempus feugiat id in orci. Phasellus sed erat leo. Donec
-										luctus, justo eget ultricies tristique, enim mauris bibendum
-										orci, a sodales lectus purus ut lorem.</p>
-								</div>
+
+							<div class="review-item clearfix" style="display: none"
+								id="pingjia">
+
+								<form
+									action="${pageContext.request.contextPath }/findeval.action"
+									method="post">
+									<div class="review-item-submitted">
+											<p>商品的评价信息</p>
+											<strong>bob</strong> <em>这里是评价信息</em>
+											<div class="rateit" data-rateit-value="5"
+												data-rateit-ispreset="true" data-rateit-readonly="true">2018-04-01</div>
+												<div style="display: none">商品ID：<input id="l_id" name="l_id" value="${GOODS_SESSION.id}"></div>
+												<input type="submit" value="查看更多评价" align="right">
+										</div>
+									
+									<%-- <c:forEach items="${page.rows_p}" var="row" varStatus="status">
+										<div class="review-item-submitted">
+											<p>商品的评价信息</p>
+											<strong>bob</strong> <em>2018-04-01</em>
+											<div class="rateit" data-rateit-value="5"
+												data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+										</div>
+										<div class="review-item-content">
+											<p>评价信息</p>
+										</div>
+									</c:forEach>
+									<div class="col-md-12 text-right">
+										<bs:page
+											url="${pageContext.request.contextPath }/findgoodslist.action" />
+									</div> --%>
+								</form>
+
 							</div>
 
-
 							<!-- BEGIN FORM-->
-							<form action="#" class="reviews-form" role="form">
-								<h2>评价信息</h2>
-								<div class="form-group">
-									<label for="name">Name <span class="require">*</span></label> <input
-										type="text" class="form-control" id="name">
-								</div>
-								<div class="form-group">
-									<label for="email">Email</label> <input type="text"
-										class="form-control" id="email">
-								</div>
-								<div class="form-group">
-									<label for="review">Review <span class="require">*</span></label>
-									<textarea class="form-control" rows="8" id="review"></textarea>
-								</div>
-								<!-- 满意度的div -->
-								<!-- <div class="form-group">
-									<label for="email">Rating</label> <input type="range" value="4"
-										step="0.25" id="backing5">
-									<div class="rateit" data-rateit-backingfld="#backing5"
-										data-rateit-resetable="false" data-rateit-ispreset="true"
-										data-rateit-min="0" data-rateit-max="5"></div>
-								</div> -->
-								<div class="padding-top-20">
-									<button type="submit" class="btn btn-primary">提交</button>
-								</div>
-							</form>
+							<div id='inputbox' class="box">
+								<form
+									action="${pageContext.request.contextPath }/addreview.action"
+									method="post" class="reviews-form" role="form"
+									enctype="multipart/form-data" onsubmit="return check()"
+									name="date" id="form1">
+									<a class='x' href='' ; onclick="msgbox(0); return false;">关闭</a>
+									<h2>评价信息</h2>
+									<div class="form-group">
+										<label for="l_id">商品ID：&nbsp</label> <input type="text"
+											class="form-control" id="l_id" name="l_id"
+											value="${GOODS_SESSION.id}" readonly="true">
+									</div>
+									<div class="form-group">
+										<label for="u_name">姓名：&nbsp&nbsp<span class="require">*</span></label>
+										<input type="text" class="form-control" id="u_name"
+											name="u_name" value="${USER_SESSION.username}"
+											readonly="true">
+									</div>
+									<div class="form-group">
+										<label for="email">Email：<span class="require">*</span></label>
+										<input type="text" class="form-control" id="email"
+											name="email">
+									</div>
+									<div class="form-group">
+										<label for="review">Review <span class="require">*</span></label>
+										<textarea class="form-control" rows="8" id="information"
+											name="information"></textarea>
+									</div>
+
+
+									<div class="form-group">
+										<label for="p_time" class="am-u-sm-3 am-form-label">评价时间:</label>
+										<div class="am-u-sm-9">
+
+											<input id="p_time" name="p_time" type="text" value=""
+												readonly="true" />
+										</div>
+									</div>
+									<script language="javascript" type="text/javascript">
+										function shijian() {
+											var D = new Date();
+											var yy = D.getFullYear();
+											var mm = D.getMonth() + 1;
+											var dd = D.getDate();
+
+											var time = yy + "-" + mm + "-" + dd;
+											document.getElementById("p_time").value = time;
+											setTimeout("shijian()", 1000);
+										}
+										shijian();
+									</script>
+									<div class="padding-top-20">
+										<button type="submit" class="btn btn-primary">提交</button>
+
+									</div>
+								</form>
+							</div>
 							<!-- END FORM-->
 						</div>
 					</div>
-				</div> 
-				
-				
-				
-				
-				
+				</div>
+
+
+
+
+
 
 				<div class="sticker sticker-sale"></div>
 			</div>
@@ -235,33 +350,23 @@ Nostrud duis molestie at dolore.</p>
 	<script src="js/respond.min.js"></script>
 
 	<script src="js/jquery.min.shop.js" type="text/javascript"></script>
-	<script src="js/jquery-migrate.min.js"
-		type="text/javascript"></script>
-	<script src="js/bootstrap.min.js"
-		type="text/javascript"></script>
-	<script src="js/back-to-top.js"
-		type="text/javascript"></script>
-	<script src="js/jquery.slimscroll.min.js"
-		type="text/javascript"></script>
+	<script src="js/jquery-migrate.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/back-to-top.js" type="text/javascript"></script>
+	<script src="js/jquery.slimscroll.min.js" type="text/javascript"></script>
 	<!-- END CORE PLUGINS -->
 
 	<!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
-	<script src="js/jquery.fancybox.pack.js"
-		type="text/javascript"></script>
+	<script src="js/jquery.fancybox.pack.js" type="text/javascript"></script>
 	<!-- pop up -->
-	<script src="js/owl.carousel.min.js"
-		type="text/javascript"></script>
+	<script src="js/owl.carousel.min.js" type="text/javascript"></script>
 	<!-- slider for products -->
-	<script src='js/jquery.zoom.min.js'
-		type="text/javascript"></script>
+	<script src='js/jquery.zoom.min.js' type="text/javascript"></script>
 	<!-- product zoom -->
-	<script src="js/bootstrap.touchspin.js"
-		type="text/javascript"></script>
+	<script src="js/bootstrap.touchspin.js" type="text/javascript"></script>
 	<!-- Quantity -->
-	<script src="js/jquery.uniform.min.js"
-		type="text/javascript"></script>
-	<script src="js/jquery.rateit.js"
-		type="text/javascript"></script>
+	<script src="js/jquery.uniform.min.js" type="text/javascript"></script>
+	<script src="js/jquery.rateit.js" type="text/javascript"></script>
 
 	<script src="js/layout.js" type="text/javascript"></script>
 	<script type="text/javascript">

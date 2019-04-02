@@ -335,7 +335,7 @@
 								</table>
 								<div class="col-md-12 text-right">
 									<bs:page
-										url="${pageContext.request.contextPath }/finduserlist.action" />
+										url="${pageContext.request.contextPath }/findgoodslist_a.action" />
 								</div>
 							</form>
 

@@ -122,7 +122,7 @@ public class UserController {
 	// 添加用戶
 	@RequestMapping(value = "/add.action", method = RequestMethod.POST)
 	public String register(User user, String username, String password, String phone, String qq, String sex,
-			String university, String college, String adreess) {
+			String university, String college, String adreess, Model model) {
 		// System.out.println(username);
 		user.setUsername(username);
 		user.setPassword(password);
@@ -142,6 +142,7 @@ public class UserController {
 			userService.addUser(user);
 			return "login";
 		} else {
+			model.addAttribute("msg_zc", "！该用户已经存在，请更换用户名！");
 			return "register";
 		}
 	}

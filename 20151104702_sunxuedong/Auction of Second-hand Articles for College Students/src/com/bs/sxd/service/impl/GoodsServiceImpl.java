@@ -17,7 +17,7 @@ import com.bs.sxd.service.GoodsService;
 @Service("goodsService")
 @Transactional
 public class GoodsServiceImpl implements GoodsService {
-	// ×¢ÈëUserDao
+	// ×¢ÈëGoodsDao
 	@Autowired
 	private GoodsDao goodsDao;
 	@Override

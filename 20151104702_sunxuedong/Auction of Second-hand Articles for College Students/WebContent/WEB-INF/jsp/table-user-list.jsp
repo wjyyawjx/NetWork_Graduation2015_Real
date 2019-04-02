@@ -333,7 +333,10 @@
 
 									</tbody>
 								</table>
-
+                                  <div class="col-md-12 text-right">
+									<bs:page
+										url="${pageContext.request.contextPath }/finduserlist.action" />
+								  </div>
 							</form>
 						</div>
 
