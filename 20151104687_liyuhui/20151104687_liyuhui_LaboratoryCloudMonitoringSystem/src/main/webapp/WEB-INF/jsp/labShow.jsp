@@ -25,6 +25,7 @@
         <link href="css/icons.css" rel="stylesheet">
         <link href="css/generics.css" rel="stylesheet"> 
         <script src="js/echarts.min.js"></script>
+        <script src="js/jquery.min.js"></script>
     </head>
     <body id="${User.color}">
 
@@ -182,9 +183,9 @@
                     
                     <div class="row">
                     	
-                        <div class="col-md-5 col-xs-8  ">
+                        <div class="col-md-6 col-xs-8  ">
                         	<a style="font-size:18px">实验室温湿度记录</a>
-	                        <table  border="1" style="width:100%; border-color:white">
+	                        <!-- <table  border="1" style="width:100%; border-color:white">
 	                			<tr>
 	                				<td>编号</td>
 	                				<td>时间</td>
@@ -199,15 +200,190 @@
 	                				<td>${lab_ths.humidity} %</td>
 	                			</tr>
 	                			</c:forEach>
-	                		</table>
-                        	
+	                		</table> -->
+	                		<input type="hidden" value="${fn:length(lab_ths)}" name="lab_length" id="lab_length">
+	                		<c:forEach items="${lab_ths}" var="lab_ths" varStatus="status">
+    					 		<input type="hidden" value="${lab_ths.time }" name='Time${status.count}' id='Time${status.count}'>
+    					 		<input type="hidden" value="${lab_ths.temperature }" id='Tem${status.count}'>
+    					 		<input type="hidden" value="${lab_ths.humidity }" id='Hum${status.count}'>
+    					 	</c:forEach>
+                        	<div  id="oldchart" style="height:430px">
+				        	<script type="text/javascript">
+				        		var myChart = echarts.init(document.getElementById('oldchart'));
+					        	var time = [];
+				        		var tem = [];
+				        		var hum = [];
+				        		var i = 0;
+				        		var length =  $("#lab_length").val();
+				        		for(i;i<length;i++){
+				        			time[i] = $("#Time"+(i)).val()+"";
+				        			tem[i] = $("#Tem"+(i)).val();
+				        			hum[i] = $("#Hum"+(i)).val();
+				        		}  	
+				        		var timeData = time;
+				        		
+				        		timeData = timeData.map(function (str) {
+				        		    return str.replace('GMT+08:00 2019', '');
+				        		});
+				        		
+				        		option = {
+				        		    title: {
+				        		        text: '实验室温湿度记录统计',
+				        		        textStyle:{
+				        		            color:'#fff',
+				        		        },
+				        		        subtext: '',
+				        		        x: 'center'
+				        		    },
+				        		    tooltip: {
+				        		        trigger: 'axis',
+				        		        axisPointer: {
+				        		            animation: false
+				        		        }
+				        		    },
+				        		    color:['#80FF80','#ED7C30'],
+				        		    legend: {
+				        		    	textStyle:{
+				        		            color:'#fff',
+				        		        },
+				        		        data:['温度','湿度'],
+				        		        x: 'left'
+				        		    },
+				        		    toolbox: {
+				        		        feature: {
+				        		            dataZoom: {
+				        		                yAxisIndex: 'none'
+				        		            },
+				        		            restore: {},
+				        		            saveAsImage: {}
+				        		        }
+				        		    },
+				        		    axisPointer: {
+				        		        link: {xAxisIndex: 'all'}
+				        		    },
+				        		    dataZoom: [
+				        		        {
+				        		            show: true,
+				        		            textStyle:{//图例文字的样式
+					        		            color:'#fff',
+					        		        },
+				        		            realtime: true,
+				        		            start: 30,
+				        		            end: 70,
+				        		            xAxisIndex: [0, 1]
+				        		        },
+				        		        {
+				        		            type: 'inside',
+				        		            realtime: false,
+				        		            start: 30,
+				        		            end: 70,
+				        		            xAxisIndex: [0, 1]
+				        		        }
+				        		    ],
+				        		    grid: [{
+				        		        left: 50,
+				        		        right: 50,
+				        		        height: '35%'
+				        		    }, {
+				        		        left: 50,
+				        		        right: 50,
+				        		        top: '55%',
+				        		        height: '35%'
+				        		    }],
+				        		    xAxis : [
+				        		        {
+				        		            type : 'category',
+				        		            boundaryGap : false,
+				        		            axisLine: {
+				        		            	onZero: true,
+				        		            	lineStyle: {color: '#fff'}
+				        		            },
+				        		            axisLabel: {
+				                                show: true,
+				                                textStyle: {
+				                                    color: '#fff'
+				                                }
+				                            },
+				        		            data: timeData
+				        		        },
+				        		        {
+				        		            gridIndex: 1,
+				        		            type : 'category',
+				        		            boundaryGap : false,
+				        		            axisLabel: {
+				                                show: false,
+				                            },
+				                            axisLine: {
+				        		            	onZero: true,
+				        		            	lineStyle: {color: '#fff'}
+				        		            },
+				        		            data: timeData,
+				        		            position: 'top'
+				        		        }
+				        		    ],
+				        		    yAxis : [
+				        		        {
+				        		            name : '温度（℃）',
+				        		            type : 'value',
+				        		            axisLine: {
+				        		            	lineStyle: {color: '#fff'}
+				        		            },
+				        		            axisLabel : {
+				                                formatter: '{value}',
+				                                textStyle: {
+				                                    color: '#fff'
+				                                }
+				                            },
+				        		            max : 50
+				        		        },
+				        		        {
+				        		            gridIndex: 1,
+				        		            name : '湿度（%）',
+				        		            type : 'value',
+				        		            axisLine: {
+				        		            	lineStyle: {color: '#fff'}
+				        		            },
+				        		            axisLabel : {
+				                                formatter: '{value}',
+				                                textStyle: {
+				                                    color: '#fff'
+				                                }
+				                            },
+				        		            inverse: true
+				        		        }
+				        		    ],
+				        		    series : [
+				        		        {
+				        		            name:'温度',
+				        		            type:'line',
+				        		            symbolSize: 8,
+				        		            hoverAnimation: true,
+				        		            data:tem
+
+				        		            
+				        		        },
+				        		        {
+				        		            name:'湿度',
+				        		            type:'line',
+				        		            xAxisIndex: 1,
+				        		            yAxisIndex: 1,
+				        		            symbolSize: 8,
+				        		            hoverAnimation: true,
+				        		            data:hum
+				        		        }
+				        		    ]
+				        		};
+				        		
+				        		myChart.setOption(option);
+				        	</script>
+				        	</div>
                         </div>
-                        <div class="col-md-5 col-xs-8">
+                        <div class="col-md-4 col-xs-8">
                         <a style="font-size:18px">实验室实时温度</a>
-                        <div  id="mychart" style="height:400px">
+                        <div  id="newchart" style="height:430px">
 				        <script type="text/javascript">
 				            // 基于准备好的dom，初始化echarts实例
-				            var myChart = echarts.init(document.getElementById('mychart'));
+				            var myChart = echarts.init(document.getElementById('newchart'));
 				            // 指定图表的配置项和数据
 				            var option = {
 				            	    //backgroundColor: '#1b1b1b',
@@ -295,7 +471,7 @@
 				            	        {
 				            	            name:'实验室温度',
 				            	            type:'gauge',
-				            	            center : ['38%', '55%'],    // 默认全局居中
+				            	            center : ['32%', '55%'],    // 默认全局居中
 				            	            radius : '60%',
 				            	            min:0,
 				            	            max:50,

@@ -175,33 +175,122 @@
                 <hr class="whiter" />
                 <hr class="whiter" />
                 <hr class="whiter" />
-				<div class="workingroom">
+				<div  class="block-area" style="margin-top:50px; margin-left:80px; ">
+					<div class="col-md-10 col-xs-8  ">
+					<h3>个人信息：</h3>
+					<h4>
 					<table>
 	                	<tr>
-	                		<td>姓名：</td>
+	                		<td rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="profile-pic animated" src="${User.image }" alt=""></td>
+	                		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名：</td>
 	                        <td>${User.name}</td>
-	                    </tr>
-	                    <tr>
-							<td>编号： </td>
+	                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编号： </td>
 	                        <td>${User.num }</td>
-	                    </tr>
-	                    <tr>
-							<td>性别： </td>
+	                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别： </td>
 	                        <td>${User.sex }</td>
 	                    </tr>
 	                    <tr>
-							<td>年龄： </td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年龄： </td>
 	                        <td>${User.age }</td>
-	                    </tr>
-	                    <tr>
-							<td>电话： </td>
+	                        <td></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电话： </td>
 	                        <td>${User.tel }</td>
-	                    </tr>
-	                    <tr>
-							<td>邮箱： </td>
+	                        <td></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱： </td>
 	                        <td>${User.email }</td>
 	                    </tr>
 	                </table>
+	                </h4>
+	                <br><br>
+	                </div>
+	                <div class="col-md-5 col-xs-8  ">
+	                	<h3>已授权实验室：</h3>
+	                </div>
+	                <div class="col-md-5 col-xs-8  ">
+	                	<h3>申请中实验室：</h3>
+	                </div>
+	                <div class="col-md-5 col-xs-8  ">
+	                <form action="${pageContext.request.contextPath }/editMine" method="post" enctype="multipart/form-data">
+	                	<h3>个人信息修改：</h3>
+	                	<h4>
+	                	<table>
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名：</td>
+	                			<td><input type="text" name="name" value="${User.name}" style="color:black" placeholder="姓名"></td>
+	                		</tr>
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系方式：</td>
+	                			<td><input type="text" name="tel" value="${User.tel }" style="color:black" placeholder="联系方式"></td>
+	                		</tr>
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电子邮箱：</td>
+	                			<td><input type="text" name="email" value="${User.email }" style="color:black" placeholder="电子邮箱"></td>
+	                		</tr>
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;头像：</td>
+	                			<td><input type="file" id="image" name="image" value="${User.image}" accept="image/*" placeholder="头像"></td>
+	                		</tr>
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年龄：</td>
+	                			<td><input type="text" name="age" value="${User.age }" style="color:black" placeholder="年龄"></td>
+	                		</tr>
+	                	</table><br>
+	                	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                	<button type="submit" style="background-color: red;border: none;color: white;padding: 10px 25px;text-align: center;text-decoration: none;display: inline-block; font-size: 13px;">修改</button>
+	                	</h4>
+	                </form>
+	                </div>
+	                <script>
+						function editPwd(){
+			    			var pwd = $("#pwd").val();
+			    			var pwd1 = $("#pwd1").val();
+			    			var randomjsp = $("#randomjsp").val();
+			    			if(pwd!=pwd1){
+			    				alert("两次密码不一致！");
+			        			return false;
+			    			}
+			    			if(randomjsp == ""){
+			    				alert("请输入验证码！");
+			        			return false;
+			    			}
+			    			return true;
+						}
+					</script>
+	                <div class="col-md-5 col-xs-8 ">
+	                <form action="${pageContext.request.contextPath }/editPwd" method="post" onsubmit="return editPwd()" >
+	                	<h3>密码修改：</h3>
+	                	<h4>
+	                	<table>
+	                	<tr>
+	                		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新密码：</td>
+	                		<td><input type="text" id="pwd" name="pwd" style="height:20;color:black" placeholder="请新输入密码"/></td>
+	                		</tr>
+	                		<tr>
+	                		<td>&nbsp;</td>
+	                		</tr>
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;再次输入：</td>
+	                			<td><input type="text" id="pwd1" style="height:20;color:black" placeholder="请再次输入密码"/></td>
+	                		</tr>
+	                		<tr>
+	                		<td>&nbsp;</td>
+	                		</tr>
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;验证码：</td>
+	                			<td><input type="text" name="randomjsp" class="uname"  style="height:20;color:black" placeholder="请输入验证码">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td><img src="getVerify" alt="" style="width:100; height:30" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'"></td>
+							</tr>
+						</table><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                	<button type="submit" style="background-color: red;border: none;color: white;padding: 10px 25px;text-align: center;text-decoration: none;display: inline-block; font-size: 13px;" onclick="return editPwd()">修改</button>
+	                	</h4>
+	                	<br>
+	                </form>
+	                </div>
+	                
+	                </div>
 				</div>
             </section>
 

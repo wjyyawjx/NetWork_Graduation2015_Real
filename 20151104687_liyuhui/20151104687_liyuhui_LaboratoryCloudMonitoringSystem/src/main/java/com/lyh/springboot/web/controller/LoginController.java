@@ -89,8 +89,8 @@ public class LoginController {
         		int times = 2;
         		String algorithmName = "md5";
         		String encodedPassword = new SimpleHash(algorithmName, pwd, salt, times).toString();
-                String fileName = System.currentTimeMillis()+image.getOriginalFilename();
-                String destFileName="C:/Users/li/Downloads/upload"+name+fileName;
+                String fileName = image.getOriginalFilename();
+                String destFileName="C:/Users/li/Downloads/upload/"+name+fileName;
                 String destsql = name+fileName;
                 File destFile = new File(destFileName);
                 destFile.getParentFile().mkdirs();
@@ -109,7 +109,7 @@ public class LoginController {
         		u.setImage(destsql);
         		userService.add(u);
         		model.addAttribute("msg","用户注册成功，请登录！");
-        		return "redirect:tologin.action";
+        		return "redirect:tologin";
     		}
         	
         }
@@ -186,5 +186,63 @@ public class LoginController {
 		session.setAttribute("User", u);
 		return "menu";
 	}
+	
+	@RequestMapping(value = "/editMine", method = RequestMethod.POST)
+    public String editMine(MultipartFile image, Model model, String num, String name, String tel, String email, Integer age, HttpSession session, HttpServletRequest req) throws IllegalStateException, IOException {
+        //从session中获取随机数
+		User u = (User) session.getAttribute("User");
+        if(!name.equals("")) {
+        	u.setName(name);
+        	System.out.println(name+"!!!name");
+        }else {
+        	name=u.getName();
+        }
+        if(age!=null) {
+        	u.setAge(age);
+        	System.out.println(age+"!!!age");
+        }
+        if(!email.equals("")) {
+        	u.setEmail(email);
+        	System.out.println(email+"!!!email");
+        }
+        if(!tel.equals("")) {
+        	u.setTel(tel);
+        	System.out.println(tel+"!!!tel");
+        }
+        String fileName = image.getOriginalFilename();
+        if(!fileName.equals("")) {
+            String destFileName="C:/Users/li/Downloads/upload/"+name+fileName;
+            String destsql = name+fileName;
+            File destFile = new File(destFileName);
+            destFile.getParentFile().mkdirs();
+            image.transferTo(destFile);
+            u.setImage(destsql);
+		}
+        		
+        userService.update(u);
+        return "redirect:mine";
+    		
+    }
+	@RequestMapping(value = "/editPwd", method = RequestMethod.POST)
+    public String editPwd(Model model,String pwd, String randomjsp, HttpSession session) {
+        //从session中获取随机数
+		User u = (User) session.getAttribute("User");
+        String random = (String) session.getAttribute("RANDOMVALIDATECODEKEY");
+        System.out.println(random+"="+randomjsp+"="+pwd);
+        if(random.equals(randomjsp)) {
+        	if (pwd.length() != 0) {
+        		String salt = new SecureRandomNumberGenerator().nextBytes().toString();
+    			int times = 2;
+    			String algorithmName = "md5";
+    			String encodedPassword = new SimpleHash(algorithmName, pwd, salt, times).toString();
+   				u.setSalt(salt);
+   				u.setPassword(encodedPassword);
+   				userService.update(u);
+   				model.addAttribute("msg","密码重置成功，请重新登录！");
+       			return "login";
+        	}
+    	}
+		return "mine";
+    }
 
 }

@@ -105,7 +105,6 @@
     from tem_hum
     where tem_id = #{temId,jdbcType=INTEGER}
     order by time desc
-    limit 20
   </select>
   
   

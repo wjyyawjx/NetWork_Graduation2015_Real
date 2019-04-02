@@ -183,4 +183,15 @@ public class LaboratoryController {
 		return "labShow";
 	}
 	
+	@RequestMapping("/skinChange")
+	public String skinChange(String color, HttpSession session){
+		User user = (User) session.getAttribute("User");
+		user.setColor(color);
+		System.out.println(user.getId());
+		System.out.println(user.getColor());
+		userService.skinChange(user);
+		User u = userService.findUserName(user.getNum());
+		session.setAttribute("User", u);
+		return "redirect:/menu";
+	}
 }
