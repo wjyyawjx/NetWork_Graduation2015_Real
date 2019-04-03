@@ -88,7 +88,7 @@
                  %>
             <div class="item-box layui-clear">
               <div class="item">
-                <img src="../res/static/img/tuan_img1.jpg" alt="">
+                <img src="<%=buy.getPicturename() %>" style="width:290px;height:300px;" >
                 <div class="text-box">
                   <p class="title"><%=buy.getTyname()%></p>
                   <p class="plic">

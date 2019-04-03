@@ -6,6 +6,20 @@ public class BuytodayBean {
 	private String original;
 	private String present;
 	private String dscount;
+	private String picture;
+	private String picturename;
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	public String getPicturename() {
+		return picturename;
+	}
+	public void setPicturename(String picturename) {
+		this.picturename = picturename;
+	}
 	public int getTodayid() {
 		return todayid;
 	}
