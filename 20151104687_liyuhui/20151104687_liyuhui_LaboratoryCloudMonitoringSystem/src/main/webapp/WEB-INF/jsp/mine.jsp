@@ -181,7 +181,7 @@
 					<h4>
 					<table>
 	                	<tr>
-	                		<td rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="profile-pic animated" src="${User.image }" alt=""></td>
+	                		<td rowspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="profile-pic animated" src="${User.image }" alt=""></td>
 	                		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名：</td>
 	                        <td>${User.name}</td>
 	                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -201,16 +201,60 @@
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱： </td>
 	                        <td>${User.email }</td>
 	                    </tr>
+	                    <tr>
+	                    	<td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的权限信息：</td>
+	                    	<td colspan="5">
+	                    	<c:forEach items="${mineRole }" var="mineRole">
+	                    		${mineRole.desc }；
+	                    	</c:forEach>
+	                    	</td>
+	                    </tr>
 	                </table>
 	                </h4>
 	                <br><br>
 	                </div>
-	                <div class="col-md-5 col-xs-8  ">
+	                <div class="col-md-3 col-xs-8  ">
 	                	<h3>已授权实验室：</h3>
+	                	<h4>
+	                	<table>
+	                		<c:forEach items="${mineLab}" var="ml" >
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ml.lName }</td>
+	                		</tr>
+	                		</c:forEach>
+	                	</table>
+	                	</h4>
+	                	
 	                </div>
-	                <div class="col-md-5 col-xs-8  ">
+	                <div class="col-md-3 col-xs-8  ">
 	                	<h3>申请中实验室：</h3>
+	                	<h4>
+	                	<table>
+	                		<c:forEach items="${applicationLab}" var="al" >
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${al.lName }</td>
+	                		</tr>
+	                		</c:forEach>
+	                	</table>
+	                	</h4>
+	                	
 	                </div>
+	                <div class="col-md-3 col-xs-8  ">
+	                	<h3>未授权实验室：</h3>
+	                	<h4>
+	                	<table>
+	                		<c:forEach items="${unauthorizedLab}" var="ul" >
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ul.lName }</td>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	                			<td><a href="applicationLab?lId=${ul.lId}">申请</a></td>
+	                		</tr>
+	                		</c:forEach>
+	                	</table>
+	                	</h4>
+	                	
+	                </div>
+	                <div class="col-md-10 col-xs-8  "><br><br></div>
 	                <div class="col-md-5 col-xs-8  ">
 	                <form action="${pageContext.request.contextPath }/editMine" method="post" enctype="multipart/form-data">
 	                	<h3>个人信息修改：</h3>

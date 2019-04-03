@@ -78,5 +78,34 @@ public class LabUserServiceImpl implements LabUserService {
 		}
 	}
 
+	@Override
+	public void addApplication(Long id, Integer lId) {
+		// TODO Auto-generated method stub
+		LabUser labUser = new LabUser();
+		labUser.setuId(id);
+		labUser.setlId(lId);
+		labUser.setuType("申请中");
+		labUserMapper.insert(labUser);
+	}
+
+	@Override
+	public void updateEnter(Long id, Integer lId) {
+		// TODO Auto-generated method stub
+		System.out.println(id+"+"+lId);
+		LabUser labUser = new LabUser();
+		labUser.setuId(id);
+		labUser.setlId(lId);
+		labUserMapper.updateEnterByPrimaryKey(labUser);
+	}
+
+	@Override
+	public void updateAdminEnter(Long id, Integer lId) {
+		// TODO Auto-generated method stub
+		System.out.println(id+"+"+lId);
+		LabUser labUser = new LabUser();
+		labUser.setuId(id);
+		labUser.setlId(lId);
+		labUserMapper.updateAdminEnterByPrimaryKey(labUser);
+	}
 
 }

@@ -139,6 +139,7 @@ public class LaboratoryController {
 	@RequestMapping("updateLab") 
 	public String update(Laboratory lab, long[] userIds, String placeId, HttpSession httpSession) {	
 		lab.setPlaceId(placeId);
+		lab.setTemId(lab.getlId());
 		labUserService.setUser(lab, userIds);
 		laboratoryService.update(lab);
 		List<Laboratory> labs = laboratoryService.findLab();
@@ -194,4 +195,6 @@ public class LaboratoryController {
 		session.setAttribute("User", u);
 		return "redirect:/menu";
 	}
+	
+	
 }

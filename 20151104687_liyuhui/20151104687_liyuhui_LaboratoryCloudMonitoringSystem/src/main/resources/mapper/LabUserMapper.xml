@@ -83,12 +83,46 @@
       order by ${orderByClause}
     </if>
   </select>
+
+
+
+  <select id="selectMineByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_lab
+    where u_id = #{id,jdbcType=INTEGER} and u_type='已授权'
+  </select> 
+  <select id="selectApplicationByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_lab
+    where u_id = #{id,jdbcType=INTEGER} and u_type='申请中'
+  </select> 
+  <select id="selectAllByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_lab
+    where u_id = #{id,jdbcType=INTEGER}
+  </select> 
+  <select id="selectWaitByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_lab
+    where u_id = #{id,jdbcType=INTEGER} and u_type='已通过' or u_type='未通过'
+  </select> 
+  <select id="selectAllWaitByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_lab where u_type='申请中'
+  </select> 
+  
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user_lab
     where id = #{id,jdbcType=INTEGER}
-  </select>
+  </select>  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user_lab
     where id = #{id,jdbcType=INTEGER}
@@ -194,4 +228,16 @@
       u_type = #{uType,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <update id="updateEnterByPrimaryKey" parameterType="com.lyh.springboot.pojo.LabUser">
+    update user_lab
+    set u_type = '已授权'
+    where u_id = #{uId,jdbcType=INTEGER} and l_id = #{lId,jdbcType=INTEGER}
+  </update>
+  <update id="updateAdminEnterByPrimaryKey" parameterType="com.lyh.springboot.pojo.LabUser">
+    update user_lab
+    set u_type = '已通过'
+    where u_id = #{uId,jdbcType=INTEGER} and l_id = #{lId,jdbcType=INTEGER}
+  </update>
+  
 </mapper>

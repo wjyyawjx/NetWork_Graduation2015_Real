@@ -143,24 +143,21 @@
                 <!-- Messages Drawer -->
                 <div id="messages" class="tile drawer animated">
                     <div class="listview narrow">
-                        <div class="media">
-                            <a href="">Send a New Message</a>
-                            <span class="drawer-close">&times;</span>
-                            
-                        </div>
+                        
                         <div class="overflow" style="height: 254px">
                             <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="img/profile-pics/1.jpg" alt="">
-                                </div>
                                 <div class="media-body">
-                                    <small class="text-muted">Nadin Jackson - 2 Hours ago</small><br>
-                                    <a class="t-overflow" href="">Mauris consectetur urna nec tempor adipiscing. Proin sit amet nisi ligula. Sed eu adipiscing lectus</a>
+                                	<c:forEach items="${WaitLab }" var="WaitLab">
+                                		<small class="text-muted">您在${WaitLab.lName }的申请已通过！ 确定后正式加入！</small><a class="t-overflow" href="userEnter?lId=${WaitLab.lId}">确定</a>
+                                	</c:forEach>
+                                	<br><br>
+                                	<c:forEach items="${AllWaitLab}" var="AllWaitLab">
+                                		<c:forEach items="${AllWaitLab.value}" var="user"  varStatus="loop">
+											<small class="text-muted">“  ${user.name}  ”    正在申请          “  ${AllWaitLab.key[loop.count-1].lName}  ”     的使用权限，是否通过申请？</small><a class="t-overflow" href="AdminEnter?lId=${AllWaitLab.key[loop.count-1].lId}&id=${user.id}">确定</a><br><br>
+    									</c:forEach>
+                                	</c:forEach>
                                 </div>
                             </div><!--通知-->
-                        </div>
-                        <div class="media text-center whiter l-100">
-                            <a href=""><small>展开全部</small></a>
                         </div>
                     </div>
                 </div>

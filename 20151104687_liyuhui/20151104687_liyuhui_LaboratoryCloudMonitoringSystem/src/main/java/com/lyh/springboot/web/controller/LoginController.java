@@ -2,7 +2,9 @@ package com.lyh.springboot.web.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,9 +25,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lyh.springboot.common.utils.RandomValidateCode;
+import com.lyh.springboot.pojo.LabUser;
 import com.lyh.springboot.pojo.Laboratory;
+import com.lyh.springboot.pojo.Permission;
+import com.lyh.springboot.pojo.Role;
 import com.lyh.springboot.pojo.User;
+import com.lyh.springboot.service.LabUserService;
 import com.lyh.springboot.service.LaboratoryService;
+import com.lyh.springboot.service.RoleService;
 import com.lyh.springboot.service.UserService;
 
 @Controller
@@ -34,6 +41,10 @@ public class LoginController {
 	private UserService userService;
 	@Autowired
 	private LaboratoryService laboratoryService;
+	@Autowired
+	private LabUserService labUserService;
+	@Autowired
+	private RoleService roleService;
     
     @RequestMapping(value="/login",method= RequestMethod.POST)
     public String login(String num,String pwd, Model model, HttpSession httpSession){
@@ -50,6 +61,26 @@ public class LoginController {
 			
 			List<Laboratory> labs = laboratoryService.findLab();
 			httpSession.setAttribute("Lab", labs);
+			
+			List<Laboratory> mineLab = laboratoryService.listMineLab(user.getId());
+			List<Laboratory> applicationLab = laboratoryService.listApplicationLab(user.getId());
+			List<Laboratory> WaitLab = laboratoryService.listWaitLab(user.getId());
+			List<Laboratory> unauthorizedLab = laboratoryService.listUnauthorizedLab(user.getId());
+			httpSession.setAttribute("mineLab", mineLab);
+			httpSession.setAttribute("applicationLab", applicationLab);
+			httpSession.setAttribute("unauthorizedLab", unauthorizedLab);
+			httpSession.setAttribute("WaitLab", WaitLab);
+			
+			List<Role> mineRole = roleService.listMineRole(user.getId());
+			httpSession.setAttribute("mineRole", mineRole);
+			//role = teacher——pro的教师获得提示
+			//同意转为“已通过” 用户确认后改为“已授权”
+			//不同意转为“未通过” 用户确认后清除记录
+			Map<List<Laboratory>, List<User>> AllWaitLab = new HashMap<>();
+			AllWaitLab = laboratoryService.listAllWaitLab();
+			httpSession.setAttribute("AllWaitLab", AllWaitLab);
+			
+			
 			return "redirect:menu";
 
 		} catch (AuthenticationException e) {
@@ -188,26 +219,22 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/editMine", method = RequestMethod.POST)
-    public String editMine(MultipartFile image, Model model, String num, String name, String tel, String email, Integer age, HttpSession session, HttpServletRequest req) throws IllegalStateException, IOException {
+    public String editMine(MultipartFile image, Model model, String name, String tel, String email, Integer age, HttpSession session, HttpServletRequest req) throws IllegalStateException, IOException {
         //从session中获取随机数
 		User u = (User) session.getAttribute("User");
         if(!name.equals("")) {
         	u.setName(name);
-        	System.out.println(name+"!!!name");
         }else {
         	name=u.getName();
         }
         if(age!=null) {
         	u.setAge(age);
-        	System.out.println(age+"!!!age");
         }
         if(!email.equals("")) {
         	u.setEmail(email);
-        	System.out.println(email+"!!!email");
         }
         if(!tel.equals("")) {
         	u.setTel(tel);
-        	System.out.println(tel+"!!!tel");
         }
         String fileName = image.getOriginalFilename();
         if(!fileName.equals("")) {
@@ -217,8 +244,7 @@ public class LoginController {
             destFile.getParentFile().mkdirs();
             image.transferTo(destFile);
             u.setImage(destsql);
-		}
-        		
+		}  		
         userService.update(u);
         return "redirect:mine";
     		
@@ -228,7 +254,6 @@ public class LoginController {
         //从session中获取随机数
 		User u = (User) session.getAttribute("User");
         String random = (String) session.getAttribute("RANDOMVALIDATECODEKEY");
-        System.out.println(random+"="+randomjsp+"="+pwd);
         if(random.equals(randomjsp)) {
         	if (pwd.length() != 0) {
         		String salt = new SecureRandomNumberGenerator().nextBytes().toString();
@@ -244,5 +269,56 @@ public class LoginController {
     	}
 		return "mine";
     }
+	
+	@RequestMapping("/applicationLab")
+	public String applicationLab(Integer lId, HttpSession session){
+		User user = (User) session.getAttribute("User");
+		labUserService.addApplication(user.getId(),lId);
+		List<Laboratory> mineLab = laboratoryService.listMineLab(user.getId());
+		List<Laboratory> applicationLab = laboratoryService.listApplicationLab(user.getId());
+		List<Laboratory> WaitLab = laboratoryService.listWaitLab(user.getId());
+		List<Laboratory> unauthorizedLab = laboratoryService.listUnauthorizedLab(user.getId());
+		session.setAttribute("mineLab", mineLab);
+		session.setAttribute("applicationLab", applicationLab);
+		session.setAttribute("unauthorizedLab", unauthorizedLab);
+		session.setAttribute("WaitLab", WaitLab);
+		return "redirect:/mine";
+	}
+	
+	@RequestMapping("/userEnter")
+	public String userEnter(Integer lId, HttpSession session){
+		User user = (User) session.getAttribute("User");
+		labUserService.updateEnter(user.getId(),lId);
+		List<Laboratory> mineLab = laboratoryService.listMineLab(user.getId());
+		List<Laboratory> applicationLab = laboratoryService.listApplicationLab(user.getId());
+		List<Laboratory> WaitLab = laboratoryService.listWaitLab(user.getId());
+		List<Laboratory> unauthorizedLab = laboratoryService.listUnauthorizedLab(user.getId());
+		session.setAttribute("mineLab", mineLab);
+		session.setAttribute("applicationLab", applicationLab);
+		session.setAttribute("unauthorizedLab", unauthorizedLab);
+		session.setAttribute("WaitLab", WaitLab);
+		Map<List<Laboratory>, List<User>> AllWaitLab = new HashMap<>();
+		AllWaitLab = laboratoryService.listAllWaitLab();
+		session.setAttribute("AllWaitLab", AllWaitLab);
+		return "redirect:/mine";
+	}
+	
+	@RequestMapping("/AdminEnter")
+	public String AdminEnter(Integer lId, Long id, HttpSession session){
+		User user = (User) session.getAttribute("User");
+		labUserService.updateAdminEnter(id,lId);
+		List<Laboratory> mineLab = laboratoryService.listMineLab(user.getId());
+		List<Laboratory> applicationLab = laboratoryService.listApplicationLab(user.getId());
+		List<Laboratory> WaitLab = laboratoryService.listWaitLab(user.getId());
+		List<Laboratory> unauthorizedLab = laboratoryService.listUnauthorizedLab(user.getId());
+		session.setAttribute("mineLab", mineLab);
+		session.setAttribute("applicationLab", applicationLab);
+		session.setAttribute("unauthorizedLab", unauthorizedLab);
+		session.setAttribute("WaitLab", WaitLab);
+		Map<List<Laboratory>, List<User>> AllWaitLab = new HashMap<>();
+		AllWaitLab = laboratoryService.listAllWaitLab();
+		session.setAttribute("AllWaitLab", AllWaitLab);
+		return "redirect:/mine";
+	}
 
 }

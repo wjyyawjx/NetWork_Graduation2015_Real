@@ -88,6 +88,16 @@
     from user_role
     where id = #{id,jdbcType=BIGINT}
   </select>
+  
+  
+  <select id="selectMineByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_role
+    where uid = #{id,jdbcType=BIGINT}
+  </select>
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from user_role
     where id = #{id,jdbcType=BIGINT}

@@ -27,4 +27,18 @@ public interface LabUserMapper {
     int updateByPrimaryKeySelective(LabUser record);
 
     int updateByPrimaryKey(LabUser record);
+
+	List<LabUser> selectMineByPrimaryKey(Long id);
+
+	List<LabUser> selectApplicationByPrimaryKey(Long id);
+
+	List<LabUser> selectAllByPrimaryKey(Long id);
+
+	List<LabUser> selectWaitByPrimaryKey(Long id);
+
+	List<LabUser> selectAllWaitByPrimaryKey();
+
+	int updateEnterByPrimaryKey(LabUser record);
+
+	int updateAdminEnterByPrimaryKey(LabUser record);
 }

@@ -94,4 +94,17 @@ public class RoleServiceImpl implements RoleService {
 		return roles;
 	}
 
+	@Override
+	public List<Role> listMineRole(Long id) {
+		// TODO Auto-generated method stub
+		List<Role> roles = new ArrayList<>();
+		List<UserRole> userRoles = userRoleMapper.selectMineByPrimaryKey(id);
+
+		for (UserRole userRole : userRoles) {
+			Role role = roleMapper.selectByPrimaryKey(userRole.getRid());
+			roles.add(role);
+		}
+		return roles;
+	}
+
 }
