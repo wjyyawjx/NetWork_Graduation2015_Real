@@ -56,7 +56,7 @@
    <td><%=rec.getPhotoname() %> </td>
    <td>
    <a href="modifyStu1.jsp?id=<%=rec.getIndexId() %>">修改&nbsp;</a>
-   <a href="../Delstu?id=<%=rec.getIndexId() %>" onclick="return check()">删除&nbsp;</a></td>
+   <a href="../Delrec?comid=<%=rec.getComid() %>" onclick="return check()">删除&nbsp;</a></td>
   </tr>
 <%} %>
 

@@ -114,9 +114,9 @@
            <%
              		session.removeAttribute("list");
   					TmbuyService tmService = new TmbuyServiceimp();
-                    List<TmbuyBean> list = tmService.getAllTmbuy();
-                    session.setAttribute("list", list);
-                     for(TmbuyBean tm:list){ 
+                    List<TmbuyBean> list2 = tmService.getAllTmbuy();
+                    session.setAttribute("list2", list2);
+                     for(TmbuyBean tm:list2){ 
                  %>
             <div class="item">
               <img src="../res/static/img/tuan_img5.jpg" alt="">

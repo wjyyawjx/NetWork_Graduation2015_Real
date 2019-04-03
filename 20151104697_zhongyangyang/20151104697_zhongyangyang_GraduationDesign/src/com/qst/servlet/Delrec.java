@@ -42,7 +42,6 @@ public class Delrec extends HttpServlet {
 		rec.setComid(comid);
 		
 		recommendService.delRecommend(rec);
-		System.out.println(rec);
 		response.sendRedirect("html/recList.jsp");
 
 	}

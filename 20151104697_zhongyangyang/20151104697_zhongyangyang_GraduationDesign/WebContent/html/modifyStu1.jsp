@@ -45,6 +45,7 @@
 <table id="stuDetailList">
 	<%
   int id = Integer.parseInt(request.getParameter("id"));
+	request.getSession().setAttribute("user_id", id);
   StudentService studentService = new StudentServiceimp();
   Student stu = new Student();
   stu.setId(id);

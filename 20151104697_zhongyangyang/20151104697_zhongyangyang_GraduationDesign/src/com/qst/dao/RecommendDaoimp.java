@@ -78,8 +78,8 @@ public class RecommendDaoimp extends BaseDao implements RecommendDao {
 	//删除商品信息
 	public int delRecommend(RecommendBean rec) {
 		int row = 0;
-		String sql = "delete from Recommend where `comid`=?";
-		Object[] params = { rec.getIndexId()};
+		String sql = "delete from recommend where `comid`=?";
+		Object[] params = { rec.getComid()};
 		row = this.executeUpdateSQL(sql, params);
 		if(row>0){
 			System.out.println("success");

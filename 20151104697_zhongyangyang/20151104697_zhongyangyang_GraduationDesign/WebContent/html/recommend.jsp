@@ -20,16 +20,16 @@
 
 		}
   function show() {
-      var photoTag = document.getElementById('photo');
-      photoTag.onchange = function () {
-          var photo = photoTag.photos[0];
-          var photoReader = new PhotoReader();
-          photoReader.onloadend = function () {
-              if (photoReader.readyState == photoReader.DONE) {
-                  document.getElementById('img').setAttribute('src', photoReader.result);
+      var fileTag = document.getElementById('photo');
+      fileTag.onchange = function () {
+          var file = fileTag.files[0];
+          var fileReader = new FileReader();
+          fileReader.onloadend = function () {
+              if (fileReader.readyState == fileReader.DONE) {
+                  document.getElementById('img').setAttribute('src', fileReader.result);
               }
           }
-          photoReader.readAsDataURL(photo);
+          fileReader.readAsDataURL(file);
       }
   }
   
@@ -37,7 +37,7 @@
 </head>
 <body>
 <h2>添加商品信息</h2>
-<form action="../Recommend?opr=addRec" method="post">
+<form action="../Recommend?opr=addRec" method="post" enctype = "multipart/form-data">
 
 <table>
   <tr>

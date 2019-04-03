@@ -124,7 +124,7 @@
                     session.setAttribute("list", list);
                      for(Student stu:list){
                  %>
-              <div class="item">
+              <div class="item" >
                 <div class="img">
                   <a href="javascript:;"><img src="<%=stu.getFileName()%>" style="width:280px;height:300px;"></a>
                 </div>
