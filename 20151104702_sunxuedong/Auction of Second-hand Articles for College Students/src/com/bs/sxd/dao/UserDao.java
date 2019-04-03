@@ -21,6 +21,7 @@ public void updateUser(User user);
 public void updateUser_Admin(User user);
 //修改管理员为用户
 public void updateUser_User(User user);
+//管理员删除用户
 public void deleteuser(Integer id);
 }
 

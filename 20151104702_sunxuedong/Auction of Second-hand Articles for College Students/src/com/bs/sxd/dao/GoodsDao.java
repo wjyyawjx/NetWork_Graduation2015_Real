@@ -18,4 +18,8 @@ public Goods findThegoods(Integer id);
 public List<Goods> findGoods_uList(Goods goods);
 //用于查询个人商品总数
 public Integer selectgoodsList_uCount(Goods goods);
+//删除个人商品
+public void deletemygoods(Integer id);
+//修改个人商品信息
+public void updatemygoods(Goods goods);
 }

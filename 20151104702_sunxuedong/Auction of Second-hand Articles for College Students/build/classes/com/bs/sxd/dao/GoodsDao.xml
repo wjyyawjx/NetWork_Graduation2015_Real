@@ -68,8 +68,41 @@
 	    </set>
 	    where id=#{id}
 	</update>
-	<!-- 删除商品 -->
+	<!-- 管理员删除商品 -->
 	<delete id="deletegoods" parameterType="Integer">
 	    delete from goods where id=#{id}
 	</delete>
+	<!--用户删除个人商品  -->
+	<delete id="deletemygoods" parameterType="Integer">
+	    delete from goods where id=#{id}
+	</delete>
+	<!-- 更新客户 -->
+	<update id="updatemygoods" parameterType="Goods" >
+	    update goods
+	    <set>
+	        <if test="l_name!=null">
+	            l_name=#{l_name},
+	        </if>
+	        <if test="l_price!=null">
+	            l_price=#{l_price},
+	        </if>
+	        <if test="l_info!=null">
+	            l_info=#{l_info},
+	        </if>
+	        <if test="l_out_time!=null">
+	            l_out_time=#{l_out_time},
+	        </if>
+	        <if test="l_in_time!=null">
+	            l_in_time=#{l_in_time},
+	        </if>
+	        <if test="l_addr!=null">
+	            l_addr=#{l_addr},
+	        </if>
+	        <if test="l_image!=null">
+	            l_image=#{l_image},
+	        </if>
+	        
+	    </set>
+	    where id=#{id}
+	</update>
 </mapper>

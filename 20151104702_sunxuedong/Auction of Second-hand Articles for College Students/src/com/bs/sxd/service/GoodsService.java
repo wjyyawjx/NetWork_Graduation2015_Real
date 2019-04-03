@@ -22,4 +22,8 @@ public interface GoodsService {
 	//用于用户查询自己的商品
 	public Page<Goods> findGoods_uList(Integer page, Integer rows, Integer l_static, String l_name, String l_type,
 			Integer u_id);
+	//删除个人商品
+	public void deletemygoods(Integer id);
+	//修改个人商品信息
+	public void updatemygoods(Goods goods);
 }
