@@ -30,6 +30,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (url.indexOf("/addgoods.action") >= 0){
 			return true;
 		}
+		if (url.indexOf("/addToPurchases.action") >= 0){
+			return true;
+		}
 		if (url.indexOf("/findgoodslist.action") >= 0){
 			return true;
 		}
@@ -53,6 +56,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 			return true;
 		}
 		if (url.indexOf("/mygoods.action") >= 0){
+			return true;
+		}
+		if (url.indexOf("/My_purchases.action") >= 0){
 			return true;
 		}
 		if (url.indexOf("/table-user-list.action") >= 0){

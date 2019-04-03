@@ -1,5 +1,4 @@
 package com.bs.sxd.service;
-import java.util.List;
 import com.bs.common.utils.Page;
 import com.bs.sxd.po.Goods;
 /**
@@ -26,4 +25,8 @@ public interface GoodsService {
 	public void deletemygoods(Integer id);
 	//修改个人商品信息
 	public void updatemygoods(Goods goods);
+	//添加商品信息到订单表
+	public void addToPurchases(Goods pur);
+	//将商品添加到订单表同时更改商品状态
+	public void updategoodsstatic(Integer id);
 }

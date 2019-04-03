@@ -98,4 +98,16 @@ public class GoodsServiceImpl implements GoodsService {
 	public void updatemygoods(Goods goods) {
 		goodsDao.updatemygoods(goods);
 	}
+	//添加商品信息到订单表
+	@Override
+	public void addToPurchases(Goods pur) {
+		goodsDao.addToPurchases(pur);
+		
+	}
+	//将商品添加到订单表同时更改商品状态
+	@Override
+	public void updategoodsstatic(Integer id) {
+		goodsDao.updategoodsstatic(id);
+		
+	}
 }

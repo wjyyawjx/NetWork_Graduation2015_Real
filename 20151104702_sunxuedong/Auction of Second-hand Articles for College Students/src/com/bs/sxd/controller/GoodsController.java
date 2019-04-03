@@ -69,6 +69,32 @@ public class GoodsController {
 		return "person";
 	}
 
+	// 添加到订单表purchases
+	@RequestMapping(value = "/addToPurchases.action", method = RequestMethod.POST)
+	public String addToPurchases( String username, String u_name, String l_static,Model model, HttpSession session) {
+		System.out.println(username);
+		System.out.println(u_name);
+		if(username.equals(u_name) || !l_static.equals(0)){
+			model.addAttribute("msg_error", "您无法购买自己的商品或商品不能被购买！！");
+			return "commodity_information";
+			
+		}else{
+		Goods g = (Goods) session.getAttribute("GOODS_SESSION");
+		Goods pur = new Goods();
+		pur.setId(g.getId());
+		pur.setL_name(g.getL_name());
+		pur.setL_out_time(g.getL_out_time());
+		pur.setL_in_time(g.getL_in_time());
+		pur.setU_name(g.getU_name());
+		pur.setL_image(g.getL_image());
+		pur.setL_type(g.getL_type());
+		pur.setL_price(g.getL_price());
+		goodsService.addToPurchases(pur);
+		goodsService.updategoodsstatic(g.getId());
+		return "My_purchases";
+		}
+	}
+
 	// 用户 模糊、条件、分页查询所有商品，用于主页面
 	@RequestMapping(value = "/findgoodslist.action")
 	public String list(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "6") Integer rows,
@@ -165,7 +191,7 @@ public class GoodsController {
 
 	// 用户修改商品信息
 	@RequestMapping(value = "/editmygoods.action")
-	public String editgoods(Goods goods,Integer id,String l_name, String l_image, Integer l_price, String l_info,
+	public String editgoods(Goods goods, Integer id, String l_name, String l_image, Integer l_price, String l_info,
 			String l_out_time, String l_in_time, String l_addr, String year, String month, String day)
 			throws Exception {
 		l_in_time = year + "-" + month + "-" + day;
@@ -209,8 +235,12 @@ public class GoodsController {
 		return "mygoods";
 	}
 
+	@RequestMapping(value = "/My_purchases.action")
+	public String My_purchases() {
+		return "My_purchases";
+	}
 	@RequestMapping(value = "/Edit_Per_goods.action")
-	public String person_goods() {
+	public String Edit_Per_goods() {
 		return "Edit_Per_goods";
 	}
 

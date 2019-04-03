@@ -101,12 +101,16 @@
 		<div class="product-page">
 			<div class="row">
 				<div class="col-md-6 col-sm-6"></div>
-				<form action="${pageContext.request.contextPath }/addToMyGoods.action"
+				<form
+					action="${pageContext.request.contextPath }/addToPurchases.action"
 					method="post">
+					<font color="red"> <%-- 提示信息--%> <span id="message">${msg_error}</span>
+					</font>
 					<div class="col-md-6 col-sm-6">
 						<h1>商品信息</h1>
 						<div class="product-main-image"
 							style="width: 200px; height: 200px">
+
 
 							<img src="${GOODS_SESSION.l_image}" alt="${GOODS_SESSION.l_name}"
 								class="img-responsive" data-BigImgsrc="${GOODS_SESSION.l_image}">
@@ -122,13 +126,26 @@
 
 						<div class="product-page-options">
 							<div class="pull-left">
-								<label class="control-label">名字：${GOODS_SESSION.l_name}</label>
+
+								<label class="control-label" id="l_name">名字：${GOODS_SESSION.l_name}</label>
 
 							</div>
 							<div class="pull-left">
 								<label class="control-label">类型：${GOODS_SESSION.l_type}</label>
 
 							</div>
+							<div class="pull-left" style="display: none">
+
+								<input id="id" name="id" value="${GOODS_SESSION.id}"> 
+								<input id="username" name="username" value="${USER_SESSION.username}">
+								<input id="u_name" name="u_name" value="${GOODS_SESSION.u_name}">
+								<input id="l_static" name="l_static" value="${GOODS_SESSION.l_static}">
+							</div>
+						</div>
+
+						<div class="product-page-options" align="left">
+							<label class="control-label">租赁日期：${GOODS_SESSION.l_out_time}</label><label>---</label>
+							<label>${GOODS_SESSION.l_in_time}</label>
 						</div>
 						<div class="product-page-cart">
 
