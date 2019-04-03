@@ -1,0 +1,29 @@
+@charset "UTF-8";
+body{
+		/* 设置left页面的背景 */
+	 
+	   background: url("../img/left.jpg");
+	   background-size:cover;
+}
+
+a{
+	/* 设置超链接样式 */
+    width: 300px;
+    padding: 10px 0;
+    font-size: 20px;
+    text-align:center;
+    font-weight: 100;
+    background-color: #80ffff;
+    color: #0000ff;
+    text-decoration:none;
+  
+}
+a:hover {
+	/* 设置按钮鼠标放在超链接上的样式 */
+    background-color: #ff80ff;
+    border: 1px solid #FFF;
+    text-align:center;
+    color: #ffff00;
+    text-decoration:none;
+
+}

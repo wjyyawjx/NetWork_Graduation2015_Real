@@ -1,0 +1,7 @@
+@charset "UTF-8";
+body{
+		/* 设置right页面的背景 */
+	 
+	   background: url("../img/e.jpg");
+	   background-size:cover;
+}

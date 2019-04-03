@@ -5,12 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="../css/style3.css" type="text/css" media="all">
 <title>Insert title here</title>
 </head>
 <body>
-<div align="center">
-<h1>欢迎登录</h1>123
-</div>
+
 </body>
 </html>

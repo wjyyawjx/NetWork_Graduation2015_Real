@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="../css/style2.css" type="text/css" media="all">
 <title>Insert title here</title>
 </head>
 <body>
-<h1>欢迎访问</h1>
+<a></a>
 </body>
 </html>
