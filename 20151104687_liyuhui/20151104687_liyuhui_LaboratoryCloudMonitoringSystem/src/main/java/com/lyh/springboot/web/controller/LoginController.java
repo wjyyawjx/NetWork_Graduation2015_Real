@@ -25,9 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lyh.springboot.common.utils.RandomValidateCode;
-import com.lyh.springboot.pojo.LabUser;
 import com.lyh.springboot.pojo.Laboratory;
-import com.lyh.springboot.pojo.Permission;
 import com.lyh.springboot.pojo.Role;
 import com.lyh.springboot.pojo.User;
 import com.lyh.springboot.service.LabUserService;

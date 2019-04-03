@@ -2,7 +2,6 @@ package com.lyh.springboot.service;
 
 import java.util.List;
 
-import com.lyh.springboot.pojo.LabUser;
 import com.lyh.springboot.pojo.Laboratory;
 import com.lyh.springboot.pojo.User;
 
