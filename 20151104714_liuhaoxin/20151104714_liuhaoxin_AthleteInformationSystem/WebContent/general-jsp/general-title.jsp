@@ -15,7 +15,7 @@
 		<tr>
 		<td style="width: 40%"></td>
 		<td style="height: 40px;font-size: 40px;">运动会信息查询</td>
-		<td> <%=name%>用户你好 
+	<h2>	<td> <%=name%>用户你好 </h2>
 		<form target="_top" action="../Exit" method="post">
 		<button  type="submit" >退出</button></form></td>
 		</tr>
