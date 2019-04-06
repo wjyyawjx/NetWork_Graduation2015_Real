@@ -31,4 +31,6 @@ public interface LaboratoryService {
 
 	public Map<List<Laboratory>, List<User>> listAllWaitLab();
 
+	public List<Laboratory> listWaitLab2(Long id);
+
 }

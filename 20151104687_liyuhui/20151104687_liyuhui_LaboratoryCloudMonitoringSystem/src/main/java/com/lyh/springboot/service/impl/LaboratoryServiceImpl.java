@@ -157,4 +157,17 @@ public class LaboratoryServiceImpl  implements LaboratoryService{
 		return AllWaitLab;
 	}
 
+
+	@Override
+	public List<Laboratory> listWaitLab2(Long id) {
+		// TODO Auto-generated method stub
+		List<Laboratory> laboratorys = new ArrayList<>();
+		List<LabUser> labUsers = labUserMapper.selectWaitNoByPrimaryKey(id);
+		for (LabUser labUser : labUsers) {
+			Laboratory laboratory = laboratoryMapper.selectByPrimaryKey(labUser.getlId());
+			laboratorys.add(laboratory);
+		}
+		return laboratorys;
+	}
+
 }

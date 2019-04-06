@@ -63,21 +63,19 @@ public class LoginController {
 			List<Laboratory> mineLab = laboratoryService.listMineLab(user.getId());
 			List<Laboratory> applicationLab = laboratoryService.listApplicationLab(user.getId());
 			List<Laboratory> WaitLab = laboratoryService.listWaitLab(user.getId());
+			List<Laboratory> WaitLab2 = laboratoryService.listWaitLab2(user.getId());
 			List<Laboratory> unauthorizedLab = laboratoryService.listUnauthorizedLab(user.getId());
-			httpSession.setAttribute("mineLab", mineLab);
-			httpSession.setAttribute("applicationLab", applicationLab);
-			httpSession.setAttribute("unauthorizedLab", unauthorizedLab);
-			httpSession.setAttribute("WaitLab", WaitLab);
+			session.setAttribute("mineLab", mineLab);
+			session.setAttribute("applicationLab", applicationLab);
+			session.setAttribute("unauthorizedLab", unauthorizedLab);
+			session.setAttribute("WaitLab", WaitLab);
+			session.setAttribute("WaitLab2", WaitLab2);
+			Map<List<Laboratory>, List<User>> AllWaitLab = new HashMap<>();
+			AllWaitLab = laboratoryService.listAllWaitLab();
+			session.setAttribute("AllWaitLab", AllWaitLab);
 			
 			List<Role> mineRole = roleService.listMineRole(user.getId());
 			httpSession.setAttribute("mineRole", mineRole);
-			//role = teacher——pro的教师获得提示
-			//同意转为“已通过” 用户确认后改为“已授权”
-			//不同意转为“未通过” 用户确认后清除记录
-			Map<List<Laboratory>, List<User>> AllWaitLab = new HashMap<>();
-			AllWaitLab = laboratoryService.listAllWaitLab();
-			httpSession.setAttribute("AllWaitLab", AllWaitLab);
-			
 			
 			return "redirect:menu";
 
@@ -275,11 +273,16 @@ public class LoginController {
 		List<Laboratory> mineLab = laboratoryService.listMineLab(user.getId());
 		List<Laboratory> applicationLab = laboratoryService.listApplicationLab(user.getId());
 		List<Laboratory> WaitLab = laboratoryService.listWaitLab(user.getId());
+		List<Laboratory> WaitLab2 = laboratoryService.listWaitLab2(user.getId());
 		List<Laboratory> unauthorizedLab = laboratoryService.listUnauthorizedLab(user.getId());
 		session.setAttribute("mineLab", mineLab);
 		session.setAttribute("applicationLab", applicationLab);
 		session.setAttribute("unauthorizedLab", unauthorizedLab);
 		session.setAttribute("WaitLab", WaitLab);
+		session.setAttribute("WaitLab2", WaitLab2);
+		Map<List<Laboratory>, List<User>> AllWaitLab = new HashMap<>();
+		AllWaitLab = laboratoryService.listAllWaitLab();
+		session.setAttribute("AllWaitLab", AllWaitLab);
 		return "redirect:/mine";
 	}
 	
@@ -290,11 +293,33 @@ public class LoginController {
 		List<Laboratory> mineLab = laboratoryService.listMineLab(user.getId());
 		List<Laboratory> applicationLab = laboratoryService.listApplicationLab(user.getId());
 		List<Laboratory> WaitLab = laboratoryService.listWaitLab(user.getId());
+		List<Laboratory> WaitLab2 = laboratoryService.listWaitLab2(user.getId());
 		List<Laboratory> unauthorizedLab = laboratoryService.listUnauthorizedLab(user.getId());
 		session.setAttribute("mineLab", mineLab);
 		session.setAttribute("applicationLab", applicationLab);
 		session.setAttribute("unauthorizedLab", unauthorizedLab);
 		session.setAttribute("WaitLab", WaitLab);
+		session.setAttribute("WaitLab2", WaitLab2);
+		Map<List<Laboratory>, List<User>> AllWaitLab = new HashMap<>();
+		AllWaitLab = laboratoryService.listAllWaitLab();
+		session.setAttribute("AllWaitLab", AllWaitLab);
+		return "redirect:/mine";
+	}
+	
+	@RequestMapping("/userEnterNo")
+	public String userEnterNo(Integer lId, HttpSession session){
+		User user = (User) session.getAttribute("User");
+		labUserService.deleteEnter(user.getId(),lId);
+		List<Laboratory> mineLab = laboratoryService.listMineLab(user.getId());
+		List<Laboratory> applicationLab = laboratoryService.listApplicationLab(user.getId());
+		List<Laboratory> WaitLab = laboratoryService.listWaitLab(user.getId());
+		List<Laboratory> WaitLab2 = laboratoryService.listWaitLab2(user.getId());
+		List<Laboratory> unauthorizedLab = laboratoryService.listUnauthorizedLab(user.getId());
+		session.setAttribute("mineLab", mineLab);
+		session.setAttribute("applicationLab", applicationLab);
+		session.setAttribute("unauthorizedLab", unauthorizedLab);
+		session.setAttribute("WaitLab", WaitLab);
+		session.setAttribute("WaitLab2", WaitLab2);
 		Map<List<Laboratory>, List<User>> AllWaitLab = new HashMap<>();
 		AllWaitLab = laboratoryService.listAllWaitLab();
 		session.setAttribute("AllWaitLab", AllWaitLab);
@@ -308,15 +333,37 @@ public class LoginController {
 		List<Laboratory> mineLab = laboratoryService.listMineLab(user.getId());
 		List<Laboratory> applicationLab = laboratoryService.listApplicationLab(user.getId());
 		List<Laboratory> WaitLab = laboratoryService.listWaitLab(user.getId());
+		List<Laboratory> WaitLab2 = laboratoryService.listWaitLab2(user.getId());
 		List<Laboratory> unauthorizedLab = laboratoryService.listUnauthorizedLab(user.getId());
 		session.setAttribute("mineLab", mineLab);
 		session.setAttribute("applicationLab", applicationLab);
 		session.setAttribute("unauthorizedLab", unauthorizedLab);
 		session.setAttribute("WaitLab", WaitLab);
+		session.setAttribute("WaitLab2", WaitLab2);
 		Map<List<Laboratory>, List<User>> AllWaitLab = new HashMap<>();
 		AllWaitLab = laboratoryService.listAllWaitLab();
 		session.setAttribute("AllWaitLab", AllWaitLab);
-		return "redirect:/mine";
+		return "redirect:/menu";
+	}
+	
+	@RequestMapping("/AdminNoEnter")
+	public String AdminNoEnter(Integer lId, Long id, HttpSession session){
+		User user = (User) session.getAttribute("User");
+		labUserService.updateAdminNoEnter(id,lId);
+		List<Laboratory> mineLab = laboratoryService.listMineLab(user.getId());
+		List<Laboratory> applicationLab = laboratoryService.listApplicationLab(user.getId());
+		List<Laboratory> WaitLab = laboratoryService.listWaitLab(user.getId());
+		List<Laboratory> WaitLab2 = laboratoryService.listWaitLab2(user.getId());
+		List<Laboratory> unauthorizedLab = laboratoryService.listUnauthorizedLab(user.getId());
+		session.setAttribute("mineLab", mineLab);
+		session.setAttribute("applicationLab", applicationLab);
+		session.setAttribute("unauthorizedLab", unauthorizedLab);
+		session.setAttribute("WaitLab", WaitLab);
+		session.setAttribute("WaitLab2", WaitLab2);
+		Map<List<Laboratory>, List<User>> AllWaitLab = new HashMap<>();
+		AllWaitLab = laboratoryService.listAllWaitLab();
+		session.setAttribute("AllWaitLab", AllWaitLab);
+		return "redirect:/menu";
 	}
 
 }

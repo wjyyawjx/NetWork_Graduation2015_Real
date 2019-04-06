@@ -19,4 +19,8 @@ public interface LabUserService {
 
 	void updateAdminEnter(Long id, Integer lId);
 
+	void updateAdminNoEnter(Long id, Integer lId);
+
+	void deleteEnter(Long id, Integer lId);
+
 }

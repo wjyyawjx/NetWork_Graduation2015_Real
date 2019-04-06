@@ -41,4 +41,10 @@ public interface LabUserMapper {
 	int updateEnterByPrimaryKey(LabUser record);
 
 	int updateAdminEnterByPrimaryKey(LabUser record);
+
+	int updateAdminNoEnterByPrimaryKey(LabUser record);
+
+	List<LabUser> selectWaitNoByPrimaryKey(Long id);
+
+    int deleteEnterByPrimaryKey(LabUser record);
 }

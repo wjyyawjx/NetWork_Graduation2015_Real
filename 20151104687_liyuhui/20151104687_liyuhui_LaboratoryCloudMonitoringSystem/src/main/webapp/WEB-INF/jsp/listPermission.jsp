@@ -29,17 +29,11 @@
 
         <header id="header" class="media">
             <a href="" id="menu-toggle"></a> 
-            <a class="logo pull-left" href="menu.html">实验室云端监管系统</a>
+            <a class="logo pull-left" href="">实验室云端监管系统</a>
             
             <div class="media-body">
                 <div class="media" id="top-menu">
-                    <div class="pull-left tm-icon">
-                        <a data-drawer="messages" class="drawer-toggle" href="">
-                            <i class="sa-top-message"></i>
-                            <i class="n-count animated">5</i>
-                            <span>通知</span>
-                        </a>
-                    </div>
+                    
                     <div id="time" class="pull-right">
    
                         <span id="hours"></span>
@@ -112,29 +106,25 @@
                     </li>
                     <li class="dropdown">
                         <a class="sa-side-table" href="">
-                            <span class="menu-item">超级管理</span>
+                            <span class="menu-item">后勤管理</span>
                         </a>
                         <ul class="list-unstyled menu-item">
                         	<li><a href="${pageContext.request.contextPath }/config/listLab">实验室管理</a></li>
-                        	<li><a href="${pageContext.request.contextPath }/config/listPlace">位置管理</a></li>
+                        	<li><a href="${pageContext.request.contextPath }/config/listPlace">位置管理</a></li>                   
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a class="sa-side-chart" href="">
+                            <span class="menu-item">超级管理</span>
+                        </a>
+                         <ul class="list-unstyled menu-item">
                             <li><a href="${pageContext.request.contextPath }/config/listUser">用户管理</a></li>
                             <li><a href="${pageContext.request.contextPath }/config/listRole">角色管理</a></li>
                             <li><a href="${pageContext.request.contextPath }/config/listPermission">权限管理</a></li>                     
                         </ul>
                     </li>
-                    
-                    <li>
-                        <a class="sa-side-chart" href="">
-                            <span class="menu-item">****</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sa-side-calendar" href="">
-                            <span class="menu-item">我的日程</span>
-                        </a>
-                    </li>
                 </ul>
-
             </aside>
         
             <!-- Content -->
