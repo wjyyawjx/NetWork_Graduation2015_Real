@@ -25,4 +25,6 @@ public interface UserService {
 	public void addFriend(String userName, String friend_2);
 	
 	public UserBean findUserByEmail(String email);
+
+	int updateUserInfo(UserBean userBean);
 }
