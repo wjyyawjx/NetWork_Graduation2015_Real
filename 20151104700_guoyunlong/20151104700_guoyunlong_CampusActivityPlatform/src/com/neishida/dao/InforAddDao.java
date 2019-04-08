@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.neishida.DBUtil.DBUtil;
 import com.neishida.bean.ActivityBean;
@@ -71,5 +73,26 @@ public class InforAddDao {
 		}finally {
 			DBUtil.CloseDB(conn,pstm,rs);
 		}
+	}
+	
+	public List<UserInformationBean> getalluser() {
+		List<UserInformationBean> list = new ArrayList<UserInformationBean>();
+		String sql = "select `id`,`name`,`age`,`sex`,`profile` from user ";
+		Object[] params = {};
+		ResultSet rs = this.executeQuerySQL(sql, params);
+		try {
+			while (rs.next()) {
+				Student stu = new Student();
+				stu.setId(rs.getInt("id"));
+				stu.setAge(rs.getInt("age"));
+				stu.setSex(rs.getString("sex"));
+				stu.setName(rs.getString("name"));
+				stu.setProfile(rs.getString("profile"));
+				list.add(stu);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

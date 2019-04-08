@@ -85,8 +85,8 @@ public class SimpleFileupload extends HttpServlet {
                     byte[] buffer = new byte[1024];  
                     int len = 0;  
   
-                    fileName = "D:\\毕设git材料\\NetWork_Graduation2015_Real\\20151104700_guoyunlong\\20151104700_guoyunlong_CampusActivityPlatform\\WebContent\\upload\\file" + fileName.substring(fileName.lastIndexOf("\\"));//文件最终上传的位置  
-                    String file = fileName.substring(fileName.lastIndexOf("\\"));
+                    fileName = "D:\\毕设git材料\\NetWork_Graduation2015_Real\\20151104700_guoyunlong\\20151104700_guoyunlong_CampusActivityPlatform\\WebContent\\upload\\file\\" + item.getName();//文件最终上传的位置  
+                    String file = item.getName();
                     System.out.println(file);  
                     //System.out.println();
                     OutputStream out = new FileOutputStream(fileName);
