@@ -59,7 +59,7 @@
         <div class="inner-cont1 w1200">
           <div class="inner-cont2">
             <a href="commodity.html" class="active">所有商品</a>
-            <a href="buytoday.html">今日团购</a>
+            <a href="buytoday.jsp">今日团购</a>
             <a href="information.html">手机资讯</a>
             <a href="about.html">关于我们</a>
           </div>
@@ -126,10 +126,15 @@
                  %>
               <div class="item" >
                 <div class="img">
-                  <a href="javascript:;"><img src="<%=stu.getFileName()%>" style="width:280px;height:300px;"></a>
+                  <a href="javascript:;">
+                  	<a href="details.jsp?id=<%=stu.getId() %>">
+                  		<img src="<%=stu.getFileName()%>" style="width:280px;height:300px;">
+                  	</a>
+                  	
+                  </a>
                 </div>
                 <div class="text">
-                  <p class="title"><%=stu.getName() %></p>
+                  <p class="title"><%=stu.getName() %> </p>
                   <p class="price">
                     <span class="pri"><%=stu.getSex() %></span>
                     <span class="nub"><%=stu.getAge() %></span>

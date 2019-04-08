@@ -42,8 +42,7 @@ public class GeneralAthletesQuery extends HttpServlet {
 		int sid = (int) session.getAttribute("generalsid");
 		String events = request.getParameter("events");
 		GeneralQueryDao rgdao = new GeneralQueryDao();
-		if (events == "所有信息") {
-			System.err.println("aa");
+		if (events.equals("所有信息")) {
 			ArrayList<AthletBean> abean = new ArrayList<AthletBean>();
 			abean = (ArrayList<AthletBean>) rgdao.athletList(sid);
 			request.setAttribute("mea", abean);

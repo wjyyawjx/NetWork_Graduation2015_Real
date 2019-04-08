@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
-<% String name = (String) session.getAttribute("user"); %>
+
 <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -28,7 +28,7 @@ $(document).ready(function(){
 <td><h1>添加申请</h1>
 	<form action="AddToApplyFor" method="post">
 	<textarea name="reason" rows="10" cols="30">填写申请理由,说明你的班级</textarea>
-	<input type="hidden" name="username" value=<%=name %>>
+	<input type="hidden" name="username" value=${user}>
 	<br><br><br>
 	<input type="submit" value="提交">
 	</form>

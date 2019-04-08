@@ -1,6 +1,7 @@
 
 package cn.chat.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -63,13 +64,24 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void addFriend(String userName, String friend_2) {
 		// TODO Auto-generated method stub
-		this.userDao.addFriend(userName, friend_2);
+		Friend friend=new Friend();
+		friend.setFriend_1(userName);
+		friend.setFriend_2(friend_2);
+		friend.setF1_allow("0");
+		friend.setF2_allow(new Date());
+		this.userDao.addFriend(friend);
 	}
 
 	@Override
 	public UserBean findUserByEmail(String email) {
 		// TODO Auto-generated method stub
 		return userDao.findUserByEmail(email);
+	}
+
+	@Override
+	public int updateUserInfo(UserBean userBean) {
+		// TODO Auto-generated method stub
+		return userDao.updateUserInfo(userBean);
 	}
 
 

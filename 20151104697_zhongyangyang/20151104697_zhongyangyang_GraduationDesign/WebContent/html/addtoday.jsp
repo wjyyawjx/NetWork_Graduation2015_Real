@@ -49,7 +49,6 @@
 	<td><input type="file" id="picture" name="pictureupload" onclick="show()"/> </td>
   </tr>
   <tr>
-  <tr>
      <td>商品名：</td>
     <td><input type="text" name="buyTyname" ></td>
   </tr>

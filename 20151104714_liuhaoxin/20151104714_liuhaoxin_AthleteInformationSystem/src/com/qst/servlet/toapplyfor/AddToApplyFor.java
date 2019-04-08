@@ -41,7 +41,6 @@ public class AddToApplyFor extends HttpServlet {
 			response.sendRedirect("Login.jsp");	
 		}else {
 			
-		
 		GeneralDao galdao = new GeneralDao();
 		galdao.ToApplyFor(reason,username);
 		response.sendRedirect("ToApplyForView");	

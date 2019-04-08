@@ -34,5 +34,8 @@
 			</div>
 		</div> 
     </form> 
+   	<div style="text_align: center;">
+   		<input type="button" value="下载文件" onclick="window.location.href='ListFileServlet'">
+   	</div>
 </body>
 </html>

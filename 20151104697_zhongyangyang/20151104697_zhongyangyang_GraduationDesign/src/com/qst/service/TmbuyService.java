@@ -14,13 +14,13 @@ public interface TmbuyService {
 	//获取所有商品信息
 	public List<TmbuyBean> getAllTmbuy();
 	//获取指定商品信息
-	public TmbuyBean getTmbuyMoreInfo(TmbuyBean tmbuy);
+	public TmbuyBean getTmbuyMoreInfo(TmbuyBean tm);
 	//添加商品
-	public int addTmbuy(TmbuyBean tmbuy);
+	public int addTmbuy(TmbuyBean tm);
 	//删除商品
-	public int delTmbuy(TmbuyBean tmbuy);
+	public int delTmbuy(TmbuyBean tm);
 	//修改商品信息
-	public int modifyTmbuy(TmbuyBean tmbuy);
+	public int modifyTmbuy(TmbuyBean tm);
 	//查找有没有指定的商品
-	public boolean findTmbuy(TmbuyBean tmbuy);
+	public boolean findTmbuy(TmbuyBean tm);
 }

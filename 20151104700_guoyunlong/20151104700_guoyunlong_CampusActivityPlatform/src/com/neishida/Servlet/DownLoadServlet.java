@@ -30,50 +30,50 @@ public class DownLoadServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 //瀵版鍩岀憰浣风瑓鏉炵晫娈戦弬鍥︽閸氾拷
+		//得到要下载的文件名
         String fileName = request.getParameter("filename");
-        //23239283-92489-闂冨灝鍤掓潏锟?.avi
-        //娑撳﹣绱堕惃鍕瀮娴犲爼鍏橀弰顖欑箽鐎涙ê婀?/WEB-INF/upload閻╊喖缍嶆稉瀣畱鐎涙劗娲拌ぐ鏇炵秼娑擄拷
-        String fileSaveRootPath=this.getServletContext().getRealPath("/FILE/upload");
+        //23239283-92489-阿凡达.avi
+        //上传的文件都是保存在/WEB-INF/upload目录下的子目录当中
+        String fileSaveRootPath= this.getServletContext().getRealPath("/upload/file");
         System.out.println(fileSaveRootPath);
-        //闁俺绻冮弬鍥︽閸氬秵澹橀崙鐑樻瀮娴犲墎娈戦幍锟介崷銊ф窗瑜帮拷
+        //通过文件名找出文件的所在目录
        
         File file = new File( fileSaveRootPath + "\\" + fileName);
-        //婵″倹鐏夐弬鍥︽娑撳秴鐡ㄩ崷锟?
+        //如果文件不存在
         if(!file.exists()){
-            request.setAttribute("message", "閹劏顩︽稉瀣祰閻ㄥ嫯绁┃鎰嚒鐞氼偄鍨归梽銈忕磼閿涳拷");
+            request.setAttribute("message", "您要下载的资源已被删除！！");
             request.getRequestDispatcher("/message.jsp").forward(request, response);
             return;
         }
-        //婢跺嫮鎮婇弬鍥︽閸氾拷
+        //处理文件名
         String realname = fileName.substring(fileName.indexOf("_")+1);
-        //鐠佸墽鐤嗛崫宥呯安婢惰揪绱濋幒褍鍩楀ù蹇氼潔閸ｃ劋绗呮潪鍊燁嚉閺傚洣娆?
+        //设置响应头，控制浏览器下载该文件
         response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(realname, "UTF-8"));
-        //鐠囪褰囩憰浣风瑓鏉炵晫娈戦弬鍥︽閿涘奔绻氱?涙ê鍩岄弬鍥︽鏉堟挸鍙嗗ù锟?
+        //读取要下载的文件，保存到文件输入流
         FileInputStream in = new FileInputStream(fileSaveRootPath + "\\" + fileName);
-        //閸掓稑缂撴潏鎾冲毉濞达拷
+        //创建输出流
         OutputStream out = response.getOutputStream();
-        //閸掓稑缂撶紓鎾冲暱閸栵拷
+        //创建缓冲区
         byte buffer[] = new byte[1024];
         int len = 0;
-        //瀵邦亞骞嗙亸鍡氱翻閸忋儲绁︽稉顓犳畱閸愬懎顔愮拠璇插絿閸掓壆绱﹂崘鎻掑隘瑜版挷鑵?
+        //循环将输入流中的内容读取到缓冲区当中
         while((len=in.read(buffer))>0){
-            //鏉堟挸鍤紓鎾冲暱閸栬櫣娈戦崘鍛啇閸掔増绁荤憴鍫濇珤閿涘苯鐤勯悳鐗堟瀮娴犳湹绗呮潪锟?
+            //输出缓冲区的内容到浏览器，实现文件下载
             out.write(buffer, 0, len);
         }
-        //閸忔娊妫撮弬鍥︽鏉堟挸鍙嗗ù锟?
+        //关闭文件输入流
         in.close();
-        //閸忔娊妫存潏鎾冲毉濞达拷
+        //关闭输出流
         out.close();
     }
     
     /**
     * @Method: findFileSavePathByFileName
-    * @Description: 闁俺绻冮弬鍥︽閸氬秴鎷扮?涙ê鍋嶆稉濠佺炊閺傚洣娆㈤弽鍦窗瑜版洘澹橀崙楦款洣娑撳娴囬惃鍕瀮娴犲墎娈戦幍锟介崷銊ㄧ熅瀵帮拷
-    * @Anthor:鐎涖倕鍋涢懟宥囧
-    * @param filename 鐟曚椒绗呮潪鐣屾畱閺傚洣娆㈤崥锟?
-    * @param saveRootPath 娑撳﹣绱堕弬鍥︽娣囨繂鐡ㄩ惃鍕壌閻╊喖缍嶉敍灞肩瘍鐏忚鲸妲?/WEB-INF/upload閻╊喖缍?
-    * @return 鐟曚椒绗呮潪鐣屾畱閺傚洣娆㈤惃鍕摠閸屻劎娲拌ぐ锟?
+    * @Description: 通过文件名和存储上传文件根目录找出要下载的文件的所在路径
+    * @Anthor:孤傲苍狼
+    * @param filename 要下载的文件名
+    * @param saveRootPath 上传文件保存的根目录，也就是/WEB-INF/upload目录
+    * @return 要下载的文件的存储目录
     */ 
     public String findFileSavePathByFileName(String filename,String saveRootPath){
         int hashcode = filename.hashCode();
@@ -82,7 +82,7 @@ public class DownLoadServlet extends HttpServlet {
         String dir = saveRootPath + "\\" + dir1 + "\\" + dir2;  //upload\2\3  upload\3\5
         File file = new File(dir);
         if(!file.exists()){
-            //閸掓稑缂撻惄顔肩秿
+            //创建目录
             file.mkdirs();
         }
         return dir;

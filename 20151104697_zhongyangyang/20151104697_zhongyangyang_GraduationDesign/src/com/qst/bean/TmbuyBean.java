@@ -5,6 +5,20 @@ public class TmbuyBean {
 	private String tmname;
 	private String tmnum;
 	private String tmprice;
+	private String pho;
+	private String phoname;
+	public String getPho() {
+		return pho;
+	}
+	public void setPho(String pho) {
+		this.pho = pho;
+	}
+	public String getPhoname() {
+		return phoname;
+	}
+	public void setPhoname(String phoname) {
+		this.phoname = phoname;
+	}
 	public int getTmid() {
 		return tmid;
 	}
