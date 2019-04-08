@@ -62,7 +62,7 @@
           <div class="inner-cont1 w1200">
             <div class="inner-cont2">
               <a href="commodity.jsp">所有商品</a>
-              <a href="buytoday.html" class="active">今日团购</a>
+              <a href="buytoday.jsp" class="active">今日团购</a>
               <a href="information.html">手机资讯</a>
               <a href="about.html">关于我们</a>
             </div>
@@ -119,7 +119,7 @@
                      for(TmbuyBean tm:list2){ 
                  %>
             <div class="item">
-              <img src="../res/static/img/tuan_img5.jpg" alt="">
+              <img src="<%=tm.getPhoname()%>" style="width:320px;height:400px;"  alt="">
               <div class="text">
                 <div class="right-title-number"><%=tm.getTmnum()%></div>
                 <div class="commod">

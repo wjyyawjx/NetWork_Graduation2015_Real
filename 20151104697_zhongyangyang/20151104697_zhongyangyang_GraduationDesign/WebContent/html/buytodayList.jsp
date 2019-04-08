@@ -59,7 +59,7 @@
    <td><%=buy.getDscount() %> </td>
    <td><%=buy.getPicturename() %> </td>
    <td>
-   <a href="modifyStu1.jsp?id=<%=buy.getTodayid() %>">修改&nbsp;</a>
+   <a href="modifytoday.jsp?todayid=<%=buy.getTodayid() %>">修改&nbsp;</a>
    <a href="../Delbuytoday?todayid=<%=buy.getTodayid() %>" onclick="return check()">删除&nbsp;</a></td>
   </tr>
 <%} %>

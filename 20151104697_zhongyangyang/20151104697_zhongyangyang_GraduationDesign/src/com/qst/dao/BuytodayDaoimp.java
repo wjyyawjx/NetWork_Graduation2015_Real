@@ -43,10 +43,10 @@ public class BuytodayDaoimp extends BaseDao implements BuytodayDao {
 
 	@Override
 	//获取指定推荐商品信息
-	public BuytodayBean getBuytodayMoreInfo(BuytodayBean buytoday) {
-		BuytodayBean buy = new BuytodayBean();
+	public BuytodayBean getBuytodayMoreInfo(BuytodayBean buy) {
+		BuytodayBean buytoday = new BuytodayBean();
 		String sql = "select * from buytoday where `todayid`=?";
-		Object[] params = { buytoday.getTodayid() };
+		Object[] params = { buy.getTodayid() };
 		ResultSet rs = this.executeQuerySQL(sql, params);
 		try {
 			while (rs.next()) {
@@ -65,10 +65,10 @@ public class BuytodayDaoimp extends BaseDao implements BuytodayDao {
 
 	@Override
 	//添加商品信息
-	public int addBuytoday(BuytodayBean buytoday) {
+	public int addBuytoday(BuytodayBean buy) {
 		int row = 0;
 		String sql = "insert into buytoday(`tyname`,`original`,`present`,`dscount`,`picture`,`picturename`) values(?,?,?,?,?,?)";
-		Object[] params = {buytoday.getTyname(),buytoday.getOriginal(),buytoday.getPresent(),buytoday.getDscount(),buytoday.getPicture(),buytoday.getPicturename()};
+		Object[] params = {buy.getTyname(),buy.getOriginal(),buy.getPresent(),buy.getDscount(),buy.getPicture(),buy.getPicturename()};
 		row = this.executeUpdateSQL(sql, params);
 		if(row>0){
 			System.out.println("添加商品信息成功");
@@ -80,10 +80,10 @@ public class BuytodayDaoimp extends BaseDao implements BuytodayDao {
 
 	@Override
 	//删除商品信息
-	public int delBuytoday(BuytodayBean buytoday) {
+	public int delBuytoday(BuytodayBean buy) {
 		int row = 0;
 		String sql = "delete from buytoday where `todayid`=?";
-		Object[] params = {buytoday.getTodayid()};
+		Object[] params = {buy.getTodayid()};
 		row = this.executeUpdateSQL(sql, params);
 		if(row>0){
 			System.out.println("success");
@@ -95,11 +95,11 @@ public class BuytodayDaoimp extends BaseDao implements BuytodayDao {
 
 	@Override
 	//修改商品信息
-	public int modifyBuytoday(BuytodayBean buytoday) {
+	public int modifyBuytoday(BuytodayBean buy) {
 		int row = 0;
 		String sql = "update buytoday set tyname=?,original=?,present=?,dscount=?,picture=?,picturename=? where todayid=?";
-		Object[] params = {buytoday.getTodayid(),buytoday.getTyname(),buytoday.getOriginal(),buytoday.getPresent(),buytoday.getDscount(),buytoday.getPicture(),buytoday.getPicturename()};
-		System.out.println(buytoday.getTyname());
+		Object[] params = {buy.getTyname(),buy.getOriginal(),buy.getPresent(),buy.getDscount(),buy.getPicture(),buy.getPicturename(),buy.getTodayid()};
+		System.out.println(buy.getTyname());
 		row = this.executeUpdateSQL(sql, params);
 		if(row>0){
 			System.out.println("修改商品信息成功");
@@ -112,11 +112,11 @@ public class BuytodayDaoimp extends BaseDao implements BuytodayDao {
 	
 	
 	//查询商品信息
-	public boolean findBuytoday(BuytodayBean buytoday){
+	public boolean findBuytoday(BuytodayBean buy){
 		boolean flag = true;
 		int row = 0;
 		String sql = "select count(1) from buytoday where  `tyname`=? and `original`=? and `present`=? and `dscount`=? and `picture`=? and `picturename`=?";
-		Object[] params = {buytoday.getTyname(),buytoday.getOriginal(),buytoday.getPresent(),buytoday.getDscount(),buytoday.getPicture(),buytoday.getPicturename()};
+		Object[] params = {buy.getTyname(),buy.getOriginal(),buy.getPresent(),buy.getDscount(),buy.getPicture(),buy.getPicturename()};
 		ResultSet rs = this.executeQuerySQL(sql, params);
 		try {
 			while(rs.next()){

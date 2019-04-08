@@ -21,7 +21,7 @@ public class TmbuyDaoimp extends BaseDao implements TmbuyDao {
 	//获取所有推荐信息
 	public List<TmbuyBean> getAllTmbuy() {
 		List<TmbuyBean> list = new ArrayList<TmbuyBean>();
-		String sql = "select`tmname`,`tmnum`, `tmprice`from buytm ";
+		String sql = "select * from buytm ";
 		Object[] params = {};
 		ResultSet rs = this.executeQuerySQL(sql, params);
 		try {
@@ -30,6 +30,7 @@ public class TmbuyDaoimp extends BaseDao implements TmbuyDao {
 				tm.setTmname(rs.getString("tmname"));
 				tm.setTmnum(rs.getString("tmname"));
 				tm.setTmprice(rs.getString("tmprice"));
+				tm.setPhoname(rs.getString("phoname"));
 				list.add(tm);
 			}
 		} catch (SQLException e) {
@@ -40,10 +41,10 @@ public class TmbuyDaoimp extends BaseDao implements TmbuyDao {
 
 	@Override
 	//获取指定推荐商品信息
-	public TmbuyBean getTmbuyMoreInfo(TmbuyBean tmbuy) {
-		TmbuyBean tm = new TmbuyBean();
-		String sql = "select`tmname`,`tmnum`, `tmprice`from buytm where `tmid`=?";
-		Object[] params = { tmbuy.getTmid() };
+	public TmbuyBean getTmbuyMoreInfo(TmbuyBean tm) {
+		TmbuyBean tmbuy = new TmbuyBean();
+		String sql = "select * from buytm where `tmid`=?";
+		Object[] params = { tm.getTmid() };
 		ResultSet rs = this.executeQuerySQL(sql, params);
 		try {
 			while (rs.next()) {
@@ -51,6 +52,7 @@ public class TmbuyDaoimp extends BaseDao implements TmbuyDao {
 				tm.setTmname(rs.getString("tmname"));
 				tm.setTmnum(rs.getString("tmnum"));
 				tm.setTmprice(rs.getString("tmprice"));
+				tm.setPhoname(rs.getString("phoname"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -60,10 +62,10 @@ public class TmbuyDaoimp extends BaseDao implements TmbuyDao {
 
 	@Override
 	//添加商品信息
-	public int addTmbuy(TmbuyBean tmbuy) {
+	public int addTmbuy(TmbuyBean tm) {
 		int row = 0;
-		String sql = "insert into buytm(`tmname`,`tmnum`,`tmprice`) values(?,?,?)";
-		Object[] params = {tmbuy.getTmname(),tmbuy.getTmnum(),tmbuy.getTmprice()};
+		String sql = "insert into buytm(`tmname`,`tmnum`,`tmprice`,`pho`,`phoname`) values(?,?,?,?,?)";
+		Object[] params = {tm.getTmname(),tm.getTmnum(),tm.getTmprice(),tm.getPho(),tm.getPhoname()};
 		row = this.executeUpdateSQL(sql, params);
 		if(row>0){
 			System.out.println("添加商品信息成功");
@@ -75,10 +77,10 @@ public class TmbuyDaoimp extends BaseDao implements TmbuyDao {
 
 	@Override
 	//删除商品信息
-	public int delTmbuy(TmbuyBean tmbuy) {
+	public int delTmbuy(TmbuyBean tm) {
 		int row = 0;
 		String sql = "delete from Buytm where `tmid`=?";
-		Object[] params = {tmbuy.getTmid()};
+		Object[] params = {tm.getTmid()};
 		row = this.executeUpdateSQL(sql, params);
 		if(row>0){
 			System.out.println("success");
@@ -90,11 +92,11 @@ public class TmbuyDaoimp extends BaseDao implements TmbuyDao {
 
 	@Override
 	//修改商品信息
-	public int modifyTmbuy(TmbuyBean tmbuy) {
+	public int modifyTmbuy(TmbuyBean tm) {
 		int row = 0;
 		String sql = "update buytm set tmname=?,tmnum=?,tmprice=? where tmid=?";
-		Object[] params = {tmbuy.getTmid(),tmbuy.getTmname(),tmbuy.getTmnum(),tmbuy.getTmprice()};
-		System.out.println(tmbuy.getTmname());
+		Object[] params = {tm.getTmid(),tm.getTmname(),tm.getTmnum(),tm.getTmprice()};
+		System.out.println(tm.getTmname());
 		row = this.executeUpdateSQL(sql, params);
 		if(row>0){
 			System.out.println("修改商品信息成功");
@@ -107,11 +109,11 @@ public class TmbuyDaoimp extends BaseDao implements TmbuyDao {
 	
 	
 	//查询商品信息
-	public boolean findTmbuy(TmbuyBean tmbuy){
+	public boolean findTmbuy(TmbuyBean tm){
 		boolean flag = true;
 		int row = 0;
 		String sql = "select count(1) from buytm where  `tmname`=? and `tmnum`=? and `tmprice`=? ";
-		Object[] params = {tmbuy.getTmname(),tmbuy.getTmnum(),tmbuy.getTmprice()};
+		Object[] params = {tm.getTmname(),tm.getTmnum(),tm.getTmprice()};
 		ResultSet rs = this.executeQuerySQL(sql, params);
 		try {
 			while(rs.next()){
@@ -134,7 +136,7 @@ public class TmbuyDaoimp extends BaseDao implements TmbuyDao {
 	}
 
 	@Override
-	public int delTmbuy1(TmbuyBean tmbuy) {
+	public int delTmbuy1(TmbuyBean tm) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

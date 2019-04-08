@@ -43,11 +43,10 @@
 <%
    session.removeAttribute("list");
    InforAddService user = new InforAddService();
-   List<user> list = user.getAllStudent();
+   List<UserInformationBean> list = user.getalluser();
    session.setAttribute("list", list);
-   for(user user:list){
+   for(user userInformationBean:list){
  %>
-
   <tr>
    <td><%=user.getId() %> </td>
    <td><%=user.getName() %> </td>
