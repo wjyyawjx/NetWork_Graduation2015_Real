@@ -7,7 +7,7 @@ import cn.chat.pojo.Friend;
 import cn.chat.pojo.UserBean;
 
 public interface UserService {
-
+	public int updateUserInfo(UserBean userBean);
 	public UserBean findUserByUserName(String userName, String userPass);
 
 	public void addUser(UserBean userBean);
@@ -25,6 +25,4 @@ public interface UserService {
 	public void addFriend(String userName, String friend_2);
 	
 	public UserBean findUserByEmail(String email);
-
-	int updateUserInfo(UserBean userBean);
 }

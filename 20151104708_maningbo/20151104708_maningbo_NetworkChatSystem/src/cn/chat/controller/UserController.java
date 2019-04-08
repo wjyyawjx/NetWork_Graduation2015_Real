@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import cn.chat.dao.FriendDao;
 import cn.chat.dao.UserDao;
 import cn.chat.pojo.Friend;
 
@@ -42,9 +42,11 @@ import cn.chat.service.UserService;
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private FriendDao friendDao;
 	@Autowired
 	private UserDao userDao;
 	@Resource(name="javaMailSender")
@@ -311,9 +313,18 @@ public class UserController {
 		}else {
 			model.addAttribute("msg", "不能添加你自己！");
 		}
-		return "friend";
+		return addfriendPage(session,model);
 	}
-
+	@RequestMapping(value = "/addfriendPage.action")
+	public String addfriendPage(HttpSession session, Model model) {
+		UserBean user = (UserBean) session.getAttribute("userBean");
+		String userName = user.getUserName();
+		List<Friend> list = friendDao.selectFriendIsValidate(userName);
+		model.addAttribute("listValidate", list);
+		List<Friend> listO = friendDao.selectFriendIsValidateO(userName);
+		model.addAttribute("listO", listO);
+		return "addfriend";
+	}
 	@RequestMapping(value = "/gochat.action")
 	public String gochat() {
 		return "chat";

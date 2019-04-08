@@ -28,10 +28,8 @@
 				method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<div class="col-sm-2">
-						<img src="${pageContext.request.contextPath}/upload/${userBean.image}" class="img-responsive img-circle" alt="Responsive image">
+						<img src="${pageContext.request.contextPath}/upload/${userBean.image}" class="img-responsive img-circle" alt="暂无头像">
 					</div>
-					<label for="exampleInputFile">修改头像</label> <input type="file"
-						id="exampleInputFile" name="file">
 				</div>
 				<hr>
 				<div class="form-group">
@@ -45,7 +43,7 @@
 				<div class="form-group">
 					<label for="gender" class="col-sm-2 control-label">性别：</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="gender"
+						<input type="text" class="form-control" name="gender" disabled
 							placeholder="gender" value="${userBean.gender}" id="gender">
 					</div>
 				</div>
@@ -53,7 +51,7 @@
 				<div class="form-group">
 					<label for="gender" class="col-sm-2 control-label">生日：</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="birthDay"
+						<input type="text" class="form-control" name="birthDay" disabled
 							placeholder="birthDay" value="${userBean.birthDay}" id="birthDay">
 					</div>
 				</div>
@@ -61,7 +59,7 @@
 				<div class="form-group">
 					<label for="phone" class="col-sm-2 control-label">手机号：</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="phone"
+						<input type="text" class="form-control" name="phone" disabled
 							placeholder="phone" value="${userBean.phone}" id="phone">
 					</div>
 				</div>
@@ -69,16 +67,14 @@
 				<div class="form-group">
 					<label for="email" class="col-sm-2 control-label">邮箱：</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="email"
+						<input type="text" class="form-control" name="email" disabled
 							placeholder="email" value="${userBean.email}" id="email">
 					</div>
 				</div>
 				<hr>
 				<div class="col-lg-12">
-					<div class=" col-lg-1"></div>
-					<button type="submit" class="btn btn-success btn-lg col-lg-10"
-						id="sumbitData">提交</button>
-					<div class=" col-lg-1"></div>
+					<a href="${pageContext.request.contextPath}/friendlist.action" class="btn btn-success btn-lg col-lg-12"
+						id="sumbitData">返回</a>
 				</div>
 			</form>
 			<div class=" col-lg-2">${msg }</div>
