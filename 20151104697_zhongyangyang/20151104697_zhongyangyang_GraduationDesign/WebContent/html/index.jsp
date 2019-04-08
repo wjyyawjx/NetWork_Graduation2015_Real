@@ -60,7 +60,7 @@
         <div class="inner-cont1 w1200">
           <div class="inner-cont2">
             <a href="html/commodity.jsp" class="active">所有商品</a>
-            <a href="html/buytoday.html">今日团购</a>
+            <a href="html/buytoday.jsp">今日团购</a>
             <a href="html/information.html">手机资讯</a>
             <a href="html/about.html">关于我们</a>
           </div>

@@ -77,6 +77,9 @@ public class Recommend extends HttpServlet {
                        rec.setPrice(new String(item.getString("UTF-8")));
                         System.out.println(rec.getPrice());
                     } 
+                    
+                    
+                    
                 }  
                 // 若是文件域则把文件保存到 "f:\\upload\\img 目录下.  
                 else {
@@ -96,6 +99,10 @@ public class Recommend extends HttpServlet {
                     OutputStream out = new FileOutputStream(photoname);
                     
   
+                    
+                    
+                    
+                    
                     while ((len = in.read(buffer)) != -1) {  
                         out.write(buffer, 0, len);  
                     }  
@@ -104,7 +111,7 @@ public class Recommend extends HttpServlet {
             		rec.setPhoto(photo);
             		rec.setPhotoname(photoname);
 		
-            		System.out.println(photoname);
+//            		System.out.println(photoname);
             		out.close();  
             		in.close();  
                 } 
@@ -118,7 +125,6 @@ public class Recommend extends HttpServlet {
         }  
 
 		
-		
 		RecommendService recommendService = new RecommendServiceimp();
 		
 		if(recommendService.findRecommend(rec)){//如果学生已经存在就不添加
@@ -127,12 +133,15 @@ public class Recommend extends HttpServlet {
 		}else{//如果学生不存在就添加
 			
 			String opr = request.getParameter("opr");//根据传的opr参数决定是添加学生还是修改学生
+			System.out.println(opr);
 			int n = 0;
 			if(opr.equals("addRec")){
 				n = recommendService.addRecommend(rec);
-			}else if(opr.equals("modifyRec")){
-				int id = Integer.parseInt(request.getParameter("recId"));
+			}else if(opr.equals("modifyrec")){
+				int id = (Integer)request.getSession().getAttribute("recId");
+				System.out.println(id);
 				rec.setComid(id);
+				
 				n = recommendService.modifyRecommend(rec);
 			}
 			

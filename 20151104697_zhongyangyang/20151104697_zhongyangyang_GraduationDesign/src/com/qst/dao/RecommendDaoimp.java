@@ -44,7 +44,7 @@ public class RecommendDaoimp extends BaseDao implements RecommendDao {
 	public RecommendBean getRecommendMoreInfo(RecommendBean rec) {
 		RecommendBean recommend = new RecommendBean();
 		String sql = "select * from Recommend where `comid`=?";
-		Object[] params = { rec.getIndexId() };
+		Object[] params = { rec.getComid() };
 		ResultSet rs = this.executeQuerySQL(sql, params);
 		try {
 			while (rs.next()) {
@@ -95,7 +95,6 @@ public class RecommendDaoimp extends BaseDao implements RecommendDao {
 		int row = 0;
 		String sql = "update recommend set comname=?,price=?,photoname=? where comid=?";
 		Object[] params = {rec.getComname(),rec.getPrice(),rec.getPhotoname(),rec.getComid()};
-		System.out.println(rec.getComname());
 		row = this.executeUpdateSQL(sql, params);
 		if(row>0){
 			System.out.println("修改商品信息成功");

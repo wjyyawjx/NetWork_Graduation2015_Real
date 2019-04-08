@@ -138,8 +138,8 @@ public class Buytoday extends HttpServlet {
 			int n = 0;
 			if(opr.equals("addBuy")){
 				n = buytodayService.addBuytoday(buy);
-			}else if(opr.equals("modifyRec")){
-				int id = Integer.parseInt(request.getParameter("buyId"));
+			}else if(opr.equals("modifybuy")){
+				int id = (Integer)request.getSession().getAttribute("buyId");
 				buy.setTodayid(id);
 				n = buytodayService.modifyBuytoday(buy);
 			}

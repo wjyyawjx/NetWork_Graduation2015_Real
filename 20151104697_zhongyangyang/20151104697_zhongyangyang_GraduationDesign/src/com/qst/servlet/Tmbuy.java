@@ -1,11 +1,22 @@
 package com.qst.servlet;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.qst.bean.TmbuyBean;
 import com.qst.service.TmbuyService;
@@ -34,15 +45,78 @@ public class Tmbuy extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		HttpServletRequest req = (HttpServletRequest) request; 
 		req.setCharacterEncoding("utf-8");
-		String tmname = request.getParameter("tmTmname");
-		String tmnum = request.getParameter("tmnum");
-		String tmprice = request.getParameter("tmprice");
 		
 		TmbuyBean tm = new TmbuyBean();
-		tm.setTmname(tmname);
-		tm.setTmname(tmname);
-		tm.setTmprice(tmname);
 		
+		 //1、创建一个DiskFileItemFactory工厂  
+	       DiskFileItemFactory factory = new DiskFileItemFactory();  
+	       //2、创建一个文件上传解析器  
+	       ServletFileUpload upload = new ServletFileUpload(factory);  
+	       //解决上传文件名的中文乱码  
+	       upload.setHeaderEncoding("UTF-8");   
+	       factory.setSizeThreshold(1024 * 500);//设置内存的临界值为500K  
+	       File linshi = new File("D:\\linshi");//当超过500K的时候，存到一个临时文件夹中  
+	       factory.setRepository(linshi);  
+	       upload.setSizeMax(1024 * 1024 * 100);//设置上传的文件总的大小不能超过5M  
+	       try {  
+	           // 1. 得到 FileItem 的集合 items  
+	           List<FileItem> /* FileItem */items = upload.parseRequest(request);
+	 
+	           // 2. 遍历 items:  
+	           for (FileItem item : items) {  
+	               // 若是一个一般的表单域, 打印信息  
+	               if (item.isFormField()) {  
+	                   String value = item.getString("utf-8"); 
+	                   if ("tmname".equals(item.getFieldName())) {
+	                       tm.setTmname(new String(item.getString("UTF-8")));
+	                       System.out.println(tm.getTmname());
+	                   }else if ("tmnum".equals(item.getFieldName())) {
+	                      tm.setTmnum(new String(item.getString("UTF-8")));
+	                       System.out.println(tm.getTmnum());
+	                   } else if ("tmprice".equals(item.getFieldName())) {
+	                      tm.setTmprice(new String(item.getString("UTF-8")));
+	                       System.out.println(tm.getTmprice());
+	                   } 
+	               }  
+	               // 若是文件域则把文件保存到 "f:\\upload\\img 目录下.  
+	               else {
+	                   String phoname = item.getName();  
+	                   long sizeInBytes = item.getSize();  
+	                   System.out.println(phoname);  
+	                   System.out.println(sizeInBytes);  
+	 
+	                   InputStream in = item.getInputStream();  
+	                   byte[] buffer = new byte[1024];  
+	                   int len = 0;  
+	 
+	                   phoname = "f:\\upload\\img" + phoname.substring(phoname.lastIndexOf("\\"));//文件最终上传的位置  
+	                   String pho = phoname.substring(phoname.lastIndexOf("\\"));
+	                   
+	                   //System.out.println();
+	                   OutputStream out = new FileOutputStream(phoname);
+	                   
+	 
+	                   while ((len = in.read(buffer)) != -1) {  
+	                       out.write(buffer, 0, len);  
+	                   }  
+			
+	                  
+	           		tm.setPho(pho);
+	           		tm.setPhoname(phoname);
+			
+	           		System.out.println(phoname);
+	           		out.close();  
+	           		in.close();  
+	               } 
+	   
+	           }
+	           
+	           
+
+	       } catch (FileUploadException e) {  
+	       	e.printStackTrace();  
+	       }
+	       
 		TmbuyService tmbuyService = new TmbuyServiceimp();
 		
 		if(tmbuyService.findTmbuy(tm)){//如果学生已经存在就不添加
