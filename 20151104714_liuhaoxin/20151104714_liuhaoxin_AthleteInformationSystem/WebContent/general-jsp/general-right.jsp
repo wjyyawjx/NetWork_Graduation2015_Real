@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 body{
-     background: url(../img/c.jpg) no-repeat top left;
+     background: url(../image/c.jpg) no-repeat top left;
     background-size: cover;
 }
 </style>
