@@ -61,7 +61,7 @@
 							<li id="li_chatroom"><a
 								href="${pageContext.request.contextPath}/room/adminRoom.action"
 								target="main">审批聊天室</a></li>
-							<li id="li_changepwd"><a href="${pageContext.request.contextPath}/updatePassPage.action" target="frame">修改密码</a></li>
+							<li id="li_changepwd"><a href="${pageContext.request.contextPath}/updatePassPage.action" target="main">修改密码</a></li>
 							<li id="li_logout"><a
 								href="${pageContext.request.contextPath}/logout.action"
 								target="frame">退出登录</a></li>
@@ -105,7 +105,7 @@
 							<li id="li_personalinfo"><a
 								href="${pageContext.request.contextPath}/personalinfo.action"
 								target="main">个人信息</a></li>
-							<li id="li_changepwd"><a href="${pageContext.request.contextPath}/updatePassPage.action"  target="frame">修改密码</a></li>
+							<li id="li_changepwd"><a href="${pageContext.request.contextPath}/updatePassPage.action" target="main">修改密码</a></li>
 							<li id="li_logout"><a
 								href="${pageContext.request.contextPath}/logout.action"
 								target="frame">退出登录</a></li>
