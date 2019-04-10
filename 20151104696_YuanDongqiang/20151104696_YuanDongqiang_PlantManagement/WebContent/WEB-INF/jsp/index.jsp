@@ -50,15 +50,23 @@
 							</a>
 						</div>
 						<div class="top-header-meta d-flex" id="login">
+						<div class="top-header-meta d-flex">
+                                <!-- Language Dropdown -->
+                                <div class="language-dropdown">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary mr-30" 
+                                        type="button" >上传信息</button>
+                                    </div>
+                                </div>
 							<div class="login">
 								<a href="${pageContext.request.contextPath }/TZlogin.action"
 									aria-expanded="false"><i class="fa fa-user"></i> <%
- 	if (session.getAttribute("USER_SESSION") != null) {
- %> ${USER_SESSION.u_name} <%
- 	} else {
- %> 未登陆 <%
- 	}
- %> </a>
+								 	if (session.getAttribute("USER_SESSION") != null) {
+								 %> ${USER_SESSION.u_name} <%
+								 	} else {
+								 %> 未登陆 <%
+								 	}
+								 %> </a>
 							</div>
 							<%
 								if (session.getAttribute("USER_SESSION") != null) {
@@ -214,201 +222,7 @@
 	<!-- ##### Hero Area End ##### -->
 
 	<!-- ##### Service Area Start ##### -->
-	<section class="our-services-area bg-gray section-padding-100-0">
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<!-- Section Heading -->
-				<div class="section-heading text-center">
-					<h2>我们的服务</h2>
-					<p>我们为您提供最完善的服务。</p>
-				</div>
-			</div>
-		</div>
 
-		<div class="row justify-content-between">
-			<div class="col-12 col-lg-5">
-				<div class="alazea-service-area mb-100">
-
-					<!-- Single Service Area -->
-					<div
-						class="single-service-area d-flex align-items-center wow fadeInUp"
-						data-wow-delay="100ms">
-						<!-- Icon -->
-						<div class="service-icon mr-30">
-							<img src="img/core-img/s1.png" alt="">
-						</div>
-						<!-- Content -->
-						<div class="service-content">
-							<h5>植物保健</h5>
-							<p></p>
-						</div>
-					</div>
-
-					<!-- Single Service Area -->
-					<div
-						class="single-service-area d-flex align-items-center wow fadeInUp"
-						data-wow-delay="300ms">
-						<!-- Icon -->
-						<div class="service-icon mr-30">
-							<img src="img/core-img/s2.png" alt="">
-						</div>
-						<!-- Content -->
-						<div class="service-content">
-							<h5>压力清洗</h5>
-							<p></p>
-						</div>
-					</div>
-
-					<!-- Single Service Area -->
-					<div
-						class="single-service-area d-flex align-items-center wow fadeInUp"
-						data-wow-delay="500ms">
-						<!-- Icon -->
-						<div class="service-icon mr-30">
-							<img src="img/core-img/s3.png" alt="">
-						</div>
-						<!-- Content -->
-						<div class="service-content">
-							<h5>树服务,修剪</h5>
-							<p></p>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-			<div class="col-12 col-lg-6">
-				<div class="alazea-video-area bg-overlay mb-100">
-					<img src="img/bg-img/23.jpg" alt=""> <a
-						href="http://www.youtube.com/watch?v=7HKoqNJtMTQ"
-						class="video-icon"> <i class="fa fa-play" aria-hidden="true"></i>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	</section>
-	<!-- ##### Service Area End ##### -->
-
-	<!-- ##### About Area Start ##### -->
-	<section class="about-us-area section-padding-100-0">
-	<div class="container">
-		<div class="row justify-content-between">
-			<div class="col-12 col-lg-5">
-				<!-- Section Heading -->
-				<div class="section-heading">
-					<h2>关于我们</h2>
-					<p>我们在工厂服务领域处于领先地位。</p>
-				</div>
-				<p>我们主要致力于植物的介绍和植物的相关习性的介绍，通过我们的网站主要可以查看各类植物的信息以及养护的相关知识，
-					我们不求最好只求更好。</p>
-
-				<!-- Progress Bar Content Area -->
-				<div class="alazea-progress-bar mb-50">
-					<!-- Single Progress Bar -->
-					<div class="single_progress_bar">
-						<p>办公室植物</p>
-						<div id="bar1" class="barfiller">
-							<div class="tipWrap">
-								<span class="tip"></span>
-							</div>
-							<span class="fill" data-percentage="80"></span>
-						</div>
-					</div>
-
-					<!-- Single Progress Bar -->
-					<div class="single_progress_bar">
-						<p>现场经理</p>
-						<div id="bar2" class="barfiller">
-							<div class="tipWrap">
-								<span class="tip"></span>
-							</div>
-							<span class="fill" data-percentage="70"></span>
-						</div>
-					</div>
-
-					<!-- Single Progress Bar -->
-					<div class="single_progress_bar">
-						<p>景观设计</p>
-						<div id="bar3" class="barfiller">
-							<div class="tipWrap">
-								<span class="tip"></span>
-							</div>
-							<span class="fill" data-percentage="85"></span>
-						</div>
-					</div>
-
-					<!-- Single Progress Bar -->
-					<div class="single_progress_bar">
-						<p>花园护理</p>
-						<div id="bar4" class="barfiller">
-							<div class="tipWrap">
-								<span class="tip"></span>
-							</div>
-							<span class="fill" data-percentage="65"></span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-12 col-lg-6">
-				<div class="alazea-benefits-area">
-					<div class="row">
-						<!-- Single Benefits Area -->
-						<div class="col-12 col-sm-6">
-							<div class="single-benefits-area">
-								<img src="img/core-img/b1.png" alt="">
-								<h5>质量的产品</h5>
-								<p>我们拥有质量最好的参产品
-									，本平台所出售的产品可保证质量</p>
-							</div>
-						</div>
-
-						<!-- Single Benefits Area -->
-						<div class="col-12 col-sm-6">
-							<div class="single-benefits-area">
-								<img src="img/core-img/b2.png" alt="">
-								<h5>完善的服务</h5>
-								<p>我们有最好的服务，
-									通过我们的服务让你宾至如归。</p>
-							</div>
-						</div>
-
-						<!-- Single Benefits Area -->
-						<div class="col-12 col-sm-6">
-							<div class="single-benefits-area">
-								<img src="img/core-img/b3.png" alt="">
-								<h5>100% 自然</h5>
-								<p>我们的植物都是百分之百的纯天然植物，
-									无公害，每颗都是经过精心培养的。</p>
-							</div>
-						</div>
-
-						<!-- Single Benefits Area -->
-						<div class="col-12 col-sm-6">
-							<div class="single-benefits-area">
-								<img src="img/core-img/b4.png" alt="">
-								<h5>环境友好型</h5>
-								<p>植物生长的环境属于大自然，
-									还原大自然的生长环境。</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<div class="border-line"></div>
-			</div>
-		</div>
-	</div>
-	</section>
-	<!-- ##### About Area End ##### -->
 
 	<!-- ##### Portfolio Area Start ##### -->
 	<section class="alazea-portfolio-area section-padding-100-0">
@@ -586,90 +400,9 @@
 	<!-- ##### Portfolio Area End ##### -->
 
 	<!-- ##### Subscribe Area Start ##### -->
-	<section class="subscribe-newsletter-area"
-		style="background-image: url(img/bg-img/subscribe.png);">
-	<div class="container">
-		<div class="row align-items-center justify-content-between">
-			<div class="col-12 col-lg-5">
-				<!-- Section Heading -->
-				<div class="section-heading mb-0">
-					<h2>加入通讯</h2>
-					<p>订阅我们的通讯，先打九折购买</p>
-				</div>
-			</div>
-			<div class="col-12 col-lg-6">
-				<div class="subscribe-form">
-					<form action="#" method="get">
-						<input type="email" name="subscribe-email" id="subscribeEmail"
-							placeholder="输入您的邮箱">
-						<button type="submit" class="btn alazea-btn">订阅</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Subscribe Side Thumbnail -->
-	<div class="subscribe-side-thumb wow fadeInUp" data-wow-delay="500ms">
-		<img class="first-img" src="img/core-img/leaf.png" alt="">
-	</div>
+	<section class="subscribe-newsletter-area">
 	</section>
-	<!-- ##### Subscribe Area End ##### -->
 
-	<!-- ##### Contact Area Start ##### -->
-	<section class="contact-area section-padding-100-0">
-	<div class="container">
-		<div class="row align-items-center justify-content-between">
-			<div class="col-12 col-lg-5">
-				<!-- Section Heading -->
-				<div class="section-heading">
-					<h2>与我们取得联系</h2>
-					<p>请给我们发个消息，我们会及时处理。</p>
-				</div>
-				<!-- Contact Form Area -->
-				<div class="contact-form-area mb-100">
-					<form action="#" method="post">
-						<div class="row">
-							<div class="col-12 col-sm-6">
-								<div class="form-group">
-									<input type="text" class="form-control" id="contact-name"
-										placeholder="您的名字">
-								</div>
-							</div>
-							<div class="col-12 col-sm-6">
-								<div class="form-group">
-									<input type="email" class="form-control" id="contact-email"
-										placeholder="您的邮箱">
-								</div>
-							</div>
-							<div class="col-12">
-								<div class="form-group">
-									<input type="text" class="form-control" id="contact-subject"
-										placeholder="主题">
-								</div>
-							</div>
-							<div class="col-12">
-								<div class="form-group">
-									<textarea class="form-control" name="message" id="message"
-										cols="30" rows="10" placeholder="主要内容"></textarea>
-								</div>
-							</div>
-							<div class="col-12">
-								<button type="submit" class="btn alazea-btn mt-15">发送消息</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-
-			<div class="col-12 col-lg-6">
-				<!-- Google Maps -->
-				<div class="map-area mb-100"></div>
-			</div>
-		</div>
-	</div>
-	</section>
-	<!-- ##### Contact Area End ##### -->
 
 	<!-- ##### Footer Area Start ##### -->
 	<footer class="footer-area bg-img"
