@@ -178,11 +178,39 @@ public class LoginController {
 		return "login";
 	}
 	@RequestMapping("/menu")
-	public String toMenu() {
+	public String toMenu(HttpSession session) {
+		User user = (User) session.getAttribute("User");
+		List<Laboratory> mineLab = laboratoryService.listMineLab(user.getId());
+		List<Laboratory> applicationLab = laboratoryService.listApplicationLab(user.getId());
+		List<Laboratory> WaitLab = laboratoryService.listWaitLab(user.getId());
+		List<Laboratory> WaitLab2 = laboratoryService.listWaitLab2(user.getId());
+		List<Laboratory> unauthorizedLab = laboratoryService.listUnauthorizedLab(user.getId());
+		session.setAttribute("mineLab", mineLab);
+		session.setAttribute("applicationLab", applicationLab);
+		session.setAttribute("unauthorizedLab", unauthorizedLab);
+		session.setAttribute("WaitLab", WaitLab);
+		session.setAttribute("WaitLab2", WaitLab2);
+		Map<List<Laboratory>, List<User>> AllWaitLab = new HashMap<>();
+		AllWaitLab = laboratoryService.listAllWaitLab();
+		session.setAttribute("AllWaitLab", AllWaitLab);
 		return "menu";
 	}
 	@RequestMapping("/mine")
-	public String toMine() {
+	public String toMine(HttpSession session) {
+		User user = (User) session.getAttribute("User");
+		List<Laboratory> mineLab = laboratoryService.listMineLab(user.getId());
+		List<Laboratory> applicationLab = laboratoryService.listApplicationLab(user.getId());
+		List<Laboratory> WaitLab = laboratoryService.listWaitLab(user.getId());
+		List<Laboratory> WaitLab2 = laboratoryService.listWaitLab2(user.getId());
+		List<Laboratory> unauthorizedLab = laboratoryService.listUnauthorizedLab(user.getId());
+		session.setAttribute("mineLab", mineLab);
+		session.setAttribute("applicationLab", applicationLab);
+		session.setAttribute("unauthorizedLab", unauthorizedLab);
+		session.setAttribute("WaitLab", WaitLab);
+		session.setAttribute("WaitLab2", WaitLab2);
+		Map<List<Laboratory>, List<User>> AllWaitLab = new HashMap<>();
+		AllWaitLab = laboratoryService.listAllWaitLab();
+		session.setAttribute("AllWaitLab", AllWaitLab);
 		return "mine";
 	}
 	@RequestMapping("/toregister")
