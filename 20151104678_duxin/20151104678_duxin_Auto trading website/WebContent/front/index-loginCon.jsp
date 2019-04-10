@@ -23,8 +23,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="toolbar-ct col-xs-12 col-md-6  hidden-sm hidden-xs">
-					<div class="toolbar-ct-1">
-						<img src="images/51logo.png">
+					<div class="toolbar-ct-1">		
+						<span style="margin-top:20px; font-size: 40px; text-shadow: 5px 5px 5px black, 0px 0px 2px black;color: red;">51汽车商城</span>
 					</div>
 					<div>
 						<!-- 搜索条 -->
@@ -69,7 +69,7 @@
 		<div class="row">
 			<div class="toolbar-ct-1">
 				<p>
-					<i class="fa fa-phone"></i> <span style="margin-right: 15px;">电话：400-675-1066</span>您好，<%=username%>
+					<i class="fa fa-phone"></i> <span style="margin-right: 15px;">电话：18347145626</span>您好，<%=username%>
 					&nbsp; &nbsp;<a href="modifyMember.jsp">修改</a>&nbsp;&nbsp;
 					|&nbsp;&nbsp;<a href="logout.jsp">退出</a>
 				</p>
@@ -85,7 +85,7 @@
 			<div class="row">
 				<div class="toolbar-ct col-xs-12 col-md-6  hidden-sm hidden-xs">
 					<div class="toolbar-ct-1">
-						<img src="images/51logo.png">
+						<span style="margin-top:20px; font-size: 40px; text-shadow: 5px 5px 5px black, 0px 0px 2px black;color: red;">51汽车商城</span>
 					</div>
 					<div>
 						<!-- 搜索条 -->

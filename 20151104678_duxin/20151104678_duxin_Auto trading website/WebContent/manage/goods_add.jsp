@@ -49,7 +49,7 @@
 <script  type="text/javascript" src="${pageContext.request.contextPath}/front/js/ajaxupload.js"></script>
 
 <script type="text/javascript">
-	$(function(){
+	<%--$(function(){
 		//上传图片
 		new AjaxUpload('#picture', {
 			action: '${pageContext.request.contextPath}/manage/upload.jsp', 
@@ -74,7 +74,7 @@
 				show(response.picUrl);
 			}		
 		});
-	})
+	})--%>
 	  
 	  function show(path){
 	
@@ -90,7 +90,7 @@
 	   //document.getElementById("imgPreview").innerHTML = "<img id='img1' width='120px' height='100px' src='"+path+"'/>";
 	   
 	   document.getElementById("viewImg").src = path;
-	   
+	   alert("path");
 	    }  
 	   };
 
@@ -165,7 +165,7 @@
 			<table width="92%" height="192"  border="0" cellpadding="0" cellspacing="0">
 				<tr>
 				<td valign="top">
-                      <form action="goods_add_deal.jsp" method="post" name="form1" >
+                      <form action="upload.jsp" method="post" name="form1" enctype="multipart/form-data">
                       <fieldset>
                       <table width="100%"  border="0" align="center" cellpadding="-2" cellspacing="-2" bordercolordark="#FFFFFF">
                      
@@ -207,8 +207,8 @@
                       	<td height="41">图片文件：</td>
                     	<td height="41"> 
                     	               	
-                        <input name="picture" type="text" class="Style_upload" value="<%=path%>" id="picture">
-                        <img id="viewImg"  width="100px" height="100px;">	
+                        <input name="picture" type="file" class="Style_upload"  id="picture">
+                       	
                         </td>
                     	<td height="41">定　　价：</td>
 	                    <td height="41"><input name="price" type="text" class="Sytle_text" id="price">(元)</td>
