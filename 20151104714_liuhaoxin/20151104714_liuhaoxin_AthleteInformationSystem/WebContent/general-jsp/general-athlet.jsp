@@ -10,15 +10,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="GameAdd" method="post">
-		<h4>项目:</h4><select name="events">
+<form action="GeneralAthletesQuery" method="post">
+			<table border="0" cellpadding="0" cellspacing="0" style="font-size: 20px"  width="50%" height="31" >
+		<tr>
+		<td>
+		<h3>项目:</h3></td><td>
+				<select name="events">
+				<option value="所有信息">所有信息</option>
 				<c:forEach items="${abe}" var="w">
 					<option value="${w.events}">${w.events}</option>
 				</c:forEach>
 					</select>
-				<input type="submit" value="查询">
-		
-		
+					</td>
+			<td>	<input type="submit" value="查询"></td>
+		</tr>
+		</table>
 	</form>
 <table border="2" cellpadding="0" cellspacing="0"
 		style="font-size: 40px" width="100%" height="100%">

@@ -27,31 +27,31 @@ public class BuytodayServiceimp implements BuytodayService{
 
 	@Override
 	//获取指定学生信息
-	public BuytodayBean getBuytodayMoreInfo(BuytodayBean buytoday) {
-		return buytodayDao.getBuytodayMoreInfo(buytoday);
+	public BuytodayBean getBuytodayMoreInfo(BuytodayBean buy) {
+		return buytodayDao.getBuytodayMoreInfo(buy);
 	}
 
 	@Override
 	//添加学生
-	public int addBuytoday(BuytodayBean buytoday) {
-		return buytodayDao.addBuytoday(buytoday);
+	public int addBuytoday(BuytodayBean buy) {
+		return buytodayDao.addBuytoday(buy);
 	}
 
 	@Override
 	//删除学生
-	public int delBuytoday(BuytodayBean buytoday) {
-		return buytodayDao.delBuytoday(buytoday);
+	public int delBuytoday(BuytodayBean buy) {
+		return buytodayDao.delBuytoday(buy);
 	}
 
 	@Override
 	//修改学生信息
-	public int modifyBuytoday(BuytodayBean buytoday) {
-		return buytodayDao.modifyBuytoday(buytoday);
+	public int modifyBuytoday(BuytodayBean buy) {
+		return buytodayDao.modifyBuytoday(buy);
 	}
 
 	@Override
-	public boolean findBuytoday(BuytodayBean buytoday) {
-		return buytodayDao.findBuytoday(buytoday);
+	public boolean findBuytoday(BuytodayBean buy) {
+		return buytodayDao.findBuytoday(buy);
 	}
 	
 

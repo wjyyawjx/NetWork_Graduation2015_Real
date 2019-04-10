@@ -307,11 +307,12 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${page.rows}" var="rows">
+									
+										<c:forEach items="${page.rows}" var="rows" >
 											<tr>
 												<td>${rows.id}</td>
 												<td>${rows.l_name}</td>
-												<td>${rows.l_image}</td>
+												<td><img width="40px" height="40px" src="${rows.l_image}" /></td>
 												<td>${rows.l_price}</td>
 												<td>${rows.l_info}</td>
 												<td>${rows.l_type}</td>
@@ -324,7 +325,7 @@
 													href="${pageContext.request.contextPath }/updategools_xiajia.action?l_static=${rows.l_static}&id=${rows.id}"
 													class="btn btn-primary btn-xs" data-toggle="modal"
 													data-target="#customerEditDialog"
-													onclick="edituser(${rows.id})">下架商品</a> <a
+													onclick="editgoods(${rows.id})">下架商品</a> <a
 													href="${pageContext.request.contextPath }/deleteGoods.action?id=${rows.id}"
 													class="btn btn-danger btn-xs"
 													onclick="deleteuser(${rows.id})">删除</a></td>

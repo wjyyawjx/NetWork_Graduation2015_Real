@@ -68,7 +68,7 @@ public class Weather extends HttpServlet {
 	            sb.append(line);
 	        }
 	        String str=sb.toString();
-	        
+
 	    	JSONObject obj = new JSONObject(str).getJSONArray("HeWeather6").getJSONObject(0);
 			JSONObject basic = obj.getJSONObject("basic");
 			JSONObject now = obj.getJSONObject("now");
@@ -77,7 +77,7 @@ public class Weather extends HttpServlet {
 			String tmp = "今天气温:" +now.getString("tmp")+"°C  ";
 			String cond_txt = "天气："+now.getString("cond_txt");
 			String loc = "天气信息更新时间是："+update.getString("loc");
-			HttpSession session = request.getSession(); 
+			HttpSession session = request.getSession(); 			
 			session.setAttribute("location",location);
 			session.setAttribute("tmp",tmp);
 			session.setAttribute("cond_txt",cond_txt);

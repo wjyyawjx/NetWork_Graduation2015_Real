@@ -1,20 +1,14 @@
 package com.bs.sxd.controller;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.bs.common.utils.Page;
-
 import com.bs.sxd.po.User;
 import com.bs.sxd.service.UserService;
-
 /**
  * 用户控制器类
  * 
@@ -26,7 +20,6 @@ public class UserController {
 	// 依赖注入
 	@Autowired
 	private UserService userService;
-
 	/*
 	 * 登陆
 	 */
@@ -35,8 +28,7 @@ public class UserController {
 		User user = userService.findUser(username, password, type);
 		if (user != null) {
 			if (user.getType() == 0) {
-				session.setAttribute("USER_SESSION", user);
-				
+				session.setAttribute("USER_SESSION", user);		
 				return "main";
 			} else {
 				return "admin";
@@ -55,19 +47,15 @@ public class UserController {
 		session.setAttribute("USER_SESSION", user);
 		return "personalinformation_user";
 	}
-
-	
 	// 关于用户注册的表单提交
 	@RequestMapping(value = "/personalinformation_user.action")
 	public String personalinformation_user() {
 		return "personalinformation_user";
 	}
-
 	// 添加用戶
 	@RequestMapping(value = "/add.action", method = RequestMethod.POST)
 	public String register(User user, String username, String password, String phone, String qq, String sex,
 			String university, String college, String adreess, Model model) {
-		// System.out.println(username);
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setPhone(phone);
@@ -78,11 +66,9 @@ public class UserController {
 		user.setAdreess(adreess);
 		Integer type = 0;
 		user.setType(type);
-		// System.out.println(user);
 		User u = null;
 		u = userService.findByUserName(username);
 		if (u == null) {
-			// System.out.println(u);
 			userService.addUser(user);
 			return "login";
 		} else {
@@ -90,15 +76,13 @@ public class UserController {
 			return "register";
 		}
 	}
-
 	// 管理员分页、模糊、条件搜索用户
 	@RequestMapping(value = "/finduserlist.action")
 	public String list(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5") Integer rows_u,
 			String username, String sex, Model model) {
 		if (username != null && username != "") {
 			username = "%" + username + "%";
-		}
-		
+		}	
 		Page<User> user = userService.findUserList(page, rows_u, username, sex);
 		// 添加参数
 		model.addAttribute("page", user);
@@ -136,8 +120,7 @@ public class UserController {
 			user.setId(id);
 		    user.setType(type);
 			userService.updateUser_Admin(user);	
-			return "table-user-list";
-			
+			return "table-user-list";			
 		}
 		//修改管理员为用户
 				@RequestMapping(value = "/updateUser_p.action")
@@ -153,15 +136,13 @@ public class UserController {
 					user.setId(id);
 				    user.setType(type);
 					userService.updateUser_Admin(user);	
-					return "table-user-list";
-					
+					return "table-user-list";			
 				}
 				//删除用户
 				@RequestMapping(value = "/deleteUser.action")
 				public String delete_User(Integer id) {			
 					userService.deleteuser(id);
-					return "table-user-list";
-					
+					return "table-user-list";			
 				}
 				/**
 				 * 退出登录
@@ -173,52 +154,41 @@ public class UserController {
 					// 重定向到登录页面的跳转方法
 					return "redirect:login.action";
 				}
-
 				// 关于用户注册的表单提交
 				@RequestMapping(value = "/register.action")
 				public String register() {
 					return "register";
 				}
-
 				@RequestMapping(value = "/person.action")
 				public String person() {
 					return "person";
 				}
-
 				@RequestMapping(value = "/main.action")
 				public String main() {
 					return "main";
 				}
-
 				@RequestMapping(value = "/table-user-list.action")
 				public String table_user_list() {
 					return "table-user-list";
 				}
-
 				@RequestMapping(value = "/table-goods-list-admin.action")
 				public String table_goods_list_admin() {
 					return "table-goods-list-admin";
 				}
-
 				@RequestMapping(value = "/form-news.action")
 				public String form_news() {
 					return "form-news";
 				}
-
 				@RequestMapping(value = "/form-show-goods.action")
 				public String form_show_goods() {
 					return "form-show-goods";
 				}
-
 				@RequestMapping(value = "/form-show-goods-user.action")
 				public String form_show_goods_user() {
 					return "form-show-goods-user";
 				}
-
 				@RequestMapping(value = "/form-lease.action")
 				public String form_lease() {
 					return "form-lease";
 				}
-
-
 }

@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+    <%@page import="com.lyh.springboot.pojo.Role"%>
+    <%@page import="com.lyh.springboot.pojo.LabUser"%>
+    <%@page import="java.util.List"%>
+    <%@page import="javax.servlet.http.HttpSession"%>
 <!DOCTYPE html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -29,14 +33,26 @@
 
         <header id="header" class="media">
             <a href="" id="menu-toggle"></a> 
-            <a class="logo pull-left" href="menu.html">实验室云端监管系统</a>
+            <a class="logo pull-left" href="">实验室云端监管系统</a>
             
             <div class="media-body">
                 <div class="media" id="top-menu">
                     <div class="pull-left tm-icon">
                         <a data-drawer="messages" class="drawer-toggle" href="">
                             <i class="sa-top-message"></i>
-                            <i class="n-count animated">5</i>
+                            <%
+	                    		List<Role> roles = (List<Role>) session.getAttribute("mineRole");
+                            	String role = "";
+	                    		for(Role r : roles){
+	                    			role = role + r.getDesc() + ";";
+	                    		}
+                    			if(role.indexOf("实验室管理老师")!=-1){%>
+                    				<c:forEach items="${AllWaitLab}" var="AllWaitLab">
+						                <i class="n-count animated">${fn:length(AllWaitLab.key)+fn:length(WaitLab)+fn:length(WaitLab2)}</i>
+						        	</c:forEach>
+                    			<%}else{ %>
+                    				<i class="n-count animated">${fn:length(WaitLab)+fn:length(WaitLab2)}</i> 
+                    			<% } %>
                             <span>通知</span>
                         </a>
                     </div>
@@ -112,26 +128,23 @@
                     </li>
                     <li class="dropdown">
                         <a class="sa-side-table" href="">
-                            <span class="menu-item">超级管理</span>
+                            <span class="menu-item">后勤管理</span>
                         </a>
                         <ul class="list-unstyled menu-item">
                         	<li><a href="${pageContext.request.contextPath }/config/listLab">实验室管理</a></li>
-                        	<li><a href="${pageContext.request.contextPath }/config/listPlace">位置管理</a></li>
+                        	<li><a href="${pageContext.request.contextPath }/config/listPlace">位置管理</a></li>                   
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a class="sa-side-chart" href="">
+                            <span class="menu-item">超级管理</span>
+                        </a>
+                         <ul class="list-unstyled menu-item">
                             <li><a href="${pageContext.request.contextPath }/config/listUser">用户管理</a></li>
                             <li><a href="${pageContext.request.contextPath }/config/listRole">角色管理</a></li>
                             <li><a href="${pageContext.request.contextPath }/config/listPermission">权限管理</a></li>                     
                         </ul>
-                    </li>
-                    
-                    <li>
-                        <a class="sa-side-chart" href="">
-                            <span class="menu-item">****</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sa-side-calendar" href="">
-                            <span class="menu-item">我的日程</span>
-                        </a>
                     </li>
                 </ul>
 
@@ -143,24 +156,32 @@
                 <!-- Messages Drawer -->
                 <div id="messages" class="tile drawer animated">
                     <div class="listview narrow">
-                        <div class="media">
-                            <a href="">Send a New Message</a>
-                            <span class="drawer-close">&times;</span>
-                            
-                        </div>
+                        
                         <div class="overflow" style="height: 254px">
                             <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="img/profile-pics/1.jpg" alt="">
-                                </div>
                                 <div class="media-body">
-                                    <small class="text-muted">Nadin Jackson - 2 Hours ago</small><br>
-                                    <a class="t-overflow" href="">Mauris consectetur urna nec tempor adipiscing. Proin sit amet nisi ligula. Sed eu adipiscing lectus</a>
+                                	<c:forEach items="${WaitLab }" var="WaitLab">
+                                		<small class="text-muted">您在${WaitLab.lName }的申请已通过！ 确定后正式加入！</small><a class="t-overflow" href="userEnter?lId=${WaitLab.lId}">确定</a>
+                                	</c:forEach><br>
+                                	<c:forEach items="${WaitLab2 }" var="WaitLab2">
+                                		<small class="text-muted">您在${WaitLab2.lName }的申请未通过！ 请联系实验室负责教师！</small><a class="t-overflow" href="userEnterNo?lId=${WaitLab2.lId}">确定</a>
+                                	</c:forEach>
+                                	<br><br>
+                                	<%
+			                    		for(Role r : roles){
+			                    			 if(r.getDesc().equals("实验室管理老师")){
+			                    				 %>
+			                    				 <c:forEach items="${AllWaitLab}" var="AllWaitLab">
+			                                		<c:forEach items="${AllWaitLab.value}" var="user"  varStatus="loop">
+														<small class="text-muted">“  ${user.name}  ”    正在申请          “  ${AllWaitLab.key[loop.count-1].lName}  ”     的使用权限，是否通过申请？</small>
+														<a class="t-overflow" href="AdminEnter?lId=${AllWaitLab.key[loop.count-1].lId}&id=${user.id}">确定</a>
+														<a class="t-overflow" href="AdminNoEnter?lId=${AllWaitLab.key[loop.count-1].lId}&id=${user.id}">禁止</a>
+														<br><br>
+			    									</c:forEach>
+			                                	</c:forEach>
+			                        <%break; }} %>
                                 </div>
                             </div><!--通知-->
-                        </div>
-                        <div class="media text-center whiter l-100">
-                            <a href=""><small>展开全部</small></a>
                         </div>
                     </div>
                 </div>
@@ -175,33 +196,166 @@
                 <hr class="whiter" />
                 <hr class="whiter" />
                 <hr class="whiter" />
-				<div class="workingroom">
+				<div  class="block-area" style="margin-top:50px; margin-left:80px; ">
+					<div class="col-md-10 col-xs-12  ">
+					<h3>个人信息：</h3>
+					<h4>
 					<table>
 	                	<tr>
-	                		<td>姓名：</td>
+	                		<td rowspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="profile-pic animated" src="${User.image }" alt=""></td>
+	                		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名：</td>
 	                        <td>${User.name}</td>
-	                    </tr>
-	                    <tr>
-							<td>编号： </td>
+	                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编号： </td>
 	                        <td>${User.num }</td>
-	                    </tr>
-	                    <tr>
-							<td>性别： </td>
+	                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别： </td>
 	                        <td>${User.sex }</td>
 	                    </tr>
 	                    <tr>
-							<td>年龄： </td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年龄： </td>
 	                        <td>${User.age }</td>
-	                    </tr>
-	                    <tr>
-							<td>电话： </td>
+	                        <td></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电话： </td>
 	                        <td>${User.tel }</td>
-	                    </tr>
-	                    <tr>
-							<td>邮箱： </td>
+	                        <td></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱： </td>
 	                        <td>${User.email }</td>
 	                    </tr>
+	                    <tr>
+	                    	<td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的权限信息：</td>
+	                    	<td colspan="5">
+	                    	<c:forEach items="${mineRole }" var="mineRole">
+	                    		${mineRole.desc }；
+	                    	</c:forEach>
+	                    	</td>
+	                    </tr>
 	                </table>
+	                </h4>
+	                <br><br>
+	                </div>
+	                <div class="col-md-3 col-xs-8  ">
+	                	<h3>已授权实验室：</h3>
+	                	<h4>
+	                	<table>
+	                		<c:forEach items="${mineLab}" var="ml" >
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ml.lName }</td>
+	                		</tr>
+	                		</c:forEach>
+	                	</table>
+	                	</h4>
+	                	
+	                </div>
+	                <div class="col-md-3 col-xs-8  ">
+	                	<h3>申请中实验室：</h3>
+	                	<h4>
+	                	<table>
+	                		<c:forEach items="${applicationLab}" var="al" >
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${al.lName }</td>
+	                		</tr>
+	                		</c:forEach>
+	                	</table>
+	                	</h4>
+	                	
+	                </div>
+	                <div class="col-md-3 col-xs-8  ">
+	                	<h3>未授权实验室：</h3>
+	                	<h4>
+	                	<table>
+	                		<c:forEach items="${unauthorizedLab}" var="ul" >
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ul.lName }</td>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	                			<td><a href="applicationLab?lId=${ul.lId}">申请</a></td>
+	                		</tr>
+	                		</c:forEach>
+	                	</table>
+	                	</h4>
+	                	
+	                </div>
+	                <div class="col-md-10 col-xs-8  "><br><br></div>
+	                <div class="col-md-5 col-xs-8  ">
+	                <form action="${pageContext.request.contextPath }/editMine" method="post" enctype="multipart/form-data">
+	                	<h3>个人信息修改：</h3>
+	                	<h4>
+	                	<table>
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名：</td>
+	                			<td><input type="text" name="name" value="${User.name}" style="color:black" placeholder="姓名"></td>
+	                		</tr>
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系方式：</td>
+	                			<td><input type="text" name="tel" value="${User.tel }" style="color:black" placeholder="联系方式"></td>
+	                		</tr>
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电子邮箱：</td>
+	                			<td><input type="text" name="email" value="${User.email }" style="color:black" placeholder="电子邮箱"></td>
+	                		</tr>
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;头像：</td>
+	                			<td><input type="file" id="image" name="image" value="${User.image}" accept="image/*" placeholder="头像"></td>
+	                		</tr>
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年龄：</td>
+	                			<td><input type="text" name="age" value="${User.age }" style="color:black" placeholder="年龄"></td>
+	                		</tr>
+	                	</table><br>
+	                	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                	<button type="submit" style="background-color: red;border: none;color: white;padding: 10px 25px;text-align: center;text-decoration: none;display: inline-block; font-size: 13px;">修改</button>
+	                	</h4>
+	                </form>
+	                </div>
+	                <script>
+						function editPwd(){
+			    			var pwd = $("#pwd").val();
+			    			var pwd1 = $("#pwd1").val();
+			    			var randomjsp = $("#randomjsp").val();
+			    			if(pwd!=pwd1){
+			    				alert("两次密码不一致！");
+			        			return false;
+			    			}
+			    			if(randomjsp == ""){
+			    				alert("请输入验证码！");
+			        			return false;
+			    			}
+			    			return true;
+						}
+					</script>
+	                <div class="col-md-5 col-xs-8 ">
+	                <form action="${pageContext.request.contextPath }/editPwd" method="post" onsubmit="return editPwd()" >
+	                	<h3>密码修改：</h3>
+	                	<h4>
+	                	<table>
+	                	<tr>
+	                		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新密码：</td>
+	                		<td><input type="text" id="pwd" name="pwd" style="height:20;color:black" placeholder="请新输入密码"/></td>
+	                		</tr>
+	                		<tr>
+	                		<td>&nbsp;</td>
+	                		</tr>
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;再次输入：</td>
+	                			<td><input type="text" id="pwd1" style="height:20;color:black" placeholder="请再次输入密码"/></td>
+	                		</tr>
+	                		<tr>
+	                		<td>&nbsp;</td>
+	                		</tr>
+	                		<tr>
+	                			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;验证码：</td>
+	                			<td><input type="text" name="randomjsp" class="uname"  style="height:20;color:black" placeholder="请输入验证码">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td><img src="getVerify" alt="" style="width:100; height:30" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'"></td>
+							</tr>
+						</table><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                	<button type="submit" style="background-color: red;border: none;color: white;padding: 10px 25px;text-align: center;text-decoration: none;display: inline-block; font-size: 13px;" onclick="return editPwd()">修改</button>
+	                	</h4>
+	                	<br>
+	                </form>
+	                </div>
+	                
+	                </div>
 				</div>
             </section>
 

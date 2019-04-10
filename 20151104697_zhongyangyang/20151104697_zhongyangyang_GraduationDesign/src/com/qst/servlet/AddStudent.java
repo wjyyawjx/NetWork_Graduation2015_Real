@@ -47,8 +47,10 @@ public class AddStudent extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		HttpServletRequest req = (HttpServletRequest) request; 
 		req.setCharacterEncoding("utf-8");
+		
 		Student stu = new Student();
-
+		
+		
 		 //1、创建一个DiskFileItemFactory工厂  
         DiskFileItemFactory factory = new DiskFileItemFactory();  
         //2、创建一个文件上传解析器  
@@ -135,8 +137,10 @@ public class AddStudent extends HttpServlet {
 			if(opr.equals("addStu")){
 				n = studentService.addStudent(stu);
 			}else if(opr.equals("modifyStu")){
-				int id = Integer.parseInt(request.getParameter("stuId"));
+				int id = (Integer)request.getSession().getAttribute("user_id");
+				
 				stu.setId(id);
+				
 				n = studentService.modifyStudent(stu);
 			}
            

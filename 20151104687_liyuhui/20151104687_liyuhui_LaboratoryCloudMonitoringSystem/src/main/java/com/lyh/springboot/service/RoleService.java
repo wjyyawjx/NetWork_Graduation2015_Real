@@ -23,4 +23,6 @@ public interface RoleService {
 	public Role get(Long id);
 
 	public void update(Role role);
+
+	public List<Role> listMineRole(Long id);
 }

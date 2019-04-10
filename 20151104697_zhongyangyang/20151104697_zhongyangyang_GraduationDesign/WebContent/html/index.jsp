@@ -60,7 +60,7 @@
         <div class="inner-cont1 w1200">
           <div class="inner-cont2">
             <a href="html/commodity.jsp" class="active">所有商品</a>
-            <a href="html/buytoday.html">今日团购</a>
+            <a href="html/buytoday.jsp">今日团购</a>
             <a href="html/information.html">手机资讯</a>
             <a href="html/about.html">关于我们</a>
           </div>
@@ -303,6 +303,8 @@
     <div class="product-list-box" id="product-list-box">
       <div class="product-list-cont w1200">
         <h4>更多推荐</h4>
+        
+        <div class="product-item-box layui-clear" id="list-cont">
         <%
              		session.removeAttribute("list");
   					RecommendService recService = new RecommendServiceimp();
@@ -310,14 +312,21 @@
                     session.setAttribute("list", list);
                      for(RecommendBean rec:list){
                  %>
-        <div class="product-item-box layui-clear">
           <div class="list-item">
-            <a href="javascript:;"><img src="../20151104697_zhongyangyang_GraduationDesign/res/static/img/more1.jpg"></a>
-            <p><%=rec.getComname() %></p>
-            <span><%=rec.getPrice()%></span>
+          	<div class="img">
+          		<a href="javascript:;"><img src="<%=rec.getPhotoname() %>"  style="width:230px;height:200px;"></a>
+          	</div>
+          	<div class="text">
+          		<p class="title"><%=rec.getComname() %></p>
+          	</div>
+            <p class="pri">
+            	<span><%=rec.getPrice()%>¥</span>
+            </p>
+
           </div>
+           <%} %>
         </div>
-        <%} %>
+       
       </div>
     </div>
   </div>

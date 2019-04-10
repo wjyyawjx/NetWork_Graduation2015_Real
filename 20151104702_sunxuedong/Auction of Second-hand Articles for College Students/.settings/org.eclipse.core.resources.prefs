@@ -1,9 +1,11 @@
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/jsp/Edit_Per_goods.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/admin.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/commodity_information.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/goodsInformation-purchase.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/login.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/main.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/mygoods.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/personalinformation_user.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/register.jsp=UTF-8
 encoding//src/com/bs/common/utils/NavigationTag.java=UTF-8

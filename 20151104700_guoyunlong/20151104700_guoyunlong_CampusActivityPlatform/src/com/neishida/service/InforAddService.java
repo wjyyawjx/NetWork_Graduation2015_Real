@@ -2,6 +2,9 @@ package com.neishida.service;
 
 import com.neishida.bean.UserInformationBean;
 import com.neishida.dao.InforAddDao;
+
+import java.util.List;
+
 import com.neishida.bean.ActivityBean;
 
 public class InforAddService {
@@ -23,4 +26,9 @@ public class InforAddService {
 		InforAddDao infordao = new InforAddDao();
 		infordao.actadd(act);
 	}
+	
+	//获取所有学生信息
+		public List<UserInformationBean> getalluser() {
+			return InforAddDao.getalluser();
+		}
 }

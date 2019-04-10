@@ -93,16 +93,11 @@
 						class="fa fa-question-circle" aria-hidden="true"></i> 帮助</a></li>
 			</ul>
 		</div>
+		<h1>
+			<a href="${pageContext.request.contextPath }/index.action"><img
+				src="img/core-img/logo.png" alt=""></a>
+		</h1>
 		<div class="clearfix"></div>
-	</div>
-	<div class="container">
-		<div class="agile-its-header">
-			<div class="logo">
-				<h1>
-					<a href="${pageContext.request.contextPath }/index.action">主页</a>
-				</h1>
-			</div>
-		</div>
 	</div>
 	</header>
 	<section>

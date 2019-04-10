@@ -104,12 +104,12 @@ body {
 			<a class='x' href='' ; onclick="msgbox(0); return false;">关闭</a>
 			<div align="center" style="display: none">
 				id： <input type="text" style="width: 200px; height: 30px" name="id"
-					id="id" placeholder="请修改用户名" onblur="lostcode()"
+					id="id" onblur="lostcode()"
 					value="${USER_SESSION.id}" readonly="readonly">
 			</div>
 			<div align="center">
 				用户名： <input type="text" style="width: 200px; height: 30px"
-					name="username" id="username" placeholder="请修改用户名"
+					name="username" id="username" 
 					onblur="lostcode()" value="${USER_SESSION.username}">
 			</div>
 			<br>
@@ -127,32 +127,32 @@ body {
 			<div align="center">
 				联系方式: <input type="text" name="phone" id="phone"
 					onkeyup="value=value.replace(/[^\d]/g,'')" maxlength='11'
-					placeholder="请输入数字" style="width: 200px; height: 30px"
-					placeholder="请修改手机号" value="${USER_SESSION.phone}">
+					 style="width: 200px; height: 30px"
+					 value="${USER_SESSION.phone}">
 			</div>
 			<br>
 			<div align="center">
 				Q&nbsp;&nbsp;&nbsp;&nbsp;Q&nbsp;&nbsp;: <input type="text" name="qq"
 					id="qq" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength='11'
-					style="width: 200px; height: 30px" placeholder="请修改QQ"
+					style="width: 200px; height: 30px"
 					value="${USER_SESSION.qq}">
 			</div>
 			<br>
 			<div align="center">
 				学校名称: <input type="text" name="university" id="university"
-					style="width: 200px; height: 30px" placeholder="请修改学校"
+					style="width: 200px; height: 30px" 
 					value="${USER_SESSION.university}">
 			</div>
 			<br>
 			<div align="center">
 				所属学院： <input type="text" name="college" id="college"
-					style="width: 200px; height: 30px" placeholder="请修改学院"
+					style="width: 200px; height: 30px" 
 					value="${USER_SESSION.college}">
 			</div>
 			<br>
 			<div align="center">
 				家庭地址: <input type="text" name="adreess" id="adreess"
-					style="width: 200px; height: 30px" placeholder="请修改家庭地址"
+					style="width: 200px; height: 30px"
 					value="${USER_SESSION.adreess}">
 			</div>
 			<br> <input type="submit" value="确定">

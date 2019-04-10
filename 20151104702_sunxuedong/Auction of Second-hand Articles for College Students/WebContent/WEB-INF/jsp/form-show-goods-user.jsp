@@ -38,81 +38,79 @@
 
 
 
-<script language="JavaScript">  
-   function dateStart()   
-   {   
-       //月份对应天数
-       MonHead = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];   
-    
-       //给年下拉框赋内容   
-       var y  = new Date().getFullYear();   
-       for (var i = (y-50); i < (y+50); i++) //以今年为准，前50年，后50年   
-           document.date.year.options.add(new Option(" "+ i +" 年", i));   
-    
-       //给月下拉框赋内容   
-       for (var i = 1; i < 13; i++)   
-           document.date.month.options.add(new Option(" " + i + " 月", i));
-   
-       document.date.year.value = y;   
-       document.date.month.value = new Date().getMonth() + 1;   
-       var n = MonHead[new Date().getMonth()];   
-       if (  new Date().getMonth() ==1 && IsPinYear(yearvalue)  ) 
-           n++;   
-       writeDay(n); //赋日期下拉框   
-       document.date.day.value = new Date().getDate();   
-   } 
-  
-   if(document.attachEvent)   
-       window.attachEvent("onload", dateStart);   
-   else   
-       window.addEventListener('load', dateStart, false);   
- 
-   function selectYear(str) //年发生变化时日期发生变化(主要是判断闰平年)   
-   {   
-       var monthvalue = document.date.month.options[document.date.month.selectedIndex].value;   
-       if (monthvalue == "")
-       {
-           var e = document.date.day;
-           optionsClear(e);
-           return;
-       }   
-       var n = MonHead[monthvalue - 1];   
-       if (  monthvalue ==2 && IsPinYear(str)  ) 
-           n++;   
-       writeDay(n);   
-   }   
- 
-   function selectMonth(str)   //月发生变化时日期联动   
-   {   
-        var yearvalue = document.date.year.options[document.date.year.selectedIndex].value;   
-        if (yearvalue == "")
-        { 
-            var e = document.date.day; 
-            optionsClear(e);
-            return;
-        }   
-        var n = MonHead[str - 1];   
-        if (  str ==2 && IsPinYear(yearvalue)  ) 
-            n++;   
-            writeDay(n);  
-        }   
- 
-   function writeDay(n)   //据条件写日期的下拉框   
-   {   
-       var e = document.date.day; optionsClear(e);   
-       for (var i=1; i<(n+1); i++)   
-           e.options.add(new Option(" "+ i + " 日", i));   
-   }   
- 
-   function IsPinYear(year)//判断是否闰平年   
-   {     
-       return(  0 == year%4 && ( year%100 !=0 || year%400 == 0 )  );
-   }
- 
-   function optionsClear(e) 
-   { 
-       e.options.length = 1; 
-   }
+<script language="JavaScript">
+	function dateStart() {
+		//月份对应天数
+		MonHead = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+		//给年下拉框赋内容   
+		var y = new Date().getFullYear();
+		for (var i = (y - 50); i < (y + 50); i++)
+			//以今年为准，前50年，后50年   
+			document.date.year.options.add(new Option(" " + i + " 年", i));
+
+		//给月下拉框赋内容   
+		for (var i = 1; i < 13; i++)
+			document.date.month.options.add(new Option(" " + i + " 月", i));
+
+		document.date.year.value = y;
+		document.date.month.value = new Date().getMonth() + 1;
+		var n = MonHead[new Date().getMonth()];
+		if (new Date().getMonth() == 1 && IsPinYear(yearvalue))
+			n++;
+		writeDay(n); //赋日期下拉框   
+		document.date.day.value = new Date().getDate();
+	}
+
+	if (document.attachEvent)
+		window.attachEvent("onload", dateStart);
+	else
+		window.addEventListener('load', dateStart, false);
+
+	function selectYear(str) //年发生变化时日期发生变化(主要是判断闰平年)   
+	{
+		var monthvalue = document.date.month.options[document.date.month.selectedIndex].value;
+		if (monthvalue == "") {
+			var e = document.date.day;
+			optionsClear(e);
+			return;
+		}
+		var n = MonHead[monthvalue - 1];
+		if (monthvalue == 2 && IsPinYear(str))
+			n++;
+		writeDay(n);
+	}
+
+	function selectMonth(str) //月发生变化时日期联动   
+	{
+		var yearvalue = document.date.year.options[document.date.year.selectedIndex].value;
+		if (yearvalue == "") {
+			var e = document.date.day;
+			optionsClear(e);
+			return;
+		}
+		var n = MonHead[str - 1];
+		if (str == 2 && IsPinYear(yearvalue))
+			n++;
+		writeDay(n);
+	}
+
+	function writeDay(n) //据条件写日期的下拉框   
+	{
+		var e = document.date.day;
+		optionsClear(e);
+		for (var i = 1; i < (n + 1); i++)
+			e.options.add(new Option(" " + i + " 日", i));
+	}
+
+	function IsPinYear(year)//判断是否闰平年   
+	{
+		return (0 == year % 4 && (year % 100 != 0 || year % 400 == 0));
+	}
+
+	function optionsClear(e) {
+		e.options.length = 1;
+	}
 </script>
 </head>
 
@@ -182,7 +180,8 @@
 							class="tpl-dropdown-content-photo"> <img
 								src="assets/img/user02.png" alt="">
 						</span> <span class="tpl-dropdown-content-subject"> <span
-								class="tpl-dropdown-content-from"> ${USER_SESSION.username} </span> <span
+								class="tpl-dropdown-content-from">
+									${USER_SESSION.username} </span> <span
 								class="tpl-dropdown-content-time">10分钟前 </span>
 						</span> <span class="tpl-dropdown-content-font"> Amaze UI 的诞生，依托于
 								GitHub 及其他技术社区上一些优秀的资源；Amaze UI 的成长，则离不开用户的支持。 </span>
@@ -312,7 +311,7 @@
 							<i
 							class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
 					</a> <!-- 打开状态 添加 display:block-->
-						<ul class="tpl-left-nav-sub-menu" >
+						<ul class="tpl-left-nav-sub-menu">
 							<li>
 								<!-- 打开状态 a 标签添加 active 即可   --> <a
 								href="${pageContext.request.contextPath }/form-show-goods-user.action">
@@ -325,7 +324,8 @@
 						</ul>
 					</li>
 
-					<li class="tpl-left-nav-item"><a href="${pageContext.request.contextPath }/logout.action"
+					<li class="tpl-left-nav-item"><a
+						href="${pageContext.request.contextPath }/logout.action"
 						class="nav-link tpl-left-nav-link-list"> <i
 							class="am-icon-key"></i> <span>退出</span>
 
@@ -341,7 +341,8 @@
 		<div class="tpl-content-wrapper">
 			<div class="tpl-content-page-title">Amaze UI 表单</div>
 			<ol class="am-breadcrumb">
-				<li><a href="${pageContext.request.contextPath }/main.action" class="am-icon-home">首页</a></li>
+				<li><a href="${pageContext.request.contextPath }/main.action"
+					class="am-icon-home">首页</a></li>
 				<li><a href="#">表单</a></li>
 				<li class="am-active">Amaze UI 表单</li>
 			</ol>
@@ -379,8 +380,8 @@
 									</div>
 								</div>
 								<div class="am-form-group">
-									<label class="am-u-sm-3 am-form-label">上传封面：</label>
-									<input type="file" name="file">
+									<label class="am-u-sm-3 am-form-label">上传封面：</label> <input
+										type="file" name="file">
 								</div>
 								<div class="am-form-group">
 									<label for="l_price" class="am-u-sm-3 am-form-label">价格</label>
@@ -405,7 +406,8 @@
 										<span class="tpl-form-line-small-title">Type</span>
 									</label>
 									<div class="am-u-sm-9">
-										<select data-am-selected="{searchBox: 1}" name="l_type" id="l_type">
+										<select data-am-selected="{searchBox: 1}" name="l_type"
+											id="l_type">
 											<option value="笔记">笔记</option>
 											<option value="图书">图书</option>
 											<option value="工具">工具</option>
@@ -422,7 +424,8 @@
 									<label for="l_out_time" class="am-u-sm-3 am-form-label">允许租赁时间:</label>
 									<div class="am-u-sm-9">
 
-										<input id="l_out_time" name="l_out_time" type="text" value="" readonly="true"/>
+										<input id="l_out_time" name="l_out_time" type="text" value=""
+											readonly="true" />
 									</div>
 								</div>
 								<script language="javascript" type="text/javascript">
@@ -442,28 +445,36 @@
 									<label for="l_in_time" class="am-u-sm-3 am-form-label">租赁截止日期</label>
 									<div class="am-u-sm-9">
 
-										 <select name="year" id="year" onchange="selectYear(this.value)">
+										<select name="year" id="year"
+											onchange="selectYear(this.value)">
 											<option value="year">选择 年</option>
-										</select> <select name="month" id="month"  onchange="selectMonth(this.value)">
+										</select> <select name="month" id="month"
+											onchange="selectMonth(this.value)">
 											<option value="mothe">选择 月</option>
-										</select> <select name="day" id="day" >
+										</select> <select name="day" id="day">
 											<option value="day">选择 日</option>
-										</select> 
-                                       
+										</select>
+
 									</div>
 								</div>
 
+								<div class="am-form-group"></div>
+
 								<div class="am-form-group">
-									
-									
+									<label for="u_id" class="am-u-sm-3 am-form-label">卖家ID：</label>
+									<div class="am-u-sm-9">
+										<input id="u_id" name="u_id" type="text"
+											value="${USER_SESSION.id}" readonly="readonly">
+
+									</div>
 								</div>
 
 
-
 								<div class="am-form-group">
-									<label for="u_id" class="am-u-sm-3 am-form-label">物主id</label>
+									<label for="u_id" class="am-u-sm-3 am-form-label">卖家：</label>
 									<div class="am-u-sm-9">
-										<textarea class="" id="u_id" name="u_id" placeholder="物主id"></textarea>
+										<input id="u_name" name="u_name" type="text"
+											value="${USER_SESSION.username}" readonly="readonly">
 
 									</div>
 								</div>

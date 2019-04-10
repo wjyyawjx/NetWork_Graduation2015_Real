@@ -1,4 +1,4 @@
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -16,29 +16,29 @@
 
 	<br>
 	<br>
-	
+	<c:forEach items="${list}" var="listuser">
 	<table border="2" cellpadding="0" cellspacing="0"
 		style="font-size: 20px" ; width="100%" height="100%">
 
 		<tr>
 			<td style="width: 20%">
-			<img style="width: 300px ;height: 200px" alt="没有图片"  src="img/a.jpeg" >
+			<img style="width: 300px ;height: 200px" alt="没有图片"  src="${listuser.p_img}" >
 				</td>
 				
 			<td>
 				
-				姓名:${w.xingming}
+				姓名:${listuser.u_name}
 				<br>
-				电话:${w.xingming}
+				电话:${listuser.u_phone}
 				<br>
-				邮箱:${w.xingming}
+				邮箱:${listuser.u_email}
 				<br>
-				简介:<br><textarea name="message" readonly="" rows="7" cols="60">The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.The cat was playing in the garden.
-The cat was playing in the garden.
+				简介:<br><textarea name="message" readonly="" rows="7" cols="60">${listuser.u_message}
 </textarea></td>
 
 			
 		</tr>
 	</table>
+	</c:forEach>
 </body>
 </html>

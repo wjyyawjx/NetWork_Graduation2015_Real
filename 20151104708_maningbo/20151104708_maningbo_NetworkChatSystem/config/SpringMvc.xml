@@ -20,4 +20,21 @@
  			<!-- 后缀 -->
  			<property name="suffix" value=".jsp"></property>
  		</bean>
+ 		
+	<!-- 文件上传 -->  
+	<bean id="multipartResolver"  
+	    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+	    <!-- 设置上传文件的最大尺寸为5MB -->  
+	    <property name="maxUploadSize">  
+	        <value>5242880</value>  
+	    </property>  
+	</bean>  
+ 	<mvc:interceptors>
+ 		<mvc:interceptor>
+ 			<mvc:mapping path="/**"/>
+ 			<mvc:exclude-mapping path="/**/login.action"/>
+ 			<mvc:exclude-mapping path="/**/register.action"/>
+ 			<bean class="cn.chat.Interceptor.LoginInterceptor"></bean>
+ 		</mvc:interceptor>
+ 	</mvc:interceptors>
     </beans>

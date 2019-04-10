@@ -1,14 +1,46 @@
 
 package cn.chat.pojo;
 
+import java.util.List;
+
 public class UserBean {
 	private int id;
 	private String userName;
 	private String userPass;
 	private String gender;
 	private String phone;
+	private String birthDay;
+	private int flag;
+	
+	public int getFlag() {
+		return flag;
+	}
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
+	private List<UserBeanVo> listVo;
+	public String getBirthDay() {
+		return birthDay;
+	}
+	public List<UserBeanVo> getListVo() {
+		return listVo;
+	}
+	public void setListVo(List<UserBeanVo> listVo) {
+		this.listVo = listVo;
+	}
+	public void setBirthDay(String birthDay) {
+		this.birthDay = birthDay;
+	}
 	private String email;
 	private String image;
+	private String role;
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public String getGender() {
 		return gender;
 	}

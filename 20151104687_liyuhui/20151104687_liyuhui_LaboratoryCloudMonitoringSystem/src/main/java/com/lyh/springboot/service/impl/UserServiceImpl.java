@@ -154,7 +154,6 @@ public class UserServiceImpl implements UserService {
 		List<User> users = new ArrayList<>();
 
 		LabUserExample example = new LabUserExample();
-
 		example.createCriteria().andLIdEqualTo(laboratory.getlId());
 		List<LabUser> labUsers = labUserMapper.selectByExample(example);
 

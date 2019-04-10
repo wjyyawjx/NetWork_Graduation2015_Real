@@ -67,8 +67,8 @@ public class StudentDaoimp extends BaseDao implements StudentDao {
 	public int addStudent(Student stu) {
 		System.out.println(stu.getName()+"StudaoImp名字");
 		int row = 0;
-		String sql = "insert into student(`id`,`file`,`name`,`sex`,`age`,`fileName`) values(?,?,?,?,?)";
-		Object[] params = {stu.getId(),stu.getFile(),stu.getName(),stu.getSex(),stu.getAge(),stu.getFileName()};
+		String sql = "insert into student(`file`,`name`,`sex`,`age`,`fileName`) values(?,?,?,?,?)";
+		Object[] params = {stu.getFile(),stu.getName(),stu.getSex(),stu.getAge(),stu.getFileName()};
 		row = this.executeUpdateSQL(sql, params);
 		if(row>0){
 			System.out.println("添加学生信息成功");
@@ -97,7 +97,7 @@ public class StudentDaoimp extends BaseDao implements StudentDao {
 	//修改学生信息
 	public int modifyStudent(Student stu) {
 		int row = 0;
-		String sql = "update student set fileName=?, name=?,age=?,sex=?, where id=?";
+		String sql = "update student set fileName=?, name=?,age=?,sex=? where id=?";
 		Object[] params = {stu.getFileName(),stu.getName(),stu.getSex(),stu.getAge(),stu.getId()};
 		row = this.executeUpdateSQL(sql, params);
 		if(row>0){

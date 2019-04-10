@@ -20,16 +20,37 @@
 
 		}
   
+  function show() {
+      var fileTag = document.getElementById('pho');
+      fileTag.onchange = function () {
+          var file = fileTag.files[0];
+          var fileReader = new FileReader();
+          fileReader.onloadend = function () {
+              if (fileReader.readyState == fileReader.DONE) {
+                  document.getElementById('img').setAttribute('src', fileReader.result);
+              }
+          }
+          fileReader.readAsDataURL(file);
+      }
+  }
+  
 </script>
 </head>
 <body>
 <h2>添加商品信息</h2>
-<form action="../Tmbuy?opr=addTm" method="post">
+<form action="../Tmbuy?opr=addTm" method="post" enctype = "multipart/form-data">
 
 <table>
   <tr>
+  		<img src="${pageContext.request.contextPath}/image/preview.jpg" id="img" style="width:80px;height:80px;"/>
+  </tr>
+  <tr>
+	<td>图片上传</td>
+	<td><input type="file" id="pho" name="phoupload" onclick="show()"/> </td>
+  </tr>
+  <tr>
      <td>商品名：</td>
-    <td><input type="text" name="tmTmname" ></td>
+    <td><input type="text" name="tmname" ></td>
   </tr>
    <tr>
     <td>销量排行：</td>

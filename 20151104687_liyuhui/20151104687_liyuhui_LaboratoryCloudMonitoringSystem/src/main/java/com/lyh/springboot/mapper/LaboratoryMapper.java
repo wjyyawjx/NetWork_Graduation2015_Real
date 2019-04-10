@@ -30,4 +30,6 @@ public interface LaboratoryMapper {
 
 	List<Laboratory> selectLab(LaboratoryExample example);
 
+	Laboratory selectNoByPrimaryKey(Integer lId);
+
 }

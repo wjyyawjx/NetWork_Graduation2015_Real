@@ -1,10 +1,12 @@
 package cn.chat.pojo;
 
+import java.util.Date;
+
 public class Friend {
 	private String friend_1;
 	private String friend_2;
 	private String f1_allow;
-	private String f2_allow;
+	private Date f2_allow;
 	public String getFriend_1() {
 		return friend_1;
 	}
@@ -23,11 +25,11 @@ public class Friend {
 	public void setF1_allow(String f1_allow) {
 		this.f1_allow = f1_allow;
 	}
-	public String getF2_allow() {
+	public Date getF2_allow() {
 		return f2_allow;
 	}
-	public void setF2_allow(String f2_allow) {
-		this.f2_allow = f2_allow;
+	public void setF2_allow(Date date) {
+		this.f2_allow = date;
 	}
 	
 }

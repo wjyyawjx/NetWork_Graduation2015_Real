@@ -72,6 +72,7 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/**", "url");
         
         filterChainDefinitionMap.put("/config/**", "url");
+        filterChainDefinitionMap.put("/config/skinChange", "anon");
         
         shiroFilterFactoryBean.setFilters(customisedFilter);
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);

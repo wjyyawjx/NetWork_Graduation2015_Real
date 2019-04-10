@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+    <%@page import="com.lyh.springboot.pojo.User"%>
+    <%@page import="java.util.List"%>
 <!DOCTYPE html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -25,22 +27,17 @@
         <link href="css/icons.css" rel="stylesheet">
         <link href="css/generics.css" rel="stylesheet"> 
         <script src="js/echarts.min.js"></script>
+        <script src="js/jquery.min.js"></script>
     </head>
     <body id="${User.color}">
 
         <header id="header" class="media">
             <a href="" id="menu-toggle"></a> 
-            <a class="logo pull-left" href="menu.html">实验室云端监管系统</a>
+            <a class="logo pull-left" href="">实验室云端监管系统</a>
             
             <div class="media-body">
                 <div class="media" id="top-menu">
-                    <div class="pull-left tm-icon">
-                        <a data-drawer="messages" class="drawer-toggle" href="">
-                            <i class="sa-top-message"></i>
-                            <i class="n-count animated">5</i>
-                            <span>通知</span>
-                        </a>
-                    </div>
+                   
                     <div id="time" class="pull-right">
    
                         <span id="hours"></span>
@@ -113,26 +110,23 @@
                     </li>
                     <li class="dropdown">
                         <a class="sa-side-table" href="">
-                            <span class="menu-item">超级管理</span>
+                            <span class="menu-item">后勤管理</span>
                         </a>
                         <ul class="list-unstyled menu-item">
                         	<li><a href="${pageContext.request.contextPath }/config/listLab">实验室管理</a></li>
-                        	<li><a href="${pageContext.request.contextPath }/config/listPlace">位置管理</a></li>
+                        	<li><a href="${pageContext.request.contextPath }/config/listPlace">位置管理</a></li>                   
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a class="sa-side-chart" href="">
+                            <span class="menu-item">超级管理</span>
+                        </a>
+                         <ul class="list-unstyled menu-item">
                             <li><a href="${pageContext.request.contextPath }/config/listUser">用户管理</a></li>
                             <li><a href="${pageContext.request.contextPath }/config/listRole">角色管理</a></li>
                             <li><a href="${pageContext.request.contextPath }/config/listPermission">权限管理</a></li>                     
                         </ul>
-                    </li>
-                    
-                    <li>
-                        <a class="sa-side-chart" href="">
-                            <span class="menu-item">****</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sa-side-calendar" href="">
-                            <span class="menu-item">我的日程</span>
-                        </a>
                     </li>
                 </ul>
 
@@ -140,31 +134,6 @@
         
             <!-- Content -->
             <section id="content" class="container">
-            
-                <!-- Messages Drawer -->
-                <div id="messages" class="tile drawer animated">
-                    <div class="listview narrow">
-                        <div class="media">
-                            <a href="">Send a New Message</a>
-                            <span class="drawer-close">&times;</span>
-                            
-                        </div>
-                        <div class="overflow" style="height: 254px">
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="img/profile-pics/1.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">Nadin Jackson - 2 Hours ago</small><br>
-                                    <a class="t-overflow" href="">Mauris consectetur urna nec tempor adipiscing. Proin sit amet nisi ligula. Sed eu adipiscing lectus</a>
-                                </div>
-                            </div><!--通知-->
-                        </div>
-                        <div class="media text-center whiter l-100">
-                            <a href=""><small>展开全部</small></a>
-                        </div>
-                    </div>
-                </div>
                 
                 <hr class="whiter" />
                 <div style="font-size:20px; text-align:center; ">
@@ -182,9 +151,9 @@
                     
                     <div class="row">
                     	
-                        <div class="col-md-5 col-xs-8  ">
+                        <div class="col-md-6 col-xs-8  ">
                         	<a style="font-size:18px">实验室温湿度记录</a>
-	                        <table  border="1" style="width:100%; border-color:white">
+	                        <!-- <table  border="1" style="width:100%; border-color:white">
 	                			<tr>
 	                				<td>编号</td>
 	                				<td>时间</td>
@@ -199,15 +168,190 @@
 	                				<td>${lab_ths.humidity} %</td>
 	                			</tr>
 	                			</c:forEach>
-	                		</table>
-                        	
+	                		</table> -->
+	                		<input type="hidden" value="${fn:length(lab_ths)}" name="lab_length" id="lab_length">
+	                		<c:forEach items="${lab_ths}" var="lab_ths" varStatus="status">
+    					 		<input type="hidden" value="${lab_ths.time }" name='Time${status.count}' id='Time${status.count}'>
+    					 		<input type="hidden" value="${lab_ths.temperature }" id='Tem${status.count}'>
+    					 		<input type="hidden" value="${lab_ths.humidity }" id='Hum${status.count}'>
+    					 	</c:forEach>
+                        	<div  id="oldchart" style="height:430px">
+				        	<script type="text/javascript">
+				        		var myChart = echarts.init(document.getElementById('oldchart'));
+					        	var time = [];
+				        		var tem = [];
+				        		var hum = [];
+				        		var i = 0;
+				        		var length =  $("#lab_length").val();
+				        		for(i;i<length;i++){
+				        			time[i] = $("#Time"+(i)).val()+"";
+				        			tem[i] = $("#Tem"+(i)).val();
+				        			hum[i] = $("#Hum"+(i)).val();
+				        		}  	
+				        		var timeData = time;
+				        		
+				        		timeData = timeData.map(function (str) {
+				        		    return str.replace('GMT+08:00 2019', '');
+				        		});
+				        		
+				        		option = {
+				        		    title: {
+				        		        text: '实验室温湿度记录统计',
+				        		        textStyle:{
+				        		            color:'#fff',
+				        		        },
+				        		        subtext: '',
+				        		        x: 'center'
+				        		    },
+				        		    tooltip: {
+				        		        trigger: 'axis',
+				        		        axisPointer: {
+				        		            animation: false
+				        		        }
+				        		    },
+				        		    color:['#80FF80','#ED7C30'],
+				        		    legend: {
+				        		    	textStyle:{
+				        		            color:'#fff',
+				        		        },
+				        		        data:['温度','湿度'],
+				        		        x: 'left'
+				        		    },
+				        		    toolbox: {
+				        		        feature: {
+				        		            dataZoom: {
+				        		                yAxisIndex: 'none'
+				        		            },
+				        		            restore: {},
+				        		            saveAsImage: {}
+				        		        }
+				        		    },
+				        		    axisPointer: {
+				        		        link: {xAxisIndex: 'all'}
+				        		    },
+				        		    dataZoom: [
+				        		        {
+				        		            show: true,
+				        		            textStyle:{//图例文字的样式
+					        		            color:'#fff',
+					        		        },
+				        		            realtime: true,
+				        		            start: 30,
+				        		            end: 70,
+				        		            xAxisIndex: [0, 1]
+				        		        },
+				        		        {
+				        		            type: 'inside',
+				        		            realtime: false,
+				        		            start: 30,
+				        		            end: 70,
+				        		            xAxisIndex: [0, 1]
+				        		        }
+				        		    ],
+				        		    grid: [{
+				        		        left: 50,
+				        		        right: 50,
+				        		        height: '35%'
+				        		    }, {
+				        		        left: 50,
+				        		        right: 50,
+				        		        top: '55%',
+				        		        height: '35%'
+				        		    }],
+				        		    xAxis : [
+				        		        {
+				        		            type : 'category',
+				        		            boundaryGap : false,
+				        		            axisLine: {
+				        		            	onZero: true,
+				        		            	lineStyle: {color: '#fff'}
+				        		            },
+				        		            axisLabel: {
+				                                show: true,
+				                                textStyle: {
+				                                    color: '#fff'
+				                                }
+				                            },
+				        		            data: timeData
+				        		        },
+				        		        {
+				        		            gridIndex: 1,
+				        		            type : 'category',
+				        		            boundaryGap : false,
+				        		            axisLabel: {
+				                                show: false,
+				                            },
+				                            axisLine: {
+				        		            	onZero: true,
+				        		            	lineStyle: {color: '#fff'}
+				        		            },
+				        		            data: timeData,
+				        		            position: 'top'
+				        		        }
+				        		    ],
+				        		    yAxis : [
+				        		        {
+				        		            name : '温度（℃）',
+				        		            type : 'value',
+				        		            axisLine: {
+				        		            	lineStyle: {color: '#fff'}
+				        		            },
+				        		            axisLabel : {
+				                                formatter: '{value}',
+				                                textStyle: {
+				                                    color: '#fff'
+				                                }
+				                            },
+				        		            max : 50
+				        		        },
+				        		        {
+				        		            gridIndex: 1,
+				        		            name : '湿度（%）',
+				        		            type : 'value',
+				        		            axisLine: {
+				        		            	lineStyle: {color: '#fff'}
+				        		            },
+				        		            axisLabel : {
+				                                formatter: '{value}',
+				                                textStyle: {
+				                                    color: '#fff'
+				                                }
+				                            },
+				        		            inverse: true
+				        		        }
+				        		    ],
+				        		    series : [
+				        		        {
+				        		            name:'温度',
+				        		            type:'line',
+				        		            symbolSize: 8,
+				        		            hoverAnimation: true,
+				        		            data:tem
+
+				        		            
+				        		        },
+				        		        {
+				        		            name:'湿度',
+				        		            type:'line',
+				        		            xAxisIndex: 1,
+				        		            yAxisIndex: 1,
+				        		            symbolSize: 8,
+				        		            hoverAnimation: true,
+				        		            data:hum
+				        		        }
+				        		    ]
+				        		};
+				        		
+				        		myChart.setOption(option);
+				        	</script>
+				        	</div>
                         </div>
-                        <div class="col-md-5 col-xs-8">
+                        <div class="col-md-4 col-xs-8">
                         <a style="font-size:18px">实验室实时温度</a>
-                        <div  id="mychart" style="height:400px">
+                        <div  id="newchart" style="height:430px">
 				        <script type="text/javascript">
 				            // 基于准备好的dom，初始化echarts实例
-				            var myChart = echarts.init(document.getElementById('mychart'));
+				            var myChart = echarts.init(document.getElementById('newchart'));
 				            // 指定图表的配置项和数据
 				            var option = {
 				            	    //backgroundColor: '#1b1b1b',
@@ -295,7 +439,7 @@
 				            	        {
 				            	            name:'实验室温度',
 				            	            type:'gauge',
-				            	            center : ['38%', '55%'],    // 默认全局居中
+				            	            center : ['32%', '55%'],    // 默认全局居中
 				            	            radius : '60%',
 				            	            min:0,
 				            	            max:50,
@@ -374,6 +518,73 @@
                         </div>
                     </div>
                     <div class="row" style="margin-top:50px; ">
+                    	<div class="col-md-10 col-xs-8">
+                    		<a style="font-size:18px">实验室值日表</a>
+                    		当前实验室共有${fn:length(lab_stu)}名学生。
+                    		<table border="1" style="width:100%; border-color:white">
+	                			<tr>
+	                				<td>周日</td>
+	                				<td>周一</td>
+	                				<td>周二</td>
+	                				<td>周三</td>
+	                				<td>周四</td>
+	                				<td>周五</td>
+	                				<td>周六</td>
+	                			</tr>
+	                			<%  List<User> users = (List<User>) request.getAttribute("lab_stu");
+	                				String str1 = "";
+	                				String str2 = "";
+	                				String str3 = "";
+	                				String str4 = "";
+	                				String str5 = "";
+	                				String str6 = "";
+	                				String str7 = "";
+	                				int i=1;
+	                				for(User user:users){	
+	                					if(i==8){
+	                						i=1;
+	                					}
+	               						switch(i){
+	                						case 1: str1 = str1 + user.getName() + ";"; break;
+	                						case 2: str2 = str2 + user.getName() + ";"; break;
+	                						case 3: str3 = str3 + user.getName() + ";"; break;
+	                						case 4: str4 = str4 + user.getName() + ";"; break;
+	                						case 5: str5 = str5 + user.getName() + ";"; break;
+	                						case 6: str6 = str6 + user.getName() + ";"; break;
+	                						case 7: str7 = str7 + user.getName() + ";"; break;
+	                					}
+	                					i=i+1;
+	                					
+	                				}
+	                			%>
+	                			<tr>
+	                				<td><%=str7 %></td>
+	                				<td><%=str1 %></td>
+	                				<td><%=str2 %></td>
+	                				<td><%=str3 %></td>
+	                				<td><%=str4 %></td>
+	                				<td><%=str5 %></td>
+	                				<td><%=str6 %></td>
+	                			</tr>
+	                		</table>
+                    	</div>
+                    </div>
+                    <div class="row" style="margin-top:50px; ">
+                        <div class="col-md-5 col-xs-8">
+                        	<a style="font-size:18px">实验室学生用户</a>
+	                        <table border="1" style="width:100%; border-color:white">
+	                			<tr>
+	                				<td>姓名</td>
+	                				<td>学号</td>
+	                			</tr>
+	                			<c:forEach items="${lab_stu}" var="stu">
+	                			<tr>
+	                				<td>${stu.name}</td>
+	                				<td>${stu.num}</td>
+	                			</tr>
+	                			</c:forEach>
+	                		</table>
+                        </div>
                         <div class="col-md-5 col-xs-8">
                        		 <a style="font-size:18px">实验室教师用户</a>
 	                        <table border="1" style="width:100%; border-color:white;">
@@ -389,21 +600,6 @@
 	                			</c:forEach>
 	                		</table>
                         
-                        </div>
-                        <div class="col-md-5 col-xs-8">
-                        	<a style="font-size:18px">实验室学生用户</a>
-	                        <table border="1" style="width:100%; border-color:white">
-	                			<tr>
-	                				<td>姓名</td>
-	                				<td>学号</td>
-	                			</tr>
-	                			<c:forEach items="${lab_stu}" var="stu">
-	                			<tr>
-	                				<td>${stu.name}</td>
-	                				<td>${stu.num}</td>
-	                			</tr>
-	                			</c:forEach>
-	                		</table>
                         </div>
                     </div>
                 </div>

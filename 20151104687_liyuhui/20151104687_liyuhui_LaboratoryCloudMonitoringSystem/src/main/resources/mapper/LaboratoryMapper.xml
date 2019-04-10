@@ -92,6 +92,12 @@
     where laboratory.place_id = place.place_id 
 	order by l_id desc
   </select>
+  <select id="selectNoByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from laboratory
+    where l_id != #{lId,jdbcType=INTEGER}
+  </select>
   
   
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">

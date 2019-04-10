@@ -139,6 +139,7 @@ public class LaboratoryController {
 	@RequestMapping("updateLab") 
 	public String update(Laboratory lab, long[] userIds, String placeId, HttpSession httpSession) {	
 		lab.setPlaceId(placeId);
+		lab.setTemId(lab.getlId());
 		labUserService.setUser(lab, userIds);
 		laboratoryService.update(lab);
 		List<Laboratory> labs = laboratoryService.findLab();
@@ -182,5 +183,18 @@ public class LaboratoryController {
 		model.addAttribute("lab_ths", ths);
 		return "labShow";
 	}
+	
+	@RequestMapping("/skinChange")
+	public String skinChange(String color, HttpSession session){
+		User user = (User) session.getAttribute("User");
+		user.setColor(color);
+		System.out.println(user.getId());
+		System.out.println(user.getColor());
+		userService.skinChange(user);
+		User u = userService.findUserName(user.getNum());
+		session.setAttribute("User", u);
+		return "redirect:/menu";
+	}
+	
 	
 }

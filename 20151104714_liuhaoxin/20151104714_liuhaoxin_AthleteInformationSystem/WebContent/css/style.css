@@ -2,7 +2,7 @@
 body{
 		/* 设置页面的背景 */
 	 
-	   background: url("../img/beijing.jpg");
+	   background: url("../image/beijing.jpg");
 }
 
 option,select{
@@ -35,8 +35,6 @@ input[type="text"],[type="date"],input[type="password"] , input[type="email"]{
     width: 400px;
     height:600px;
     margin: 0 auto;
-  /*   background-color: rgba(0, 191, 240,0.1);
-    box-shadow: 0 -5px 10px 1px rgba(16, 16, 16, 0.57);	立体效果*/
 }
 h1{
 	/* 设置h1样式 */

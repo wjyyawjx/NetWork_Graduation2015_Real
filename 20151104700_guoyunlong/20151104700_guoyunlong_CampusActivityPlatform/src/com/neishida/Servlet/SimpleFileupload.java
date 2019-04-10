@@ -49,23 +49,23 @@ public class SimpleFileupload extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");  
         response.setCharacterEncoding("utf-8");  
-        //1閵嗕礁鍨卞杞扮娑撶嫞iskFileItemFactory瀹搞儱宸�  
+        //1、创建一个DiskFileItemFactory工厂 
         DiskFileItemFactory factory = new DiskFileItemFactory();  
-        //2閵嗕礁鍨卞杞扮娑擃亝鏋冩禒鏈电瑐娴肩姾袙閺嬫劕娅�  
+        //2、创建一个文件上传解析器  
         ServletFileUpload upload = new ServletFileUpload(factory);  
-        //鐟欙絽鍠呮稉濠佺炊閺傚洣娆㈤崥宥囨畱娑擃厽鏋冩稊杈╃垳  
+        //解决上传文件名的中文乱码  
         upload.setHeaderEncoding("UTF-8");   
-        factory.setSizeThreshold(1024 * 500);//鐠佸墽鐤嗛崘鍛摠閻ㄥ嫪澶嶉悾灞斤拷闂磋礋500K  
-        File linshi = new File("D:\\linshi");//瑜版捁绉存潻锟�500K閻ㄥ嫭妞傞崐娆欑礉鐎涙ê鍩屾稉锟芥稉顏冨閺冭埖鏋冩禒璺恒仚娑擄拷  
+        factory.setSizeThreshold(1024 * 500);//设置内存的临界值为500K  
+        File linshi = new File("D:\\linshi");//当超过500K的时候，存到一个临时文件夹中  
         factory.setRepository(linshi);  
-        upload.setSizeMax(1024 * 1024 * 5);//鐠佸墽鐤嗘稉濠佺炊閻ㄥ嫭鏋冩禒鑸碉拷鑽ゆ畱婢堆冪毈娑撳秷鍏樼搾鍛扮箖5M  
+        upload.setSizeMax(1024 * 1024 * 5);//设置上传的文件总的大小不能超过5M  
         try {  
-            // 1. 瀵版鍩� FileItem 閻ㄥ嫰娉﹂崥锟� items  
+            // 1. 得到 FileItem 的集合 items  
             List<FileItem> /* FileItem */items = upload.parseRequest(request);  
   
-            // 2. 闁秴宸� items:  
+            // 2. 遍历 items:  
             for (FileItem item : items) {  
-                // 閼汇儲妲告稉锟芥稉顏冪閼割剛娈戠悰銊ュ礋閸╋拷, 閹垫挸宓冩穱鈩冧紖  
+                // 若是一个一般的表单域, 打印信息  
                 if (item.isFormField()) {  
                     String name = item.getFieldName();  
                     String value = item.getString("utf-8");
@@ -74,7 +74,7 @@ public class SimpleFileupload extends HttpServlet {
                       
                       
                 }  
-                // 閼汇儲妲搁弬鍥︽閸╃喎鍨幎濠冩瀮娴犳湹绻氱�涙ê鍩� e:\\files 閻╊喖缍嶆稉锟�.  
+                // 若是文件域则把文件保存到 e:\\files 目录下.  
                 else {
                     String fileName = item.getName();  
                     long sizeInBytes = item.getSize();  
@@ -85,8 +85,8 @@ public class SimpleFileupload extends HttpServlet {
                     byte[] buffer = new byte[1024];  
                     int len = 0;  
   
-                    fileName = "d:\\upload\\file" + fileName.substring(fileName.lastIndexOf("\\"));//閺傚洣娆㈤張锟界紒鍫滅瑐娴肩姷娈戞担宥囩枂  
-                    String file = fileName.substring(fileName.lastIndexOf("\\"));
+                    fileName = "D:\\毕设git材料\\NetWork_Graduation2015_Real\\20151104700_guoyunlong\\20151104700_guoyunlong_CampusActivityPlatform\\WebContent\\upload\\file\\" + item.getName();//文件最终上传的位置  
+                    String file = item.getName();
                     System.out.println(file);  
                     //System.out.println();
                     OutputStream out = new FileOutputStream(fileName);
@@ -102,7 +102,7 @@ public class SimpleFileupload extends HttpServlet {
                     
                     
 					uploadservice.UPloadValidate(file,fileName,sizeInBytes);
-                    response.sendRedirect("main.jsp");
+                    response.sendRedirect("index.jsp");
                     
                     out.close();  
                     in.close();  

@@ -62,7 +62,7 @@
           <div class="inner-cont1 w1200">
             <div class="inner-cont2">
               <a href="commodity.jsp">所有商品</a>
-              <a href="buytoday.html" class="active">今日团购</a>
+              <a href="buytoday.jsp" class="active">今日团购</a>
               <a href="information.html">手机资讯</a>
               <a href="about.html">关于我们</a>
             </div>
@@ -88,7 +88,7 @@
                  %>
             <div class="item-box layui-clear">
               <div class="item">
-                <img src="../res/static/img/tuan_img1.jpg" alt="">
+                <img src="<%=buy.getPicturename() %>" style="width:290px;height:300px;" >
                 <div class="text-box">
                   <p class="title"><%=buy.getTyname()%></p>
                   <p class="plic">
@@ -114,12 +114,12 @@
            <%
              		session.removeAttribute("list");
   					TmbuyService tmService = new TmbuyServiceimp();
-                    List<TmbuyBean> list = tmService.getAllTmbuy();
-                    session.setAttribute("list", list);
-                     for(TmbuyBean tm:list){ 
+                    List<TmbuyBean> list2 = tmService.getAllTmbuy();
+                    session.setAttribute("list2", list2);
+                     for(TmbuyBean tm:list2){ 
                  %>
             <div class="item">
-              <img src="../res/static/img/tuan_img5.jpg" alt="">
+              <img src="<%=tm.getPhoname()%>" style="width:320px;height:400px;"  alt="">
               <div class="text">
                 <div class="right-title-number"><%=tm.getTmnum()%></div>
                 <div class="commod">

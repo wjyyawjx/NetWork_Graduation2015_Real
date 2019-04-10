@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.bs.sxd.dao.GoodsDao">
-<sql id="findGoods_yListWhere">
+	<sql id="findGoods_yListWhere">
 		<where>
 			<if test="l_name != ''">
 				l_name like #{l_name}
@@ -14,46 +13,108 @@
 			<if test="l_static != null">
 				and l_static = #{l_static}
 			</if>
+			<if test="u_id != null">
+				and u_id = #{u_id}
+			</if>
 		</where>
-</sql>
+	</sql>
 	<insert id="addGoods" parameterType="Goods" useGeneratedKeys="true"
 		keyProperty="id">
 		<!--useGeneratedKeys:使用自增主键获取主键值策略 keyProperty:指定对应主键属性名(即获取主键值之后,赋值给bean的哪个属性) -->
 		insert into
-		goods(l_name,l_image,l_price,l_info,l_type,l_out_time,l_in_time,l_addr,u_id,l_static)
+		goods(l_name,l_image,l_price,l_info,l_type,l_out_time,l_in_time,l_addr,u_name,u_id,l_static)
 		values(
-		#{l_name},#{l_image},#{l_price},#{l_info},#{l_type},#{l_out_time},#{l_in_time},#{l_addr},#{u_id},#{l_static})
+		#{l_name},#{l_image},#{l_price},#{l_info},#{l_type},#{l_out_time},#{l_in_time},#{l_addr},#{u_name},#{u_id},#{l_static})
 	</insert>
+	<insert id="addToPurchases" parameterType="Goods"
+		useGeneratedKeys="true" keyProperty="id">
+		<!--useGeneratedKeys:使用自增主键获取主键值策略 keyProperty:指定对应主键属性名(即获取主键值之后,赋值给bean的哪个属性) -->
+		insert into
+		purchases
+		(l_id,l_name,l_out_time,l_in_time,u_name,l_image,l_type,l_price)
+		values(
+		#{id},#{l_name},#{l_out_time},#{l_in_time},#{u_name},#{l_image},#{l_type},#{l_price})
+	</insert>
+	<!-- 用户或管理员查询所有商品 -->
 	<select id="findGoods_yList" parameterType="Goods" resultType="Goods">
 		select * from goods
-		
 		<include refid="findGoods_yListWhere" />
 		<!-- 执行分页查询 -->
 		<if test="start !=null and rows != null">
 			limit #{start},#{rows}
 		</if>
-		
 	</select>
-	<select id="selectgoodsListCount" parameterType="Goods" 
-                                                 resultType="Integer">
+	<!--用户查询个人商品 -->
+	<select id="findGoods_uList" parameterType="Goods" resultType="Goods">
+		select * from goods
+		<include refid="findGoods_yListWhere" />
+		<!-- 执行分页查询 -->
+		<if test="start !=null and rows != null">
+			limit #{start},#{rows}
+		</if>
+	</select>
+
+	<select id="selectgoodsListCount" parameterType="Goods"
+		resultType="Integer">
 		select count(*) from goods
-		<include refid="findGoods_yListWhere"/>
+		<include refid="findGoods_yListWhere" />
+	</select>
+	<select id="selectgoodsList_uCount" parameterType="Goods"
+		resultType="Integer">
+		select count(*) from goods
+		<include refid="findGoods_yListWhere" />
 	</select>
 	<select id="findThegoods" parameterType="Integer" resultType="Goods">
-	   select * from goods where id = #{id}
+		select * from goods where id = #{id}
 	</select>
-	<!--下架商品  -->
-	<update id="updategoodstype_n" parameterType="Goods" >
-	    update goods
-	    <set>
-	        <if test="l_static != null">
-	            l_static =#{l_static},
-	        </if>
-	    </set>
-	    where id=#{id}
+	<!--下架商品 -->
+	<update id="updategoodstype_n" parameterType="Goods">
+		update goods
+		<set>
+			<if test="l_static != null">
+				l_static =#{l_static},
+			</if>
+		</set>
+		where id=#{id}
 	</update>
-	<!-- 删除商品 -->
+	<!-- 管理员删除商品 -->
 	<delete id="deletegoods" parameterType="Integer">
-	    delete from goods where id=#{id}
+		delete from goods where id=#{id}
 	</delete>
+	<!--用户删除个人商品 -->
+	<delete id="deletemygoods" parameterType="Integer">
+		delete from goods where id=#{id}
+	</delete>
+	<!-- 更新客户 -->
+	<update id="updatemygoods" parameterType="Goods">
+		update goods
+		<set>
+			<if test="l_name!=null">
+				l_name=#{l_name},
+			</if>
+			<if test="l_price!=null">
+				l_price=#{l_price},
+			</if>
+			<if test="l_info!=null">
+				l_info=#{l_info},
+			</if>
+			<if test="l_out_time!=null">
+				l_out_time=#{l_out_time},
+			</if>
+			<if test="l_in_time!=null">
+				l_in_time=#{l_in_time},
+			</if>
+			<if test="l_addr!=null">
+				l_addr=#{l_addr},
+			</if>
+			<if test="l_image!=null">
+				l_image=#{l_image},
+			</if>
+
+		</set>
+		where id=#{id}
+	</update>
+	<update id="updategoodsstatic" parameterType="Goods">
+	  update goods set l_static = '1' where id = #{id}
+	</update>
 </mapper>

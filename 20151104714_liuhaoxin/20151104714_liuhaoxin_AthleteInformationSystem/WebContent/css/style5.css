@@ -1,0 +1,7 @@
+@charset "UTF-8";
+body{
+		/* 设置title页面的背景 */
+	 
+	   background: url("../image/title.jpg");
+	   background-size:cover;
+}

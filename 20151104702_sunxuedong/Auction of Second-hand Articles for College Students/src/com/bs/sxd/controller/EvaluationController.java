@@ -1,20 +1,13 @@
 package com.bs.sxd.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.bs.common.utils.Page;
 import com.bs.sxd.po.Evaluation;
-import com.bs.sxd.po.Goods;
-import com.bs.sxd.po.User;
 import com.bs.sxd.service.EvaluationService;
-
-
-
 /**
  * ÆÀÂÛ¿ØÖÆÆ÷Àà
  * 

@@ -13,4 +13,14 @@ public interface LabUserService {
 
 	void setUser2(Laboratory lab, long[] userIds, List<User> users);
 
+	void addApplication(Long id, Integer lId);
+
+	void updateEnter(Long id, Integer lId);
+
+	void updateAdminEnter(Long id, Integer lId);
+
+	void updateAdminNoEnter(Long id, Integer lId);
+
+	void deleteEnter(Long id, Integer lId);
+
 }

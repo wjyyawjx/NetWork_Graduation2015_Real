@@ -45,6 +45,7 @@ public class LabUserServiceImpl implements LabUserService {
 				LabUser labUser = new LabUser();
 				labUser.setuId(uid);
 				labUser.setlId(lab.getlId());
+				labUser.setuType("已授权");
 				labUserMapper.insert(labUser);
 			}
 		}
@@ -65,6 +66,7 @@ public class LabUserServiceImpl implements LabUserService {
 				LabUser labUser = new LabUser();
 				labUser.setuId(uid);
 				labUser.setlId(lab.getlId());
+				labUser.setuType("已授权");
 				labUserMapper.insert(labUser);
 			}
 		}
@@ -73,10 +75,57 @@ public class LabUserServiceImpl implements LabUserService {
 				LabUser labUser = new LabUser();
 				labUser.setuId(uid.getId());
 				labUser.setlId(lab.getlId());
+				labUser.setuType("已授权");
 				labUserMapper.insert(labUser);
 			}
 		}
 	}
 
+	@Override
+	public void addApplication(Long id, Integer lId) {
+		// TODO Auto-generated method stub
+		LabUser labUser = new LabUser();
+		labUser.setuId(id);
+		labUser.setlId(lId);
+		labUser.setuType("申请中");
+		labUserMapper.insert(labUser);
+	}
+
+	@Override
+	public void updateEnter(Long id, Integer lId) {
+		// TODO Auto-generated method stub
+		System.out.println(id+"+"+lId);
+		LabUser labUser = new LabUser();
+		labUser.setuId(id);
+		labUser.setlId(lId);
+		labUserMapper.updateEnterByPrimaryKey(labUser);
+	}
+
+	@Override
+	public void updateAdminEnter(Long id, Integer lId) {
+		// TODO Auto-generated method stub
+		LabUser labUser = new LabUser();
+		labUser.setuId(id);
+		labUser.setlId(lId);
+		labUserMapper.updateAdminEnterByPrimaryKey(labUser);
+	}
+
+	@Override
+	public void updateAdminNoEnter(Long id, Integer lId) {
+		// TODO Auto-generated method stub
+		LabUser labUser = new LabUser();
+		labUser.setuId(id);
+		labUser.setlId(lId);
+		labUserMapper.updateAdminNoEnterByPrimaryKey(labUser);
+	}
+
+	@Override
+	public void deleteEnter(Long id, Integer lId) {
+		// TODO Auto-generated method stub
+		LabUser labUser = new LabUser();
+		labUser.setuId(id);
+		labUser.setlId(lId);
+		labUserMapper.deleteEnterByPrimaryKey(labUser);
+	}
 
 }

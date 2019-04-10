@@ -1,15 +1,11 @@
 package com.bs.sxd.dao;
-
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
-
 import com.bs.sxd.po.User;
 public interface UserDao {
    public User findUser(@Param("username") String username,
 		                @Param("password") String password,
 		                @Param("type") Integer type);
-
 public User findByUserName(@Param("username") String username);
 //添加用户
 public void addUser(User user);
@@ -25,6 +21,7 @@ public void updateUser(User user);
 public void updateUser_Admin(User user);
 //修改管理员为用户
 public void updateUser_User(User user);
+//管理员删除用户
 public void deleteuser(Integer id);
 }
 
