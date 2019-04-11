@@ -17,29 +17,30 @@
 	<br>
 
 	<br>
-	<c:forEach items="${list}" var="listuser">
+	<form action="">
 	<table border="2" cellpadding="0" cellspacing="0"
 		style="font-size: 20px"  width="100%" height="100%">
 
 		<tr>
 			<td style="width: 20%">
-			<img style="width: 300px ;height: 200px" alt="没有图片"  src="${listuser.p_img}" >
+			<img style="width: 300px ;height: 200px" alt="没有图片"  src="${USER_SESSION.p_img}" >
 				</td>
 				
 			<td>
 				
-				姓名:${listuser.u_name}
+				姓名:<input id="u_name" type="text" name="u_name" value="${USER_SESSION.u_name}" />
 				<br>
-				电话:${listuser.u_phone}
+				电话:<input id="u_phone" type="text" name="u_phone" value="${USER_SESSION.u_phone}" />
 				<br>
-				邮箱:${listuser.u_email}
+				邮箱:<input id="u_email" type="email" name="u_email" value="${USER_SESSION.u_email}" />
 				<br>
-				简介:<br><textarea name="message" readonly="" rows="7" cols="60">${listuser.u_message}
+				简介:<br><textarea name="message"  rows="7" cols="60" >${USER_SESSION.u_message}
 </textarea></td>
 
 			
 		</tr>
 	</table>
-	</c:forEach>
+	  <div align="center"><input type="submit" value="修改信息" /></div> 
+	</form>
 </body>
 </html>
