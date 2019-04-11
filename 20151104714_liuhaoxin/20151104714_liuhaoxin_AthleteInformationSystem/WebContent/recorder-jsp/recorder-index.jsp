@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
 </head>
-<frameset rows="15%,*">
+<frameset rows="15%,*" frameborder="NO" border="0" framespacing="2">
 <frame noresize="noresize"  frameborder="0" src="recorder-jsp/recorder-title.jsp">
 <frameset cols="200,*">
 <frame noresize="noresize" frameborder="0"  src="recorder-jsp/recorder-left.jsp">
