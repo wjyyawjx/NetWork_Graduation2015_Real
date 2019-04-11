@@ -87,7 +87,7 @@
 											<!-- 显示一条商品信息 -->
 											<tr>
 												<td class="text-center image" width="20%"><a href="goodsDetail.jsp?ID=<%=goodsitem.ID%>">
-													<img width="80px" src="../images/goods/<%=picture%>"> </a></td>
+													<img width="80px" src="/upload/<%=picture%>"> </a></td>
 												<td class="text-left name"><a
 													href="goodsDetail.jsp?ID=<%=goodsitem.ID%>"> <%=goodsname%></a>
 												</td>

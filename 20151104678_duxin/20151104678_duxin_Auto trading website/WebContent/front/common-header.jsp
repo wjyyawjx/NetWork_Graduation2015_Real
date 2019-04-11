@@ -16,18 +16,18 @@
 								data-target="#">首页 </a></li>
 							<li itemprop="name" data-id="510" data-level="1"><a
 								id="jingying" itemprop="url" class=""
-								href="goodsList.jsp?type=14" data-target="#">图书类</a></li>
+								href="goodsList.jsp?type=14" data-target="#">紧凑车型</a></li>
 
 							<li itemprop="name" data-id="510" data-level="1"><a
 								id="wenyi" itemprop="url" class="" href="goodsList.jsp?type=15"
-								data-target="#">家电类</a></li>
+								data-target="#">中等车型</a></li>
 
 							<li itemprop="name" data-id="510" data-level="1"><a
 								id="jiaoyu" itemprop="url" class="" href="goodsList.jsp?type=16"
-								data-target="#">服装类</a></li>
+								data-target="#">高级车型</a></li>
 							<li itemprop="name" data-id="510" data-level="1"><a
 								id="shenghuo" itemprop="url" class=""
-								href="goodsList.jsp?type=17" data-target="#">电子类</a></li>
+								href="goodsList.jsp?type=17" data-target="#">SUV车型</a></li>
 						</ul>
 					</div>
 

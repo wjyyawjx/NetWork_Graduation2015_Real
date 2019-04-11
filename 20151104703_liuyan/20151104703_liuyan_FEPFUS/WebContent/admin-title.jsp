@@ -14,8 +14,8 @@
 		<tr>
 		<td style="width: 40%"></td>
 		<td style="height: 40px;font-size: 40px;">大学生家教平台</td>
-	
-		<form target="_top" action="../Exit" method="post">
+	     <td> 用户:${USER_SESSION.u_user},你好
+		<form target="_top" action="${pageContext.request.contextPath}/Exit.action" method="post">
 		<button  type="submit" >退出</button></form></td>
 		</tr>
 	</table>

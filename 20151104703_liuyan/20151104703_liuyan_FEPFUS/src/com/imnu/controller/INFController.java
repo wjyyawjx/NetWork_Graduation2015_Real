@@ -26,4 +26,8 @@ public class INFController {
 		  request.setAttribute("list", list);
 	 	  return "jiazhang";
 	     }
+	 @RequestMapping(value = "/SelectMy.action" ,method = RequestMethod.GET)
+	 public String SelectMy(Model model,HttpSession session,HttpServletRequest request) {
+	 	  return "my";
+	     }
 }

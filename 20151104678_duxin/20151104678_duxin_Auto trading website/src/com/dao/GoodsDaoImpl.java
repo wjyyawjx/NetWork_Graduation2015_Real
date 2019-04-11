@@ -16,6 +16,7 @@ public class GoodsDaoImpl implements GoodsDao {
 		int ret = -1;//设定返回值变量
 		try {
 			//设定执行语句
+			
 			String sql = "Insert into tb_goods (TypeID,GoodsName,Introduce,Price,nowPrice,picture,newgoods,sale) values("
 					+ g.getTypeID()
 					+ ",'"
@@ -37,6 +38,7 @@ public class GoodsDaoImpl implements GoodsDao {
 			ret = 0;
 		}
 		conn.close();//关闭数据库连接
+		System.out.println(g.getGoodsName()+"1");
 		return ret;
 	}
 
@@ -48,7 +50,7 @@ public class GoodsDaoImpl implements GoodsDao {
 		int ret = -1;//设定返回值变量
 		try {
 			//设定执行语句
-			String sql = "update tb_Goods set TypeID=" + g.getTypeID()
+			String sql = "update tb_goods set TypeID=" + g.getTypeID()
 					+ ",GoodsName='" + chStr.chStr(g.getGoodsName())
 					+ "',introduce='" + chStr.chStr(g.getIntroduce())
 					+ "',price=" + g.getPrice() + ",nowprice="

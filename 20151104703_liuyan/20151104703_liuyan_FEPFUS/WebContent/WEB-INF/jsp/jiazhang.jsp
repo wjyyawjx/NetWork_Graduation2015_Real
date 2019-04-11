@@ -15,10 +15,11 @@
 	<br>
 
 	<br>
+
 	<br>
 	<c:forEach items="${list}" var="listuser">
 	<table border="2" cellpadding="0" cellspacing="0"
-		style="font-size: 20px" ; width="100%" height="100%">
+		style="font-size: 20px"  width="100%" height="100%">
 
 		<tr>
 			<td style="width: 20%">

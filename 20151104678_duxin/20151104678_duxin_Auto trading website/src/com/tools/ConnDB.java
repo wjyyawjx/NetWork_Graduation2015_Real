@@ -12,7 +12,7 @@ public class ConnDB {
 	public ResultSet rs = null;//结果集对象
 	//驱动类的类名
 	private static String dbClassName = "com.mysql.jdbc.Driver";
-	private static String dbUrl = "jdbc:mysql://localhost:3306/db_shop?useSSL=false&useUnicode=true&characterEncoding=utf-8";
+	private static String dbUrl = "jdbc:mysql://localhost:3306/db_shop?characterEncoding=UTF-8";
 	private static String dbUser = "root";
 	private static String dbPwd = "root";
 	

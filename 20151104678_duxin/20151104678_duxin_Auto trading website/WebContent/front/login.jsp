@@ -14,7 +14,7 @@
 			<div id="mr-content" class="mr-content col-xs-12">
 				<div class="login-wrap" style="margin-bottom: 60px; margin-top: 50px">
 					<div style="max-width: 540px; margin: 0 auto;">
-						<a href="index.jsp" title="点击返回首页"><img src="images/51logo.png"></a>
+						<a href="index.jsp" title="点击返回首页"><span style="margin-top:20px; font-size: 40px; text-shadow: 5px 5px 5px black, 0px 0px 2px black;color: red;">51汽车商城</span></a>
 					</div>
 					<div class="login">
 						<div class="page-header" style="pause: 0px;"> <h1 class="login_h1">会员登录</h1> </div>

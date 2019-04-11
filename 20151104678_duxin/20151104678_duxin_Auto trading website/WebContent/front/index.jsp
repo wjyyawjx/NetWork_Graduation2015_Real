@@ -64,16 +64,16 @@
 									<div class="slideshow">
 										<div id="slidershow" class="nivoSlider">
 											<a href="#" class="nivo-imageLink" style="display: block;"><img
-												src="images/img1.png" class="img-responsive"
+												src="images/d1.png" class="img-responsive"width="300px"
 												style="display: none;"> </a> <a href="#"
 												class="nivo-imageLink" style="display: none;"> <img
-												src="images/img2.png" class="img-responsive"
+												src="images/d2.png" class="img-responsive"
 												style="display: none;">
 											</a> <a href="#" class="nivo-imageLink" style="display: none;">
-												<img src="images/img3.png" class="img-responsive"
+												<img src="images/d3.png" class="img-responsive"
 												style="display: none;">
 											</a> <a href="#" class="nivo-imageLink" style="display: none;">
-												<img src="images/img4.png" class="img-responsive"
+												<img src="images/d4.png" class="img-responsive"
 												style="display: none;">
 											</a>
 										</div>
@@ -98,7 +98,7 @@
 				<div class="mr-module module highlight " id="Mod160">
 					<div class="module-inner">
 						<h3 class="module-title ">
-							<span>热门商品</span>
+							<span>销售热门</span>
 							
 						</h3>
 						<div class="module-ct">
@@ -114,13 +114,13 @@
 												hot_picture = rs_hot.getString(4); 			//获取商品图片
 										%>
 									
-											alert(<%=rs_hot.next()%>);
+											
 									
 										
 										<div class="box-product product-grid">
 											<div>
 												<div class="image">
-													<a href="goodsDetail.jsp?ID=<%=hot_ID%>"><img src="../images/goods/<%=hot_picture%>" width="250px"></a>
+													<a href="goodsDetail.jsp?ID=<%=hot_ID%>"><img src="/upload/<%=hot_picture%>" width="250px"></a>
 													</a>
 												</div>
 												<div class="name"><a href="goodsDetail.jsp?ID=<%=hot_ID%>"><%=hot_goodsName%></a></div>
@@ -198,7 +198,7 @@
 														<div class="actions">
 															<div class="image">
 																<a href="goodsDetail.jsp?ID=<%=new_ID%>">
-																<img src="../images/goods/<%=new_picture%>" alt="<%=new_goodsname%>" class="img-responsive"></a>
+																<img src="/upload/<%=new_picture%>" alt="<%=new_goodsname%>" class="img-responsive"></a>
 															</div>
 															<div class="button-group">
 																<div class="cart">
@@ -248,7 +248,7 @@
 													<div class="product-thumb transition">
 														<div class="actions">
 															<div class="image">
-																<a href="goodsDetail.jsp?ID=<%=sale_ID%> "><img src="../images/goods/<%=s_picture%>"
+																<a href="goodsDetail.jsp?ID=<%=sale_ID%> "><img src="/upload/<%=s_picture%>"
 																	alt="<%=s_goodsname%>" class="img-responsive"> </a>
 															</div>
 															<div class="button-group">

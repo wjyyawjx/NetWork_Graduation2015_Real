@@ -34,6 +34,7 @@ public class UserController {
      @RequestMapping(value = "/login.action" ,method = RequestMethod.POST)
      public String Login(String u_user, String u_pwd,Model model,HttpSession session) {
     	 User user = userService.LoginUser(u_user, u_pwd);
+    	
     	 if(user != null) {
     		 session.setAttribute("USER_SESSION", user);
     		 return "admin-index";
@@ -42,7 +43,12 @@ public class UserController {
     		 return "login";
     	 }
      }
-     @RequestMapping(value = "/register.action" ,method = RequestMethod.GET)
+     @RequestMapping(value = "/Exit.action" ,method = RequestMethod.POST)
+     public String Exit(HttpSession session) {
+    	 session.invalidate();
+    	 return "redirect:login.action";
+     }
+	@RequestMapping(value = "/register.action" ,method = RequestMethod.GET)
      public String toregister() {
     	 return "register";
      }

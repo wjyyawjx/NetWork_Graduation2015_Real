@@ -50,7 +50,7 @@
 									<div>
 										<div class="image">
 											<a href="goodsDetail.jsp?ID=<%=hot_ID%>"><img
-												src="../images/goods/<%=hot_picture%>" width="80px">
+												src="/upload/<%=hot_picture%>" width="80px">
 											</a>
 										</div>
 										<div class="name">
