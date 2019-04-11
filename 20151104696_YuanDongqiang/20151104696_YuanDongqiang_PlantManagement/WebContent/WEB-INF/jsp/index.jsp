@@ -26,6 +26,12 @@
 				})
 	})
 </script>
+<script type="text/javascript">
+	function judge() {
+		alert("请进行登陆后，进行消息上传");
+		return false;
+	}
+</script>
 </head>
 <body>
 	<!-- Preloader -->
@@ -51,13 +57,6 @@
 						</div>
 						<div class="top-header-meta d-flex" id="login">
 						<div class="top-header-meta d-flex">
-                                <!-- Language Dropdown -->
-                                <div class="language-dropdown">
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary mr-30" 
-                                        type="button" >上传信息</button>
-                                    </div>
-                                </div>
 							<div class="login">
 								<a href="${pageContext.request.contextPath }/TZlogin.action"
 									aria-expanded="false"><i class="fa fa-user"></i> <%
@@ -186,8 +185,18 @@
 							<h2>存在于天气和周围的光线中的绿色植物</h2>
 							<p></p>
 							<div class="welcome-btn-group">
-								<a href="#" class="btn alazea-btn mr-30">开始使用</a> <a href="#"
-									class="btn alazea-btn active">联系我们</a>
+								<a href="#" class="btn alazea-btn mr-30">开始使用</a> 
+								<%
+								 	if (session.getAttribute("USER_SESSION") != null) {
+								 %> <a href="${pageContext.request.contextPath }/addMessage.action" 
+								 class="btn alazea-btn active">上传信息</a> <%
+								 	} else {
+								 %> <a href="#" onclick="judge()" class="btn alazea-btn active">上传信息</a><%
+								 	}
+								 %>
+<!-- 						<a href="${pageContext.request.contextPath }/addMessage.action" 
+								 class="btn alazea-btn active">上传信息</a>
+ -->		
 							</div>
 						</div>
 					</div>
@@ -208,8 +217,17 @@
 							<h2>存在于天气和周围的光线中的绿色植物</h2>
 							<p></p>
 							<div class="welcome-btn-group">
-								<a href="#" class="btn alazea-btn mr-30">开始</a> <a href="#"
-									class="btn alazea-btn active">联系我们</a>
+								<a href="#" class="btn alazea-btn mr-30">开始使用</a> 
+								<%
+								 	if (session.getAttribute("USER_SESSION") != null) {
+								 %> <a href="${pageContext.request.contextPath }/addMessage.action" 
+								 class="btn alazea-btn active">上传信息</a> <%
+								 	} else {
+								 %> <a href="#" onclick="judge()" class="btn alazea-btn active">上传信息</a><%
+								 	}
+								 %>
+<!-- 						<a href="${pageContext.request.contextPath }/addMessage.action" 
+								 class="btn alazea-btn active">上传信息</a>
 							</div>
 						</div>
 					</div>
@@ -231,8 +249,8 @@
 			<div class="col-12">
 				<!-- Section Heading -->
 				<div class="section-heading text-center">
-					<h2>我们的投资组合</h2>
-					<p>我们把所有的经验和努力都用于创造</p>
+					<h2>植物的主要分类</h2>
+					<p>我们把植物进行简单的分类，使我们方便查找。</p>
 				</div>
 			</div>
 		</div>
@@ -243,10 +261,11 @@
 			<div class="col-12">
 				<div class="alazea-portfolio-filter">
 					<div class="portfolio-filter">
-						<button class="btn active" data-filter="*">全部</button>
-						<button class="btn" data-filter=".garden">花园设计</button>
-						<button class="btn" data-filter=".home-design">家设计</button>
-						<button class="btn" data-filter=".office-design">办公室设计</button>
+						<button class="btn active" data-filter="*">全部种类</button>
+						<button class="btn" data-filter=".garden">喜阳植物</button>
+						<button class="btn" data-filter=".home-design">喜阴植物</button>
+						<button class="btn" data-filter=".office-design">多年生植物</button>
+						<button class="btn" data-filter=".office-design">一年生植物</button>
 					</div>
 				</div>
 			</div>
@@ -263,12 +282,10 @@
 					style="background-image: url(img/bg-img/16.jpg);"></div>
 				<!-- Portfolio Hover Text -->
 				<div class="portfolio-hover-overlay">
-					<a href="img/bg-img/16.jpg"
-						class="portfolio-img d-flex align-items-center justify-content-center"
-						title="Portfolio 1">
-						<div class="port-hover-text">
-							<h3>最小的鲜花店</h3>
-							<h5>办公室植物</h5>
+					<a href="#">
+						<div class="port-hover-text" style="width: 100%;height: 100%;margin-top: 50%;">
+							<h3 style= "maigin-top:80px;">生长在阳光充足环境下。</h3>
+							<h5>喜阳植物</h5>
 						</div>
 					</a>
 				</div>
@@ -283,12 +300,10 @@
 					style="background-image: url(img/bg-img/17.jpg);"></div>
 				<!-- Portfolio Hover Text -->
 				<div class="portfolio-hover-overlay">
-					<a href="img/bg-img/17.jpg"
-						class="portfolio-img d-flex align-items-center justify-content-center"
-						title="Portfolio 2">
-						<div class="port-hover-text">
-							<h3>最小的鲜花店</h3>
-							<h5>办公室植物</h5>
+					<a href="#">
+						<div class="port-hover-text" style="width: 100%;height: 100%;margin-top: 50%;">
+							<h3>喜欢在阴暗的环境下生长</h3>
+							<h5>喜阴植物</h5>
 						</div>
 					</a>
 				</div>
@@ -303,12 +318,10 @@
 					style="background-image: url(img/bg-img/18.jpg);"></div>
 				<!-- Portfolio Hover Text -->
 				<div class="portfolio-hover-overlay">
-					<a href="img/bg-img/18.jpg"
-						class="portfolio-img d-flex align-items-center justify-content-center"
-						title="Portfolio 3">
-						<div class="port-hover-text">
-							<h3>最小的鲜花店</h3>
-							<h5>办公室植物</h5>
+					<a href="#">
+						<div class="port-hover-text" style="width: 100%;height: 100%;margin-top: 50%;">
+							<h3>寿命在两年以上的植物。</h3>
+							<h5>多年生植物</h5>
 						</div>
 					</a>
 				</div>
@@ -323,12 +336,10 @@
 					style="background-image: url(img/bg-img/19.jpg);"></div>
 				<!-- Portfolio Hover Text -->
 				<div class="portfolio-hover-overlay">
-					<a href="img/bg-img/19.jpg"
-						class="portfolio-img d-flex align-items-center justify-content-center"
-						title="Portfolio 4">
-						<div class="port-hover-text">
-							<h3>最小的鲜花店</h3>
-							<h5>办公室植物</h5>
+					<a href="#">
+						<div class="port-hover-text" style="width: 100%;height: 100%;margin-top: 50%;">
+							<h3>生命周期为一年的植物。</h3>
+							<h5>一年生植物</h5>
 						</div>
 					</a>
 				</div>
@@ -343,12 +354,10 @@
 					style="background-image: url(img/bg-img/20.jpg);"></div>
 				<!-- Portfolio Hover Text -->
 				<div class="portfolio-hover-overlay">
-					<a href="img/bg-img/20.jpg"
-						class="portfolio-img d-flex align-items-center justify-content-center"
-						title="Portfolio 5">
-						<div class="port-hover-text">
-							<h3>最小的鲜花店</h3>
-							<h5>办公室植物</h5>
+					<a href="#">
+						<div class="port-hover-text" style="width: 100%;height: 100%;margin-top: 50%;">
+							<h3>常年不落也植物。</h3>
+							<h5>常绿植物</h5>
 						</div>
 					</a>
 				</div>
@@ -363,12 +372,10 @@
 					style="background-image: url(img/bg-img/21.jpg);"></div>
 				<!-- Portfolio Hover Text -->
 				<div class="portfolio-hover-overlay">
-					<a href="img/bg-img/21.jpg"
-						class="portfolio-img d-flex align-items-center justify-content-center"
-						title="Portfolio 6">
-						<div class="port-hover-text">
-							<h3>最小的鲜花店</h3>
-							<h5>办公室植物</h5>
+					<a href="#">
+						<div class="port-hover-text" style="width: 100%;height: 100%;margin-top: 50%;">
+							<h3>植物会在一段时间落叶。</h3>
+							<h5>非常绿植物</h5>
 						</div>
 					</a>
 				</div>
@@ -383,12 +390,9 @@
 					style="background-image: url(img/bg-img/22.jpg);"></div>
 				<!-- Portfolio Hover Text -->
 				<div class="portfolio-hover-overlay">
-					<a href="img/bg-img/22.jpg"
-						class="portfolio-img d-flex align-items-center justify-content-center"
-						title="Portfolio 7">
-						<div class="port-hover-text">
-							<h3>最小的鲜花店</h3>
-							<h5>办公室植物</h5>
+					<a href="#">
+						<div class="port-hover-text" style="width: 100%;height: 100%;margin-top: 25%;">
+							<h2>全部种类</h2>
 						</div>
 					</a>
 				</div>
@@ -412,7 +416,7 @@
 			<div class="row">
 
 				<!-- Single Footer Widget -->
-				<div class="col-12 col-sm-6 col-lg-3">
+				<div class="col-12 col-sm-6 col-lg-3" st>
 					<div class="single-footer-widget">
 						<div class="footer-logo mb-30">
 							<a href="#"><img src="img/core-img/logo.png" alt=""></a>

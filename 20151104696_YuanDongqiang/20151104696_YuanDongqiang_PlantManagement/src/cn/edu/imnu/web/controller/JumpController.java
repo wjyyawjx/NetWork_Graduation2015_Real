@@ -12,6 +12,7 @@ public class JumpController {
 	public String toRegister(String id) {
 		return "register";
 	}
+
 	/**
 	 * 跳转登录
 	 */
@@ -19,6 +20,7 @@ public class JumpController {
 	public String toTZlogin() {
 		return "login";
 	}
+
 	/**
 	 * 跳转帮助界面
 	 */
@@ -26,6 +28,7 @@ public class JumpController {
 	public String toHelp() {
 		return "help";
 	}
+
 	/*
 	 * 跳转主页
 	 */
@@ -33,11 +36,13 @@ public class JumpController {
 	public String toIndex() {
 		return "index";
 	}
+
 	/*
-	 * 跳转添加页面
+	 * 跳转添加信息界面
 	 */
-	@RequestMapping(value = "/post.action")
-	public String toPost() {
+	@RequestMapping(value = "addMessage.action")
+	public String addMessage() {
+		System.out.println("跳转上传信息");
 		return "post-ad";
 	}
 }
