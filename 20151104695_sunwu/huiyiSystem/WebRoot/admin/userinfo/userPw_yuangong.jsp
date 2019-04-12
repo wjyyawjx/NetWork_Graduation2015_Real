@@ -14,8 +14,10 @@ String path = request.getContextPath();
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
 		<meta http-equiv="description" content="This is my page" />
         
-        <link rel="stylesheet" type="text/css" href="<%=path %>/css/base.css" />
-		
+        <%-- <link rel="stylesheet" type="text/css" href="<%=path %>/css/base.css" /> --%>
+		 <link href="<%=path %>/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		 <link href="<%=path %>/bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+		 <link href="<%=path %>/bootstrap/custom.min.css" rel="stylesheet"/>
 		<script type='text/javascript' src='<%=path %>/dwr/interface/loginService.js'></script>
         <script type='text/javascript' src='<%=path %>/dwr/engine.js'></script>
         <script type='text/javascript' src='<%=path %>/dwr/util.js'></script>
@@ -46,48 +48,72 @@ String path = request.getContextPath();
         </script>
 	</head>
 
-	<body leftmargin="2" topmargin="9" background='<%=path %>/img/allbg.gif'>
-			<form method="post" action="<%=path %>/userPwEdit.action" name="formPw">
-			<table width="98%" align="center" border="0" cellpadding="4" cellspacing="1" bgcolor="#CBD8AC" style="margin-bottom:8px">
-				<tr bgcolor="#EEF4EA">
-				    <td colspan="2" background="<%=path %>/img/wbg.gif" class='title'><span>密码修改</span></td>
-				</tr>
-				<tr bgcolor="#FFFFFF">
-				    <td width="25%" bgcolor="#FFFFFF" align="right">
-				         登录名：
-				    </td>
-				    <td width="75%" bgcolor="#FFFFFF">
-				        <input type="text" value="${sessionScope.yuangong.loginname }" name="loginname" size="20" disabled="disabled"/>
-				    </td>
-				</tr>
-				<tr bgcolor="#FFFFFF">
-				    <td width="25%" bgcolor="#FFFFFF" align="right">
-				        原密码：
-				    </td>
-				    <td width="75%" bgcolor="#FFFFFF">
-				        <input type="password" name="loginpw" id="loginpw" size="22"/>
-				    </td>
-				</tr>
-				<tr bgcolor="#FFFFFF">
-				    <td width="25%" bgcolor="#FFFFFF" align="right">
-				         新密码：
-				    </td>
-				    <td width="75%" bgcolor="#FFFFFF">
-				        <input type="password" id="loginpw1" name="loginpw1" size="22"/>
-				    </td>
-				</tr>
-				<tr bgcolor="#FFFFFF">
-				    <td width="25%" bgcolor="#FFFFFF" align="right">
-				        &nbsp;
-				    </td>
-			        <td width="75%" bgcolor="#FFFFFF">
-			             <input type="button" value="修改" onclick="check()"/>
-			             &nbsp;&nbsp;&nbsp;
-			             <input type="reset" value="重置"/>
-			             <img id="indicator" src="<%=path %>/img/loading.gif" alt="Loading..." style="display:none"/>
-			        </td>
-				</tr>
-			</table>
-			</form>
+	<body  leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="#FFFFFF" style="background:rgb(236,240,245); padding-left:20px;">
+
+	<div class="title clearfix">
+	<h2 style="font-size:34px; font-weight:bold;">修改密码</h2>
+	</div>
+	<ul class="breadcrumb" style="">
+	<li>
+	<i class="fa fa-home"></i>
+	<i style="color:rgb(42,63,84); font-style:normal;" id="breadcrumbSeal">操作   /   修改密码</i>
+	</li>
+	</ul>
+	<ul id="myTab" class="nav nav-tabs" style="height:30px;">
+	<li class="active"><a href="#home" data-toggle="tab" style="height:30px; line-height:3px;" id="tabTitle">
+	修改密码</a>
+	</li>
+	</ul>
+	<div id="myTabContent" class="tab-content" style="margin-top:20px;">
+	<div class="tab-pane fade in active" id="home">
+	<section class="content">
+	<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+	<div class="x_panel">
+	<div id="table-box" style="display: block; height:440px;">
+	
+	
+			<form method="post" action="<%=path %>/userPwEdit.action" name="formPw" class="form-horizontal form-label-left">
+			
+			<div class="form-group">
+		<label class="control-label col-xs-3" >用户名:
+		</label>
+		<div class="col-xs-6">
+		 <input type="text" value="${sessionScope.yuangong.loginname }"name="loginname" size="20" disabled="disabled"  class="form-control col-xs-6"/>
+		</div>
+		</div> 
+ 	
+		 <div class="form-group">
+		<label class="control-label col-xs-3" >原密码:
+		</label>
+		<div class="col-xs-6">
+		 <input type="password" name="loginpw" id="loginpw" size="22"class="form-control col-xs-6" />
+		</div>
+		</div> 
+ 		
+ 		 <div class="form-group">
+		<label class="control-label col-xs-3" >新密码:
+		</label>
+		<div class="col-xs-6">
+		        <input type="password" id="loginpw1" name="loginpw1" size="22"class="form-control col-xs-6" />
+		</div>
+		</div> 
+				    
+		 <div class="col-md-offset-3 col-xs-6">
+		 <input type="button" class="btn btn-primary col-md-offset-1" value="修改"onclick="check()" />&nbsp;&nbsp;
+		 <input type="reset" class="btn btn-primary col-md-offset-1" value="重置"/>&nbsp;&nbsp;
+		 <img id="indicator" src="<%=path %>/img/loading.gif" alt="Loading..." style="display:none"/>
+	    </div>
+			
+		</form>
+		</div>
+		</div>
+		</div>
+		</div>
+		</section>
+		</div>
+		</div>
+		
    </body>
 </html>
+		
