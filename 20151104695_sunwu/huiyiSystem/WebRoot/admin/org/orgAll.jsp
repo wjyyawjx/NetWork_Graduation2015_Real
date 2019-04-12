@@ -52,7 +52,7 @@ String path = request.getContextPath();
 				d = new dTree('d');
 		        d.add(0,-1,'小组组织结构图');//必须有这句
 				<c:forEach items="${requestScope.orgList}" var="org">
-		            d.add(${org.id},${org.parenOrganization.id},'${org.name}','javaScript:onClickTreeNode(${org.id});',null,null,null,null,'yes');
+				  d.add(${org.id},${org.parenOrganization.id},'${org.name}','javaScript:onClickTreeNode(${org.id});',null,null,null,null,'yes');
 		        </c:forEach>
 				document.write(d);
 			</script>

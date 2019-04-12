@@ -1,3 +1,4 @@
+<%@page import="com.orm.Tgonggao"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -16,7 +17,8 @@ String path = request.getContextPath();
 		<meta http-equiv="description" content="This is my page" />
 
 		<link rel="stylesheet" type="text/css" href="<%=path %>/css/base.css" />
-		
+		 <link href="<%=path %>/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		 
 		<script language="JavaScript" src="<%=path %>/js/public.js" type="text/javascript"></script>
 		
         <script language="javascript">
@@ -38,8 +40,61 @@ String path = request.getContextPath();
        </script>
 	</head>
 
-	<body leftmargin="2" topmargin="2" background='<%=path %>/img/allbg.gif'>
-			<table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D1DDAA" align="center" style="margin-top:8px">
+	<body leftmargin="2" topmargin="2" >
+	
+	<div class="container" >
+	<h2>公告</h2>
+
+	<table class="table table-striped table-bordered table-hover table-condensed" width="98%"  border="0" cellpadding="2" cellspacing="1" bgcolor="#D1DDAA" align="center" style="margin-top:8px">
+		<thead>
+		<tr bgcolor="#E7E7E7">
+					<td height="14" colspan="14" background="<%=path %>/img/tbg.gif">&nbsp;公告管理&nbsp;</td>
+		</tr>
+			<tr >
+				<th width="5%" style="text-align:center;" >序号</th>
+				<th width="40%" style="text-align:center;">标题</th>
+				<th width="10%" style="text-align:center;">发布时间</th>
+				<th width="10%" style="text-align:center;">内容</th>
+				<th width="10%" style="text-align:center;">操作</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<c:forEach items="${requestScope.gonggaoList}" var="gonggao" varStatus="ss">
+				
+				<tr  align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">
+					
+					<td bgcolor="#FFFFFF" align="center">
+						 ${ss.index+1}
+					</td>
+					<td bgcolor="#FFFFFF" align="center">
+						 ${gonggao.title}
+					</td>
+					<td bgcolor="#FFFFFF" align="center">
+						 ${gonggao.shijian}
+					</td>
+					<td bgcolor="#FFFFFF" align="center">
+					    <a href="#" onclick="gonggaoDetail(${gonggao.id})" class="pn-loperator">查看内容</a>
+					</td>
+					<td bgcolor="#FFFFFF" align="center">
+						<a class="pn-loperator" href="<%=path %>/gonggao?type=gonggaoDel&id=${gonggao.id}">删除</a>
+						<a href="<%=path %>/gonggao?type=gonggaoUpdate1&id=${gonggao.id}";>修改</a>
+					</td>
+				</tr>
+				</c:forEach>
+		</tbody>
+	</table>
+</div>
+	<div class="form-actions">
+	<div class="row">
+	<div class="col-md-offset-3 col-xs-6">
+	<button type=button class="btn btn-primary col-md-offset-1" onclick='gonggaoAdd()'>添加公告</button>
+	</div>
+	</div>
+	</div>
+	
+	
+			<%-- <table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D1DDAA" align="center" style="margin-top:8px">
 				<tr bgcolor="#E7E7E7">
 					<td height="14" colspan="14" background="<%=path %>/img/tbg.gif">&nbsp;公告管理&nbsp;</td>
 				</tr>
@@ -70,14 +125,16 @@ String path = request.getContextPath();
 					</td>
 				</tr>
 				</c:forEach>
-			</table>
+			</table> --%>
 			
+	
+			<!-- 
 			<table width='98%'  border='0'style="margin-top:8px;margin-left: 5px;">
 			  <tr>
 			    <td>
-			      <input type="button" value="添加公告" style="width: 80px;" onclick="gonggaoAdd()" />
+			      <input type="button" value="添加公告"  style="width: 80px;" onclick="gonggaoAdd()" />
 			    </td>
 			  </tr>
-		    </table>
+		    </table> -->
 	</body>
 </html>

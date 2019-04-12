@@ -54,6 +54,7 @@ String path = request.getContextPath();
 			<div class="title clearfix">
 			<h2 style="font-size:34px; font-weight:bold;">员工注册</h2>
 			</div>
+			
 			<div class="form-group">
 			<label class="control-label col-xs-3">小组：
 			</label>
@@ -98,6 +99,7 @@ String path = request.getContextPath();
 				<input type="text"  class="form-control col-xs-6" name="loginpw"/>
 				</div>
 				</div> 
+				
 				<div class="col-md-offset-3 col-xs-6">
 				  <input type="submit"  class="btn btn-primary col-md-offset-1" value="注册" onclick="return check()"/>&nbsp; 
 			     <input type="reset"  class="btn btn-primary col-md-offset-1" value="重置"/>&nbsp;
