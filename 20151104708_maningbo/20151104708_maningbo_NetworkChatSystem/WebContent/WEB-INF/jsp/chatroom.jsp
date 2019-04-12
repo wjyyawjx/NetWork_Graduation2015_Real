@@ -46,21 +46,9 @@ function replace_em(str){
 <body>
 	<div class="container-fluid">
 		<div class="row">
-			<div
-				class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main about-main">
 				<div class="contact">
 					<div class="contact-grids">
 						<div class="col-md-4 address">
-							<h3>Contact Info</h3>
-							<p class="cnt-p">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit,sheets containing Lorem Ipsum passages sed do</p>
-							<p>${userBean.userName}</p>
-							<p>9560 St Dolor,London</p>
-							<p>Telephone : +2 800 544 6035</p>
-							<p>FAX : +1 800 889 4444</p>
-							<p>
-								Email : <a href="mailto:example@mail.com">mail@example.com</a>
-							</p>
 						</div>
 						<div class="col-md-8 contact-form">
 							<h3>聊天室</h3>
@@ -77,7 +65,7 @@ function replace_em(str){
 						</div>
 					</div>
 				</div>
-			</div>
+			
 		</div>
 	</div>
 	<script type="text/javascript">

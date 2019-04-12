@@ -33,7 +33,7 @@
 						<input type="hidden" name="id" value="${room.id }">
 						<div class="col-md-3 offer-grids-info">
 							<a href="${pageContext.request.contextPath}/room/roominfo/${room.id }.action"> <img
-								src="${pageContext.request.contextPath}/images/img13.jpg" alt="" />
+								src="${pageContext.request.contextPath}/images/talk.jpg" alt="" />
 								<div class="offer-text">
 									<h3>房间号: ${room.id}</h3>
 									<h3>${room.name}</h3>
