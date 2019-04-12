@@ -49,10 +49,8 @@ public class GeneralAthletesView extends HttpServlet {
 		abean = (ArrayList<AthletBean>)rgdao.athletList(sid);
 		request.setAttribute("mea", abean);
 		
-		//返回一届运动会的所有项目信息
-		ArrayList<AthletBean> abe = new ArrayList<AthletBean>();
-		abe = (ArrayList<AthletBean>)rgdao.eventsList(sid);
-		request.setAttribute("abe", abe);
+		FormationReturn ret = new FormationReturn();
+		ret.doPost(request, response);
 		
 		request.getRequestDispatcher("general-jsp/general-athlet.jsp").forward(request, response);
 	}

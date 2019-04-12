@@ -11,17 +11,28 @@
 </head>
 <body>
 <form action="GeneralAthletesQuery" method="post">
-			<table border="0" cellpadding="0" cellspacing="0" style="font-size: 20px"  width="50%" height="31" >
+			<table border="0" cellpadding="0" cellspacing="0" style=" width="100%" height="31" “>
 		<tr>
 		<td>
 		<h3>项目:</h3></td><td>
 				<select name="events">
-				<option value="所有信息">所有信息</option>
-				<c:forEach items="${abe}" var="w">
+				<option value="所有信息">所有项目</option>
+				<c:forEach items="${events}" var="w">
 					<option value="${w.events}">${w.events}</option>
 				</c:forEach>
 					</select>
 					</td>
+					
+		<td>	<h3>班级:</h3></td><td>
+				<select name="theclass">
+				<option value="所有信息">所有班级</option>
+				<c:forEach items="${theclass}" var="w">
+					<option value="${w.theclass}">${w.theclass}</option>
+				</c:forEach>
+					</select>
+					</td>		
+			<td><h3>运动员名字:</h3></td><td>
+			<input type="text" name="username" value="null"></td>
 			<td>	<input type="submit" value="查询"></td>
 		</tr>
 		</table>
