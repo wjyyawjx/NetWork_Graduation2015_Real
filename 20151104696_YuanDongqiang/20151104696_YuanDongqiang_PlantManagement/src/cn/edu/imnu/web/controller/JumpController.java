@@ -42,7 +42,6 @@ public class JumpController {
 	 */
 	@RequestMapping(value = "addMessage.action")
 	public String addMessage() {
-		System.out.println("跳转上传信息");
 		return "post-ad";
 	}
 }

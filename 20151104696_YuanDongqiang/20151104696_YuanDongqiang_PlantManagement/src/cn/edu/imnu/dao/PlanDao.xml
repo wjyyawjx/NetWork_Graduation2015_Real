@@ -1,0 +1,29 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.imnu.dao.PlanDao">
+	<insert id="savePlan" parameterType="Plan">
+		insert into plan(
+		p_id,
+		p_name,
+		p_breeding,
+		p_habits,
+		p_place,
+		p_form,
+		p_img,
+		p_water,
+		p_message,
+		u_id
+		)
+		values(#{p_id},
+		#{p_name},
+		#{p_breeding},
+		#{p_habits},
+		#{p_place},
+		#{p_form},
+		#{p_img},
+		#{p_water},
+		#{p_message},
+		#{u_id}
+		)
+	</insert>
+</mapper>

@@ -193,10 +193,9 @@
 								 	} else {
 								 %> <a href="#" onclick="judge()" class="btn alazea-btn active">上传信息</a><%
 								 	}
-								 %>
-<!-- 						<a href="${pageContext.request.contextPath }/addMessage.action" 
-								 class="btn alazea-btn active">上传信息</a>
- -->		
+								 %> 
+<%-- 						<a href="${pageContext.request.contextPath }/addMessage.action" 
+								 class="btn alazea-btn active">上传信息</a>	 --%>	
 							</div>
 						</div>
 					</div>
@@ -218,7 +217,7 @@
 							<p></p>
 							<div class="welcome-btn-group">
 								<a href="#" class="btn alazea-btn mr-30">开始使用</a> 
-								<%
+							 	<%
 								 	if (session.getAttribute("USER_SESSION") != null) {
 								 %> <a href="${pageContext.request.contextPath }/addMessage.action" 
 								 class="btn alazea-btn active">上传信息</a> <%
@@ -228,6 +227,7 @@
 								 %>
 <!-- 						<a href="${pageContext.request.contextPath }/addMessage.action" 
 								 class="btn alazea-btn active">上传信息</a>
+								 -->	 
 							</div>
 						</div>
 					</div>
