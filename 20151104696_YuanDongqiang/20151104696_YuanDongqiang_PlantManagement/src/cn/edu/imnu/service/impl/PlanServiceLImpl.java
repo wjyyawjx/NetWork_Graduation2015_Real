@@ -1,5 +1,7 @@
 package cn.edu.imnu.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,11 +17,21 @@ import cn.edu.imnu.service.PlanService;
 @Transactional
 public class PlanServiceLImpl implements PlanService {
 	@Autowired
-	private PlanDao palnDao;
+	private PlanDao planDao;
 
 	@Override
 	public Integer savePlan(Plan plan) {
-		return palnDao.savePlan(plan);
+		return planDao.savePlan(plan);
+	}
+
+	@Override
+	public List<Plan> showPlan(Integer id) {
+		return planDao.showPlan(id);
+	}
+
+	@Override
+	public List<Plan> showPlanID(Integer id) {
+		return planDao.showPlanID(id);
 	}
 
 }

@@ -1,11 +1,14 @@
 package cn.edu.imnu.web.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.edu.imnu.po.Plan;
@@ -19,12 +22,11 @@ public class PlanController {
 	private PlanService planService;
 
 	@RequestMapping(value = "AddPlanMess.action")
-	public String AddPlanMess(String name,String category,
-			String place,String sun,String life,String green,
-			String title,String time1,String time2,String time3,String planmess, 
-			String fileselect,HttpServletRequest request) {
+	public String AddPlanMess(String name, String category, String place, String sun, String life, String green,
+			String title, String time1, String time2, String time3, String planmess, String fileselect,
+			HttpServletRequest request) {
 		HttpSession sess = request.getSession();
-		User user =(User) sess.getAttribute("USER_SESSION");
+		User user = (User) sess.getAttribute("USER_SESSION");
 		Plan plan = new Plan();
 		plan.setU_id(user.getU_id());
 		plan.setP_name(name);
@@ -33,7 +35,7 @@ public class PlanController {
 		String habits = sun + life + green;
 		plan.setP_habits(habits);
 		plan.setP_form(title);
-		time1=time1+time2+time3;
+		time1 = time1 + time2 + time3;
 		plan.setP_water(time1);
 		plan.setP_message(planmess);
 		plan.setP_img(fileselect);
@@ -41,10 +43,29 @@ public class PlanController {
 		if (save != 0) {
 			JOptionPane.showMessageDialog(null, "上传信息成功，请等待审核！", "成功", JOptionPane.ERROR_MESSAGE);
 			return "index";
-		}else
-		{
+		} else {
 			JOptionPane.showMessageDialog(null, "上传信息失败，请重新输入！", "失败", JOptionPane.ERROR_MESSAGE);
 			return "post-ad";
 		}
+	}
+
+	@RequestMapping(value = "plan.action")
+	public String Plan(Integer id, Model model) {
+		List<Plan> planshow = null;
+		switch (id) {
+		case 0:
+			planshow = planService.showPlan(null);
+			break;
+
+		default:
+			planshow = planService.showPlanID(id);
+			break;
+		}
+		//list循环遍历
+		for(Plan plan : planshow) {
+			  System.out.println(plan.getP_id());
+			}
+		model.addAttribute("planshow",planshow);
+		return "plan";
 	}
 }

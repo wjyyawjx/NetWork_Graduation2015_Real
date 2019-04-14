@@ -26,4 +26,10 @@
 		#{u_id}
 		)
 	</insert>
+	<select id="showPlan" parameterType="Integer" resultType="Plan">
+		select * from plan
+	</select>
+	<select id="showPlanID" parameterType="Integer" resultType="Plan">
+		select * from plan where p_habits like concat('%',#{id},'%')
+	</select>
 </mapper>

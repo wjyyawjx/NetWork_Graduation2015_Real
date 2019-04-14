@@ -26,7 +26,7 @@ public class JumpController {
 	 */
 	@RequestMapping(value = "/help.action")
 	public String toHelp() {
-		return "help";
+		return "plan";
 	}
 
 	/*

@@ -53,12 +53,6 @@ public class IndexServiceImpl implements IndexService {
 
 	}
 
-	// @Override
-	// public void addIp1(User user) {
-	// indexDao.addIp1(user);
-	//
-	// }
-
 	@Override
 	public void addIp1(String u_ip, Date u_time) {
 		User user = new User();
