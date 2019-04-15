@@ -6,4 +6,7 @@
   <select id="selectjz" parameterType="String" resultType="Infm">
     select * from ri where u_type = "家长"
   </select>
+  <delete id="deletemy">
+    delete from ri where u_id = #{u_id}
+  </delete>
 </mapper>

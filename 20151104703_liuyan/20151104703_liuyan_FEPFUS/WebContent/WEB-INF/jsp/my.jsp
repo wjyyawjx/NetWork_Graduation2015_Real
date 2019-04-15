@@ -17,7 +17,7 @@
 	<br>
 
 	<br>
-	<form action="">
+	<form action="${pageContext.request.contextPath}/update.action" method="post">
 	<table border="2" cellpadding="0" cellspacing="0"
 		style="font-size: 20px"  width="100%" height="100%">
 
@@ -34,7 +34,7 @@
 				<br>
 				邮箱:<input id="u_email" type="email" name="u_email" value="${USER_SESSION.u_email}" />
 				<br>
-				简介:<br><textarea name="message"  rows="7" cols="60" >${USER_SESSION.u_message}
+				简介:<br><textarea name="u_message"  rows="7" cols="60" >${USER_SESSION.u_message}
 </textarea></td>
 
 			

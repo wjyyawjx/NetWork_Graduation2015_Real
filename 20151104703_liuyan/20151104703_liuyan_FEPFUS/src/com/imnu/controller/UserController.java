@@ -20,16 +20,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.imnu.po.User;
+import com.imnu.service.INFService;
 import com.imnu.service.UserService;
 
 @Controller
 public class UserController {
      @Autowired
      private UserService userService;
-    
+     @Autowired
+     private INFService infService;
      @RequestMapping(value = "/login.action" ,method = RequestMethod.GET)
      public String Login1() {
     	 return "login";
+     }
+     @RequestMapping(value = "/update.action" ,method = RequestMethod.POST)
+     public String update(String u_name,String u_phone,String u_email,String u_message,HttpSession session) {
+    	 User user = (User) session.getAttribute("USER_SESSION");
+     	 String u_user = user.getU_user();
+    	 int u_id = user.getU_id();
+    	 infService.deletemy(u_id);
+    	 session.removeAttribute("USER_SESSION");
+    	 userService.updatemy(u_user,u_name,u_phone,u_email,u_message);
+    	 User user1 = userService.findUser(u_user);
+    	 session.setAttribute("USER_SESSION", user1); 
+    	 return "my";
      }
      @RequestMapping(value = "/login.action" ,method = RequestMethod.POST)
      public String Login(String u_user, String u_pwd,Model model,HttpSession session) {
