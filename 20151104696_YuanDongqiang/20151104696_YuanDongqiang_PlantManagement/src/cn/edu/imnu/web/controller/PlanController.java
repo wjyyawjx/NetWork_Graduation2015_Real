@@ -61,11 +61,16 @@ public class PlanController {
 			planshow = planService.showPlanID(id);
 			break;
 		}
-		//list循环遍历
-		for(Plan plan : planshow) {
-			  System.out.println(plan.getP_id());
-			}
-		model.addAttribute("planshow",planshow);
+		// list循环遍历
+		for (Plan plan : planshow) {
+			System.out.println(plan.getP_id());
+		}
+		model.addAttribute("planshow", planshow);
 		return "plan";
+	}
+
+	@RequestMapping(value = "single.action")
+	public String Single() {
+		return "single";
 	}
 }

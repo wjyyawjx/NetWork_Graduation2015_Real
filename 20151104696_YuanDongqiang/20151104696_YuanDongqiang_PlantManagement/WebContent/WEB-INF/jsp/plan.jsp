@@ -4,319 +4,436 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>plan</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/flexslider.css"
-	type="text/css" media="screen" />
-<!-- flexslider-CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/font-awesome.min.css" />
-<!-- fontawesome-CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/menu_sideslide.css"
-	type="text/css" media="all">
-<!-- Navigation-CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/bootstrap.min.css">
-<!-- bootstrap-CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/bootstrap-select.css">
-<!-- bootstrap-select-CSS -->
-<link href="${pageContext.request.contextPath}/css/style.css"
-	rel="stylesheet" type="text/css" media="all" />
-<!-- style.css -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/jquery-ui1.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords"
-	content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
-<link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed'
-	rel='stylesheet' type='text/css'>
-<link
-	href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
-	rel='stylesheet' type='text/css'>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
-<script src="${pageContext.request.contextPath}/js/bootstrap-select.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/jquery.leanModal.min.js"></script>
-<link href="${pageContext.request.contextPath}/css/jquery.uls.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/jquery.uls.grid.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/css/jquery.uls.lcd.css"
-	rel="stylesheet" />
-<script src="${pageContext.request.contextPath}/js/jquery.uls.data.js"></script>
-<script
-	src="${pageContext.request.contextPath}/js/jquery.uls.data.utils.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.uls.lcd.js"></script>
-<script
-	src="${pageContext.request.contextPath}/js/jquery.uls.languagefilter.js"></script>
-<script
-	src="${pageContext.request.contextPath}/js/jquery.uls.regionfilter.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.uls.core.js"></script>
-<script>
-	$(document).ready(function() {
-		$('.uls-trigger').uls({
-			onSelect : function(language) {
-				var languageName = $.uls.data.getAutonym(language);
-				$('.uls-trigger').text(languageName);
-			},
-			quickList : [ 'en', 'hi', 'he', 'ml', 'ta', 'fr' ]
-		//FIXME
-		});
-	});
-</script>
-<script src="${pageContext.request.contextPath}/js/tabs.js"></script>
-<script type="text/javascript">
-	$(document).ready(
-			function() {
-				var elem = $('#container ul');
-				$('#viewcontrols a').on(
-						'click',
-						function(e) {
-							if ($(this).hasClass('gridview')) {
-								elem.fadeOut(1000, function() {
-									$('#container ul').removeClass('list')
-											.addClass('grid');
-									$('#viewcontrols').removeClass(
-											'view-controls-list').addClass(
-											'view-controls-grid');
-									$('#viewcontrols .gridview').addClass(
-											'active');
-									$('#viewcontrols .listview').removeClass(
-											'active');
-									elem.fadeIn(1000);
-								});
-							} else if ($(this).hasClass('listview')) {
-								elem.fadeOut(1000, function() {
-									$('#container ul').removeClass('grid')
-											.addClass('list');
-									$('#viewcontrols').removeClass(
-											'view-controls-grid').addClass(
-											'view-controls-list');
-									$('#viewcontrols .gridview').removeClass(
-											'active');
-									$('#viewcontrols .listview').addClass(
-											'active');
-									elem.fadeIn(1000);
-								});
-							}
-						});
-			});
-</script>
-<script>
-	$(document).ready(function() {
-		var mySelect = $('#first-disabled2');
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>信息浏览</title>
+    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="stylesheet" href="style.css">
 
-		$('#special').on('click', function() {
-			mySelect.find('option:selected').prop('disabled', true);
-			mySelect.selectpicker('refresh');
-		});
-
-		$('#special2').on('click', function() {
-			mySelect.find('option:disabled').prop('disabled', false);
-			mySelect.selectpicker('refresh');
-		});
-
-		$('#basic2').selectpicker({
-			liveSearch : true,
-			maxOptions : 1
-		});
-	});
-</script>
 </head>
+
 <body>
-	<header>
-	<div class="w3ls-header">
-		<div class="w3ls-header-right">
-			<ul>
-				<li class="dropdown head-dpdn"><a href="login.jsp"
-					aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
-						${USER_SESSION.u_name}</a></li>
-				<li class="dropdown head-dpdn"><a
-					href="${pageContext.request.contextPath }/help.action"><i
-						class="fa fa-question-circle" aria-hidden="true"></i> 帮助</a></li>
-			</ul>
-		</div>
-		<h1>
-			<a href="${pageContext.request.contextPath }/index.action"><img
-				src="img/core-img/logo.png" alt=""></a>
-		</h1>
-		<div class="clearfix"></div>
-	</div>
-	</header>
-	<div class="total-ads main-grid-border">
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-circle"></div>
+        <div class="preloader-img">
+            <img src="img/core-img/leaf.png" alt="">
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+	<div class="top-header-area">
 		<div class="container">
-			<div class="ads-grid">
-				<div class="side-bar col-md-3">
-					<div class="search-hotel">
-						<h3 class="agileits-sear-head">名称包含</h3>
-						<form>
-							<input type="text" value="Product name..."
-								onfocus="this.value = '';"
-								onblur="if (this.value == '') {this.value = 'Product name...';}"
-								required=""> <input type="submit" value=" ">
-						</form>
-					</div>
-					<div class="w3ls-featured-ads">
-						<h2 class="sear-head fer">特色的广告</h2>
-						<c:forEach items="${read }" var="read">
-							<div class="w3l-featured-ad">
-								<a href="${pageContext.request.contextPath }/showAll.action?id=${read.id }">
-									<div class="w3-featured-ad-left">
-										<img src="${read.image}" title="ad image" alt="" />
-									</div>
-									<div class="w3-featured-ad-right">
-										<h4>${read.name}</h4>
-										<p>$${read.money}</p>
-									</div>
-									<div class="clearfix"></div>
-								</a>
-							</div>
-						</c:forEach>
-					</div>
-				</div>
-				<div class="agileinfo-ads-display col-md-9">
-					<div class="wrapper">
-						<div class="bs-example bs-example-tabs" role="tabpanel"
-							data-example-id="togglable-tabs">
-							<ul id="myTab" class="nav nav-tabs nav-tabs-responsive"
-								role="tablist">
-								<li role="presentation" class="active"><a href="#home"
-									id="home-tab" role="tab" data-toggle="tab" aria-controls="home"
-									aria-expanded="true"> <span class="text">所有的广告</span>
-								</a></li>
-							</ul>
-							<div id="myTabContent" class="tab-content">
-								<div role="tabpanel" class="tab-pane fade in active" id="home"
-									aria-labelledby="home-tab">
-									<div>
-										<div id="container">
-											<div class="view-controls-list" id="viewcontrols">
-											<label>试图 :</label>
-												<a class="listview active"><i class="glyphicon glyphicon-th-list"></i></a>
-												<a class="gridview"><i class="glyphicon glyphicon-th"></i></a>
-											</div>
-											<div class="clearfix"></div>
-											<ul class="list">
-												<c:forEach items="${fromType }" var="list">
-													<a href="${pageContext.request.contextPath }/showAll.action?id=${list.id }">
-														<li><img src="${list.image}" title="" alt="" /> <section
-																class="list-left">
-															<h5 class="title">${list.name}</h5>
-															<span class="adprice">$ ${list.money}</span>
-															<p class="catpath">Motorcycles » Bajaj</p>
-															</section> <section class="list-right"> <span
-																class="date">Today, 17:55</span> <span class="cityname">City
-																name</span> </section>
-															<div class="clearfix"></div></li>
-													</a>
-												</c:forEach>
-											</ul>
-										</div>
-									</div>
+			<div class="row">
+				<div class="col-12">
+					<div
+						class="top-header-content d-flex align-items-center justify-content-between">
+						<div class="top-header-meta">
+							<a href="#"> <i class="fa fa-envelope-o" aria-hidden="true"></i>
+								<span>邮箱:Ydq7543@hotmail.com</span>
+							</a> <a href="#"> <i class="fa fa-phone" aria-hidden="true"></i>
+								<span>电话: +1 234 122 122</span>
+							</a>
+						</div>
+						<div class="top-header-meta d-flex" id="login">
+							<div class="top-header-meta d-flex">
+								<div class="login">
+									<a href="${pageContext.request.contextPath }/TZlogin.action"
+										aria-expanded="false"><i class="fa fa-user"></i> <%
+										 	if (session.getAttribute("USER_SESSION") != null) {
+										 %> ${USER_SESSION.u_name} <%
+										 	} else {
+										 %> 未登陆 <%
+										 	}
+										 %> </a>
 								</div>
-								<div role="tabpanel" class="tab-pane fade" id="profile"
-									aria-labelledby="profile-tab">
-									<div>
-										<div id="container">
-											
-											<div class="clearfix"></div>
-											<ul class="list">
-												<c:forEach items="${list }" var="list">
-													<a href="single.html"> <c:forEach items="${list }"
-															var="list">
-															<li><img src="images/bk1.jpg" title="" alt="" /> <section
-																	class="list-left">
-																<h5 class="title">There are many variations of
-																	passages of Lorem Ipsum</h5>
-																<span class="adprice">$290</span>
-																<p class="catpath">Motorcycles » Bajaj</p>
-																</section> <section class="list-right"> <span
-																	class="date">Today, 17:55</span> <span class="cityname">City
-																	name</span> </section>
-																<div class="clearfix"></div></li>
-														</c:forEach>
-													</a>
-												</c:forEach>
-											</ul>
-										</div>
-									</div>
+								<%
+									if (session.getAttribute("USER_SESSION") != null) {
+								%>
+								<div class="cart">
+									<a href="${pageContext.request.contextPath }/logout.action">
+										<i class="fa fa-question-circle" aria-hidden="true"></i> 退出登陆
+									</a>
 								</div>
-								<ul class="pagination pagination-sm">
-									<li><a href="#">Prev</a></li>
-									<li><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">6</a></li>
-									<li><a href="#">7</a></li>
-									<li><a href="#">8</a></li>
-									<li><a href="#">Next</a></li>
-								</ul>
+								<%
+									}
+								%>
+								<div class="cart">
+									<a href="${pageContext.request.contextPath }/help.action">
+										<i class="fa fa-question-circle" aria-hidden="true"></i> 帮助
+									</a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="alazea-main-menu">
+			<div class="classy-nav-container breakpoint-off">
+				<div class="container">
+					<!-- Menu -->
+					<nav class="classy-navbar justify-content-between" id="alazeaNav">
+					<!-- Nav Brand --> <a href="index.jsp" class="nav-brand"><img
+						src="img/core-img/logo.png" alt=""></a>
+					<div class="classy-navbar-toggler">
+						<span class="navbarToggler"><span></span><span></span><span></span></span>
+					</div>
+					<!-- Menu -->
+					<div class="classy-menu">
+						<!-- Close Button -->
+						<div class="classycloseIcon">
+							<div class="cross-wrap">
+								<span class="top"></span><span class="bottom"></span>
+							</div>
+						</div>
+						<!-- Navbar Start -->
+						<div class="classynav">
+							<ul>
+								<li><a href="index.html">主页</a></li>
+								<li><a href="about.html">关于我们</a></li>
+								<li><a href="#">页面</a>
+									<ul class="dropdown">
+										<li><a href="index.html">主页</a></li>
+										<li><a href="about.html">关于我们</a></li>
+										<li><a href="shop.html">购买</a>
+											<ul class="dropdown">
+												<li><a href="shop.html">购买</a></li>
+												<li><a href="shop-details.html">商店 细节</a></li>
+												<li><a href="cart.html">购物车</a></li>
+												<li><a href="checkout.html">结帐</a></li>
+											</ul></li>
+										<li><a href="portfolio.html">投资组合</a>
+											<ul class="dropdown">
+												<li><a href="portfolio.html">投资组合</a></li>
+												<li><a href="single-portfolio.html">投资组合细节</a></li>
+											</ul></li>
+										<li><a href="blog.html">博客</a>
+											<ul class="dropdown">
+												<li><a href="blog.html">博客</a></li>
+												<li><a href="single-post.html">博客 细节</a></li>
+											</ul></li>
+										<li><a href="contact.html">联系</a></li>
+									</ul></li>
+								<li><a href="shop.html">店铺</a></li>
+								<li><a href="portfolio.html">投资组合</a></li>
+								<li><a href="contact.html">联系</a></li>
+							</ul>
+
+							<!-- Search Icon -->
+							<div id="searchIcon">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</div>
+
+						</div>
+						<!-- Navbar End -->
+					</div>
+					</nav>
+
+					<!-- Search Form -->
+					<div class="search-form">
+						<form action="#" method="get">
+							<input type="search" name="search" id="search"
+								placeholder="输入关键字,按回车……">
+							<button type="submit" class="d-none"></button>
+						</form>
+						<!-- Close Icon -->
+						<div class="closeIcon">
+							<i class="fa fa-times" aria-hidden="true"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <div class="breadcrumb-area">
+        <!-- Top Breadcrumb Area -->
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
+            <h2>植物信息</h2>
+        </div>
+    </div>
+    <!-- ##### Breadcrumb Area End ##### -->
+
+    <!-- ##### Shop Area Start ##### -->
+    <section class="shop-page section-padding-0-100">
+        <div class="container">
+            <div class="row">
+                <!-- All Products Area -->
+                <div  style="width: 100%">
+                    <div class="shop-products-area">
+                        <div class="row" style="width: 100%">
+
+                            <!-- Single Product Area -->
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="single-product-area mb-50">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <a href="shop-details.html"><img src="img/bg-img/40.png" alt=""></a>
+                                        <div class="product-meta d-flex">
+                                            <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
+                                            <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
+                                            <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Info -->
+                                    <div class="product-info mt-15 text-center">
+                                        <a href="${pageContext.request.contextPath }/single.action">
+                                            <p>绿萝</p>
+                                        </a>
+                                        <p>绿萝是一种全绿的藤本植物，在家居装饰中非常常见，绿萝可以说是净化空气的一大能手。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Single Product Area -->
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="single-product-area mb-50">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <a href="shop-details.html"><img src="img/bg-img/44.png" alt=""></a>
+                                        <div class="product-meta d-flex">
+                                            <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
+                                            <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
+                                            <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Info -->
+                                    <div class="product-info mt-15 text-center">
+                                        <a href="shop-details.html">
+                                            <p>吊兰</p>
+                                        </a>
+                                        <p>兰花在山水画中出现得极为广泛，吊兰是一种非常受欢迎的室内居室垂挂植物之一.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single Product Area -->
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="single-product-area mb-50">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <a href="shop-details.html"><img src="img/bg-img/45.png" alt=""></a>
+                                        <div class="product-meta d-flex">
+                                            <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
+                                            <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
+                                            <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Info -->
+                                    <div class="product-info mt-15 text-center">
+                                        <a href="shop-details.html">
+                                            <p>发财树</p>
+                                        </a>
+                                        <p>发财树不仅仅只是一个好的寓意，随着摆放的环境不同，寓意也会存在变化，将发财树摆放在卧室.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single Product Area -->
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="single-product-area mb-50">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <a href="shop-details.html"><img src="img/bg-img/46.png" alt=""></a>
+                                        <div class="product-meta d-flex">
+                                            <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
+                                            <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
+                                            <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Info -->
+                                    <div class="product-info mt-15 text-center">
+                                        <a href="shop-details.html">
+                                            <p>豆瓣绿</p>
+                                        </a>
+                                        <p>豆瓣绿，在中国被广泛用于盆栽栽培，豆瓣绿是一种小型的草本植物。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single Product Area -->
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="single-product-area mb-50">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <a href="shop-details.html"><img src="img/bg-img/47.png" alt=""></a>
+                                        <!-- Product Tag -->
+                                        <div class="product-tag sale-tag">
+                                            <a href="#">Sale</a>
+                                        </div>
+                                        <div class="product-meta d-flex">
+                                            <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
+                                            <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
+                                            <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Info -->
+                                    <div class="product-info mt-15 text-center">
+                                        <a href="shop-details.html">
+                                              <p>发财树</p>
+                                        </a>
+                                        <p>发财树不仅仅只是一个好的寓意，随着摆放的环境不同，寓意也会存在变化，将发财树摆放在卧室.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Single Product Area -->
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="single-product-area mb-50">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <a href="shop-details.html"><img src="img/bg-img/48.png" alt=""></a>
+                                        <div class="product-meta d-flex">
+                                            <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
+                                            <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
+                                            <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Info -->
+                                    <div class="product-info mt-15 text-center">
+                                        <a href="shop-details.html">
+                                               <p>发财树</p>
+                                        </a>
+                                        <p>发财树不仅仅只是一个好的寓意，随着摆放的环境不同，寓意也会存在变化，将发财树摆放在卧室.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pagination -->
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Shop Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+   <footer class="footer-area bg-img"
+		style="background-image: url(img/bg-img/3.jpg);"> <!-- Main Footer Area -->
+	<div class="main-footer-area">
+		<div class="container">
+			<div class="row">
+
+				<!-- Single Footer Widget -->
+				<div class="col-12 col-sm-6 col-lg-3" st>
+					<div class="single-footer-widget">
+						<div class="footer-logo mb-30">
+							<a href="#"><img src="img/core-img/logo.png" alt=""></a>
+						</div>
+						<p>网站的主要连接，转发网站。</p>
+						<div class="social-info">
+							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Single Footer Widget -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="single-footer-widget">
+						<div class="widget-title">
+							<h5>快速链接</h5>
+						</div>
+						<nav class="widget-nav">
+						<ul>
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">消息</a></li>
+							<li><a href="#">返回</a></li>
+							<li><a href="#">做广告</a></li>
+							<li><a href="#">航运</a></li>
+							<li><a href="#">职业生涯</a></li>
+						</ul>
+						</nav>
+					</div>
+				</div>
+
+				<!-- Single Footer Widget -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="single-footer-widget">
+						<div class="widget-title">
+							<h5>联系</h5>
+						</div>
+
+						<div class="contact-information">
+							<p>
+								<span>地址:</span> 内蒙古师范大学
+							</p>
+							<p>
+								<span>电话:</span> +1 234 122 122
+							</p>
+							<p>
+								<span>Email:</span> Yqd7543@hotmail.com
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<footer>
-	<div class="agileits-footer-bottom text-center">
+
+	<!-- Footer Bottom Area -->
+	<div class="footer-bottom-area">
 		<div class="container">
-			<div class="w3-footer-logo">
-				<h1>
-					<a href="${pageContext.request.contextPath }/index.actionl"><img
-						src="img/core-img/logo.png" alt=""></a>
-				</h1>
+			<div class="row">
+				<div class="col-12">
+					<div class="border-line"></div>
+				</div>
+				<!-- Copywrite Text -->
+				<div class="col-12 col-md-6">
+					<div class="copywrite-text">
+						<p>
+							&copy; 版权 &copy;
+							<script>
+								document.write(new Date().getFullYear());
+							</script>
+							- 本人保留所有权利
+
+						</p>
+					</div>
+				</div>
+				<!-- Footer Nav -->
+				<div class="col-12 col-md-6">
+					<div class="footer-nav">
+						<nav>
+						<ul>
+							<li><a href="#">主页</a></li>
+							<li><a href="#">关于我们</a></li>
+							<li><a href="#">服务</a></li>
+							<li><a href="#">投资组合</a></li>
+							<li><a href="#">博客</a></li>
+							<li><a href="#">联系</a></li>
+						</ul>
+						</nav>
+					</div>
+				</div>
 			</div>
-			<div class="w3-footer-social-icons">
-				<ul>
-					<li><a class="facebook" href="#"><i class="fa fa-facebook"
-							aria-hidden="true"></i><span>Facebook</span></a></li>
-					<li><a class="twitter" href="#"><i class="fa fa-twitter"
-							aria-hidden="true"></i><span>Twitter</span></a></li>
-					<li><a class="flickr" href="#"><i class="fa fa-flickr"
-							aria-hidden="true"></i><span>Flickr</span></a></li>
-					<li><a class="googleplus" href="#"><i
-							class="fa fa-google-plus" aria-hidden="true"></i><span>Google+</span></a></li>
-					<li><a class="dribbble" href="#"><i class="fa fa-dribbble"
-							aria-hidden="true"></i><span>Dribbble</span></a></li>
-				</ul>
-			</div>
-			<div class="clearfix"></div>
 		</div>
 	</div>
 	</footer>
+    <!-- ##### Footer Area End ##### -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="js/bootstrap/popper.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/plugins/plugins.js"></script>
+    <script src="js/active.js"></script>
 </body>
-<script src="${pageContext.request.contextPath}/js/classie.js"></script>
-<script src="${pageContext.request.contextPath}/js/main.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$().UItoTop({
-			easingType : 'easeOutQuart'
-		});
-	});
-</script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/move-top.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/easing.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event) {
-			event.preventDefault();
-			$('html,body').animate({
-				scrollTop : $(this.hash).offset().top
-			}, 1000);
-		});
-	});
-</script>
+
 </html>
