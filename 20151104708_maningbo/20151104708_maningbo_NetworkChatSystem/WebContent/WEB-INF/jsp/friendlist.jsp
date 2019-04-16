@@ -27,8 +27,8 @@
 						<h3>我的好友列表</h3>
 						<c:forEach items="${friend}" var="c">
 						<div class="col-lg-4 offer-grids-info">
-							<a href="${pageContext.request.contextPath}/friend/${userBean.userName }/${c.friend_2}.action">
-								<img src="${pageContext.request.contextPath}/images/img2.jpg" alt=""/>	
+							<a style="font-size: 20px;"  href="${pageContext.request.contextPath}/friend/${userBean.userName }/${c.friend_2}.action">
+								<img src="${pageContext.request.contextPath}/images/talk1.jpg" alt=""/>	
 								<div class="offer-text">
 									<h5>${c.friend_2}</h5>
 									<br>

@@ -36,6 +36,16 @@ public class RoomController {
 		model.addAttribute("rooms", roomService.findAllRooms());
 		return "roomlist";
 	}
+	@RequestMapping("/adminRoom.action")
+	public String adminRoom(Model model) {
+		model.addAttribute("roomList", roomDao.findAllRoomsByAdmin());
+		return "adminpage";
+	}
+	@RequestMapping("/adminRoomList.action")
+	public String adminRoomList(Model model) {
+		model.addAttribute("roomList", roomDao.findAllRoomsByAdminG());
+		return "adminpageList";
+	}
 	@RequestMapping("/addpage.action")
 	public String addpage(Model model,HttpSession session) {
 		UserBean userBean =(UserBean) session.getAttribute("userBean");
