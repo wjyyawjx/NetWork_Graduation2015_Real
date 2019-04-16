@@ -5,7 +5,7 @@ public class Plan {
 	private Integer p_id; // 植物id
 	private String p_name;// 植物名字
 	private String p_breeding; // 繁殖方式
-	private String p_habits; // 习性
+	private Integer p_habits; // 习性
 	private String p_place; // 分布
 	private String p_form; //形态特征
 	private String p_img; // 图片
@@ -53,11 +53,11 @@ public class Plan {
 		this.p_breeding = p_breeding;
 	}
 
-	public String getP_habits() {
+	public Integer getP_habits() {
 		return p_habits;
 	}
 
-	public void setP_habits(String p_habits) {
+	public void setP_habits(Integer p_habits) {
 		this.p_habits = p_habits;
 	}
 

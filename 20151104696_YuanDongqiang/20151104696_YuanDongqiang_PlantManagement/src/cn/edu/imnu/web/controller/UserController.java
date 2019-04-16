@@ -11,9 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.edu.imnu.po.IP;
 import cn.edu.imnu.po.User;
-import cn.edu.imnu.service.IndexService;
 import cn.edu.imnu.service.UserService;
 import net.sf.json.JSONObject;
 
@@ -22,10 +20,6 @@ public class UserController {
 	// 依赖注入
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private IndexService indexService;
-	@Autowired
-	private IndexController indexController;
 
 	/**
 	 * 用户登录

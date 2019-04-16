@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.imnu.dao.PlanDao;
 import cn.edu.imnu.po.Plan;
+import cn.edu.imnu.po.Type;
 import cn.edu.imnu.service.PlanService;
 
 /**
@@ -32,6 +33,16 @@ public class PlanServiceLImpl implements PlanService {
 	@Override
 	public List<Plan> showPlanID(Integer id) {
 		return planDao.showPlanID(id);
+	}
+
+	@Override
+	public List<Plan> showMessage(Integer id) {
+		return planDao.showMessage(id);
+	}
+
+	@Override
+	public String showHabits(Type type) {
+		return planDao.showHabits(type);
 	}
 
 }
