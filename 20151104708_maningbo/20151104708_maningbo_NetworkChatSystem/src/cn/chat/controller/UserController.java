@@ -35,13 +35,21 @@ import org.springframework.web.servlet.ModelAndView;
 import cn.chat.dao.FriendDao;
 import cn.chat.dao.UserDao;
 import cn.chat.pojo.Friend;
-
+import cn.chat.pojo.Room;
 import cn.chat.pojo.UserBean;
-
+import cn.chat.service.RoomService;
 import cn.chat.service.UserService;
 
 @Controller
 public class UserController {
+	@Autowired
+	private RoomService roomService;
+	@RequestMapping("/list.action")
+	public String toRoomList(Model model) {
+		model.addAttribute("rooms", roomService.findAllRooms());
+		return "roomlist";
+	}
+
 
 	@Autowired
 	private UserService userService;

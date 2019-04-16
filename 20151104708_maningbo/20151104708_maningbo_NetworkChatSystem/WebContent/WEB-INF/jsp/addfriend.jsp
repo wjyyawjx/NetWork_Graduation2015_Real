@@ -20,6 +20,13 @@
 				<div class="contact">				
 					<div class="contact-grids">
 						<div class="col-md-4 address">
+							<h3>Contact Info</h3>
+							<p class="cnt-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit,sheets containing Lorem Ipsum passages sed do </p>
+							<p>Eiusmod Tempor inc</p>
+							<p>9560 St Dolor,London</p>
+							<p>Telephone : +2 800 544 6035</p>
+							<p>FAX : +1 800 889 4444</p>
+							<p>Email : <a href="mailto:example@mail.com">mail@example.com</a></p>
 						</div>
 						<div class="col-md-8 contact-form">
 							<h3>添加好友</h3>

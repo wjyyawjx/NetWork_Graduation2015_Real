@@ -24,6 +24,7 @@
 		<div class="row">
 			<div class=" col-lg-2"></div>
 			<form class="form-horizontal col-lg-8"
+				action="${pageContext.request.contextPath}/userinfo/update.action"
 				method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<div class="col-sm-2">

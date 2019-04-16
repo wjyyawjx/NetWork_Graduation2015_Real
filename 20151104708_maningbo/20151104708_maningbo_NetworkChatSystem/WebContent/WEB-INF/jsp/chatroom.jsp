@@ -46,10 +46,10 @@ function replace_em(str){
 <body>
 	<div class="container-fluid">
 		<div class="row">
+			<div
+				class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
 				<div class="contact">
 					<div class="contact-grids">
-						<div class="col-md-4 address">
-						</div>
 						<div class="col-md-8 contact-form">
 							<h3>聊天室</h3>
 							<div style="width: 80%; height: 400px; overflow: scroll; border: 1px solid;"id="output"></div>
@@ -120,7 +120,7 @@ function replace_em(str){
         loadMsg(jsonArray);
     }
     var ws;
-    var wsUri = "ws://localhost:8080/char/websocket/${roomId}";
+    var wsUri = "ws://localhost:8080/20151104708_maningbo_NetworkChatSystem/websocket/${roomId}";
     ws = new WebSocket(wsUri);
  
     //接收后台getBasicRemote().sendText()的内容

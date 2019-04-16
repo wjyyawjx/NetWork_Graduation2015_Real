@@ -17,11 +17,15 @@ import cn.chat.dao.FriendDao;
 import cn.chat.dao.UserDao;
 import cn.chat.pojo.Friend;
 import cn.chat.pojo.UserBean;
+import cn.chat.service.RoomService;
 import cn.chat.service.UserService;
 
 @Controller
 @RequestMapping("/friend")
 public class FriendController {
+	@Autowired
+	private RoomService roomService;
+
 	@Autowired
 	private FriendDao friendDao;
 

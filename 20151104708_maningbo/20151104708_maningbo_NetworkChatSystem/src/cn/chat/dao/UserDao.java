@@ -3,6 +3,7 @@ package cn.chat.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -23,6 +24,7 @@ public interface UserDao {
 	public UserBean findUserByUserName(@Param("userName") String userName, @Param("userPass") String userPass);
 	public UserBean findUserByUserNameFlag(@Param("userName") String userName, @Param("userPass") String userPass);
 
+	@Insert("INSERT INTO userinfo(userName,gender,phone,email,userPass) VALUES(#{userName},#{gender},#{phone},#{email},#{userPass})")
 	public void addUser(UserBean userBean);
 
 	public boolean update(@Param("userName") String userName, @Param("userPass") String userPass,
@@ -33,6 +35,7 @@ public interface UserDao {
 	public UserBean findUserByName(String userName);
 
 	public List<UserBean> findAllUser();
+	
 	
 	@Select("select userid,`status`,count(`status`) count from room group by userid,`status` HAVING userid=#{userid} ORDER BY `STATUS`")
 	public List<UserBeanVo> findAllUserByStatus(@Param("userid")Integer userid);

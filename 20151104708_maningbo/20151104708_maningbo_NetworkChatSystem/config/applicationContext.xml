@@ -56,7 +56,7 @@
 		<property name="basePackage" value="cn.chat.dao"/>
 	</bean>
 	<!-- 扫描service -->
-	<context:component-scan base-package="cn.chat.service"></context:component-scan>
+	<context:component-scan base-package="cn.chat.service,cn.chat.utils"></context:component-scan>
 	
 	
 </beans>
