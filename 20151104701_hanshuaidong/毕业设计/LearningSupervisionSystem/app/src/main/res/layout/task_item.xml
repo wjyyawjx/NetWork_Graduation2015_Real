@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/task_item_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:background="?selectableItemBackground"
+    android:elevation="2dp"
+    app:cardBackgroundColor="@color/bg_write"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/task_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:paddingTop="@dimen/size_8dp"
+            android:paddingBottom="@dimen/size_8dp"
+            android:paddingLeft="@dimen/size_4dp"
+            android:paddingRight="@dimen/size_4dp"
+            android:textColor="@color/text_write"
+            android:textSize="@dimen/text_18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/task_item_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:padding="@dimen/size_4dp"
+            android:textColor="@color/text_write"
+            android:textSize="@dimen/text_14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginBottom="@dimen/size_4dp"
+            android:background="@color/bg_gary" />
+
+        <TextView
+            android:id="@+id/task_item_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:padding="@dimen/size_4dp"
+            android:text="时间"
+            android:textColor="@color/text_gary"
+            android:textSize="12sp" />
+    </LinearLayout>
+</android.support.design.card.MaterialCardView>

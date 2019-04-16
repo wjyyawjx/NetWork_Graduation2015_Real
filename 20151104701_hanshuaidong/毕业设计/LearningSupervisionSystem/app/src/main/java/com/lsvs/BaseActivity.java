@@ -1,4 +1,4 @@
-﻿package com.lsvs;
+package com.lsvs;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -17,7 +17,10 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
+/**
+ * Author: Yunr
+ * Date: 2018-04-24 11:26
+ */
 public abstract class BaseActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
