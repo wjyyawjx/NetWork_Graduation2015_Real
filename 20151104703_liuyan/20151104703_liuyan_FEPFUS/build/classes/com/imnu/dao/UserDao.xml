@@ -15,4 +15,7 @@
   <select id="findEmail" parameterType="String" resultType="user">
     select * from user where u_email = #{u_email}
   </select>
+  <update id="updatemy" parameterType="String">
+     update user set u_name = #{u_name}, u_phone = #{u_phone},u_email = #{u_email},u_message = #{u_message},u_Jurisdiction = '否' where u_user = #{u_user}
+  </update>
 </mapper>

@@ -29,7 +29,6 @@ public class IndexController {
 		ipAdress = indexService.IpFind(u_ip);
 		if (ipAdress != null) {
 			if (ipAdress.getU_id() != null) {
-				System.out.println("111");
 				Integer u_id = ipAdress.getU_id();
 				user = indexService.find(u_id);
 				session.setAttribute("USER_SESSION", user);
@@ -38,7 +37,6 @@ public class IndexController {
 
 			}
 		} else {
-			System.out.println("222");
 			indexService.addIp1(u_ip, u_time);
 		}
 		return user;
@@ -48,7 +46,6 @@ public class IndexController {
 	@RequestMapping(value = "/JZIndex.action")
 	@ResponseBody
 	public JSONObject JZIndex() {
-		System.out.println("heihei");
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("status", "ok");
 		JSONObject json = JSONObject.fromObject(map);

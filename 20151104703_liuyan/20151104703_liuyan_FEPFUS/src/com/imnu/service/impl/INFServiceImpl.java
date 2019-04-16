@@ -20,5 +20,12 @@ public class INFServiceImpl implements INFService {
 		List<Infm> list = this.infDao.selectjz();
 		return list;
 	}
+	@Override
+	public void deletemy(int u_id) {
+		// TODO Auto-generated method stub
+		this.infDao.deletemy(u_id);
+	}
+	
+		
 
 }

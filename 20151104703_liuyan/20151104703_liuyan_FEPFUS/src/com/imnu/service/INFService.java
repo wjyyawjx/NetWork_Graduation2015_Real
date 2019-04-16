@@ -8,4 +8,6 @@ public interface INFService {
 
 	public List<Infm> selectjz();
 
+	public void deletemy(int u_id);
+
 }

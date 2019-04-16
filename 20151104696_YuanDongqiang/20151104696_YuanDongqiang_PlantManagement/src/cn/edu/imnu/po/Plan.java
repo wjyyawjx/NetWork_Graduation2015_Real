@@ -7,7 +7,7 @@ public class Plan {
 	private String p_breeding; // 繁殖方式
 	private String p_habits; // 习性
 	private String p_place; // 分布
-	private String p_form; // 形态特征
+	private String p_form; //形态特征
 	private String p_img; // 图片
 	private String p_water; // 浇水频率
 	private String p_message; // 植物培养描述
@@ -69,14 +69,6 @@ public class Plan {
 		this.p_place = p_place;
 	}
 
-	public String getP_form() {
-		return p_form;
-	}
-
-	public void setP_form(String p_form) {
-		this.p_form = p_form;
-	}
-
 	public String getP_img() {
 		return p_img;
 	}
@@ -95,5 +87,13 @@ public class Plan {
 
 	public void setU_id(Integer u_id) {
 		this.u_id = u_id;
+	}
+
+	public String getP_form() {
+		return p_form;
+	}
+
+	public void setP_form(String p_form) {
+		this.p_form = p_form;
 	}
 }

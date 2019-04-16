@@ -42,7 +42,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 				String u_ip = java.net.InetAddress.getLocalHost().getHostAddress();
 				user = indexController.IPFind(u_ip,session);
 				if(user!=null) {
-					System.out.println(user.getU_name());
 					session.setAttribute("USER_SESSION", user);
 				}
 				session.setAttribute("KEY", 1);

@@ -56,115 +56,115 @@
 							</a>
 						</div>
 						<div class="top-header-meta d-flex" id="login">
-						<div class="top-header-meta d-flex">
-							<div class="login">
-								<a href="${pageContext.request.contextPath }/TZlogin.action"
-									aria-expanded="false"><i class="fa fa-user"></i> <%
-								 	if (session.getAttribute("USER_SESSION") != null) {
-								 %> ${USER_SESSION.u_name} <%
-								 	} else {
-								 %> 未登陆 <%
-								 	}
-								 %> </a>
-							</div>
-							<%
-								if (session.getAttribute("USER_SESSION") != null) {
-							%>
-							<div class="cart">
-								<a href="${pageContext.request.contextPath }/logout.action">
-									<i class="fa fa-question-circle" aria-hidden="true"></i> 退出登陆
-								</a>
-							</div>
-							<%
-								}
-							%>
-							<div class="cart">
-								<a href="${pageContext.request.contextPath }/help.action"> <i
-									class="fa fa-question-circle" aria-hidden="true"></i> 帮助
-								</a>
+							<div class="top-header-meta d-flex">
+								<div class="login">
+									<a href="${pageContext.request.contextPath }/TZlogin.action"
+										aria-expanded="false"><i class="fa fa-user"></i> <%
+										 	if (session.getAttribute("USER_SESSION") != null) {
+										 %> ${USER_SESSION.u_name} <%
+										 	} else {
+										 %> 未登陆 <%
+										 	}
+										 %> </a>
+								</div>
+								<%
+									if (session.getAttribute("USER_SESSION") != null) {
+								%>
+								<div class="cart">
+									<a href="${pageContext.request.contextPath }/logout.action">
+										<i class="fa fa-question-circle" aria-hidden="true"></i> 退出登陆
+									</a>
+								</div>
+								<%
+									}
+								%>
+								<div class="cart">
+									<a href="${pageContext.request.contextPath }/help.action">
+										<i class="fa fa-question-circle" aria-hidden="true"></i> 帮助
+									</a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="alazea-main-menu">
-		<div class="classy-nav-container breakpoint-off">
-			<div class="container">
-				<!-- Menu -->
-				<nav class="classy-navbar justify-content-between" id="alazeaNav">
-				<!-- Nav Brand --> <a href="index.jsp" class="nav-brand"><img
-					src="img/core-img/logo.png" alt=""></a>
-				<div class="classy-navbar-toggler">
-					<span class="navbarToggler"><span></span><span></span><span></span></span>
-				</div>
-				<!-- Menu -->
-				<div class="classy-menu">
-					<!-- Close Button -->
-					<div class="classycloseIcon">
-						<div class="cross-wrap">
-							<span class="top"></span><span class="bottom"></span>
-						</div>
+		<div class="alazea-main-menu">
+			<div class="classy-nav-container breakpoint-off">
+				<div class="container">
+					<!-- Menu -->
+					<nav class="classy-navbar justify-content-between" id="alazeaNav">
+					<!-- Nav Brand --> <a href="index.jsp" class="nav-brand"><img
+						src="img/core-img/logo.png" alt=""></a>
+					<div class="classy-navbar-toggler">
+						<span class="navbarToggler"><span></span><span></span><span></span></span>
 					</div>
-					<!-- Navbar Start -->
-					<div class="classynav">
-						<ul>
-							<li><a href="index.html">主页</a></li>
-							<li><a href="about.html">关于我们</a></li>
-							<li><a href="#">页面</a>
-								<ul class="dropdown">
-									<li><a href="index.html">主页</a></li>
-									<li><a href="about.html">关于我们</a></li>
-									<li><a href="shop.html">购买</a>
-										<ul class="dropdown">
-											<li><a href="shop.html">购买</a></li>
-											<li><a href="shop-details.html">商店 细节</a></li>
-											<li><a href="cart.html">购物车</a></li>
-											<li><a href="checkout.html">结帐</a></li>
-										</ul></li>
-									<li><a href="portfolio.html">投资组合</a>
-										<ul class="dropdown">
-											<li><a href="portfolio.html">投资组合</a></li>
-											<li><a href="single-portfolio.html">投资组合细节</a></li>
-										</ul></li>
-									<li><a href="blog.html">博客</a>
-										<ul class="dropdown">
-											<li><a href="blog.html">博客</a></li>
-											<li><a href="single-post.html">博客 细节</a></li>
-										</ul></li>
-									<li><a href="contact.html">联系</a></li>
-								</ul></li>
-							<li><a href="shop.html">店铺</a></li>
-							<li><a href="portfolio.html">投资组合</a></li>
-							<li><a href="contact.html">联系</a></li>
-						</ul>
-
-						<!-- Search Icon -->
-						<div id="searchIcon">
-							<i class="fa fa-search" aria-hidden="true"></i>
+					<!-- Menu -->
+					<div class="classy-menu">
+						<!-- Close Button -->
+						<div class="classycloseIcon">
+							<div class="cross-wrap">
+								<span class="top"></span><span class="bottom"></span>
+							</div>
 						</div>
+						<!-- Navbar Start -->
+						<div class="classynav">
+							<ul>
+								<li><a href="index.html">主页</a></li>
+								<li><a href="about.html">关于我们</a></li>
+								<li><a href="#">页面</a>
+									<ul class="dropdown">
+										<li><a href="index.html">主页</a></li>
+										<li><a href="about.html">关于我们</a></li>
+										<li><a href="shop.html">购买</a>
+											<ul class="dropdown">
+												<li><a href="shop.html">购买</a></li>
+												<li><a href="shop-details.html">商店 细节</a></li>
+												<li><a href="cart.html">购物车</a></li>
+												<li><a href="checkout.html">结帐</a></li>
+											</ul></li>
+										<li><a href="portfolio.html">投资组合</a>
+											<ul class="dropdown">
+												<li><a href="portfolio.html">投资组合</a></li>
+												<li><a href="single-portfolio.html">投资组合细节</a></li>
+											</ul></li>
+										<li><a href="blog.html">博客</a>
+											<ul class="dropdown">
+												<li><a href="blog.html">博客</a></li>
+												<li><a href="single-post.html">博客 细节</a></li>
+											</ul></li>
+										<li><a href="contact.html">联系</a></li>
+									</ul></li>
+								<li><a href="shop.html">店铺</a></li>
+								<li><a href="portfolio.html">投资组合</a></li>
+								<li><a href="contact.html">联系</a></li>
+							</ul>
 
+							<!-- Search Icon -->
+							<div id="searchIcon">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</div>
+
+						</div>
+						<!-- Navbar End -->
 					</div>
-					<!-- Navbar End -->
-				</div>
-				</nav>
+					</nav>
 
-				<!-- Search Form -->
-				<div class="search-form">
-					<form action="#" method="get">
-						<input type="search" name="search" id="search"
-							placeholder="输入关键字,按回车……">
-						<button type="submit" class="d-none"></button>
-					</form>
-					<!-- Close Icon -->
-					<div class="closeIcon">
-						<i class="fa fa-times" aria-hidden="true"></i>
+					<!-- Search Form -->
+					<div class="search-form">
+						<form action="#" method="get">
+							<input type="search" name="search" id="search"
+								placeholder="输入关键字,按回车……">
+							<button type="submit" class="d-none"></button>
+						</form>
+						<!-- Close Icon -->
+						<div class="closeIcon">
+							<i class="fa fa-times" aria-hidden="true"></i>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</header>
 	<!-- ##### Header Area End ##### -->
 
@@ -185,18 +185,19 @@
 							<h2>存在于天气和周围的光线中的绿色植物</h2>
 							<p></p>
 							<div class="welcome-btn-group">
-								<a href="#" class="btn alazea-btn mr-30">开始使用</a> 
+								<a href="#" class="btn alazea-btn mr-30">开始使用</a>
 								<%
-								 	if (session.getAttribute("USER_SESSION") != null) {
-								 %> <a href="${pageContext.request.contextPath }/addMessage.action" 
-								 class="btn alazea-btn active">上传信息</a> <%
-								 	} else {
-								 %> <a href="#" onclick="judge()" class="btn alazea-btn active">上传信息</a><%
-								 	}
-								 %>
-<!-- 						<a href="${pageContext.request.contextPath }/addMessage.action" 
-								 class="btn alazea-btn active">上传信息</a>
- -->		
+									if (session.getAttribute("USER_SESSION") != null) {
+								%>
+								<a href="${pageContext.request.contextPath }/addMessage.action"
+									class="btn alazea-btn active">上传信息</a>
+								<%
+									} else {
+								%>
+								<a href="#" onclick="judge()" class="btn alazea-btn active">上传信息</a>
+								<%
+									}
+								%>
 							</div>
 						</div>
 					</div>
@@ -217,17 +218,19 @@
 							<h2>存在于天气和周围的光线中的绿色植物</h2>
 							<p></p>
 							<div class="welcome-btn-group">
-								<a href="#" class="btn alazea-btn mr-30">开始使用</a> 
+								<a href="#" class="btn alazea-btn mr-30">开始使用</a>
 								<%
-								 	if (session.getAttribute("USER_SESSION") != null) {
-								 %> <a href="${pageContext.request.contextPath }/addMessage.action" 
-								 class="btn alazea-btn active">上传信息</a> <%
-								 	} else {
-								 %> <a href="#" onclick="judge()" class="btn alazea-btn active">上传信息</a><%
-								 	}
-								 %>
-<!-- 						<a href="${pageContext.request.contextPath }/addMessage.action" 
-								 class="btn alazea-btn active">上传信息</a>
+									if (session.getAttribute("USER_SESSION") != null) {
+								%>
+								<a href="${pageContext.request.contextPath }/addMessage.action"
+									class="btn alazea-btn active">上传信息</a>
+								<%
+									} else {
+								%>
+								<a href="#" onclick="judge()" class="btn alazea-btn active">上传信息</a>
+								<%
+									}
+								%>
 							</div>
 						</div>
 					</div>
@@ -238,9 +241,6 @@
 	</div>
 	</section>
 	<!-- ##### Hero Area End ##### -->
-
-	<!-- ##### Service Area Start ##### -->
-
 
 	<!-- ##### Portfolio Area Start ##### -->
 	<section class="alazea-portfolio-area section-padding-100-0">
@@ -261,11 +261,16 @@
 			<div class="col-12">
 				<div class="alazea-portfolio-filter">
 					<div class="portfolio-filter">
-						<button class="btn active" data-filter="*">全部种类</button>
-						<button class="btn" data-filter=".garden">喜阳植物</button>
-						<button class="btn" data-filter=".home-design">喜阴植物</button>
-						<button class="btn" data-filter=".office-design">多年生植物</button>
-						<button class="btn" data-filter=".office-design">一年生植物</button>
+						<a href="${pageContext.request.contextPath }/plan.action?id=0">
+						<button class="btn active" data-filter="*">全部种类</button></a>
+						<a href="${pageContext.request.contextPath }/plan.action?id=1">
+						<button class="btn" data-filter=".garden">喜阳植物</button></a>
+						<a href="${pageContext.request.contextPath }/plan.action?id=2">
+						<button class="btn" data-filter=".home-design">喜阴植物</button></a>
+						<a href="${pageContext.request.contextPath }/plan.action?id=3">
+						<button class="btn" data-filter=".office-design">多年生植物</button></a>
+						<a href="${pageContext.request.contextPath }/plan.action?id=4">
+						<button class="btn" data-filter=".office-design">一年生植物</button></a>
 					</div>
 				</div>
 			</div>
@@ -282,9 +287,10 @@
 					style="background-image: url(img/bg-img/16.jpg);"></div>
 				<!-- Portfolio Hover Text -->
 				<div class="portfolio-hover-overlay">
-					<a href="#">
-						<div class="port-hover-text" style="width: 100%;height: 100%;margin-top: 50%;">
-							<h3 style= "maigin-top:80px;">生长在阳光充足环境下。</h3>
+					<a href="${pageContext.request.contextPath }/plan.action?id=1">
+						<div class="port-hover-text"
+							style="width: 100%; height: 100%; margin-top: 50%;">
+							<h3 style="maigin-top: 80px;">生长在阳光充足环境下。</h3>
 							<h5>喜阳植物</h5>
 						</div>
 					</a>
@@ -300,8 +306,9 @@
 					style="background-image: url(img/bg-img/17.jpg);"></div>
 				<!-- Portfolio Hover Text -->
 				<div class="portfolio-hover-overlay">
-					<a href="#">
-						<div class="port-hover-text" style="width: 100%;height: 100%;margin-top: 50%;">
+					<a href="${pageContext.request.contextPath }/plan.action?id=2">
+						<div class="port-hover-text"
+							style="width: 100%; height: 100%; margin-top: 50%;">
 							<h3>喜欢在阴暗的环境下生长</h3>
 							<h5>喜阴植物</h5>
 						</div>
@@ -318,8 +325,9 @@
 					style="background-image: url(img/bg-img/18.jpg);"></div>
 				<!-- Portfolio Hover Text -->
 				<div class="portfolio-hover-overlay">
-					<a href="#">
-						<div class="port-hover-text" style="width: 100%;height: 100%;margin-top: 50%;">
+					<a href="${pageContext.request.contextPath }/plan.action?id=3">
+						<div class="port-hover-text"
+							style="width: 100%; height: 100%; margin-top: 50%;">
 							<h3>寿命在两年以上的植物。</h3>
 							<h5>多年生植物</h5>
 						</div>
@@ -336,8 +344,9 @@
 					style="background-image: url(img/bg-img/19.jpg);"></div>
 				<!-- Portfolio Hover Text -->
 				<div class="portfolio-hover-overlay">
-					<a href="#">
-						<div class="port-hover-text" style="width: 100%;height: 100%;margin-top: 50%;">
+					<a href="${pageContext.request.contextPath }/plan.action?id=4">
+						<div class="port-hover-text"
+							style="width: 100%; height: 100%; margin-top: 50%;">
 							<h3>生命周期为一年的植物。</h3>
 							<h5>一年生植物</h5>
 						</div>
@@ -354,8 +363,9 @@
 					style="background-image: url(img/bg-img/20.jpg);"></div>
 				<!-- Portfolio Hover Text -->
 				<div class="portfolio-hover-overlay">
-					<a href="#">
-						<div class="port-hover-text" style="width: 100%;height: 100%;margin-top: 50%;">
+					<a href="${pageContext.request.contextPath }/plan.action?id=5">
+						<div class="port-hover-text"
+							style="width: 100%; height: 100%; margin-top: 50%;">
 							<h3>常年不落也植物。</h3>
 							<h5>常绿植物</h5>
 						</div>
@@ -372,8 +382,9 @@
 					style="background-image: url(img/bg-img/21.jpg);"></div>
 				<!-- Portfolio Hover Text -->
 				<div class="portfolio-hover-overlay">
-					<a href="#">
-						<div class="port-hover-text" style="width: 100%;height: 100%;margin-top: 50%;">
+					<a href="${pageContext.request.contextPath }/plan.action?id=6">
+						<div class="port-hover-text"
+							style="width: 100%; height: 100%; margin-top: 50%;">
 							<h3>植物会在一段时间落叶。</h3>
 							<h5>非常绿植物</h5>
 						</div>
@@ -390,8 +401,9 @@
 					style="background-image: url(img/bg-img/22.jpg);"></div>
 				<!-- Portfolio Hover Text -->
 				<div class="portfolio-hover-overlay">
-					<a href="#">
-						<div class="port-hover-text" style="width: 100%;height: 100%;margin-top: 25%;">
+					<a href="${pageContext.request.contextPath }/plan.action?id=0">
+						<div class="port-hover-text"
+							style="width: 100%; height: 100%; margin-top: 25%;">
 							<h2>全部种类</h2>
 						</div>
 					</a>
@@ -404,8 +416,7 @@
 	<!-- ##### Portfolio Area End ##### -->
 
 	<!-- ##### Subscribe Area Start ##### -->
-	<section class="subscribe-newsletter-area">
-	</section>
+	<section class="subscribe-newsletter-area"> </section>
 
 
 	<!-- ##### Footer Area Start ##### -->
