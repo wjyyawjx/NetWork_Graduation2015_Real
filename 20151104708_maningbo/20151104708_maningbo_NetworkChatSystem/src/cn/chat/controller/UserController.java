@@ -49,8 +49,6 @@ public class UserController {
 		model.addAttribute("rooms", roomService.findAllRooms());
 		return "roomlist";
 	}
-
-
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -158,25 +156,26 @@ public class UserController {
 			HttpServletRequest request, HttpServletResponse response) throws IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		
 		UserBean jhBean = userDao.findUserByUserNameFlag(userName, userPass);
-		if(jhBean==null) {
-			model.addAttribute("msg", "账号被禁用联系管理员");
-			return "login";
-		}
 		UserBean userBean = userService.findUserByUserName(userName, userPass);
+		
 		if (userName == null && userPass == null) {
 			model.addAttribute("msg", "请输入账号密码:");
 			return "login";
 		} else {
+			 if(jhBean==null) {
+				model.addAttribute("msg", "账号被禁用联系管理员");
+				return "login";
+			 }else{
 			if (userBean != null) {
 				// System.out.println(userName + userPass);
 				session.setAttribute("userBean", userBean);
 				return "frame";
-			} else {
+			}else{
 				model.addAttribute("msg", "账号或密码错误");
 				return "login";
-			}
+			 }		
+	    	}
 		}
 	}
 
@@ -252,14 +251,11 @@ public class UserController {
 			Model model) throws IOException {
 		UserBean user = (UserBean) session.getAttribute("userBean");
 		if (user != null) {
-			// UserBean userinfo = userService.findUserById(user.getId());
 			request.setAttribute("userBean", user);
 			System.out.println("personalinfo:email=" + user.getEmail());
 			System.out.println("personalinfo:user=" + user.getUserName());
 			return "personalinfo";
 		} else {
-			// String flag = "unlogin";
-			// request.setAttribute("flag", flag);
 			model.addAttribute("msg", "请先登录！");
 			return "login";
 		}

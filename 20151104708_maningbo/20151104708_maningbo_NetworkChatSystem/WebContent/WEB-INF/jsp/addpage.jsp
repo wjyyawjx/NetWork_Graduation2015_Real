@@ -49,7 +49,7 @@
 					<tr>
 						<th>id</th>
 						<th>房间名称</th>
-						<th>房间拥有着</th>
+						<th>房间拥有者id</th>
 						<th>状态</th>
 						<th>操作</th>
 					</tr>

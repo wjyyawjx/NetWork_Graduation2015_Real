@@ -82,7 +82,6 @@ public class EchoSocket {
 			}
 			for (String conn : map.keySet()) {// 遍历已有的session（即已有的连接）
 				s = map.get(conn);
-
 				try {
 					s.getBasicRemote().sendText(session.getId() + "进入了聊天室");// 根据session发送到对应页面
 				} catch (IOException e) {

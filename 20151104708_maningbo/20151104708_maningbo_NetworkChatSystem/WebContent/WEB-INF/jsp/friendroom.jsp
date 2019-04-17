@@ -30,8 +30,6 @@ $(function(){
 	});
 });
 
-//查看结果
-
 function replace_em(str){
 
 	str = str.replace(/\</g,'&lt;');

@@ -24,7 +24,7 @@ public interface UserDao {
 	public UserBean findUserByUserName(@Param("userName") String userName, @Param("userPass") String userPass);
 	public UserBean findUserByUserNameFlag(@Param("userName") String userName, @Param("userPass") String userPass);
 
-	@Insert("INSERT INTO userinfo(userName,gender,phone,email,userPass) VALUES(#{userName},#{gender},#{phone},#{email},#{userPass})")
+	@Insert("INSERT INTO userinfo(userName,gender,phone,email,userPass,role) VALUES(#{userName},#{gender},#{phone},#{email},#{userPass},'user')")
 	public void addUser(UserBean userBean);
 
 	public boolean update(@Param("userName") String userName, @Param("userPass") String userPass,

@@ -19,7 +19,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h3>个人信息</h3>
+			<h3>好友信息</h3>
 		</div>
 		<div class="row">
 			<div class=" col-lg-2"></div>
