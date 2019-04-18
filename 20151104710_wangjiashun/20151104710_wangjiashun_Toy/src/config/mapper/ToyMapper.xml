@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.ToyMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.domain.Toy" >
+    <id column="toy_id" property="toyId" jdbcType="VARCHAR" />
+    <result column="type_id" property="typeId" jdbcType="VARCHAR" />
+    <result column="photo_id" property="photoId" jdbcType="VARCHAR" />
+    <result column="toy_name" property="toyName" jdbcType="VARCHAR" />
+    <result column="toy_introduce" property="toyIntroduce" jdbcType="VARCHAR" />
+    <result column="toy_age" property="toyAge" jdbcType="INTEGER" />
+    <result column="toy_money" property="toyMoney" jdbcType="DECIMAL" />
+    <result column="toy_deposit" property="toyDeposit" jdbcType="DECIMAL" />
+  </resultMap>
+  
+  <resultMap id="BaseResultMap2" type="com.yidu.controller.vo.ToyVo" >
+    <id column="toy_id" property="toyId" jdbcType="VARCHAR" />
+    <result column="type_id" property="typeId" jdbcType="VARCHAR" />
+    <result column="photo_id" property="photoId" jdbcType="VARCHAR" />
+    <result column="photo_path" property="photoPath" jdbcType="VARCHAR" />
+    <result column="toy_name" property="toyName" jdbcType="VARCHAR" />
+    <result column="toy_introduce" property="toyIntroduce" jdbcType="VARCHAR" />
+    <result column="toy_age" property="toyAge" jdbcType="INTEGER" />
+    <result column="toy_money" property="toyMoney" jdbcType="DECIMAL" />
+    <result column="toy_deposit" property="toyDeposit" jdbcType="DECIMAL" />
+    <result column="type_name" property="typeName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="TypeResultMap" type="com.yidu.domain.ToyType" >
+    <id column="type_id" property="typeId" jdbcType="VARCHAR" />
+    <result column="type_name" property="typeName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    toy_id, type_id, photo_id, toy_name, toy_introduce, toy_age, toy_money, toy_deposit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap2" parameterType="java.lang.String" >
+    select 
+    *
+    from toy t,photo p,toyType y where t.photo_id=p.photo_id and t.type_id=y.type_id 
+    and t.toy_id = #{toyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from toy
+    where toy_id = #{toyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.Toy" >
+    insert into toy (toy_id, type_id, photo_id, 
+      toy_name, toy_introduce, toy_age, 
+      toy_money, toy_deposit)
+    values (#{toyId,jdbcType=VARCHAR}, #{typeId,jdbcType=VARCHAR}, #{photoId,jdbcType=VARCHAR}, 
+      #{toyName,jdbcType=VARCHAR}, #{toyIntroduce,jdbcType=VARCHAR}, #{toyAge,jdbcType=INTEGER}, 
+      #{toyMoney,jdbcType=DECIMAL}, #{toyDeposit,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.Toy" >
+    insert into toy
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="toyId != null" >
+        toy_id,
+      </if>
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="photoId != null" >
+        photo_id,
+      </if>
+      <if test="toyName != null" >
+        toy_name,
+      </if>
+      <if test="toyIntroduce != null" >
+        toy_introduce,
+      </if>
+      <if test="toyAge != null" >
+        toy_age,
+      </if>
+      <if test="toyMoney != null" >
+        toy_money,
+      </if>
+      <if test="toyDeposit != null" >
+        toy_deposit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="toyId != null" >
+        #{toyId,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="photoId != null" >
+        #{photoId,jdbcType=VARCHAR},
+      </if>
+      <if test="toyName != null" >
+        #{toyName,jdbcType=VARCHAR},
+      </if>
+      <if test="toyIntroduce != null" >
+        #{toyIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="toyAge != null" >
+        #{toyAge,jdbcType=INTEGER},
+      </if>
+      <if test="toyMoney != null" >
+        #{toyMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="toyDeposit != null" >
+        #{toyDeposit,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.Toy" >
+    update toy
+    <set >
+      <if test="typeId != null" >
+        type_id = #{typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="photoId != null" >
+        photo_id = #{photoId,jdbcType=VARCHAR},
+      </if>
+      <if test="toyName != null" >
+        toy_name = #{toyName,jdbcType=VARCHAR},
+      </if>
+      <if test="toyIntroduce != null" >
+        toy_introduce = #{toyIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="toyAge != null" >
+        toy_age = #{toyAge,jdbcType=INTEGER},
+      </if>
+      <if test="toyMoney != null" >
+        toy_money = #{toyMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="toyDeposit != null" >
+        toy_deposit = #{toyDeposit,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where toy_id = #{toyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.Toy" >
+    update toy
+    set type_id = #{typeId,jdbcType=VARCHAR},
+      photo_id = #{photoId,jdbcType=VARCHAR},
+      toy_name = #{toyName,jdbcType=VARCHAR},
+      toy_introduce = #{toyIntroduce,jdbcType=VARCHAR},
+      toy_age = #{toyAge,jdbcType=INTEGER},
+      toy_money = #{toyMoney,jdbcType=DECIMAL},
+      toy_deposit = #{toyDeposit,jdbcType=DECIMAL}
+    where toy_id = #{toyId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="findAll" parameterType="com.yidu.controller.vo.ToyVo" resultMap="BaseResultMap2">
+  	select * from toy t ,photo p,toyType y where t.photo_id=p.photo_id and t.type_id=y.type_id
+  	
+  	<if test="toyName !=null and toyName !=''">
+  		and toy_Name like 
+  	</if>
+  	
+  	
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap2">
+  	select * from  toy t,photo p,toyType y where t.photo_id=p.photo_id and t.type_id=y.type_id
+  </select>
+  
+  <select id="findRow"  parameterType="java.lang.Integer" resultType="int">
+  	select count(*) from  toy 
+  	<where>
+  		<if test="toyName != null and toyName != '' ">
+	  		toy_name like concat('%',#{toyName},'%')
+	  	</if>
+	  	
+  	</where>
+  </select>
+  
+  
+  <select id="findByTypeId" parameterType="java.lang.String" resultMap="BaseResultMap2">
+  	select * from toy t,photo p,toyType y where t.photo_id=p.photo_id and t.type_id=y.type_id and t.type_id = #{typeId}
+  	
+  </select>
+  
+  
+  <select id="findType"   resultMap="TypeResultMap">
+  	select * from  toyType
+  </select>
+  
+  
+  
+  <select id="queryAll"  parameterType="com.yidu.controller.vo.ToyVo" resultMap="BaseResultMap2">
+  	select * from  toy t,photo p,toyType y where t.photo_id=p.photo_id and t.type_id=y.type_id 
+  	<where>
+  		<if test="toyName != null and toyName != '' ">
+	  		toy_name like concat('%',#{toyName},'%')
+	  	</if>
+	  	
+  	</where>
+  </select>
+  
+  
+</mapper>

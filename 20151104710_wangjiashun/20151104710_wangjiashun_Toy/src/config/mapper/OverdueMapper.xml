@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.OverdueMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.domain.Overdue" >
+    <id column="overdue_id" property="overdueId" jdbcType="VARCHAR" />
+    <result column="overdue_time" property="overdueTime" jdbcType="DATE" />
+    <result column="overdue_money" property="overdueMoney" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    overdue_id, overdue_time, overdue_money
+  </sql>
+  
+  <select id="findRows"  resultType="int">
+    select count(*) from overdue
+  </select>
+  
+   <select id="findAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from overdue
+  </select>
+  
+ <select id="findAlls" parameterType="com.yidu.domain.Overdue" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from overdue
+    <where>
+    	<if test="overdueTime!= null ">
+			overdue_time =#{overdueTime,jdbcType=DATE}
+		</if>
+    </where>
+  </select> 
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from overdue
+    where overdue_id = #{overdueId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from overdue
+    where overdue_id = #{overdueId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.Overdue" >
+    insert into overdue (overdue_id, overdue_time, overdue_money
+      )
+    values (#{overdueId,jdbcType=VARCHAR}, #{overdueTime,jdbcType=DATE}, #{overdueMoney,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.Overdue" >
+    insert into overdue
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="overdueId != null" >
+        overdue_id,
+      </if>
+      <if test="overdueTime != null" >
+        overdue_time,
+      </if>
+      <if test="overdueMoney != null" >
+        overdue_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="overdueId != null" >
+        #{overdueId,jdbcType=VARCHAR},
+      </if>
+      <if test="overdueTime != null" >
+        #{overdueTime,jdbcType=DATE},
+      </if>
+      <if test="overdueMoney != null" >
+        #{overdueMoney,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.Overdue" >
+    update overdue
+    <set >
+      <if test="overdueTime != null" >
+        overdue_time = #{overdueTime,jdbcType=DATE},
+      </if>
+      <if test="overdueMoney != null" >
+        overdue_money = #{overdueMoney,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where overdue_id = #{overdueId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.Overdue" >
+    update overdue
+    set overdue_time = #{overdueTime,jdbcType=DATE},
+      overdue_money = #{overdueMoney,jdbcType=DECIMAL}
+    where overdue_id = #{overdueId,jdbcType=VARCHAR}
+  </update>
+</mapper>

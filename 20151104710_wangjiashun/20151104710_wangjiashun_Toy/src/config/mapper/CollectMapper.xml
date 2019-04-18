@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.CollectMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.domain.Collect" >
+    <id column="collect_id" property="collectId" jdbcType="VARCHAR" />
+    <result column="toy_id" property="toyId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="BaseResultMaps" type="com.yidu.controller.vo.CollectVo" >
+    <id column="collect_id" property="collectId" jdbcType="VARCHAR" />
+    <result column="toy_id" property="toyId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="toy_name" property="toyName" jdbcType="VARCHAR" />
+    <result column="toy_money" property="toyMoney" jdbcType="DECIMAL" />
+    <result column="toy_deposit" property="toyDeposit" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    collect_id, toy_id, user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" 
+    />
+    from collect
+    where collect_id = #{collectId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectfin" parameterType="java.lang.String" resultMap="BaseResultMaps">
+  
+  SELECT * FROM toy t,USER u,collect c WHERE t.toy_id=c.toy_id and c.user_id=u.user_id AND u.user_id=#{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from collect
+    where collect_id = #{collectId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.Collect" >
+    insert into collect (collect_id, toy_id, user_id  )
+    values (#{collectId,jdbcType=VARCHAR}, #{toyId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.Collect" >
+    insert into collect
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="collectId != null" >
+        collect_id,
+      </if>
+      <if test="toyId != null" >
+        toy_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="collectId != null" >
+        #{collectId,jdbcType=VARCHAR},
+      </if>
+      <if test="toyId != null" >
+        #{toyId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.Collect" >
+    update collect
+    <set >
+      <if test="toyId != null" >
+        toy_id = #{toyId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where collect_id = #{collectId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.Collect" >
+    update collect
+    set toy_id = #{toyId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR}
+    where collect_id = #{collectId,jdbcType=VARCHAR}
+  </update>
+</mapper>

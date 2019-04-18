@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.AddressMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.domain.Address" >
+    <id column="address_id" property="addressId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="address_name" property="addressName" jdbcType="VARCHAR" />
+    <result column="address_details" property="addressDetails" jdbcType="VARCHAR" />
+    <result column="address_photo" property="addressPhoto" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="address_people" property="addressPeople" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    address_id, user_id, address_name, address_details, address_photo,address_people
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from address
+    where address_id = #{addressId,jdbcType=VARCHAR}
+  </select>
+  
+   <select id="selectAll" resultMap="BaseResultMap" >
+   select * from address s,user u where s.user_id=u.user_id
+    	<if test="userName!= null and userName!=''">
+		 and u.user_name like concat('%',#{userName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="addressDetails!= null and addressDetails!=''">
+		 and s.address_details like concat('%',#{addressDetails,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="addressName!= null and addressName!=''">
+		 and s.address_name like concat('%',#{addressName,jdbcType=VARCHAR},'%')
+		</if>
+  </select>
+  <select id="selectAllByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+   select * from address s,user u where s.user_id=u.user_id and u.user_id=#{userId,jdbcType=VARCHAR}
+    	
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from address
+    where address_id = #{addressId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.Address" >
+    insert into address (address_id, user_id, address_name, 
+      address_details, address_photo,address_people)
+    values (#{addressId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{addressName,jdbcType=VARCHAR}, 
+      #{addressDetails,jdbcType=VARCHAR}, #{addressPhoto,jdbcType=VARCHAR},#{addressPeople,jdbcType=VARCHAR},)
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.Address" >
+    insert into address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="addressId != null" >
+        address_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="addressName != null" >
+        address_name,
+      </if>
+      <if test="addressDetails != null" >
+        address_details,
+      </if>
+      <if test="addressPhoto != null" >
+        address_photo,
+      </if>
+      <if test="addressPeople != null" >
+        address_people,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="addressId != null" >
+        #{addressId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="addressName != null" >
+        #{addressName,jdbcType=VARCHAR},
+      </if>
+      <if test="addressDetails != null" >
+        #{addressDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="addressPhoto != null" >
+        #{addressPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="addressPeople != null" >
+        #{addressPeople,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.Address" >
+    update address
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="addressName != null" >
+        address_name = #{addressName,jdbcType=VARCHAR},
+      </if>
+      <if test="addressDetails != null" >
+        address_details = #{addressDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="addressPhoto != null" >
+        address_photo = #{addressPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="addressPeople != null" >
+        address_people = #{addressPeople,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where address_id = #{addressId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.Address" >
+    update address
+    set user_id = #{userId,jdbcType=VARCHAR},
+      address_name = #{addressName,jdbcType=VARCHAR},
+      address_details = #{addressDetails,jdbcType=VARCHAR},
+      address_photo = #{addressPhoto,jdbcType=VARCHAR},
+      address_people = #{addressPeople,jdbcType=VARCHAR}
+    where address_id = #{addressId,jdbcType=VARCHAR}
+  </update>
+</mapper>

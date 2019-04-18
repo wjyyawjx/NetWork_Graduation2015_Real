@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.ToyTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.domain.ToyType" >
+    <id column="type_id" property="typeId" jdbcType="VARCHAR" />
+    <result column="type_name" property="typeName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    type_id, type_name
+  </sql>
+  <select id="findAll" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from toytype
+  </select>
+  
+  <select id="findAlls" parameterType="com.yidu.domain.ToyType" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from toytype
+    <where>
+    	<if test="typeName!= null and typeName!=''">
+			type_name like concat('%',#{typeName,jdbcType=VARCHAR},'%')
+		</if>
+    </where>
+  </select>
+
+  
+  <select id="findRows"  resultType="int">
+    select count(*) from toytype
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from toytype
+    where type_id = #{typeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from toytype
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.ToyType" >
+    insert into toytype (type_id, type_name)
+    values (#{typeId,jdbcType=VARCHAR}, #{typeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.ToyType" >
+    insert into toytype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="typeName != null" >
+        type_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="typeId != null" >
+        #{typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null" >
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.ToyType" >
+    update toytype
+    <set >
+      <if test="typeName != null" >
+        type_name = #{typeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where type_id = #{typeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.ToyType" >
+    update toytype
+    set type_name = #{typeName,jdbcType=VARCHAR}
+    where type_id = #{typeId,jdbcType=VARCHAR}
+  </update>
+</mapper>
