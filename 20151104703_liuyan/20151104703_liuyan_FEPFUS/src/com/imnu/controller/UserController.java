@@ -46,16 +46,28 @@ public class UserController {
     	 return "my";
      }
      @RequestMapping(value = "/login.action" ,method = RequestMethod.POST)
-     public String Login(String u_user, String u_pwd,Model model,HttpSession session) {
-    	 User user = userService.LoginUser(u_user, u_pwd);
-    	
-    	 if(user != null) {
-    		 session.setAttribute("USER_SESSION", user);
-    		 return "admin-index";
-    	 }else {
-    		 model.addAttribute("msg","用户名或密码错误!");
-    		 return "login";
-    	 }
+     public String Login(String u_user, String u_pwd,String u_type,Model model,HttpSession session) {
+	    	User user = userService.LoginUser(u_user, u_pwd);
+	    	 if(user != null) {
+	    		 if(user.getU_type().equals(u_type)) {
+	    			 if(user.getU_type().equals("管理员")) {
+	    				 session.setAttribute("USER_SESSION", user);
+			       		 return "admin-root";
+	    			 }else {
+	    				 session.setAttribute("USER_SESSION", user);
+			       		 return "admin-index";
+	    			 }  
+	    		 }else {
+	    			 model.addAttribute("msg","用户类型错误!");
+		       		 return "login";
+	    		 }
+	       		 
+	       	 }else {
+	       		 model.addAttribute("msg","用户名或密码错误!");
+	       		 return "login";
+		       	 }
+	    	
+    	 
      }
      @RequestMapping(value = "/Exit.action" ,method = RequestMethod.POST)
      public String Exit(HttpSession session) {

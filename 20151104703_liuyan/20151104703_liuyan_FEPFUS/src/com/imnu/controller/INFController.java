@@ -24,7 +24,7 @@ public class INFController {
 		
 		 List<Infm> list = infService.selectjz();
 		  request.setAttribute("list", list);
-	 	  return "jiazhang";
+	 	  return "right";
 	     }
 	 @RequestMapping(value = "/SelectMy.action" ,method = RequestMethod.GET)
 	 public String SelectMy(Model model,HttpSession session,HttpServletRequest request) {
