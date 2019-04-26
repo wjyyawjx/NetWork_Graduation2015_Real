@@ -8,6 +8,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
+<script type="text/javascript">
+function RecorderDelete(){
+	var b=event.target.id;
+	var r=confirm("确定删除此名运动员的信息？");
+	if (r==true){
+		window.location.href="RecorderDelete?tid="+b;
+	}
+	else{
+		alert("您取消了删除")
+	}
+	
+}
+</script>
 </head>
 <body>
 <form action="RecorderAdd" method="post">
@@ -33,11 +46,11 @@
 				<th>删除</th>
 			</tr>
 		</thead>
-		<tbody>
+		
 			<c:forEach items="${mea}" var="w">
+			
 			<tr align="center">
-			<form action="RecorderUpdate" method="post">
-				
+				<form action="RecorderUpdate" method="post">
 				<td><input type="text" name="athletusername" value="${w.athletusername}" required=""></td>
 				<td><input type="text" name="theclass" value="${w.theclass}" required=""></td>
 				<td><input type="text" name="events" value="${w.events}" required=""></td>
@@ -45,16 +58,14 @@
 				<td><input type="text" name="ranking" value="${w.ranking}" required=""></td>
 				<td><input type="hidden" name="tid" value=${w.tid}> 
 				<input type="submit" value="修改"></td>
+				</from>
+				<td>
+					<input type="submit" id=${w.tid} style="width: 150px" onclick="RecorderDelete()"  value="删除">
+					</td>
 				
-				
-			</form>
-				<form action="RecorderDelete" method="post">
-				<td><input type="hidden" name="tid" value=${w.tid}> 
-				<input type="submit" value="删除"></td>
-				</form>
 			</tr>
+			
 			</c:forEach>
-		</tbody>
 	</table>
 </body>
 </html>

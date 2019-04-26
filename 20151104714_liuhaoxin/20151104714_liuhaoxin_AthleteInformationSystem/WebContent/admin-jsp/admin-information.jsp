@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
-<script>
+<script type="text/javascript">
 	function validate() {
 		var pwd = document.getElementById("pwd").value;
 		var pwd1 = document.getElementById("pwd1").value;
