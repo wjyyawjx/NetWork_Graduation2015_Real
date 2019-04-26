@@ -7,6 +7,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
+<script type="text/javascript">
+function reason(){
+	var b=event.target.id;
+	var r=confirm("确定删除此条申请？");
+	if (r==true){
+		window.location.href="ContactManagementDelete?cid="+b;
+	}
+	else{
+		alert("您取消了删除")
+	}
+	
+}
+</script>
 </head>
 <body>
 	<div align="center">
@@ -26,10 +39,10 @@
 						<td align="left" valign="middle">${w.username}</td>
 						<td align="left" valign="middle">${w.phone}</td>
 						<td align="left" valign="middle">
-							<form action="ContactManagementDelete" method="post">
-								<input type="hidden" value = ${w.cid} name="cid" >
-								 <input type="submit" value="删除">
-							</form>
+						
+						<td>
+					<input type="submit" id=${w.cid} style="width: 150px" onclick="reason()"  value="删除">
+					
 						</td>
 					</tr>
 				</c:forEach>

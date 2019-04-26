@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
 
-<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
   $("#hide").click(function(){

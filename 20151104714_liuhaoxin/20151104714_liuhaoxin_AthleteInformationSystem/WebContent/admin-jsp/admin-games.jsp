@@ -8,6 +8,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
+<script type="text/javascript">
+function GameDelete(){
+	var b=event.target.id;
+	var r=confirm("确定删除此条申请？");
+	if (r==true){
+		window.location.href="GameDelete?sid="+b;
+	}
+	else{
+		alert("您取消了删除")
+	}
+	
+}
+</script>
 </head>
 <body>
 	<table border="2" cellpadding="0" cellspacing="0"
@@ -29,11 +42,9 @@
 					<td>${w.startTime}</td>
 					<td>${w.stopTime}</td>
 					<td>
-					<form action="GameDelete" method="post">
-					<input type="hidden" name="sid" value=${w.sid}><br>
-					<input type="submit" value="删除">
-					</form>
-					</td>
+					<input type="submit" id=${w.sid} style="width: 150px" onclick="GameDelete()"  value="删除">
+					
+						</td>
 				</tr>
 			</c:forEach>
 		</tbody>
