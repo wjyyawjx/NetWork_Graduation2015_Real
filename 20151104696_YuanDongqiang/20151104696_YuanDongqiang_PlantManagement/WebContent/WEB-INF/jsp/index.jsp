@@ -185,7 +185,7 @@
 							<h2>存在于天气和周围的光线中的绿色植物</h2>
 							<p></p>
 							<div class="welcome-btn-group">
-								<a href="#" class="btn alazea-btn mr-30">开始使用</a>
+								<a href="#admin" class="btn alazea-btn mr-30">开始使用</a>
 								<%
 									if (session.getAttribute("USER_SESSION") != null) {
 								%>
@@ -218,7 +218,7 @@
 							<h2>存在于天气和周围的光线中的绿色植物</h2>
 							<p></p>
 							<div class="welcome-btn-group">
-								<a href="#" class="btn alazea-btn mr-30">开始使用</a>
+								<a href="#admin" class="btn alazea-btn mr-30">开始使用</a>
 								<%
 									if (session.getAttribute("USER_SESSION") != null) {
 								%>
@@ -244,7 +244,7 @@
 
 	<!-- ##### Portfolio Area Start ##### -->
 	<section class="alazea-portfolio-area section-padding-100-0">
-	<div class="container">
+	<div id="admin" class="container">
 		<div class="row">
 			<div class="col-12">
 				<!-- Section Heading -->

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -50,12 +51,12 @@
 								<div class="login">
 									<a href="${pageContext.request.contextPath }/TZlogin.action"
 										aria-expanded="false"><i class="fa fa-user"></i> <%
-										 	if (session.getAttribute("USER_SESSION") != null) {
-										 %> ${USER_SESSION.u_name} <%
-										 	} else {
-										 %> 未登陆 <%
-										 	}
-										 %> </a>
+									 	if (session.getAttribute("USER_SESSION") != null) {
+									 %> ${USER_SESSION.u_name} <%
+									 	} else {
+									 %> 未登陆 <%
+									 	}
+									 %> </a>
 								</div>
 								<%
 									if (session.getAttribute("USER_SESSION") != null) {
@@ -186,28 +187,7 @@
 										src="img/bg-img/49.jpg" alt="1">
 									</a>
 								</div>
-								<div class="carousel-item">
-									<a class="product-img" href="img/bg-img/49.jpg"
-										title="Product Image"> <img class="d-block w-100"
-										src="img/bg-img/49.jpg" alt="1">
-									</a>
-								</div>
-								<div class="carousel-item">
-									<a class="product-img" href="img/bg-img/49.jpg"
-										title="Product Image"> <img class="d-block w-100"
-										src="img/bg-img/49.jpg" alt="1">
-									</a>
-								</div>
 							</div>
-							<ol class="carousel-indicators">
-								<li class="active" data-target="#product_details_slider"
-									data-slide-to="0"
-									style="background-image: url(img/bg-img/49.jpg);"></li>
-								<li data-target="#product_details_slider" data-slide-to="1"
-									style="background-image: url(img/bg-img/49.jpg);"></li>
-								<li data-target="#product_details_slider" data-slide-to="2"
-									style="background-image: url(img/bg-img/49.jpg);"></li>
-							</ol>
 						</div>
 					</div>
 				</div>

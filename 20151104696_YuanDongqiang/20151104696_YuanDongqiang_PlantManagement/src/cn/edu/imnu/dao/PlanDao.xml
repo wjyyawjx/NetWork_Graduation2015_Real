@@ -35,7 +35,7 @@
 	<select id="showMessage" parameterType="Integer" resultType="plan">
 		select * from plan where p_id = #{id}
 	</select>
-	<select id="showHabits" parameterType="Integer" resultType="String">
+	<select id="showHabits" parameterType="Type" resultType="String">
 		select t_name from type where name = #{name} and t_id = #{t_id}
 	</select>
 </mapper>

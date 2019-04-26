@@ -65,9 +65,9 @@ public class PlanController {
 			break;
 		}
 		// list循环遍历
-		for (Plan plan : planshow) {
-			System.out.println(plan.getP_id());
-		}
+//		for (Plan plan : planshow) {
+//			System.out.println(plan.getP_id());
+//		}
 		model.addAttribute("planshow", planshow);
 		return "plan";
 	}
@@ -91,7 +91,7 @@ public class PlanController {
 			String t_name = SUN +"," + LIFE + "," + GREEN;
 			type.setT_name(t_name);
 		}
-		model.addAttribute("planshow", planshow);
+		model.addAttribute("planmore", planshow);
 		model.addAttribute("type", type);
 		return "single";
 	}

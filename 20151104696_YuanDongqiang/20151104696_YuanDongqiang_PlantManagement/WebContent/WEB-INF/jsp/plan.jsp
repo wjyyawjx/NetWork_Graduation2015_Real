@@ -4,27 +4,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>信息浏览</title>
-    <link rel="icon" href="img/core-img/favicon.ico">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>信息浏览</title>
+<link rel="icon" href="img/core-img/favicon.ico">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="preloader-circle"></div>
-        <div class="preloader-img">
-            <img src="img/core-img/leaf.png" alt="">
-        </div>
-    </div>
+	<!-- Preloader -->
+	<div class="preloader d-flex align-items-center justify-content-center">
+		<div class="preloader-circle"></div>
+		<div class="preloader-img">
+			<img src="img/core-img/leaf.png" alt="">
+		</div>
+	</div>
 
-    <!-- ##### Header Area Start ##### -->
-    <header class="header-area">
+	<!-- ##### Header Area Start ##### -->
+	<header class="header-area">
 	<div class="top-header-area">
 		<div class="container">
 			<div class="row">
@@ -43,12 +44,12 @@
 								<div class="login">
 									<a href="${pageContext.request.contextPath }/TZlogin.action"
 										aria-expanded="false"><i class="fa fa-user"></i> <%
-										 	if (session.getAttribute("USER_SESSION") != null) {
-										 %> ${USER_SESSION.u_name} <%
-										 	} else {
-										 %> 未登陆 <%
-										 	}
-										 %> </a>
+									 	if (session.getAttribute("USER_SESSION") != null) {
+									 %> ${USER_SESSION.u_name} <%
+									 	} else {
+									 %> 未登陆 <%
+									 	}
+									 %> </a>
 								</div>
 								<%
 									if (session.getAttribute("USER_SESSION") != null) {
@@ -149,181 +150,64 @@
 			</div>
 		</div>
 	</header>
-    <!-- ##### Header Area End ##### -->
+	<!-- ##### Header Area End ##### -->
 
-    <!-- ##### Breadcrumb Area Start ##### -->
-    <div class="breadcrumb-area">
-        <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
-            <h2>植物信息</h2>
-        </div>
-    </div>
-    <!-- ##### Breadcrumb Area End ##### -->
+	<!-- ##### Breadcrumb Area Start ##### -->
+	<div class="breadcrumb-area">
+		<!-- Top Breadcrumb Area -->
+		<div
+			class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
+			style="background-image: url(img/bg-img/24.jpg);">
+			<h2>植物信息</h2>
+		</div>
+	</div>
+	<!-- ##### Breadcrumb Area End ##### -->
 
-    <!-- ##### Shop Area Start ##### -->
-    <section class="shop-page section-padding-0-100">
-        <div class="container">
-            <div class="row">
-                <!-- All Products Area -->
-                <div  style="width: 100%">
-                    <div class="shop-products-area">
-                        <div class="row" style="width: 100%">
+	<!-- ##### Shop Area Start ##### -->
+	<section class="shop-page section-padding-0-100">
+	<div class="container">
+		<div class="row">
+			<!-- All Products Area -->
+			<div style="width: 100%">
+				<div class="shop-products-area">
+					<div class="row" style="width: 100%">
 
-                            <!-- Single Product Area -->
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="single-product-area mb-50">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="img/bg-img/40.png" alt=""></a>
-                                        <div class="product-meta d-flex">
-                                            <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                            <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                            <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Info -->
-                                    <div class="product-info mt-15 text-center">
-                                        <a href="${pageContext.request.contextPath }/single.action">
-                                            <p>绿萝</p>
-                                        </a>
-                                        <p>绿萝是一种全绿的藤本植物，在家居装饰中非常常见，绿萝可以说是净化空气的一大能手。</p>
-                                    </div>
-                                </div>
-                            </div>
+						<c:forEach items="${planshow }" var="planshow">
+							<div class="col-12 col-sm-6 col-lg-4">
+								<div class="single-product-area mb-50">
+									<a
+										href="${pageContext.request.contextPath }/single.action?id=${planshow.p_id }"><img
+										src="${planshow.p_img }" alt=""></a>
+									<div class="product-info mt-15 text-center">
+										<a
+											href="${pageContext.request.contextPath }/single.action?id=${planshow.p_id }">
+											<p>${planshow.p_name }</p>
+										</a>
+										<p>${planshow.p_form }</p>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
 
+						<!-- Pagination -->
+						<nav aria-label="Page navigation">
+						<ul class="pagination">
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#"><i
+									class="fa fa-angle-right"></i></a></li>
+						</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+	<!-- ##### Shop Area End ##### -->
 
-                            <!-- Single Product Area -->
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="single-product-area mb-50">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="img/bg-img/44.png" alt=""></a>
-                                        <div class="product-meta d-flex">
-                                            <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                            <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                            <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Info -->
-                                    <div class="product-info mt-15 text-center">
-                                        <a href="shop-details.html">
-                                            <p>吊兰</p>
-                                        </a>
-                                        <p>兰花在山水画中出现得极为广泛，吊兰是一种非常受欢迎的室内居室垂挂植物之一.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Product Area -->
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="single-product-area mb-50">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="img/bg-img/45.png" alt=""></a>
-                                        <div class="product-meta d-flex">
-                                            <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                            <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                            <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Info -->
-                                    <div class="product-info mt-15 text-center">
-                                        <a href="shop-details.html">
-                                            <p>发财树</p>
-                                        </a>
-                                        <p>发财树不仅仅只是一个好的寓意，随着摆放的环境不同，寓意也会存在变化，将发财树摆放在卧室.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Product Area -->
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="single-product-area mb-50">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="img/bg-img/46.png" alt=""></a>
-                                        <div class="product-meta d-flex">
-                                            <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                            <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                            <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Info -->
-                                    <div class="product-info mt-15 text-center">
-                                        <a href="shop-details.html">
-                                            <p>豆瓣绿</p>
-                                        </a>
-                                        <p>豆瓣绿，在中国被广泛用于盆栽栽培，豆瓣绿是一种小型的草本植物。</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Product Area -->
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="single-product-area mb-50">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="img/bg-img/47.png" alt=""></a>
-                                        <!-- Product Tag -->
-                                        <div class="product-tag sale-tag">
-                                            <a href="#">Sale</a>
-                                        </div>
-                                        <div class="product-meta d-flex">
-                                            <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                            <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                            <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Info -->
-                                    <div class="product-info mt-15 text-center">
-                                        <a href="shop-details.html">
-                                              <p>发财树</p>
-                                        </a>
-                                        <p>发财树不仅仅只是一个好的寓意，随着摆放的环境不同，寓意也会存在变化，将发财树摆放在卧室.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Product Area -->
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="single-product-area mb-50">
-                                    <!-- Product Image -->
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="img/bg-img/48.png" alt=""></a>
-                                        <div class="product-meta d-flex">
-                                            <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                            <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                            <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                                        </div>
-                                    </div>
-                                    <!-- Product Info -->
-                                    <div class="product-info mt-15 text-center">
-                                        <a href="shop-details.html">
-                                               <p>发财树</p>
-                                        </a>
-                                        <p>发财树不仅仅只是一个好的寓意，随着摆放的环境不同，寓意也会存在变化，将发财树摆放在卧室.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pagination -->
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ##### Shop Area End ##### -->
-
-    <!-- ##### Footer Area Start ##### -->
-   <footer class="footer-area bg-img"
+	<!-- ##### Footer Area Start ##### -->
+	<footer class="footer-area bg-img"
 		style="background-image: url(img/bg-img/3.jpg);"> <!-- Main Footer Area -->
 	<div class="main-footer-area">
 		<div class="container">
@@ -428,12 +312,12 @@
 		</div>
 	</div>
 	</footer>
-    <!-- ##### Footer Area End ##### -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <script src="js/bootstrap/popper.min.js"></script>
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <script src="js/plugins/plugins.js"></script>
-    <script src="js/active.js"></script>
+	<!-- ##### Footer Area End ##### -->
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<script src="js/bootstrap/popper.min.js"></script>
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+	<script src="js/plugins/plugins.js"></script>
+	<script src="js/active.js"></script>
 </body>
 
 </html>
