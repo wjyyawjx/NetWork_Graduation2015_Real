@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import org.json.JSONObject;
 
@@ -77,12 +78,11 @@ public class Weather extends HttpServlet {
 			String tmp = "今天气温:" +now.getString("tmp")+"°C  ";
 			String cond_txt = "天气："+now.getString("cond_txt");
 			String loc = "天气信息更新时间是："+update.getString("loc");
-			HttpSession session = request.getSession(); 			
-			session.setAttribute("location",location);
-			session.setAttribute("tmp",tmp);
-			session.setAttribute("cond_txt",cond_txt);
-			session.setAttribute("loc",loc);
+			JOptionPane.showMessageDialog(null, location + "\n" + tmp + "\n" + cond_txt + "\n" + loc, "欢迎访问",
+					JOptionPane.DEFAULT_OPTION);
 	    } catch ( Exception ignored ) {
+	    	JOptionPane.showMessageDialog(null, "系统没有联网，不能查看天气信息!", "欢迎访问",
+					JOptionPane.DEFAULT_OPTION);
 	    } finally {
 	        //关闭流
 	        try {
