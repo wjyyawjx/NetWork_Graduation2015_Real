@@ -44,12 +44,12 @@
 								<div class="login">
 									<a href="${pageContext.request.contextPath }/TZlogin.action"
 										aria-expanded="false"><i class="fa fa-user"></i> <%
-									 	if (session.getAttribute("USER_SESSION") != null) {
-									 %> ${USER_SESSION.u_name} <%
-									 	} else {
-									 %> 未登陆 <%
-									 	}
-									 %> </a>
+ 	if (session.getAttribute("USER_SESSION") != null) {
+ %> ${USER_SESSION.u_name} <%
+ 	} else {
+ %> 未登陆 <%
+ 	}
+ %> </a>
 								</div>
 								<%
 									if (session.getAttribute("USER_SESSION") != null) {
@@ -171,33 +171,32 @@
 			<div style="width: 100%">
 				<div class="shop-products-area">
 					<div class="row" style="width: 100%">
-
-						<c:forEach items="${planshow }" var="planshow">
-							<div class="col-12 col-sm-6 col-lg-4">
-								<div class="single-product-area mb-50">
-									<a
-										href="${pageContext.request.contextPath }/single.action?id=${planshow.p_id }"><img
-										src="${planshow.p_img }" alt=""></a>
-									<div class="product-info mt-15 text-center">
+							<c:forEach items="${planshow }" var="planshow">
+								<div class="col-12 col-sm-6 col-lg-4">
+									<div class="single-product-area mb-50">
 										<a
 											href="${pageContext.request.contextPath }/single.action?id=${planshow.p_id }">
-											<p>${planshow.p_name }</p>
+											<img src="${planshow.p_img }" alt="">
 										</a>
-										<p>${planshow.p_form }</p>
+										<div class="product-info mt-15 text-center">
+											<a
+												href="${pageContext.request.contextPath }/single.action?id=${planshow.p_id }">
+												<p>${planshow.p_name }</p>
+											</a>
+											<p>${planshow.p_form }</p>
+										</div>
 									</div>
 								</div>
-							</div>
-						</c:forEach>
-
-						<!-- Pagination -->
-						<nav aria-label="Page navigation">
-						<ul class="pagination">
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#"><i
-									class="fa fa-angle-right"></i></a></li>
-						</ul>
-						</nav>
+							</c:forEach>
+							<!-- Pagination -->
+							<nav aria-label="Page navigation">
+							<ul class="pagination">
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#"><i
+										class="fa fa-angle-right"></i></a></li>
+							</ul>
+							</nav>
 					</div>
 				</div>
 			</div>

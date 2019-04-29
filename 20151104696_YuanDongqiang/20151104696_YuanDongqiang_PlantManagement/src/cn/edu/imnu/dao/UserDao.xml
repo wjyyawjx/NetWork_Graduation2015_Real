@@ -22,27 +22,23 @@
 	<!-- 注册 -->
 	<insert id="addUser" parameterType="user">
 		insert into users(
-		p_id,
-		p_name,
-		p_breeding,
-		p_habits,
-		p_place,
-		p_form,
-		p_img,
-		p_water,
-		p_message,
-		u_id
+		u_id,
+		u_name,
+		u_pwd,
+		u_type,
+		u_email,
+		u_code,
+		u_ip,
+		u_time
 		)
-		values(#{p_id},
-		#{p_name},
-		#{p_breeding},
-		#{p_habits},
-		#{p_place},
-		#{p_form},
-		#{p_img},
-		#{p_water},
-		#{p_message},
-		#{u_id}
+		values(#{u_id},
+		#{u_name},
+		#{u_pwd},
+		#{u_type},
+		#{u_email},
+		#{u_code},
+		#{u_ip},
+		#{u_time}
 		)
 	</insert>
 	<update id="SaveIp" parameterType="user">

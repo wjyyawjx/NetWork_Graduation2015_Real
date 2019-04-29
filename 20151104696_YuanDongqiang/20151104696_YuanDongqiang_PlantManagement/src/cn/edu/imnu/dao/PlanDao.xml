@@ -38,4 +38,7 @@
 	<select id="showHabits" parameterType="Type" resultType="String">
 		select t_name from type where name = #{name} and t_id = #{t_id}
 	</select>
+	<select id="finduser" parameterType="Integer" resultType="User">
+		select * from users where u_id = #{u_id}
+	</select>
 </mapper>

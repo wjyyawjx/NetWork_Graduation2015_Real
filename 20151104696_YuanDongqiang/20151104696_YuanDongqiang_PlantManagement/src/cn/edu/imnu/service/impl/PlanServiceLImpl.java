@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.imnu.dao.PlanDao;
+import cn.edu.imnu.dao.UserDao;
 import cn.edu.imnu.po.Plan;
 import cn.edu.imnu.po.Type;
+import cn.edu.imnu.po.User;
 import cn.edu.imnu.service.PlanService;
 
 /**
@@ -43,6 +45,11 @@ public class PlanServiceLImpl implements PlanService {
 	@Override
 	public String showHabits(Type type) {
 		return planDao.showHabits(type);
+	}
+
+	@Override
+	public User finduser(Integer u_id) {
+		return planDao.finduser(u_id);
 	}
 
 }

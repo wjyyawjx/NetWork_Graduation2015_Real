@@ -43,10 +43,8 @@ public class PlanController {
 		plan.setP_img(fileselect);
 		Integer save = planService.savePlan(plan);
 		if (save != 0) {
-			JOptionPane.showMessageDialog(null, "上传信息成功，请等待审核！", "成功", JOptionPane.ERROR_MESSAGE);
 			return "index";
 		} else {
-			JOptionPane.showMessageDialog(null, "上传信息失败，请重新输入！", "失败", JOptionPane.ERROR_MESSAGE);
 			return "post-ad";
 		}
 	}
@@ -77,6 +75,10 @@ public class PlanController {
 	public String Single(Integer id, Model model,Type type) {
 		List<Plan> planshow = planService.showMessage(id);
 		for (Plan plan : planshow) {
+			User user = planService.finduser(plan.getU_id());
+			model.addAttribute("user", user);
+		}
+		for (Plan plan : planshow) {
 			id = plan.getP_habits();
 			Integer sun = id/100;
 			Integer life =(id%100)/10;
@@ -88,7 +90,7 @@ public class PlanController {
 			String LIFE = planService.showHabits(type);
 			type.setT_id(green);
 			String GREEN = planService.showHabits(type);
-			String t_name = SUN +"," + LIFE + "," + GREEN;
+			String t_name = SUN +";" + LIFE + ";" + GREEN;
 			type.setT_name(t_name);
 		}
 		model.addAttribute("planmore", planshow);

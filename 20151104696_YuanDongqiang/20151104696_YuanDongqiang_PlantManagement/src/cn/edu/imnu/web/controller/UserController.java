@@ -32,9 +32,9 @@ public class UserController {
 			try {
 				String u_ip = java.net.InetAddress.getLocalHost().getHostAddress();
 				Date u_time = new Date();
-				long day = getDatePoor(u_time, user.getU_time());
-				System.out.println(day);
-				System.out.println(u_ip);
+//				long day = getDatePoor(u_time, user.getU_time());
+//				System.out.println(day);
+//				System.out.println(u_ip);
 				if (u_ip != user.getU_ip()) {
 					user.setU_ip(u_ip);
 					user.setU_time(u_time);

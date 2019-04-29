@@ -51,7 +51,6 @@
 	function lostemail() {
 		var u_email = $("#u_email").val();
 		if (u_email != null) {
-			alert(u_email);
 			fajax("${pageContext.request.contextPath }/registeremail.action?u_email=" + u_email, null, function(data) {
 						if (data.status == "error") {
 							alert("该邮箱已被注册！！请重新输入");
