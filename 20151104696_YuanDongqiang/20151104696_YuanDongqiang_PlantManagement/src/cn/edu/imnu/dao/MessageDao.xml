@@ -1,0 +1,19 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.imnu.dao.MessageDao">
+	<insert id="AddMessage" parameterType="Message">
+		insert into message(
+		m_text,
+		m_read,
+		m_time,
+		u_id,
+		p_id
+		)
+		values(#{m_text},
+		#{m_read},
+		#{m_time},
+		#{u_id},
+		#{p_id}
+		)
+	</insert>
+</mapper>

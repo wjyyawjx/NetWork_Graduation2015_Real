@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.imnu.dao.PlanDao;
-import cn.edu.imnu.dao.UserDao;
+import cn.edu.imnu.po.Message;
 import cn.edu.imnu.po.Plan;
 import cn.edu.imnu.po.Type;
 import cn.edu.imnu.po.User;
@@ -50,6 +50,16 @@ public class PlanServiceLImpl implements PlanService {
 	@Override
 	public User finduser(Integer u_id) {
 		return planDao.finduser(u_id);
+	}
+
+	@Override
+	public Integer ShowMess(Integer id) {
+		return planDao.ShowMess(id);
+	}
+
+	@Override
+	public List<Message> MessageAll(Integer id) {
+		return planDao.MessageAll(id);
 	}
 
 }

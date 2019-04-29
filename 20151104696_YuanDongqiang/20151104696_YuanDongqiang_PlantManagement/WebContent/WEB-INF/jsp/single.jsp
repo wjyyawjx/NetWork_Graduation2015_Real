@@ -9,17 +9,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-<!-- Title -->
 <title>植物详细信息</title>
 
-<!-- Favicon -->
 <link rel="icon" href="img/core-img/favicon.ico">
 
-<!-- Core Stylesheet -->
 <link rel="stylesheet" href="style.css">
-
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/ajax.js"></script>
+<script type="text/javascript">
+	function message(id) {
+		var message = $("#comments").val();
+		var req_data = {};
+		req_data["text"] = message;
+		req_data["id"] = id;
+		if (message != null){
+			fajax("${pageContext.request.contextPath }/message.action", req_data, function(data) {
+				if (data.status != "ok") {
+					return false;
+				}
+			})
+		}
+		document.getElementById("comments").value="";
+		return true;
+	}
+</script>
 </head>
 
 <body>
@@ -51,12 +65,12 @@
 								<div class="login">
 									<a href="${pageContext.request.contextPath }/TZlogin.action"
 										aria-expanded="false"><i class="fa fa-user"></i> <%
-									 	if (session.getAttribute("USER_SESSION") != null) {
-									 %> ${USER_SESSION.u_name} <%
-									 	} else {
-									 %> 未登陆 <%
-									 	}
-									 %> </a>
+ 	if (session.getAttribute("USER_SESSION") != null) {
+ %> ${USER_SESSION.u_name} <%
+ 	} else {
+ %> 未登陆 <%
+ 	}
+ %> </a>
 								</div>
 								<%
 									if (session.getAttribute("USER_SESSION") != null) {
@@ -171,92 +185,101 @@
 	<!-- ##### Breadcrumb Area End ##### -->
 
 	<!-- ##### Single Product Details Area Start ##### -->
-	<section class="single_product_details_area mb-50">
-	<c:forEach items="${planmore }" var="planmore">
-	<div class="produts-details--content mb-50">
-		<div class="container">
-			<div class="row justify-content-between">
-				
-				<div class="col-12 col-md-6 col-lg-5">
-					<div class="single_product_thumb">
-						<div id="product_details_slider" class="carousel slide"
-							data-ride="carousel">
-							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<a class="product-img" href="img/bg-img/49.jpg"
-										title="Product Image"> <img class="d-block w-100"
-										src="${planmore.p_img }" alt="1">
-									</a>
+	<section class="single_product_details_area mb-50"> <c:forEach
+		items="${planmore }" var="planmore">
+		<div class="produts-details--content mb-50">
+			<div class="container">
+				<div class="row justify-content-between">
+
+					<div class="col-12 col-md-6 col-lg-5">
+						<div class="single_product_thumb">
+							<div id="product_details_slider" class="carousel slide"
+								data-ride="carousel">
+								<div class="carousel-inner">
+									<div class="carousel-item active">
+										<a class="product-img" href="img/bg-img/49.jpg"
+											title="Product Image"> <img class="d-block w-100"
+											src="${planmore.p_img }" alt="1">
+										</a>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="col-12 col-md-6">
-					<div class="single_product_desc">
-						<h4 class="title">${planmore.p_name }</h4>
-						<div class="short_overview">
-							<p>${planmore.p_form }</p>
-						</div>
-						<div class="products--meta">
-							<p>
-								<span>上传用户:</span> <span>${user.u_name}</span>
-							</p>
-							<p>
-								<span>植物喜好:</span> <span>${type.t_name } </span>
-							</p>
-							<p>
-								<span>浇水频率:</span> <span>${planmore.p_water} </span>
-							</p>
-							<p>
-								<span>植物分布:</span> <span>${planmore.p_place}</span>
-							</p>
-							<p>
-								<span>繁殖方式:</span> <span>${planmore.p_breeding}</span>
-							</p>
-							
-						</div>
+					<div class="col-12 col-md-6">
+						<div class="single_product_desc">
+							<h4 class="title">${planmore.p_name }</h4>
+							<div class="short_overview">
+								<p>${planmore.p_form }</p>
+							</div>
+							<div class="products--meta">
+								<p>
+									<span>上传用户:</span> <span>${user.u_name}</span>
+								</p>
+								<p>
+									<span>植物喜好:</span> <span>${type.t_name } </span>
+								</p>
+								<p>
+									<span>浇水频率:</span> <span>${planmore.p_water} </span>
+								</p>
+								<p>
+									<span>植物分布:</span> <span>${planmore.p_place}</span>
+								</p>
+								<p>
+									<span>繁殖方式:</span> <span>${planmore.p_breeding}</span>
+								</p>
 
+							</div>
+
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<div class="product_details_tab clearfix">
-					<!-- Tabs -->
-					<ul class="nav nav-tabs" role="tablist" id="product-details-tab">
-						<li class="nav-item"><a href="#description"
-							class="nav-link active" data-toggle="tab" role="tab">植物形态特征</a>
-						</li>
-						<li class="nav-item"><a href="#addi-info" class="nav-link"
-							data-toggle="tab" role="tab">培养技巧</a></li>
-						<li class="nav-item"><a href="#reviews" class="nav-link"
-							data-toggle="tab" role="tab">相关留言 <span class="text-muted">(1)</span></a>
-						</li>
-					</ul>
-					<!-- Tab Content -->
-					<div class="tab-content">
-						<div role="tabpanel" class="tab-pane fade show active"
-							id="description">
-							<div class="description_area">
-								<p>${planmore.p_form}</p>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="product_details_tab clearfix">
+						<!-- Tabs -->
+						<ul class="nav nav-tabs" role="tablist" id="product-details-tab">
+							<li class="nav-item"><a href="#description"
+								class="nav-link active" data-toggle="tab" role="tab">植物形态特征</a>
+							</li>
+							<li class="nav-item"><a href="#addi-info" class="nav-link"
+								data-toggle="tab" role="tab">培养技巧</a></li>
+							<li class="nav-item"><a href="#reviews" class="nav-link"
+								data-toggle="tab" role="tab">相关留言 <span class="text-muted">(${MessMany })</span></a>
+							</li>
+						</ul>
+						<!-- Tab Content -->
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane fade show active"
+								id="description">
+								<div class="description_area">
+									<p>${planmore.p_form}</p>
+								</div>
 							</div>
-						</div>
-						<div role="tabpanel" class="tab-pane fade" id="addi-info">
-							<div class="additional_info_area">
-								<p>${planmore.p_message} </p>
+							<div role="tabpanel" class="tab-pane fade" id="addi-info">
+								<div class="additional_info_area">
+									<p>${planmore.p_message}</p>
+								</div>
 							</div>
-						</div>
-						<div role="tabpanel" class="tab-pane fade" id="reviews">
-                                <div class="submit_a_review_area mt-50">
-                                    <h4>留言区</h4>
-                                    <form action="${pageContext.request.contextPath }/message.action?id=${planmore.p_id}" method="post">
-                                        <div class="row">
+							<div role="tabpanel" class="tab-pane fade" id="reviews">
+								<div class="submit_a_review_area mt-50">
+									<h4>留言区</h4>
+									<div class="row">
+										<div class="cmt-list">
+											<c:forEach items="${message }" var="message">
+												<p>
+													<span class="data-name">${message.u_name}</span><span> ： </span>
+												</p>
+												<p>	
+													 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span> ${message.m_text} </span>  ${message.m_time}
+												</p>
+											</c:forEach>
+										</div>
 										<div class="col-12">
 											<div class="form-group">
 												<label for="comments">分享您的经验</label>
@@ -265,20 +288,19 @@
 											</div>
 										</div>
 										<div class="col-12">
-											<button type="submit" class="btn alazea-btn">发送</button>
+											<button type="submit" class="btn alazea-btn"
+												onclick="message(${planmore.p_id})">发送</button>
 										</div>
 									</div>
-								</form>
+								</div>
 							</div>
-						</div>
 
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	</c:forEach>
-	</section>
+	</c:forEach> </section>
 	<!-- ##### Single Product Details Area End ##### -->
 
 	<!-- ##### Related Product Area Start ##### -->

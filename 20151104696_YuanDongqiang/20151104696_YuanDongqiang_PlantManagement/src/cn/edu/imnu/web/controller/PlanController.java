@@ -4,13 +4,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import cn.edu.imnu.po.Message;
 import cn.edu.imnu.po.Plan;
 import cn.edu.imnu.po.Type;
 import cn.edu.imnu.po.User;
@@ -73,6 +73,8 @@ public class PlanController {
 	//植物详细信息
 	@RequestMapping(value = "single.action")
 	public String Single(Integer id, Model model,Type type) {
+		Integer MessMany = planService.ShowMess(id);
+		List<Message> message = planService.MessageAll(id);
 		List<Plan> planshow = planService.showMessage(id);
 		for (Plan plan : planshow) {
 			User user = planService.finduser(plan.getU_id());
@@ -95,6 +97,8 @@ public class PlanController {
 		}
 		model.addAttribute("planmore", planshow);
 		model.addAttribute("type", type);
+		model.addAttribute("MessMany",MessMany);
+		model.addAttribute("message", message);
 		return "single";
 	}
 }

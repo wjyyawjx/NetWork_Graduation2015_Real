@@ -41,4 +41,10 @@
 	<select id="finduser" parameterType="Integer" resultType="User">
 		select * from users where u_id = #{u_id}
 	</select>
+	<select id="ShowMess" parameterType="Integer" resultType="Integer">
+		select count(*) from message where p_id=#{id}
+	</select>
+	<select id="MessageAll" parameterType="Integer" resultType="Message">
+		SELECT message.*,users.u_name FROM message,users WHERE message.u_id = users.u_id
+	</select>
 </mapper>
