@@ -30,14 +30,13 @@
 </head>
 <body>
 <div class="login">
-	<h2>Login Form</h2>
+	<h2>登录页面</h2>
 	<div class="login-top">
-		<h1>LOGIN FORM</h1>
+		<h1>登录</h1>
 		<form  action="${pageContext.request.contextPath}/login.action" method="post" onsubmit="return check()">
-			<input type="text" id="userName" name="userName" value="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
+			<input type="text" id="userName" name="userName" value="登录" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
 			<input type="password" placeholder="Password" id="userPass" name="userPass"value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
 	    <div class="forgot">
-	    	<a href="${pageContext.request.contextPath}/forgetpwd.action">forgot Password</a>
 	    	<span>
 	    		<a>${msg}</a>
 	    	</span>

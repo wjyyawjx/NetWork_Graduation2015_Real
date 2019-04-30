@@ -30,9 +30,9 @@
 </head>
 <body>
 <div class="login">
-	<h2>Register Form</h2>
+	<h2>注册页面</h2>
 	<div class="login-top">
-		<h1>REGISTER FORM</h1>
+		<h1>注册</h1>
 		<form action="${pageContext.request.contextPath}/register.action" method="post">
 			<input type="text" id="userName" name="userName" value="username"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'userName';}">
 	    	<input type="text" id="Gender" name="Gender" value="Gender"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Gender';}">
@@ -40,7 +40,6 @@
 	    	<input type="text" id="Email" name="Email" value="Email"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
 	    	<input type="password" placeholder="Password" id="userPass" name="userPass"value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
 	    <div class="forgot">
-	    	<a href="#">forgot Password</a>
 	    	<span>
 	    		<a>${msg}</a>
 	    	</span>

@@ -19,15 +19,15 @@ public class WebSocketController {
     @Autowired
     MyHandler handler;
 
-    //玩家登录
-    @RequestMapping("/login/{userId}")
-    public ModelAndView login(HttpSession session, @PathVariable("userId") Integer userId) {
-        System.out.println("登录接口,userId=" + userId);
-        session.setAttribute("userId", userId);
-        System.out.println(session.getAttribute("userId"));
-        return new ModelAndView("phone/websocket_test");
-    }
-
+/*//玩家登录
+@RequestMapping("/login/{userId}")
+public ModelAndView login(HttpSession session, @PathVariable("userId") Integer userId) {
+    System.out.println("登录接口,userId=" + userId);
+    session.setAttribute("userId", userId);
+    System.out.println(session.getAttribute("userId"));
+    return new ModelAndView("phone/websocket_test");
+}
+*/
     //模拟给指定玩家发消息
     @RequestMapping("/message")
     @ResponseBody
