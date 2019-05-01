@@ -25,4 +25,6 @@ public interface PlanDao {
 
 	public List<Message> MessageAll(Integer id);
 
+	public List<Plan> FindPlan(String search);
+
 }

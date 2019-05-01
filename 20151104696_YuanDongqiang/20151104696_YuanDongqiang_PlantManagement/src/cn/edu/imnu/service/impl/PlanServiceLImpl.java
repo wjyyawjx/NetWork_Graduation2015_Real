@@ -62,4 +62,9 @@ public class PlanServiceLImpl implements PlanService {
 		return planDao.MessageAll(id);
 	}
 
+	@Override
+	public List<Plan> FindPlan(String search) {
+		return planDao.FindPlan(search);
+	}
+
 }

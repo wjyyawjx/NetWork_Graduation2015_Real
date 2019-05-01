@@ -28,7 +28,9 @@
 	content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 <script type="application/x-javascript">
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 </script>
 <link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed'
 	rel='stylesheet' type='text/css'>
@@ -112,7 +114,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<h2 class="w3-head">上传植物信息</h2>
 			<div class="post-ad-form">
-				<form action="${pageContext.request.contextPath }/AddPlanMess.action">
+				<form
+					action="${pageContext.request.contextPath }/AddPlanMess.action"
+					method="post" enctype="multipart/form-data">
 					<label>植物名称 <span>*</span></label> <input type="text" class="phone"
 						id="name" name="name" placeholder="">
 					<div class="clearfix"></div>
@@ -125,7 +129,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</select>
 					<div class="clearfix"></div>
 					<label>分布地区<span>*</span></label> <select id="place" name="place"
-						class="" >
+						class="">
 						<option>选择地区</option>
 						<option>华北地区 （北京市 天津市 河北省 内蒙古 山西省 山东省）</option>
 						<option>华东地区 （上海市 安徽省 浙江省 江苏省 ）</option>
@@ -137,15 +141,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</select>
 					<div class="clearfix"></div>
 					<label>植物习性 <span>*</span></label>
-					<div style="width: 70%; margin-top: 10px; float: left; border: 1px solid red;">
-						生长环境： <br /> 
-						<input type="radio" name="sun" value="1" />喜阳植物（生长在阳光充足环境下。）
+					<div
+						style="width: 70%; margin-top: 10px; float: left; border: 1px solid red;">
+						生长环境： <br /> <input type="radio" name="sun" value="1" />喜阳植物（生长在阳光充足环境下。）
 						<input type="radio" name="sun" value="2" /> 喜阴植物（喜欢在阴暗的环境下生长。） <br />
-						寿命： <br /> 
-						<input type="radio" name="life" value="3" />多年生植物（寿命在两年以上的植物。）
+						寿命： <br /> <input type="radio" name="life" value="3" />多年生植物（寿命在两年以上的植物。）
 						<input type="radio" name="life" value="4" />一年生植物（生命周期为一年的植物。） <br />
-						常绿/落叶： <br /> 
-						<input type="radio" name="green" value="5" />常绿植物（常年不落也植物。）
+						常绿/落叶： <br /> <input type="radio" name="green" value="5" />常绿植物（常年不落也植物。）
 						<input type="radio" name="green" value="6" />非常绿植物（植物会在一段时间落叶。）
 					</div>
 					<div class="clearfix"></div>
@@ -153,7 +155,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<textarea class="mess" id="title" name="title"
 						placeholder="有关植物的具体描述。"></textarea>
 					<div class="clearfix"></div>
-					<label>浇水频率 <span>*</span></label> <select id="time1" name="time1" style="width: 100px;">
+					<label>浇水频率 <span>*</span></label> <select id="time1" name="time1"
+						style="width: 100px;">
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
@@ -169,8 +172,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<option>周</option>
 						<option>月</option>
 						<option>年</option>
-					</select>
-					<select id="time3" name="time3" style="width: 100px;">
+					</select> <select id="time3" name="time3" style="width: 100px;">
 						<option>1次</option>
 						<option>2次</option>
 						<option>3次</option>
@@ -183,7 +185,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<option>10次</option>
 					</select>
 					<div class="clearfix"></div>
-					<label>培养描述 <span>*</span></label> <textarea class="mess" id="planmess" name="planmess"
+					<label>培养描述 <span>*</span></label>
+					<textarea class="mess" id="planmess" name="planmess"
 						placeholder="对植物的如何进行培养进行详细描述。"></textarea>
 					<div class="clearfix"></div>
 					<div class="upload-ad-photos">
@@ -192,7 +195,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE"
 								value="300000" />
 							<div>
-								<input type="file" id="fileselect" name="fileselect"
+								<input type="file" id="file" name="file"
 									multiple="multiple" />
 							</div>
 							<div id="messages">

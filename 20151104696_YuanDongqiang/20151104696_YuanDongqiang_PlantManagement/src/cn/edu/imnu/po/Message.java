@@ -1,6 +1,5 @@
 package cn.edu.imnu.po;
 
-import java.util.Date;
 
 public class Message {
 	private static final long serialVersionUID = 1L;
@@ -9,7 +8,7 @@ public class Message {
 	private Integer m_read;// 是否阅读;
 	private Integer u_id;// 上传用户id;
 	private Integer p_id;// 植物id;
-	private Date m_time;// 发送消息时间;
+	private String m_time;// 发送消息时间;
 	private String u_name;//用户名;
 
 	public Integer getM_id() {
@@ -56,13 +55,6 @@ public class Message {
 		return serialVersionUID;
 	}
 
-	public Date getM_time() {
-		return m_time;
-	}
-
-	public void setM_time(Date m_time) {
-		this.m_time = m_time;
-	}
 
 	public String getU_name() {
 		return u_name;
@@ -70,5 +62,13 @@ public class Message {
 
 	public void setU_name(String u_name) {
 		this.u_name = u_name;
+	}
+
+	public String getM_time() {
+		return m_time;
+	}
+
+	public void setM_time(String m_time) {
+		this.m_time = m_time;
 	}
 }

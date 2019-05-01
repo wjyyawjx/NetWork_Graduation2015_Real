@@ -1,5 +1,7 @@
 package cn.edu.imnu.po;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Plan {
 	private static final long serialVersionUID = 1L;
 	private Integer p_id; // 植物id
@@ -7,11 +9,12 @@ public class Plan {
 	private String p_breeding; // 繁殖方式
 	private Integer p_habits; // 习性
 	private String p_place; // 分布
-	private String p_form; //形态特征
+	private String p_form; // 形态特征
 	private String p_img; // 图片
 	private String p_water; // 浇水频率
 	private String p_message; // 植物培养描述
 	private Integer u_id; // 上传用户id
+	private MultipartFile file;
 
 	public String getP_water() {
 		return p_water;
@@ -95,5 +98,13 @@ public class Plan {
 
 	public void setP_form(String p_form) {
 		this.p_form = p_form;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 }

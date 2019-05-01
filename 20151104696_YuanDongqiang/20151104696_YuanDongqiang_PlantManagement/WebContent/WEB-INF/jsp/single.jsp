@@ -23,14 +23,15 @@
 		var req_data = {};
 		req_data["text"] = message;
 		req_data["id"] = id;
-		if (message != null){
+		if (message != ""){
 			fajax("${pageContext.request.contextPath }/message.action", req_data, function(data) {
 				if (data.status != "ok") {
 					return false;
 				}
 			})
-		}
+		} 
 		document.getElementById("comments").value="";
+		$("#reviews").load();
 		return true;
 	}
 </script>
@@ -65,12 +66,12 @@
 								<div class="login">
 									<a href="${pageContext.request.contextPath }/TZlogin.action"
 										aria-expanded="false"><i class="fa fa-user"></i> <%
- 	if (session.getAttribute("USER_SESSION") != null) {
- %> ${USER_SESSION.u_name} <%
- 	} else {
- %> 未登陆 <%
- 	}
- %> </a>
+									 	if (session.getAttribute("USER_SESSION") != null) {
+									 %> ${USER_SESSION.u_name} <%
+									 	} else {
+									 %> 未登陆 <%
+									 	}
+									 %> </a>
 								</div>
 								<%
 									if (session.getAttribute("USER_SESSION") != null) {
@@ -121,13 +122,6 @@
 									<ul class="dropdown">
 										<li><a href="index.html">主页</a></li>
 										<li><a href="about.html">关于我们</a></li>
-										<li><a href="shop.html">购买</a>
-											<ul class="dropdown">
-												<li><a href="shop.html">购买</a></li>
-												<li><a href="shop-details.html">商店 细节</a></li>
-												<li><a href="cart.html">购物车</a></li>
-												<li><a href="checkout.html">结帐</a></li>
-											</ul></li>
 										<li><a href="portfolio.html">投资组合</a>
 											<ul class="dropdown">
 												<li><a href="portfolio.html">投资组合</a></li>
@@ -140,7 +134,6 @@
 											</ul></li>
 										<li><a href="contact.html">联系</a></li>
 									</ul></li>
-								<li><a href="shop.html">店铺</a></li>
 								<li><a href="portfolio.html">投资组合</a></li>
 								<li><a href="contact.html">联系</a></li>
 							</ul>
@@ -157,7 +150,7 @@
 
 					<!-- Search Form -->
 					<div class="search-form">
-						<form action="#" method="get">
+						<form action="${pageContext.request.contextPath }/findplan.action" method="get">
 							<input type="search" name="search" id="search"
 								placeholder="输入关键字,按回车……">
 							<button type="submit" class="d-none"></button>
@@ -197,9 +190,9 @@
 								data-ride="carousel">
 								<div class="carousel-inner">
 									<div class="carousel-item active">
-										<a class="product-img" href="img/bg-img/49.jpg"
+										<a class="product-img" href="${planmore.p_img }"
 											title="Product Image"> <img class="d-block w-100"
-											src="${planmore.p_img }" alt="1">
+											src="${planmore.p_img }">
 										</a>
 									</div>
 								</div>
@@ -270,13 +263,16 @@
 								<div class="submit_a_review_area mt-50">
 									<h4>留言区</h4>
 									<div class="row">
-										<div class="cmt-list">
+										<div  id="message">
 											<c:forEach items="${message }" var="message">
 												<p>
 													<span class="data-name">${message.u_name}</span><span> ： </span>
 												</p>
 												<p>	
-													 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span> ${message.m_text} </span>  ${message.m_time}
+													 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span> ${message.m_text} </span>  
+												</p>
+												<p align="right">
+													<span>${message.m_time}</span>
 												</p>
 											</c:forEach>
 										</div>

@@ -116,13 +116,6 @@
 									<ul class="dropdown">
 										<li><a href="index.html">主页</a></li>
 										<li><a href="about.html">关于我们</a></li>
-										<li><a href="shop.html">购买</a>
-											<ul class="dropdown">
-												<li><a href="shop.html">购买</a></li>
-												<li><a href="shop-details.html">商店 细节</a></li>
-												<li><a href="cart.html">购物车</a></li>
-												<li><a href="checkout.html">结帐</a></li>
-											</ul></li>
 										<li><a href="portfolio.html">投资组合</a>
 											<ul class="dropdown">
 												<li><a href="portfolio.html">投资组合</a></li>
@@ -135,7 +128,6 @@
 											</ul></li>
 										<li><a href="contact.html">联系</a></li>
 									</ul></li>
-								<li><a href="shop.html">店铺</a></li>
 								<li><a href="portfolio.html">投资组合</a></li>
 								<li><a href="contact.html">联系</a></li>
 							</ul>
@@ -152,7 +144,7 @@
 
 					<!-- Search Form -->
 					<div class="search-form">
-						<form action="#" method="get">
+						<form action="${pageContext.request.contextPath }/findplan.action" method="get">
 							<input type="search" name="search" id="search"
 								placeholder="输入关键字,按回车……">
 							<button type="submit" class="d-none"></button>
