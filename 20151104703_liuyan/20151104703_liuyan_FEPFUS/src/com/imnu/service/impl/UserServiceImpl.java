@@ -43,5 +43,15 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		this.userDao.updatemy(u_user,u_name,u_phone,u_email,u_message);
 	}
+	@Override
+	public void updateno(String u_email) {
+		// TODO Auto-generated method stub
+		this.userDao.updateno(u_email);
+	}
+	@Override
+	public void updateyes(String u_email) {
+		// TODO Auto-generated method stub
+		this.userDao.updateyes(u_email);
+	}
 	
 }

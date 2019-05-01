@@ -18,4 +18,10 @@
   <update id="updatemy" parameterType="String">
      update user set u_name = #{u_name}, u_phone = #{u_phone},u_email = #{u_email},u_message = #{u_message},u_Jurisdiction = '否' where u_user = #{u_user}
   </update>
+  <update id="updateno" parameterType="String">
+     update user set u_Jurisdiction = '否' where u_email = #{u_email}
+  </update>
+  <update id="updateyes" parameterType="String">
+     update user set u_Jurisdiction = '是' where u_email = #{u_email}
+  </update>
 </mapper>

@@ -161,7 +161,7 @@ function replace_em(str){
 			"username":username,
 			"message":message,
 			"img":"${userBean.image}",
-			"from":${friendId}
+			"from":"${friendId}"
 		};
 		ws.send(JSON.stringify(data));
 	}
@@ -193,7 +193,7 @@ function replace_em(str){
 		var jsonArray=localStorage.getItem(localChatKey);
     	var objArray=JSON.parse(jsonArray);
 		var html;
-		if(obj.username==${userBean.userName}){//自己发送的消息
+		if(obj.id==${userBean.id}){//自己发送的消息
 			html="<div class='media'>"+
 		  "<div class='media-body'>"+
 		    "<h4 class='media-heading text-right' style='font-family: 楷体; color:red'>"+obj.username+"</h4>"+

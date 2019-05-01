@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.chat.dao.FriendDao;
 import cn.chat.dao.UserDao;
@@ -34,11 +35,13 @@ public class FriendController {
 	@Autowired
 	private UserDao userDao;
 
-	@RequestMapping("/{friend1}/{friend2}")
-	public String roomInfo(@PathVariable("friend1")Integer friend1,@PathVariable("friend2")Integer friend2,Model model) {
+	@RequestMapping(value="/{friend1}/{friend2}",method=RequestMethod.GET)
+	public String roomInfo(@PathVariable("friend1")String friend1,@PathVariable("friend2")String friend2,Model model) {
+		System.out.println("friend1："+friend1+"++++++"+"friend2:"+friend2+"++++++++");
 		model.addAttribute("roomId", friend1+":one:"+friend2);
 		model.addAttribute("friend",friend1+":one:"+friend2);
 		model.addAttribute("friendId",friend2);
+		
 		return "friendroom";
 	}
 	@RequestMapping("/info/{friend2}")
