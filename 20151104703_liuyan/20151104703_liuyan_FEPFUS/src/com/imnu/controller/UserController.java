@@ -37,13 +37,24 @@ public class UserController {
      public String update(String u_name,String u_phone,String u_email,String u_message,HttpSession session) {
     	 User user = (User) session.getAttribute("USER_SESSION");
      	 String u_user = user.getU_user();
-    	 int u_id = user.getU_id();
-    	 infService.deletemy(u_id);
+    	 infService.deletemy(u_email);
     	 session.removeAttribute("USER_SESSION");
     	 userService.updatemy(u_user,u_name,u_phone,u_email,u_message);
     	 User user1 = userService.findUser(u_user);
     	 session.setAttribute("USER_SESSION", user1); 
     	 return "my";
+     }
+     @RequestMapping(value = "/updatejd.action" ,method = RequestMethod.POST)
+     public String updatejd(String u_name,String u_phone,String u_email,String u_type,String p_img,String p_dirpath,String u_Jurisdiction,String u_message) {
+    	 if(u_Jurisdiction.equals("是")) {
+    		 userService.updateno(u_email);
+    		 infService.deleteinf(u_email);
+    		 return "redirect:SelectAll.action";
+    	 }else {
+    		 userService.updateyes(u_email);
+    		 infService.insertinf(u_name,u_phone,u_email,u_type,p_img,p_dirpath,u_message);
+    		 return "redirect:SelectAll.action";
+    	 }
      }
      @RequestMapping(value = "/login.action" ,method = RequestMethod.POST)
      public String Login(String u_user, String u_pwd,String u_type,Model model,HttpSession session) {

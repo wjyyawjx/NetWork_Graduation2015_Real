@@ -13,9 +13,9 @@
 		
 		<a href="${pageContext.request.contextPath}/SelectMy.action"  target="admin-right">我的信息          </a>   <br><br><br> 
 		<a href="${pageContext.request.contextPath}/SelectAll.action"  target="admin-right">所有用户信息          </a>   <br><br><br>
-		<a href="laoshi.jsp"               target="admin-right">老师          </a>   <br><br><br>
-		<a href="${pageContext.request.contextPath}/SelectInf.action" target="admin-right">家长          </a>   <br><br><br>
-	
+		<a href="${pageContext.request.contextPath}/SelectTc.action"   target="admin-right">老师          </a>   <br><br><br>
+		<a href="${pageContext.request.contextPath}/SelectInf.action"  target="admin-right">家长          </a>   <br><br><br>
+	    <a href="${pageContext.request.contextPath}/Selectpl.action"  target="admin-right">评论        </a>   <br><br><br>
 	</div>
 </body>
 </html>
