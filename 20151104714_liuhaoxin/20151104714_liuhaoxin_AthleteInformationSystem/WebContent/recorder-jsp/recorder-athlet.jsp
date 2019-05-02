@@ -20,24 +20,27 @@ function RecorderDelete(){
 	}
 	
 }
+
+function RecorderUpdateJump(){
+	var b=event.target.id;
+	window.location.href="RecorderUpdateJump?tid="+b;
+}
+
+
+function tianjia() {
+	window.location.href='recorder-jsp/recorder-athletadd.jsp';
+	
+}
 </script>
 </head>
 <body>
-<form action="RecorderAdd" method="post">
-		<input type="text" name="athletusername" placeholder="运动员名字" required="" >
-		<input type="text" name="theclass" placeholder="班级" required="">
-		<input type="text" name="events" placeholder="项目" required="">
-		<input type="text" name="results" placeholder="成绩" required="">
-		<input type="text" name="ranking" placeholder="排名" required="">
-		<input type="submit" value="添加">
-</form>
-
-
+<input type="submit"  style="width: 150px" onclick="tianjia()"  value="添加运动员信息">
 	<table border="2" cellpadding="0" cellspacing="0"
 		style="font-size: 40px" width="100%" height="100%">
 		<thead>
 			<tr>          
 				<th>运动员名字</th>
+				<th>学院</th>
 				<th>班级</th>
 				<th>项目</th>
 				<th>成绩</th>
@@ -50,15 +53,16 @@ function RecorderDelete(){
 			<c:forEach items="${mea}" var="w">
 			
 			<tr align="center">
-				<form action="RecorderUpdate" method="post">
-				<td><input type="text" name="athletusername" value="${w.athletusername}" required=""></td>
-				<td><input type="text" name="theclass" value="${w.theclass}" required=""></td>
-				<td><input type="text" name="events" value="${w.events}" required=""></td>
-				<td><input type="text" name="results" value="${w.results}" required=""></td>
-				<td><input type="text" name="ranking" value="${w.ranking}" required=""></td>
-				<td><input type="hidden" name="tid" value=${w.tid}> 
-				<input type="submit" value="修改"></td>
-				</from>
+				
+				<td>${w.athletusername}</td>
+				<td>${w.college}</td>
+				<td>${w.theclass}</td>
+				<td>${w.events}</td>
+				<td>${w.results}</td>
+				<td>${w.ranking}</td>
+				<td>
+				<input type="submit" id=${w.tid} style="width: 150px" onclick="RecorderUpdateJump()"  value="修改">
+					</td>
 				<td>
 					<input type="submit" id=${w.tid} style="width: 150px" onclick="RecorderDelete()"  value="删除">
 					</td>

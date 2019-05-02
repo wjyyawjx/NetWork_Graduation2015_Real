@@ -42,15 +42,19 @@ public class GeneralAthletesQuery extends HttpServlet {
 		int sid = (int) session.getAttribute("generalsid");
 		String eventss = request.getParameter("events");
 		String theclassa = request.getParameter("theclass");
+		String college = request.getParameter("college");
 		String username = request.getParameter("username");
 		String sql = "select * from athlet where tsid="+sid+" ";
 		
-		if (!eventss.equals("所有信息")) {
+		if (!eventss.equals("所有项目")) {
 		sql=sql+"and events='"+eventss+"'";
 
 		}
-		if (!theclassa.equals("所有信息")) {
+		if (!theclassa.equals("所有班级")) {
 			sql=sql+"and theclass='"+theclassa+"'";
+		}
+		if (!college.equals("所有学院")) {
+			sql=sql+"and college='"+college+"'";
 		}
 		if (!username.equals("null")  || !username.equals("null") ) {
 			sql=sql+"and athletusername like '%"+username+"%'";

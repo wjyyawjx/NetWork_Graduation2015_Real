@@ -43,11 +43,11 @@ public class RecorderGameDao {
 	}
 	
 	// 添加运动员信息
-	public void recorderAdd(int tsid,String athletusername, String ranking, String results, String events,String theclass) {
+	public void recorderAdd(int tsid,String athletusername, String college,String ranking, String results, String events,String theclass) {
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
-
-		String sql = "insert into athlet (tsid,athletusername,ranking,results,events,theclass)" + "values(?,?,?,?,?,?)";
+		int a=0;
+		String sql = "insert into athlet (tsid,athletusername,ranking,results,events,theclass,college)" + "values(?,?,?,?,?,?,?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, tsid);
@@ -56,22 +56,28 @@ public class RecorderGameDao {
 			pstmt.setString(4, results);
 			pstmt.setString(5, events);
 			pstmt.setString(6, theclass);
-			pstmt.executeUpdate();
+			pstmt.setString(7, college);
+			a=pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			DBUtil.closeJDBC(null, pstmt, conn);
 		}
+		if(a==1) {
+			System.err.println();
+		}else {
+			
+		}
 
 	}
 	
 	// 修改运动员信息
-		public void recorderUpdate(int tid,String athletusername, String ranking, String results, String events,String theclass) {
+		public void recorderUpdate(int tid,String athletusername, String college,String ranking, String results, String events,String theclass) {
 			Connection conn = DBUtil.getConnection();
 			PreparedStatement pstmt = null;
 
-			String sql = "update athlet set athletusername=?,ranking=?,results=?,events=?,theclass=? where tid=?";
+			String sql = "update athlet set athletusername=?,ranking=?,results=?,events=?,theclass=?,college=? where tid=?";
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, athletusername);
@@ -79,7 +85,8 @@ public class RecorderGameDao {
 				pstmt.setString(3, results);
 				pstmt.setString(4, events);
 				pstmt.setString(5, theclass);
-				pstmt.setInt(6, tid);
+				pstmt.setString(6, college);
+				pstmt.setInt(7, tid);
 				pstmt.executeUpdate();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -89,6 +96,38 @@ public class RecorderGameDao {
 			}
 
 		}
+		
+		// 修改运动员信息
+				public AthletBean recorderUpdate(int tid) {
+					// TODO Auto-generated method stub
+					AthletBean Array = new AthletBean();
+					Connection conn = DBUtil.getConnection();
+					String sql = "select * from athlet where tid=?";
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					try {
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setInt(1, tid);
+						rs = pstmt.executeQuery();
+						while (rs.next()) {
+							Array.setTid(rs.getInt("tid"));
+							Array.setAthletusername(rs.getString("athletusername"));
+							Array.setCollege(rs.getString("college"));
+							Array.setRanking(rs.getString("ranking"));
+							Array.setResults(rs.getString("results"));
+							Array.setEvents(rs.getString("events"));
+							Array.setTheclass(rs.getString("theclass"));
+							
+						}
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} finally {
+						DBUtil.closeJDBC(rs, pstmt, conn);
+					}
+					return Array;
+				}
+
 		
 		// 删除运动员信息
 		public void recorderDelete(int tid) {
@@ -126,6 +165,7 @@ public class RecorderGameDao {
 					AthletBean tag = new AthletBean();
 					tag.setTid(rs.getInt("tid"));
 					tag.setAthletusername(rs.getString("athletusername"));
+					tag.setCollege(rs.getString("college"));
 					tag.setRanking(rs.getString("ranking"));
 					tag.setResults(rs.getString("results"));
 					tag.setEvents(rs.getString("events"));

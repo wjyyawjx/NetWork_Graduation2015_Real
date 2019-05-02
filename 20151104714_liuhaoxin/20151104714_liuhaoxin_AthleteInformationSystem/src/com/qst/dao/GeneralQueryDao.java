@@ -57,6 +57,7 @@ public class GeneralQueryDao {
 			while (rs.next()) {
 				AthletBean tag = new AthletBean();
 				tag.setTid(rs.getInt("tid"));
+				tag.setCollege(rs.getString("college"));
 				tag.setAthletusername(rs.getString("athletusername"));
 				tag.setRanking(rs.getString("ranking"));
 				tag.setResults(rs.getString("results"));
@@ -100,6 +101,32 @@ public class GeneralQueryDao {
 	}
 	
 	
+	// 一般用户查看学院信息
+	public ArrayList<AthletBean> collegeList(int tsid) {
+		// TODO Auto-generated method stub
+		ArrayList<AthletBean> Array = new ArrayList<AthletBean>();
+		Connection conn = DBUtil.getConnection();
+		String sql = "SELECT DISTINCT college FROM athlet where tsid=?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, tsid);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				AthletBean tag = new AthletBean();
+				tag.setCollege(rs.getString("college"));
+				Array.add(tag);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeJDBC(rs, pstmt, conn);
+		}
+		return Array;
+	}
+	
 	
 	// 一般用户查看班级信息
 	public ArrayList<AthletBean> theclassList(int tsid) {
@@ -140,6 +167,7 @@ public class GeneralQueryDao {
 			while (rs.next()) {
 				AthletBean tag = new AthletBean();
 				tag.setTid(rs.getInt("tid"));
+				tag.setCollege(rs.getString("college"));
 				tag.setAthletusername(rs.getString("athletusername"));
 				tag.setRanking(rs.getString("ranking"));
 				tag.setResults(rs.getString("results"));

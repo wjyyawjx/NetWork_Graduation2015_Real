@@ -16,16 +16,25 @@
 		<td>
 		<h3>项目:</h3></td><td>&nbsp;&nbsp;&nbsp;
 				<select name="events">
-				<option value="所有信息">所有项目</option>
+				<option value="所有项目">所有项目</option>
 				<c:forEach items="${events}" var="w">
 					<option value="${w.events}">${w.events}</option>
 				</c:forEach>
 					</select>
 					</td>
+		
+		<td>	<h3>学院:</h3></td><td>&nbsp;&nbsp;&nbsp;
+				<select name="college">
+				<option value="所有学院">所有学院</option>
+				<c:forEach items="${college}" var="w">
+					<option value="${w.college}">${w.college}</option>
+				</c:forEach>
+					</select>
+					</td>
 					
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;	<h3>班级:</h3></td><td>&nbsp;&nbsp;&nbsp;
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;<h3>班级:</h3></td><td>&nbsp;&nbsp;&nbsp;
 				<select name="theclass">
-				<option value="所有信息">所有班级</option>
+				<option value="所有班级">所有班级</option>
 				<c:forEach items="${theclass}" var="w">
 					<option value="${w.theclass}">${w.theclass}</option>
 				</c:forEach>
@@ -42,17 +51,18 @@
 		<thead>
 			<tr>          
 				<th>运动员名字</th>
+				<th>学院</th>
 				<th>班级</th>
 				<th>项目</th>
 				<th>成绩</th>
 				<th>排名</th>
-			
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${mea}" var="w">
 				<tr align="center">
 				<td>${w.athletusername}</td>
+				<td>${w.college}</td>
 				<td>${w.theclass}</td>
 				<td>${w.events}</td>
 				<td>${w.results}</td>

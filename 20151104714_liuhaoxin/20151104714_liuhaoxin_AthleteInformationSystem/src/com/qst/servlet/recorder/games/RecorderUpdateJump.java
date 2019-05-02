@@ -6,45 +6,40 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import com.qst.bean.AthletBean;
 import com.qst.dao.RecorderGameDao;
 
 /**
- * Servlet implementation class RecorderAdd
+ * Servlet implementation class RecorderUpdateJump
  */
-@WebServlet("/RecorderAdd")
-public class RecorderAdd extends HttpServlet {
+@WebServlet("/RecorderUpdateJump")
+public class RecorderUpdateJump extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RecorderAdd() {
+    public RecorderUpdateJump() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
-	 * @throws IOException 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//记录员添加运动员信息
+		//记录员修改运动员信息
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
-		int tsid = (int) session.getAttribute("sid");
-		String athletusername = request.getParameter("athletusername");
-		String college = request.getParameter("college");
-		String ranking = request.getParameter("ranking");
-		String results = request.getParameter("results");
-		String events = request.getParameter("events");
-		String theclass = request.getParameter("theclass");
-		RecorderGameDao redao = new RecorderGameDao();
-		redao.recorderAdd(tsid,athletusername,college,ranking,results,events,theclass);
-		response.sendRedirect("recorder-jsp/recorder-athletadd.jsp");	
-
+		int tid = Integer.parseInt( request.getParameter("tid"));
+		
+		AthletBean abe = new AthletBean();
+		RecorderGameDao edao = new RecorderGameDao();
+		abe=edao.recorderUpdate(tid);
+		request.setAttribute("w", abe);
+		request.getRequestDispatcher("recorder-jsp/recorder-athletupdate.jsp").forward(request, response);
 	}
 
 	/**

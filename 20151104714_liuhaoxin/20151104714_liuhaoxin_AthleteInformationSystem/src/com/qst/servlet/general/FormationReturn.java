@@ -43,6 +43,11 @@ public class FormationReturn extends HttpServlet {
 		ArrayList<AthletBean> events = new ArrayList<AthletBean>();
 		events = (ArrayList<AthletBean>)rgdao.eventsList(sid);
 		request.setAttribute("events", events);
+		
+		//返回一届运动会的所有学院信息
+		ArrayList<AthletBean> college = new ArrayList<AthletBean>();
+		college = (ArrayList<AthletBean>)rgdao.collegeList(sid);
+		request.setAttribute("college", college);
 
 		//返回一届运动会的所有班级信息
 		ArrayList<AthletBean> theclass = new ArrayList<AthletBean>();

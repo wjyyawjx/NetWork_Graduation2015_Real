@@ -59,10 +59,10 @@
 				<th>密码                                                   </th>
 				<th>邮箱                                                   </th>
 				<th>联系方式                                            </th>
-				<th>权限（0代表普通用户，1代表记录员）</th>
+				<th>用户类型</th>
 				<th>修改密码                                           </th>
-				<th>修改用户的权限为0                </th>
-				<th>修改用户的权限为1                </th>
+				<th>修改为普通用户               </th>
+				<th>修改为记录员用户                </th>
 				<th>禁用用户                                            </th>
 				
 			</tr>
@@ -80,13 +80,13 @@
 					<form action="PermissionUpload" method="post">
 						<input type="hidden" name="uid" value=${w.uid}> 
 						<input type="hidden" name="qx"  value="0"> 
-						<input type="submit" style="width: 150px" value="修改权限为0">
+						<input type="submit" style="width: 150px" value="修改为普通用户  ">
 					</form></td>
 					<td>
 					<form action="PermissionUpload" method="post">
 						<input type="hidden" name="uid" value=${w.uid}> 
 						<input type="hidden" name="qx" value="1"> 
-						<input type="submit" style="width: 150px" value="修改权限为1">
+						<input type="submit" style="width: 150px" value="修改为记录员用户  ">
 						</form>
 					</td>
 					<td>
