@@ -17,10 +17,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Author: Yunr
- * Date: 2018-04-24 11:26
- */
+
 public abstract class BaseActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
@@ -43,7 +40,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             if (showBack()) {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             }
-
             if (!TextUtils.isEmpty(appBarTitle())) {
                 getSupportActionBar().setTitle(appBarTitle());
             }

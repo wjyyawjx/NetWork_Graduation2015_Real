@@ -22,7 +22,7 @@ public class UserDao {
         dbHelp = new DBHelper(context);
     }
 
-   
+
     public boolean register(User user) {
         if (hasName(user.getUserName())) {
             return false;
@@ -37,7 +37,7 @@ public class UserDao {
         return id != -1;
     }
 
- 
+	
     public boolean update(User user) {
         db = dbHelp.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

@@ -20,7 +20,9 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 
-
+/**
+ * A login screen that offers login via email/password.
+ */
 public class RegisterActivity extends BaseActivity {
 
     @BindView(R.id.email)

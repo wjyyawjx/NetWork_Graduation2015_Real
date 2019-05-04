@@ -23,7 +23,7 @@ public class CalendarReminderUtils {
     private static String CALENDARS_ACCOUNT_TYPE = "com.lsvs";
     private static String CALENDARS_DISPLAY_NAME = "学习监督系统";
 
-  
+
     private static int checkAndAddCalendarAccount(Context context) {
         int oldId = checkCalendarAccount(context);
         if (oldId >= 0) {
@@ -38,9 +38,6 @@ public class CalendarReminderUtils {
         }
     }
 
-    /**
-     * 检查是否存在现有账户，存在则返回账户id，否则返回-1
-     */
     private static int checkCalendarAccount(Context context) {
         try (Cursor userCursor = context.getContentResolver().query(Uri.parse(CALENDER_URL),
                 null, null, null, null)) {
@@ -57,9 +54,7 @@ public class CalendarReminderUtils {
         }
     }
 
-    /**
-     * 添加日历账户，账户创建成功则返回账户id，否则返回-1
-     */
+
     private static long addCalendarAccount(Context context) {
         TimeZone timeZone = TimeZone.getDefault();
         ContentValues value = new ContentValues();
