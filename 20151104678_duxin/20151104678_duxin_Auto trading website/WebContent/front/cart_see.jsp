@@ -1,4 +1,5 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@page import="org.apache.catalina.Session"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ page import="java.sql.ResultSet"%>			<%-- 导入java.sql.ResultSet类 --%>
 	<%@ page import="java.util.Vector"%>			<%-- 导入Java的向量类 --%>
@@ -78,6 +79,7 @@
 														ResultSet rs_goods = conn.executeQuery("select * from tb_goods where ID=" + ID);
 														if (rs_goods.next()) {
 															goodsname = rs_goods.getString("goodsname");		//获取商品名称
+												
 															picture = rs_goods.getString("picture");			//获取商品图片
 														}
 														conn.close();										//关闭数据库的连接
@@ -166,9 +168,11 @@
 														</div>
 													</td>
 												</tr>
+												
 											</tbody>
 										</table>
 									</div>
+									<input type="hidden" value="<%=goodsname%>" id="goodsname" name="goodsname">
 								</form>
 								<!-- //填写物流信息的表单 -->
 							</div>
@@ -242,10 +246,10 @@
 			//设置对话框中要显示的内容
 			var html = '<div class="popup_cont">'
 					+ '<p>扫一扫支付</p>'
-					+ '<strong>￥<font id="show_money_info">0.01元</font></strong>'
+					+ '<strong>￥<font id="show_money_info"><%=sumString%>元</font></strong>'
 					+ '<div style="width: 256px; height: 250px; text-align: center; margin-left: auto; margin-right: auto;" >'
 					+ '<image src="images/qr.png" width="256" height="256" /></div>'
-					+ '</div><p style="text-align:center">支付二维码仅为测试用（相关知识点在书中有介绍）</p>';
+					+ '</div><p style="text-align:center"></p>';
 			var content = {
 				state1 : {
 					content : html,

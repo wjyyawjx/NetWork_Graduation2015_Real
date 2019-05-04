@@ -21,7 +21,7 @@ response.setCharacterEncoding("utf-8");
 	DiskFileItemFactory dfif = new DiskFileItemFactory();
 // 创建解析器
 	ServletFileUpload sfu = new ServletFileUpload(dfif);
-sfu.setHeaderEncoding("utf-8");//解决了上传图片如果为中文就是乱码问题
+sfu.setHeaderEncoding("UTF-8");//解决了上传图片如果为中文就是乱码问题
 
 String loadpath="D:/upload";//上传文件存放目录(此路径是将上传的文件放在本地的硬盘上)
 Goods goods = new Goods();

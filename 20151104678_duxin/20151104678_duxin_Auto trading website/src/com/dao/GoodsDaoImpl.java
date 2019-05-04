@@ -14,31 +14,33 @@ public class GoodsDaoImpl implements GoodsDao {
 	 */
 	public int insert(Goods g) {
 		int ret = -1;//设定返回值变量
+		String a = null;
 		try {
 			//设定执行语句
 			
 			String sql = "Insert into tb_goods (TypeID,GoodsName,Introduce,Price,nowPrice,picture,newgoods,sale) values("
 					+ g.getTypeID()
 					+ ",'"
-					+ chStr.chStr(g.getGoodsName())
+					+ g.getGoodsName()
 					+ "','"
-					+ chStr.chStr(g.getIntroduce())
+					+ g.getIntroduce()
 					+ "',"
 					+ g.getPrice()
 					+ ","
 					+ g.getPrice()
 					+ ",'"
-					+ chStr.chStr(g.getPicture())
+					+ g.getPicture()
 					+ "',"
 					+ g.getNewGoods()
 					+ "," + g.getSale() + ")";
 
 			ret = conn.executeUpdate(sql);//执行语句，与数据库相连接
+			a=sql;
 		} catch (Exception e) {
 			ret = 0;
 		}
 		conn.close();//关闭数据库连接
-		System.out.println(g.getGoodsName()+"1");
+		System.out.println(g.getGoodsName()+"1"+a);
 		return ret;
 	}
 

@@ -21,7 +21,6 @@
 	    if(rs_main.next()){
 	    	orderID=rs_main.getInt("orderID");
 	    	address=rs_main.getString("address");
-	    	postcode=rs_main.getString("postcode");
 	    	tel=rs_main.getString("tel");
 	    	bz=rs_main.getString("bz");
 	    	if (bz.equals("")){
@@ -75,9 +74,6 @@
 				<td valign="top" background="../front/images/center.jpg">
 					<table width="100%" height="36"  border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						 <td width="70%" align="right"><a href="superType.jpg">[ <img src="../front/images/list.png" width="30px" height="30px">&nbsp;大分类信息管理]</a>&nbsp;
-						 <a href="subType.jsp">[ <img src="../front/images/list.png" width="30px" height="30px">&nbsp;小分类信息管理]</a>&nbsp;
-						 <a href="goods_add.jsp">[ <img src="../front/images/list.png" width="30px" height="30px">&nbsp;添加商品信息]</a></td>
 						<td width="30%" style=" font-size: 10px; text-shadow: 5px 5px 5px black, 0px 0px 2px black;color: white;">&nbsp;当前时间：<%=now %></td>
 					</tr>	
 				</table></td>
@@ -113,10 +109,10 @@
 	                          <td width="12%">数量</td>
 	                        </tr>
 	                        	<%
-		                        	ResultSet rs=conn.executeQuery("select * from V_order_detail where orderID="+orderID);
+		                        	ResultSet rs=conn.executeQuery("select * from tb_order_detail where orderID="+orderID);
 	                                while(rs.next()){
 	                                	goodID=rs.getInt("goodsID");
-                                        goodsname=rs.getString("goodsname");
+                                       // goodsname=rs.getString("goodsname");
                                         nowprice=rs.getFloat("price");
                                         number=rs.getInt("number");
 	                                }
