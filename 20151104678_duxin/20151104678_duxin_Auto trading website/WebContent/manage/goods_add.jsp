@@ -181,10 +181,8 @@
                     </tr>
                  	 <tr>
                       	<td height="41">图片文件：</td>
-                    	<td height="41"> 
-                    	               	
+                    	<td height="41">         	
                         <input name="picture" type="file" class="Style_upload"  id="picture">
-                       	
                         </td>
                     	<td height="41">定　　价：</td>
 	                    <td height="41"><input name="price" type="text" class="Sytle_text" id="price">(元)</td>
