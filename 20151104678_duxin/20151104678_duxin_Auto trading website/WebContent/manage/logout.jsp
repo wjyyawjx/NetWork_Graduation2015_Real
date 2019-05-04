@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%if (session.getAttribute("tb_manager")==null){
-      out.println("<script language='javascript'>alert('您还没有登录!');window.location.href='../manage/login.jsp';</script>");
-}%>
+<%
+session.invalidate();
+response.sendRedirect("../manage/login.jsp");
+%>
 </body>
 </html>

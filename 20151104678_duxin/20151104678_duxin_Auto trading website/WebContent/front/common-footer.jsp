@@ -69,7 +69,7 @@
 			<div style="width:auto; height:auto; margin:auto;">
 				<small> Copyright &copy;&nbsp;<a
 					href="/" target="_blank">内蒙古科技有限公司</a> <a
-					href="../manage/Login_M.jsp">后台</a> | 公司邮箱：<a
+					href="../manage/ht_index.jsp">后台</a> | 公司邮箱：<a
 					href="www.baidu.com">609182350@qq.com</a>
 					&nbsp;&nbsp;电话：18347145626 | 公司地址：内蒙古呼和浩特市内蒙古师范大学
 				</small> 

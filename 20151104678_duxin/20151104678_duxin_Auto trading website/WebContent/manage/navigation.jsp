@@ -14,6 +14,11 @@
          </tr>
          <tr>
             <td height="46" width="20%">&nbsp;</td>
+            <td width="80%"><a href="goods_add.jsp" class="word_white">商品添加<br>
+              Goods Add</a></td>
+          </tr>
+         <tr>
+            <td height="46" width="20%">&nbsp;</td>
             <td width="80%"><a href="ht_index.jsp" class="word_white">商品管理<br>
               Goods Manage</a></td>
           </tr>
@@ -27,11 +32,7 @@
             <td width="80%"><a href="ordermanage.jsp" class="word_white">订单管理<br>
               Order Manage</a></td>
           </tr>
-          <tr>
-            <td height="50" width="20%">&nbsp;</td>
-            <td width="80%"><a href="placardmanage.jsp" class="word_white">公告管理<br>
-               Manage Placard</a></td>
-          </tr>
+         
           <tr>
             <td width="20%">&nbsp;</td>
             <td width="80%"><a href="logout.jsp" class="word_white">退出后台<br>

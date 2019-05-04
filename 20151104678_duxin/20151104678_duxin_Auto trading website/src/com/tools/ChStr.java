@@ -14,6 +14,7 @@ public class ChStr {
 			try {								// 捕捉异常
                    //将字符串转换为UTF-8编码
 				str = (new String(str.getBytes("iso-8859-1"), "UTF-8")).trim();
+				System.err.println(str+"aa");
 			} catch (Exception e) {				// 处理异常
 				e.printStackTrace(System.err); 	// 输出异常信息
 			}

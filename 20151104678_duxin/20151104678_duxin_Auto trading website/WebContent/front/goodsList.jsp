@@ -6,28 +6,27 @@
 <%
 	String type = request.getParameter("type");
 	String typeName = "";
-	if (type.equals("14")) {
-		typeName = "图书类";
+	if (type.equals("1")) {
+		typeName = "紧凑车型";
 	}
-	if (type.equals("15")) {
-		typeName = "家电类";
+	if (type.equals("2")) {
+		typeName = "中等车型";
 	}
-	if (type.equals("16")) {
-		typeName = "服装类";
+	if (type.equals("3")) {
+		typeName = "高级车型";
 	}
-	if (type.equals("17")) {
-		typeName = "电子类";
+	if (type.equals("5")) {
+		typeName = "SUV车型";
 	}
 
 	ResultSet rs = conn
-			.executeQuery("select * from tb_goods t1,tb_subType t2 where t1.typeID=t2.ID and t2.superType="
-					+ Integer.parseInt(type) + " order by INTime Desc");
+			.executeQuery("select * from tb_goods t1,tb_subType t2 where t1.typeID=t2.ID and t2.superType="+Integer.parseInt(type)+"order by INTime Desc");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>图书列表-51商城</title>
+<title>51汽车商城</title>
 <link rel="stylesheet" href="css/mr-01.css" type="text/css">
 
 <script src="js/jsArr01.js" type="text/javascript"></script>
@@ -72,7 +71,6 @@
 												int RecordCount = rs.getRow();
 												int maxPage = 0;
 												maxPage = (RecordCount % pagesize == 0) ? (RecordCount / pagesize) : (RecordCount / pagesize + 1);
-
 												int Page = Integer.parseInt(str);
 												if (Page < 1) {
 													Page = 1;

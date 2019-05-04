@@ -71,9 +71,7 @@
 				<td valign="top" background="../front/images/center.jpg">
 					<table width="100%" height="36"  border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						 <td width="70%" align="right"><a href="superType.jpg">[ <img src="../front/images/list.png" width="30px" height="30px">&nbsp;大分类信息管理]</a>&nbsp;
-						 <a href="subType.jsp">[ <img src="../front/images/list.png" width="30px" height="30px">&nbsp;小分类信息管理]</a>&nbsp;
-						 <a href="goods_add.jsp">[ <img src="../front/images/list.png" width="30px" height="30px">&nbsp;添加商品信息]</a></td>
+						
 						<td width="30%" style=" font-size: 10px; text-shadow: 5px 5px 5px black, 0px 0px 2px black;color: white;">&nbsp;当前时间：<%=now %></td>
 					</tr>	
 				</table></td>
@@ -83,7 +81,7 @@
 				<td valign="top">
                 	<table width="98%" height="79"  border="0" cellpadding="0" cellspacing="0" class="noborder">
                     	<tr>
-                      		<td width="37%" height="95" rowspan="4" align="center"><img src="../images/goods/<%=picture%>" width="184" height="119"></td>
+                      		<td width="37%" height="95" rowspan="4" align="center"><img src="/upload/<%=picture%>" width="184" height="119"></td>
                      		<td width="63%"><%=goodsName%></td>
                    		</tr>
                    		<tr>

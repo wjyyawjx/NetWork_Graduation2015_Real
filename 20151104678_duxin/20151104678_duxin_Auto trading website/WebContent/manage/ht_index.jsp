@@ -2,7 +2,7 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 	<%@ page import="com.tools.ConnDB" %>
 	<!--<jsp:include page="safe.jsp"/>-->
 	<%
@@ -50,9 +50,6 @@
 				<td valign="top" background="../front/images/center.jpg">
 					<table width="100%" height="36"  border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						 <td width="70%" align="right"><a href="superType.jpg">[ <img src="../front/images/list.png" width="30px" height="30px">&nbsp;大分类信息管理]</a>&nbsp;
-						 <a href="subType.jsp">[ <img src="../front/images/list.png" width="30px" height="30px">&nbsp;小分类信息管理]</a>&nbsp;
-						 <a href="goods_add.jsp">[ <img src="../front/images/list.png" width="30px" height="30px">&nbsp;添加商品信息]</a></td>
 						<td width="30%" style=" font-size: 10px; text-shadow: 5px 5px 5px black, 0px 0px 2px black;color: white;">&nbsp;当前时间：<%=now %></td>
 					</tr>	
 				</table></td>
@@ -136,11 +133,6 @@
 			</table>
             </tr>		
 		</table>
-		<table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0">
-  			<tr>
-    			<td height="54" align="center"  background="../front/images/foot.jpg" style="background-size:cover;"><jsp:include page="copyright.jsp"/></td>
-    		</tr>
-    	</table>
     	</td>
     	</tr>
 </table>

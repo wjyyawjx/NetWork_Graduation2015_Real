@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>图书列表-51商城</title>
+<title>51汽车网</title>
 <link rel="stylesheet" href="css/mr-01.css" type="text/css">
 
 <script src="js/jsArr01.js" type="text/javascript"></script>
@@ -32,7 +32,6 @@
 	<div id="mr-mainbody" class="container mr-mainbody">
 		<div class="row">
 
-			<!-- 显示搜索到的图书列表 -->
 			<div id="mr-content"
 				class="mr-content col-xs-12 col-sm-12 col-md-9 col-md-push-3">
 
@@ -93,7 +92,7 @@
 													<div class="actions">
 														<div class="image">
 															<a href="goodsDetail.jsp?ID=<%=ID%> "><img
-																src="../images/goods/<%=picture%>"
+																src="/upload/<%=picture%>"
 																class="img-responsive"> </a>
 														</div>
 														<div class="button-group btn-grid">

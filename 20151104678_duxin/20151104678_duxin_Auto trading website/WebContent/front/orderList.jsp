@@ -11,8 +11,7 @@
 		out.println("<script language='javascript'>alert('请先登录!');window.location.href='index.jsp';</script>");
 	} else {
 		ResultSet rs = conn.executeQuery(
-				"select * from tb_order t1,tb_order_detail t2,tb_goods t3 where t2.goodsID=t3.ID and t1.OrderID=t2.orderID and t1.username='"
-						+ username + "' order by t1.OrderDate desc");
+				"select * from tb_order t1,tb_order_detail t2,tb_goods t3 where t2.goodsID=t3.ID and t1.OrderID=t2.orderID and t1.username='" + username + "' order by t1.OrderDate desc");
 		rs.last();
 		int RecordCount = rs.getRow();
 		if (RecordCount == 0) {
@@ -79,8 +78,8 @@
 															recevieName = rs.getString("recevieName");
 															tel = rs.getString("tel");
 															price = rs.getFloat("price");
-															orderDate = rs.getString("orderDate");
-															orderDate = orderDate.substring(0, 16);
+															orderDate = rs.getString("OrderDate");
+															
 												%>
 												<tr>
 													<td class="text-center image" width="10%"><%=orderID%>

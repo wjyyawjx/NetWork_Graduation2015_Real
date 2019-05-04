@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.*"%>
 <%@ page import="java.sql.ResultSet"%><%-- 导入java.sql.ResultSet类 --%>
 <%@ page import="java.util.Vector"%><%-- 导入Java的向量类 --%>
 <%@ page import="com.model.Goodselement"%><%-- 导入购物车商品模型类 --%>
@@ -12,6 +14,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+		Date d = new Date();
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		String now = df.format(d);
+%>
 <%
 	if (session.getAttribute("cart") == "") {//判断购物车对象是否为空
 		out.println(
@@ -31,6 +38,9 @@
 				String address = chStr.chStr(request.getParameter("address"));//获取输入的收货人地址
 				String tel = request.getParameter("tel");//获取输入的电话号码
 				String bz = chStr.chStr(request.getParameter("bz"));//获取输入的备注
+				String OrderDate = now;//获取输入的电话号码
+				String goodsName = chStr.chStr(request.getParameter("goodsname"));//获取商品名
+				System.out.println(goodsName);
 				int orderID = 0;//定义保存订单ID的变量
 				Vector cart = (Vector) session.getAttribute("cart");//获取购物车对象
 				int number = 0;//定义保存商品数量的变量
@@ -42,9 +52,9 @@
 				int ID = -1;
 				//插入订单主表数据
 				float bnumber = cart.size();
-				String sql = "insert into tb_Order(bnumber,username,recevieName,address,tel,bz) values("
+				String sql = "insert into tb_Order(bnumber,username,recevieName,address,tel,bz,OrderDate) values("
 						+ bnumber + ",'" + Username + "','" + recevieName + "','" + address + "','" + tel
-						+ "','" + bz + "')";
+						+ "','" + bz +"','"+ OrderDate + "')";
 				temp = conn.executeUpdate_id(sql);//保存订单主表数据
 				if (temp == 0) {//如果返回的订单号为0，表示不合法
 					flag = false;
@@ -56,11 +66,13 @@
 				for (int i = 0; i < cart.size(); i++) {
 					Goodselement mygoodselement = (Goodselement) cart.elementAt(i);//获取购物车中的一个商品
 					ID = mygoodselement.ID;//获取商品ID
+					//goodsName = mygoodselement.goodsName;
 					nowprice = mygoodselement.nowprice;//获取商品价格
 					number = mygoodselement.number;//获取商品数量
 					sum = nowprice * number;//计算商品金额
-					str = "insert into tb_order_Detail (orderID,goodsID,price,number) values(" + orderID + ","
-							+ ID + "," + nowprice + "," + number + ")";//插入订单明细的SQL语句
+					System.out.println(goodsName);
+					str = "insert into tb_order_Detail (orderID,goodsID,price,number,goodsName) values(" + orderID + ","
+							+ ID + "," + nowprice + "," + number + "," + goodsName + ")";//插入订单明细的SQL语句
 					temp = conn.executeUpdate(str);//保存订单明细
 					Totalsum = Totalsum + sum;//累加合计金额
 					if (temp == 0) {//如果返回值为0，表示不合法
