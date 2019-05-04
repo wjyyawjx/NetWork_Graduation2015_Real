@@ -38,7 +38,12 @@ public class UserBean {
 	}
 
 	public String getPermission() {
-		return permission;
+		if(permission.equals("0")) {
+			return "普通用户";
+		}else if(permission.equals("1")) {
+			return "记录员用户";
+		}
+		return "受到限制的用户";
 	}
 
 	public void setPermission(String permission) {

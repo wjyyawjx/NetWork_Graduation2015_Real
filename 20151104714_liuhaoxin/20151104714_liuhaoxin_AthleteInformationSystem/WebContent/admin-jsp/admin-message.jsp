@@ -7,7 +7,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+
 <title>Insert title here</title>
+<script type="text/javascript">
+function myFunction(){
+	var b=event.target.id;
+	var r=confirm("确定删除此条信息？");
+	if (r==true){
+		window.location.href="AdminMessageDelete?mid="+b;
+	}
+	else{
+		alert("您取消了删除")
+	}
+	
+}
+</script>
 </head>
 <body>
 	<table border="2" cellpadding="0" cellspacing="0"
@@ -24,10 +38,9 @@
 				<tr align="center">
 					<td>${w.username}</td>
 					<td>${w.message}</td>
-					<td><form action="AdminMessageDelete" method="post">
-							<input type="hidden" name="mid" value=$w.mid}>
-							 <input type="submit" style="width: 150px" value="删除">
-						</form></td>
+					<td>
+					<input type="submit" id=${w.mid} style="width: 150px" onclick="myFunction()"  value="删除">
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>

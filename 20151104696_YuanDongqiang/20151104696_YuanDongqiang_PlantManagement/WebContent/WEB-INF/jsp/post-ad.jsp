@@ -28,7 +28,9 @@
 	content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 <script type="application/x-javascript">
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 </script>
 <link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed'
 	rel='stylesheet' type='text/css'>
@@ -89,142 +91,112 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 </head>
 <body>
-	<div class="agiletopbar">
-		<div class="wthreenavigation">
-			<div class="menu-wrap">
-				<nav class="menu">
-				<div class="icon-list">
-					<a
-						href="${pageContext.request.contextPath }/categories.action?id=2">
-						<i class="fa fa-fw fa-mobile"></i><span>移动</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=3">
-						<i class="fa fa-fw fa-laptop"></i><span>电子产品和电器</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=4">
-						<i class="fa fa-fw fa-car"></i><span>汽车</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=1">
-						<i class="fa fa-fw fa-motorcycle"></i><span>自行车</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=5">
-						<i class="fa fa-fw fa-paw"></i><span>宠物</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=6">
-						<i class="fa fa-fw fa-book"></i><span>书</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=7">
-						<i class="fa fa-fw fa-asterisk"></i><span>时尚</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=8">
-						<i class="fa fa-fw fa-asterisk"></i><span>儿童</span>
-					</a>
-				</div>
-				</nav>
-				<button class="close-button" id="close-button">关闭菜单</button>
-			</div>
-			<button class="menu-button" id="open-button"></button>
-		</div>
-		<div class="clearfix"></div>
-	</div>
 	<header>
 	<div class="w3ls-header">
 		<div class="w3ls-header-right">
 			<ul>
 				<li class="dropdown head-dpdn"><a href="login.jsp"
 					aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
-						<%if(session.getAttribute("USER_SESSION") != null){ %>
-					${USER_SESSION.username} <%}else{ %>
-						登陆<%} %></a></li>
-				<li class="dropdown head-dpdn"><a href="login.jsp"
-					aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i>
-						我的商品</a></li>
-				<li class="dropdown head-dpdn"><a href="${pageContext.request.contextPath }/help.action"><i
+						${USER_SESSION.u_name}</a></li>
+				<li class="dropdown head-dpdn"><a
+					href="${pageContext.request.contextPath }/help.action"><i
 						class="fa fa-question-circle" aria-hidden="true"></i> 帮助</a></li>
 			</ul>
 		</div>
-
+		<h1>
+			<a href="${pageContext.request.contextPath }/index.action"><img
+				src="img/core-img/logo.png" alt=""></a>
+		</h1>
 		<div class="clearfix"></div>
 	</div>
-	<div class="container">
-		<div class="agile-its-header">
-			<div class="logo">
-				<h1>
-					<a href="${pageContext.request.contextPath }/index.action">主页</a>
-				</h1>
-			</div>
-			<div class="agileits_search">
-				<form action="#" method="post">
-					<input name="Search" type="text" placeholder="今天能为您做些什么?"
-						required=" "> <select id="agileinfo_search"
-						name="agileinfo_search" required="">
-						<option value="">所有类别</option>
-						<option value="Mobiles">移动</option>
-						<option value="Electronics & Appliances">电子产品和电器</option>
-						<option value="Cars">汽车</option>
-						<option value="Bikes">自行车</option>
-						<option value="Furnitures">宠物</option>
-						<option value="Books, Sports & Hobbies">书</option>
-						<option value="Fashion">时尚</option>
-						<option value="Kids">儿童</option>
-					</select>
-					<button type="submit" class="btn btn-default"
-						aria-label="Left Align">
-						<i class="fa fa-search" aria-hidden="true"> </i>
-					</button>
-				</form>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
 	</header>
-	<div class="w3layouts-breadcrumbs text-center">
-		<div class="container">
-			<span class="agile-breadcrumbs"><a
-				href="${pageContext.request.contextPath }/index.action"><i
-					class="fa fa-home home_1"></i></a> / <span>Post your Ad</span></span>
-		</div>
-	</div>
 	<div class="submit-ad main-grid-border">
 		<div class="container">
-			<h2 class="w3-head">发布一个广告</h2>
+			<h2 class="w3-head">上传植物信息</h2>
 			<div class="post-ad-form">
-				<form action="${pageContext.request.contextPath }/additems.action">
-					<label>选择类别 <span>*</span></label> <select id="category"
-						name="category" class="">
-						<option>选择类别</option>
-						<option>移动</option>
-						<option>电子产品和家用电器</option>
-						<option>汽车</option>
-						<option>自行车</option>
-						<option>宠物</option>
-						<option>书，运动和爱好</option>
-						<option>时尚</option>
-						<option>儿童</option>
-					</select>
-					<div class="clearfix"></div>
-					<label>商品标题 <span>*</span></label> <input type="text" class="phone"
+				<form
+					action="${pageContext.request.contextPath }/AddPlanMess.action"
+					method="post" enctype="multipart/form-data">
+					<label>植物名称 <span>*</span></label> <input type="text" class="phone"
 						id="name" name="name" placeholder="">
 					<div class="clearfix"></div>
-					<label>商品描述 <span>*</span></label>
+					<label>繁殖方式<span>*</span></label> <select id="category"
+						name="category" class="">
+						<option>选择类别</option>
+						<option>孢子繁殖（由植物体散发出孢子进行繁殖）</option>
+						<option>种子繁殖</option>
+						<option>无性繁殖（植物体本身的某部分进行繁殖）</option>
+					</select>
+					<div class="clearfix"></div>
+					<label>分布地区<span>*</span></label> <select id="place" name="place"
+						class="">
+						<option>选择地区</option>
+						<option>华北地区 （北京市 天津市 河北省 内蒙古 山西省 山东省）</option>
+						<option>华东地区 （上海市 安徽省 浙江省 江苏省 ）</option>
+						<option>华南地区 （广东省 福建省 海南省 广西自治区）</option>
+						<option>华中地区 （湖北省 河南省 湖南省 江西省）</option>
+						<option>东北地区 （辽宁省 黑龙江省 吉林省）</option>
+						<option>西北地区 （陕西省 新疆自治区 甘肃省 宁夏 青海省）</option>
+						<option>西南地区 （重庆市 四川省 云南省 贵州省 西藏自治区）</option>
+					</select>
+					<div class="clearfix"></div>
+					<label>植物习性 <span>*</span></label>
+					<div
+						style="width: 70%; margin-top: 10px; float: left; border: 1px solid red;">
+						生长环境： <br /> <input type="radio" name="sun" value="1" />喜阳植物（生长在阳光充足环境下。）
+						<input type="radio" name="sun" value="2" /> 喜阴植物（喜欢在阴暗的环境下生长。） <br />
+						寿命： <br /> <input type="radio" name="life" value="3" />多年生植物（寿命在两年以上的植物。）
+						<input type="radio" name="life" value="4" />一年生植物（生命周期为一年的植物。） <br />
+						常绿/落叶： <br /> <input type="radio" name="green" value="5" />常绿植物（常年不落也植物。）
+						<input type="radio" name="green" value="6" />非常绿植物（植物会在一段时间落叶。）
+					</div>
+					<div class="clearfix"></div>
+					<br /> <label>植物描述 <span>*</span></label>
 					<textarea class="mess" id="title" name="title"
-						placeholder="Write few lines about your product"></textarea>
+						placeholder="有关植物的具体描述。"></textarea>
 					<div class="clearfix"></div>
-					<label>商品价格 <span>*</span></label> <input type="text" class="phone"
-						id="money" name="money" placeholder="">
+					<label>浇水频率 <span>*</span></label> <select id="time1" name="time1"
+						style="width: 100px;">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>6</option>
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+						<option>10</option>
+					</select> <select id="time2" name="time2" style="width: 60px;">
+						<option>日</option>
+						<option>周</option>
+						<option>月</option>
+						<option>年</option>
+					</select> <select id="time3" name="time3" style="width: 100px;">
+						<option>1次</option>
+						<option>2次</option>
+						<option>3次</option>
+						<option>4次</option>
+						<option>5次</option>
+						<option>6次</option>
+						<option>7次</option>
+						<option>8次</option>
+						<option>9次</option>
+						<option>10次</option>
+					</select>
 					<div class="clearfix"></div>
-					<label>商品数量 <span>*</span></label> <input type="text" class="phone"
-						id="sum" name="sum" placeholder="">
+					<label>培养描述 <span>*</span></label>
+					<textarea class="mess" id="planmess" name="planmess"
+						placeholder="对植物的如何进行培养进行详细描述。"></textarea>
 					<div class="clearfix"></div>
 					<div class="upload-ad-photos">
-						<label>广告中的照片 :</label>
+						<label>植物照片 :</label>
 						<div class="photos-upload-view">
 							<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE"
 								value="300000" />
 							<div>
-								<input type="file" id="fileselect" name="fileselect"
+								<input type="file" id="file" name="file"
 									multiple="multiple" />
-								<div id="filedrag">或者在这里删除文件</div>
 							</div>
 							<div id="messages">
 								<p>状态信息</p>
@@ -235,15 +207,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="personal-details">
 						<p class="post-terms">
-							By clicking <strong>post Button</strong> you accept our <a
-								href="terms.html" target="_blank">Terms of Use </a> and <a
-								href="privacy.html" target="_blank">Privacy Policy</a>
+							通过点击 <strong>发布按钮</strong> 您接受我们的 <a href="terms.html"
+								target="_blank">使用条款 </a> 和 <a href="privacy.html"
+								target="_blank">隐私政策</a>
 						</p>
 
 						<div class="clearfix"></div>
 
 					</div>
-					<input type="submit" value="添加">
+					<input type="submit" value="发布">
 				</form>
 			</div>
 		</div>
@@ -254,7 +226,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="w3-footer-logo">
 				<h1>
 					<a href="${pageContext.request.contextPath }/index.actionl"><img
-					src="img/core-img/logo.png" alt=""></a>
+						src="img/core-img/logo.png" alt=""></a>
 				</h1>
 			</div>
 			<div class="w3-footer-social-icons">

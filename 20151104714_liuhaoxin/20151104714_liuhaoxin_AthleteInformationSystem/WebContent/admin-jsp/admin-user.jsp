@@ -8,6 +8,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/style.css"  type="text/css" media="all">
 <title>Insert title here</title>
+ <script type="text/javascript">
+ function prom()
+ {
+	 
+	 var b=event.target.id;
+     var pwd=prompt("请输入密码","");
+     
+     if(pwd)
+     {
+    	 var pwd1=prompt("请在次输入密码","");
+    	 if(pwd==pwd1){
+    		 window.location.href="UserPwdUpdate?pwd="+pwd+"&uid="+b;
+    	 }else{
+        	 alert("俩次输入的密码不一致")
+         }
+     }else{
+    	  alert("您取消了修改")
+     }
+   
+ }
+ </script>
 </head>
 <body>
 <form action="UserQuery" method="post">
@@ -36,12 +57,12 @@
 			<tr>
 				<th>用户名                                                </th>
 				<th>密码                                                   </th>
-					<th>修改密码                                           </th>
 				<th>邮箱                                                   </th>
 				<th>联系方式                                            </th>
-				<th>权限（0代表普通用户，1代表记录员）</th>
-				<th>修改用户的权限为0                </th>
-				<th>修改用户的权限为1                </th>
+				<th>用户类型</th>
+				<th>修改密码                                           </th>
+				<th>修改为普通用户               </th>
+				<th>修改为记录员用户                </th>
 				<th>禁用用户                                            </th>
 				
 			</tr>
@@ -50,29 +71,22 @@
 			<c:forEach items="${userdata}" var="w">
 				<tr align="center">
 					<td>${w.username}</td>
-					<form action="UserPwdUpdate" method="post">
-					<td>
-					
-					<input type="text" name="pwd" value=${w.pwd}> </td><td>
-						<input type="hidden" name="uid" value=${w.uid}> 
-						
-						<input type="submit" style="width: 150px" value="修改密码">
-					</td>
-					</form>
+					<td>${w.pwd}</td>
 					<td>${w.email}</td>
 					<td>${w.phone}</td>
 					<td>${w.permission}</td>
+					<td><input type="submit" style="width: 150px" id=${w.uid} onclick="prom()" value="修改密码"></td>
 					<td>
 					<form action="PermissionUpload" method="post">
 						<input type="hidden" name="uid" value=${w.uid}> 
 						<input type="hidden" name="qx"  value="0"> 
-						<input type="submit" style="width: 150px" value="修改权限为0">
+						<input type="submit" style="width: 150px" value="修改为普通用户  ">
 					</form></td>
 					<td>
 					<form action="PermissionUpload" method="post">
 						<input type="hidden" name="uid" value=${w.uid}> 
 						<input type="hidden" name="qx" value="1"> 
-						<input type="submit" style="width: 150px" value="修改权限为1">
+						<input type="submit" style="width: 150px" value="修改为记录员用户  ">
 						</form>
 					</td>
 					<td>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.PaymentMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.domain.Payment" >
+    <id column="payment_id" property="paymentId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="payment_time" property="paymentTime" jdbcType="DATE" />
+    <result column="payment_money" property="paymentMoney" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    payment_id, user_id, payment_time, payment_money
+  </sql>
+  
+  
+  
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from payment
+    where payment_id = #{paymentId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from payment
+    where payment_id = #{paymentId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.Payment" >
+    insert into payment (payment_id, user_id, payment_time, 
+      payment_money)
+    values (#{paymentId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{paymentTime,jdbcType=DATE}, 
+      #{paymentMoney,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.Payment" >
+    insert into payment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="paymentId != null" >
+        payment_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="paymentTime != null" >
+        payment_time,
+      </if>
+      <if test="paymentMoney != null" >
+        payment_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="paymentId != null" >
+        #{paymentId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentTime != null" >
+        #{paymentTime,jdbcType=DATE},
+      </if>
+      <if test="paymentMoney != null" >
+        #{paymentMoney,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.Payment" >
+    update payment
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentTime != null" >
+        payment_time = #{paymentTime,jdbcType=DATE},
+      </if>
+      <if test="paymentMoney != null" >
+        payment_money = #{paymentMoney,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where payment_id = #{paymentId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.Payment" >
+    update payment
+    set user_id = #{userId,jdbcType=VARCHAR},
+      payment_time = #{paymentTime,jdbcType=DATE},
+      payment_money = #{paymentMoney,jdbcType=DECIMAL}
+    where payment_id = #{paymentId,jdbcType=VARCHAR}
+  </update>
+</mapper>

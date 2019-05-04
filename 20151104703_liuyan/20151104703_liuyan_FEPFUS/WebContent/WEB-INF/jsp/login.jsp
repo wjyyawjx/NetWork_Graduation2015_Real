@@ -58,6 +58,12 @@ function check() {
 <form action="${pageContext.request.contextPath}/login.action" method="post" onsubmit="return check()">
  用户名:<input id="u_user" type="text" name="u_user" /><br> 
  密&nbsp;&nbsp;&nbsp;&nbsp;码:<input id="u_pwd" type="password" name="u_pwd" /><br>
+ 登录类型:<select name="u_type" id="u_type">
+						         <option value="管理员">管理员</option>
+						         <option value="家长">家长</option>
+						         <option value="教员">教员</option>
+						         <option value="家长" selected="selected">家长</option>
+		                       </select> <br>
 <input type="submit" value="登陆" />
 </form>
 <a href="${pageContext.request.contextPath}/register.action" >注册新用户</a><br>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.PhotoMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.domain.Photo" >
+    <id column="photo_id" property="photoId" jdbcType="VARCHAR" />
+    <result column="photo_path" property="photoPath" jdbcType="VARCHAR" />
+     <result column="photo_remark" property="photoRemark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    photo_id, photo_path,photo_remark
+  </sql>
+  <select id="selectAll" parameterType="com.yidu.controller.vo.PhotoVo" resultMap="BaseResultMap">
+  	select * from  photo
+  <where>
+	  		<if test="photoRemark != null and photoRemark != '' ">
+	  		photo_remark like concat('%',#{photoRemark},'%')
+	  	</if>
+  	</where>
+  	
+  </select>
+  <select id="selectCount" parameterType="com.yidu.controller.vo.PhotoVo" resultType="int">
+  	select count(*) from photo 
+  	<where>
+	  		<if test="photoRemark != null and photoRemark != '' ">
+	  		photo_remark like concat('%',#{photoRemark},'%')
+	  	</if>
+	 
+	  	
+  	</where>
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from photo
+    where photo_id = #{photoId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from photo
+    where photo_id = #{photoId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.Photo" >
+    insert into photo (photo_id, photo_path,photo_remark)
+    values (#{photoId,jdbcType=VARCHAR}, #{photoPath,jdbcType=VARCHAR}, #{photoRemark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.Photo" >
+   insert into photo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="photoId != null" >
+        photo_id,
+      </if>
+      <if test="photoPath != null" >
+        photo_path,
+      </if>
+      <if test="photoRemark != null" >
+        photo_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="photoId != null" >
+        #{photoId,jdbcType=VARCHAR},
+      </if>
+      <if test="photoPath != null" >
+        #{photoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="photoRemark != null" >
+        #{photoRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.Photo" >
+    update photo
+    <set >
+      
+      <if test="photoPath != null" >
+        photo_path = #{photoPath,jdbcType=VARCHAR},
+        
+      </if>
+      <if test="photoRemark != null" >
+        photo_remark = #{photoRemark,jdbcType=VARCHAR},
+        
+      </if>
+    </set>
+    where photo_id = #{photoId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.Photo" >
+    update photo
+    set photo_path = #{photoPath,jdbcType=VARCHAR},photo_remark = #{photoRemark,jdbcType=VARCHAR}
+    where photo_id = #{photoId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="findByPath" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	 select * from photo where photo_path = #{photoPath}
+  </select>
+</mapper>

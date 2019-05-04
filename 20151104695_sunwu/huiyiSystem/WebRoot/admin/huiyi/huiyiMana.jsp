@@ -16,17 +16,21 @@ String path = request.getContextPath();
 		<meta http-equiv="description" content="This is my page" />
 
 		<link rel="stylesheet" type="text/css" href="<%=path %>/css/base.css" />
+		 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		 <link href="bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+		 <link href="bootstrap/custom.min.css" rel="stylesheet"/>
+		
 		
 		<script language="JavaScript" src="<%=path %>/js/public.js" type="text/javascript"></script>
 		
         <script language="javascript">
-           function gonggaoAdd()
+           function huiyiAdd()
            {
               var url="<%=path %>/admin/huiyi/huiyiAdd.jsp";
               window.location.href=url;
            }
            
-           function gonggaoDetail(id)
+           function huiyiDetail(id)
            {
                  var url="<%=path %>/huiyi?type=huiyiDetail&id="+id;
                  var n="";
@@ -38,23 +42,53 @@ String path = request.getContextPath();
        </script>
 	</head>
 
-	<body leftmargin="2" topmargin="2" background='<%=path %>/img/allbg.gif'>
-			<table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D1DDAA" align="center" style="margin-top:8px">
-				<tr bgcolor="#E7E7E7">
-					<td height="14" colspan="14" background="<%=path %>/img/tbg.gif">&nbsp;会议信息管理&nbsp;</td>
-				</tr>
-				<tr align="center" bgcolor="#FAFAF1" height="22">
-					<td>序号</td>
-					 <td >门牌号</td>
-      <td >会议用途</td>
-      <td >有无多媒体</td>
-      <td >会议名称</td>
-      <td >容纳人数</td>
-      <td >会议室地点</td>
+	<body background="qy_back.gif" leftmargin="0" topmargin="0"
+	marginwidth="0" marginheight="0" bgcolor="#FFFFFF" style="background:rgb(236,240,245); padding-left:20px;">
 
-      <td >操作</td>
-		        </tr>	
-				<c:forEach items="${requestScope.huiyiList}" var="bean" varStatus="ss">
+	<div class="title clearfix">
+	<h2 style="font-size:34px; font-weight:bold;">会议信息管理</h2>
+	</div>
+	<ul class="breadcrumb" style="">
+	<li>
+	<i class="fa fa-home"></i>
+	<i style="color:rgb(42,63,84); font-style:normal;" id="breadcrumbSeal">操作   /   会议信息管理</i>
+	</li>
+	</ul>
+	<ul id="myTab" class="nav nav-tabs" style="height:30px;">
+	<li class="active"><a href="#home" data-toggle="tab" style="height:30px; line-height:3px;" id="tabTitle">
+	会议信息管理</a>
+	</li>
+	</ul>
+	<div id="myTabContent" class="tab-content" style="margin-top:20px;">
+	<div class="tab-pane fade in active" id="home">
+	<section class="content">
+	<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+	<div class="x_panel">
+	<div id="table-box" style="display: block; height:440px;">
+	
+	<table class="table table-striped table-bordered table-hover table-condensed" width="98%"  border="0" cellpadding="2" cellspacing="1" bgcolor="#D1DDAA" align="center" style="margin-top:8px">
+		<thead>
+		<tr bgcolor="#E7E7E7">
+			<td height="14" colspan="14" >&nbsp;会议信息管理&nbsp;</td>
+		</tr>
+			<tr >
+			<th width="5%"><div align="center"><span class="STYLE1">序号</span></div></th>
+			<th width="23%" ><div align="center"><span class="STYLE1">门牌号</span></div></th>
+            <th width="8%" ><div align="center"><span class="STYLE1">会议室用途</span></div></th>
+            <th width="8%"><div align="center"><span class="STYLE1">有无多媒体</span></div></th>
+            <th width="8%"><div align="center"><span class="STYLE1">会议室名称</span></div></th>
+            <th width="8%"><div align="center"><span class="STYLE1">容纳人数</span></div></th>
+            <th width="8%"><div align="center"><span class="STYLE1">会议室地点</span></div></th>
+            <th width="15%"><div align="center"><span class="STYLE1">操作操作</span></div></th>
+
+     
+				
+			</tr>
+		</thead>
+		
+		<tbody>
+		<c:forEach items="${requestScope.huiyiList}" var="bean" varStatus="ss">
 				<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">
 					<td bgcolor="#FFFFFF" align="center">
 						 ${ss.index+1}
@@ -78,20 +112,28 @@ String path = request.getContextPath();
 						${bean.price }
 					</td>
 					<td bgcolor="#FFFFFF" align="center">
-					<a href="#" onclick="gonggaoDetail(${bean.id})" class="pn-loperator">查看内容</a>
+					<a href="#" onclick="huiyiDetail(${bean.id})" class="pn-loperator">查看内容</a>
 						<a class="pn-loperator" href="<%=path %>/huiyi?type=huiyiDel&id=${bean.id}">删除</a>
 						<a href="<%=path %>/huiyi?type=huiyiUpdate1&id=${bean.id}";>修改</a>
 					</td>
 				</tr>
 				</c:forEach>
-			</table>
-			
-			<table width='98%'  border='0'style="margin-top:8px;margin-left: 5px;">
-			  <tr>
-			    <td>
-			      <input type="button" value="添加会议室" style="width: 80px;" onclick="gonggaoAdd()" />
-			    </td>
-			  </tr>
-		    </table>
-	</body>
+		</tbody>
+	</table>
+	<div class="ln_solid"></div>
+	<div class="form-actions">
+	<div class="row">
+	<div class="col-md-offset-3 col-xs-6">
+	<button type=button class="btn btn-primary col-md-offset-1" onclick='huiyiAdd()'>添加会议室</button>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</section>
+	</div>
+	</div>			
+</body>
 </html>

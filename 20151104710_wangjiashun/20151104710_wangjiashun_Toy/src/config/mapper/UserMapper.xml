@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.domain.User" >
+    <id column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_psw" property="userPsw" jdbcType="VARCHAR" />
+    <result column="user_credit" property="userCredit" jdbcType="DECIMAL" />
+    <result column="user_type" property="userType" jdbcType="INTEGER" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+     <result column="real_name" property="realName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap type="com.yidu.controller.vo.UserVo" id="BaseResultMaps">
+    <id column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_psw" property="userPsw" jdbcType="VARCHAR" />
+    <result column="user_credit" property="userCredit" jdbcType="DECIMAL" />
+    <result column="user_type" property="userType" jdbcType="INTEGER" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="address_name" property="addressName" jdbcType="VARCHAR" />
+    <result column="address_details" property="addressDetails" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, user_name, user_psw, user_credit, user_type,user_phone,user_email,real_name
+  </sql>
+  
+  <select id="selectRows" parameterType="com.yidu.domain.User" resultType="int">
+	select count(*) from user
+	<where>
+		<if test="userName != null and userName != '' ">
+		user_name like concat('%',#{userName,jdbcType=VARCHAR},'%')
+		</if>
+	</where>
+  </select>
+  <select id="findByBill" resultMap="BaseResultMaps">
+  	 SELECT u.*,a.address_name,a.address_details FROM USER u , address a WHERE u.user_id=a.user_id AND u.user_name = #{userName}
+  </select>
+  <select id="selectAll" parameterType="com.yidu.domain.User" resultMap="BaseResultMap">
+	select 
+    <include refid="Base_Column_List" />
+    from user
+    <where>
+    	<if test="userName!= null and userName!=''">
+		user_name like concat('%',#{userName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="userType!= null and userType!=''">
+		and user_type = #{userType,jdbcType=INTEGER}
+		</if>
+    </where>
+  </select>
+  <select id="selectByUser" resultMap="BaseResultMap" parameterType="com.yidu.domain.User" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_name = #{userName,jdbcType=VARCHAR}
+  </select>
+  <select id="backLogin" resultMap="BaseResultMap" parameterType="com.yidu.domain.User" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_name = #{userName,jdbcType=VARCHAR} and user_psw= #{userPsw,jdbcType=VARCHAR} and user_type=3
+  </select>
+  <select id="selectUser" resultMap="BaseResultMap" parameterType="com.yidu.domain.User" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_name = #{userName,jdbcType=VARCHAR} and user_psw= #{userPsw,jdbcType=VARCHAR}
+  </select>
+   <select id="findAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.User" >
+    insert into user (user_id, user_name, user_psw, 
+      user_credit, user_type)
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPsw,jdbcType=VARCHAR}, 
+      #{userCredit,jdbcType=DECIMAL}, #{userType,jdbcType=INTEGER},#{realName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userPsw != null" >
+        user_psw,
+      </if>
+      <if test="userCredit != null" >
+        user_credit,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="userPhone != null" >
+        user_phone,
+      </if>
+      <if test="userEmail != null" >
+        user_email,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPsw != null" >
+        #{userPsw,jdbcType=VARCHAR},
+      </if>
+      <if test="userCredit != null" >
+        #{userCredit,jdbcType=DECIMAL},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="userPhone != null" >
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.User" >
+    update user
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPsw != null" >
+        user_psw = #{userPsw,jdbcType=VARCHAR},
+      </if>
+      <if test="userCredit != null" >
+        user_credit = #{userCredit,jdbcType=DECIMAL},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="userPhone != null" >
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.User" >
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_psw = #{userPsw,jdbcType=VARCHAR},
+      user_credit = #{userCredit,jdbcType=DECIMAL},
+      user_type = #{userType,jdbcType=INTEGER},
+      real_name = #{realName,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

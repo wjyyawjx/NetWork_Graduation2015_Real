@@ -13,7 +13,21 @@ public class User implements Serializable {
     private String p_img;
     private String p_dirpath;
     private String u_message; 
-    public Integer getU_id() {
+    private String u_type;
+    private String u_Jurisdiction;
+    public String getU_type() {
+		return u_type;
+	}
+	public void setU_type(String u_type) {
+		this.u_type = u_type;
+	}
+	public String getU_Jurisdiction() {
+		return u_Jurisdiction;
+	}
+	public void setU_Jurisdiction(String u_Jurisdiction) {
+		this.u_Jurisdiction = u_Jurisdiction;
+	}
+	public Integer getU_id() {
 		return u_id;
 	}
 	public void setU_id(Integer u_id) {

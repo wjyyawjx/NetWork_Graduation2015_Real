@@ -22,14 +22,14 @@ public class Friend {
 	public String getF1_allow() {
 		return f1_allow;
 	}
-	public void setF1_allow(String f1_allow) {
-		this.f1_allow = f1_allow;
-	}
 	public Date getF2_allow() {
 		return f2_allow;
 	}
-	public void setF2_allow(Date date) {
-		this.f2_allow = date;
+	public void setF2_allow(Date f2_allow) {
+		this.f2_allow = f2_allow;
+	}
+	public void setF1_allow(String f1_allow) {
+		this.f1_allow = f1_allow;
 	}
 	
 }

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.CarMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.controller.vo.CarVo" >
+    <id column="car_id" property="carId" jdbcType="VARCHAR" />
+    <result column="car_total" property="carTotal" jdbcType="DECIMAL" />
+    <result column="car_num" property="carNum" jdbcType="INTEGER" />
+    <result column="toy_name" property="toyName" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="toy_money" property="toyMoney" jdbcType="DECIMAL" />
+    <result column="toy_deposit" property="toyDeposit" jdbcType="DECIMAL" />
+    <result column="toy_id" property="toyId" jdbcType="VARCHAR" />
+    <result column="car_endtime" property="carEndTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    car_id, user_id, toy_id, car_total, car_num
+  </sql>
+  
+  
+  
+  <!-- 根据条件查询 -->
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from car
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </select>
+  <!-- 删除所有 -->
+  <delete id="deleteAll" parameterType="java.lang.String">
+  	delete from car
+  </delete>
+  <!-- 查询所有 -->
+  <select id = "selectAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	SELECT c.*,t.toy_id,t.toy_money,t.toy_deposit,t.toy_name,u.user_name FROM car c , toy t ,user u WHERE c.toy_id=t.toy_id and c.user_id = u.user_id 
+  </select>
+  <!-- 根据用户名查询 -->
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select c.*,t.toy_id,t.toy_money,t.toy_deposit,t.toy_name,u.user_name FROM car c , toy t ,user u WHERE c.toy_id=t.toy_id and c.user_id = u.user_id and u.user_name = #{userName}
+  </select>
+  <!-- 根据ID删除 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from car
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.Car" >
+    insert into car (car_id, user_id, toy_id, 
+      car_total, car_num)
+    values (#{carId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{toyId,jdbcType=VARCHAR}, 
+      #{carTotal,jdbcType=DECIMAL}, #{carNum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.Car" >
+    insert into car
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="carId != null" >
+        car_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="toyId != null" >
+        toy_id,
+      </if>
+      <if test="carTotal != null" >
+        car_total,
+      </if>
+      <if test="carNum != null" >
+        car_num,
+      </if>
+      <if test="carEndTime != null" >
+        car_endTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="carId != null" >
+        #{carId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="toyId != null" >
+        #{toyId,jdbcType=VARCHAR},
+      </if>
+      <if test="carTotal != null" >
+        #{carTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="carNum != null" >
+        #{carNum,jdbcType=INTEGER},
+      </if>
+      <if test="carEndTime != null" >
+        #{carEndTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.Car" >
+    update car
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="toyId != null" >
+        toy_id = #{toyId,jdbcType=VARCHAR},
+      </if>
+      <if test="carTotal != null" >
+        car_total = #{carTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="carNum != null" >
+        car_num = #{carNum,jdbcType=INTEGER},
+      </if>
+      <if test="carEndTime != null" >
+        car_endTime = #{carEndTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.Car" >
+    update car
+    set user_id = #{userId,jdbcType=VARCHAR},
+      toy_id = #{toyId,jdbcType=VARCHAR},
+      car_total = #{carTotal,jdbcType=DECIMAL},
+      car_num = #{carNum,jdbcType=INTEGER}
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+</mapper>

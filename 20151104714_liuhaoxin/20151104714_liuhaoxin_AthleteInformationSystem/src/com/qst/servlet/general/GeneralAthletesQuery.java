@@ -40,21 +40,34 @@ public class GeneralAthletesQuery extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		int sid = (int) session.getAttribute("generalsid");
-		String events = request.getParameter("events");
-		GeneralQueryDao rgdao = new GeneralQueryDao();
-		if (events.equals("所有信息")) {
-			ArrayList<AthletBean> abean = new ArrayList<AthletBean>();
-			abean = (ArrayList<AthletBean>) rgdao.athletList(sid);
-			request.setAttribute("mea", abean);
-		} else {
-			ArrayList<AthletBean> abean = new ArrayList<AthletBean>();
-			abean = (ArrayList<AthletBean>) rgdao.athletclassifyList(sid, events);
-			request.setAttribute("mea", abean);
+		String eventss = request.getParameter("events");
+		String theclassa = request.getParameter("theclass");
+		String college = request.getParameter("college");
+		String username = request.getParameter("username");
+		String sql = "select * from athlet where tsid="+sid+" ";
+		
+		if (!eventss.equals("所有项目")) {
+		sql=sql+"and events='"+eventss+"'";
+
 		}
-		// 返回一届运动会的所有项目信息
-		ArrayList<AthletBean> abe = new ArrayList<AthletBean>();
-		abe = (ArrayList<AthletBean>) rgdao.eventsList(sid);
-		request.setAttribute("abe", abe);
+		if (!theclassa.equals("所有班级")) {
+			sql=sql+"and theclass='"+theclassa+"'";
+		}
+		if (!college.equals("所有学院")) {
+			sql=sql+"and college='"+college+"'";
+		}
+		if (!username.equals("null")  || !username.equals("null") ) {
+			sql=sql+"and athletusername like '%"+username+"%'";
+		}
+		
+		
+		GeneralQueryDao rgdao = new GeneralQueryDao();
+		ArrayList<AthletBean> abean = new ArrayList<AthletBean>();
+		abean = (ArrayList<AthletBean>) rgdao.athletclassifyList(sql);
+		request.setAttribute("mea", abean);
+		
+		FormationReturn ret = new FormationReturn();
+		ret.doPost(request, response);
 
 		request.getRequestDispatcher("general-jsp/general-athlet.jsp").forward(request, response);
 	}

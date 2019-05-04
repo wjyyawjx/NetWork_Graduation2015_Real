@@ -20,29 +20,72 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.imnu.po.User;
+import com.imnu.service.INFService;
 import com.imnu.service.UserService;
 
 @Controller
 public class UserController {
      @Autowired
      private UserService userService;
-    
+     @Autowired
+     private INFService infService;
      @RequestMapping(value = "/login.action" ,method = RequestMethod.GET)
      public String Login1() {
     	 return "login";
      }
-     @RequestMapping(value = "/login.action" ,method = RequestMethod.POST)
-     public String Login(String u_user, String u_pwd,Model model,HttpSession session) {
-    	 User user = userService.LoginUser(u_user, u_pwd);
-    	 if(user != null) {
-    		 session.setAttribute("USER_SESSION", user);
-    		 return "admin-index";
+     @RequestMapping(value = "/update.action" ,method = RequestMethod.POST)
+     public String update(String u_name,String u_phone,String u_email,String u_message,HttpSession session) {
+    	 User user = (User) session.getAttribute("USER_SESSION");
+     	 String u_user = user.getU_user();
+    	 infService.deletemy(u_email);
+    	 session.removeAttribute("USER_SESSION");
+    	 userService.updatemy(u_user,u_name,u_phone,u_email,u_message);
+    	 User user1 = userService.findUser(u_user);
+    	 session.setAttribute("USER_SESSION", user1); 
+    	 return "my";
+     }
+     @RequestMapping(value = "/updatejd.action" ,method = RequestMethod.POST)
+     public String updatejd(String u_name,String u_phone,String u_email,String u_type,String p_img,String p_dirpath,String u_Jurisdiction,String u_message) {
+    	 if(u_Jurisdiction.equals("是")) {
+    		 userService.updateno(u_email);
+    		 infService.deleteinf(u_email);
+    		 return "redirect:SelectAll.action";
     	 }else {
-    		 model.addAttribute("msg","用户名或密码错误!");
-    		 return "login";
+    		 userService.updateyes(u_email);
+    		 infService.insertinf(u_name,u_phone,u_email,u_type,p_img,p_dirpath,u_message);
+    		 return "redirect:SelectAll.action";
     	 }
      }
-     @RequestMapping(value = "/register.action" ,method = RequestMethod.GET)
+     @RequestMapping(value = "/login.action" ,method = RequestMethod.POST)
+     public String Login(String u_user, String u_pwd,String u_type,Model model,HttpSession session) {
+	    	User user = userService.LoginUser(u_user, u_pwd);
+	    	 if(user != null) {
+	    		 if(user.getU_type().equals(u_type)) {
+	    			 if(user.getU_type().equals("管理员")) {
+	    				 session.setAttribute("USER_SESSION", user);
+			       		 return "admin-root";
+	    			 }else {
+	    				 session.setAttribute("USER_SESSION", user);
+			       		 return "admin-index";
+	    			 }  
+	    		 }else {
+	    			 model.addAttribute("msg","用户类型错误!");
+		       		 return "login";
+	    		 }
+	       		 
+	       	 }else {
+	       		 model.addAttribute("msg","用户名或密码错误!");
+	       		 return "login";
+		       	 }
+	    	
+    	 
+     }
+     @RequestMapping(value = "/Exit.action" ,method = RequestMethod.POST)
+     public String Exit(HttpSession session) {
+    	 session.invalidate();
+    	 return "redirect:login.action";
+     }
+	@RequestMapping(value = "/register.action" ,method = RequestMethod.GET)
      public String toregister() {
     	 return "register";
      }

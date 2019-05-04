@@ -57,6 +57,7 @@ public class GeneralQueryDao {
 			while (rs.next()) {
 				AthletBean tag = new AthletBean();
 				tag.setTid(rs.getInt("tid"));
+				tag.setCollege(rs.getString("college"));
 				tag.setAthletusername(rs.getString("athletusername"));
 				tag.setRanking(rs.getString("ranking"));
 				tag.setResults(rs.getString("results"));
@@ -98,23 +99,75 @@ public class GeneralQueryDao {
 		}
 		return Array;
 	}
-
-	// 一般用户分类查看运动员信息
-	public ArrayList<AthletBean> athletclassifyList(int sid,String events) {
+	
+	
+	// 一般用户查看学院信息
+	public ArrayList<AthletBean> collegeList(int tsid) {
 		// TODO Auto-generated method stub
 		ArrayList<AthletBean> Array = new ArrayList<AthletBean>();
 		Connection conn = DBUtil.getConnection();
-		String sql = "select * from athlet where tsid=? and events=?";
+		String sql = "SELECT DISTINCT college FROM athlet where tsid=?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, sid);
-			pstmt.setString(2, events);
+			pstmt.setInt(1, tsid);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				AthletBean tag = new AthletBean();
+				tag.setCollege(rs.getString("college"));
+				Array.add(tag);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeJDBC(rs, pstmt, conn);
+		}
+		return Array;
+	}
+	
+	
+	// 一般用户查看班级信息
+	public ArrayList<AthletBean> theclassList(int tsid) {
+		// TODO Auto-generated method stub
+		ArrayList<AthletBean> Array = new ArrayList<AthletBean>();
+		Connection conn = DBUtil.getConnection();
+		String sql = "SELECT DISTINCT theclass FROM athlet where tsid=?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, tsid);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				AthletBean tag = new AthletBean();
+				tag.setTheclass(rs.getString("theclass"));
+				Array.add(tag);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.closeJDBC(rs, pstmt, conn);
+		}
+		return Array;
+	}
+
+	// 一般用户分类查看运动员信息
+	public ArrayList<AthletBean> athletclassifyList(String sql) {
+		// TODO Auto-generated method stub
+		ArrayList<AthletBean> Array = new ArrayList<AthletBean>();
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				AthletBean tag = new AthletBean();
 				tag.setTid(rs.getInt("tid"));
+				tag.setCollege(rs.getString("college"));
 				tag.setAthletusername(rs.getString("athletusername"));
 				tag.setRanking(rs.getString("ranking"));
 				tag.setResults(rs.getString("results"));

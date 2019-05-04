@@ -38,5 +38,20 @@ public class UserServiceImpl implements UserService {
 		User user = this.userDao.findEmail(u_email);
 		return user;
 	}
+	@Override
+	public void updatemy(String u_user, String u_name, String u_phone, String u_email, String u_message) {
+		// TODO Auto-generated method stub
+		this.userDao.updatemy(u_user,u_name,u_phone,u_email,u_message);
+	}
+	@Override
+	public void updateno(String u_email) {
+		// TODO Auto-generated method stub
+		this.userDao.updateno(u_email);
+	}
+	@Override
+	public void updateyes(String u_email) {
+		// TODO Auto-generated method stub
+		this.userDao.updateyes(u_email);
+	}
 	
 }

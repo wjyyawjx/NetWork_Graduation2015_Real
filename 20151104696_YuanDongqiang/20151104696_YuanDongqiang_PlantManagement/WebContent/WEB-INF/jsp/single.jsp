@@ -1,320 +1,418 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>详细信息</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/bootstrap.min.css">
-<!-- bootstrap-CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/bootstrap-select.css">
-<!-- bootstrap-select-CSS -->
-<link href="${pageContext.request.contextPath }/css/style.css"
-	rel="stylesheet" type="text/css" media="all" />
-<!-- style.css -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/font-awesome.min.css" />
-<!-- fontawesome-CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/menu_sideslide.css"
-	type="text/css" media="all">
-<!-- Navigation-CSS -->
-<!-- meta tags -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords"
-	content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
-<script type="application/x-javascript">
-	
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-</script>
-<!-- //meta tags -->
-<!--fonts-->
-<link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed'
-	rel='stylesheet' type='text/css'>
-<link
-	href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
-	rel='stylesheet' type='text/css'>
-<!--//fonts-->
-<!-- js -->
+<title>植物详细信息</title>
+
+<link rel="icon" href="img/core-img/favicon.ico">
+
+<link rel="stylesheet" href="style.css">
 <script type="text/javascript"
-	src="${pageContext.request.contextPath }/js/jquery.min.js"></script>
-<!-- js -->
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="${pageContext.request.contextPath }/js/bootstrap.js"></script>
-<script src="${pageContext.request.contextPath }/js/bootstrap-select.js"></script>
-<script>
-	$(document).ready(function() {
-		var mySelect = $('#first-disabled2');
-
-		$('#special').on('click', function() {
-			mySelect.find('option:selected').prop('disabled', true);
-			mySelect.selectpicker('refresh');
-		});
-
-		$('#special2').on('click', function() {
-			mySelect.find('option:disabled').prop('disabled', false);
-			mySelect.selectpicker('refresh');
-		});
-
-		$('#basic2').selectpicker({
-			liveSearch : true,
-			maxOptions : 1
-		});
-	});
+	src="${pageContext.request.contextPath}/js/ajax.js"></script>
+<script type="text/javascript">
+	function message(id) {
+		var message = $("#comments").val();
+		var req_data = {};
+		req_data["text"] = message;
+		req_data["id"] = id;
+		if (message != ""){
+			fajax("${pageContext.request.contextPath }/message.action", req_data, function(data) {
+				if (data.status != "ok") {
+					return false;
+				}
+			})
+		} 
+		document.getElementById("comments").value="";
+		$("#reviews").load();
+		return true;
+	}
 </script>
-<!-- language-select -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/js/jquery.leanModal.min.js"></script>
-<link href="${pageContext.request.contextPath }/css/jquery.uls.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath }/css/jquery.uls.grid.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath }/css/jquery.uls.lcd.css"
-	rel="stylesheet" />
-<!-- Source -->
-<script src="${pageContext.request.contextPath }/js/jquery.uls.data.js"></script>
-<script
-	src="${pageContext.request.contextPath }/js/jquery.uls.data.utils.js"></script>
-<script src="${pageContext.request.contextPath }/js/jquery.uls.lcd.js"></script>
-<script
-	src="${pageContext.request.contextPath }/js/jquery.uls.languagefilter.js"></script>
-<script
-	src="${pageContext.request.contextPath }/js/jquery.uls.regionfilter.js"></script>
-<script src="${pageContext.request.contextPath }/js/jquery.uls.core.js"></script>
-<script>
-	$(document).ready(function() {
-		$('.uls-trigger').uls({
-			onSelect : function(language) {
-				var languageName = $.uls.data.getAutonym(language);
-				$('.uls-trigger').text(languageName);
-			},
-			quickList : [ 'en', 'hi', 'he', 'ml', 'ta', 'fr' ]
-		//FIXME
-		});
-	});
-</script>
-<!-- //language-select -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/flexslider.css"
-	media="screen" />
-<!-- flexslider css -->
 </head>
+
 <body>
-	<div class="agiletopbar">
-		<div class="wthreenavigation">
-			<div class="menu-wrap">
-				<nav class="menu">
-				<div class="icon-list">
-					<a
-						href="${pageContext.request.contextPath }/categories.action?id=2">
-						<i class="fa fa-fw fa-mobile"></i><span>移动</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=3">
-						<i class="fa fa-fw fa-laptop"></i><span>电子产品和电器</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=4">
-						<i class="fa fa-fw fa-car"></i><span>汽车</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=1">
-						<i class="fa fa-fw fa-motorcycle"></i><span>自行车</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=5">
-						<i class="fa fa-fw fa-paw"></i><span>宠物</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=6">
-						<i class="fa fa-fw fa-book"></i><span>书</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=7">
-						<i class="fa fa-fw fa-asterisk"></i><span>时尚</span>
-					</a> <a
-						href="${pageContext.request.contextPath }/categories.action?id=8">
-						<i class="fa fa-fw fa-asterisk"></i><span>儿童</span>
-					</a>
-				</div>
-				</nav>
-				<button class="close-button" id="close-button">关闭菜单</button>
-			</div>
-			<button class="menu-button" id="open-button"></button>
+	<!-- Preloader -->
+	<div class="preloader d-flex align-items-center justify-content-center">
+		<div class="preloader-circle"></div>
+		<div class="preloader-img">
+			<img src="img/core-img/leaf.png" alt="">
 		</div>
-		<div class="clearfix"></div>
 	</div>
-	<header>
-	<div class="w3ls-header">
-		<div class="w3ls-header-right">
-			<ul>
-				<li class="dropdown head-dpdn"><a href="login.jsp"
-					aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
-					
-					<%if(session.getAttribute("USER_SESSION") != null){ %>
-					${USER_SESSION.username} <%}else{ %>
-						登陆<%} %></a></li>
-				<li class="dropdown head-dpdn"><a href="${pageContext.request.contextPath }/help.action"><i
-						class="fa fa-question-circle" aria-hidden="true"></i> 帮助</a></li>
-			</ul>
+
+	<!-- ##### Header Area Start ##### -->
+	<header class="header-area">
+	<div class="top-header-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div
+						class="top-header-content d-flex align-items-center justify-content-between">
+						<div class="top-header-meta">
+							<a href="#"> <i class="fa fa-envelope-o" aria-hidden="true"></i>
+								<span>邮箱:Ydq7543@hotmail.com</span>
+							</a> <a href="#"> <i class="fa fa-phone" aria-hidden="true"></i>
+								<span>电话: +1 234 122 122</span>
+							</a>
+						</div>
+						<div class="top-header-meta d-flex" id="login">
+							<div class="top-header-meta d-flex">
+								<div class="login">
+									<a href="${pageContext.request.contextPath }/TZlogin.action"
+										aria-expanded="false"><i class="fa fa-user"></i> <%
+									 	if (session.getAttribute("USER_SESSION") != null) {
+									 %> ${USER_SESSION.u_name} <%
+									 	} else {
+									 %> 未登陆 <%
+									 	}
+									 %> </a>
+								</div>
+								<%
+									if (session.getAttribute("USER_SESSION") != null) {
+								%>
+								<div class="cart">
+									<a href="${pageContext.request.contextPath }/logout.action">
+										<i class="fa fa-question-circle" aria-hidden="true"></i> 退出登陆
+									</a>
+								</div>
+								<%
+									}
+								%>
+								<div class="cart">
+									<a href="${pageContext.request.contextPath }/help.action">
+										<i class="fa fa-question-circle" aria-hidden="true"></i> 帮助
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="alazea-main-menu">
+			<div class="classy-nav-container breakpoint-off">
+				<div class="container">
+					<!-- Menu -->
+					<nav class="classy-navbar justify-content-between" id="alazeaNav">
+					<!-- Nav Brand --> <a href="index.jsp" class="nav-brand"><img
+						src="img/core-img/logo.png" alt=""></a>
+					<div class="classy-navbar-toggler">
+						<span class="navbarToggler"><span></span><span></span><span></span></span>
+					</div>
+					<!-- Menu -->
+					<div class="classy-menu">
+						<!-- Close Button -->
+						<div class="classycloseIcon">
+							<div class="cross-wrap">
+								<span class="top"></span><span class="bottom"></span>
+							</div>
+						</div>
+						<!-- Navbar Start -->
+						<div class="classynav">
+							<ul>
+								<li><a href="index.html">主页</a></li>
+								<li><a href="about.html">关于我们</a></li>
+								<li><a href="#">页面</a>
+									<ul class="dropdown">
+										<li><a href="index.html">主页</a></li>
+										<li><a href="about.html">关于我们</a></li>
+										<li><a href="portfolio.html">投资组合</a>
+											<ul class="dropdown">
+												<li><a href="portfolio.html">投资组合</a></li>
+												<li><a href="single-portfolio.html">投资组合细节</a></li>
+											</ul></li>
+										<li><a href="blog.html">博客</a>
+											<ul class="dropdown">
+												<li><a href="blog.html">博客</a></li>
+												<li><a href="single-post.html">博客 细节</a></li>
+											</ul></li>
+										<li><a href="contact.html">联系</a></li>
+									</ul></li>
+								<li><a href="portfolio.html">投资组合</a></li>
+								<li><a href="contact.html">联系</a></li>
+							</ul>
+
+							<!-- Search Icon -->
+							<div id="searchIcon">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</div>
+
+						</div>
+						<!-- Navbar End -->
+					</div>
+					</nav>
+
+					<!-- Search Form -->
+					<div class="search-form">
+						<form action="${pageContext.request.contextPath }/findplan.action" method="get">
+							<input type="search" name="search" id="search"
+								placeholder="输入关键字,按回车……">
+							<button type="submit" class="d-none"></button>
+						</form>
+						<!-- Close Icon -->
+						<div class="closeIcon">
+							<i class="fa fa-times" aria-hidden="true"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- ##### Header Area End ##### -->
+
+	<!-- ##### Breadcrumb Area Start ##### -->
+	<div class="breadcrumb-area">
+		<!-- Top Breadcrumb Area -->
+		<div
+			class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
+			style="background-image: url(img/bg-img/24.jpg);">
+			<h2>植物详细信息</h2>
+		</div>
+	</div>
+	<!-- ##### Breadcrumb Area End ##### -->
+
+	<!-- ##### Single Product Details Area Start ##### -->
+	<section class="single_product_details_area mb-50"> <c:forEach
+		items="${planmore }" var="planmore">
+		<div class="produts-details--content mb-50">
+			<div class="container">
+				<div class="row justify-content-between">
+
+					<div class="col-12 col-md-6 col-lg-5">
+						<div class="single_product_thumb">
+							<div id="product_details_slider" class="carousel slide"
+								data-ride="carousel">
+								<div class="carousel-inner">
+									<div class="carousel-item active">
+										<a class="product-img" href="${planmore.p_img }"
+											title="Product Image"> <img class="d-block w-100"
+											src="${planmore.p_img }">
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-md-6">
+						<div class="single_product_desc">
+							<h4 class="title">${planmore.p_name }</h4>
+							<div class="short_overview">
+								<p>${planmore.p_form }</p>
+							</div>
+							<div class="products--meta">
+								<p>
+									<span>上传用户:</span> <span>${user.u_name}</span>
+								</p>
+								<p>
+									<span>植物喜好:</span> <span>${type.t_name } </span>
+								</p>
+								<p>
+									<span>浇水频率:</span> <span>${planmore.p_water} </span>
+								</p>
+								<p>
+									<span>植物分布:</span> <span>${planmore.p_place}</span>
+								</p>
+								<p>
+									<span>繁殖方式:</span> <span>${planmore.p_breeding}</span>
+								</p>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
-		<div class="clearfix"></div>
-	</div>
-	<div class="container">
-		<div class="agile-its-header">
-			<div class="logo">
-				<h1>
-					<a href="${pageContext.request.contextPath }/index.action">主页</a>
-				</h1>
-			</div>
-			<div class="agileits_search">
-				<form action="#" method="post">
-					<input name="Search" type="text" placeholder="今天能为您做些什么?"
-						required=" "> <select id="agileinfo_search"
-						name="agileinfo_search" required="">
-						<option value="">所有类别</option>
-						<option value="Mobiles">移动</option>
-						<option value="Electronics & Appliances">电子产品和电器</option>
-						<option value="Cars">汽车</option>
-						<option value="Bikes">自行车</option>
-						<option value="Furnitures">宠物</option>
-						<option value="Books, Sports & Hobbies">书</option>
-						<option value="Fashion">时尚</option>
-						<option value="Kids">儿童</option>
-					</select>
-					<button type="submit" class="btn btn-default"
-						aria-label="Left Align">
-						<i class="fa fa-search" aria-hidden="true"> </i>
-					</button>
-				</form>
-				<a class="post-w3layouts-ad"
-					href="${pageContext.request.contextPath }/post.action">免费发布广告</a>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-	</header>
-	<div class="w3layouts-breadcrumbs text-center">
 		<div class="container">
-			<span class="agile-breadcrumbs"> <a
-				href="${pageContext.request.contextPath }/index.action"><i
-					class="fa fa-home home_1"></i></a> / <a href="all-classifieds.html">All
-					Ads</a> / <a href="cars.html">Cars</a> / <span>Car name</span></span>
-		</div>
-	</div>
-	<div class="single-page main-grid-border">
-		<div class="container">
-			<div class="product-desc">
-				<div class="col-md-7 product-view">
-					<h2>${items.name }</h2>
-					<p>
-						<i class="glyphicon glyphicon-map-marker"></i><a href="#">state</a>,
-						<a href="#">city</a>| Added at 06:55 pm, Ad ID: ${items.user }
-					</p>
-					<div class="flexslider">
-						<ul class="slides">
-							<li data-thumb="${items.image }"><img src="${items.image }" />
+			<div class="row">
+				<div class="col-12">
+					<div class="product_details_tab clearfix">
+						<!-- Tabs -->
+						<ul class="nav nav-tabs" role="tablist" id="product-details-tab">
+							<li class="nav-item"><a href="#description"
+								class="nav-link active" data-toggle="tab" role="tab">植物形态特征</a>
 							</li>
-							<li data-thumb="${items.image }"><img src="${items.image }" />
-							</li>
-							<li data-thumb="images/ss3.jpg"><img src="images/ss3.jpg" />
-							</li>
-							<li data-thumb="images/ss4.jpg"><img src="images/ss4.jpg" />
+							<li class="nav-item"><a href="#addi-info" class="nav-link"
+								data-toggle="tab" role="tab">培养技巧</a></li>
+							<li class="nav-item"><a href="#reviews" class="nav-link"
+								data-toggle="tab" role="tab">相关留言 <span class="text-muted">(${MessMany })</span></a>
 							</li>
 						</ul>
-					</div>
-					<script defer src="js/jquery.flexslider.js"></script>
+						<!-- Tab Content -->
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane fade show active"
+								id="description">
+								<div class="description_area">
+									<p>${planmore.p_form}</p>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane fade" id="addi-info">
+								<div class="additional_info_area">
+									<p>${planmore.p_message}</p>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane fade" id="reviews">
+								<div class="submit_a_review_area mt-50">
+									<h4>留言区</h4>
+									<div class="row">
+										<div  id="message">
+											<c:forEach items="${message }" var="message">
+												<p>
+													<span class="data-name">${message.u_name}</span><span> ： </span>
+												</p>
+												<p>	
+													 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span> ${message.m_text} </span>  
+												</p>
+												<p align="right">
+													<span>${message.m_time}</span>
+												</p>
+											</c:forEach>
+										</div>
+										<div class="col-12">
+											<div class="form-group">
+												<label for="comments">分享您的经验</label>
+												<textarea class="form-control" id="comments" rows="5"
+													data-max-length="150"></textarea>
+											</div>
+										</div>
+										<div class="col-12">
+											<button type="submit" class="btn alazea-btn"
+												onclick="message(${planmore.p_id})">发送</button>
+										</div>
+									</div>
+								</div>
+							</div>
 
-					<script>
-						// Can also be used with $(document).ready()
-						$(window).load(function() {
-							$('.flexslider').flexslider({
-								animation : "slide",
-								controlNav : "thumbnails"
-							});
-						});
-					</script>
-					<!-- //FlexSlider -->
-					<div class="product-details">
-						<h4>
-							<span class="w3layouts-agileinfo">介绍：</span> :
-							<p>${items.thing }</p>
-							<div class="clearfix"></div>
-						</h4>
-
+						</div>
 					</div>
 				</div>
-				<div class="col-md-5 product-details-grid">
-					<div class="item-price">
-						<div class="product-price">
-							<p class="p-price">价格</p>
-							<h3 class="rate">${items.money }</h3>
-							<div class="clearfix"></div>
+			</div>
+		</div>
+	</c:forEach> </section>
+	<!-- ##### Single Product Details Area End ##### -->
+
+	<!-- ##### Related Product Area Start ##### -->
+	<!-- ##### Related Product Area End ##### -->
+
+	<!-- ##### Footer Area Start ##### -->
+	<footer class="footer-area bg-img"
+		style="background-image: url(img/bg-img/3.jpg);"> <!-- Main Footer Area -->
+	<div class="main-footer-area">
+		<div class="container">
+			<div class="row">
+
+				<!-- Single Footer Widget -->
+				<div class="col-12 col-sm-6 col-lg-3" st>
+					<div class="single-footer-widget">
+						<div class="footer-logo mb-30">
+							<a href="#"><img src="img/core-img/logo.png" alt=""></a>
 						</div>
-						<div class="condition">
-							<p class="p-price">浏览次数</p>
-							<h4>${items.readnum }</h4>
-							<div class="clearfix"></div>
+						<p>网站的主要连接，转发网站。</p>
+						<div class="social-info">
+							<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 						</div>
 					</div>
-					<div class="interested text-center">
-						<h4>联系方式：</h4>
+				</div>
+
+				<!-- Single Footer Widget -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="single-footer-widget">
+						<div class="widget-title">
+							<h5>快速链接</h5>
+						</div>
+						<nav class="widget-nav">
+						<ul>
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">消息</a></li>
+							<li><a href="#">返回</a></li>
+							<li><a href="#">做广告</a></li>
+							<li><a href="#">航运</a></li>
+							<li><a href="#">职业生涯</a></li>
+						</ul>
+						</nav>
+					</div>
+				</div>
+
+				<!-- Single Footer Widget -->
+				<div class="col-12 col-sm-6 col-lg-3">
+					<div class="single-footer-widget">
+						<div class="widget-title">
+							<h5>联系</h5>
+						</div>
+
+						<div class="contact-information">
+							<p>
+								<span>地址:</span> 内蒙古师范大学
+							</p>
+							<p>
+								<span>电话:</span> +1 234 122 122
+							</p>
+							<p>
+								<span>Email:</span> Yqd7543@hotmail.com
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer Bottom Area -->
+	<div class="footer-bottom-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="border-line"></div>
+				</div>
+				<!-- Copywrite Text -->
+				<div class="col-12 col-md-6">
+					<div class="copywrite-text">
 						<p>
-							<i class="glyphicon glyphicon-earphone"></i>${user.phone }
+							&copy; 版权 &copy;
+							<script>
+								document.write(new Date().getFullYear());
+							</script>
+							- 本人保留所有权利
+
 						</p>
 					</div>
 				</div>
-				<div class="clearfix"></div>
+				<!-- Footer Nav -->
+				<div class="col-12 col-md-6">
+					<div class="footer-nav">
+						<nav>
+						<ul>
+							<li><a href="#">主页</a></li>
+							<li><a href="#">关于我们</a></li>
+							<li><a href="#">服务</a></li>
+							<li><a href="#">投资组合</a></li>
+							<li><a href="#">博客</a></li>
+							<li><a href="#">联系</a></li>
+						</ul>
+						</nav>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-	<footer>
-	<div class="agileits-footer-bottom text-center">
-		<div class="container">
-			<div class="w3-footer-logo">
-				<h1>
-					<a href="${pageContext.request.contextPath }/index.action"><img
-					src="img/core-img/logo.png" alt=""></a>
-				</h1>
-			</div>
-			<div class="w3-footer-social-icons">
-				<ul>
-					<li><a class="facebook" href="#"><i class="fa fa-facebook"
-							aria-hidden="true"></i><span>Facebook</span></a></li>
-					<li><a class="twitter" href="#"><i class="fa fa-twitter"
-							aria-hidden="true"></i><span>Twitter</span></a></li>
-					<li><a class="flickr" href="#"><i class="fa fa-flickr"
-							aria-hidden="true"></i><span>Flickr</span></a></li>
-					<li><a class="googleplus" href="#"><i
-							class="fa fa-google-plus" aria-hidden="true"></i><span>Google+</span></a></li>
-					<li><a class="dribbble" href="#"><i class="fa fa-dribbble"
-							aria-hidden="true"></i><span>Dribbble</span></a></li>
-				</ul>
-			</div>
-			<div class="clearfix"></div>
 		</div>
 	</div>
 	</footer>
+	<!-- ##### Footer Area End ##### -->
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<script src="js/bootstrap/popper.min.js"></script>
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+	<script src="js/plugins/plugins.js"></script>
+	<script src="js/active.js"></script>
 </body>
-<script src="js/classie.js"></script>
-<script src="js/main.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$().UItoTop({
-			easingType : 'easeOutQuart'
-		});
-	});
-</script>
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event) {
-			event.preventDefault();
-			$('html,body').animate({
-				scrollTop : $(this.hash).offset().top
-			}, 1000);
-		});
-	});
-</script>
 </html>

@@ -1,0 +1,53 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.imnu.dao.PlanDao">
+	<insert id="savePlan" parameterType="Plan">
+		insert into plan(
+		p_id,
+		p_name,
+		p_breeding,
+		p_habits,
+		p_place,
+		p_form,
+		p_img,
+		p_water,
+		p_message,
+		u_id
+		)
+		values(#{p_id},
+		#{p_name},
+		#{p_breeding},
+		#{p_habits},
+		#{p_place},
+		#{p_form},
+		#{p_img},
+		#{p_water},
+		#{p_message},
+		#{u_id}
+		)
+	</insert>
+	<select id="showPlan" parameterType="Integer" resultType="Plan">
+		select * from plan
+	</select>
+	<select id="showPlanID" parameterType="Integer" resultType="Plan">
+		select * from plan where p_habits like concat('%',#{id},'%')
+	</select>
+	<select id="showMessage" parameterType="Integer" resultType="plan">
+		select * from plan where p_id = #{id}
+	</select>
+	<select id="showHabits" parameterType="Type" resultType="String">
+		select t_name from type where name = #{name} and t_id = #{t_id}
+	</select>
+	<select id="finduser" parameterType="Integer" resultType="User">
+		select * from users where u_id = #{u_id}
+	</select>
+	<select id="ShowMess" parameterType="Integer" resultType="Integer">
+		select count(*) from message where p_id=#{id}
+	</select>
+	<select id="MessageAll" parameterType="Integer" resultType="Message">
+		SELECT message.*,users.u_name FROM message,users WHERE message.u_id = users.u_id and p_id=#{id}
+	</select>
+	<select id="FindPlan" parameterType="String" resultType="Plan">
+		select * from plan where p_name like concat('%',#{search},'%')
+	</select>
+</mapper>

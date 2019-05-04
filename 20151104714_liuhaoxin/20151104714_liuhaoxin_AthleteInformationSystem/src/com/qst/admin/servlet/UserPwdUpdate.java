@@ -32,10 +32,8 @@ public class UserPwdUpdate extends HttpServlet {
 		//管理员修改用户密码
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
-	
 		String pwd= request.getParameter("pwd");
-		int uid=Integer.parseInt( request.getParameter("uid"));
-		
+		int uid=Integer.parseInt(request.getParameter("uid"));	
 		AdminDao adao = new AdminDao();
 		adao.UploadPwd(uid, pwd);
 		response.sendRedirect("UserView");

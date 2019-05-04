@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidu.dao.CommentMapper" >
+  <resultMap id="BaseResultMap" type="com.yidu.domain.Comment" >
+    <id column="comment_id" property="commentId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="toy_id" property="toyId" jdbcType="VARCHAR" />
+    <result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
+    <result column="comment_time" property="commentTime" jdbcType="DATE"/>
+    <result column="comment_photo" property="commentPhoto" jdbcType="VARCHAR" />
+    <result column="comment_evaluate" property="commentEvaluate" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="BaseResultMap2" type="com.yidu.controller.vo.CommentVo" >
+    <id column="comment_id" property="commentId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="toy_id" property="toyId" jdbcType="VARCHAR" />
+    <result column="toy_name" property="toyName" jdbcType="VARCHAR" />
+    <result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
+    <result column="comment_time" property="commentTime" jdbcType="DATE"/>
+    <result column="comment_photo" property="commentPhoto" jdbcType="VARCHAR" />
+    <result column="comment_evaluate" property="commentEvaluate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    comment_id, user_id, toy_id, comment_content, comment_time, comment_photo, comment_evaluate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from comment
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from comment
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yidu.domain.Comment" >
+    insert into comment (comment_id, user_id, toy_id, 
+      comment_content, comment_time, comment_photo, 
+      comment_evaluate)
+    values (#{commentId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{toyId,jdbcType=VARCHAR}, 
+      #{commentContent,jdbcType=VARCHAR}, #{commentTime,jdbcType=DATE}, #{commentPhoto,jdbcType=VARCHAR}, 
+      #{commentEvaluate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yidu.domain.Comment" >
+    insert into comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        comment_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="toyId != null" >
+        toy_id,
+      </if>
+      <if test="commentContent != null" >
+        comment_content,
+      </if>
+      <if test="commentTime != null" >
+        comment_time,
+      </if>
+      <if test="commentPhoto != null" >
+        comment_photo,
+      </if>
+      <if test="commentEvaluate != null" >
+        comment_evaluate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        #{commentId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="toyId != null" >
+        #{toyId,jdbcType=VARCHAR},
+      </if>
+      <if test="commentContent != null" >
+        #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentTime != null" >
+        #{commentTime,jdbcType=DATE},
+      </if>
+      <if test="commentPhoto != null" >
+        #{commentPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="commentEvaluate != null" >
+        #{commentEvaluate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yidu.domain.Comment" >
+    update comment
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="toyId != null" >
+        toy_id = #{toyId,jdbcType=VARCHAR},
+      </if>
+      <if test="commentContent != null" >
+        comment_content = #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentTime != null" >
+        comment_time = #{commentTime,jdbcType=DATE},
+      </if>
+      <if test="commentPhoto != null" >
+        comment_photo = #{commentPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="commentEvaluate != null" >
+        comment_evaluate = #{commentEvaluate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yidu.domain.Comment" >
+    update comment
+    set user_id = #{userId,jdbcType=VARCHAR},
+      toy_id = #{toyId,jdbcType=VARCHAR},
+      comment_content = #{commentContent,jdbcType=VARCHAR},
+      comment_time = #{commentTime,jdbcType=DATE},
+      comment_photo = #{commentPhoto,jdbcType=VARCHAR},
+      comment_evaluate = #{commentEvaluate,jdbcType=VARCHAR}
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <select id="findAll" parameterType="com.yidu.controller.vo.CommentVo" resultMap="BaseResultMap2">
+  	select * from  comment c,user u,toy t where c.toy_id = t.toy_id 
+  	
+  		<if test="commentContent != null and commentContent != '' ">
+	  		and comment_content like concat('%',#{commentContent},'%')
+	  	</if>
+  	
+  </select>
+  
+  <select id="findRow"  parameterType="java.lang.Integer" resultType="int">
+  	select * from  comment c,user u,toy t where c.toy_id = t.toy_id 
+  </select>
+  
+  <select id="findByToyId"  parameterType="java.lang.String" resultMap="BaseResultMap2">
+  	select * from  comment c,user u,toy t where c.toy_id = t.toy_id and c.user_id=u.user_id and c.toy_id= #{toyId}
+  </select>
+  
+  <select id="findCommentRow"  parameterType="java.lang.String" resultType="int">
+  	select count(*) from  comment c,user u,toy t where c.toy_id = t.toy_id and c.toy_id= #{toyId}
+  </select>
+  
+</mapper>

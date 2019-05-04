@@ -4,6 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.imnu.dao.INFDao">
   <select id="selectjz" parameterType="String" resultType="Infm">
-    select * from ri
+    select * from ri where u_type = "家长"
+  </select>
+  <delete id="deletemy">
+    delete from ri where u_email = #{u_email}
+  </delete>
+  <select id="selecttc" parameterType="String" resultType="Infm">
+    select * from ri where u_type = "教员"
+  </select>
+  <select id="selectall" parameterType="String" resultType="User">
+    select * from user
+  </select>
+  <delete id="deleteinf">
+    delete from ri where u_email = #{u_email}
+  </delete>
+  <insert id="insertinf" parameterType="String">
+    insert into ri (u_name,u_email,u_phone,u_type,p_img,p_dirpath,u_message) values (#{u_name},#{u_email},#{u_phone},#{u_type},#{p_img},#{p_dirpath},#{u_message})
+  </insert>
+  <insert id="infsertpl" parameterType="String">
+    insert into pinglun (p_name,p_email,p_phone,p_content,u_user) values (#{p_name},#{p_email},#{p_phone},#{p_content},#{u_user})
+  </insert>
+  <select id="selectpl" parameterType="String" resultType="Pinglun">
+    select * from pinglun
   </select>
 </mapper>

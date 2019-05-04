@@ -12,6 +12,12 @@ public interface UserDao {
 	public User  findUser(@Param("u_user")String u_user);
 
 	public User  findEmail(@Param("u_email")String u_email);
-	
+
+	public void updatemy(@Param("u_user")String u_user, @Param("u_name")String u_name, @Param("u_phone")String u_phone, @Param("u_email")String u_email, @Param("u_message")String u_message);
+
+	public void updateno(@Param("u_email")String u_email);
+
+	public void updateyes(@Param("u_email")String u_email);
+
 
 }

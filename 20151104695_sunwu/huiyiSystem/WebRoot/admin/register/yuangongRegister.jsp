@@ -17,6 +17,10 @@ String path = request.getContextPath();
       <%--   <link rel="stylesheet" type="text/css" href="<%=path %>/css/base.css" /> --%>
         <link href="<%=path %>/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
         
+        <link href="<%=path %>/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		 <link href="<%=path %>/bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+		 <link href="<%=path %>/bootstrap/custom.min.css" rel="stylesheet"/>
+        
         <script type="text/javascript">
         function orgAll()
 	    {
@@ -48,12 +52,35 @@ String path = request.getContextPath();
 		</script>
 	</head>
 
-	<body leftmargin="2" topmargin="9" background='<%=path %>/images/allbg.gif'>
+<body background="qy_back.gif" leftmargin="0" topmargin="0"
+	marginwidth="0" marginheight="0" bgcolor="#FFFFFF" style="background:rgb(236,240,245); padding-left:20px;">
+
+	
+	<div class="title clearfix">
+	<h2 style="font-size:34px; font-weight:bold;">用户注册</h2>
+	</div>
+	<ul class="breadcrumb" style="">
+	<li>
+	<i class="fa fa-home"></i>
+	<i style="color:rgb(42,63,84); font-style:normal;" id="breadcrumbSeal">注册   /   用户注册</i>
+	</li>
+	</ul>
+	<ul id="myTab" class="nav nav-tabs" style="height:30px;">
+	<li class="active"><a href="#home" data-toggle="tab" style="height:30px; line-height:3px;" id="tabTitle">
+	用户注册</a>
+	</li>
+	</ul>
+	<div id="myTabContent" class="tab-content" style="margin-top:20px;">
+	<div class="tab-pane fade in active" id="home">
+	<section class="content">
+	<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+	<div class="x_panel">
+	<div id="table-box" style="display: block; height:440px;">
+	
 			<form action="<%=path %>/yuangong?type=yuangongRegister" name="formAdd" method="post" class="form-horizontal form-label-left">
-					
-			<div class="title clearfix">
-			<h2 style="font-size:34px; font-weight:bold;">员工注册</h2>
-			</div>
+			
+<br />			
 			<div class="form-group">
 			<label class="control-label col-xs-3">小组：
 			</label>
@@ -98,10 +125,20 @@ String path = request.getContextPath();
 				<input type="text"  class="form-control col-xs-6" name="loginpw"/>
 				</div>
 				</div> 
+				
 				<div class="col-md-offset-3 col-xs-6">
 				  <input type="submit"  class="btn btn-primary col-md-offset-1" value="注册" onclick="return check()"/>&nbsp; 
 			     <input type="reset"  class="btn btn-primary col-md-offset-1" value="重置"/>&nbsp;
 			</div>
 		</form>
+		
+		</div>
+		</div>
+		</div>
+		</div>
+		</section>
+		</div>
+		</div>
+		
    </body>
 </html>

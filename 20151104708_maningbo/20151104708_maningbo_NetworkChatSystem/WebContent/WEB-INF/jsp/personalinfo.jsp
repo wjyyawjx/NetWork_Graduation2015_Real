@@ -35,6 +35,14 @@
 				</div>
 				<hr>
 				<div class="form-group">
+					<label for="userName" class="col-sm-2 control-label">用户ID：</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="id" disabled
+							placeholder="userName" value="${userBean.id}" id="id">
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
 					<label for="userName" class="col-sm-2 control-label">用户名：</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="userName" disabled

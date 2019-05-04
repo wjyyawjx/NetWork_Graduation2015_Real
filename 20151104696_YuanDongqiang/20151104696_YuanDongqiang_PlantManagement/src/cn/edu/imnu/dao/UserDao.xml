@@ -22,15 +22,23 @@
 	<!-- 注册 -->
 	<insert id="addUser" parameterType="user">
 		insert into users(
-		u_code,
+		u_id,
 		u_name,
-		u_id
+		u_pwd,
+		u_type,
+		u_email,
+		u_code,
+		u_ip,
+		u_time
 		)
-		values(#{u_code},
+		values(#{u_id},
 		#{u_name},
 		#{u_pwd},
+		#{u_type},
 		#{u_email},
-		#{u_type}
+		#{u_code},
+		#{u_ip},
+		#{u_time}
 		)
 	</insert>
 	<update id="SaveIp" parameterType="user">
@@ -41,7 +49,8 @@
 	</update>
 	<update id="SaveIp1" parameterType="user">
 		UPDATE ip_adress
-		SET u_id = #{u_id}
+		SET u_id =
+		#{u_id}
 		WHERE u_ip = #{u_ip}
 	</update>
 </mapper>

@@ -8,6 +8,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <title>Insert title here</title>
+ <script type="text/javascript">
+ function prom()
+ {
+	 var b=event.target.id;
+     var liyou=prompt("请输入拒绝理由","");
+     
+     if(liyou)
+     {
+    	 window.location.href="PermissionUpload3?aid="+b+"&liyou="+liyou;
+    	 }else{
+        	 alert("您取消了")
+         }
+ }
+ 
+ function deletereason()
+ {
+	 var b=event.target.id;
+	 var r=confirm("确定删除此条申请？");
+		if (r==true){
+			window.location.href="ToApplyForDelete?aid="+b;
+		}
+		else{
+			alert("您取消了删除")
+		}
+ }
+ </script>
 </head>
 <body>
 <div align="center">
@@ -34,16 +60,9 @@
 					<input type="hidden" name="username" value=${w.username}>
 					<input type="submit" style="width: 150px" value="通过审核">
 					</form></td>
-					<td>
-					<form action="PermissionUpload3" method="post">
-					<input type="text" name="liyou" placeholder="输入拒绝理由" required="">
-					<input type="hidden" name="aid" value=${w.aid}>
-					<input type="submit" style="width: 150px" value="拒绝申请">
-					</form></td>
-					<td><form action="ToApplyForDelete" method="post">
-					<input type="hidden" name="aid" value=${w.aid}>
-					<input type="submit" style="width: 150px" value="删除此条申请">
-					</form></td>
+			<td><input type="submit" style="width: 150px" id=${w.aid} onclick="prom()" value="拒绝申请"></td>
+
+			<td><input type="submit" style="width: 150px" id=${w.aid} onclick="deletereason()" value="删除此条申请"></td>
 					</tr>
 					</c:forEach>
 				</tbody>

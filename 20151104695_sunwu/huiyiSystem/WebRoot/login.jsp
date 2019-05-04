@@ -29,7 +29,7 @@ canvas { z-index: -1; position: absolute; }
 <script type='text/javascript' src='<%=path %>/dwr/interface/loginService.js'></script>
 <script type='text/javascript' src='<%=path %>/dwr/engine.js'></script>
 <script type='text/javascript' src='<%=path %>/dwr/util.js'></script>
-		<script type="text/javascript" src="js/selectFilter.js"></script>
+<script type="text/javascript" src="js/selectFilter.js"></script>
 <script language="javascript">
  function check1()
  {                                                                                         
@@ -109,10 +109,5 @@ $(document).ready(function() {
   <dd>
   </dd>
 </dl>
-<!-- 时钟控件 -->
-<embed wmode="transparent" src="admin/honehone_clock_tr.swf" quality="high" bgcolor="#FDF6E3" width="220" height="110" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
-
-
-
 </body>
 </html>

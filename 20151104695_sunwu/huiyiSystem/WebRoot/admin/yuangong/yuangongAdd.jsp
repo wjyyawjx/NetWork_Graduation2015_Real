@@ -14,7 +14,14 @@ String path = request.getContextPath();
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
 		<meta http-equiv="description" content="This is my page" />
         
-        <link rel="stylesheet" type="text/css" href="<%=path %>/css/base.css" />
+       <%--  <link rel="stylesheet" type="text/css" href="<%=path %>/css/base.css" /> --%>
+        
+         <link href="<%=path %>/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+        
+        <link href="<%=path %>/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		 <link href="<%=path %>/bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+		 <link href="<%=path %>/bootstrap/custom.min.css" rel="stylesheet"/>
+        
         
         <script type="text/javascript">
 		    function orgAll()
@@ -48,73 +55,89 @@ String path = request.getContextPath();
 		</script>
 	</head>
 
-	<body leftmargin="2" topmargin="9" background='<%=path %>/images/allbg.gif'>
-			<form action="<%=path %>/yuangong?type=yuangongAdd" name="formAdd" method="post">
-				     <table width="98%" align="center" border="0" cellpadding="4" cellspacing="1" bgcolor="#CBD8AC" style="margin-bottom:8px">
-						<tr bgcolor="#EEF4EA">
-					        <td colspan="3" background="<%=path %>/images/wbg.gif" class='title'><span>员工管理</span></td>
-					    </tr>
-					    <tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">
-						    <td width="25%" bgcolor="#FFFFFF" align="right">
-						         小组：
-						    </td>
-						    <td width="75%" bgcolor="#FFFFFF" align="left">
-						        <input type="text" name="org_id" id="org_id" readonly="readonly"/>
-						        <input type="button" value="选择小组" onclick="orgAll()"/>
-						    </td>
-						</tr>
-					    <tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">
-						    <td width="25%" bgcolor="#FFFFFF" align="right">
-						               学号：
-						    </td>
-						    <td width="75%" bgcolor="#FFFFFF" align="left">
-						        <input type="text" name="bianhao" id="bianhao" size="22"/>
-						    </td>
-						</tr>
-						<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">
-						    <td width="25%" bgcolor="#FFFFFF" align="right">
-						               姓名：
-						    </td>
-						    <td width="75%" bgcolor="#FFFFFF" align="left">
-						        <input type="text" name="name" id="name" size="22"/>
-						    </td>
-						</tr>
-						<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">
-						    <td width="25%" bgcolor="#FFFFFF" align="right">
-						         性别：
-						    </td>
-						    <td width="75%" bgcolor="#FFFFFF" align="left">
-						        <input type="radio" name="sex" value="男" checked="checked"/>男
-						        &nbsp;&nbsp;&nbsp;&nbsp;
-						        <input type="radio" name="sex" value="女"/>女
-						    </td>
-						</tr>
-						<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">
-						    <td width="25%" bgcolor="#FFFFFF" align="right">
-						         账号：
-						    </td>
-						    <td width="75%" bgcolor="#FFFFFF" align="left">
-						        <input type="text" name="loginname" size="22" />
-						    </td>
-						</tr>
-						<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">
-						    <td width="25%" bgcolor="#FFFFFF" align="right">
-						         密码：
-						    </td>
-						    <td width="75%" bgcolor="#FFFFFF" align="left">
-						        <input type="text" name="loginpw" size="22" value="123"/>
-						    </td>
-						</tr>
-						<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">
-						    <td width="25%" bgcolor="#FFFFFF" align="right">
-						        &nbsp;
-						    </td>
-						    <td width="75%" bgcolor="#FFFFFF" align="left">
-						       <input type="submit" value="提交" onclick="return check()"/>&nbsp; 
-						       <input type="reset" value="重置"/>&nbsp;
-						    </td>
-						</tr>
-					 </table>
+	<body background="qy_back.gif" leftmargin="0" topmargin="0"
+	marginwidth="0" marginheight="0" bgcolor="#FFFFFF" style="background:rgb(236,240,245); padding-left:20px;">
+<div class="title clearfix">
+	<h2 style="font-size:34px; font-weight:bold;">添加用户</h2>
+	</div>
+	<ul class="breadcrumb" style="">
+	<li>
+	<i class="fa fa-home"></i>
+	<i style="color:rgb(42,63,84); font-style:normal;" id="breadcrumbSeal">操作   /   添加用户</i>
+	</li>
+	</ul>
+	<ul id="myTab" class="nav nav-tabs" style="height:30px;">
+	<li class="active"><a href="#home" data-toggle="tab" style="height:30px; line-height:3px;" id="tabTitle">
+	添加用户</a>
+	</li>
+	</ul>
+	<div id="myTabContent" class="tab-content" style="margin-top:20px;">
+	<div class="tab-pane fade in active" id="home">
+	<section class="content">
+	<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+	<div class="x_panel">
+	<div id="table-box" style="display: block; height:440px;">
+	
+	
+			<form action="<%=path %>/yuangong?type=yuangongAdd" name="formAdd" method="post" class="form-horizontal form-label-left">
+				    <br />			
+			<div class="form-group">
+			<label class="control-label col-xs-3">小组：
+			</label>
+			<div class="col-xs-6">
+			<input type="text"  class="form-control col-xs-6"  name="org_id" id="org_id" readonly="readonly" />
+			</div>
+			 <input type="button"   class="btn btn-primary col-md-offset-1" value="选择小组" onclick="orgAll()"/>
+				</div>  
+			   	 <div class="form-group">
+				<label class="control-label col-xs-3">   学号：
+				</label>
+				<div class="col-xs-6">
+				<input type="text"  class="form-control col-xs-6"  name="bianhao" id="bianhao" />
+				</div>
+				</div>  
+					<div class="form-group">
+				<label class="control-label col-xs-3"> 姓名：
+				</label>
+				<div class="col-xs-6">
+				<input type="text"  class="form-control col-xs-6"  name="name" id="name" />
+				</div>
+				</div> 
+				<div class="form-group">
+				<label class="control-label col-xs-3">性别： </label>
+					<div class="col-xs-6">
+					<input type="radio" name="sex"   value="男" checked="checked"/>男
+			       &nbsp;&nbsp;&nbsp;&nbsp;
+			       <input type="radio" name="sex"  value="女"/>女
+					</div>
+					</div>
+				<div class="form-group">
+				<label class="control-label col-xs-3"> 账号：
+				</label>
+				<div class="col-xs-6">
+				<input type="text"  class="form-control col-xs-6"  name="loginname" />
+				</div>
+				</div> 
+				<div class="form-group">
+				<label class="control-label col-xs-3"> 密码：
+				</label>
+				<div class="col-xs-6">
+				<input type="text"  class="form-control col-xs-6" name="loginpw"/>
+				</div>
+				</div> 
+				
+				<div class="col-md-offset-3 col-xs-6">
+				  <input type="submit"  class="btn btn-primary col-md-offset-1" value="注册" onclick="return check()"/>&nbsp; 
+			     <input type="reset"  class="btn btn-primary col-md-offset-1" value="重置"/>&nbsp;
+			</div>
 			</form>
+			</div>
+		</div>
+		</div>
+		</div>
+		</section>
+		</div>
+		</div>
    </body>
 </html>
